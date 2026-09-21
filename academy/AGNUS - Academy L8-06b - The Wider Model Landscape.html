@@ -1,0 +1,226 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Academy — L8-06b The Wider Model Landscape</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#F8F6F2;--panel:#FFFFFF;--panel-2:#F2F0EB;--line:#E5E2D9;--line-2:#D1CEC4;--ink:#18202A;--ink-2:#4A5261;--ink-3:#8E96A2;--navy:#17263C;--navy-2:#0F1A28;--gold:#9A7633;--gold-light:#B59048;--pass:#1A7E4A;--pass-dim:rgba(26,126,74,.1);--danger:#B4432E;--danger-dim:#FEF0ED;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:Manrope,sans-serif;-webkit-font-smoothing:antialiased}
+.top-rail{background:var(--navy-2);color:#fff;display:flex;align-items:center;height:48px;padding:0 20px;gap:18px}
+.tr-brand{font-weight:800;font-size:13.5px}
+.tr-crumb{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.tr-title{font-size:13px;font-weight:700}
+.tr-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.prog-dots{display:flex;gap:5px}
+.prog-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.2)}
+.prog-dot.done{background:var(--gold-light)}
+.prog-dot.active{background:#fff}
+.tr-btn{font-family:Manrope,sans-serif;font-size:12px;font-weight:700;padding:7px 14px;border-radius:7px;border:1px solid rgba(255,255,255,.18);color:#fff;background:rgba(255,255,255,.07);cursor:pointer}
+.wrap{max-width:840px;margin:0 auto;padding:44px 24px 100px}
+.step-banner{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:28px}
+.sb-step{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.sb-count{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-3)}
+.hero{background:var(--navy);border-radius:16px;padding:32px 34px;display:grid;gap:16px;margin-bottom:24px}
+.hero h1{font-weight:800;font-size:26px;letter-spacing:-.026em;color:#fff;line-height:1.15}
+.hero p{font-family:Newsreader,serif;font-style:italic;font-size:16px;line-height:1.7;color:rgba(245,244,241,.78)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px 26px;margin-bottom:20px}
+.card h3{font-size:15px;font-weight:700;margin-bottom:10px}
+.card h4{font-size:13px;font-weight:700;margin:16px 0 8px;color:var(--navy)}
+.card p{font-size:14.5px;line-height:1.68;color:var(--ink-2)}
+.model-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+.model-card{border:1.5px solid var(--line-2);border-radius:10px;padding:16px 18px;cursor:pointer}
+.model-card:hover{border-color:var(--navy)}
+.model-card.open{background:var(--panel-2)}
+.model-card .mc-name{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;color:var(--gold);margin-bottom:6px}
+.model-card .mc-tag{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.model-card .mc-body{display:none;font-size:12.5px;color:var(--ink-2);line-height:1.6;margin-top:8px}
+.model-card.open .mc-body{display:block}
+.model-card .mc-body b{color:var(--ink)}
+.factor-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:12.5px}
+.factor-table th{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);text-align:left;padding:8px 10px;border-bottom:1.5px solid var(--line-2)}
+.factor-table td{padding:10px 10px;border-bottom:1px solid var(--panel-2);color:var(--ink-2)}
+.factor-table td:first-child{font-weight:700;color:var(--ink)}
+.opt-list{display:grid;gap:10px;margin:16px 0}
+.opt{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border:1.5px solid var(--line-2);border-radius:10px;cursor:pointer}
+.opt:hover{border-color:var(--navy);background:#F9F8F5}
+.opt.correct{border-color:var(--pass);background:var(--pass-dim)}
+.opt.wrong{border-color:var(--danger);background:var(--danger-dim)}
+.opt .letter{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;color:var(--ink-3);flex:none;width:20px}
+.opt .text{font-size:14px;line-height:1.5}
+.feedback{display:none;margin-top:14px;padding:16px 18px;border-radius:10px;font-size:13.5px;line-height:1.6}
+.feedback.pass{display:block;background:var(--pass-dim);border-left:3px solid var(--pass);color:var(--ink)}
+.feedback.fail{display:block;background:var(--danger-dim);border-left:3px solid var(--danger);color:var(--ink)}
+.cta-row{display:flex;justify-content:flex-end;margin-top:24px}
+.btn{font-family:Manrope,sans-serif;font-weight:700;font-size:14px;padding:13px 26px;border-radius:10px;border:none;background:var(--navy);color:#fff;cursor:pointer}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.pass-screen{display:none;text-align:center;padding:44px 30px;background:var(--navy);border-radius:16px;color:#fff}
+.pass-screen h2{font-size:22px;font-weight:800;margin-bottom:10px}
+.pass-screen p{font-size:13.5px;color:rgba(255,255,255,.7);margin-bottom:20px}
+.step{display:none}
+.step.active{display:block}
+</style>
+</head>
+<body>
+
+<header class="top-rail">
+  <span class="tr-brand">AGNUS Academy</span>
+  <span class="tr-crumb">Level 8 · Foundation</span>
+  <span class="tr-title">L8-06b — The Wider Model Landscape</span>
+  <div class="tr-right">
+    <div class="prog-dots" id="progDots"></div>
+    <button class="tr-btn" onclick="alert('Dashboard link')">← Dashboard</button>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="step active" data-step="0">
+    <div class="step-banner"><span class="sb-step">Step 1 of 4 — Understand</span><span class="sb-count">4 min</span></div>
+    <div class="hero">
+      <h1>L8-04 named three models. The real landscape a builder chooses from is wider — and the differences are structural, not just brand names.</h1>
+      <p>Claude, GPT, and Gemini aren't the whole field. DeepSeek, Kimi, and Grok each make a genuinely different tradeoff — on cost, context length, openness, or access to live data — and picking blind means missing a model that might fit your task better.</p>
+    </div>
+    <div class="card">
+      <h3>Why this matters</h3>
+      <p>Same lesson as L8-05's framework choice, one layer down: "which model is best" is the wrong question. The right one is which specific tradeoff — cost-per-token, context window size, self-hosting ability, real-time data access — actually matters for what you're building.</p>
+    </div>
+    <div class="cta-row"><button class="btn" onclick="goStep(1)">Compare four more models →</button></div>
+  </section>
+
+  <section class="step" data-step="1">
+    <div class="step-banner"><span class="sb-step">Step 2 of 4 — See</span><span class="sb-count">5 min</span></div>
+    <div class="card">
+      <h3>Four more models — click each for its real differentiator</h3>
+      <div class="model-cards" id="modelCards">
+        <div class="model-card open" data-m="deepseek" onclick="toggleModel(this)">
+          <div class="mc-name">DEEPSEEK</div>
+          <div class="mc-tag">Strong reasoning per dollar, open-weight</div>
+          <div class="mc-body">Released with open weights, meaning the model itself can be downloaded and run on your own infrastructure rather than only accessed through an API. This matters for teams with strict data-residency requirements, or anyone optimizing hard for cost at scale.</div>
+        </div>
+        <div class="model-card" data-m="gemini" onclick="toggleModel(this)">
+          <div class="mc-name">GEMINI</div>
+          <div class="mc-tag">Native multimodal + very large context window</div>
+          <div class="mc-body">Built from the ground up to handle text, images, and video together, and supports an unusually large context window — relevant when a task genuinely needs to reason over a large document or codebase in a single pass, not chunked pieces.</div>
+        </div>
+        <div class="model-card" data-m="kimi" onclick="toggleModel(this)">
+          <div class="mc-name">KIMI (Moonshot AI)</div>
+          <div class="mc-tag">Long-context specialist</div>
+          <div class="mc-body">Specifically optimized for very long input — useful for tasks like analyzing an entire book-length document or a large log file in one go, where fitting everything into context without chunking meaningfully changes what's possible.</div>
+        </div>
+        <div class="model-card" data-m="grok" onclick="toggleModel(this)">
+          <div class="mc-name">GROK</div>
+          <div class="mc-tag">Real-time access to X/social data</div>
+          <div class="mc-body">Its differentiator isn't raw reasoning ability — it's built-in access to real-time social platform data, relevant specifically for tasks that need to reason about what's happening right now on that platform, not general knowledge.</div>
+        </div>
+      </div>
+      <h4>The factor that should actually drive your choice</h4>
+      <table class="factor-table">
+        <thead><tr><th>If your task needs...</th><th>Consider</th></tr></thead>
+        <tbody>
+          <tr><td>Self-hosting or strict data residency</td><td>DeepSeek (open-weight)</td></tr>
+          <tr><td>Reasoning over images/video plus text together</td><td>Gemini (native multimodal)</td></tr>
+          <tr><td>A single pass over an extremely long document</td><td>Kimi (long-context specialist)</td></tr>
+          <tr><td>Live awareness of current social-platform activity</td><td>Grok (real-time data access)</td></tr>
+        </tbody>
+      </table>
+      <p>Same principle as L8-04's stack diagram: this is still a model choice sitting under whatever framework you pick — the two decisions are independent, and mixing them up leads to exactly the same kind of misdiagnosed failure L8-04 covered.</p>
+    </div>
+    <div class="cta-row"><button class="btn" style="background:none;color:var(--navy);border:1.5px solid var(--line-2);margin-right:auto" onclick="goStep(0)">← Back</button><button class="btn" onclick="goStep(2)">Try it yourself →</button></div>
+  </section>
+
+  <section class="step" data-step="2">
+    <div class="step-banner"><span class="sb-step">Step 3 of 4 — Practice</span><span class="sb-count">3 min</span></div>
+    <div class="card">
+      <h3>A legal team needs to analyze an entire 400-page contract in one pass without splitting it into chunks. Which factor matters most here, and which model is built for it?</h3>
+      <div class="opt-list" id="practiceOpts">
+        <div class="opt" data-correct="true" onclick="pickPractice(this)"><span class="letter">A</span><span class="text">Context window size — Kimi is specifically optimized for very long single-pass input.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPractice(this)"><span class="letter">B</span><span class="text">Real-time data access — Grok, because it's the most well-known.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPractice(this)"><span class="letter">C</span><span class="text">Open-weight self-hosting — DeepSeek, since legal work always requires self-hosting.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPractice(this)"><span class="letter">D</span><span class="text">Any model works equally well regardless of document length.</span></div>
+      </div>
+      <div class="feedback" id="practiceFeedback"></div>
+    </div>
+    <div class="cta-row"><button class="btn" style="background:none;color:var(--navy);border:1.5px solid var(--line-2);margin-right:auto" onclick="goStep(1)">← Back</button><button class="btn" id="practiceNext" onclick="goStep(3)" disabled>Continue →</button></div>
+  </section>
+
+  <section class="step" data-step="3">
+    <div class="step-banner"><span class="sb-step">Step 4 of 4 — Pass</span><span class="sb-count">Hidden test</span></div>
+    <div class="card">
+      <h3>New scenario — no hints</h3>
+      <p style="margin-bottom:14px">A startup needs to run their agent entirely on infrastructure they control, with no data ever leaving their own servers, due to a strict client contract. Which factor is decisive, and which of the four models fits it?</p>
+      <div class="opt-list" id="passOpts">
+        <div class="opt" data-correct="true" onclick="pickPass(this)"><span class="letter">A</span><span class="text">Open-weight availability — DeepSeek can be downloaded and run on their own infrastructure, satisfying the data-residency requirement none of the API-only options can meet.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">B</span><span class="text">Context window size — Kimi, since longer context is always the safer default choice.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">C</span><span class="text">Multimodal capability — Gemini, because handling more data types is inherently more secure.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">D</span><span class="text">Real-time data access — Grok, since more up-to-date information reduces data-residency risk.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">E</span><span class="text">This requirement cannot be satisfied by any current model.</span></div>
+      </div>
+      <div class="feedback" id="passFeedback"></div>
+    </div>
+    <div class="cta-row"><button class="btn" style="background:none;color:var(--navy);border:1.5px solid var(--line-2)" onclick="goStep(2)">← Back</button></div>
+    <div class="pass-screen" id="passScreen">
+      <h2>Module L8-06b complete</h2>
+      <p>Wider model-landscape judgment confirmed.</p>
+      <button class="tr-btn" onclick="alert('Return to dashboard')">Return to dashboard</button>
+    </div>
+  </section>
+
+</div>
+
+<script>
+const TOTAL_STEPS = 4;
+function renderDots(active){
+  document.getElementById('progDots').innerHTML = Array.from({length:TOTAL_STEPS}).map((_,i)=>
+    '<div class="prog-dot '+(i<active?'done':i===active?'active':'')+'"></div>').join('');
+}
+function goStep(i){
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  document.querySelector('.step[data-step="'+i+'"]').classList.add('active');
+  renderDots(i);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+renderDots(0);
+
+function toggleModel(el){
+  const wasOpen = el.classList.contains('open');
+  document.querySelectorAll('#modelCards .model-card').forEach(c=>c.classList.remove('open'));
+  if(!wasOpen) el.classList.add('open');
+}
+
+function pickPractice(el){
+  document.querySelectorAll('#practiceOpts .opt').forEach(o=>{o.onclick=null;});
+  const correct = el.dataset.correct === 'true';
+  el.classList.add(correct?'correct':'wrong');
+  const fb = document.getElementById('practiceFeedback');
+  fb.className = 'feedback ' + (correct?'pass':'fail');
+  fb.textContent = correct
+    ? "Correct. A single-pass, 400-page document is exactly the scenario context window size decides — Kimi's specific optimization for very long input is the right match, independent of which framework runs it."
+    : "Not quite. The deciding factor here is context window size, since the whole point is analyzing 400 pages without chunking — that specifically points to Kimi's long-context specialization.";
+  document.getElementById('practiceNext').disabled = false;
+}
+function pickPass(el){
+  document.querySelectorAll('#passOpts .opt').forEach(o=>{o.onclick=null;});
+  const correct = el.dataset.correct === 'true';
+  el.classList.add(correct?'correct':'wrong');
+  const fb = document.getElementById('passFeedback');
+  fb.className = 'feedback ' + (correct?'pass':'fail');
+  fb.textContent = correct
+    ? "Correct — L8-06b complete. A hard data-residency requirement is decided by openness, not raw capability — DeepSeek's open weights are the only option among the four that can run entirely on infrastructure the startup controls. Ready for L8-07: The Execution Layer."
+    : "Not quite. The decisive factor for a strict data-residency requirement is whether the model can run on your own infrastructure at all — only DeepSeek's open-weight availability satisfies that, regardless of the other models' other strengths.";
+  if(correct){ setTimeout(()=>{ document.getElementById('passScreen').style.display='block'; renderDots(4); }, 600); }
+}
+</script>
+</body>
+</html>

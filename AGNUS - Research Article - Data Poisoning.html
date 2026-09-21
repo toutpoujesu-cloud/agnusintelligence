@@ -1,0 +1,198 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Data Poisoning: How Attackers Manipulate AI at the Training Stage — AGNUS Research</title>
+<meta name="description" content="Data poisoning attacks insert malicious examples into training or fine-tuning data to manipulate a model's behaviour. This article explains the attack taxonomy, detection challenges, and the data governance controls that reduce exposure." />
+<link rel="canonical" href="https://agnus.example/research/ai-security/data-poisoning/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Data Poisoning: How Attackers Manipulate AI at the Training Stage" />
+<meta property="article:published_time" content="2026-09-11" />
+<meta property="article:author" content="Jean-Daniel Alexis" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>
+a,a:visited{color:inherit}
+.prose h3{font-family:var(--font-sans);font-weight:700;font-size:19px;letter-spacing:-.018em;margin:32px 0 14px}
+.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
+.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
+.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s}
+.rsub a:hover{color:var(--ink);background:var(--line-soft,rgba(0,0,0,.04))}
+.rsub a.on{color:var(--gold-deep);font-weight:600}
+.pillar-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:var(--gold-pale,#FEF9ED);color:var(--gold-deep,#8B6914);border:1px solid var(--gold-line,#E8D9A0);border-radius:4px;padding:3px 8px;margin-bottom:16px}
+.dp-types{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:24px 0}
+@media(max-width:700px){.dp-types{grid-template-columns:1fr}}
+.dp-card{background:var(--paper-warm,#F7F5F0);border:1px solid var(--line);border-radius:8px;padding:18px 20px}
+.dp-card .dc-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:6px}
+.dp-card .dc-title{font-family:var(--font-sans);font-weight:800;font-size:15px;color:var(--ink);margin-bottom:6px}
+.dp-card .dc-body{font-size:13px;color:var(--ink-mute);line-height:1.6}
+.ctrl-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:13px}
+.ctrl-table th{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);font-weight:600;text-align:left;padding:10px 14px;border-bottom:2px solid var(--line);background:var(--paper-warm,#F7F5F0)}
+.ctrl-table td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+.ctrl-table tr:last-child td{border-bottom:none}
+</style>
+</head>
+<body>
+<div class="art-progress"><i id="progBar"></i></div>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+    </div>
+  </div>
+</nav>
+<div class="rsub">
+  <div class="rsub-inner">
+    <a href="#what">What it is</a>
+    <a href="#types">Attack types</a>
+    <a href="#detection">Detection</a>
+    <a href="#controls">Controls</a>
+    <a href="#regulation">Regulation</a>
+    <a href="#sources">Sources</a>
+  </div>
+</div>
+<main class="art-layout">
+  <article class="art-main">
+    <header class="art-header">
+      <span class="pillar-tag">AI Security</span>
+      <h1 class="art-h1">Data Poisoning: How Attackers Manipulate AI at the Training Stage</h1>
+      <p class="art-lede">A model learns from its training data. An attacker who can influence that data — by inserting malicious examples before training or fine-tuning — can shape the model's behaviour in ways that are invisible to users and difficult to detect through standard evaluation. Data poisoning is one of the hardest AI security threats to defend against because the vulnerability is introduced before deployment.</p>
+      <div class="art-meta">
+        <span>Jean-Daniel Alexis</span><span class="meta-sep">·</span>
+        <span>11 September 2026</span><span class="meta-sep">·</span>
+        <span>AI Security pillar</span><span class="meta-sep">·</span>
+        <span>AR-000560</span>
+      </div>
+    </header>
+    <div class="prose">
+      <h3 id="what">What data poisoning is</h3>
+      <p>Data poisoning is an attack in which an adversary manipulates the data used to train or fine-tune a machine learning model, with the goal of influencing the model's behaviour in a way that benefits the attacker and is not detected during evaluation.</p>
+      <p>Poisoning attacks differ from adversarial examples — inputs crafted at inference time to fool the model — in a fundamental way: poisoning happens before deployment, during the training process, and the effects persist in the model's weights for the entire deployment lifetime unless the model is retrained on clean data.</p>
+      <p>The threat is most acute for fine-tuned models that use open or third-party training datasets, for RAG systems that incorporate external documents into their context, and for models that are continuously updated through feedback loops where attacker-controlled feedback can be submitted.</p>
+
+      <h3 id="types">The three main attack types</h3>
+      <div class="dp-types">
+        <div class="dp-card">
+          <div class="dc-label">Type 1</div>
+          <div class="dc-title">Backdoor attacks</div>
+          <div class="dc-body">The attacker inserts examples that associate a specific trigger input with a specific output. The model behaves normally on all other inputs — the backdoor only activates when the trigger is present. Triggers can be textual patterns, specific phrasings, or even seemingly irrelevant input features.</div>
+        </div>
+        <div class="dp-card">
+          <div class="dc-label">Type 2</div>
+          <div class="dc-title">Targeted misclassification</div>
+          <div class="dc-body">The attacker inserts examples designed to cause the model to systematically misclassify a specific input or input class. Unlike backdoor attacks, no special trigger is required — the model simply learns the wrong mapping for certain inputs. Common in classification and moderation models.</div>
+        </div>
+        <div class="dp-card">
+          <div class="dc-label">Type 3</div>
+          <div class="dc-title">Availability attacks</div>
+          <div class="dc-body">The attacker inserts examples designed to degrade the model's overall performance, rather than redirect it. The goal is not to cause specific harmful outputs but to make the model unreliable or unusable. Less commonly observed in practice than backdoor attacks.</div>
+        </div>
+      </div>
+
+      <h3 id="detection">Why detection is hard</h3>
+      <p>Data poisoning attacks are difficult to detect because they are designed to be invisible. A well-crafted backdoor attack will produce a model that passes all standard functional evaluations — it behaves correctly on the test set, produces plausible outputs for normal inputs, and shows no obvious signs of compromise. The attacker's contribution to the training data may be a small fraction of the total dataset, making statistical anomaly detection ineffective.</p>
+      <p>For fine-tuned models specifically, the base model is typically large and clean — the poisoning is in the fine-tuning data. Standard evaluation against a held-out test set will not detect a backdoor unless the test set happens to contain the trigger. Red-team evaluation with targeted trigger testing is the most reliable detection method, but it requires knowing what kinds of triggers to look for.</p>
+      <p>For RAG systems, the detection challenge is different: the "training data" is the retrieval database, which changes dynamically. Standard model evaluation does not test the retrieval database. Poisoned content in the database only activates when the specific queries that retrieve it are made — making silent, targeted attacks possible.</p>
+
+      <h3 id="controls">Data governance controls</h3>
+      <table class="ctrl-table">
+        <thead><tr><th>Control</th><th>What it addresses</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Data source verification</strong></td>
+            <td>Only use training data from sources whose provenance can be verified. For open datasets, prefer those with established curation processes and documented quality controls. Treat untrusted community contributions as high-risk.</td>
+          </tr>
+          <tr>
+            <td><strong>Data integrity logging</strong></td>
+            <td>Maintain a tamper-evident log of all training and fine-tuning data versions, with hash verification. If the model behaves unexpectedly, the log enables investigation of whether the training data changed.</td>
+          </tr>
+          <tr>
+            <td><strong>Fine-tuning data audits</strong></td>
+            <td>Before using any dataset for fine-tuning, conduct a structured review of its provenance, collection methodology, and known issues. Treat this as equivalent to a vendor security assessment.</td>
+          </tr>
+          <tr>
+            <td><strong>Trigger-targeted red teaming</strong></td>
+            <td>For high-risk models, conduct red-team evaluations that specifically test for backdoor triggers: unusual phrasings, specific named entities, formatting patterns. Document the results and re-test after any data update.</td>
+          </tr>
+          <tr>
+            <td><strong>RAG database content controls</strong></td>
+            <td>For RAG systems, apply write controls to the retrieval database. External content should be reviewed before ingestion. Maintain a record of all content changes with timestamps and source attribution.</td>
+          </tr>
+          <tr>
+            <td><strong>Feedback loop monitoring</strong></td>
+            <td>For models updated via feedback, implement rate limiting and anomaly detection on feedback submissions. Mass-coordinated feedback campaigns are a realistic attack vector for fine-tuning-based backdoors.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="regulation">Regulatory requirements</h3>
+      <p>The EU AI Act requires providers of high-risk AI to document data governance practices for training data, including the data collection methodology, the assumptions made, and the known limitations and biases (Article 10). This requirement explicitly applies to third-party data used for training or fine-tuning.</p>
+      <p>Article 15 (Accuracy, robustness and cybersecurity) requires high-risk AI systems to be designed to be resilient to attempts by unauthorised third parties to alter their use, outputs, or performance. Data poisoning is an attack against model training; the Article 15 requirement covers the model's deployment-time resilience, but the data governance requirements in Article 10 address the training-time exposure.</p>
+      <p>For models used in financial services, the European Banking Authority's guidelines on the use of machine learning in internal models require documentation of data quality and data governance — which encompasses data poisoning risk management for models used in credit, market, and operational risk applications.</p>
+    </div>
+    <section class="art-sources" id="sources">
+      <h2 class="sources-h">Sources and verification</h2>
+      <div class="sources-grid">
+        <div class="source-card">
+          <div class="sc-id">SRC-0062</div>
+          <div class="sc-title">EU AI Act — Articles 10 and 15</div>
+          <div class="sc-org">European Parliament and Council</div>
+          <div class="sc-url"><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689" target="_blank" rel="noopener">eur-lex.europa.eu</a></div>
+          <div class="sc-note">Article 10 (data governance for training data) and Article 15 (robustness and cybersecurity) are the primary EU AI Act provisions addressing data poisoning.</div>
+        </div>
+        <div class="source-card">
+          <div class="sc-id">SRC-0068</div>
+          <div class="sc-title">OWASP Top 10 for LLM Applications — LLM03: Training Data Poisoning</div>
+          <div class="sc-org">OWASP Foundation</div>
+          <div class="sc-url"><a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" target="_blank" rel="noopener">owasp.org</a></div>
+        </div>
+      </div>
+      <div class="src-registry-note">Article ID: AR-000560 · Sources: SRC-0062, SRC-0068 · Published: 2026-09-11 · AGNUS Research</div>
+    </section>
+  </article>
+  <aside class="art-aside">
+    <div class="aside-block"><div class="aside-label">Pillar</div><a href="AGNUS - Research.html" class="aside-pill">AI Security</a></div>
+    <div class="aside-block">
+      <div class="aside-label">Related articles</div>
+      <ul class="aside-links">
+        <li><a href="AGNUS - Research Article - Prompt Injection.html">Prompt Injection: Attack Taxonomy and Defences</a></li>
+        <li><a href="AGNUS - Research Article - AI Supply Chain Security.html">Supply Chain Attacks on AI Systems</a></li>
+        <li><a href="AGNUS - Research Article - Logging.html">Logging Requirements for AI Systems</a></li>
+      </ul>
+    </div>
+  </aside>
+</main>
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-copy">© 2026 AGNUS. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="AGNUS - Home.html">Home</a>
+      <a href="AGNUS - Research.html">Research</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+    </div>
+  </div>
+</footer>
+<script src="agnus-research-data.js"></script>
+<script>(function(){var bar=document.getElementById('progBar');if(!bar)return;window.addEventListener('scroll',function(){var h=document.documentElement;bar.style.width=((h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100)+'%';});})();</script>
+</body>
+</html>

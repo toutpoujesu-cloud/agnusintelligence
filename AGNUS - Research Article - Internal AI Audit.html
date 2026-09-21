@@ -1,0 +1,117 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Internal AI Audit: Building the Function and Making It Work — AGNUS Research</title>
+<meta name="description" content="Internal audit is the first and most accessible line of assurance for AI governance. It gives boards and senior management independent evidence that AI systems are operating as intended, that controls are in place, and that risks are being managed. This article covers how to build an effective internal AI audit function." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>a,a:visited{color:inherit}
+.prose h3{font-family:var(--font-sans);font-weight:700;font-size:19px;letter-spacing:-.018em;margin:32px 0 14px}
+.pillar-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:#F0FFF4;color:#1A6B3B;border:1px solid #9ED8B3;border-radius:4px;padding:3px 8px;margin-bottom:16px}
+.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
+.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
+.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s}
+.rsub a:hover{color:var(--ink);background:var(--line-soft,rgba(0,0,0,.04))}
+.lines-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:20px 0}
+@media(max-width:700px){.lines-grid{grid-template-columns:1fr}}
+.line-card{border-radius:8px;padding:16px;border:1px solid var(--line);background:var(--paper-warm,#F7F5F0)}
+.line-card .lc-num{font-family:var(--font-mono);font-size:28px;font-weight:700;color:var(--gold-deep);line-height:1;margin-bottom:4px}
+.line-card .lc-title{font-weight:700;font-size:14px;color:var(--ink);margin-bottom:6px}
+.line-card .lc-body{font-size:12.5px;color:var(--ink-mute);line-height:1.55}
+</style>
+</head>
+<body>
+<div class="art-progress"><i id="progBar"></i></div>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Marketplace.html">Marketplace</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+      <a href="AGNUS - Business.html">Business</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+      <button class="hamburger" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="rsub"><div class="rsub-inner">
+  <a href="AGNUS - Research.html">Research Home</a>
+  <a href="AGNUS - Research Topic.html">AI Audit</a>
+</div></div>
+<header class="art-head">
+  <div class="container">
+    <div class="pillar-tag">AI Audit</div>
+    <h1>Internal AI Audit: Building the Function and Making It Work</h1>
+    <p class="art-abstract">Internal audit is the first and most accessible line of assurance for AI governance. It gives boards and senior management independent evidence that AI systems are operating as intended, that controls are in place, and that risks are being managed. This article covers how to build an effective internal AI audit function — what it audits, what skills it needs, how it fits into the three lines of defence model, and what outputs it should produce.</p>
+    <div data-rc="articleMeta" data-rc-arg="AR-000533"></div>
+  </div>
+</header>
+<div class="container">
+  <div class="art-shell">
+    <aside class="art-toc"><div class="toc-h">Contents</div><ol id="tocList"></ol></aside>
+    <article class="prose" id="prose">
+
+      <h2 id="s-three-lines">The three lines of defence for AI governance</h2>
+      <div class="lines-grid">
+        <div class="line-card"><div class="lc-num">1</div><div class="lc-title">First line — Business and technology</div><div class="lc-body">The AI development team, data science function, and business units that deploy AI systems. Responsible for day-to-day controls, risk identification, and compliance with policies. Owns the risk.</div></div>
+        <div class="line-card"><div class="lc-num">2</div><div class="lc-title">Second line — Risk and compliance</div><div class="lc-body">The AI governance function, risk management team, and compliance function. Sets standards, monitors the first line, and provides independent challenge. Oversees the risk.</div></div>
+        <div class="line-card"><div class="lc-num">3</div><div class="lc-title">Third line — Internal audit</div><div class="lc-body">The internal audit function. Independently assesses whether the first and second lines are operating as intended. Reports to the audit committee and board. Assures the risk.</div></div>
+      </div>
+      <p>Internal audit's role is assurance — it does not own risk (that is the first line) or oversee risk (that is the second line). It provides independent evidence to the board and audit committee that the governance framework is functioning as designed. This distinction matters: an internal audit function that is also responsible for designing AI governance controls has a conflict of interest that compromises its assurance value.</p>
+
+      <h2 id="s-scope">What internal AI audit covers</h2>
+      <p>An effective internal AI audit programme covers four areas:</p>
+
+      <h3>1. AI inventory and risk classification</h3>
+      <p>Is the organisation's AI inventory complete and accurate? Is the risk classification applied to each system appropriate given the system's actual use and deployment context? Has the risk classification been reviewed and updated as systems evolve? This is the foundation of AI governance — without an accurate inventory and appropriate classification, all downstream governance activities are built on sand.</p>
+
+      <h3>2. Governance controls for high-risk systems</h3>
+      <p>For AI systems classified as high-risk (whether under the EU AI Act or the organisation's own risk framework), are the required controls in place and operating effectively? This includes: technical documentation completeness; data governance practices; conformity assessment status; human oversight mechanisms; incident response capability; and post-market monitoring. Audit evidence should be based on testing, not management representation.</p>
+
+      <h3>3. Vendor and third-party AI governance</h3>
+      <p>Where the organisation uses third-party AI components — foundation models, AI APIs, vendor AI products — has it conducted appropriate due diligence? Are contractual protections in place? Is there a process for monitoring third-party AI risk over time, including supply chain integrity? Many organisations have strong first-party AI governance but inadequate governance of the AI systems they procure and deploy from vendors.</p>
+
+      <h3>4. Incident response and learning</h3>
+      <p>When AI-related incidents occur, are they reported, investigated, and resolved effectively? Is there a mechanism for learning from incidents — so that the same failure mode does not recur? Is the incident definition broad enough to capture near-misses, not just actual harms? Incident governance is often the weakest element of AI governance programmes.</p>
+
+      <h2 id="s-skills">Skills the internal AI audit function needs</h2>
+      <p>Effective internal AI audit requires a combination of capabilities that most traditional internal audit functions do not have. The practical approach is a co-sourcing model: the core internal audit team brings audit methodology, risk-based planning, and organisational knowledge; specialists — data scientists, AI security professionals, regulatory experts — are brought in for specific audits where technical depth is required.</p>
+      <p>At minimum, the internal audit function should be able to: understand the technical documentation for an AI system well enough to challenge whether it is complete and accurate; assess the data governance practices for a training dataset; evaluate whether human oversight mechanisms are structurally capable of providing effective oversight (not just oversight theatre); and understand the regulatory requirements applicable to the organisation's AI systems well enough to assess compliance.</p>
+
+      <h2 id="s-reporting">Audit reporting</h2>
+      <p>Internal AI audit reports should be addressed to the audit committee and board — not to the management teams whose systems and processes are being audited. The distinction matters: management receives the findings for remediation; the board receives the assurance opinion. The assurance opinion should be clear: does the AI governance framework provide reasonable assurance that AI risks are being managed effectively, or does it not? Audit reports that document findings without providing a clear assurance conclusion leave the board without the assurance they need to discharge their governance responsibilities.</p>
+
+      <div id="sources" class="art-sources">
+        <h2>Sources</h2>
+        <ul>
+          <li>Institute of Internal Auditors — Three Lines Model, 2020</li>
+          <li>ISO/IEC 42001:2023 — AI management system (Clause 9.2: Internal audit)</li>
+          <li>EU AI Act — Article 17 (Quality management system), Article 72 (Post-market monitoring)</li>
+          <li>AGNUS Research — AI Audit · AR-000533</li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</div>
+<script src="agnus.js"></script>
+</body>
+</html>

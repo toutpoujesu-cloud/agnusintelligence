@@ -1,0 +1,468 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Academy — M10 The Tool Isn't Broken, the Brief Is</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#F8F6F2;--canvas:#FDFCFA;--panel:#FFFFFF;--panel-2:#F2F0EB;--panel-3:#ECEAE3;
+  --line:#E5E2D9;--line-2:#D1CEC4;--ink:#18202A;--ink-2:#4A5261;--ink-3:#8E96A2;
+  --navy:#17263C;--navy-2:#0F1A28;--navy-3:#1E3250;
+  --gold:#9A7633;--gold-light:#B59048;--gold-soft:#F6F0E3;--gold-dim:rgba(154,118,51,.12);
+  --pass:#1A7E4A;--pass-dim:rgba(26,126,74,.08);--pass-mid:rgba(26,126,74,.18);
+  --danger:#B4432E;--danger-dim:#FEF0ED;--danger-mid:rgba(180,67,46,.15);
+  --amber:#C4760A;--amber-dim:#FFF7E6;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%}
+body{background:var(--bg);color:var(--ink);font-family:Manrope,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5}
+
+/* ── TOP RAIL ── */
+.top-rail{background:var(--navy-2);color:#fff;display:flex;align-items:center;height:52px;padding:0 24px;gap:18px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.25)}
+.tr-brand{font-weight:800;font-size:14px;letter-spacing:-.01em}
+.tr-sep{width:1px;height:20px;background:rgba(255,255,255,.15);flex-shrink:0}
+.tr-crumb{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38)}
+.tr-title{font-size:13px;font-weight:600;color:rgba(255,255,255,.9)}
+.tr-right{margin-left:auto;display:flex;align-items:center;gap:16px}
+.prog-track{display:flex;gap:5px;align-items:center}
+.prog-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.18);transition:background .3s}
+.prog-dot.done{background:var(--gold-light)}
+.prog-dot.active{background:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.3)}
+.tr-btn{font-family:Manrope,sans-serif;font-size:12px;font-weight:700;padding:7px 16px;border-radius:8px;border:1px solid rgba(255,255,255,.18);color:#fff;background:rgba(255,255,255,.07);cursor:pointer;transition:background .2s}
+.tr-btn:hover{background:rgba(255,255,255,.14)}
+.tr-progress-bar{position:absolute;bottom:0;left:0;height:2px;background:var(--gold-light);transition:width .4s ease;pointer-events:none}
+
+/* ── WRAP ── */
+.wrap{max-width:800px;margin:0 auto;padding:52px 24px 120px}
+
+/* ── STEP CONTROL ── */
+.step{display:none}.step.active{display:block}
+.step-banner{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.sb-left{display:flex;align-items:center;gap:10px}
+.sb-badge{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--gold-dim);color:var(--gold);border:1px solid rgba(154,118,51,.2);border-radius:99px;padding:4px 10px;font-weight:600}
+.sb-step{font-size:13px;font-weight:600;color:var(--ink-2)}
+.sb-time{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-3)}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(135deg,var(--navy-2) 0%,var(--navy-3) 100%);border-radius:20px;padding:40px 44px;margin-bottom:28px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-40px;right:-40px;width:220px;height:220px;border-radius:50%;background:rgba(154,118,51,.07);pointer-events:none}
+.hero .h-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-light);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.hero .h-eyebrow::before{content:'';display:inline-block;width:20px;height:1px;background:var(--gold-light)}
+.hero h1{font-weight:800;font-size:clamp(22px,3vw,32px);letter-spacing:-.028em;color:#fff;line-height:1.18;margin-bottom:16px}
+.hero p{font-family:Newsreader,serif;font-style:italic;font-size:17px;line-height:1.72;color:rgba(245,244,241,.78);max-width:52ch}
+.hero .h-stat{margin-top:24px;display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:10px 16px;font-size:13px;color:rgba(255,255,255,.7)}
+.hero .h-stat strong{color:#fff;font-size:20px;font-weight:800;font-family:'IBM Plex Mono',monospace;margin-right:2px}
+
+/* ── CARDS ── */
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:28px 30px;margin-bottom:20px}
+.card+.card{margin-top:0}
+.card h3{font-size:16px;font-weight:800;letter-spacing:-.015em;margin-bottom:12px;color:var(--navy)}
+.card h4{font-size:13.5px;font-weight:700;margin:20px 0 8px;color:var(--ink)}
+.card p{font-size:14.5px;line-height:1.72;color:var(--ink-2)}
+.card p+p{margin-top:10px}
+
+/* ── BRIEF ANATOMY ── */
+.brief-anatomy{display:grid;grid-template-columns:repeat(5,1fr) auto;gap:0;margin:20px 0;background:var(--panel-2);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.ba-cell{padding:16px 14px;border-right:1px solid var(--line)}
+.ba-cell:last-child{border-right:none}
+.ba-label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;font-weight:600}
+.ba-text{font-size:12.5px;color:var(--ink-2);line-height:1.5}
+.ba-cell.required .ba-label{color:var(--pass)}
+.ba-cell.optional .ba-label{color:var(--ink-3)}
+@media(max-width:640px){.brief-anatomy{grid-template-columns:1fr 1fr}.ba-cell{border-right:none;border-bottom:1px solid var(--line)}}
+
+/* ── COMPARE BLOCK ── */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}
+.compare-card{border-radius:12px;padding:20px 22px}
+.compare-card.bad{background:var(--danger-dim);border:1.5px solid var(--danger-mid)}
+.compare-card.good{background:var(--pass-dim);border:1.5px solid var(--pass-mid)}
+.cc-label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:12px}
+.compare-card.bad .cc-label{color:var(--danger)}
+.compare-card.good .cc-label{color:var(--pass)}
+.cc-brief{font-size:13px;font-style:italic;color:var(--ink);background:rgba(255,255,255,.6);border-radius:8px;padding:12px 14px;margin-bottom:12px;line-height:1.6;border:1px solid rgba(0,0,0,.06)}
+.cc-result{font-size:13px;line-height:1.65;color:var(--ink-2)}
+.cc-result strong{color:var(--ink)}
+.cc-why{margin-top:10px;padding-top:10px;border-top:1px solid rgba(0,0,0,.07);font-size:12px;color:var(--ink-3)}
+@media(max-width:600px){.compare{grid-template-columns:1fr}}
+
+/* ── FAILURE TAXONOMY ── */
+.failure-list{display:grid;gap:12px;margin:16px 0}
+.failure-item{display:grid;grid-template-columns:40px 1fr;gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.fi-num{background:var(--navy);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:700;color:var(--gold-light)}
+.fi-body{padding:14px 16px;background:var(--panel)}
+.fi-title{font-weight:700;font-size:14px;margin-bottom:4px;color:var(--ink)}
+.fi-desc{font-size:13px;color:var(--ink-2);line-height:1.6}
+.fi-example{margin-top:8px;font-size:12.5px;font-style:italic;color:var(--gold);background:var(--gold-dim);border-radius:6px;padding:6px 10px}
+
+/* ── DISSECTION ── */
+.dissection{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:16px 0}
+.dis-header{padding:14px 18px;background:var(--panel-2);border-bottom:1px solid var(--line);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);display:flex;justify-content:space-between}
+.dis-row{display:grid;grid-template-columns:28px 1fr 1fr;gap:0;border-bottom:1px solid var(--line)}
+.dis-row:last-child{border-bottom:none}
+.dis-icon{display:flex;align-items:center;justify-content:center;padding:14px 0;font-size:14px;background:var(--panel-2);border-right:1px solid var(--line)}
+.dis-before,.dis-after{padding:12px 16px;font-size:13px;line-height:1.6;color:var(--ink-2)}
+.dis-before{border-right:1px solid var(--line);background:rgba(180,67,46,.03)}
+.dis-after{background:rgba(26,126,74,.03)}
+.dis-row .tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:4px;padding:2px 6px;margin-bottom:4px;display:block}
+.tag-bad{color:var(--danger);background:var(--danger-dim);border:1px solid var(--danger-mid)}
+.tag-good{color:var(--pass);background:var(--pass-dim);border:1px solid var(--pass-mid)}
+
+/* ── QUIZ ── */
+.quiz-q{font-size:16px;font-weight:700;line-height:1.5;margin-bottom:6px;color:var(--navy);letter-spacing:-.01em}
+.quiz-context{font-size:13.5px;color:var(--ink-2);line-height:1.65;margin-bottom:20px;padding:14px 16px;background:var(--panel-2);border-radius:10px;border-left:3px solid var(--gold)}
+.opt-list{display:grid;gap:10px;margin:16px 0}
+.opt{display:grid;grid-template-columns:36px 1fr;gap:0;border:1.5px solid var(--line-2);border-radius:12px;cursor:pointer;overflow:hidden;transition:border-color .15s,transform .1s}
+.opt:hover{border-color:var(--navy);transform:translateY(-1px)}
+.opt.correct{border-color:var(--pass)}
+.opt.wrong{border-color:var(--danger)}
+.opt-letter{display:flex;align-items:center;justify-content:center;background:var(--panel-2);font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;color:var(--ink-3);transition:background .15s}
+.opt.correct .opt-letter{background:var(--pass-mid);color:var(--pass)}
+.opt.wrong .opt-letter{background:var(--danger-mid);color:var(--danger)}
+.opt-text{padding:14px 16px;font-size:14px;line-height:1.55;color:var(--ink);background:var(--panel)}
+.opt.correct .opt-text{background:var(--pass-dim)}
+.opt.wrong .opt-text{background:var(--danger-dim)}
+.feedback{display:none;margin-top:16px;padding:18px 20px;border-radius:12px;font-size:14px;line-height:1.68}
+.feedback.pass{display:block;background:var(--pass-dim);border-left:3px solid var(--pass);color:var(--ink)}
+.feedback.fail{display:block;background:var(--danger-dim);border-left:3px solid var(--danger);color:var(--ink)}
+.feedback strong{font-weight:700}
+
+/* ── CTA ── */
+.cta-row{display:flex;justify-content:space-between;align-items:center;margin-top:28px;padding-top:20px;border-top:1px solid var(--line)}
+.cta-hint{font-size:13px;color:var(--ink-3)}
+.btn{font-family:Manrope,sans-serif;font-weight:700;font-size:14.5px;padding:14px 30px;border-radius:12px;border:none;background:var(--navy);color:#fff;cursor:pointer;transition:background .2s,transform .1s;letter-spacing:-.01em}
+.btn:hover{background:var(--navy-3);transform:translateY(-1px)}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.btn-ghost{background:transparent;color:var(--ink-2);border:1px solid var(--line-2);padding:14px 22px}
+.btn-ghost:hover{background:var(--panel-2);color:var(--ink)}
+
+/* ── PASS SCREEN ── */
+.pass-screen{display:none;text-align:center;padding:56px 40px;background:linear-gradient(135deg,var(--navy-2),var(--navy-3));border-radius:20px;color:#fff;margin-top:20px}
+.pass-screen .ps-icon{font-size:40px;margin-bottom:16px}
+.pass-screen h2{font-size:26px;font-weight:800;letter-spacing:-.02em;margin-bottom:10px}
+.pass-screen p{font-size:14px;color:rgba(255,255,255,.7);margin-bottom:28px;line-height:1.6;max-width:40ch;margin-left:auto;margin-right:auto}
+.pass-screen .ps-next{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#fff;border:none;font-family:Manrope,sans-serif;font-weight:700;font-size:14px;padding:14px 28px;border-radius:12px;cursor:pointer}
+
+/* ── CALLOUT ── */
+.callout{background:var(--gold-soft);border:1px solid rgba(154,118,51,.25);border-left:3px solid var(--gold);border-radius:10px;padding:14px 18px;margin:16px 0;font-size:13.5px;color:var(--ink);line-height:1.65}
+.callout strong{color:var(--gold);font-weight:700}
+</style>
+</head>
+<body>
+
+<header class="top-rail">
+  <span class="tr-brand">AGNUS Academy</span>
+  <span class="tr-sep"></span>
+  <span class="tr-crumb">Level 2 · Operate</span>
+  <span class="tr-title">M10 — The Tool Isn't Broken, the Brief Is</span>
+  <div class="tr-right">
+    <div class="prog-track" id="progDots"></div>
+    <button class="tr-btn" onclick="location.href='AGNUS - Academy App.html'">← Dashboard</button>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ══ STEP 0 — UNDERSTAND ══ -->
+<section class="step active" data-step="0">
+  <div class="step-banner">
+    <div class="sb-left"><span class="sb-badge">Level 2 · Operate</span><span class="sb-step">Understand — The core concept</span></div>
+    <span class="sb-time">4 min</span>
+  </div>
+
+  <div class="hero">
+    <div class="h-eyebrow">Module 10 of 49</div>
+    <h1>The tool isn't broken.<br>The brief is.</h1>
+    <p>When an agent produces the wrong result, most people look at the tool. Experienced operators look at the brief. Tools do exactly what they are told. The brief is almost always where the mistake was made.</p>
+    <div class="h-stat"><strong>~80%</strong> of agent errors traced to brief failure, not tool failure — across every major agent deployment category.</div>
+  </div>
+
+  <div class="card">
+    <h3>Why this matters at Level 2</h3>
+    <p>At Level 1 you learned how agents work. At Level 2 you start operating them. The most important operating skill is knowing where failures come from — because where you look first determines how quickly you fix them. An operator who checks the tool first wastes time and misses the real problem. An operator who checks the brief first is usually right.</p>
+    <p>This isn't a metaphor. When an agent executes a task and produces the wrong output with no error log — the tool ran cleanly — the cause is almost always in what the tool was told to do. The brief is the agent's world model. Give it the wrong world, you get the wrong result.</p>
+  </div>
+
+  <div class="card">
+    <h3>What a brief actually is</h3>
+    <p>A brief is everything an agent receives before it runs: the task description, the goal, the constraints, the output format requirements, the audience, the context, and the boundaries of its authority. A brief is not just the first sentence. It's the totality of what the agent knows going in.</p>
+    <p>Most briefs people write are about 20% of what they need to be. They describe the happy path — what should happen when everything goes as planned. They say nothing about audience, format, constraints, edge cases, or what the agent should <em>not</em> do. That 80% gap is where failures live.</p>
+  </div>
+
+  <div class="cta-row">
+    <span class="cta-hint">Next: the anatomy of a brief</span>
+    <button class="btn" onclick="goStep(1)">Continue →</button>
+  </div>
+</section>
+
+<!-- ══ STEP 1 — ANATOMY ══ -->
+<section class="step" data-step="1">
+  <div class="step-banner">
+    <div class="sb-left"><span class="sb-badge">Level 2 · Operate</span><span class="sb-step">Learn — Brief anatomy</span></div>
+    <span class="sb-time">4 min</span>
+  </div>
+
+  <div class="card">
+    <h3>A complete brief has five components</h3>
+    <p>Most briefs only contain the first one. The ones that cause failures are almost always missing the last three.</p>
+    <div class="brief-anatomy">
+      <div class="ba-cell required">
+        <div class="ba-label">① Goal</div>
+        <div class="ba-text">What the agent is trying to achieve. Most briefs have this. It's necessary but not sufficient.</div>
+      </div>
+      <div class="ba-cell required">
+        <div class="ba-label">② Audience</div>
+        <div class="ba-text">Who the output is for. Without this, the agent calibrates tone, detail, and format for an imagined reader that may not be yours.</div>
+      </div>
+      <div class="ba-cell required">
+        <div class="ba-label">③ Format</div>
+        <div class="ba-text">Exactly what the output should look like: structure, length, sections, style. Vague requests produce technically correct but practically useless output.</div>
+      </div>
+      <div class="ba-cell required">
+        <div class="ba-label">④ Constraints</div>
+        <div class="ba-text">What the agent must not do. Authority limits, things to preserve, decisions it cannot make. Constraints are what stop confident misdirection.</div>
+      </div>
+      <div class="ba-cell optional">
+        <div class="ba-label">⑤ Context</div>
+        <div class="ba-text">What the agent needs to know that isn't in the task itself: history, relationships, recent changes, or why this matters.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>The three most common brief failures</h3>
+    <div class="failure-list">
+      <div class="failure-item">
+        <div class="fi-num">1</div>
+        <div class="fi-body">
+          <div class="fi-title">Missing audience</div>
+          <div class="fi-desc">The agent doesn't know who it's writing for, so it chooses. If you wanted a board-level summary and got a technical deep-dive, you probably didn't specify audience.</div>
+          <div class="fi-example">"Summarise the Q3 results." — For whom? At what depth? The agent will decide, and it will be wrong for your use case.</div>
+        </div>
+      </div>
+      <div class="failure-item">
+        <div class="fi-num">2</div>
+        <div class="fi-body">
+          <div class="fi-title">Missing constraints</div>
+          <div class="fi-desc">The agent has no instruction about what it cannot do, so it treats everything as in-scope. Contracts, pricing, commitments — if you didn't say "don't touch these," it will.</div>
+          <div class="fi-example">"Update the proposal." — The agent updates everything, including the negotiated discount you specifically agreed with the client.</div>
+        </div>
+      </div>
+      <div class="failure-item">
+        <div class="fi-num">3</div>
+        <div class="fi-body">
+          <div class="fi-title">Ambiguous scope</div>
+          <div class="fi-desc">The task could mean several things, and the agent picks the most plausible one — which may not be the one you intended.</div>
+          <div class="fi-example">"Update the report" without specifying which sections, what to add, and what to preserve produces an agent that edits confidently in the wrong direction.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-row">
+    <span class="cta-hint">Next: see the same tool, two briefs</span>
+    <button class="btn" onclick="goStep(2)">Continue →</button>
+  </div>
+</section>
+
+<!-- ══ STEP 2 — COMPARE ══ -->
+<section class="step" data-step="2">
+  <div class="step-banner">
+    <div class="sb-left"><span class="sb-badge">Level 2 · Operate</span><span class="sb-step">See — Same tool, two outcomes</span></div>
+    <span class="sb-time">4 min</span>
+  </div>
+
+  <div class="card">
+    <h3>Case 1: The quarterly report summary</h3>
+    <div class="compare">
+      <div class="compare-card bad">
+        <div class="cc-label">❌ Weak brief</div>
+        <div class="cc-brief">"Summarise the Q3 report."</div>
+        <div class="cc-result">The agent produces a 380-word prose summary covering every section equally — revenue, operations, HR, facilities. <strong>The tool ran perfectly.</strong> The output is useless for its purpose.</div>
+        <div class="cc-why">Missing: audience, format, what to emphasise. The agent had no idea this was for a board pack where only three off-plan variance lines mattered.</div>
+      </div>
+      <div class="compare-card good">
+        <div class="cc-label">✓ Complete brief</div>
+        <div class="cc-brief">"Summarise the Q3 report for the board pack. Highlight only lines where actual vs. plan variance exceeds 10%. Bullet points. 150 words maximum."</div>
+        <div class="cc-result">The agent extracts the three variance lines, formats them as bullets, stays within the word limit. <strong>Same tool. Completely different output.</strong></div>
+        <div class="cc-why">Audience (board), format (bullets), constraint (150 words), scope (10%+ variance only) — all four missing elements added.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Case 2: The client proposal</h3>
+    <div class="compare">
+      <div class="compare-card bad">
+        <div class="cc-label">❌ Weak brief</div>
+        <div class="cc-brief">"Update the client proposal with the new pricing."</div>
+        <div class="cc-result">The agent rewrites the entire pricing section, removing the negotiated 15% discount the account manager personally agreed with the client. <strong>No tool error. No error log. The tool did exactly what it was told.</strong></div>
+        <div class="cc-why">Missing constraint: "preserve the negotiated discount on line 4." The agent treated the discount as outdated and corrected it to standard pricing.</div>
+      </div>
+      <div class="compare-card good">
+        <div class="cc-label">✓ Complete brief</div>
+        <div class="cc-brief">"Update the client proposal to reflect the new list pricing on page 3. Preserve the 15% negotiated discount on line 4 — do not change it. Only update the list prices in the pricing table."</div>
+        <div class="cc-result">The agent updates only the list prices, leaves the discount intact, and produces exactly what the account manager intended. <strong>The constraint made the difference.</strong></div>
+        <div class="cc-why">Explicit constraint ("do not change it") and exact scope ("only the pricing table") removed the ambiguity the agent would otherwise resolve incorrectly.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout"><strong>The pattern:</strong> In both cases the tool ran cleanly. In both cases the output was wrong. In both cases the brief was missing one or more of the five components. Diagnosing brief failures means reading the output and asking: which component was missing?</div>
+
+  <div class="cta-row">
+    <span class="cta-hint">Next: dissect a real brief failure</span>
+    <button class="btn" onclick="goStep(3)">Continue →</button>
+  </div>
+</section>
+
+<!-- ══ STEP 3 — DISSECTION ══ -->
+<section class="step" data-step="3">
+  <div class="step-banner">
+    <div class="sb-left"><span class="sb-badge">Level 2 · Operate</span><span class="sb-step">Analyse — Brief dissection</span></div>
+    <span class="sb-time">4 min</span>
+  </div>
+
+  <div class="card">
+    <h3>Dissect the failure: customer complaint response</h3>
+    <p style="margin-bottom:16px">A support agent was briefed to "reply to the customer complaint." It sent a response that admitted the product had a defect the company has not confirmed. The email tool sent successfully. No error was logged. Let's dissect what was missing.</p>
+
+    <div class="dissection">
+      <div class="dis-header"><span>Brief component</span><span>What was in the brief</span><span>What was needed</span></div>
+      <div class="dis-row">
+        <div class="dis-icon">①</div>
+        <div class="dis-before"><span class="tag tag-good">Present</span>"Reply to the customer complaint"</div>
+        <div class="dis-after"><span class="tag tag-good">Adequate</span>Goal was clear.</div>
+      </div>
+      <div class="dis-row">
+        <div class="dis-icon">②</div>
+        <div class="dis-before"><span class="tag tag-bad">Missing</span>Nothing about audience or tone</div>
+        <div class="dis-after"><span class="tag tag-good">Needed</span>"Professional, empathetic tone. The recipient is a paying customer who may share this response."</div>
+      </div>
+      <div class="dis-row">
+        <div class="dis-icon">③</div>
+        <div class="dis-before"><span class="tag tag-bad">Missing</span>No format specified</div>
+        <div class="dis-after"><span class="tag tag-good">Needed</span>"2–3 paragraphs. No bullet lists. Subject line included."</div>
+      </div>
+      <div class="dis-row">
+        <div class="dis-icon">④</div>
+        <div class="dis-before"><span class="tag tag-bad">Critical gap</span>No admissibility constraints</div>
+        <div class="dis-after"><span class="tag tag-good">Essential</span>"Do not admit fault or confirm defects. Acknowledge the experience; do not confirm the cause. Escalate to the product team for root-cause investigation."</div>
+      </div>
+      <div class="dis-row">
+        <div class="dis-icon">⑤</div>
+        <div class="dis-before"><span class="tag tag-bad">Missing</span>No context about the complaint history or product status</div>
+        <div class="dis-after"><span class="tag tag-good">Needed</span>"The product defect is unconfirmed. Internal investigation is ongoing. No statement of liability is authorised."</div>
+      </div>
+    </div>
+
+    <p style="margin-top:16px">The agent wrote the most plausible, helpful response to a complaint it received. That's exactly what it was designed to do. The liability admission wasn't a bug — it was the agent doing its job with an incomplete brief.</p>
+  </div>
+
+  <div class="cta-row">
+    <span class="cta-hint">Next: practice identifying brief failures</span>
+    <button class="btn" onclick="goStep(4)">Practice →</button>
+  </div>
+</section>
+
+<!-- ══ STEP 4 — PRACTICE ══ -->
+<section class="step" data-step="4">
+  <div class="step-banner">
+    <div class="sb-left"><span class="sb-badge">Level 2 · Operate</span><span class="sb-step">Practice — Identify the failure</span></div>
+    <span class="sb-time">3 min</span>
+  </div>
+
+  <div class="card">
+    <p class="quiz-context">An agent was briefed: "Draft a follow-up email to the prospects who attended the product demo." It sent 200 emails using first names — but got several names wrong because it pulled from a CSV where some rows had company names in the first-name column. No error was logged.</p>
+    <div class="quiz-q">Which component of the brief was missing that caused this failure?</div>
+    <div class="opt-list" id="practiceOpts">
+      <div class="opt" data-correct="false" onclick="pickQ('practice',this)"><div class="opt-letter">A</div><div class="opt-text">The goal was unclear — "draft a follow-up" is ambiguous about what the follow-up should say.</div></div>
+      <div class="opt" data-correct="true" onclick="pickQ('practice',this)"><div class="opt-letter">B</div><div class="opt-text">A data constraint was missing — the brief should have specified which field to use for first names, and instructed the agent to verify or flag rows where the name field looked like a company name.</div></div>
+      <div class="opt" data-correct="false" onclick="pickQ('practice',this)"><div class="opt-letter">C</div><div class="opt-text">The format was unspecified — the agent should have been told to write in HTML, not plain text.</div></div>
+      <div class="opt" data-correct="false" onclick="pickQ('practice',this)"><div class="opt-letter">D</div><div class="opt-text">The tool had a CSV parsing bug that incorrectly mapped columns.</div></div>
+    </div>
+    <div class="feedback" id="practiceFeedback"></div>
+  </div>
+  <div class="cta-row">
+    <span class="cta-hint">One more scenario, no hints</span>
+    <button class="btn" id="practiceNext" onclick="goStep(5)" disabled>Continue →</button>
+  </div>
+</section>
+
+<!-- ══ STEP 5 — PASS ══ -->
+<section class="step" data-step="5">
+  <div class="step-banner">
+    <div class="sb-left"><span class="sb-badge">Level 2 · Operate</span><span class="sb-step">Pass — Hidden test</span></div>
+    <span class="sb-time">3 min</span>
+  </div>
+
+  <div class="card">
+    <p class="quiz-context">A contract-review agent was briefed: "Review the supplier contracts and flag anything that needs attention." It flagged 47 contracts for containing a standard limitation-of-liability clause — a clause that is completely normal and intentional in all supplier agreements. The legal team is now spending two days clearing the false positives. No error was logged.</p>
+    <div class="quiz-q">What is the primary cause of this failure, and what brief component would have prevented it?</div>
+    <div class="opt-list" id="passOpts">
+      <div class="opt" data-correct="false" onclick="pickQ('pass',this)"><div class="opt-letter">A</div><div class="opt-text">The agent's legal reasoning is poor — a better model would understand that limitation-of-liability clauses are standard.</div></div>
+      <div class="opt" data-correct="true" onclick="pickQ('pass',this)"><div class="opt-letter">B</div><div class="opt-text">The brief had no definition of "needs attention" — the agent had no guidance on what to flag and what to treat as normal. A constraint specifying accepted clauses (or what "normal" looks like for this company's contracts) would have prevented this.</div></div>
+      <div class="opt" data-correct="false" onclick="pickQ('pass',this)"><div class="opt-letter">C</div><div class="opt-text">The tool needs a built-in contract knowledge base so it can recognise standard clauses without being told.</div></div>
+      <div class="opt" data-correct="false" onclick="pickQ('pass',this)"><div class="opt-letter">D</div><div class="opt-text">The brief was too long — simpler instructions would have produced a better result.</div></div>
+    </div>
+    <div class="feedback" id="passFeedback"></div>
+  </div>
+
+  <div class="pass-screen" id="passScreen">
+    <div class="ps-icon">✦</div>
+    <h2>Module 10 complete</h2>
+    <p>You can now identify brief failures, trace them to a missing component, and explain why the tool ran clean while the output was wrong. That diagnostic skill is what separates operators from users.</p>
+    <button class="ps-next" onclick="location.href=`AGNUS - Academy M11 - Common Failure Patterns.html`">Continue to M11 →</button>
+  </div>
+</section>
+
+</div><!-- /wrap -->
+
+<script>
+const STEPS=6;
+function renderDots(a){
+  document.getElementById('progDots').innerHTML=Array.from({length:STEPS},(_,i)=>{
+    const cls=i<a?'done':i===a?'active':'';
+    return '<div class="prog-dot '+cls+'"></div>';
+  }).join('');
+}
+function goStep(i){
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  document.querySelector('[data-step="'+i+'"]').classList.add('active');
+  renderDots(i);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+renderDots(0);
+
+function pickQ(which,el){
+  const prefix=which==='practice'?'practice':'pass';
+  document.querySelectorAll('#'+prefix+'Opts .opt').forEach(o=>{o.onclick=null;o.style.cursor='default'});
+  const correct=el.dataset.correct==='true';
+  el.classList.add(correct?'correct':'wrong');
+  const fb=document.getElementById(prefix+'Feedback');
+  fb.className='feedback '+(correct?'pass':'fail');
+  if(which==='practice'){
+    fb.innerHTML=correct
+      ?'<strong>Correct.</strong> No tool error was logged because the tool did exactly what it was told — it used whatever was in the first-name field. The brief needed a data constraint: specify which field to use, and what to do when that field looks like a company name (flag it, skip it, or use a fallback). The failure was in the brief, not the CSV parser.'
+      :'<strong>Not quite.</strong> The tool parsed the CSV correctly — it read the first-name column faithfully. The goal was clear. The format wasn\'t the issue. The failure was a missing data constraint: the agent had no instruction about what to do when the name field didn\'t look like a person\'s name.';
+    document.getElementById('practiceNext').disabled=false;
+  } else {
+    fb.innerHTML=correct
+      ?'<strong>Correct — M10 complete.</strong> "Flag anything that needs attention" without defining what "normal" looks like is an empty brief. The agent has no choice but to flag everything that deviates from its internal model of a standard contract — which may include clauses that are perfectly normal for your business. A constraint listing accepted standard clauses, or defining the flag criteria explicitly, would have solved this.'
+      :'<strong>Not quite.</strong> The model\'s legal reasoning isn\'t the issue — flagging limitation-of-liability clauses is a reasonable thing to do if you have no other guidance. The problem is that the brief gave no definition of "needs attention" and no list of what\'s normal. A better model won\'t fix a brief that says nothing about what to look for.';
+    if(correct){setTimeout(()=>{document.getElementById('passScreen').style.display='block';renderDots(STEPS);},700);}
+  }
+}
+</script>
+</body>
+</html>

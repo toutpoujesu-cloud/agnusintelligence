@@ -1,0 +1,135 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Continuous AI Monitoring: Post-Deployment Governance in Practice — AGNUS Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="agnus.css"/>
+<style>
+.article-body{max-width:720px;margin:0 auto;padding:0 24px 100px}
+.article-lede{font-family:'Newsreader',serif;font-size:clamp(18px,2.2vw,22px);font-weight:300;font-style:italic;line-height:1.65;color:var(--ink-soft);margin-bottom:40px;padding-bottom:32px;border-bottom:1px solid var(--line)}
+h2{font-size:clamp(18px,2vw,22px);font-weight:700;letter-spacing:-.02em;margin:44px 0 16px;color:var(--char)}
+h3{font-size:17px;font-weight:700;margin:32px 0 12px;color:var(--char)}
+p{font-size:16px;line-height:1.8;color:var(--ink-soft);margin-bottom:18px}
+.callout{background:#F8F6F0;border-left:3px solid var(--gold-deep);padding:20px 24px;border-radius:0 10px 10px 0;margin:28px 0}
+.callout p{margin-bottom:0;font-size:15px}
+.callout strong{color:var(--char)}
+.source-ref{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-mute);background:#F2F0EB;padding:3px 8px;border-radius:4px;display:inline-block;margin:4px 0}
+.data-table{width:100%;border-collapse:collapse;margin:28px 0;font-size:14px}
+.data-table th{text-align:left;padding:10px 14px;background:#F2F0EB;font-weight:700;color:var(--char);border-bottom:2px solid var(--line)}
+.data-table td{padding:11px 14px;border-bottom:1px solid var(--line);color:var(--ink-soft);vertical-align:top}
+.data-table tr:last-child td{border-bottom:none}
+.article-meta{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:36px}
+.am-item{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-mute);display:flex;align-items:center;gap:6px}
+.am-item strong{color:var(--ink-soft)}
+.metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.metric-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+.mc-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:6px}
+.mc-name{font-size:15px;font-weight:700;color:var(--char);margin-bottom:5px}
+.mc-body{font-size:13.5px;color:var(--ink-soft);line-height:1.6}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="container nav-inner"><a class="wordmark" href="AGNUS - Home.html">AGNUS</a><div class="nav-links"><a href="AGNUS - Research.html">Research</a><a href="AGNUS - Intelligence.html">Intelligence</a><a href="AGNUS - Academy.html">Academy</a></div></div></nav>
+
+<div style="background:#F8F7F4;border-bottom:1px solid var(--line);padding:clamp(40px,5vw,64px) 0 40px">
+<div class="article-body" style="padding-bottom:0">
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;background:#1D1D1F;color:#fff;padding:4px 10px;border-radius:99px">AI Audit</span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute)">AR-000530</span>
+  </div>
+  <h1 style="font-size:clamp(28px,4vw,48px);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:20px">Continuous AI Monitoring: Post-Deployment Governance in Practice</h1>
+  <div class="article-meta">
+    <div class="am-item"><strong>Published</strong> 11 Sep 2026</div>
+    <div class="am-item"><strong>Reading time</strong> 14 min</div>
+    <div class="am-item"><strong>Pillar</strong> AI Audit</div>
+    <div class="am-item"><strong>Source</strong> EU AI Act Art. 72, 26 · ISO 42001 §10 · NIST AI RMF Measure</div>
+  </div>
+</div>
+</div>
+
+<div class="article-body" style="padding-top:40px">
+  <p class="article-lede">A governance programme that ends at deployment is not a governance programme — it is a procurement checklist. AI systems change after deployment: their input data distributions shift, their performance degrades on edge cases, their operating contexts evolve, and their regulatory environments develop. Continuous monitoring is the discipline that keeps governance real after go-live.</p>
+
+  <h2>The legal basis for post-deployment monitoring</h2>
+  <p>Article 72 of the EU AI Act requires providers of high-risk AI systems to implement a post-market monitoring plan. The plan must be proportionate to the nature of the AI system and its risk, must collect and analyse performance data throughout the system's life, and must be capable of identifying anomalies, near-misses, and serious incidents. For deployers, Article 26(1) requires implementing appropriate technical and organisational measures to ensure the AI system is used in accordance with its intended purpose — a requirement that cannot be met without ongoing monitoring of actual use and performance.</p>
+  <p>The NIST AI RMF's Measure function articulates the same principle from a risk management perspective: AI risks must be analysed, assessed, and tracked continuously, not evaluated once at deployment. ISO 42001's Clause 10 — Improvement — requires organisations to monitor AI system performance over time and use monitoring results to drive improvements to the AI management system.</p>
+  <span class="source-ref">SRC-0080 · EU AI Act Art. 72: post-market monitoring plans. Art. 26(1): deployer obligations. NIST AI RMF SP 1.1: Measure 2.5, 2.6.</span>
+
+  <h2>What continuous monitoring requires in practice</h2>
+  <p>Continuous monitoring of an AI system has four distinct components: performance monitoring, fairness and bias monitoring, operational monitoring, and governance monitoring. Each addresses a different class of risk and requires different tools and processes.</p>
+
+  <h3>Performance monitoring</h3>
+  <p>Performance monitoring tracks whether the AI system continues to produce outputs of the quality and accuracy that were demonstrated at deployment. The challenge is that AI system performance is not static. Three degradation mechanisms are common in deployed AI systems:</p>
+  <p><strong>Data drift</strong> occurs when the input data the system receives in production moves away from the distribution of data on which it was trained and validated. A credit scoring model trained on pre-pandemic financial data may perform differently when income patterns shift. A fraud detection system may miss new fraud patterns not present in its training data. Data drift is detectable by comparing the statistical distribution of current inputs against the training distribution.</p>
+  <p><strong>Concept drift</strong> occurs when the relationship between inputs and correct outputs changes — even when the input distribution remains stable. A model trained to identify spam based on certain linguistic patterns becomes less effective as spammers adapt their language. Concept drift is harder to detect because it requires access to ground truth about correct outputs, which often arrives with a lag.</p>
+  <p><strong>Model decay</strong> is the gradual degradation of performance over time as the world the model was trained to represent diverges from the current world. All AI systems decay. The rate of decay depends on how quickly the underlying domain changes.</p>
+
+  <div class="metric-grid">
+    <div class="metric-card">
+      <div class="mc-label">What to monitor</div>
+      <div class="mc-name">Accuracy / precision / recall</div>
+      <div class="mc-body">Compare current production metrics against the baseline established at deployment. Define the threshold below which a system review is triggered — and make it a rule, not a judgment.</div>
+    </div>
+    <div class="metric-card">
+      <div class="mc-label">What to monitor</div>
+      <div class="mc-name">Input data distribution</div>
+      <div class="mc-body">Statistical tests (KS test, PSI) can detect when incoming data has shifted significantly from the training distribution. Run these automatically on a rolling basis.</div>
+    </div>
+    <div class="metric-card">
+      <div class="mc-label">What to monitor</div>
+      <div class="mc-name">Output distribution</div>
+      <div class="mc-body">Track the distribution of the system's outputs. Significant changes — a sudden increase in DECLINE outputs, or a collapse in confidence scores — often indicate performance problems.</div>
+    </div>
+    <div class="metric-card">
+      <div class="mc-label">What to monitor</div>
+      <div class="mc-name">Override rate</div>
+      <div class="mc-body">If human operators are overriding the AI system's outputs at increasing rates, this is a leading indicator of performance degradation — operators have noticed the system is producing unreliable outputs before metrics confirm it.</div>
+    </div>
+  </div>
+
+  <h3>Fairness and bias monitoring</h3>
+  <p>For AI systems that make or influence decisions affecting individuals — employment, credit, insurance, education — fairness monitoring is not optional. The EU AI Act's fundamental rights obligations, combined with GDPR's prohibition on solely automated decisions that significantly affect individuals (Article 22), create a legal framework that requires ongoing attention to whether the system's outputs are equitable across protected characteristics.</p>
+  <p>Fairness monitoring requires defining, upfront, what fairness means for this specific system and use case. There is no universal fairness metric — demographic parity, equalised odds, and individual fairness can be simultaneously impossible to achieve, and the choice between them is a normative decision that must be made by humans, not delegated to a metric. What fairness monitoring can do is detect when the system's treatment of different groups has diverged in ways that were not present at deployment — and alert the responsible team to investigate.</p>
+  <span class="source-ref">SRC-0081 · GDPR Art. 22: rights related to automated decision-making. EU AI Act Art. 9(7): bias monitoring as part of risk management for high-risk AI. Art. 10(2)(f): training data examination for bias.</span>
+
+  <h3>Operational monitoring</h3>
+  <p>Operational monitoring tracks the system's behaviour as a technical system: latency, availability, error rates, throughput, and resource consumption. These metrics are typically already captured by IT operations teams — the task is to ensure that they are surfaced in the AI governance context as well as the technical operations context. A system that is running slowly may be producing outputs of lower quality; a system that is failing silently may be falling back to defaults that are not documented in its governance materials.</p>
+
+  <h3>Governance monitoring</h3>
+  <p>Governance monitoring tracks whether the controls in place for the AI system are actually functioning as designed. This includes: are human oversight procedures being followed? Are overrides being documented? Are operators receiving the training they are required to have? Is the system being used for its stated intended purpose? Governance monitoring is distinct from performance monitoring — a system can be performing technically well while its governance controls have broken down.</p>
+
+  <h2>Monitoring cadence and triggers</h2>
+  <table class="data-table">
+    <thead><tr><th>Type</th><th>Routine cadence</th><th>Trigger for immediate review</th></tr></thead>
+    <tbody>
+      <tr><td>Performance metrics</td><td>Daily automated, weekly human review</td><td>Any metric crosses defined threshold; sudden distribution shift</td></tr>
+      <tr><td>Fairness metrics</td><td>Monthly</td><td>Disparity in outcomes across protected groups exceeds defined threshold; complaint received</td></tr>
+      <tr><td>Operational metrics</td><td>Continuous automated</td><td>Availability &lt; 99.5%; error rate &gt; defined threshold; latency increase &gt; 20%</td></tr>
+      <tr><td>Governance controls</td><td>Quarterly audit</td><td>Override documentation gaps &gt; 5%; operator training non-compliance; system used outside intended purpose</td></tr>
+      <tr><td>Incident review</td><td>After every incident</td><td>Any adverse outcome; any customer complaint referencing AI; any near-miss</td></tr>
+      <tr><td>Full system review</td><td>Annual</td><td>Any major model update; significant change in operating context; regulatory change affecting the system</td></tr>
+    </tbody>
+  </table>
+
+  <h2>What to do when monitoring detects a problem</h2>
+  <p>The value of monitoring is in the response it enables. A monitoring system that detects a problem and generates an alert that nobody acts on is worse than no monitoring — it creates false assurance. Every monitoring alert must trigger a defined response procedure that specifies: who receives the alert, how quickly they must respond, what their initial actions are, what the escalation path is, and under what conditions the system must be suspended pending investigation.</p>
+  <p><strong>Suspension criteria must be pre-defined.</strong> The decision to suspend an AI system — to stop using it pending investigation — is the hardest governance decision in post-deployment monitoring, and also the most important to have pre-decided. A team facing a performance problem is under pressure to keep the system running; the criteria for suspension must be defined in the governance documentation in advance, so the decision is a rule applied, not a judgment made under pressure.</p>
+  <p><strong>Serious incidents must be reported.</strong> Article 73 of the EU AI Act requires providers of high-risk AI systems to report serious incidents to the market surveillance authority of the member state where the incident occurred. Deployers are required to cooperate with providers in this reporting. The definition of a serious incident under the AI Act is precise: an incident that results in death, serious health damage, disruption of critical infrastructure, property damage, or a serious breach of fundamental rights. Not every performance failure is a serious incident — but the governance programme must have a clear definition of when the serious incident threshold is crossed, and who makes that determination.</p>
+  <span class="source-ref">SRC-0082 · EU AI Act Art. 73: serious incident reporting. Art. 26(1): deployer obligation to cooperate with providers on monitoring.</span>
+
+  <div class="callout">
+    <p><strong>The most important indicator is the one you did not think to measure.</strong> The most significant AI governance failures in the public record were not detected by planned monitoring systems. They were reported by users who noticed anomalous outputs, by journalists who ran independent tests, or by academic researchers conducting external audits. This does not mean that internal monitoring is unnecessary — it means that internal monitoring must be supplemented by mechanisms for external signals: complaint channels that reach the governance team (not only customer service), external research engagement, and regular independent testing. The monitoring programme that only measures what the team thought to measure will miss the failure mode the team did not anticipate.</p>
+  </div>
+</div>
+</body>
+</html>

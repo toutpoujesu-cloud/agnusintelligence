@@ -1,0 +1,517 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Academy — M15 Instruction Design 101</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#F8F6F2;--canvas:#FDFCFA;--panel:#FFFFFF;--panel-2:#F2F0EB;--panel-3:#ECEAE3;
+  --line:#E5E2D9;--line-2:#D1CEC4;--ink:#18202A;--ink-2:#4A5261;--ink-3:#8E96A2;
+  --navy:#17263C;--navy-2:#0F1A28;--navy-3:#1E3250;
+  --gold:#9A7633;--gold-light:#B59048;--gold-soft:#F6F0E3;--gold-dim:rgba(154,118,51,.12);
+  --pass:#1A7E4A;--pass-dim:rgba(26,126,74,.08);--pass-mid:rgba(26,126,74,.18);
+  --danger:#B4432E;--danger-dim:#FEF0ED;--danger-mid:rgba(180,67,46,.15);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%}
+body{background:var(--bg);color:var(--ink);font-family:Manrope,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.5}
+
+.top-rail{background:var(--navy-2);color:#fff;display:flex;align-items:center;height:52px;padding:0 24px;gap:18px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.25)}
+.tr-brand{font-weight:800;font-size:14px;letter-spacing:-.01em}
+.tr-sep{width:1px;height:20px;background:rgba(255,255,255,.15);flex-shrink:0}
+.tr-crumb{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38)}
+.tr-title{font-size:13px;font-weight:600;color:rgba(255,255,255,.9)}
+.tr-right{margin-left:auto;display:flex;align-items:center;gap:16px}
+.prog-track{display:flex;gap:5px;align-items:center}
+.prog-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.18);transition:background .3s}
+.prog-dot.done{background:var(--gold-light)}
+.prog-dot.active{background:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.3)}
+.tr-btn{font-family:Manrope,sans-serif;font-size:12px;font-weight:700;padding:7px 16px;border-radius:8px;border:1px solid rgba(255,255,255,.18);color:#fff;background:rgba(255,255,255,.07);cursor:pointer;transition:background .2s}
+.tr-btn:hover{background:rgba(255,255,255,.14)}
+
+.wrap{max-width:800px;margin:0 auto;padding:52px 24px 120px}
+.step{display:none}.step.active{display:block}
+.step-banner{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.sb-left{display:flex;align-items:center;gap:10px}
+.sb-badge{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--gold-dim);color:var(--gold);border:1px solid rgba(154,118,51,.2);border-radius:99px;padding:4px 10px;font-weight:600}
+.sb-step{font-size:13px;font-weight:600;color:var(--ink-2)}
+.sb-time{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-3)}
+
+.hero{background:linear-gradient(135deg,var(--navy-2) 0%,var(--navy-3) 100%);border-radius:20px;padding:40px 44px;margin-bottom:28px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-40px;right:-40px;width:220px;height:220px;border-radius:50%;background:rgba(154,118,51,.07);pointer-events:none}
+.hero .h-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-light);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.hero .h-eyebrow::before{content:'';display:inline-block;width:20px;height:1px;background:var(--gold-light)}
+.hero h1{font-weight:800;font-size:clamp(22px,3vw,32px);letter-spacing:-.028em;color:#fff;line-height:1.18;margin-bottom:16px}
+.hero p{font-family:Newsreader,serif;font-style:italic;font-size:17px;line-height:1.72;color:rgba(245,244,241,.78);max-width:52ch}
+
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:28px 30px;margin-bottom:20px}
+.card h3{font-size:16px;font-weight:800;letter-spacing:-.015em;margin-bottom:12px;color:var(--navy)}
+.card h4{font-size:13.5px;font-weight:700;margin:20px 0 8px;color:var(--ink)}
+.card p{font-size:14.5px;line-height:1.72;color:var(--ink-2)}
+.card p+p{margin-top:10px}
+
+/* ── INSTRUCTION SHAPE ── */
+.shape-flow{display:flex;align-items:stretch;gap:0;margin:20px 0;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.sf-block{flex:1;padding:20px 18px;background:var(--panel)}
+.sf-block+.sf-block{border-left:1px solid var(--line)}
+.sf-block .sf-label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:8px}
+.sf-block.precond .sf-label{color:#2563EB}
+.sf-block.action .sf-label{color:var(--pass)}
+.sf-block.fallback .sf-label{color:var(--gold)}
+.sf-block .sf-title{font-size:15px;font-weight:800;margin-bottom:6px;color:var(--ink)}
+.sf-block .sf-body{font-size:13px;color:var(--ink-2);line-height:1.6}
+.sf-block .sf-example{margin-top:10px;font-size:12.5px;font-style:italic;color:var(--ink-3);background:var(--panel-2);border-radius:8px;padding:10px 12px;line-height:1.6}
+.sf-arrow{display:flex;align-items:center;justify-content:center;padding:0 10px;color:var(--ink-3);font-size:18px;background:var(--panel-2)}
+@media(max-width:640px){.shape-flow{flex-direction:column}.sf-block+.sf-block{border-left:none;border-top:1px solid var(--line)}.sf-arrow{transform:rotate(90deg);padding:10px 0}}
+
+/* ── SCALE OF FALLBACK ── */
+.fallback-scale{display:grid;gap:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:16px 0}
+.fs-row{display:grid;grid-template-columns:36px 1fr 1fr;border-bottom:1px solid var(--line)}
+.fs-row:last-child{border-bottom:none}
+.fs-row.header{background:var(--panel-2)}
+.fs-icon{display:flex;align-items:center;justify-content:center;padding:12px 0;border-right:1px solid var(--line);font-size:14px}
+.fs-row.header .fs-icon{background:var(--panel-3)}
+.fs-col{padding:12px 16px;font-size:13px;line-height:1.55;color:var(--ink-2)}
+.fs-col:first-of-type{border-right:1px solid var(--line)}
+.fs-row.header .fs-col{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+.badge-vague{display:inline-block;background:var(--danger-dim);color:var(--danger);border:1px solid var(--danger-mid);font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:4px;padding:2px 6px;margin-bottom:4px}
+.badge-good{display:inline-block;background:var(--pass-dim);color:var(--pass);border:1px solid var(--pass-mid);font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:4px;padding:2px 6px;margin-bottom:4px}
+
+/* ── BUILD EXERCISE ── */
+.build-prompt{background:var(--panel-2);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:16px;font-size:14px;color:var(--ink-2);line-height:1.65}
+.build-prompt strong{color:var(--ink)}
+.select-row{display:flex;align-items:center;gap:12px;margin:10px 0;flex-wrap:wrap}
+.select-row label{font-size:13px;font-weight:600;color:var(--ink);min-width:90px}
+.sel{font-family:Manrope,sans-serif;font-size:13px;padding:9px 12px;border:1.5px solid var(--line-2);border-radius:8px;background:var(--panel);color:var(--ink);cursor:pointer;min-width:240px}
+.sel:focus{outline:none;border-color:var(--navy)}
+.build-preview{background:var(--navy);border-radius:12px;padding:20px 22px;margin-top:16px;min-height:80px;transition:opacity .3s}
+.bp-label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-light);margin-bottom:10px}
+.bp-text{font-size:14px;color:#fff;line-height:1.7}
+.bp-text .precond{color:#93C5FD}
+.bp-text .action{color:#6EE7B7}
+.bp-text .fallback{color:var(--gold-light)}
+.build-score{display:none;margin-top:14px;padding:14px 16px;border-radius:10px;font-size:13.5px;line-height:1.65}
+.build-score.pass{display:block;background:var(--pass-dim);border-left:3px solid var(--pass)}
+.build-score.warn{display:block;background:var(--amber-dim,#FFF7E6);border-left:3px solid #C4760A;color:var(--ink)}
+
+/* ── QUIZ ── */
+.quiz-q{font-size:16px;font-weight:700;line-height:1.5;margin-bottom:6px;color:var(--navy);letter-spacing:-.01em}
+.quiz-context{font-size:13.5px;color:var(--ink-2);line-height:1.65;margin-bottom:20px;padding:14px 16px;background:var(--panel-2);border-radius:10px;border-left:3px solid var(--gold)}
+.opt-list{display:grid;gap:10px;margin:16px 0}
+.opt{display:grid;grid-template-columns:36px 1fr;gap:0;border:1.5px solid var(--line-2);border-radius:12px;cursor:pointer;overflow:hidden;transition:border-color .15s,transform .1s}
+.opt:hover{border-color:var(--navy);transform:translateY(-1px)}
+.opt.correct{border-color:var(--pass)}
+.opt.wrong{border-color:var(--danger)}
+.opt-letter{display:flex;align-items:center;justify-content:center;background:var(--panel-2);font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;color:var(--ink-3)}
+.opt.correct .opt-letter{background:var(--pass-mid);color:var(--pass)}
+.opt.wrong .opt-letter{background:var(--danger-mid);color:var(--danger)}
+.opt-text{padding:14px 16px;font-size:14px;line-height:1.55;color:var(--ink);background:var(--panel)}
+.opt.correct .opt-text{background:var(--pass-dim)}
+.opt.wrong .opt-text{background:var(--danger-dim)}
+.feedback{display:none;margin-top:16px;padding:18px 20px;border-radius:12px;font-size:14px;line-height:1.68}
+.feedback.pass{display:block;background:var(--pass-dim);border-left:3px solid var(--pass)}
+.feedback.fail{display:block;background:var(--danger-dim);border-left:3px solid var(--danger)}
+
+.cta-row{display:flex;justify-content:space-between;align-items:center;margin-top:28px;padding-top:20px;border-top:1px solid var(--line)}
+.cta-hint{font-size:13px;color:var(--ink-3)}
+.btn{font-family:Manrope,sans-serif;font-weight:700;font-size:14.5px;padding:14px 30px;border-radius:12px;border:none;background:var(--navy);color:#fff;cursor:pointer;transition:background .2s,transform .1s}
+.btn:hover{background:var(--navy-3);transform:translateY(-1px)}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+
+.pass-screen{display:none;text-align:center;padding:56px 40px;background:linear-gradient(135deg,var(--navy-2),var(--navy-3));border-radius:20px;color:#fff;margin-top:20px}
+.pass-screen .ps-icon{font-size:40px;margin-bottom:16px}
+.pass-screen h2{font-size:26px;font-weight:800;letter-spacing:-.02em;margin-bottom:10px}
+.pass-screen p{font-size:14px;color:rgba(255,255,255,.7);margin-bottom:28px;line-height:1.6;max-width:40ch;margin-left:auto;margin-right:auto}
+.pass-screen .ps-next{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#fff;border:none;font-family:Manrope,sans-serif;font-weight:700;font-size:14px;padding:14px 28px;border-radius:12px;cursor:pointer}
+
+.callout{background:var(--gold-soft);border:1px solid rgba(154,118,51,.25);border-left:3px solid var(--gold);border-radius:10px;padding:14px 18px;margin:16px 0;font-size:13.5px;color:var(--ink);line-height:1.65}
+.callout strong{color:var(--gold);font-weight:700}
+
+/* build exercise specific */
+.amber-dim{background:#FFF7E6}
+</style>
+</head>
+<body>
+
+<header class="top-rail">
+  <span class="tr-brand">AGNUS Academy</span>
+  <span class="tr-sep"></span>
+  <span class="tr-crumb">Level 3 · Direct</span>
+  <span class="tr-title">M15 — Instruction Design 101</span>
+  <div class="tr-right">
+    <div class="prog-track" id="progDots"></div>
+    <button class="tr-btn" onclick="location.href='AGNUS - Academy App.html'">← Dashboard</button>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ══ STEP 0 — UNDERSTAND ══ -->
+<section class="step active" data-step="0">
+  <div class="step-banner">
+    <div class="sb-left"><span class="sb-badge">Level 3 · Direct</span><span class="sb-step">Understand — The core structure</span></div>
+    <span class="sb-time">4 min</span>
+  </div>
+
+  <div class="hero">
+    <div class="h-eyebrow">Module 15 of 49</div>
+    <h1>A good instruction is really two instructions.<br>What to do. And what to do when that doesn't work.</h1>
+    <p>Welcome to Level 3 — Direct. The agents you operate from here are more complex and more consequential. Every instruction you write must have a precondition, an action, and a fallback. An instruction without a fallback is a plan that assumes nothing will go wrong.</p>
+  </div>
+
+  <div class="card">
+    <h3>The gap between Level 2 and Level 3</h3>
+    <p>In Level 2 you learned to operate agents — read their output, identify brief failures, catch scope drift. In Level 3 you take on a more active role: you design the instructions that govern agent behavior. That shift changes what you're responsible for.</p>
+    <p>A Level 2 operator catches failures after they happen. A Level 3 operator designs instructions that prevent them, or that constrain what the agent does when they occur. The central skill in Level 3 is instruction design — and the central insight is that every good instruction has three parts, not one.</p>
+  </div>
+
+  <div class="card">
+    <h3>Why fallbacks get skipped</h3>
+    <p>Fallbacks get skipped because writing the normal case feels complete. "Approve invoices that match the purchase order" — that's a finished instruction, isn't it? It covers the case you were thinking about when you wrote it. The problem is that instructions written around the expected case break the moment reality diverges from it — and reality always diverges eventually.</p>
+    <p>An agent with no fallback doesn't stop when the unexpected happens. It improvises. It takes the most plausible action given the instruction it has. That improvisation is where the expensive failures live.</p>
+  </div>
+
+  <div class="cta-row">
+    <span class="cta-hint">Next: the three-part structure</span>
+    <button class="btn" onclick="goStep(1)">Continue →</button>
+  </div>
+</section>
+
+<!-- ══ STEP 1 — STRUCTURE ══ -->
+<section class="step" data-step="1">
+  <div class="step-banner">
+    <div class="sb-left"><span class="sb-badge">Level 3 · Direct</span><span class="sb-step">Learn — The three-part instruction</span></div>
+    <span class="sb-time">5 min</span>
+  </div>
+
+  <div class="card">
+    <h3>Precondition → Action → Fallback</h3>
+    <p>This is the shape every Level 3 instruction must take. Each part is doing specific work that the other parts cannot do.</p>
+    <div class="shape-flow">
+      <div class="sf-block precond">
+        <div class="sf-label">Precondition</div>
+        <div class="sf-title">The checkable condition</div>
+        <div class="sf-body">A specific, verifiable state of the world that must be true before the action runs. Not "if appropriate" — a real condition the agent can evaluate without interpretation.</div>
+        <div class="sf-example">"If the invoice total is within 5% of the purchase order amount…"</div>
+      </div>
+      <div class="sf-arrow">→</div>
+      <div class="sf-block action">
+        <div class="sf-label">Action</div>
+        <div class="sf-title">The authorized response</div>
+        <div class="sf-body">What the agent is authorized to do when the precondition is met. Specific and scoped — not "handle it" but the exact operation.</div>
+        <div class="sf-example">"…approve it automatically and mark it paid."</div>
+      </div>
+      <div class="sf-arrow">→</div>
+      <div class="sf-block fallback">
+        <div class="sf-label">Fallback</div>
+        <div class="sf-title">The exception behavior</div>
+        <div class="sf-body">What the agent does when the precondition is NOT met. This is where most instructions fail. Vague fallbacks ("handle it," "use judgment") are not fallbacks — they're improvisation licenses.</div>
+        <div class="sf-example">"If the variance is greater than 5%, flag it for the finance team with the variance amount highlighted — do not approve or reject it."</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>The fallback quality spectrum</h3>
+    <p style="margin-bottom:14px">Not all fallbacks are equal. There is a spectrum from useless to excellent. Most fallbacks people write are in the bottom half.</p>
+    <div class="fallback-scale">
+      <div class="fs-row header">
+        <div class="fs-icon"></div>
+        <div class="fs-col">Fallback text</div>
+        <div class="fs-col">Why it does / doesn't work</div>
+      </div>
+      <div class="fs-row">
+        <div class="fs-icon">✗</div>
+        <div class="fs-col"><span class="badge-vague">Useless</span>"Handle it appropriately."</div>
+        <div class="fs-col">The agent has to decide what "appropriately" means. This is not a fallback — it's a blank cheque for improvisation.</div>
+      </div>
+      <div class="fs-row">
+        <div class="fs-icon">✗</div>
+        <div class="fs-col"><span class="badge-vague">Weak</span>"Use your judgment."</div>
+        <div class="fs-col">Same problem. Judgment belongs to the operator at design time, not to the agent at runtime. An agent exercising judgment unsupervised is an agent about to surprise you.</div>
+      </div>
+      <div class="fs-row">
+        <div class="fs-icon">△</div>
+        <div class="fs-col"><span style="background:#FFF7E6;color:#C4760A;border:1px solid rgba(196,118,10,.2);font-family:IBM Plex Mono,monospace;font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:4px;padding:2px 6px;margin-bottom:4px;display:inline-block">Acceptable</span>"Flag it for a human."</div>
+        <div class="fs-col">Better — it names an action and a recipient. But it doesn't specify what to flag, where to send it, or what information to include. The agent may comply technically but unhelpfully.</div>
+      </div>
+      <div class="fs-row">
+        <div class="fs-icon">✓</div>
+        <div class="fs-col"><span class="badge-good">Good</span>"Flag it for the finance manager with the variance amount highlighted."</div>
+        <div class="fs-col">Names the exact action (flag), the exact recipient (finance manager), and the exact information to include (variance amount). The agent can execute this without interpretation.</div>
+      </div>
+      <div class="fs-row">
+        <div class="fs-icon">✓✓</div>
+        <div class="fs-col"><span class="badge-good">Excellent</span>"Flag it for the finance manager via Slack #invoices, include the PO number, invoice number, and variance amount. Do not approve or reject it. Mark it as 'Pending human review' in the system."</div>
+        <div class="fs-col">Channel, content, and prohibition all specified. The agent has no decisions to make. This is instruction design at Level 3 standard.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-row">
+    <span class="cta-hint">Next: real examples with and without fallbacks</span>
+    <button class="btn" onclick="goStep(2)">Continue →</button>
+  </div>
+</section>
+
+<!-- ══ STEP 2 — EXAMPLES ══ -->
+<section class="step" data-step="2">
+  <div class="step-banner">
+    <div class="sb-left"><span class="sb-badge">Level 3 · Direct</span><span class="sb-step">See — Instructions compared</span></div>
+    <span class="sb-time">4 min</span>
+  </div>
+
+  <div class="card">
+    <h3>Example 1: Meeting scheduling agent</h3>
+    <h4 style="color:var(--danger)">Without a fallback</h4>
+    <p><em>"Schedule the weekly team meeting for 10am on Tuesdays."</em></p>
+    <p style="margin-top:8px">When two key attendees have a recurring conflict at 10am on Tuesdays, the agent either keeps failing silently, reschedules the other meeting, or picks a different time without telling anyone — depending on what it considers plausible behavior when stuck. All three outcomes are bad.</p>
+
+    <h4 style="color:var(--pass);margin-top:20px">With a proper fallback</h4>
+    <p><em>"Schedule the weekly team meeting for 10am on Tuesdays. If fewer than 4 of the 6 required attendees are available at that time, propose three alternative slots in the same week and send them to the organiser for selection — do not book an alternative slot without organiser confirmation."</em></p>
+    <p style="margin-top:8px">The fallback names the condition (fewer than 4 available), the action (propose three slots), the recipient (organiser), and the prohibition (don't book without confirmation). The agent has everything it needs to handle the exception correctly.</p>
+  </div>
+
+  <div class="card">
+    <h3>Example 2: Contract review agent</h3>
+    <h4 style="color:var(--danger)">Without a fallback</h4>
+    <p><em>"Review supplier contracts and flag any unusual clauses."</em></p>
+    <p style="margin-top:8px">The agent doesn't know what "unusual" means for your business. It flags limitation-of-liability clauses, standard indemnity language, and force majeure provisions — all normal for your supplier contracts. 60 false positives. Two days of legal time to clear them.</p>
+
+    <h4 style="color:var(--pass);margin-top:20px">With a proper fallback</h4>
+    <p><em>"Review supplier contracts for clauses not present in the standard template (attached). Flag any clause that is absent from or materially different to the template. Do not flag standard limitation-of-liability, indemnity, or force majeure clauses — these are expected. For flagged clauses, note the clause text, the page number, and specifically how it differs from the template."</em></p>
+    <p style="margin-top:8px">The precondition (deviates from template), action (flag), and constraints (what not to flag, what to include in flags) are all present. The agent can execute precisely.</p>
+  </div>
+
+  <div class="callout"><strong>The pattern:</strong> In both examples, the instruction without a fallback produced expensive work for humans to clean up. The instruction with a fallback produced a clean, usable output. The difference isn't model quality — it's instruction quality.</div>
+
+  <div class="cta-row">
+    <span class="cta-hint">Next: build an instruction yourself</span>
+    <button class="btn" onclick="goStep(3)">Continue →</button>
+  </div>
+</section>
+
+<!-- ══ STEP 3 — BUILD ══ -->
+<section class="step" data-step="3">
+  <div class="step-banner">
+    <div class="sb-left"><span class="sb-badge">Level 3 · Direct</span><span class="sb-step">Build — Assemble an instruction</span></div>
+    <span class="sb-time">5 min</span>
+  </div>
+
+  <div class="card">
+    <h3>Construct the instruction</h3>
+    <div class="build-prompt">
+      <strong>Scenario:</strong> You are writing an instruction for an agent that handles customer refund requests for an e-commerce business. The agent can process refunds automatically up to a limit — but anything above that limit or missing required information needs to go to a human.
+    </div>
+    <p style="font-size:14px;color:var(--ink-2);margin-bottom:16px">Select the best option for each component of the instruction. The preview will update as you choose.</p>
+
+    <div class="select-row">
+      <label>Precondition</label>
+      <select class="sel" id="selPre" onchange="updateBuild()">
+        <option value="">— choose —</option>
+        <option value="a">If the refund looks reasonable</option>
+        <option value="b" data-score="good">If the refund request is under $75 and includes a valid order number</option>
+        <option value="c">If the customer seems genuine</option>
+        <option value="d">For most refund requests</option>
+      </select>
+    </div>
+    <div class="select-row">
+      <label>Action</label>
+      <select class="sel" id="selAct" onchange="updateBuild()">
+        <option value="">— choose —</option>
+        <option value="a">Handle it appropriately</option>
+        <option value="b" data-score="good">Process the refund automatically and send the customer a confirmation email</option>
+        <option value="c">Do something reasonable</option>
+        <option value="d">Review it and decide</option>
+      </select>
+    </div>
+    <div class="select-row">
+      <label>Fallback</label>
+      <select class="sel" id="selFall" onchange="updateBuild()">
+        <option value="">— choose —</option>
+        <option value="a">Otherwise use your judgment</option>
+        <option value="b">Otherwise handle it differently</option>
+        <option value="c" data-score="good">If the request is $75 or over, or if the order number is missing or invalid, route it to the customer service queue with a note explaining which condition was not met — do not process or reject it</option>
+        <option value="d">Otherwise flag it</option>
+      </select>
+    </div>
+
+    <div class="build-preview" id="buildPreview">
+      <div class="bp-label">Your instruction — live preview</div>
+      <div class="bp-text" id="buildText" style="color:rgba(255,255,255,.4);font-style:italic">Select all three components to see your instruction.</div>
+    </div>
+    <div class="build-score" id="buildScore"></div>
+  </div>
+
+  <div class="cta-row">
+    <span class="cta-hint">Practice scenario next</span>
+    <button class="btn" id="buildNext" onclick="goStep(4)" disabled>Continue →</button>
+  </div>
+</section>
+
+<!-- ══ STEP 4 — PRACTICE ══ -->
+<section class="step" data-step="4">
+  <div class="step-banner">
+    <div class="sb-left"><span class="sb-badge">Level 3 · Direct</span><span class="sb-step">Practice — Evaluate the fallback</span></div>
+    <span class="sb-time">3 min</span>
+  </div>
+
+  <div class="card">
+    <p class="quiz-context">A scheduling agent is given this instruction: "Book the client meeting for Thursday at 2pm. If that slot isn't available, reschedule it at your discretion." The agent books it on Thursday at 2pm in the client's time zone — but the operator is in a different time zone and the meeting appears at 9am for them, which conflicts with their standing team call.</p>
+    <div class="quiz-q">What is the core problem with the fallback in this instruction?</div>
+    <div class="opt-list" id="practiceOpts">
+      <div class="opt" data-correct="false" onclick="pickQ('practice',this)"><div class="opt-letter">A</div><div class="opt-text">The precondition is wrong — "isn't available" is too vague a trigger.</div></div>
+      <div class="opt" data-correct="false" onclick="pickQ('practice',this)"><div class="opt-letter">B</div><div class="opt-text">There is no fallback — the instruction only covers the normal case.</div></div>
+      <div class="opt" data-correct="true" onclick="pickQ('practice',this)"><div class="opt-letter">C</div><div class="opt-text">"At your discretion" is not a fallback — it is an improvisation licence. The agent had to choose a time zone and chose without guidance. A real fallback would have specified which time zone to use and what constraints apply when rescheduling.</div></div>
+      <div class="opt" data-correct="false" onclick="pickQ('practice',this)"><div class="opt-letter">D</div><div class="opt-text">The action is wrong — the agent should have confirmed before booking.</div></div>
+    </div>
+    <div class="feedback" id="practiceFeedback"></div>
+  </div>
+  <div class="cta-row">
+    <span class="cta-hint">Final test — no hints</span>
+    <button class="btn" id="practiceNext" onclick="goStep(5)" disabled>Continue →</button>
+  </div>
+</section>
+
+<!-- ══ STEP 5 — PASS ══ -->
+<section class="step" data-step="5">
+  <div class="step-banner">
+    <div class="sb-left"><span class="sb-badge">Level 3 · Direct</span><span class="sb-step">Pass — Hidden test</span></div>
+    <span class="sb-time">3 min</span>
+  </div>
+
+  <div class="card">
+    <p class="quiz-context">You are asked to review this instruction before it goes live: "Process all customer support tickets. If the issue is a billing dispute, escalate it." A senior colleague says it's fine. You think there's a problem. What is the most significant gap?</p>
+    <div class="quiz-q">Which element would you add to make this a Level 3 standard instruction?</div>
+    <div class="opt-list" id="passOpts">
+      <div class="opt" data-correct="false" onclick="pickQ('pass',this)"><div class="opt-letter">A</div><div class="opt-text">A longer preamble explaining the company's customer service philosophy.</div></div>
+      <div class="opt" data-correct="true" onclick="pickQ('pass',this)"><div class="opt-letter">B</div><div class="opt-text">A specific fallback for "process all tickets" — the instruction has no fallback for what the agent should do when it cannot process a ticket (unclear category, missing information, technical account issue). "Escalate billing disputes" is a specific sub-rule, not a general fallback. The agent has no instruction for everything outside that narrow condition.</div></div>
+      <div class="opt" data-correct="false" onclick="pickQ('pass',this)"><div class="opt-letter">C</div><div class="opt-text">More detail about which billing disputes qualify for escalation.</div></div>
+      <div class="opt" data-correct="false" onclick="pickQ('pass',this)"><div class="opt-letter">D</div><div class="opt-text">The instruction is fine — the billing escalation rule covers the most important exception.</div></div>
+    </div>
+    <div class="feedback" id="passFeedback"></div>
+  </div>
+
+  <div class="pass-screen" id="passScreen">
+    <div class="ps-icon">✦</div>
+    <h2>Module 15 complete</h2>
+    <p>Instruction design at Level 3 standard: precondition, action, and a specific, non-vague fallback for every instruction. You can now identify the difference between an improvisation licence and a real fallback — and you know why that difference matters.</p>
+    <button class="ps-next" onclick="location.href=`AGNUS - Academy M16 - Write the Prompt That Gets the Right Image.html`">Continue to M16 →</button>
+  </div>
+</section>
+
+</div>
+
+<script>
+const STEPS=6;
+function renderDots(a){
+  document.getElementById('progDots').innerHTML=Array.from({length:STEPS},(_,i)=>{
+    const cls=i<a?'done':i===a?'active':'';
+    return '<div class="prog-dot '+cls+'"></div>';
+  }).join('');
+}
+function goStep(i){
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  document.querySelector('[data-step="'+i+'"]').classList.add('active');
+  renderDots(i);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+renderDots(0);
+
+/* BUILD EXERCISE */
+const PRE_TEXTS={
+  a:'If the refund looks reasonable',
+  b:'If the refund request is under $75 and includes a valid order number',
+  c:'If the customer seems genuine',
+  d:'For most refund requests'
+};
+const ACT_TEXTS={
+  a:'handle it appropriately',
+  b:'process the refund automatically and send the customer a confirmation email',
+  c:'do something reasonable',
+  d:'review it and decide'
+};
+const FALL_TEXTS={
+  a:'otherwise use your judgment',
+  b:'otherwise handle it differently',
+  c:'if the request is $75 or over, or if the order number is missing or invalid, route it to the customer service queue with a note explaining which condition was not met — do not process or reject it',
+  d:'otherwise flag it'
+};
+
+function updateBuild(){
+  const p=document.getElementById('selPre').value;
+  const a=document.getElementById('selAct').value;
+  const f=document.getElementById('selFall').value;
+  const txt=document.getElementById('buildText');
+  const score=document.getElementById('buildScore');
+
+  if(!p||!a||!f){
+    txt.style.color='rgba(255,255,255,.4)';txt.style.fontStyle='italic';
+    txt.textContent='Select all three components to see your instruction.';
+    score.className='build-score';score.textContent='';
+    return;
+  }
+
+  const pLabel=document.getElementById('selPre').options[document.getElementById('selPre').selectedIndex].dataset.score==='good';
+  const aLabel=document.getElementById('selAct').options[document.getElementById('selAct').selectedIndex].dataset.score==='good';
+  const fLabel=document.getElementById('selFall').options[document.getElementById('selFall').selectedIndex].dataset.score==='good';
+
+  txt.style.color='#fff';txt.style.fontStyle='normal';
+  txt.innerHTML=`<span class="precond">${PRE_TEXTS[p]}</span>, <span class="action">${ACT_TEXTS[a]}</span>. <span class="fallback">${FALL_TEXTS[f]}.</span>`;
+
+  const allGood=pLabel&&aLabel&&fLabel;
+  const partGood=(pLabel||aLabel||fLabel)&&!allGood;
+
+  if(allGood){
+    score.className='build-score pass';
+    score.innerHTML='<strong>Excellent instruction.</strong> Specific precondition (amount + order number), clear authorized action (process + confirm), and a complete fallback (exact routing, note with reason, explicit prohibition). This is Level 3 standard.';
+    document.getElementById('buildNext').disabled=false;
+  } else if(partGood){
+    score.className='build-score warn';
+    const missing=[];
+    if(!pLabel) missing.push('precondition (too vague — "looks reasonable" or "seems genuine" requires the agent to make a judgment call)');
+    if(!aLabel) missing.push('action ("handle it appropriately" and "do something reasonable" are improvisation licences, not instructions)');
+    if(!fLabel) missing.push('fallback ("use your judgment" and "handle it differently" are vague — the agent needs specific routing instructions)');
+    score.innerHTML='<strong>Almost there.</strong> Fix the '+missing.join(' and the ')+'.';
+    document.getElementById('buildNext').disabled=true;
+  } else {
+    score.className='build-score warn';
+    score.innerHTML='<strong>All three components need work.</strong> Every choice here leaves the agent to interpret what to do. Go back and look for the options that name specific, checkable conditions and exact actions.';
+    document.getElementById('buildNext').disabled=true;
+  }
+}
+
+function pickQ(which,el){
+  const prefix=which;
+  document.querySelectorAll('#'+prefix+'Opts .opt').forEach(o=>{o.onclick=null;o.style.cursor='default'});
+  const correct=el.dataset.correct==='true';
+  el.classList.add(correct?'correct':'wrong');
+  const fb=document.getElementById(prefix+'Feedback');
+  fb.className='feedback '+(correct?'pass':'fail');
+
+  if(which==='practice'){
+    fb.innerHTML=correct
+      ?'<strong>Correct.</strong> "At your discretion" sounds like a fallback but it is the opposite — it removes all instruction at the moment the agent most needs it. The agent had to pick a time zone. It picked correctly by its own logic and incorrectly for the operator\'s needs. A real fallback would have specified: book in the client\'s time zone, and only within hours 09:00–17:00 in the operator\'s time zone.'
+      :'<strong>Not quite.</strong> The instruction does have a precondition ("if that slot isn\'t available") and an action ("book it Thursday 2pm"). The problem is in the fallback: "at your discretion" is not a fallback — it\'s an improvisation licence. When the fallback runs, the agent has no guidance and chooses on its own.';
+    document.getElementById('practiceNext').disabled=false;
+  } else {
+    fb.innerHTML=correct
+      ?'<strong>Correct — M15 complete.</strong> "Process all customer support tickets" is a goal, not a complete instruction. The only fallback given covers billing disputes, which is a narrow sub-case. There is no instruction for tickets the agent cannot process — unclear category, missing information, account in a locked state. Without a general fallback, the agent will improvise for every exception outside that one rule.'
+      :'<strong>Not quite.</strong> The billing escalation rule is useful, but it\'s a specific sub-case, not a general fallback for when the agent cannot process a ticket. The instruction is missing a general fallback: what should the agent do when it cannot determine how to process a ticket? That\'s the gap.';
+    if(correct){setTimeout(()=>{document.getElementById('passScreen').style.display='block';renderDots(STEPS);},700);}
+  }
+}
+</script>
+</body>
+</html>

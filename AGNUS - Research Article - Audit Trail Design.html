@@ -1,0 +1,145 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Audit Trail Design: What to Log, How Long, What Format — AGNUS Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="agnus.css"/>
+<style>
+.article-body{max-width:720px;margin:0 auto;padding:0 24px 100px}
+.article-lede{font-family:'Newsreader',serif;font-size:clamp(18px,2.2vw,22px);font-weight:300;font-style:italic;line-height:1.65;color:var(--ink-soft);margin-bottom:40px;padding-bottom:32px;border-bottom:1px solid var(--line)}
+h2{font-size:clamp(18px,2vw,22px);font-weight:700;letter-spacing:-.02em;margin:44px 0 16px;color:var(--char)}
+h3{font-size:17px;font-weight:700;margin:32px 0 12px;color:var(--char)}
+p{font-size:16px;line-height:1.8;color:var(--ink-soft);margin-bottom:18px}
+.callout{background:#F8F6F0;border-left:3px solid var(--gold-deep);padding:20px 24px;border-radius:0 10px 10px 0;margin:28px 0}
+.callout p{margin-bottom:0;font-size:15px}
+.callout strong{color:var(--char)}
+.source-ref{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-mute);background:#F2F0EB;padding:3px 8px;border-radius:4px;display:inline-block;margin:4px 0}
+.data-table{width:100%;border-collapse:collapse;margin:28px 0;font-size:14px}
+.data-table th{text-align:left;padding:10px 14px;background:#F2F0EB;font-weight:700;color:var(--char);border-bottom:2px solid var(--line)}
+.data-table td{padding:11px 14px;border-bottom:1px solid var(--line);color:var(--ink-soft);vertical-align:top}
+.data-table tr:last-child td{border-bottom:none}
+.article-meta{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:36px}
+.am-item{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-mute);display:flex;align-items:center;gap:6px}
+.am-item strong{color:var(--ink-soft)}
+.code-block{background:#1D1D1F;border-radius:10px;padding:20px 22px;margin:20px 0;font-family:'IBM Plex Mono',monospace;font-size:13px;line-height:1.75;color:#E5E5EA;overflow-x:auto}
+.code-key{color:#F9C74F}
+.code-str{color:#90BE6D}
+.code-num{color:#F3722C}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="container nav-inner"><a class="wordmark" href="AGNUS - Home.html">AGNUS</a><div class="nav-links"><a href="AGNUS - Research.html">Research</a><a href="AGNUS - Intelligence.html">Intelligence</a><a href="AGNUS - Academy.html">Academy</a></div></div></nav>
+
+<div style="background:#F8F7F4;border-bottom:1px solid var(--line);padding:clamp(40px,5vw,64px) 0 40px">
+<div class="article-body" style="padding-bottom:0">
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;background:#1D1D1F;color:#fff;padding:4px 10px;border-radius:99px">AI Audit</span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute)">AR-000520</span>
+  </div>
+  <h1 style="font-size:clamp(28px,4vw,48px);font-weight:800;letter-spacing:-.03em;line-height:1.1;margin-bottom:20px">Audit Trail Design: What to Log, How Long, What Format</h1>
+  <div class="article-meta">
+    <div class="am-item"><strong>Published</strong> 11 Sep 2026</div>
+    <div class="am-item"><strong>Reading time</strong> 15 min</div>
+    <div class="am-item"><strong>Pillar</strong> AI Audit</div>
+    <div class="am-item"><strong>Source</strong> EU AI Act Art. 12, 26(5), 72 · GDPR Art. 5 · ISO 42001</div>
+  </div>
+</div>
+</div>
+
+<div class="article-body" style="padding-top:40px">
+  <p class="article-lede">An AI audit trail is not a system log. A system log records what the software did. An audit trail records what the AI system decided, why, with what confidence, acting on whose authority, with what data, subject to what oversight — and creates a record that is legally useful years after the fact. Most organisations have the first. Almost none have the second.</p>
+
+  <h2>What the EU AI Act requires</h2>
+  <p>Article 12 of the EU AI Act requires high-risk AI systems to be designed to automatically record events — logs — throughout their operational life. The logs must be capable of ensuring traceability of the system's operation and enabling post-hoc monitoring. Specifically, Article 12(2) requires that logs capture the period of each use of the system, the reference database against which the input data was checked (where applicable), input data (in contexts where it can be retained), the identity of the persons involved in the verification of results, and — for biometric identification — specific additional data points.</p>
+  <p>Article 26(5) extends the obligation to deployers: they must retain the logs generated by the high-risk AI system to the extent such logs are under their control, for a period appropriate to the intended purpose of the high-risk AI system and applicable legal requirements. For law enforcement and biometric identification systems, Art. 12(3) sets a minimum retention of six months. For other high-risk AI, the appropriate period depends on the sector — in financial services, this typically aligns with MiFID II record-keeping requirements (five years); in employment contexts, it should align with the limitation period for employment claims in the relevant jurisdiction.</p>
+  <span class="source-ref">SRC-0077 · EU AI Act Art. 12: record-keeping requirements. Art. 26(5): deployer log retention obligations. Art. 72: post-market monitoring obligations.</span>
+
+  <div class="callout">
+    <p><strong>Logs that cannot answer a regulatory question are not an audit trail.</strong> The test of an audit trail is not whether logs exist — it is whether they can answer the question: on [date], for [individual or case], the AI system produced [output]. What data did it use? What did the system's confidence level indicate? Who reviewed the output? Was the output overridden, and if so by whom and for what reason? If your logs cannot answer this question in under two hours, they are not fit for regulatory or legal purpose.</p>
+  </div>
+
+  <h2>What to log: the eight categories</h2>
+  <p>An adequate AI audit trail for a high-risk system should capture the following eight categories of data. Not all categories apply to every system — but every category should be considered, and the decision not to log something should be documented.</p>
+
+  <h3>1. System identification</h3>
+  <p>Every log entry must be unambiguously linked to the specific AI system and version that produced it. This matters because AI systems are updated, retrained, and versioned throughout their operational lives. A log entry from 18 months ago was produced by a different version of the model than today's output, and that difference may be legally significant.</p>
+  <table class="data-table">
+    <thead><tr><th>Field</th><th>Example</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>system_id</td><td>AI-003-CREDIT-SCORE</td><td>Unique internal ID from the AI inventory</td></tr>
+      <tr><td>system_version</td><td>2.4.1</td><td>Semantic version or model hash — sufficient to identify the exact model state</td></tr>
+      <tr><td>provider</td><td>VendorCo AI Ltd</td><td>The organisation that built or supplied the system</td></tr>
+      <tr><td>deployment_env</td><td>production-eu-west-1</td><td>Distinguish production from test environments</td></tr>
+    </tbody>
+  </table>
+
+  <h3>2. Session and transaction identification</h3>
+  <p>Each inference — each time the system produces an output — must have a unique identifier that links all log entries related to that specific decision. This is essential for reconstructing what happened in a specific case.</p>
+
+  <h3>3. Timestamp</h3>
+  <p>Precise timestamps (to the millisecond, in UTC, with timezone recorded) are mandatory. Timestamp disputes are common in regulatory proceedings and litigation. Logs that use server-local time without timezone notation are unreliable. Logs that record only to the second are insufficient for real-time systems processing multiple transactions per second.</p>
+
+  <h3>4. Input data</h3>
+  <p>This is the most sensitive category and the one most likely to create GDPR complexity. The input data used by the AI system to reach its output must be either logged directly or referenced by a link to where it is stored elsewhere. For systems processing personal data, full logging of raw input data may not be permissible under GDPR's data minimisation principle (Article 5(1)(c)); in these cases, a reference to the data record (including a hash of its content at the time of inference) preserves the audit trail without retaining the raw data longer than necessary.</p>
+  <span class="source-ref">SRC-0078 · GDPR Art. 5(1)(c): data minimisation principle. Art. 5(1)(e): storage limitation. Both apply to data retained in AI audit trails involving personal data.</span>
+
+  <h3>5. Output and confidence</h3>
+  <p>The output of the AI system must be recorded, together with any confidence score, probability distribution, or uncertainty estimate the system provides. This is critical for post-hoc analysis: an output with a confidence score of 0.52 is qualitatively different from the same output with a score of 0.97, and any audit or investigation that does not have access to the confidence level is working with incomplete information.</p>
+
+  <h3>6. Human oversight events</h3>
+  <p>Every human interaction with the AI system's output must be logged. This includes: who reviewed the output (role, not name, where personal data minimisation applies); whether the output was accepted, modified, or rejected; if modified or rejected, the reason; and the final decision taken. This category of log is the one most commonly absent — and the one most frequently requested by regulators investigating AI-related complaints.</p>
+
+  <div class="code-block">
+<span class="code-key">"oversight_event"</span>: {<br/>
+  &nbsp;&nbsp;<span class="code-key">"timestamp"</span>: <span class="code-str">"2026-09-11T14:32:11.442Z"</span>,<br/>
+  &nbsp;&nbsp;<span class="code-key">"operator_role"</span>: <span class="code-str">"credit_analyst_L2"</span>,<br/>
+  &nbsp;&nbsp;<span class="code-key">"ai_output"</span>: <span class="code-str">"DECLINE"</span>,<br/>
+  &nbsp;&nbsp;<span class="code-key">"ai_confidence"</span>: <span class="code-num">0.73</span>,<br/>
+  &nbsp;&nbsp;<span class="code-key">"decision"</span>: <span class="code-str">"OVERRIDE_APPROVE"</span>,<br/>
+  &nbsp;&nbsp;<span class="code-key">"reason_code"</span>: <span class="code-str">"REL-002"</span>,<br/>
+  &nbsp;&nbsp;<span class="code-key">"reason_text"</span>: <span class="code-str">"Customer provided additional evidence not available at inference time"</span><br/>
+}
+  </div>
+
+  <h3>7. Exceptions and anomalies</h3>
+  <p>Any event in which the AI system behaved unexpectedly — including errors, timeouts, out-of-distribution inputs, and outputs flagged by internal monitoring — must be logged with sufficient detail to reconstruct what happened. These are the events that are most likely to be relevant to future incident investigations and regulatory enquiries.</p>
+
+  <h3>8. Data lineage</h3>
+  <p>For AI systems that use reference databases (fraud lists, credit bureau data, biometric reference sets, etc.), each inference must log which version of the reference database was used. Reference databases change. An AI system's output at a given moment reflects the state of the database at that moment — and that version must be preserved in the audit trail.</p>
+
+  <h2>Retention periods by sector</h2>
+  <table class="data-table">
+    <thead><tr><th>Sector</th><th>AI Act minimum</th><th>Regulatory basis for longer retention</th><th>Recommended retention</th></tr></thead>
+    <tbody>
+      <tr><td>Financial services (credit, insurance)</td><td>6 months (biometrics)</td><td>MiFID II: 5 years. PSD2: 5 years. ECB guidance: 3–7 years.</td><td>5 years</td></tr>
+      <tr><td>Employment (recruitment, performance)</td><td>No specific minimum for non-biometric</td><td>Employment claims limitation: 3 years (UK), 3 years (EU varies). Discrimination claims: up to 6 years.</td><td>6 years from last action</td></tr>
+      <tr><td>Healthcare</td><td>No specific minimum for non-biometric</td><td>Medical records: 10 years (EU average). Clinical trial data: 25 years.</td><td>10 years</td></tr>
+      <tr><td>Education</td><td>No specific minimum</td><td>Student records: duration of study + 6 years typical. Assessment appeals: 5 years.</td><td>6 years post-graduation</td></tr>
+      <tr><td>Law enforcement / public security</td><td>6 months</td><td>Criminal investigation records: jurisdiction-specific, often 10+ years.</td><td>Jurisdiction-specific, minimum 6 months</td></tr>
+      <tr><td>General high-risk AI (other Annex III)</td><td>Not specified</td><td>Limitation periods for relevant claims in the applicable jurisdiction.</td><td>5 years (precautionary)</td></tr>
+    </tbody>
+  </table>
+  <span class="source-ref">SRC-0079 · EU AI Act Art. 12(3): 6-month minimum for biometric identification logs. MiFID II Art. 25(1): 5-year record-keeping for investment services. GDPR Art. 5(1)(e): storage limitation.</span>
+
+  <h2>Format and integrity requirements</h2>
+  <p><strong>Format.</strong> Logs must be machine-readable, structured, and queryable. JSON is the current standard. Unstructured text logs are not adequate for an AI audit trail — they cannot be queried systematically in response to a regulatory request, and they create significant discovery burdens in litigation. The log schema should be documented and version-controlled alongside the AI system itself.</p>
+  <p><strong>Integrity.</strong> Audit trails are only useful if they cannot be modified after the fact. At minimum, logs should be written to append-only storage that does not permit deletion or modification by operational accounts. Best practice is to use cryptographic hashing: each log entry includes a hash of the previous entry, creating a tamper-evident chain. Any modification to a log entry — including deletion — breaks the chain and is detectable.</p>
+  <p><strong>Access controls.</strong> The people who operate the AI system should not have write access to its audit trail. This is a fundamental internal control. If the same team that runs the system can also modify its logs, the audit trail provides no assurance. Log access should be segregated: operational teams can read logs for debugging; compliance and audit teams have independent access; only infrastructure administrators can manage the storage (and their access should be logged separately).</p>
+  <p><strong>Searchability.</strong> Regulators and auditors will not sift through raw log files. The audit trail must be searchable by: date range, system ID, operator ID, output type, decision outcome, and case or transaction reference. If the logs cannot be searched by these parameters within a reasonable timeframe (under two hours for a regulatory enquiry), the infrastructure is inadequate.</p>
+
+  <div class="callout">
+    <p><strong>The GDPR intersection.</strong> If the AI system processes personal data — which most systems subject to this analysis will — the audit trail itself constitutes personal data processing. This means: you need a lawful basis for retaining it; you must disclose it in your Privacy Notice; individuals have the right to access log entries that relate to decisions made about them; you must apply data minimisation; and you must apply data protection by design to the log schema. The interaction between the EU AI Act's logging obligations and GDPR's data minimisation principle is genuinely difficult — it requires legal analysis, not a technical default to logging everything.</p>
+  </div>
+</div>
+</body>
+</html>

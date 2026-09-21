@@ -1,0 +1,165 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Model Theft and Intellectual Property Risk in AI Deployments — AGNUS Research</title>
+<meta name="description" content="When organisations deploy AI, the model itself becomes an asset — and a target. Model extraction attacks, training data reconstruction, and membership inference are real risks with legal, competitive, and regulatory consequences."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="agnus.css"/>
+<link rel="stylesheet" href="agnus-research.css"/>
+<style>
+a,a:visited{color:inherit}
+.finding-strip{margin:28px 0;border:1px solid var(--line-strong);border-left:3px solid var(--gold);border-radius:0 12px 12px 0;background:var(--gold-soft);padding:18px 22px}
+.finding-strip .fs-k{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:8px}
+.finding-strip p{font-size:15px;line-height:1.6;color:var(--ink);margin:0}
+.attack-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin:24px 0}
+@media(max-width:760px){.attack-grid{grid-template-columns:1fr}}
+.attack-card{border:1px solid var(--line-strong);border-radius:12px;padding:18px 20px;background:var(--surface,#fff)}
+.ac-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:6px}
+.ac-title{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.ac-body{font-size:13.5px;color:var(--ink-mute);line-height:1.65}
+.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
+.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
+.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s;text-decoration:none}
+.rsub a:hover{color:var(--ink)}
+.rsub a.on{color:var(--gold-deep);font-weight:600}
+</style>
+</head>
+<body>
+<div class="art-progress"><i id="progBar"></i></div>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+    </div>
+  </div>
+</nav>
+
+<header class="art-hero">
+  <div class="container">
+    <div class="art-kicker"><a href="AGNUS - Research.html">Research</a><span class="sep">·</span><a href="#">AI Security</a></div>
+    <h1 class="art-title">Model Theft and Intellectual Property Risk in AI Deployments</h1>
+    <p class="art-deck">When an organisation deploys an AI model — whether proprietary, fine-tuned, or accessed via API — the model itself becomes a valuable asset and a target. Model extraction attacks can steal a model's capabilities. Training data reconstruction attacks can expose sensitive data that was used to train the model. Membership inference attacks can reveal whether specific individuals' data was in the training set. These risks have legal, competitive, and regulatory consequences.</p>
+    <div class="art-meta">
+      <span class="art-author">Jean-Daniel Alexis</span>
+      <span class="sep">·</span>
+      <span>12 September 2026</span>
+      <span class="sep">·</span>
+      <span>13 min read</span>
+      <span class="sep">·</span>
+      <span>AI Security</span>
+    </div>
+  </div>
+</header>
+
+<nav class="rsub">
+  <div class="rsub-inner">
+    <a href="#attack-types" class="on">Attack types</a>
+    <a href="#extraction">Model extraction</a>
+    <a href="#reconstruction">Data reconstruction</a>
+    <a href="#membership">Membership inference</a>
+    <a href="#defences">Defences</a>
+    <a href="#regulatory">Regulatory basis</a>
+  </div>
+</nav>
+
+<main class="container art-body">
+
+  <div class="finding-strip">
+    <div class="fs-k">AGNUS Finding · SRC-0001 / SRC-0083</div>
+    <p>The EU AI Act's technical documentation requirements (Article 11, Annex IV) require providers of high-risk AI systems to document the measures taken to protect the confidentiality of the model and its training data. GDPR's data security requirements (Article 32) apply when the training data includes personal data — which is the case for the vast majority of commercially deployed language models.</p>
+  </div>
+
+  <h2 id="attack-types" class="h-section">The three attack classes</h2>
+  <p>Attacks on AI models as intellectual property and data assets fall into three distinct categories, each with different threat actors, techniques, and legal consequences:</p>
+  <div class="attack-grid">
+    <div class="attack-card">
+      <div class="ac-label">Attack class 1</div>
+      <div class="ac-title">Model extraction</div>
+      <div class="ac-body">Systematically querying a model to reconstruct its behaviour — creating a "stolen" copy that replicates the original's capabilities without access to the model weights. Primarily a competitive intelligence threat: a competitor or bad actor acquires your model's capabilities without paying for development.</div>
+    </div>
+    <div class="attack-card">
+      <div class="ac-label">Attack class 2</div>
+      <div class="ac-title">Training data reconstruction</div>
+      <div class="ac-body">Crafting inputs that cause the model to reproduce verbatim text from its training data — potentially including sensitive, private, or copyrighted material. A data protection threat: if the model memorised personal data during training, it can be made to output it in response to targeted queries.</div>
+    </div>
+    <div class="attack-card">
+      <div class="ac-label">Attack class 3</div>
+      <div class="ac-title">Membership inference</div>
+      <div class="ac-body">Determining whether specific data was included in a model's training set by analysing the model's response patterns. A privacy threat with direct GDPR implications: individuals have a right to know whether and how their data was processed, and membership inference can expose whether their data was used to train a model without their knowledge.</div>
+    </div>
+  </div>
+
+  <h2 id="extraction" class="h-section">Model extraction attacks</h2>
+  <p>Model extraction — sometimes called model stealing or model cloning — works by sending a large number of carefully constructed queries to a model's API and using the responses to train a local surrogate model. The surrogate replicates the original model's input-output behaviour without requiring access to the underlying weights, training data, or architecture.</p>
+  <p>The attack is economically viable when the cost of API queries is less than the cost of training the original model. As inference costs decline and frontier model capabilities increase, the economics of model extraction have become steadily more favourable for attackers.</p>
+  <p>For organisations that have invested in fine-tuning proprietary models on domain-specific data — legal, medical, financial — model extraction is a genuine competitive threat. A fine-tuned model that encodes months of expert curation can be substantially replicated through extraction in a fraction of the time.</p>
+
+  <h3 style="font-size:18px;font-weight:700;margin:28px 0 12px;color:var(--ink)">Defences against model extraction</h3>
+  <ul style="margin:0 0 16px 20px;line-height:1.9;color:var(--ink-mute)">
+    <li><strong style="color:var(--ink)">Rate limiting and anomaly detection.</strong> Systematic model extraction requires many queries. Rate limiting per API key and anomaly detection for unusual query patterns can detect and interrupt extraction attempts.</li>
+    <li><strong style="color:var(--ink)">Watermarking.</strong> Techniques exist to embed statistical watermarks in model outputs that persist in surrogate models trained on those outputs. Watermarking does not prevent extraction but enables detection and attribution.</li>
+    <li><strong style="color:var(--ink)">Output perturbation.</strong> Adding calibrated noise to model outputs — within the acceptable margin of the application — degrades the quality of surrogate models trained on those outputs without materially affecting legitimate use.</li>
+    <li><strong style="color:var(--ink)">Query logging and legal remedies.</strong> Systematic extraction attempts leave traces in query logs. Comprehensive logging, combined with terms of service that prohibit model extraction, provides an evidentiary basis for legal action.</li>
+  </ul>
+
+  <h2 id="reconstruction" class="h-section">Training data reconstruction</h2>
+  <p>Large language models memorise portions of their training data — not intentionally, but as a side effect of the training process. When a model memorises specific sequences, it can reproduce them verbatim in response to targeted inputs. This is called training data extraction or training data reconstruction.</p>
+  <p>Research by Carlini et al. (<a href="https://arxiv.org/abs/2012.07805" target="_blank" rel="noopener" style="color:var(--gold-deep);text-decoration:underline">Extracting Training Data from Large Language Models, 2021</a>) demonstrated that GPT-2 could be made to reproduce memorised training data including names, addresses, phone numbers, and other personal information. Subsequent research has confirmed that memorisation increases with model size and training data repetition.</p>
+  <p>This creates a direct GDPR exposure for organisations that train models on personal data: if the model memorises personal data and can reproduce it in response to user queries, the organisation may be processing personal data in ways that exceed the basis on which it was collected, and may be unable to comply with deletion requests under GDPR Article 17.</p>
+
+  <h2 id="membership" class="h-section">Membership inference and GDPR</h2>
+  <p>Membership inference attacks determine whether a specific data record was included in a model's training set. The attack exploits a fundamental property of machine learning: models tend to be more confident on data they have seen during training than on data they have not.</p>
+  <p>For organisations processing personal data in AI training, membership inference creates a direct GDPR Article 15 exposure: individuals have a right of access to their personal data and to information about how it is processed. If a model was trained on personal data and an adversary can determine through membership inference that specific individuals' data was used, this may constitute a breach of the data subject's rights — particularly if the data was not processed on an appropriate legal basis, or if the individual was not informed that their data would be used for AI training.</p>
+  <p>The Article 29 Working Party's guidance on automated decision-making (WP251) and the EDPB's subsequent guidance both emphasise that individuals must be able to obtain meaningful information about the logic of automated systems that affect them. Membership inference is one mechanism through which that information can be extracted — and one mechanism through which it can be exposed when organisations have not properly managed their training data.</p>
+
+  <h2 id="defences" class="h-section">Defences: technical and governance</h2>
+  <p>Defence against training data reconstruction and membership inference requires both technical controls and governance:</p>
+
+  <h3 style="font-size:18px;font-weight:700;margin:28px 0 12px;color:var(--ink)">Differential privacy in training</h3>
+  <p>Differential privacy (DP) is a mathematical framework that limits how much any individual training example can influence the model's outputs. DP training provides provable bounds on the amount of information about individual training records that can be inferred from the trained model. It comes with a tradeoff against model utility — stronger privacy guarantees require more noise, which degrades accuracy — but for models trained on sensitive personal data, DP training is increasingly the standard of care.</p>
+
+  <h3 style="font-size:18px;font-weight:700;margin:28px 0 12px;color:var(--ink)">Data minimisation before training</h3>
+  <p>The most effective defence against training data extraction is not including sensitive personal data in training corpora in the first place. GDPR's data minimisation principle (Article 5(1)(c)) requires that personal data be "adequate, relevant and limited to what is necessary" for the stated purpose. Rigorous pre-training data curation — removing personal information, deduplicating training data, and applying data minimisation principles — reduces the memorisation surface area.</p>
+
+  <h3 style="font-size:18px;font-weight:700;margin:28px 0 12px;color:var(--ink)">Machine unlearning</h3>
+  <p>GDPR Article 17 (right to erasure) creates a requirement that organisations must be able to delete personal data on request. For data embedded in a trained model's weights, erasure is technically challenging. Machine unlearning — techniques for removing specific data points' influence from a trained model — is an active research area. Current techniques are imperfect but are increasingly required for organisations to demonstrate GDPR compliance for AI systems trained on personal data.</p>
+
+  <h2 id="regulatory" class="h-section">Regulatory basis</h2>
+  <p>The EU AI Act's Article 11 and Annex IV require high-risk AI providers to document their training data, including the data governance measures applied. Article 15 requires robustness against attacks, including attacks that attempt to alter model outputs or extract information. GDPR Articles 5, 17, 25, and 32 impose obligations on the security and minimisation of personal data — obligations that apply with full force to personal data used in AI training.</p>
+  <p>The combination of EU AI Act and GDPR creates an interlocking compliance framework for AI models trained on personal data: technical documentation must address data governance, security measures must address model-level attacks, and deletion obligations must be technically implementable.</p>
+
+  <div class="art-source-block">
+    <div class="asb-label">Primary sources</div>
+    <div class="asb-item"><span class="asb-id">SRC-0001</span><span class="asb-title">EU AI Act — Articles 11, 15; Annex IV</span><span class="asb-url"><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R1689" target="_blank" rel="noopener">eur-lex.europa.eu</a></span></div>
+    <div class="asb-item"><span class="asb-id">SRC-0088</span><span class="asb-title">GDPR — Articles 5, 17, 25, 32 (data minimisation, erasure, privacy by design, security)</span><span class="asb-url"><a href="https://gdpr-info.eu/" target="_blank" rel="noopener">gdpr-info.eu</a></span></div>
+    <div class="asb-item"><span class="asb-id">SRC-0089</span><span class="asb-title">Carlini et al., "Extracting Training Data from Large Language Models" (2021)</span><span class="asb-url"><a href="https://arxiv.org/abs/2012.07805" target="_blank" rel="noopener">arxiv.org/abs/2012.07805</a></span></div>
+  </div>
+</main>
+
+<script>
+const bar=document.getElementById('progBar');
+window.addEventListener('scroll',()=>{const d=document.documentElement;bar.style.width=(d.scrollTop/(d.scrollHeight-d.clientHeight)*100)+'%';});
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const id=e.target.id;document.querySelectorAll('.rsub a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+id));}});},{threshold:.5,rootMargin:'-20% 0px -60% 0px'});
+document.querySelectorAll('h2[id]').forEach(h=>obs.observe(h));
+</script>
+</body>
+</html>

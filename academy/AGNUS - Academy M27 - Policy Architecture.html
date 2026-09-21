@@ -1,0 +1,343 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Academy — M27 Policy Architecture</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#F8F6F2;--surface:#FFFFFF;--surface-2:#F2F0EB;--border:#E0DDD5;--border-2:#CCC9C0;
+  --ink:#14181F;--ink-2:#3C4252;--ink-3:#7A8099;
+  --navy:#0F1E34;--navy-2:#162844;--navy-3:#1E3560;
+  --gold:#9A7020;--gold-bg:rgba(154,112,32,.09);--gold-border:rgba(154,112,32,.22);--gold-light:#C49A2C;
+  --pass:#0F6E3A;--pass-bg:rgba(15,110,58,.09);--pass-border:rgba(15,110,58,.22);
+  --danger:#B03020;--danger-bg:rgba(176,48,32,.09);--danger-border:rgba(176,48,32,.22);
+  --mono:'DM Mono',monospace;--sans:'DM Sans',sans-serif;--serif:'Newsreader',serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;font-family:var(--sans);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+.rail{background:var(--navy);color:#fff;height:54px;display:flex;align-items:center;padding:0 26px;gap:16px;position:sticky;top:0;z-index:200}
+.rail-brand{font-weight:800;font-size:14.5px}
+.rail-sep{width:1px;height:20px;background:rgba(255,255,255,.12);flex-shrink:0}
+.rail-crumb{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38)}
+.rail-title{font-size:13px;font-weight:600;color:rgba(255,255,255,.88)}
+.rail-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.phase-track{display:flex;gap:5px}
+.ph{width:26px;height:3px;border-radius:2px;background:rgba(255,255,255,.16);transition:background .4s}
+.ph.done{background:var(--gold-light)}.ph.active{background:#fff}
+.rail-btn{font-family:var(--sans);font-size:12px;font-weight:600;padding:6px 14px;border-radius:7px;border:1px solid rgba(255,255,255,.16);color:#fff;background:rgba(255,255,255,.07);cursor:pointer}
+.phase{display:none}.phase.active{display:block}
+.hero{background:linear-gradient(138deg,#1A0832 0%,#2E1060 50%,#1E3560 100%);padding:52px 0 48px;position:relative;overflow:hidden}
+.hero-inner{max-width:820px;margin:0 auto;padding:0 32px;position:relative;z-index:1}
+.hero-kicker{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(180,140,255,.85);margin-bottom:16px;display:flex;align-items:center;gap:9px}
+.hero-kicker::before{content:'';width:20px;height:1px;background:rgba(180,140,255,.6);display:inline-block}
+.hero h1{font-size:clamp(24px,3.5vw,38px);font-weight:800;letter-spacing:-.03em;color:#fff;line-height:1.18;margin-bottom:16px}
+.hero-serif{font-family:var(--serif);font-style:italic;font-size:17px;line-height:1.72;color:rgba(245,242,236,.72);max-width:50ch;margin-bottom:28px}
+.hero-pills{display:flex;gap:14px;flex-wrap:wrap}
+.hp{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:7px;padding:7px 13px;font-size:12px;color:rgba(255,255,255,.68)}
+.hp strong{color:#fff}
+.wrap{max-width:820px;margin:0 auto;padding:40px 32px 120px}
+.step-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;padding-bottom:14px;border-bottom:1.5px solid var(--border)}
+.sh-left{display:flex;align-items:center;gap:10px}
+.sh-badge{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold-border);border-radius:99px;padding:4px 10px;font-weight:600}
+.sh-title{font-size:13px;font-weight:600;color:var(--ink-2)}
+.sh-time{font-family:var(--mono);font-size:10px;color:var(--ink-3)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:26px 28px;margin-bottom:18px}
+.card h3{font-size:16px;font-weight:800;letter-spacing:-.015em;color:var(--navy);margin-bottom:10px}
+.card p{font-size:14.5px;line-height:1.74;color:var(--ink-2)}
+.card p+p{margin-top:10px}
+.policy-layers{display:grid;grid-template-columns:1fr;gap:0;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--surface);margin:16px 0}
+.pl-row{display:grid;grid-template-columns:36px 120px 1fr;border-bottom:1px solid var(--border)}
+.pl-row:last-child{border-bottom:none}
+.pl-row.header{background:var(--surface-2)}
+.pl-num{display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:12px;font-weight:700;background:var(--navy);color:var(--gold-light);border-right:1px solid rgba(255,255,255,.1)}
+.pl-row.header .pl-num{background:var(--surface-3);color:var(--ink-3)}
+.pl-name{padding:13px 14px;font-size:13px;font-weight:700;color:var(--ink);border-right:1px solid var(--border)}
+.pl-row.header .pl-name{font-family:var(--mono);font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+.pl-desc{padding:13px 16px;font-size:13px;color:var(--ink-2);line-height:1.55}
+.pl-row.header .pl-desc{font-family:var(--mono);font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+.policy-eg{border:1px solid var(--gold-border);border-radius:14px;overflow:hidden;background:var(--surface);margin:16px 0}
+.pe-head{padding:12px 16px;background:var(--gold-bg);border-bottom:1px solid var(--gold-border);font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.pe-body{padding:16px}
+.pe-section{margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.pe-section:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.pe-layer{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;display:block}
+.pe-rules{font-family:var(--mono);font-size:12px;line-height:1.8;color:var(--ink-2);background:rgba(0,0,0,.04);border-radius:7px;padding:10px 12px}
+.conflicts{display:grid;gap:12px;margin:16px 0}
+.cf-card{border-radius:12px;padding:16px 18px;background:var(--surface-2);border:1px solid var(--border)}
+.cf-conflict{font-size:13.5px;color:var(--ink);margin-bottom:6px;font-weight:600}
+.cf-resolution{font-size:13px;color:var(--pass);line-height:1.6;padding:8px 12px;background:var(--pass-bg);border-radius:7px;border-left:2px solid var(--pass)}
+.callout{border-radius:12px;padding:16px 20px;margin:14px 0;font-size:13.5px;line-height:1.68;display:flex;gap:12px;align-items:flex-start}
+.callout.gold{background:var(--gold-bg);border:1px solid var(--gold-border)}
+.callout-icon{flex-shrink:0;margin-top:2px}
+.opt-list{display:grid;gap:10px;margin:16px 0}
+.opt{display:grid;grid-template-columns:36px 1fr;border:1.5px solid var(--border-2);border-radius:12px;cursor:pointer;overflow:hidden;transition:border-color .15s,transform .1s}
+.opt:hover{border-color:var(--navy);transform:translateY(-1px)}
+.opt.correct{border-color:var(--pass)}.opt.wrong{border-color:var(--danger)}
+.opt-letter{display:flex;align-items:center;justify-content:center;background:var(--surface-2);font-family:var(--mono);font-size:11px;font-weight:700;color:var(--ink-3)}
+.opt.correct .opt-letter{background:var(--pass-bg);color:var(--pass)}.opt.wrong .opt-letter{background:var(--danger-bg);color:var(--danger)}
+.opt-text{padding:14px 16px;font-size:13.5px;line-height:1.5;color:var(--ink);background:var(--surface)}
+.opt.correct .opt-text{background:var(--pass-bg)}.opt.wrong .opt-text{background:var(--danger-bg)}
+.feedback{display:none;margin-top:14px;padding:16px 18px;border-radius:11px;font-size:14px;line-height:1.68}
+.feedback.pass{display:block;background:var(--pass-bg);border-left:3px solid var(--pass)}
+.feedback.fail{display:block;background:var(--danger-bg);border-left:3px solid var(--danger)}
+.quiz-q{font-size:16px;font-weight:700;letter-spacing:-.012em;color:var(--navy);margin-bottom:6px}
+.quiz-context{font-size:13.5px;color:var(--ink-2);line-height:1.65;margin-bottom:20px;padding:14px 16px;background:var(--surface-2);border-radius:10px;border-left:3px solid var(--gold)}
+.cta-row{display:flex;justify-content:space-between;align-items:center;margin-top:28px;padding-top:20px;border-top:1px solid var(--border)}
+.cta-hint{font-size:13px;color:var(--ink-3)}
+.btn{font-family:var(--sans);font-weight:700;font-size:14.5px;padding:13px 30px;border-radius:12px;border:none;cursor:pointer;transition:all .2s}
+.btn-primary{background:var(--navy);color:#fff}.btn-primary:hover{background:var(--navy-2);transform:translateY(-1px)}
+.btn-primary:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.pass-screen{display:none;text-align:center;padding:56px 36px;background:linear-gradient(138deg,var(--navy),var(--navy-3));border-radius:20px;margin-top:20px;color:#fff}
+.ps-glyph{font-size:42px;margin-bottom:16px;color:var(--gold-light)}
+.ps-title{font-size:26px;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+.ps-sub{font-size:14px;color:rgba(255,255,255,.65);line-height:1.6;max-width:40ch;margin:0 auto 28px}
+.ps-next{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#fff;border:none;font-family:var(--sans);font-weight:700;font-size:14px;padding:13px 26px;border-radius:11px;cursor:pointer}
+</style>
+</head>
+<body>
+<header class="rail">
+  <span class="rail-brand">AGNUS Academy</span>
+  <span class="rail-sep"></span>
+  <span class="rail-crumb">Level 4 · Govern</span>
+  <span class="rail-title">M27 — Policy Architecture</span>
+  <div class="rail-right">
+    <div class="phase-track" id="phaseTrack"></div>
+    <button class="rail-btn" onclick="location.href='AGNUS - Academy App.html'">← Dashboard</button>
+  </div>
+</header>
+
+<!-- PHASE 0 -->
+<div class="phase active" data-phase="0">
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-kicker">Module 27 of 49 · Level 4 · Govern</div>
+      <h1>A policy architecture is what<br>turns rules into governance.</h1>
+      <p class="hero-serif">Individual rules in a brief are instructions. A policy architecture is the structured system that organises those rules — by layer, priority, scope, and update cadence — so they remain coherent as agents multiply, tasks evolve, and business contexts change.</p>
+      <div class="hero-pills">
+        <span class="hp"><strong>6 steps</strong></span>
+        <span class="hp"><strong>~16 min</strong></span>
+        <span class="hp"><strong>Prerequisite: M25</strong></span>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="card">
+      <h3>The difference between rules and a policy</h3>
+      <p>A rule is a single instruction: "payments above €500 require approval." A policy is a structured set of rules that covers a domain, handles conflicts between rules, specifies who can change it, and defines when it needs review.</p>
+      <p>When you have one agent running one task, a list of rules is sufficient. When you have 10 agents, multiple task types, multiple operators, and a changing business context — you need a policy architecture. Rules without structure become contradictory, stale, and impossible to audit.</p>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Next: the four policy layers</span>
+      <button class="btn btn-primary" onclick="goPhase(1)">Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 1 -->
+<div class="phase" data-phase="1">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 2 of 6</span><span class="sh-title">The four policy layers</span></div>
+      <span class="sh-time">4 min</span>
+    </div>
+    <div class="policy-layers">
+      <div class="pl-row header">
+        <div class="pl-num">#</div>
+        <div class="pl-name">Layer</div>
+        <div class="pl-desc">What it contains</div>
+      </div>
+      <div class="pl-row">
+        <div class="pl-num">1</div>
+        <div class="pl-name">Absolute constraints</div>
+        <div class="pl-desc">Rules that cannot be overridden by any agent, operator, or user instruction. Safety requirements, legal obligations, ethical limits. These are not configurable — they are fixed. Any agent instruction that conflicts with an absolute constraint is void.</div>
+      </div>
+      <div class="pl-row">
+        <div class="pl-num">2</div>
+        <div class="pl-name">Organisational standards</div>
+        <div class="pl-desc">Organisation-wide rules that apply to all agents: approval thresholds, data retention limits, external communication policies, brand guidelines. These can be updated by the accountable governance owner but not by individual operators or task briefs.</div>
+      </div>
+      <div class="pl-row">
+        <div class="pl-num">3</div>
+        <div class="pl-name">Deployment configuration</div>
+        <div class="pl-desc">Agent-specific rules for a particular deployment: this agent's tool allowlist, data scope, task-specific thresholds, escalation paths. Set by the deploying operator. Must be within the bounds of Layer 2. Can be updated by the operator within those bounds.</div>
+      </div>
+      <div class="pl-row">
+        <div class="pl-num">4</div>
+        <div class="pl-name">Task-level instructions</div>
+        <div class="pl-desc">Run-specific instructions for a particular task: the brief, the context, the specific output required. Set by the operator or user for each run. Must be within the bounds of Layer 3. Cannot override Layers 1–3.</div>
+      </div>
+    </div>
+    <div class="callout gold">
+      <div class="callout-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M8 7v5M8 5.5v.5"/></svg></div>
+      <div><strong>The layer principle:</strong> Lower layers are bounded by higher layers. A task brief (Layer 4) cannot override a deployment configuration (Layer 3). A deployment configuration cannot override organisational standards (Layer 2). Organisational standards cannot override absolute constraints (Layer 1).</div>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Next: a complete policy architecture</span>
+      <button class="btn btn-primary" onclick="goPhase(2)">Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 2 -->
+<div class="phase" data-phase="2">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 3 of 6</span><span class="sh-title">A complete policy architecture — worked example</span></div>
+      <span class="sh-time">4 min</span>
+    </div>
+    <div class="policy-eg">
+      <div class="pe-head">Policy architecture — Nordvik Group AI Governance</div>
+      <div class="pe-body">
+        <div class="pe-section">
+          <span class="pe-layer">Layer 1 — Absolute constraints (cannot be overridden)</span>
+          <div class="pe-rules">
+1. No AI agent may take any action that involves personal data of individuals who have not consented to AI processing of their data (GDPR Art. 6).
+2. No AI agent may make or imply a legal commitment on behalf of Nordvik Group without explicit authorisation from legal counsel.
+3. All AI agent actions must be logged and auditable.
+4. No AI agent may take an action that violates Norwegian law.</div>
+        </div>
+        <div class="pe-section">
+          <span class="pe-layer">Layer 2 — Organisational standards (updatable by governance owner)</span>
+          <div class="pe-rules">
+1. Auto-approve threshold: no AI agent may autonomously process payments above €500 without human approval.
+2. External communications: no AI agent may communicate with external parties without operator pre-approval.
+3. Data retention: AI agents may not retain personally identifiable data beyond 90 days without explicit data governance approval.
+4. Audit: all agents must produce audit-ready logs (M22 standard).</div>
+        </div>
+        <div class="pe-section">
+          <span class="pe-layer">Layer 3 — Deployment configuration (set per agent by deploying operator)</span>
+          <div class="pe-rules">
+Invoice Agent v1:
+- Tool allowlist: invoice_reader, po_matcher, threshold_check, payment_processor, audit_logger
+- Data scope: /invoices/today/ only
+- Auto-approve: invoices &lt;€500 with matched PO
+- Escalation: invoices ≥€500 → finance manager; no PO → AP team
+- Retry: max 2 retries on read operations; no retry on payment timeout without verify</div>
+        </div>
+        <div class="pe-section">
+          <span class="pe-layer">Layer 4 — Task instructions (set per run)</span>
+          <div class="pe-rules">
+"Process today's invoices. Flag any from first-time suppliers for additional review regardless of amount."</div>
+        </div>
+      </div>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Next: handling policy conflicts</span>
+      <button class="btn btn-primary" onclick="goPhase(3)">Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 3 -->
+<div class="phase" data-phase="3">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 4 of 6</span><span class="sh-title">Handling policy conflicts</span></div>
+      <span class="sh-time">3 min</span>
+    </div>
+    <div class="card">
+      <h3>Conflicts within a policy architecture</h3>
+      <p>A well-designed policy architecture minimises conflicts between layers. But conflicts still arise — usually when a task brief pushes against a deployment configuration, or when organisational standards change without updating deployment configurations. The resolution rule is always: higher layer wins.</p>
+    </div>
+    <div class="conflicts">
+      <div class="cf-card">
+        <div class="cf-conflict">Task brief (Layer 4) says "process all invoices urgently, skip the PO check for speed." Deployment config (Layer 3) requires PO match before payment.</div>
+        <div class="cf-resolution">Layer 3 wins. The task brief cannot override the deployment configuration. The PO check is a Layer 3 rule set by the deploying operator — a Layer 4 task instruction cannot remove it. The agent must apply the PO check regardless of the urgency instruction.</div>
+      </div>
+      <div class="cf-card">
+        <div class="cf-conflict">Deployment config (Layer 3) allows payment up to €1,000 auto-approve. Organisational standard (Layer 2) sets the ceiling at €500.</div>
+        <div class="cf-resolution">Layer 2 wins. A deployment configuration that exceeds the organisational standard is non-compliant. The operator who set the €1,000 threshold exceeded their authority. The effective limit is €500 until the governance owner updates Layer 2.</div>
+      </div>
+      <div class="cf-card">
+        <div class="cf-conflict">Organisational standard (Layer 2) requires all external communications to be pre-approved. A user asks the agent to "send a quick confirmation email to the supplier."</div>
+        <div class="cf-resolution">Layer 2 wins. External communication pre-approval is an organisational standard. A user request (Layer 4 equivalent) cannot override it. The agent must not send the email — it should explain the constraint and route the request to the operator for pre-approval.</div>
+      </div>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Next: practice</span>
+      <button class="btn btn-primary" onclick="goPhase(4)">Practice →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 4 -->
+<div class="phase" data-phase="4">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 5 of 6</span><span class="sh-title">Practice</span></div>
+      <span class="sh-time">3 min</span>
+    </div>
+    <div class="card">
+      <p class="quiz-context">Nordvik Group's governance owner updates the organisational standard (Layer 2) to change the auto-approve threshold from €500 to €250. This happens because of a recent audit finding. Three invoice agents are currently deployed with Layer 3 configurations that each specify €500 auto-approve. Nobody updates the Layer 3 configurations after the Layer 2 change.</p>
+      <div class="quiz-q">What is the governance situation, and what must happen?</div>
+      <div class="opt-list" id="practiceOpts">
+        <div class="opt" data-correct="false" onclick="pickQ('practice',this)"><div class="opt-letter">A</div><div class="opt-text">Nothing needs to change — Layer 3 configurations are set by the deploying operator and are independent of Layer 2 changes.</div></div>
+        <div class="opt" data-correct="true" onclick="pickQ('practice',this)"><div class="opt-letter">B</div><div class="opt-text">The three Layer 3 configurations are now non-compliant with the updated Layer 2 standard. Layer 2 wins over Layer 3 — the effective threshold is now €250 regardless of what the Layer 3 configs say. All three deployment configurations must be updated to reflect the new €250 ceiling. Operators cannot authorise auto-approve above the Layer 2 limit.</div></div>
+        <div class="opt" data-correct="false" onclick="pickQ('practice',this)"><div class="opt-letter">C</div><div class="opt-text">The Layer 3 configurations take precedence because they were set first and remain valid until explicitly changed.</div></div>
+      </div>
+      <div class="feedback" id="practiceFeedback"></div>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Final test</span>
+      <button class="btn btn-primary" id="practiceNext" onclick="goPhase(5)" disabled>Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 5 -->
+<div class="phase" data-phase="5">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 6 of 6</span><span class="sh-title">Pass — hidden test</span></div>
+      <span class="sh-time">3 min</span>
+    </div>
+    <div class="card">
+      <p class="quiz-context">A new GDPR obligation requires that all AI-processed personal data queries be logged with the lawful basis cited. The legal team adds this to Layer 1 (absolute constraints). Three days later, two agents are found to be processing personal data queries without citing a lawful basis in the log — because their Layer 3 configurations were written before this Layer 1 addition and don't include the logging requirement.</p>
+      <div class="quiz-q">Which statement best describes the correct governance response?</div>
+      <div class="opt-list" id="passOpts">
+        <div class="opt" data-correct="false" onclick="pickQ('pass',this)"><div class="opt-letter">A</div><div class="opt-text">The two agents need to be updated when convenient — Layer 1 changes are aspirational until implemented.</div></div>
+        <div class="opt" data-correct="true" onclick="pickQ('pass',this)"><div class="opt-letter">B</div><div class="opt-text">Layer 1 (absolute constraints) takes immediate effect on all agents. The two agents are non-compliant from the moment the Layer 1 constraint was added. They must be suspended or updated immediately — not at convenience. A policy architecture's value is that Layer 1 changes cascade down: every deployment configuration must comply, and any that don't are non-compliant from the Layer 1 change date.</div></div>
+        <div class="opt" data-correct="false" onclick="pickQ('pass',this)"><div class="opt-letter">C</div><div class="opt-text">The agents can continue operating while their Layer 3 configs are updated — the Layer 1 change only applies to new deployments.</div></div>
+      </div>
+      <div class="feedback" id="passFeedback"></div>
+    </div>
+    <div class="pass-screen" id="passScreen">
+      <div class="ps-glyph">✦</div>
+      <div class="ps-title">Module 27 complete</div>
+      <p class="ps-sub">You can design a four-layer policy architecture, apply the layer hierarchy to resolve conflicts, explain why Layer 2 changes cascade to Layer 3 configurations, and understand that Layer 1 changes take immediate effect across all deployments.</p>
+      <button class="ps-next" onclick="location.href=`AGNUS - Academy M28 - Instruction Workspace.html`">Continue to →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const TOTAL=6;
+function renderTrack(a){document.getElementById('phaseTrack').innerHTML=Array.from({length:TOTAL},(_,i)=>`<div class="ph ${i<a?'done':i===a?'active':''}"></div>`).join('');}
+function goPhase(n){document.querySelectorAll('.phase').forEach(p=>p.classList.remove('active'));document.querySelector(`[data-phase="${n}"]`).classList.add('active');renderTrack(n);window.scrollTo({top:0,behavior:'smooth'});}
+renderTrack(0);
+function pickQ(which,el){
+  document.querySelectorAll(`#${which}Opts .opt`).forEach(o=>{o.onclick=null;o.style.cursor='default';});
+  const correct=el.dataset.correct==='true';el.classList.add(correct?'correct':'wrong');
+  const fb=document.getElementById(`${which}Feedback`);fb.className='feedback '+(correct?'pass':'fail');
+  if(which==='practice'){
+    fb.innerHTML=correct?'<strong>Correct.</strong> Layer 2 wins over Layer 3. The organisational standard (€250) is now the ceiling. The three deployment configurations set a limit that exceeds this ceiling — they are non-compliant with the updated Layer 2. All three must be updated. Until then, the effective threshold is €250 even if the config says €500 — because the policy architecture\'s layer hierarchy means Layer 2 always bounds Layer 3.':'<strong>Not quite.</strong> Think about which layer is higher in the hierarchy. If Layer 2 sets the ceiling, what does that mean for Layer 3 configurations that set a higher limit?';
+    document.getElementById('practiceNext').disabled=false;
+  } else {
+    fb.innerHTML=correct?'<strong>Correct — M27 complete.</strong> Layer 1 constraints are absolute and immediate. They don\'t grandfather existing deployments — they apply to all agents from the moment they\'re established. The two agents became non-compliant the moment Layer 1 was updated. The correct governance response is immediate suspension or update — not scheduled maintenance. This is the operational consequence of Layer 1 being the highest authority in the architecture.':'<strong>Not quite.</strong> Think about what "absolute constraint" in Layer 1 means operationally. If Layer 1 takes precedence over everything else, when does a Layer 1 change take effect?';
+    if(correct){setTimeout(()=>{document.getElementById('passScreen').style.display='block';renderTrack(TOTAL);},700);}
+  }
+}
+</script>
+</body>
+</html>

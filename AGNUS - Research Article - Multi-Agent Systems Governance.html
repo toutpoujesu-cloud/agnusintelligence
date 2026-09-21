@@ -1,0 +1,120 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Multi-Agent Systems: Governance Architecture for Networked AI — AGNUS Research</title>
+<meta name="description" content="When multiple AI agents interact — delegating tasks, exchanging outputs, and acting in coordination — the governance challenge multiplies. Accountability gaps widen at every handoff. This article sets out the governance architecture for multi-agent systems." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>a,a:visited{color:inherit}
+.prose h3{font-family:var(--font-sans);font-weight:700;font-size:19px;letter-spacing:-.018em;margin:32px 0 14px}
+.pillar-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:var(--gold-pale,#FEF9ED);color:var(--gold-deep,#8B6914);border:1px solid var(--gold-line,#E8D9A0);border-radius:4px;padding:3px 8px;margin-bottom:16px}
+.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
+.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
+.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s}
+.rsub a:hover{color:var(--ink);background:var(--line-soft,rgba(0,0,0,.04))}
+.arch-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:13px}
+.arch-table th{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);font-weight:600;text-align:left;padding:10px 14px;border-bottom:2px solid var(--line);background:var(--paper-warm,#F7F5F0)}
+.arch-table td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+.arch-table tr:last-child td{border-bottom:none}
+</style>
+</head>
+<body>
+<div class="art-progress"><i id="progBar"></i></div>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Marketplace.html">Marketplace</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+      <a href="AGNUS - Business.html">Business</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+      <button class="hamburger" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="rsub"><div class="rsub-inner">
+  <a href="AGNUS - Research.html">Research Home</a>
+  <a href="AGNUS - Research Topic.html">AI Agents</a>
+  <a href="AGNUS - Research Sources.html">Sources</a>
+</div></div>
+
+<header class="art-head">
+  <div class="container">
+    <div class="pillar-tag">AI Agents</div>
+    <h1>Multi-Agent Systems: Governance Architecture for Networked AI</h1>
+    <p class="art-abstract">When multiple AI agents interact — delegating tasks, exchanging outputs, and acting in coordination — the governance challenge multiplies. Accountability gaps widen at every handoff. The same action can produce different outcomes depending on which agent in the network executed which step. This article sets out the governance architecture required for multi-agent systems to remain controlled, auditable, and accountable.</p>
+    <div data-rc="articleMeta" data-rc-arg="AR-000511"></div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="art-shell">
+    <aside class="art-toc"><div class="toc-h">Contents</div><ol id="tocList"></ol></aside>
+    <article class="prose" id="prose">
+
+      <h2 id="s-what">What distinguishes multi-agent from single-agent governance</h2>
+      <p>In a single-agent system, the governance challenge is to understand what one agent is doing and to control its behaviour. The accountability chain is direct: the agent took an action, and the organisation that deployed it is responsible for that action. Audit trails, capability restrictions, and human oversight checkpoints can all be designed around a single actor.</p>
+      <p>In a multi-agent system, the governance challenge is structurally different. An orchestrator agent receives a goal and delegates sub-tasks to specialist worker agents. Each worker agent may call tools, access data, and produce outputs that the orchestrator uses as inputs to its next decision. A harmful outcome may result from: the orchestrator's delegation decision; a worker agent's misinterpretation of its task; a third agent's failure to flag an out-of-scope request; or an emergent interaction between agents that none of them individually caused. Attributing accountability requires understanding the full interaction trace — not just the final action.</p>
+
+      <h2 id="s-roles">Agent roles in a network</h2>
+      <table class="arch-table">
+        <thead><tr><th>Role</th><th>Function</th><th>Governance priority</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Orchestrator</strong></td><td>Receives the overall goal. Decomposes it into sub-tasks. Delegates to worker agents. Synthesises their outputs. May take final actions.</td><td>Delegation authority limits. What sub-tasks can the orchestrator delegate? To which agents? Can it create new agents at runtime? Scope creep prevention.</td></tr>
+          <tr><td><strong>Worker / Specialist</strong></td><td>Receives sub-tasks from the orchestrator. Executes specific capabilities (web research, code execution, document analysis, external API calls). Returns results.</td><td>Capability isolation. Each worker should have only the capabilities necessary for its specific function. A research agent should not have write access. A drafting agent should not have send capability.</td></tr>
+          <tr><td><strong>Validator / Reviewer</strong></td><td>Evaluates outputs from other agents before they are used or acted on. May flag issues, request revision, or escalate to human review.</td><td>Independence and scope. The validator must be architecturally independent from the agents it reviews. Its escalation triggers and thresholds must be defined and tested.</td></tr>
+          <tr><td><strong>Executor</strong></td><td>Takes real-world actions — sending emails, making API calls, writing to files, executing code. The only agent that interacts with external systems.</td><td>Approval gates. The executor is where the multi-agent system touches the real world. Human approval requirements should be concentrated here. Capability limits should be strictest at this layer.</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="s-handoffs">Governing handoffs between agents</h2>
+      <p>The handoff — the point at which one agent passes a result to another — is the most governance-critical moment in a multi-agent system. At each handoff, four questions must be answerable from the audit trail:</p>
+      <p><strong>What was passed?</strong> The exact output passed from Agent A to Agent B must be logged. Not a summary — the actual content. This is necessary for post-incident reconstruction.</p>
+      <p><strong>Was it within scope?</strong> The receiving agent must validate that what it received is within its defined task scope. A worker agent that accepts any input from the orchestrator without scope validation is a governance failure waiting to happen.</p>
+      <p><strong>Was it flagged?</strong> Did the receiving agent identify any anomaly, uncertainty, or out-of-scope content in what it received? Governance design must create a pathway for agents to flag concerns — not just complete tasks.</p>
+      <p><strong>Who decided what happened next?</strong> Was the handoff automated or did a human approve it? For consequential handoffs — particularly those involving external actions — human approval at the handoff point is a meaningful oversight mechanism.</p>
+
+      <h2 id="s-loops">Preventing feedback loops and emergent behaviour</h2>
+      <p>Multi-agent systems are capable of generating emergent behaviour — outcomes that were not designed and cannot be predicted from the behaviour of individual agents. Feedback loops, in particular, can cause systems to escalate towards unintended states. An orchestrator that interprets a worker's failed output as a signal to retry with greater resource allocation can loop in ways that consume significant compute or generate increasingly harmful outputs before any human intervention occurs.</p>
+      <p>Governance controls for emergent behaviour include: step limits (hard limits on the number of cycles a multi-agent system can complete before requiring human review); output comparison (comparing outputs across cycles to detect runaway escalation); cost ceilings (hard limits on compute or API cost per task execution); and human checkpoints triggered by anomaly detection rather than schedule.</p>
+
+      <h2 id="s-model">The Model Context Protocol and agent-to-agent governance</h2>
+      <p>Anthropic's Model Context Protocol (MCP) is an emerging standard for how agents communicate with external tools and with each other. MCP defines a structured interface for tool calls, resource access, and inter-agent messaging. From a governance perspective, MCP-compliant multi-agent systems are more auditable — the protocol produces structured logs of agent-to-agent communication that can be consumed by governance monitoring systems. The emergence of standards like MCP is a positive development for multi-agent governance, but it does not eliminate the need for the governance design described in this article — it makes that design easier to implement.</p>
+
+      <h2 id="s-minimum">Minimum viable governance for multi-agent deployment</h2>
+      <p>Before deploying any multi-agent system in a consequential context, the following governance artefacts must exist: (1) a system-level architecture diagram showing agent roles, handoff protocols, and escalation pathways; (2) a capability matrix defining exactly what each agent can and cannot do; (3) a logging specification covering what is recorded at each handoff; (4) a human approval protocol specifying which handoffs or actions require human review before execution; and (5) a tested incident response procedure for multi-agent system failures.</p>
+
+      <div id="sources" class="art-sources">
+        <h2>Sources</h2>
+        <ul>
+          <li>Anthropic — Model Context Protocol specification, 2024</li>
+          <li>EU AI Act (Regulation (EU) 2024/1689) — Article 14: Human Oversight</li>
+          <li>NIST AI RMF — Manage function: AI system monitoring</li>
+          <li>AGNUS Research — AI Agents · AR-000511</li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</div>
+<script src="agnus.js"></script>
+</body>
+</html>

@@ -1,0 +1,790 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Academy — Healthcare AI Governance Simulation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#F4F2EE;--surface:#FFFFFF;--surface-2:#EEF0F5;--surface-3:#E6E8EF;
+  --border:#D8DAE2;--border-2:#C8CAD4;
+  --ink:#0F1623;--ink-2:#3D4558;--ink-3:#7A8099;
+  --navy:#0A1628;--navy-2:#112040;--navy-3:#1A3260;
+  --pass:#0F6E3A;--pass-bg:rgba(15,110,58,.09);--pass-border:rgba(15,110,58,.22);
+  --warn:#C4760A;--warn-bg:rgba(196,118,10,.09);--warn-border:rgba(196,118,10,.22);
+  --danger:#B03020;--danger-bg:rgba(176,48,32,.09);--danger-border:rgba(176,48,32,.22);
+  --accent:#0E4472;--accent-light:#1668C4;--accent-bg:rgba(14,68,114,.09);--accent-border:rgba(14,68,114,.22);
+  --mono:'DM Mono',monospace;--sans:'DM Sans',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;font-family:var(--sans);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+.rail{background:var(--navy);color:#fff;height:56px;display:flex;align-items:center;padding:0 28px;gap:16px;position:sticky;top:0;z-index:200;box-shadow:0 1px 0 rgba(255,255,255,.06)}
+.rail-brand{font-weight:800;font-size:15px;letter-spacing:-.01em}
+.rail-sep{width:1px;height:22px;background:rgba(255,255,255,.12);flex-shrink:0}
+.rail-track{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38)}
+.rail-title{font-size:13.5px;font-weight:600;color:rgba(255,255,255,.88)}
+.rail-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.phase-dots{display:flex;gap:6px}
+.pd{width:28px;height:4px;border-radius:2px;background:rgba(255,255,255,.16);transition:background .4s}
+.pd.done{background:var(--accent-light)}
+.pd.active{background:#fff}
+.rail-btn{font-family:var(--sans);font-size:12px;font-weight:600;padding:7px 16px;border-radius:8px;border:1px solid rgba(255,255,255,.16);color:#fff;background:rgba(255,255,255,.07);cursor:pointer}
+.rail-btn:hover{background:rgba(255,255,255,.14)}
+.phase{display:none}.phase.active{display:block}
+.hero-band{background:linear-gradient(135deg,#061830 0%,#0E3055 50%,#0A2A4A 100%);padding:52px 0 48px;position:relative;overflow:hidden}
+.hero-band::after{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.022'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");pointer-events:none}
+.hero-inner{max-width:960px;margin:0 auto;padding:0 32px;position:relative;z-index:1}
+.hero-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(100,180,255,.8);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.hero-eyebrow::before{content:'';display:inline-block;width:24px;height:1px;background:rgba(100,180,255,.6)}
+.hero-band h1{font-size:clamp(26px,3.5vw,40px);font-weight:800;letter-spacing:-.03em;color:#fff;line-height:1.15;margin-bottom:14px;max-width:22ch}
+.hero-band .sub{font-size:16px;color:rgba(255,255,255,.65);line-height:1.65;max-width:54ch;margin-bottom:28px}
+.hero-meta{display:flex;gap:20px;flex-wrap:wrap}
+.hm-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:8px 14px;font-size:12.5px;color:rgba(255,255,255,.7)}
+.hm-pill strong{color:#fff}
+.page-body{max-width:960px;margin:0 auto;padding:36px 32px 100px}
+.section{margin-bottom:32px}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid var(--border)}
+.section-head h2{font-size:20px;font-weight:800;letter-spacing:-.02em;color:var(--navy)}
+.section-head .sh-sub{font-size:13px;color:var(--ink-3);margin-top:3px}
+.scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+@media(max-width:680px){.scenario-grid{grid-template-columns:1fr}}
+.sc-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px 24px}
+.sc-card .sc-label{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-light);margin-bottom:8px;font-weight:600}
+.sc-card h3{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.sc-card p{font-size:13.5px;color:var(--ink-2);line-height:1.65}
+.rules-table{width:100%;border-collapse:collapse;background:var(--surface);border-radius:14px;overflow:hidden;border:1px solid var(--border)}
+.rules-table th{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);background:var(--surface-2);padding:12px 16px;text-align:left;font-weight:600;border-bottom:1px solid var(--border)}
+.rules-table td{padding:14px 16px;font-size:13.5px;border-bottom:1px solid var(--border);color:var(--ink-2);vertical-align:top}
+.rules-table tr:last-child td{border-bottom:none}
+.rule-badge{display:inline-block;font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;border-radius:5px;padding:2px 7px}
+.rb-auto{background:var(--pass-bg);color:var(--pass);border:1px solid var(--pass-border)}
+.rb-nurse{background:var(--accent-bg);color:var(--accent-light);border:1px solid var(--accent-border)}
+.rb-doctor{background:var(--warn-bg);color:var(--warn);border:1px solid var(--warn-border)}
+.rb-block{background:var(--danger-bg);color:var(--danger);border:1px solid var(--danger-border)}
+.tools-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:20px}
+@media(max-width:700px){.tools-grid{grid-template-columns:1fr 1fr}}
+.tool-chip{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 12px;text-align:center}
+.tool-chip .tc-icon{display:flex;align-items:center;justify-content:center;height:28px;color:var(--ink-2);margin-bottom:7px}
+.tool-chip .tc-name{font-size:11.5px;font-weight:700;color:var(--ink);line-height:1.3}
+.tool-chip .tc-desc{font-size:10px;color:var(--ink-3);margin-top:3px;line-height:1.4}
+.config-intro{background:var(--navy);border-radius:14px;padding:24px 28px;margin-bottom:24px;color:#fff}
+.config-intro h3{font-size:18px;font-weight:800;margin-bottom:8px}
+.config-intro p{font-size:14px;color:rgba(255,255,255,.7);line-height:1.65;max-width:60ch}
+.config-tool{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:14px;transition:box-shadow .2s}
+.config-tool:hover{box-shadow:0 4px 20px rgba(0,0,0,.07)}
+.ct-head{display:grid;grid-template-columns:52px 1fr;gap:0;border-bottom:1px solid var(--border)}
+.ct-icon-wrap{display:flex;align-items:center;justify-content:center;color:var(--ink-2);background:var(--surface-2);border-right:1px solid var(--border);padding:20px}
+.ct-info{padding:18px 20px}
+.ct-info h4{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.ct-info .ct-sub{font-size:13px;color:var(--ink-3);line-height:1.5}
+.ct-body{padding:20px 24px}
+.ct-body .perm-label{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:12px}
+.perm-selector{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px}
+@media(max-width:540px){.perm-selector{grid-template-columns:1fr 1fr}}
+.perm-opt{border:1.5px solid var(--border);border-radius:10px;padding:12px 10px;cursor:pointer;text-align:center;transition:all .15s}
+.perm-opt:hover{border-color:var(--accent-light);background:var(--accent-bg)}
+.perm-opt.selected{border-color:var(--accent-light);background:var(--accent-bg)}
+.perm-opt .po-badge{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px;display:block}
+.perm-opt .po-desc{font-size:11px;color:var(--ink-3);line-height:1.4}
+.perm-opt.selected .po-badge{color:var(--accent-light)}
+.perm-opt.selected .po-desc{color:var(--ink-2)}
+.log-toggle{display:flex;align-items:center;gap:14px;padding:14px 16px;background:var(--surface-2);border-radius:10px}
+.log-toggle label{font-size:13px;font-weight:600;color:var(--ink);flex:1}
+.toggle-sw{position:relative;width:44px;height:24px;cursor:pointer;flex-shrink:0}
+.toggle-sw input{opacity:0;width:0;height:0}
+.toggle-track{position:absolute;inset:0;background:var(--border-2);border-radius:12px;transition:background .25s}
+.toggle-knob{position:absolute;width:18px;height:18px;background:#fff;border-radius:50%;top:3px;left:3px;transition:transform .25s;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.toggle-sw input:checked+.toggle-track{background:var(--pass)}
+.toggle-sw input:checked~.toggle-knob{transform:translateX(20px)}
+.event-card{background:var(--surface);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:16px;transition:border-color .3s}
+.event-card.running{border-color:var(--accent-light)}
+.event-card.pass{border-color:var(--pass)}
+.event-card.fail{border-color:var(--danger)}
+.event-card.warn{border-color:var(--warn)}
+.ec-head{display:grid;grid-template-columns:52px 1fr auto;gap:0;border-bottom:1px solid var(--border)}
+.ec-num{display:flex;align-items:center;justify-content:center;background:var(--surface-2);border-right:1px solid var(--border);font-family:var(--mono);font-size:13px;font-weight:700;color:var(--ink-3)}
+.ec-desc{padding:16px 18px}
+.ed-label{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px}
+.ed-title{font-size:14.5px;font-weight:700;color:var(--ink)}
+.ed-detail{font-size:12.5px;color:var(--ink-3);margin-top:3px}
+.ec-status{display:flex;align-items:center;padding:16px 18px}
+.status-pill{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:6px;padding:5px 10px}
+.sp-pending{background:var(--surface-2);color:var(--ink-3)}
+.sp-running{background:var(--accent-bg);color:var(--accent-light)}
+.sp-pass{background:var(--pass-bg);color:var(--pass);border:1px solid var(--pass-border)}
+.sp-fail{background:var(--danger-bg);color:var(--danger);border:1px solid var(--danger-border)}
+.sp-warn{background:var(--warn-bg);color:var(--warn);border:1px solid var(--warn-border)}
+.ec-body{padding:18px 20px;background:var(--surface-2);display:none;border-top:1px solid var(--border)}
+.event-card.running .ec-body,.event-card.pass .ec-body,.event-card.fail .ec-body,.event-card.warn .ec-body{display:block}
+.ec-trace{font-family:var(--mono);font-size:12px;line-height:1.8;color:var(--ink-2)}
+.tr-line{display:flex;gap:10px;align-items:baseline}
+.tr-time{color:var(--ink-3);flex-shrink:0;width:60px}
+.tr-ok{color:var(--pass)}.tr-err{color:var(--danger)}.tr-warn{color:var(--warn)}.tr-info{color:var(--accent-light)}
+.score-hero{background:linear-gradient(135deg,#061830,#0E3055);border-radius:20px;padding:40px;margin-bottom:28px;color:#fff;text-align:center}
+.sh-number{font-family:var(--mono);font-size:80px;font-weight:700;line-height:1;letter-spacing:-.04em;margin-bottom:10px}
+.sh-number.perfect{color:#93C5FD}.sh-number.good{color:#FBD66B}.sh-number.fail{color:#FCA5A5}
+.sh-label{font-size:15px;color:rgba(255,255,255,.65);margin-bottom:4px}
+.sh-verdict{font-size:20px;font-weight:800;color:#fff;letter-spacing:-.015em}
+.score-breakdown{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px}
+@media(max-width:600px){.score-breakdown{grid-template-columns:1fr}}
+.sb-card{background:var(--surface);border-radius:14px;padding:20px;border:1.5px solid var(--border)}
+.sb-card.pass-card{border-color:var(--pass-border);background:var(--pass-bg)}
+.sb-card.fail-card{border-color:var(--danger-border);background:var(--danger-bg)}
+.sb-card.warn-card{border-color:var(--warn-border);background:var(--warn-bg)}
+.sbc-label{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px}
+.sbc-event{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.sbc-verdict{font-size:13px;line-height:1.6;font-weight:600}
+.sbc-explain{font-size:12.5px;color:var(--ink-2);margin-top:8px;line-height:1.6}
+.sb-card.pass-card .sbc-verdict{color:var(--pass)}
+.sb-card.fail-card .sbc-verdict{color:var(--danger)}
+.sb-card.warn-card .sbc-verdict{color:var(--warn)}
+.cert{background:var(--surface);border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-bottom:28px}
+.cert-top{background:linear-gradient(135deg,#061830,#0E3055);padding:48px;text-align:center;position:relative}
+.cert-top::before{content:'';position:absolute;top:16px;left:16px;right:16px;bottom:16px;border:1px solid rgba(255,255,255,.1);border-radius:12px;pointer-events:none}
+.cert-badge{width:64px;height:64px;background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.cert-top h2{font-size:13px;font-family:var(--mono);letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:12px}
+.cert-top h3{font-size:clamp(22px,3vw,32px);font-weight:800;color:#fff;letter-spacing:-.025em;margin-bottom:8px}
+.cert-top .cert-sub{font-size:15px;color:rgba(255,255,255,.6)}
+.cert-body{padding:32px 48px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px;border-top:1px solid var(--border)}
+@media(max-width:600px){.cert-body{grid-template-columns:1fr;padding:24px}}
+.cert-item .ci-label{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:5px}
+.cert-item .ci-value{font-size:14px;font-weight:700;color:var(--ink)}
+.progress-shell{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px 24px;margin-bottom:24px}
+.ps-bar{height:8px;background:var(--surface-3);border-radius:4px;overflow:hidden}
+.ps-fill{height:8px;background:var(--accent-light);border-radius:4px;transition:width .6s ease}
+.cta-row{display:flex;justify-content:space-between;align-items:center;margin-top:32px;padding-top:24px;border-top:1px solid var(--border)}
+.cta-hint{font-size:13px;color:var(--ink-3)}
+.btn{font-family:var(--sans);font-weight:700;font-size:14.5px;padding:14px 32px;border-radius:12px;border:none;cursor:pointer;transition:all .2s;letter-spacing:-.01em}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-light);transform:translateY(-1px);box-shadow:0 6px 20px rgba(14,68,114,.3)}
+.btn-primary:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
+.btn-ghost{background:transparent;color:var(--ink-2);border:1px solid var(--border-2)}
+.btn-ghost:hover{background:var(--surface-2)}
+.callout{border-radius:12px;padding:16px 20px;margin:16px 0;font-size:13.5px;line-height:1.68;display:flex;gap:12px;align-items:flex-start}
+.callout.info{background:var(--accent-bg);border:1px solid var(--accent-border)}
+.callout.warn{background:var(--warn-bg);border:1px solid var(--warn-border)}
+.callout.danger{background:var(--danger-bg);border:1px solid var(--danger-border)}
+.callout-icon{flex-shrink:0;margin-top:1px}
+.run-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:16px;border-radius:12px;border:none;font-family:var(--sans);font-weight:700;font-size:15px;cursor:pointer;transition:all .2s;background:var(--navy);color:#fff;margin-bottom:24px}
+.run-btn:hover{background:var(--navy-2);transform:translateY(-1px);box-shadow:0 6px 20px rgba(10,22,40,.25)}
+.rb-dot{width:8px;height:8px;border-radius:50%;background:#93C5FD;animation:pulse 1.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.85)}}
+.diff-table{width:100%;border-collapse:collapse;background:var(--surface);border-radius:14px;overflow:hidden;border:1px solid var(--border);margin-bottom:20px}
+.diff-table th{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);background:var(--surface-2);padding:12px 16px;text-align:left;border-bottom:1px solid var(--border)}
+.diff-table td{padding:13px 16px;font-size:13px;border-bottom:1px solid var(--border);vertical-align:top}
+.diff-table tr:last-child td{border-bottom:none}
+.ai-class-sel{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}
+.ac-opt{border:1.5px solid var(--border);border-radius:8px;padding:10px 12px;cursor:pointer;transition:all .15s}
+.ac-opt:hover,.ac-opt.selected{border-color:var(--accent-light);background:var(--accent-bg)}
+.ac-opt .ac-badge{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:3px}
+.ac-opt.selected .ac-badge{color:var(--accent-light)}
+.ac-opt .ac-desc{font-size:11px;color:var(--ink-3)}
+</style>
+</head>
+<body>
+
+<header class="rail">
+  <span class="rail-brand">AGNUS Academy</span>
+  <span class="rail-sep"></span>
+  <span class="rail-track">Track B · Organisational Deployment</span>
+  <span class="rail-title">Healthcare AI Governance</span>
+  <div class="rail-right">
+    <div class="phase-dots" id="phaseDots"></div>
+    <button class="rail-btn" onclick="location.href='AGNUS - Academy App.html'">← Dashboard</button>
+  </div>
+</header>
+
+<!-- PHASE 0 — BRIEF -->
+<div class="phase active" data-phase="0">
+  <div class="hero-band">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Programme 4 of 5 · Healthcare</div>
+      <h1>Healthcare AI Governance</h1>
+      <p class="sub">You are the AI governance lead at Helse Vest Digital. You are deploying a patient triage support agent in a regional hospital network. In healthcare, the consequences of misconfiguration are not financial or legal — they are clinical. A patient may be harmed.</p>
+      <div class="hero-meta">
+        <span class="hm-pill"><strong>Simulation</strong> — Interactive</span>
+        <span class="hm-pill"><strong>Duration</strong> — 25–35 min</span>
+        <span class="hm-pill"><strong>On completion</strong> — Competency record issued</span>
+        <span class="hm-pill"><strong>Prerequisite</strong> — B01–B03</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-body">
+    <div class="section">
+      <div class="section-head"><div><h2>The scenario</h2><div class="sh-sub">Healthcare AI operates under the strictest obligation of all: the agent must never stand between a patient and clinical care.</div></div></div>
+      <div class="scenario-grid">
+        <div class="sc-card">
+          <div class="sc-label">The organisation</div>
+          <h3>Helse Vest Digital</h3>
+          <p>The digital health unit for Helse Vest, a Norwegian regional health trust covering Bergen, Stavanger, and surrounding areas — 22,000 staff, 14 hospitals. They are deploying a patient triage support agent in the emergency department intake process to help manage patient flow during high-demand periods.</p>
+        </div>
+        <div class="sc-card">
+          <div class="sc-label">The agent</div>
+          <h3>Triage Support Agent v1</h3>
+          <p>An AI agent that collects structured symptom information from patients at intake, applies the Norwegian Triage Scale (NTS) criteria to suggest a triage category, and routes the patient to the appropriate queue. <strong>It supports, never replaces, the triage nurse.</strong> All triage decisions are confirmed by a qualified clinician before action is taken.</p>
+        </div>
+        <div class="sc-card">
+          <div class="sc-label">The critical difference</div>
+          <h3>Clinical safety is absolute</h3>
+          <p>In finance, an error costs money. In HR, it costs time and trust. In legal, it creates liability. In healthcare, an error can cost a life. The agent's most important function is knowing what it cannot do — and ensuring a qualified human is in the loop for every clinical decision.</p>
+        </div>
+        <div class="sc-card">
+          <div class="sc-label">The regulatory context</div>
+          <h3>EU AI Act (high-risk) + MDR</h3>
+          <p>AI systems used in clinical decision support are classified as high-risk AI under the EU AI Act (Annex III, point 5b). They are also subject to the EU Medical Device Regulation if they qualify as a medical device. This agent is classified as a Clinical Decision Support tool. Human oversight (Article 14) is mandatory — the agent cannot make autonomous clinical decisions.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><div><h2>Business rules</h2><div class="sh-sub">Helse Vest's AI governance policy for the triage support agent. Clinical safety is non-negotiable.</div></div></div>
+      <table class="rules-table">
+        <thead><tr><th>Patient scenario</th><th>Condition</th><th>Required action</th><th>Who decides</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Standard intake — non-urgent</strong></td>
+            <td>Symptoms consistent with NTS Category 4 or 5 (green/blue — non-urgent, semi-urgent).</td>
+            <td>Collect structured symptom data. Suggest triage category. Route to triage nurse queue for confirmation. Agent does not assign final category.</td>
+            <td><span class="rule-badge rb-nurse">Triage nurse confirms</span></td>
+          </tr>
+          <tr>
+            <td><strong>Moderate urgency</strong></td>
+            <td>Symptoms consistent with NTS Category 3 (yellow — urgent).</td>
+            <td>Flag as urgent. Notify triage nurse immediately. Do not route to general queue. Await nurse confirmation before queue assignment.</td>
+            <td><span class="rule-badge rb-nurse">Triage nurse — immediate</span></td>
+          </tr>
+          <tr>
+            <td><strong>High urgency — potential emergency</strong></td>
+            <td>Symptoms consistent with NTS Category 1 or 2 (red/orange — immediate/very urgent).</td>
+            <td>Trigger immediate clinical alert. Do not process through normal triage flow. Alert duty doctor and charge nurse simultaneously. Patient must be seen immediately.</td>
+            <td><span class="rule-badge rb-doctor">Duty doctor — immediate</span></td>
+          </tr>
+          <tr>
+            <td><strong>Any patient</strong></td>
+            <td>Patient reports chest pain, difficulty breathing, loss of consciousness, severe bleeding, or stroke symptoms (FAST criteria).</td>
+            <td>Override all other logic. Immediate clinical alert regardless of other symptom data. These are hard-coded emergency triggers — no triage scoring applies.</td>
+            <td><span class="rule-badge rb-block">Immediate override — no scoring</span></td>
+          </tr>
+          <tr>
+            <td><strong>Any action</strong></td>
+            <td>All agent actions.</td>
+            <td>Log to the clinical information system with timestamp, patient ID (anonymised for AI log), NTS suggestion generated, and clinical confirmation received/pending.</td>
+            <td><span class="rule-badge rb-auto">Always</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="callout danger">
+        <span class="callout-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8 2L1 14h14L8 2z"/><path d="M8 7v3M8 12v.5"/></svg></span>
+        <div><strong>The agent never assigns a final triage category.</strong> It suggests and routes. Every clinical decision is confirmed by a qualified nurse or doctor. An agent that assigns a final category without clinical confirmation is operating outside its governance boundary — and outside the EU AI Act's human oversight requirement for high-risk AI.</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><div><h2>The five tools</h2></div></div>
+      <div class="tools-grid">
+        <div class="tool-chip">
+          <div class="tc-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M11 3a8 8 0 100 16A8 8 0 0011 3z"/><path d="M11 7v4l3 2"/></svg></div>
+          <div class="tc-name">Symptom Collector</div>
+          <div class="tc-desc">Gathers structured symptom information from patients at intake via guided questions.</div>
+        </div>
+        <div class="tool-chip">
+          <div class="tc-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V8l-5-5z"/><path d="M9 3v5h10M7 13h8M7 17h5"/></svg></div>
+          <div class="tc-name">NTS Scorer</div>
+          <div class="tc-desc">Applies Norwegian Triage Scale criteria to symptom data to generate a suggested triage category.</div>
+        </div>
+        <div class="tool-chip">
+          <div class="tc-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><path d="M6 1v4M10 1v4M14 1v4"/></svg></div>
+          <div class="tc-name">Clinical Alerter</div>
+          <div class="tc-desc">Sends immediate clinical alerts to the triage nurse, charge nurse, or duty doctor via the clinical information system.</div>
+        </div>
+        <div class="tool-chip">
+          <div class="tc-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M5 11l6-6 6 6M5 17l6-6 6 6"/></svg></div>
+          <div class="tc-name">Queue Router</div>
+          <div class="tc-desc">Routes patients to the appropriate clinical queue after nurse confirmation. Cannot route before confirmation.</div>
+        </div>
+        <div class="tool-chip">
+          <div class="tc-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="4" y="4" width="14" height="15" rx="2"/><path d="M8 2v4M14 2v4M8 11h6M8 14h4"/><rect x="8" y="2" width="6" height="3" rx="1"/></svg></div>
+          <div class="tc-name">Clinical Logger</div>
+          <div class="tc-desc">Writes GDPR-compliant, anonymised audit records of all agent actions to the clinical information system.</div>
+        </div>
+      </div>
+      <div class="callout warn">
+        <span class="callout-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8 2L1 14h14L8 2z"/><path d="M8 7v3M8 12v.5"/></svg></span>
+        <div><strong>Queue Router must never route autonomously.</strong> The router may only act after receiving confirmation from a qualified clinician. An autonomous queue assignment without clinical confirmation violates EU AI Act Article 14 (human oversight for high-risk AI).</div>
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <span class="cta-hint">Healthcare misconfiguration has clinical consequences. Read every rule before configuring.</span>
+      <button class="btn btn-primary" onclick="goPhase(1)">Enter Configuration Lab →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 1 — CONFIG -->
+<div class="phase" data-phase="1">
+  <div class="hero-band" style="padding:36px 0 32px">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Phase 2 of 5 · Configuration Lab</div>
+      <h1 style="font-size:clamp(22px,3vw,30px);margin-bottom:8px">Configure the triage support agent</h1>
+      <p class="sub" style="font-size:14px;margin-bottom:0">Set tool permissions and the emergency override trigger. Your configuration will be tested against five patient scenarios — including a life-threatening emergency.</p>
+    </div>
+  </div>
+
+  <div class="page-body">
+    <div class="progress-shell">
+      <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:10px">Configuration progress</div>
+      <div class="ps-bar"><div class="ps-fill" id="configProgress" style="width:0%"></div></div>
+    </div>
+
+    <div class="config-intro">
+      <h3>The human oversight principle in clinical AI</h3>
+      <p>Every tool in this agent that can affect a patient's clinical pathway must operate under human confirmation. The NTS Scorer suggests — it does not decide. The Queue Router routes only after nurse confirmation. The Clinical Alerter must be able to act immediately for emergencies. Configure accordingly — the life-threatening event in the simulation will test your emergency path directly.</p>
+    </div>
+
+    <!-- Symptom Collector -->
+    <div class="config-tool">
+      <div class="ct-head">
+        <div class="ct-icon-wrap"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M11 3a8 8 0 100 16A8 8 0 0011 3z"/><path d="M11 7v4l3 2"/></svg></div>
+        <div class="ct-info">
+          <h4>Symptom Collector</h4>
+          <div class="ct-sub">Gathers structured symptom data from patients. This is an information-gathering tool — it does not make any clinical judgment or routing decision.</div>
+        </div>
+      </div>
+      <div class="ct-body">
+        <div class="perm-label">Select permission level for Symptom Collector</div>
+        <div class="perm-selector" id="perm-collector">
+          <div class="perm-opt" data-val="none" onclick="setPerm('collector','none',this)"><span class="po-badge" style="color:var(--ink-3)">None</span><div class="po-desc">Disabled</div></div>
+          <div class="perm-opt" data-val="read" onclick="setPerm('collector','read',this)"><span class="po-badge">Read</span><div class="po-desc">Collects symptom data only</div></div>
+          <div class="perm-opt" data-val="suggest" onclick="setPerm('collector','suggest',this)"><span class="po-badge">Suggest</span><div class="po-desc">Collects and proposes next question</div></div>
+          <div class="perm-opt" data-val="act" onclick="setPerm('collector','act',this)"><span class="po-badge">Act</span><div class="po-desc">Collects autonomously and proceeds</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NTS Scorer -->
+    <div class="config-tool">
+      <div class="ct-head">
+        <div class="ct-icon-wrap"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V8l-5-5z"/><path d="M9 3v5h10M7 13h8M7 17h5"/></svg></div>
+        <div class="ct-info">
+          <h4>NTS Scorer</h4>
+          <div class="ct-sub">Applies Norwegian Triage Scale criteria to generate a <strong>suggested</strong> triage category. Output must always be labelled as a suggestion for clinical confirmation — never as a final decision.</div>
+        </div>
+      </div>
+      <div class="ct-body">
+        <div class="perm-label">Select permission level for NTS Scorer</div>
+        <div class="perm-selector" id="perm-scorer">
+          <div class="perm-opt" data-val="none" onclick="setPerm('scorer','none',this)"><span class="po-badge" style="color:var(--ink-3)">None</span><div class="po-desc">Disabled</div></div>
+          <div class="perm-opt" data-val="read" onclick="setPerm('scorer','read',this)"><span class="po-badge">Read</span><div class="po-desc">Applies criteria — no output generated</div></div>
+          <div class="perm-opt" data-val="suggest" onclick="setPerm('scorer','suggest',this)"><span class="po-badge">Suggest</span><div class="po-desc">Generates suggested category for nurse confirmation</div></div>
+          <div class="perm-opt" data-val="act" onclick="setPerm('scorer','act',this)"><span class="po-badge">Act</span><div class="po-desc">Assigns final triage category autonomously</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Clinical Alerter -->
+    <div class="config-tool">
+      <div class="ct-head">
+        <div class="ct-icon-wrap"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><path d="M6 1v4M10 1v4M14 1v4"/></svg></div>
+        <div class="ct-info">
+          <h4>Clinical Alerter</h4>
+          <div class="ct-sub">Sends immediate clinical alerts to the triage nurse, charge nurse, or duty doctor. For emergency triggers, this tool <strong>must</strong> be able to act immediately — a Suggest mode would delay life-threatening emergency alerts.</div>
+        </div>
+      </div>
+      <div class="ct-body">
+        <div class="perm-label">Select permission level for Clinical Alerter</div>
+        <div class="perm-selector" id="perm-alerter">
+          <div class="perm-opt" data-val="none" onclick="setPerm('alerter','none',this)"><span class="po-badge" style="color:var(--ink-3)">None</span><div class="po-desc">Disabled — no alerts possible</div></div>
+          <div class="perm-opt" data-val="read" onclick="setPerm('alerter','read',this)"><span class="po-badge">Read</span><div class="po-desc">Can view alert history only</div></div>
+          <div class="perm-opt" data-val="suggest" onclick="setPerm('alerter','suggest',this)"><span class="po-badge">Suggest</span><div class="po-desc">Drafts alerts for human review before sending</div></div>
+          <div class="perm-opt" data-val="act" onclick="setPerm('alerter','act',this)"><span class="po-badge">Act</span><div class="po-desc">Sends alerts immediately — required for emergency triggers</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Queue Router -->
+    <div class="config-tool">
+      <div class="ct-head">
+        <div class="ct-icon-wrap"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M5 11l6-6 6 6M5 17l6-6 6 6"/></svg></div>
+        <div class="ct-info">
+          <h4>Queue Router</h4>
+          <div class="ct-sub">Routes patients to the appropriate clinical queue. <strong style="color:var(--danger)">Must never route autonomously — only after clinical confirmation.</strong> An autonomous routing decision bypasses human oversight and violates the EU AI Act Article 14 requirement.</div>
+        </div>
+      </div>
+      <div class="ct-body">
+        <div class="perm-label">Select permission level for Queue Router</div>
+        <div class="perm-selector" id="perm-router">
+          <div class="perm-opt" data-val="none" onclick="setPerm('router','none',this)"><span class="po-badge" style="color:var(--ink-3)">None</span><div class="po-desc">Disabled — no routing possible</div></div>
+          <div class="perm-opt" data-val="read" onclick="setPerm('router','read',this)"><span class="po-badge">Read</span><div class="po-desc">View queue status only</div></div>
+          <div class="perm-opt" data-val="suggest" onclick="setPerm('router','suggest',this)"><span class="po-badge">Suggest</span><div class="po-desc">Proposes routing — routes only after clinician confirmation</div></div>
+          <div class="perm-opt" data-val="act" onclick="setPerm('router','act',this)"><span class="po-badge">Act</span><div class="po-desc">Routes autonomously without clinical confirmation</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Clinical Logger -->
+    <div class="config-tool">
+      <div class="ct-head">
+        <div class="ct-icon-wrap"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="4" y="4" width="14" height="15" rx="2"/><path d="M8 2v4M14 2v4M8 11h6M8 14h4"/><rect x="8" y="2" width="6" height="3" rx="1"/></svg></div>
+        <div class="ct-info">
+          <h4>Clinical Logger</h4>
+          <div class="ct-sub">Writes GDPR-compliant, anonymised audit records to the clinical information system. Required under both GDPR (special category health data) and the EU AI Act (high-risk AI post-market monitoring).</div>
+        </div>
+      </div>
+      <div class="ct-body">
+        <div class="perm-label">Clinical audit logging</div>
+        <div class="log-toggle">
+          <label>Enable GDPR-compliant clinical audit logging for all agent actions</label>
+          <label class="toggle-sw">
+            <input type="checkbox" id="logging-enabled" onchange="updateProgress()" checked/>
+            <span class="toggle-track"></span>
+            <span class="toggle-knob"></span>
+          </label>
+        </div>
+        <div class="callout info" style="margin-top:12px;margin-bottom:0">
+          <span class="callout-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M8 7v5M8 5.5v.5"/></svg></span>
+          <div>High-risk AI under the EU AI Act requires post-market monitoring logs (Article 72). Health data is GDPR Article 9 special category data. Logging is mandatory on both grounds — disabling it creates a dual compliance failure.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <span class="cta-hint" id="configHint">Complete all tool configurations to proceed.</span>
+      <div style="display:flex;gap:10px">
+        <button class="btn btn-ghost" onclick="goPhase(0)">← Review brief</button>
+        <button class="btn btn-primary" id="runSimBtn" onclick="goPhase(2)" disabled>Run Simulation →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 2 — SIMULATION -->
+<div class="phase" data-phase="2">
+  <div class="hero-band" style="padding:36px 0 32px">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Phase 3 of 5 · Incident Simulation</div>
+      <h1 style="font-size:clamp(22px,3vw,30px);margin-bottom:8px">Five patients arriving at intake</h1>
+      <p class="sub" style="font-size:14px;margin-bottom:0">The agent is live in the emergency department. Five patients are presenting. One is a life-threatening emergency. Watch exactly what your configuration does.</p>
+    </div>
+  </div>
+
+  <div class="page-body">
+    <button class="run-btn" id="runBtn" onclick="runSimulation()">
+      <span class="rb-dot"></span>
+      Start simulation — process 5 patients
+    </button>
+
+    <div id="events-container">
+      <div class="event-card" id="ev-1">
+        <div class="ec-head">
+          <div class="ec-num">01</div>
+          <div class="ec-desc">
+            <div class="ed-label">Patient: Adult male, 34 · Presenting complaint: ankle injury</div>
+            <div class="ed-title">Twisted ankle, walking with difficulty, no swelling, no loss of sensation</div>
+            <div class="ed-detail">NTS assessment: Category 4 (green) — non-urgent</div>
+          </div>
+          <div class="ec-status"><span class="status-pill sp-pending" id="ev1-status">Pending</span></div>
+        </div>
+        <div class="ec-body" id="ev1-trace"></div>
+      </div>
+
+      <div class="event-card" id="ev-2">
+        <div class="ec-head">
+          <div class="ec-num">02</div>
+          <div class="ec-desc">
+            <div class="ed-label">Patient: Female, 67 · Presenting complaint: abdominal pain</div>
+            <div class="ed-title">Severe abdominal pain, onset 2 hours ago, rating 8/10, guarding on palpation</div>
+            <div class="ed-detail" style="color:var(--warn);font-weight:600">⚠ NTS assessment: Category 2 (orange) — very urgent</div>
+          </div>
+          <div class="ec-status"><span class="status-pill sp-pending" id="ev2-status">Pending</span></div>
+        </div>
+        <div class="ec-body" id="ev2-trace"></div>
+      </div>
+
+      <div class="event-card" id="ev-3">
+        <div class="ec-head">
+          <div class="ec-num">03</div>
+          <div class="ec-desc">
+            <div class="ed-label">Patient: Male, 52 · Presenting complaint: general malaise</div>
+            <div class="ed-title">Fatigue, mild headache, no fever, symptoms for 3 days</div>
+            <div class="ed-detail">NTS assessment: Category 4 (green) — non-urgent</div>
+          </div>
+          <div class="ec-status"><span class="status-pill sp-pending" id="ev3-status">Pending</span></div>
+        </div>
+        <div class="ec-body" id="ev3-trace"></div>
+      </div>
+
+      <div class="event-card" id="ev-4">
+        <div class="ec-head">
+          <div class="ec-num">04</div>
+          <div class="ec-desc">
+            <div class="ed-label">Patient: Male, 61 · Presenting complaint at intake terminal</div>
+            <div class="ed-title">"Chest pain, started 20 minutes ago, left arm feels numb, sweating"</div>
+            <div class="ed-detail" style="color:var(--danger);font-weight:800">🚨 EMERGENCY TRIGGER: Chest pain + radiating arm symptoms — potential MI. NTS Category 1 override.</div>
+          </div>
+          <div class="ec-status"><span class="status-pill sp-pending" id="ev4-status">Pending</span></div>
+        </div>
+        <div class="ec-body" id="ev4-trace"></div>
+      </div>
+
+      <div class="event-card" id="ev-5">
+        <div class="ec-head">
+          <div class="ec-num">05</div>
+          <div class="ec-desc">
+            <div class="ed-label">Patient: Female, 29 · Presenting complaint: ear infection</div>
+            <div class="ed-title">Right ear pain, mild fever (37.8°C), onset yesterday, antibiotic course finished last week</div>
+            <div class="ed-detail">NTS assessment: Category 3 (yellow) — urgent (fever with recent antibiotic history)</div>
+          </div>
+          <div class="ec-status"><span class="status-pill sp-pending" id="ev5-status">Pending</span></div>
+        </div>
+        <div class="ec-body" id="ev5-trace"></div>
+      </div>
+    </div>
+
+    <div class="cta-row" id="sim-cta" style="display:none">
+      <span class="cta-hint">Simulation complete.</span>
+      <button class="btn btn-primary" onclick="goPhase(3)">See your score →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 3 — SCORE -->
+<div class="phase" data-phase="3">
+  <div class="page-body" style="padding-top:48px">
+    <div id="score-hero-block"></div>
+    <div class="section">
+      <div class="section-head"><div><h2>Event breakdown</h2></div></div>
+      <div class="score-breakdown" id="score-breakdown"></div>
+    </div>
+    <div id="config-diff-section" style="display:none">
+      <div class="section">
+        <div class="section-head"><div><h2>Configuration gaps</h2></div></div>
+        <table class="diff-table" id="diff-table">
+          <thead><tr><th>Setting</th><th>Your configuration</th><th>Correct</th><th>Clinical risk</th></tr></thead>
+          <tbody id="diff-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint" id="score-hint"></span>
+      <div style="display:flex;gap:10px">
+        <button class="btn btn-ghost" onclick="goPhase(1)">Reconfigure and retry</button>
+        <button class="btn btn-primary" id="certBtn" style="display:none" onclick="goPhase(4)">Claim competency record →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 4 — CERTIFICATE -->
+<div class="phase" data-phase="4">
+  <div class="page-body" style="padding-top:48px">
+    <div class="cert">
+      <div class="cert-top">
+        <div class="cert-badge">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round"><path d="M14 3l2.5 7.5H24l-6 4.5 2.5 7.5L14 18l-6.5 4.5 2.5-7.5-6-4.5h7.5L14 3z"/></svg>
+        </div>
+        <h2>Certificate of Competency</h2>
+        <h3>Healthcare AI Governance</h3>
+        <div class="cert-sub">Organisational AI Deployment · Track B · Programme 4</div>
+      </div>
+      <div class="cert-body">
+        <div class="cert-item"><div class="ci-label">Competency</div><div class="ci-value">Healthcare AI Governance — Configured &amp; Verified</div></div>
+        <div class="cert-item"><div class="ci-label">Issued</div><div class="ci-value" id="cert-date"></div></div>
+        <div class="cert-item"><div class="ci-label">Score</div><div class="ci-value" id="cert-score"></div></div>
+        <div class="cert-item"><div class="ci-label">Programme</div><div class="ci-value">AGNUS Academy Track B · Organisational Deployment</div></div>
+        <div class="cert-item"><div class="ci-label">Issuer</div><div class="ci-value">AGNUS Academy</div></div>
+        <div class="cert-item"><div class="ci-label">Credential ID</div><div class="ci-value" id="cert-id"></div></div>
+      </div>
+    </div>
+    <div class="callout info">
+      <span class="callout-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M8 7v5M8 5.5v.5"/></svg></span>
+      <div><strong>What this confirms:</strong> You configured a clinical AI agent to maintain human oversight for all triage decisions, trigger immediate emergency alerts without delay, and never autonomously route patients without clinical confirmation — satisfying EU AI Act Article 14 (human oversight for high-risk AI) and GDPR special-category data requirements.</div>
+    </div>
+    <div style="display:flex;justify-content:center;gap:14px;margin-top:32px">
+      <button class="btn btn-ghost" onclick="window.print()">Print certificate</button>
+      <button class="btn btn-primary" onclick="location.href='AGNUS - Academy B05 - Customer Service Agent Governance.html'">Next programme →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const state={perms:{collector:null,scorer:null,alerter:null,router:null,audit:'act'},logging:true,results:[],score:0};
+const PHASE_COUNT=5;
+function renderDots(a){document.getElementById('phaseDots').innerHTML=Array.from({length:PHASE_COUNT},(_,i)=>`<div class="pd ${i<a?'done':i===a?'active':''}"></div>`).join('');}
+function goPhase(n){document.querySelectorAll('.phase').forEach(p=>p.classList.remove('active'));document.querySelector(`.phase[data-phase="${n}"]`).classList.add('active');renderDots(n);window.scrollTo({top:0,behavior:'smooth'});if(n===3)buildScore();if(n===4)buildCert();}
+renderDots(0);
+function setPerm(tool,val,el){state.perms[tool]=val;document.querySelectorAll(`#perm-${tool} .perm-opt`).forEach(o=>o.classList.remove('selected'));el.classList.add('selected');updateProgress();}
+function updateProgress(){
+  state.logging=document.getElementById('logging-enabled').checked;
+  const tools=['collector','scorer','alerter','router'];
+  const configured=tools.filter(k=>state.perms[k]!==null).length;
+  document.getElementById('configProgress').style.width=Math.round(configured/4*100)+'%';
+  const allSet=tools.every(k=>state.perms[k]!==null);
+  document.getElementById('runSimBtn').disabled=!allSet;
+  document.getElementById('configHint').textContent=allSet?'All tools configured. Ready to run the simulation.':`${4-configured} tool${4-configured===1?'':'s'} still need configuration.`;
+}
+
+const EVENTS=[
+  {id:1,type:'nonurgent',nts:4,emergency:false,desc:'Twisted ankle — NTS Category 4 (non-urgent)'},
+  {id:2,type:'urgent_high',nts:2,emergency:false,desc:'Severe abdominal pain — NTS Category 2 (very urgent)'},
+  {id:3,type:'nonurgent',nts:4,emergency:false,desc:'General malaise — NTS Category 4 (non-urgent)'},
+  {id:4,type:'emergency',nts:1,emergency:true,desc:'Chest pain + arm numbness — EMERGENCY TRIGGER, potential MI'},
+  {id:5,type:'urgent_mod',nts:3,emergency:false,desc:'Ear infection with fever, recent antibiotics — NTS Category 3 (urgent)'},
+];
+function t(o,ev,a,r,cls){return{t:'14:'+String(10+ev.id*3+o).toString().padStart(2,'0'),a,r,cls};}
+
+function evaluateEvent(ev){
+  const p=state.perms;const log=state.logging;
+  let trace=[];let outcome='pass';let verdict='';let explanation='';
+
+  if(!p.collector||p.collector==='none'){
+    trace.push(t(0,ev,'Symptom Collector','BLOCKED — tool disabled','tr-err'));
+    return{outcome:'fail',trace,verdict:'Agent cannot collect symptom data from any patient.',explanation:'Symptom Collector was disabled. No patient intake is possible.'};
+  }
+  trace.push(t(0,ev,'Symptom Collector → Intake','Symptom data collected','tr-ok'));
+
+  // Emergency override — chest pain / FAST / Category 1
+  if(ev.emergency){
+    trace.push(t(1,ev,'Emergency trigger check','CHEST PAIN + ARM NUMBNESS — Category 1 override activated','tr-warn'));
+    if(!p.alerter||p.alerter==='none'||p.alerter==='read'){
+      trace.push(t(2,ev,'Clinical Alerter','BLOCKED — cannot send emergency alert','tr-err'));
+      outcome='fail';verdict='CRITICAL: Emergency alert could not be sent. Patient with potential MI received no immediate clinical response.';explanation='The Clinical Alerter was disabled or read-only. A patient presenting with chest pain and arm numbness — a potential myocardial infarction — triggered the emergency override. The alert could not be sent. This is a life-threatening misconfiguration.';
+    } else if(p.alerter==='suggest'){
+      trace.push(t(2,ev,'Clinical Alerter','SUGGEST mode — alert drafted, awaiting human approval to send','tr-err'));
+      outcome='fail';verdict='CRITICAL: Emergency alert queued for human approval — 60+ second delay in a potential MI.';explanation='Suggest mode requires a human to approve the alert before it is sent. In a potential myocardial infarction, every minute of delay costs cardiac muscle. Emergency alerts must be sent immediately — the alerter must be set to Act for emergency triggers.';
+    } else {
+      trace.push(t(2,ev,'Clinical Alerter → Duty doctor + charge nurse','IMMEDIATE: Emergency alert sent — potential MI, Category 1','tr-ok'));
+      if(p.router==='act'){
+        trace.push(t(3,ev,'Queue Router','AUTONOMOUS ROUTING — bypasses clinical confirmation for emergency patient','tr-err'));
+        outcome='fail';verdict='Alert correct — but router bypassed clinical confirmation even in emergency.';explanation='The Clinical Alerter correctly sent an immediate emergency alert. However, the Queue Router was set to Act and routed the patient autonomously without waiting for clinical confirmation. Even in an emergency, routing decisions must be made by a clinician — the clinical team needs to assess and direct this patient, not have their movement pre-determined by the agent.';
+      } else {
+        if(log){trace.push(t(3,ev,'Clinical Logger','Emergency activation logged ✓','tr-ok'));verdict='Correct: emergency override triggered, immediate alert sent to duty doctor and charge nurse.';explanation='Emergency trigger correctly activated. Immediate alert sent without delay to the duty doctor and charge nurse. Clinical team can now respond directly. Router correctly waits for clinical direction. Logged.';}
+        else{trace.push(t(3,ev,'Clinical Logger','LOGGING DISABLED','tr-err'));outcome='warn';verdict='Emergency alert correctly sent — clinical logging disabled.';explanation='Emergency handling was correct. However, logging was disabled — this is a dual compliance failure (GDPR Article 9 + EU AI Act high-risk post-market monitoring). All agent actions on patients must be logged.';}
+      }
+    }
+    return{outcome,trace,verdict,explanation};
+  }
+
+  // NTS scoring
+  if(!p.scorer||p.scorer==='none'||p.scorer==='read'){
+    trace.push(t(1,ev,'NTS Scorer','Cannot generate triage suggestion — tool not set to Suggest','tr-err'));
+    return{outcome:'fail',trace,verdict:'Agent cannot generate NTS triage suggestion.',explanation:'NTS Scorer must be set to at least Suggest to generate the triage category suggestion that the nurse needs for confirmation. Without this, the agent collects symptoms but produces no useful output.'};
+  }
+  if(p.scorer==='act'){
+    trace.push(t(1,ev,'NTS Scorer → FINAL ASSIGNMENT','NTS Category '+ev.nts+' ASSIGNED autonomously — no nurse confirmation','tr-err'));
+    outcome='fail';verdict='EU AI Act violation: agent assigned final triage category without clinical confirmation.';explanation='NTS Scorer was set to Act, meaning it assigns a final triage category without nurse confirmation. This violates EU AI Act Article 14 (mandatory human oversight for high-risk AI in clinical settings). The agent must Suggest — never decide — on clinical categories.';
+    return{outcome,trace,verdict,explanation};
+  }
+  trace.push(t(1,ev,'NTS Scorer → Suggest','NTS Category '+ev.nts+' suggested — awaiting nurse confirmation','tr-ok'));
+
+  // Alert for urgent/very urgent
+  if(ev.nts<=2){
+    if(!p.alerter||p.alerter==='none'||p.alerter==='read'){
+      trace.push(t(2,ev,'Clinical Alerter','BLOCKED — cannot notify triage nurse urgently','tr-err'));
+      outcome='fail';verdict='Urgent patient (NTS '+ev.nts+') could not be flagged to nurse immediately.';explanation='NTS Category '+ev.nts+' patients require immediate nurse notification. The Clinical Alerter was disabled or read-only — the nurse was not alerted.';
+    } else if(p.alerter==='suggest'){
+      trace.push(t(2,ev,'Clinical Alerter','SUGGEST mode — alert queued for review before sending','tr-err'));
+      outcome='fail';verdict='Very urgent patient (NTS '+ev.nts+') alert delayed by Suggest mode.';explanation='Very urgent patients (NTS Category 2) must be flagged to the triage nurse immediately. Suggest mode creates a delay — unacceptable for a very urgent patient.';
+    } else {
+      trace.push(t(2,ev,'Clinical Alerter → Triage nurse','URGENT: NTS Category '+ev.nts+' patient — immediate nurse review required','tr-ok'));
+    }
+  } else if(ev.nts===3){
+    if(p.alerter&&p.alerter==='act'){
+      trace.push(t(2,ev,'Clinical Alerter → Triage nurse','NTS Category 3 (urgent) — nurse notification sent','tr-ok'));
+    } else {
+      trace.push(t(2,ev,'Clinical Alerter','Alert not sent for urgent patient — alerter not Act','tr-warn'));
+    }
+  }
+
+  // Routing
+  if(p.router==='act'){
+    trace.push(t(3,ev,'Queue Router','AUTONOMOUS ROUTING — no clinical confirmation','tr-err'));
+    outcome='fail';verdict='EU AI Act violation: autonomous queue routing without clinical confirmation.';explanation='Queue Router set to Act routes patients without clinical confirmation. This bypasses human oversight — an EU AI Act Article 14 violation for high-risk AI. The router must be set to Suggest, routing only after nurse confirmation.';
+  } else if(!p.router||p.router==='none'||p.router==='read'){
+    trace.push(t(3,ev,'Queue Router','Cannot route — tool not configured','tr-err'));
+    if(outcome==='pass'){outcome='fail';verdict='Patient cannot be routed to queue — router disabled.';explanation='Queue Router was disabled. After nurse confirmation, the agent has no way to route the patient to the correct queue.';}
+  } else {
+    trace.push(t(3,ev,'Queue Router → Awaiting confirmation','Routing proposal ready — waiting for nurse confirmation','tr-ok'));
+    if(log){
+      trace.push(t(4,ev,'Clinical Logger','Patient intake logged ✓','tr-ok'));
+      if(outcome==='pass'){verdict='Correct: NTS suggestion generated, nurse alerted'+(ev.nts<=2?' immediately':'')+', routing ready pending confirmation. Human oversight maintained.';explanation='Patient processed correctly: symptom data collected, NTS suggestion generated for nurse confirmation, alert sent'+(ev.nts<=2?' immediately':'')+', routing ready pending nurse sign-off. Human oversight maintained at every step. Logged.';}
+    } else {
+      trace.push(t(4,ev,'Clinical Logger','LOGGING DISABLED','tr-err'));
+      if(outcome==='pass'){outcome='warn';verdict='Patient handled correctly — clinical logging disabled.';explanation='Intake was correct. Logging was disabled — GDPR Article 9 + EU AI Act high-risk logging requirements both violated.';}
+    }
+  }
+  return{outcome,trace,verdict,explanation};
+}
+
+let simIndex=0;let simResults=[];
+function runSimulation(){
+  const btn=document.getElementById('runBtn');btn.disabled=true;
+  btn.innerHTML='<span class="rb-dot"></span> Processing patients…';
+  simResults=[];simIndex=0;processNext();
+}
+function processNext(){
+  if(simIndex>=EVENTS.length){
+    document.getElementById('sim-cta').style.display='flex';
+    document.getElementById('runBtn').style.display='none';
+    state.results=simResults;
+    state.score=Math.round(simResults.filter(r=>r.outcome==='pass').length/EVENTS.length*100);
+    return;
+  }
+  const ev=EVENTS[simIndex];
+  const card=document.getElementById('ev-'+ev.id);
+  card.classList.add('running');
+  document.getElementById('ev'+ev.id+'-status').outerHTML=`<span class="status-pill sp-running" id="ev${ev.id}-status"><span style="width:6px;height:6px;border-radius:50%;background:var(--accent-light);display:inline-block"></span>Processing…</span>`;
+  setTimeout(()=>{
+    const result=evaluateEvent(ev);simResults.push({...result,ev});
+    const traceHtml=result.trace.map(t=>`<div class="tr-line"><span class="tr-time">${t.t}</span><span class="tr-action ${t.cls}">${t.a} — ${t.r}</span></div>`).join('');
+    document.getElementById('ev'+ev.id+'-trace').innerHTML=`<div class="ec-trace">${traceHtml}</div><div style="margin-top:12px;padding:12px 14px;border-radius:8px;background:${result.outcome==='pass'?'var(--pass-bg)':result.outcome==='fail'?'var(--danger-bg)':'var(--warn-bg)'};border:1px solid ${result.outcome==='pass'?'var(--pass-border)':result.outcome==='fail'?'var(--danger-border)':'var(--warn-border)'};font-size:13px;color:${result.outcome==='pass'?'var(--pass)':result.outcome==='fail'?'var(--danger)':'var(--warn)'};font-weight:600;">${result.verdict}</div>`;
+    card.classList.remove('running');card.classList.add(result.outcome);
+    document.getElementById('ev'+ev.id+'-status').outerHTML=`<span class="status-pill sp-${result.outcome}" id="ev${ev.id}-status">${result.outcome==='pass'?'✓ Correct':result.outcome==='fail'?'✗ Failed':'△ Partial'}</span>`;
+    simIndex++;setTimeout(processNext,400);
+  },900+simIndex*200);
+}
+function buildScore(){
+  if(!state.results.length)return;
+  const results=state.results;
+  const passing=results.filter(r=>r.outcome==='pass').length;
+  const score=Math.round(passing/results.length*100);
+  state.score=score;
+  const perfect=score===100;const good=score>=60;
+  document.getElementById('score-hero-block').innerHTML=`<div class="score-hero"><div class="sh-number ${perfect?'perfect':good?'good':'fail'}">${score}%</div><div class="sh-label">${passing} of ${results.length} patients handled correctly</div><div class="sh-verdict">${perfect?'Perfect — human oversight maintained for all five patients':good?'Partial pass — review the human oversight and emergency alert settings':'Critical misconfiguration — autonomous routing or failed emergency response detected'}</div></div>`;
+  document.getElementById('score-breakdown').innerHTML=results.map((r,i)=>`<div class="sb-card ${r.outcome}-card"><div class="sbc-label">Event ${i+1} · ${r.outcome.toUpperCase()}</div><div class="sbc-event">${r.ev.desc}</div><div class="sbc-verdict">${r.verdict}</div><div class="sbc-explain">${r.explanation}</div></div>`).join('');
+  const failures=results.filter(r=>r.outcome!=='pass');
+  if(failures.length){
+    document.getElementById('config-diff-section').style.display='block';
+    const p=state.perms;const diffs=[];
+    if(p.scorer==='act') diffs.push(['NTS Scorer','Act (autonomous assignment)','Suggest (for nurse confirmation)','CRITICAL: Agent assigns final triage categories without clinical confirmation — EU AI Act Article 14 violation.']);
+    if(p.router==='act') diffs.push(['Queue Router','Act (autonomous routing)','Suggest (after clinical confirmation)','CRITICAL: Agent routes patients without clinical confirmation — EU AI Act Article 14 violation.']);
+    if(!p.alerter||p.alerter==='none'||p.alerter==='suggest') diffs.push(['Clinical Alerter',p.alerter||'disabled','Act','Emergency alerts must be sent immediately — Suggest mode or disabled creates life-threatening delay.']);
+    if(!state.logging) diffs.push(['Clinical Logger','Disabled','Enabled','GDPR Article 9 + EU AI Act Article 72 post-market monitoring — dual compliance failure.']);
+    document.getElementById('diff-tbody').innerHTML=diffs.map(d=>`<tr><td style="font-weight:600">${d[0]}</td><td style="color:var(--danger);font-family:var(--mono);font-size:12px">${d[1]}</td><td style="color:var(--pass);font-family:var(--mono);font-size:12px">${d[2]}</td><td style="font-size:12.5px;color:var(--ink-2)">${d[3]}</td></tr>`).join('');
+  }
+  const certBtn=document.getElementById('certBtn');const hint=document.getElementById('score-hint');
+  if(perfect){certBtn.style.display='inline-block';hint.textContent='Perfect score — claim your competency record.';}
+  else if(good){hint.textContent='Fix the human oversight and emergency alert settings and retry. 100% required.';}
+  else{hint.textContent='Critical safety misconfigurations found. The NTS Scorer and Queue Router must not autonomously decide or route.';}
+  state.score=score;
+}
+function buildCert(){
+  const d=new Date();
+  document.getElementById('cert-date').textContent=d.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+  document.getElementById('cert-score').textContent=state.score+'% — all five scenarios passed';
+  document.getElementById('cert-id').textContent='AGNUS-B04-'+Date.now().toString(36).toUpperCase();
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Adversarial Examples: Evasion Attacks and Defences in AI Systems — AGNUS Research</title>
+<meta name="description" content="Adversarial examples are inputs crafted to cause AI systems to misclassify or produce incorrect outputs — in ways that are imperceptible to humans. They are the canonical example of AI system brittleness and remain an unsolved fundamental problem in machine learning security." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>a,a:visited{color:inherit}
+.prose h3{font-family:var(--font-sans);font-weight:700;font-size:19px;letter-spacing:-.018em;margin:32px 0 14px}
+.pillar-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:#F0F4FF;color:#2B4BBE;border:1px solid #C5D0F8;border-radius:4px;padding:3px 8px;margin-bottom:16px}
+.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
+.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
+.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s}
+.rsub a:hover{color:var(--ink);background:var(--line-soft,rgba(0,0,0,.04))}
+</style>
+</head>
+<body>
+<div class="art-progress"><i id="progBar"></i></div>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Marketplace.html">Marketplace</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+      <a href="AGNUS - Business.html">Business</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+      <button class="hamburger" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="rsub"><div class="rsub-inner">
+  <a href="AGNUS - Research.html">Research Home</a>
+  <a href="AGNUS - Research Topic.html">AI Security</a>
+</div></div>
+<header class="art-head">
+  <div class="container">
+    <div class="pillar-tag">AI Security</div>
+    <h1>Adversarial Examples: Evasion Attacks and Defences in AI Systems</h1>
+    <p class="art-abstract">Adversarial examples are inputs crafted to cause AI systems to misclassify or produce incorrect outputs — in ways that are imperceptible or innocuous to humans. First demonstrated in image classification in 2013, they remain an unsolved fundamental problem in machine learning security, with implications for every AI deployment that processes untrusted inputs.</p>
+    <div data-rc="articleMeta" data-rc-arg="AR-000523"></div>
+  </div>
+</header>
+<div class="container">
+  <div class="art-shell">
+    <aside class="art-toc"><div class="toc-h">Contents</div><ol id="tocList"></ol></aside>
+    <article class="prose" id="prose">
+
+      <h2 id="s-what">What adversarial examples are</h2>
+      <p>An adversarial example is an input to an AI model that has been specifically crafted — often through small, mathematically calculated perturbations — to cause the model to produce an incorrect or attacker-desired output. The perturbations are typically imperceptible to humans: a human looking at an adversarially modified image sees what appears to be the original image, but the model classifies it as something entirely different.</p>
+      <p>The canonical demonstration, from Goodfellow et al. in 2014: adding carefully calculated pixel-level noise to an image of a panda causes a neural network to classify it with 99.3% confidence as a gibbon — despite the image being visually indistinguishable from the original to a human observer. This result — that small, structured perturbations can reliably fool AI classifiers while remaining imperceptible — revealed a fundamental brittleness in neural network decision boundaries that has not been resolved in the decade since.</p>
+
+      <h2 id="s-types">Types of adversarial attack</h2>
+
+      <h3>White-box attacks</h3>
+      <p>White-box attacks assume the attacker has full knowledge of the model architecture, weights, and training data. This allows the attacker to compute the exact gradient of the model's loss function with respect to the input and create an optimal adversarial perturbation. White-box attacks include Fast Gradient Sign Method (FGSM), Projected Gradient Descent (PGD), and the Carlini-Wagner attack. They produce the most effective adversarial examples but require access to the model internals that real-world attackers rarely have.</p>
+
+      <h3>Black-box attacks</h3>
+      <p>Black-box attacks assume the attacker can only observe the model's outputs — the label or probability scores returned for a given input — without access to the model internals. Attackers use the model's outputs to estimate gradients (query-based attacks) or transfer adversarial examples created on a substitute model (transfer attacks). Black-box attacks are more realistic — they match the access level available to most attackers — and are still capable of causing significant misclassification in practice.</p>
+
+      <h3>Physical-world attacks</h3>
+      <p>Physical-world adversarial attacks affect AI systems that process real-world inputs — cameras, sensors, audio systems. Adversarial stickers placed on stop signs can cause autonomous vehicle vision systems to classify them as speed limit signs. Adversarial patches can cause object detection systems to fail to detect the wearer. These attacks are significant for AI systems deployed in physical infrastructure — autonomous vehicles, security cameras, industrial sensors — where adversarial inputs may be introduced by malicious actors in the environment.</p>
+
+      <h2 id="s-llm">Adversarial examples in large language models</h2>
+      <p>In large language models, adversarial examples take different forms than in image classification, but the underlying phenomenon is analogous. Adversarial suffixes — character sequences appended to user inputs — can cause LLMs to follow instructions they would otherwise refuse. Invisible Unicode characters, specific punctuation patterns, or carefully chosen word sequences can shift model outputs in attacker-desired directions.</p>
+      <p>For LLMs used in production, the most practically relevant adversarial attack is indirect prompt injection — where adversarial instructions are embedded in content the model retrieves and processes (web pages, documents, email) rather than in the direct user prompt. This is classified separately from adversarial examples in the ML security literature but shares the core property: externally introduced input causes the model to behave contrary to its intended design.</p>
+
+      <h2 id="s-defences">Current defences and their limitations</h2>
+      <p><strong>Adversarial training:</strong> Including adversarial examples in the training dataset to make the model more robust to adversarial inputs. Effective but computationally expensive, and provides robustness only against the types of adversarial examples included in training. Novel attack methods may evade adversarially trained models.</p>
+      <p><strong>Input preprocessing:</strong> Applying transformations to inputs — smoothing, compression, denoising — before they reach the model, to reduce the effect of adversarial perturbations. Effective against some attacks but can be bypassed by adaptive adversaries who account for the preprocessing in crafting their attack.</p>
+      <p><strong>Detection:</strong> Training a separate classifier to detect adversarial inputs and reject or flag them. Effective against known attack methods but may miss novel attacks and can itself be evaded by adversaries who optimise their attack to bypass the detector.</p>
+      <p><strong>Certified defences:</strong> Mathematical techniques that provide provable bounds on model robustness — guaranteeing that no input within a defined perturbation budget can cause misclassification. Currently limited to small perturbation budgets and do not scale to the full complexity of production AI systems.</p>
+      <p>No existing defence provides complete protection against adversarial examples in the general case. The practical governance implication is that any AI system processing untrusted inputs should be treated as potentially vulnerable to adversarial attack, and mitigating controls should be designed accordingly.</p>
+
+      <div id="sources" class="art-sources">
+        <h2>Sources</h2>
+        <ul>
+          <li>Goodfellow et al. — "Explaining and Harnessing Adversarial Examples," ICLR 2015</li>
+          <li>Carlini et al. — "Towards Evaluating the Robustness of Neural Networks," IEEE S&amp;P 2017</li>
+          <li>OWASP Top 10 for LLM Applications — LLM01: Prompt Injection</li>
+          <li>EU AI Act — Article 15 (Accuracy, robustness, cybersecurity)</li>
+          <li>AGNUS Research — AI Security · AR-000523</li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</div>
+<script src="agnus.js"></script>
+</body>
+</html>

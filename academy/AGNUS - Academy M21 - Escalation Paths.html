@@ -1,0 +1,364 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Academy — M21 Escalation Paths</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#F8F6F2;--surface:#FFFFFF;--surface-2:#F2F0EB;--border:#E0DDD5;--border-2:#CCC9C0;
+  --ink:#14181F;--ink-2:#3C4252;--ink-3:#7A8099;
+  --navy:#0F1E34;--navy-2:#162844;--navy-3:#1E3560;
+  --gold:#9A7020;--gold-bg:rgba(154,112,32,.09);--gold-border:rgba(154,112,32,.22);--gold-light:#C49A2C;
+  --pass:#0F6E3A;--pass-bg:rgba(15,110,58,.09);--pass-border:rgba(15,110,58,.22);
+  --danger:#B03020;--danger-bg:rgba(176,48,32,.09);--danger-border:rgba(176,48,32,.22);
+  --mono:'DM Mono',monospace;--sans:'DM Sans',sans-serif;--serif:'Newsreader',serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;font-family:var(--sans);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+.rail{background:var(--navy);color:#fff;height:54px;display:flex;align-items:center;padding:0 26px;gap:16px;position:sticky;top:0;z-index:200}
+.rail-brand{font-weight:800;font-size:14.5px}
+.rail-sep{width:1px;height:20px;background:rgba(255,255,255,.12);flex-shrink:0}
+.rail-crumb{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38)}
+.rail-title{font-size:13px;font-weight:600;color:rgba(255,255,255,.88)}
+.rail-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.phase-track{display:flex;gap:5px}
+.ph{width:26px;height:3px;border-radius:2px;background:rgba(255,255,255,.16);transition:background .4s}
+.ph.done{background:var(--gold-light)}.ph.active{background:#fff}
+.rail-btn{font-family:var(--sans);font-size:12px;font-weight:600;padding:6px 14px;border-radius:7px;border:1px solid rgba(255,255,255,.16);color:#fff;background:rgba(255,255,255,.07);cursor:pointer}
+.phase{display:none}.phase.active{display:block}
+.hero{background:linear-gradient(138deg,var(--navy) 0%,var(--navy-3) 55%,#1A3A70 100%);padding:52px 0 48px;position:relative;overflow:hidden}
+.hero-inner{max-width:820px;margin:0 auto;padding:0 32px;position:relative;z-index:1}
+.hero-kicker{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(200,170,80,.85);margin-bottom:16px;display:flex;align-items:center;gap:9px}
+.hero-kicker::before{content:'';width:20px;height:1px;background:rgba(200,170,80,.6);display:inline-block}
+.hero h1{font-size:clamp(24px,3.5vw,38px);font-weight:800;letter-spacing:-.03em;color:#fff;line-height:1.18;margin-bottom:16px}
+.hero-serif{font-family:var(--serif);font-style:italic;font-size:17px;line-height:1.72;color:rgba(245,242,236,.72);max-width:50ch;margin-bottom:28px}
+.hero-pills{display:flex;gap:14px;flex-wrap:wrap}
+.hp{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:7px;padding:7px 13px;font-size:12px;color:rgba(255,255,255,.68)}
+.hp strong{color:#fff}
+.wrap{max-width:820px;margin:0 auto;padding:40px 32px 120px}
+.step-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;padding-bottom:14px;border-bottom:1.5px solid var(--border)}
+.sh-left{display:flex;align-items:center;gap:10px}
+.sh-badge{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold-border);border-radius:99px;padding:4px 10px;font-weight:600}
+.sh-title{font-size:13px;font-weight:600;color:var(--ink-2)}
+.sh-time{font-family:var(--mono);font-size:10px;color:var(--ink-3)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:26px 28px;margin-bottom:18px}
+.card h3{font-size:16px;font-weight:800;letter-spacing:-.015em;color:var(--navy);margin-bottom:10px}
+.card p{font-size:14.5px;line-height:1.74;color:var(--ink-2)}
+.card p+p{margin-top:10px}
+.esc-triggers{display:grid;gap:10px;margin:16px 0}
+.et-row{display:grid;grid-template-columns:40px 1fr;gap:0;border:1px solid var(--border);border-radius:11px;overflow:hidden}
+.et-num{background:var(--navy);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:12px;font-weight:700;color:var(--gold-light)}
+.et-body{padding:13px 16px;background:var(--surface)}
+.et-title{font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:3px}
+.et-desc{font-size:13px;color:var(--ink-2);line-height:1.55}
+.esc-path{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--surface);margin:16px 0}
+.ep-head{padding:12px 16px;background:var(--surface-2);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.ep-flow{padding:20px}
+.ep-step{display:grid;grid-template-columns:28px 1fr;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.ep-step:last-child{border-bottom:none}
+.ep-n{font-family:var(--mono);font-size:10px;font-weight:700;color:var(--ink-3);padding-top:2px}
+.ep-content .ep-label{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:3px}
+.ep-content .ep-text{font-size:13px;color:var(--ink-2);line-height:1.6}
+.ep-content .ep-alert{font-size:12px;color:var(--danger);margin-top:4px;font-weight:600}
+.broken-paths{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+@media(max-width:580px){.broken-paths{grid-template-columns:1fr}}
+.bp-bad{background:var(--danger-bg);border:1px solid var(--danger-border);border-radius:11px;padding:14px 16px}
+.bp-good{background:var(--pass-bg);border:1px solid var(--pass-border);border-radius:11px;padding:14px 16px}
+.bp-label{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;display:block}
+.bp-bad .bp-label{color:var(--danger)}.bp-good .bp-label{color:var(--pass)}
+.bp-text{font-size:13px;color:var(--ink-2);line-height:1.6}
+.callout{border-radius:12px;padding:16px 20px;margin:14px 0;font-size:13.5px;line-height:1.68;display:flex;gap:12px;align-items:flex-start}
+.callout.gold{background:var(--gold-bg);border:1px solid var(--gold-border)}
+.callout-icon{flex-shrink:0;margin-top:2px}
+.opt-list{display:grid;gap:10px;margin:16px 0}
+.opt{display:grid;grid-template-columns:36px 1fr;border:1.5px solid var(--border-2);border-radius:12px;cursor:pointer;overflow:hidden;transition:border-color .15s,transform .1s}
+.opt:hover{border-color:var(--navy);transform:translateY(-1px)}
+.opt.correct{border-color:var(--pass)}.opt.wrong{border-color:var(--danger)}
+.opt-letter{display:flex;align-items:center;justify-content:center;background:var(--surface-2);font-family:var(--mono);font-size:11px;font-weight:700;color:var(--ink-3)}
+.opt.correct .opt-letter{background:var(--pass-bg);color:var(--pass)}.opt.wrong .opt-letter{background:var(--danger-bg);color:var(--danger)}
+.opt-text{padding:14px 16px;font-size:13.5px;line-height:1.5;color:var(--ink);background:var(--surface)}
+.opt.correct .opt-text{background:var(--pass-bg)}.opt.wrong .opt-text{background:var(--danger-bg)}
+.feedback{display:none;margin-top:14px;padding:16px 18px;border-radius:11px;font-size:14px;line-height:1.68}
+.feedback.pass{display:block;background:var(--pass-bg);border-left:3px solid var(--pass)}
+.feedback.fail{display:block;background:var(--danger-bg);border-left:3px solid var(--danger)}
+.quiz-q{font-size:16px;font-weight:700;letter-spacing:-.012em;color:var(--navy);margin-bottom:6px}
+.quiz-context{font-size:13.5px;color:var(--ink-2);line-height:1.65;margin-bottom:20px;padding:14px 16px;background:var(--surface-2);border-radius:10px;border-left:3px solid var(--gold)}
+.cta-row{display:flex;justify-content:space-between;align-items:center;margin-top:28px;padding-top:20px;border-top:1px solid var(--border)}
+.cta-hint{font-size:13px;color:var(--ink-3)}
+.btn{font-family:var(--sans);font-weight:700;font-size:14.5px;padding:13px 30px;border-radius:12px;border:none;cursor:pointer;transition:all .2s}
+.btn-primary{background:var(--navy);color:#fff}.btn-primary:hover{background:var(--navy-2);transform:translateY(-1px)}
+.btn-primary:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.pass-screen{display:none;text-align:center;padding:56px 36px;background:linear-gradient(138deg,var(--navy),var(--navy-3));border-radius:20px;margin-top:20px;color:#fff}
+.ps-glyph{font-size:42px;margin-bottom:16px;color:var(--gold-light)}
+.ps-title{font-size:26px;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+.ps-sub{font-size:14px;color:rgba(255,255,255,.65);line-height:1.6;max-width:40ch;margin:0 auto 28px}
+.ps-next{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#fff;border:none;font-family:var(--sans);font-weight:700;font-size:14px;padding:13px 26px;border-radius:11px;cursor:pointer}
+.level-complete{text-align:center;padding:36px;background:linear-gradient(138deg,#1A0832,#2E1060);border-radius:16px;margin-top:20px;color:#fff}
+.lc-label{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(180,140,255,.7);margin-bottom:12px}
+.lc-title{font-size:22px;font-weight:800;margin-bottom:8px}
+.lc-text{font-size:14px;color:rgba(255,255,255,.6);line-height:1.6;max-width:40ch;margin:0 auto 22px}
+.lc-next{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:10px;padding:12px 22px;font-family:var(--sans);font-weight:700;font-size:13px;cursor:pointer}
+</style>
+</head>
+<body>
+<header class="rail">
+  <span class="rail-brand">AGNUS Academy</span>
+  <span class="rail-sep"></span>
+  <span class="rail-crumb">Level 3 · Direct</span>
+  <span class="rail-title">M21 — Escalation Paths</span>
+  <div class="rail-right">
+    <div class="phase-track" id="phaseTrack"></div>
+    <button class="rail-btn" onclick="location.href='AGNUS - Academy App.html'">← Dashboard</button>
+  </div>
+</header>
+
+<!-- PHASE 0 -->
+<div class="phase active" data-phase="0">
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-kicker">Module 21 of 49 · Level 3 · Direct · Final L3 module</div>
+      <h1>An escalation path is<br>the route from stuck to resolved.</h1>
+      <p class="hero-serif">When an agent encounters a situation it cannot handle within its authority — an unresolvable conflict, a condition outside its scope, a risk it cannot assess — it needs a defined path to a human who can. Without that path, the agent either freezes or improvises. Neither is acceptable.</p>
+      <div class="hero-pills">
+        <span class="hp"><strong>6 steps</strong></span>
+        <span class="hp"><strong>~14 min</strong></span>
+        <span class="hp"><strong>Final Level 3 module</strong></span>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="card">
+      <h3>What escalation paths are</h3>
+      <p>An escalation path is an explicit, named route from an agent's decision point to a human with the authority to resolve it. It answers: who does the agent contact, through what channel, with what information, and within what timeframe?</p>
+      <p>Escalation is not failure — it's designed behaviour for situations the agent correctly identifies as outside its authority. An agent that escalates appropriately is working exactly as it should.</p>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Next: what triggers escalation</span>
+      <button class="btn btn-primary" onclick="goPhase(1)">Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 1 -->
+<div class="phase" data-phase="1">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 2 of 6</span><span class="sh-title">What triggers escalation</span></div>
+      <span class="sh-time">4 min</span>
+    </div>
+    <div class="esc-triggers">
+      <div class="et-row"><div class="et-num">1</div><div class="et-body"><div class="et-title">Unresolvable instruction conflict</div><div class="et-desc">The priority hierarchy (M20) doesn't resolve the conflict. Two Level 2 instructions contradict each other. The agent cannot determine which takes precedence without human input.</div></div></div>
+      <div class="et-row"><div class="et-num">2</div><div class="et-body"><div class="et-title">Action outside authority</div><div class="et-desc">The correct action requires authority the agent doesn't have — a payment above its threshold, a legal judgment it cannot make, a data access its scope doesn't permit.</div></div></div>
+      <div class="et-row"><div class="et-num">3</div><div class="et-body"><div class="et-title">Ambiguous condition not covered by fallbacks</div><div class="et-desc">The situation doesn't match any condition the brief covers, and the fallback says "escalate if uncertain." The agent has correctly identified that it doesn't have enough information to act.</div></div></div>
+      <div class="et-row"><div class="et-num">4</div><div class="et-body"><div class="et-title">High-risk signal detected</div><div class="et-desc">The agent detects a pattern that suggests something is wrong — duplicate invoice, unusual amount, first transaction with unknown supplier, sensitive data in unexpected context.</div></div></div>
+      <div class="et-row"><div class="et-num">5</div><div class="et-body"><div class="et-title">Retry limit reached</div><div class="et-desc">A tool has failed beyond the retry limit. The task cannot continue without human intervention to diagnose and resolve the underlying issue.</div></div></div>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Next: anatomy of an escalation path</span>
+      <button class="btn btn-primary" onclick="goPhase(2)">Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 2 -->
+<div class="phase" data-phase="2">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 3 of 6</span><span class="sh-title">Anatomy of an escalation path</span></div>
+      <span class="sh-time">4 min</span>
+    </div>
+    <div class="esc-path">
+      <div class="ep-head">Escalation path — invoice with no PO match</div>
+      <div class="ep-flow">
+        <div class="ep-step">
+          <div class="ep-n">1</div>
+          <div class="ep-content">
+            <div class="ep-label">Trigger</div>
+            <div class="ep-text">Invoice INV-2026-0448 — no matching PO found. Business rule: hold and escalate. Do not proceed to payment.</div>
+          </div>
+        </div>
+        <div class="ep-step">
+          <div class="ep-n">2</div>
+          <div class="ep-content">
+            <div class="ep-label">Stop action</div>
+            <div class="ep-text">Agent halts invoice processing. Marks the invoice status as "Pending escalation — no PO match." No further action on this invoice until resolution.</div>
+          </div>
+        </div>
+        <div class="ep-step">
+          <div class="ep-n">3</div>
+          <div class="ep-content">
+            <div class="ep-label">Escalation target</div>
+            <div class="ep-text">Accounts Payable team lead (ap-lead@nordvik.no). This is the defined human with authority to: (a) confirm the PO exists but is mislabelled, (b) create the PO retroactively, or (c) reject the invoice.</div>
+          </div>
+        </div>
+        <div class="ep-step">
+          <div class="ep-n">4</div>
+          <div class="ep-content">
+            <div class="ep-label">Escalation package</div>
+            <div class="ep-text">Agent sends: invoice ID, supplier, amount, date, reason for escalation ("No matching PO found — PO-matching returned null"), and the three resolution options.</div>
+            <div class="ep-alert">Critical: the package must include the information the human needs to make the decision — not just "there is a problem."</div>
+          </div>
+        </div>
+        <div class="ep-step">
+          <div class="ep-n">5</div>
+          <div class="ep-content">
+            <div class="ep-label">Timeout behaviour</div>
+            <div class="ep-text">If no response within 4 hours during business hours: re-escalate to finance manager. If after-hours: hold until next business day, then escalate at opening.</div>
+          </div>
+        </div>
+        <div class="ep-step">
+          <div class="ep-n">6</div>
+          <div class="ep-content">
+            <div class="ep-label">Log</div>
+            <div class="ep-text">All escalation actions logged: trigger, target, package sent, timestamp, response received.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Next: broken escalation paths</span>
+      <button class="btn btn-primary" onclick="goPhase(3)">Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 3 -->
+<div class="phase" data-phase="3">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 4 of 6</span><span class="sh-title">What breaks an escalation path</span></div>
+      <span class="sh-time">3 min</span>
+    </div>
+    <div class="broken-paths">
+      <div class="bp-bad">
+        <span class="bp-label">Broken path 1</span>
+        <div class="bp-text"><strong>No defined target.</strong> The brief says "escalate to the relevant person." There is no named role, team, or contact. The agent cannot escalate — it has nowhere to go.</div>
+      </div>
+      <div class="bp-good">
+        <span class="bp-label">Fix 1</span>
+        <div class="bp-text">Name the specific role: "Escalate to the AP team lead at ap-lead@nordvik.no. If unavailable, escalate to the finance manager at finance-manager@nordvik.no."</div>
+      </div>
+      <div class="bp-bad">
+        <span class="bp-label">Broken path 2</span>
+        <div class="bp-text"><strong>Escalation package is empty.</strong> The agent sends "Invoice INV-448 needs attention" with no context, no reason, no data. The human has to re-do the investigation from scratch.</div>
+      </div>
+      <div class="bp-good">
+        <span class="bp-label">Fix 2</span>
+        <div class="bp-text">Specify what must be in the package: "Include invoice ID, supplier, amount, reason for escalation, the data the agent found, and the available resolution options."</div>
+      </div>
+      <div class="bp-bad">
+        <span class="bp-label">Broken path 3</span>
+        <div class="bp-text"><strong>No timeout behaviour.</strong> The agent waits indefinitely for a response that never comes. The invoice is stuck forever with no owner.</div>
+      </div>
+      <div class="bp-good">
+        <span class="bp-label">Fix 3</span>
+        <div class="bp-text">Define time behaviour: "If no response within 4 hours during business hours, escalate to the finance manager. Log the re-escalation."</div>
+      </div>
+      <div class="bp-bad">
+        <span class="bp-label">Broken path 4</span>
+        <div class="bp-text"><strong>Escalation is never triggered.</strong> The brief defines an escalation path but no trigger conditions. The agent never knows when to use it.</div>
+      </div>
+      <div class="bp-good">
+        <span class="bp-label">Fix 4</span>
+        <div class="bp-text">Define exact trigger conditions: "Escalate when: (a) no PO match found, (b) amount exceeds €500, (c) duplicate detected, (d) retry limit reached."</div>
+      </div>
+    </div>
+    <div class="callout gold">
+      <div class="callout-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M8 7v5M8 5.5v.5"/></svg></div>
+      <div><strong>A complete escalation path has five components:</strong> trigger condition, stop action, named target, complete package, and timeout behaviour. Missing any one makes the path unreliable.</div>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Next: practice</span>
+      <button class="btn btn-primary" onclick="goPhase(4)">Practice →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 4 -->
+<div class="phase" data-phase="4">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 5 of 6</span><span class="sh-title">Practice</span></div>
+      <span class="sh-time">3 min</span>
+    </div>
+    <div class="card">
+      <p class="quiz-context">A customer service agent's brief contains: "If a customer complaint cannot be resolved automatically, escalate it." Three weeks after deployment, the customer service manager discovers that the agent has been sending escalated complaints to a general inbox (info@company.no) that nobody monitors regularly, with only the message "Escalated complaint — please review."</p>
+      <div class="quiz-q">Which two components of the escalation path were missing?</div>
+      <div class="opt-list" id="practiceOpts">
+        <div class="opt" data-correct="false" onclick="pickQ('practice',this)"><div class="opt-letter">A</div><div class="opt-text">Trigger condition and timeout behaviour.</div></div>
+        <div class="opt" data-correct="true" onclick="pickQ('practice',this)"><div class="opt-letter">B</div><div class="opt-text">Named target and complete package. The brief said "escalate" without naming a specific monitored contact, so the agent used a general inbox. The package said only "please review" with no complaint detail, customer context, or resolution options — making it useless even if someone had seen it.</div></div>
+        <div class="opt" data-correct="false" onclick="pickQ('practice',this)"><div class="opt-letter">C</div><div class="opt-text">Stop action and logging.</div></div>
+      </div>
+      <div class="feedback" id="practiceFeedback"></div>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Final test — Level 3 closes after this</span>
+      <button class="btn btn-primary" id="practiceNext" onclick="goPhase(5)" disabled>Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 5 -->
+<div class="phase" data-phase="5">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 6 of 6</span><span class="sh-title">Pass — hidden test</span></div>
+      <span class="sh-time">3 min</span>
+    </div>
+    <div class="card">
+      <p class="quiz-context">A colleague argues: "Escalation is a sign of poor agent design — a well-designed agent should be able to handle every situation autonomously." An experienced operator disagrees: "Escalation is built-in governance, not a design failure."</p>
+      <div class="quiz-q">Who is right, and what is the key insight?</div>
+      <div class="opt-list" id="passOpts">
+        <div class="opt" data-correct="false" onclick="pickQ('pass',this)"><div class="opt-letter">A</div><div class="opt-text">The colleague is right — escalation should be eliminated through better agent design.</div></div>
+        <div class="opt" data-correct="true" onclick="pickQ('pass',this)"><div class="opt-letter">B</div><div class="opt-text">The operator is right. Escalation is designed behaviour for situations that are correctly outside the agent's authority — legal judgments, authority it doesn't have, unresolvable ambiguity. An agent that escalates appropriately is not failing; it is correctly recognising the boundary of its authority and handing to the right human. An agent that never escalates is either operating in a perfectly bounded environment (rare) or improvising in situations where it should be escalating (dangerous).</div></div>
+        <div class="opt" data-correct="false" onclick="pickQ('pass',this)"><div class="opt-letter">C</div><div class="opt-text">Both have valid points — the goal is to minimise escalation as much as possible while keeping it as a fallback.</div></div>
+      </div>
+      <div class="feedback" id="passFeedback"></div>
+    </div>
+    <div class="pass-screen" id="passScreen">
+      <div class="ps-glyph">✦</div>
+      <div class="ps-title">Module 21 complete</div>
+      <p class="ps-sub">You can define the five triggers for escalation, write complete escalation paths with all five components, identify broken paths, and explain why escalation is designed governance — not design failure.</p>
+      <button class="ps-next" onclick="showLevelComplete()">See Level 3 summary →</button>
+    </div>
+    <div class="level-complete" id="levelComplete" style="display:none">
+      <div class="lc-label">Level 3 · Direct — Complete</div>
+      <div class="lc-title">You've completed the direction layer.</div>
+      <p class="lc-text">M15–M21 covered instruction design, scope constraints, approval gates, multi-agent coordination, priority hierarchies, and escalation paths. You can now design the governance architecture for any agent system — not just operate one.</p>
+      <button class="lc-next" onclick="location.href=`AGNUS - Academy Level 2-3 Checkpoint.html`">Begin Level 4 →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const TOTAL=6;
+function renderTrack(a){document.getElementById('phaseTrack').innerHTML=Array.from({length:TOTAL},(_,i)=>`<div class="ph ${i<a?'done':i===a?'active':''}"></div>`).join('');}
+function goPhase(n){document.querySelectorAll('.phase').forEach(p=>p.classList.remove('active'));document.querySelector(`[data-phase="${n}"]`).classList.add('active');renderTrack(n);window.scrollTo({top:0,behavior:'smooth'});}
+renderTrack(0);
+function showLevelComplete(){document.getElementById('passScreen').style.display='none';document.getElementById('levelComplete').style.display='block';}
+function pickQ(which,el){
+  document.querySelectorAll(`#${which}Opts .opt`).forEach(o=>{o.onclick=null;o.style.cursor='default';});
+  const correct=el.dataset.correct==='true';el.classList.add(correct?'correct':'wrong');
+  const fb=document.getElementById(`${which}Feedback`);fb.className='feedback '+(correct?'pass':'fail');
+  if(which==='practice'){
+    fb.innerHTML=correct?'<strong>Correct.</strong> The trigger existed ("cannot be resolved automatically") but two components were missing: (1) named target — "info@" is not a monitored contact with escalation authority; (2) complete package — "please review" gives the receiving human nothing to act on. A complete package would include: customer ID, complaint summary, what was tried, and the available resolution options.':'<strong>Not quite.</strong> A trigger condition existed (unresolvable complaint). The agent did stop and escalate. Think about what was missing in terms of where the escalation went and what information it contained.';
+    document.getElementById('practiceNext').disabled=false;
+  } else {
+    fb.innerHTML=correct?'<strong>Correct — M21 complete, Level 3 complete.</strong> Escalation is not failure. An agent that correctly identifies the boundary of its authority and hands to the right human is behaving exactly as it should. The dangerous agents are those that never escalate — because they are either operating in an impossibly simple environment or improvising resolutions to situations they should be escalating. Improvised resolutions are where governance gaps live.':'<strong>Not quite.</strong> Think about what the absence of escalation means. An agent that never escalates must be resolving every situation — including ones outside its authority. Is that more or less governed than an agent that flags situations it can\'t resolve to the right human?';
+    if(correct){setTimeout(()=>{document.getElementById('passScreen').style.display='block';renderTrack(TOTAL);},700);}
+  }
+}
+</script>
+</body>
+</html>

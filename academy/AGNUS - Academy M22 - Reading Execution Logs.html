@@ -1,0 +1,335 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Academy — M22 Reading Execution Logs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#F8F6F2;--surface:#FFFFFF;--surface-2:#F2F0EB;--border:#E0DDD5;--border-2:#CCC9C0;
+  --ink:#14181F;--ink-2:#3C4252;--ink-3:#7A8099;
+  --navy:#0F1E34;--navy-2:#162844;--navy-3:#1E3560;
+  --gold:#9A7020;--gold-bg:rgba(154,112,32,.09);--gold-border:rgba(154,112,32,.22);--gold-light:#C49A2C;
+  --pass:#0F6E3A;--pass-bg:rgba(15,110,58,.09);--pass-border:rgba(15,110,58,.22);
+  --danger:#B03020;--danger-bg:rgba(176,48,32,.09);--danger-border:rgba(176,48,32,.22);
+  --code-bg:#1A2235;
+  --mono:'DM Mono',monospace;--sans:'DM Sans',sans-serif;--serif:'Newsreader',serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;font-family:var(--sans);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+.rail{background:var(--navy);color:#fff;height:54px;display:flex;align-items:center;padding:0 26px;gap:16px;position:sticky;top:0;z-index:200}
+.rail-brand{font-weight:800;font-size:14.5px}
+.rail-sep{width:1px;height:20px;background:rgba(255,255,255,.12);flex-shrink:0}
+.rail-crumb{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38)}
+.rail-title{font-size:13px;font-weight:600;color:rgba(255,255,255,.88)}
+.rail-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.phase-track{display:flex;gap:5px}
+.ph{width:26px;height:3px;border-radius:2px;background:rgba(255,255,255,.16);transition:background .4s}
+.ph.done{background:var(--gold-light)}.ph.active{background:#fff}
+.rail-btn{font-family:var(--sans);font-size:12px;font-weight:600;padding:6px 14px;border-radius:7px;border:1px solid rgba(255,255,255,.16);color:#fff;background:rgba(255,255,255,.07);cursor:pointer}
+.phase{display:none}.phase.active{display:block}
+.hero{background:linear-gradient(138deg,#1A0832 0%,#2E1060 50%,#1E3560 100%);padding:52px 0 48px;position:relative;overflow:hidden}
+.hero-inner{max-width:820px;margin:0 auto;padding:0 32px;position:relative;z-index:1}
+.hero-kicker{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(180,140,255,.85);margin-bottom:16px;display:flex;align-items:center;gap:9px}
+.hero-kicker::before{content:'';width:20px;height:1px;background:rgba(180,140,255,.6);display:inline-block}
+.hero h1{font-size:clamp(24px,3.5vw,38px);font-weight:800;letter-spacing:-.03em;color:#fff;line-height:1.18;margin-bottom:16px}
+.hero-serif{font-family:var(--serif);font-style:italic;font-size:17px;line-height:1.72;color:rgba(245,242,236,.72);max-width:50ch;margin-bottom:28px}
+.hero-pills{display:flex;gap:14px;flex-wrap:wrap}
+.hp{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:7px;padding:7px 13px;font-size:12px;color:rgba(255,255,255,.68)}
+.hp strong{color:#fff}
+.wrap{max-width:820px;margin:0 auto;padding:40px 32px 120px}
+.step-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;padding-bottom:14px;border-bottom:1.5px solid var(--border)}
+.sh-left{display:flex;align-items:center;gap:10px}
+.sh-badge{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold-border);border-radius:99px;padding:4px 10px;font-weight:600}
+.sh-title{font-size:13px;font-weight:600;color:var(--ink-2)}
+.sh-time{font-family:var(--mono);font-size:10px;color:var(--ink-3)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:26px 28px;margin-bottom:18px}
+.card h3{font-size:16px;font-weight:800;letter-spacing:-.015em;color:var(--navy);margin-bottom:10px}
+.card p{font-size:14.5px;line-height:1.74;color:var(--ink-2)}
+.card p+p{margin-top:10px}
+
+/* LOG BLOCKS */
+.log-block{background:var(--code-bg);border-radius:14px;overflow:hidden;margin:16px 0}
+.lb-header{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,.07);background:rgba(0,0,0,.2)}
+.lb-title{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.38)}
+.lb-body{padding:6px 0}
+.log-line{display:grid;grid-template-columns:110px 80px 1fr;gap:0;padding:8px 16px;border-bottom:1px solid rgba(255,255,255,.04)}
+.log-line:last-child{border-bottom:none}
+.ll-ts{font-family:var(--mono);font-size:10.5px;color:rgba(255,255,255,.3)}
+.ll-level{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.05em}
+.ll-level.info{color:#79D4FF}.ll-level.warn{color:#FFD580}.ll-level.error{color:#FF8080}.ll-level.action{color:#6EE7B7}
+.ll-msg{font-family:var(--mono);font-size:11.5px;color:rgba(225,220,210,.85);line-height:1.5}
+.ll-msg .hlt{color:#FFD580}.ll-msg .ok{color:#6EE7B7}.ll-msg .err{color:#FF8080}.ll-msg .inv{color:#79D4FF}
+
+/* ANNOTATED LOG */
+.ann-log{display:grid;grid-template-columns:1fr 200px;border:1px solid var(--border);border-radius:14px;overflow:hidden;margin:16px 0}
+@media(max-width:640px){.ann-log{grid-template-columns:1fr}}
+.al-code{background:var(--code-bg);padding:14px 16px}
+.al-notes{background:var(--surface-2);padding:14px 16px;display:flex;flex-direction:column;gap:10px;border-left:1px solid var(--border)}
+@media(max-width:640px){.al-notes{border-left:none;border-top:1px solid var(--border)}}
+.al-note{font-size:11.5px;color:var(--ink-2);line-height:1.55;padding-left:8px;border-left:2px solid var(--gold)}
+.al-note strong{color:var(--ink);display:block;font-size:10px;font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
+
+/* SCAN GUIDE */
+.scan-steps{display:grid;gap:10px;margin:16px 0}
+.ss-card{display:grid;grid-template-columns:36px 1fr;border:1px solid var(--border);border-radius:11px;overflow:hidden}
+.ss-num{background:var(--navy);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:12px;font-weight:700;color:var(--gold-light)}
+.ss-body{padding:13px 15px;background:var(--surface)}
+.ss-title{font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:3px}
+.ss-text{font-size:12.5px;color:var(--ink-2);line-height:1.6}
+
+.callout{border-radius:12px;padding:16px 20px;margin:14px 0;font-size:13.5px;line-height:1.68;display:flex;gap:12px;align-items:flex-start}
+.callout.gold{background:var(--gold-bg);border:1px solid var(--gold-border)}
+.callout-icon{flex-shrink:0;margin-top:2px}
+.opt-list{display:grid;gap:10px;margin:16px 0}
+.opt{display:grid;grid-template-columns:36px 1fr;border:1.5px solid var(--border-2);border-radius:12px;cursor:pointer;overflow:hidden;transition:border-color .15s,transform .1s}
+.opt:hover{border-color:var(--navy);transform:translateY(-1px)}
+.opt.correct{border-color:var(--pass)}.opt.wrong{border-color:var(--danger)}
+.opt-letter{display:flex;align-items:center;justify-content:center;background:var(--surface-2);font-family:var(--mono);font-size:11px;font-weight:700;color:var(--ink-3)}
+.opt.correct .opt-letter{background:var(--pass-bg);color:var(--pass)}.opt.wrong .opt-letter{background:var(--danger-bg);color:var(--danger)}
+.opt-text{padding:14px 16px;font-size:13.5px;line-height:1.5;color:var(--ink);background:var(--surface)}
+.opt.correct .opt-text{background:var(--pass-bg)}.opt.wrong .opt-text{background:var(--danger-bg)}
+.feedback{display:none;margin-top:14px;padding:16px 18px;border-radius:11px;font-size:14px;line-height:1.68}
+.feedback.pass{display:block;background:var(--pass-bg);border-left:3px solid var(--pass)}
+.feedback.fail{display:block;background:var(--danger-bg);border-left:3px solid var(--danger)}
+.quiz-q{font-size:16px;font-weight:700;letter-spacing:-.012em;color:var(--navy);margin-bottom:6px}
+.quiz-context{font-size:13.5px;color:var(--ink-2);line-height:1.65;margin-bottom:20px;padding:14px 16px;background:var(--surface-2);border-radius:10px;border-left:3px solid var(--gold)}
+.cta-row{display:flex;justify-content:space-between;align-items:center;margin-top:28px;padding-top:20px;border-top:1px solid var(--border)}
+.cta-hint{font-size:13px;color:var(--ink-3)}
+.btn{font-family:var(--sans);font-weight:700;font-size:14.5px;padding:13px 30px;border-radius:12px;border:none;cursor:pointer;transition:all .2s}
+.btn-primary{background:var(--navy);color:#fff}.btn-primary:hover{background:var(--navy-2);transform:translateY(-1px)}
+.btn-primary:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.pass-screen{display:none;text-align:center;padding:56px 36px;background:linear-gradient(138deg,var(--navy),var(--navy-3));border-radius:20px;margin-top:20px;color:#fff}
+.ps-glyph{font-size:42px;margin-bottom:16px;color:var(--gold-light)}
+.ps-title{font-size:26px;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+.ps-sub{font-size:14px;color:rgba(255,255,255,.65);line-height:1.6;max-width:40ch;margin:0 auto 28px}
+.ps-next{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#fff;border:none;font-family:var(--sans);font-weight:700;font-size:14px;padding:13px 26px;border-radius:11px;cursor:pointer}
+</style>
+</head>
+<body>
+<header class="rail">
+  <span class="rail-brand">AGNUS Academy</span>
+  <span class="rail-sep"></span>
+  <span class="rail-crumb">Level 4 · Govern</span>
+  <span class="rail-title">M22 — Reading Execution Logs</span>
+  <div class="rail-right">
+    <div class="phase-track" id="phaseTrack"></div>
+    <button class="rail-btn" onclick="location.href='AGNUS - Academy App.html'">← Dashboard</button>
+  </div>
+</header>
+
+<!-- PHASE 0 -->
+<div class="phase active" data-phase="0">
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-kicker">Module 22 of 49 · Level 4 · Govern · First L4 module</div>
+      <h1>The execution log is the<br>evidence record of everything that happened.</h1>
+      <p class="hero-serif">Welcome to Level 4 — Govern. At this level you are responsible for agent systems, not just individual tasks. Execution logs are your primary governance tool: the authoritative record of what every agent did, when, and why.</p>
+      <div class="hero-pills">
+        <span class="hp"><strong>6 steps</strong></span>
+        <span class="hp"><strong>~16 min</strong></span>
+        <span class="hp"><strong>First Level 4 module</strong></span>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="card">
+      <h3>The shift from Level 3 to Level 4</h3>
+      <p>In Level 3 you designed instructions for individual agents. In Level 4 you govern systems of agents over time. That means you need visibility into what agents are doing across all runs — not just the current one. Execution logs are how you get that visibility.</p>
+      <p>An execution log is an append-only, timestamped record of all agent actions across a deployment. It answers: what happened, when, by which agent, with what result, and under whose authority? Without a log, governance is retrospective guesswork.</p>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Next: anatomy of an execution log</span>
+      <button class="btn btn-primary" onclick="goPhase(1)">Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 1 -->
+<div class="phase" data-phase="1">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 2 of 6</span><span class="sh-title">Reading a real execution log</span></div>
+      <span class="sh-time">4 min</span>
+    </div>
+    <div class="card">
+      <h3>What a log entry tells you</h3>
+      <p>Every log entry has a timestamp, a level, and a message. The level tells you the severity or type. The message tells you what happened. Learning to read these fluently is a core Level 4 skill.</p>
+    </div>
+    <div class="ann-log">
+      <div class="al-code">
+        <div class="log-line"><span class="ll-ts">09:14:02</span><span class="ll-level info">INFO</span><span class="ll-msg"><span class="inv">invoice_reader</span> → read <span class="inv">INV-2026-0441</span>: supplier=Lindqvist, amount=<span class="ok">320</span></span></div>
+        <div class="log-line"><span class="ll-ts">09:14:03</span><span class="ll-level info">INFO</span><span class="ll-msg"><span class="inv">po_matcher</span> → <span class="ok">PO-389 matched</span>, variance=0</span></div>
+        <div class="log-line"><span class="ll-ts">09:14:04</span><span class="ll-level info">INFO</span><span class="ll-msg"><span class="inv">threshold_check</span> → amount 320 &lt; 500: <span class="ok">within threshold</span></span></div>
+        <div class="log-line"><span class="ll-ts">09:14:05</span><span class="ll-level action">ACTION</span><span class="ll-msg"><span class="inv">payment_processor</span> → submitted: payee=Lindqvist, amount=<span class="ok">320</span>, tx_id=TX-8841</span></div>
+        <div class="log-line"><span class="ll-ts">09:14:22</span><span class="ll-level warn">WARN</span><span class="ll-msg"><span class="inv">invoice_reader</span> → read <span class="inv">INV-2026-0448</span>: <span class="hlt">po_match=null</span></span></div>
+        <div class="log-line"><span class="ll-ts">09:14:23</span><span class="ll-level action">ACTION</span><span class="ll-msg"><span class="inv">escalation_router</span> → escalated to ap-lead@nordvik.no: reason=no_po_match, invoice=INV-0448</span></div>
+        <div class="log-line"><span class="ll-ts">09:14:35</span><span class="ll-level error">ERROR</span><span class="ll-msg"><span class="inv">payment_processor</span> → <span class="err">connection timeout</span> on INV-2026-0449. Retry 1/2...</span></div>
+        <div class="log-line"><span class="ll-ts">09:14:37</span><span class="ll-level action">ACTION</span><span class="ll-msg"><span class="inv">payment_processor</span> → retry 1: <span class="ok">success</span>, tx_id=TX-8843</span></div>
+      </div>
+      <div class="al-notes">
+        <div class="al-note"><strong>09:14:02–05</strong>Clean sequence: read → PO match → threshold check → payment. All verifications present before action.</div>
+        <div class="al-note"><strong>09:14:22–23</strong>WARN + ACTION: PO null detected → escalated. Correct fallback behaviour. Log confirms the escalation path fired.</div>
+        <div class="al-note"><strong>09:14:35–37</strong>ERROR then ACTION: connection timeout triggered retry 1. Retry succeeded. Check: was this a read or write operation? (It was a payment — ambiguous timeout. Review needed.)</div>
+      </div>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Next: the five-step log scan</span>
+      <button class="btn btn-primary" onclick="goPhase(2)">Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 2 -->
+<div class="phase" data-phase="2">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 3 of 6</span><span class="sh-title">The five-step governance log scan</span></div>
+      <span class="sh-time">4 min</span>
+    </div>
+    <div class="card">
+      <h3>A structured scan takes 5 minutes. Open-ended review takes 30.</h3>
+    </div>
+    <div class="scan-steps">
+      <div class="ss-card"><div class="ss-num">1</div><div class="ss-body"><div class="ss-title">Count ERRORs and WARNs</div><div class="ss-text">Start here. Any ERROR or WARN is a potential governance issue. Count them. Read every one. An ERROR that resolved cleanly (retry succeeded) may be fine — an ERROR with no resolution is not.</div></div></div>
+      <div class="ss-card"><div class="ss-num">2</div><div class="ss-body"><div class="ss-title">Verify every ACTION has preceding verification</div><div class="ss-text">For each ACTION line involving a consequential operation (payment, email, record modification), scroll back and confirm the verification steps are present before it. This is the Pattern 1 check from M11.</div></div></div>
+      <div class="ss-card"><div class="ss-num">3</div><div class="ss-body"><div class="ss-title">Check the tool allowlist</div><div class="ss-text">List every tool that appears in the log. Compare against the configured tool allowlist. Any tool outside the list is Pattern 6 — unexpected tool in sequence.</div></div></div>
+      <div class="ss-card"><div class="ss-num">4</div><div class="ss-body"><div class="ss-title">Check for retry patterns on non-idempotent operations</div><div class="ss-text">Find any retry sequences. Identify what tool is being retried. If it's a payment, email, or record write that returned a timeout — flag for investigation. (M12 — ambiguous timeout on non-idempotent action.)</div></div></div>
+      <div class="ss-card"><div class="ss-num">5</div><div class="ss-body"><div class="ss-title">Verify escalation triggers fired</div><div class="ss-text">For each WARN that matches a configured escalation trigger, confirm an ACTION follows showing the escalation was sent. A WARN with no escalation ACTION means the escalation path didn't fire — governance gap.</div></div></div>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Next: practice on a real log</span>
+      <button class="btn btn-primary" onclick="goPhase(3)">Practice log →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 3 — INTERACTIVE LOG -->
+<div class="phase" data-phase="3">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 4 of 6</span><span class="sh-title">Find the governance issue in this log</span></div>
+      <span class="sh-time">4 min</span>
+    </div>
+    <div class="card">
+      <h3>Review this execution log and identify the issue</h3>
+      <p style="margin-bottom:14px">Apply the five-step scan. There is one governance issue in this log.</p>
+    </div>
+    <div class="log-block">
+      <div class="lb-header"><span class="lb-title">Execution log — invoice payment run — 2026-08-23 14:00</span></div>
+      <div class="lb-body">
+        <div class="log-line"><span class="ll-ts">14:00:01</span><span class="ll-level info">INFO</span><span class="ll-msg"><span class="inv">invoice_reader</span> → read INV-2026-0501: supplier=Oslo Print, amount=<span class="ok">210</span></span></div>
+        <div class="log-line"><span class="ll-ts">14:00:02</span><span class="ll-level info">INFO</span><span class="ll-msg"><span class="inv">po_matcher</span> → PO-412 matched, variance=0</span></div>
+        <div class="log-line"><span class="ll-ts">14:00:03</span><span class="ll-level action">ACTION</span><span class="ll-msg"><span class="inv">payment_processor</span> → submitted: payee=Oslo Print, amount=210, tx_id=TX-9001</span></div>
+        <div class="log-line"><span class="ll-ts">14:00:10</span><span class="ll-level info">INFO</span><span class="ll-msg"><span class="inv">invoice_reader</span> → read INV-2026-0502: supplier=Bergen Cold Storage, amount=<span class="ok">1840</span></span></div>
+        <div class="log-line"><span class="ll-ts">14:00:11</span><span class="ll-level info">INFO</span><span class="ll-msg"><span class="inv">po_matcher</span> → PO-401 matched, variance=0</span></div>
+        <div class="log-line"><span class="ll-ts">14:00:12</span><span class="ll-level action">ACTION</span><span class="ll-msg"><span class="inv">payment_processor</span> → submitted: payee=Bergen Cold Storage, amount=1840, tx_id=TX-9002</span></div>
+        <div class="log-line"><span class="ll-ts">14:00:20</span><span class="ll-level info">INFO</span><span class="ll-msg"><span class="inv">invoice_reader</span> → read INV-2026-0503: supplier=Stavanger IT, amount=<span class="hlt">6400</span></span></div>
+        <div class="log-line"><span class="ll-ts">14:00:21</span><span class="ll-level info">INFO</span><span class="ll-msg"><span class="inv">po_matcher</span> → PO-388 matched, variance=0</span></div>
+        <div class="log-line"><span class="ll-ts">14:00:22</span><span class="ll-level action">ACTION</span><span class="ll-msg"><span class="inv">payment_processor</span> → submitted: payee=Stavanger IT, amount=<span class="hlt">6400</span>, tx_id=TX-9003</span></div>
+        <div class="log-line"><span class="ll-ts">14:00:23</span><span class="ll-level info">INFO</span><span class="ll-msg"><span class="inv">audit_logger</span> → 3 payments logged, total=€8450</span></div>
+      </div>
+    </div>
+    <div class="quiz-q">What is the governance issue in this log?</div>
+    <div class="opt-list" id="practiceOpts">
+      <div class="opt" data-correct="false" onclick="pickQ('practice',this)"><div class="opt-letter">A</div><div class="opt-text">The audit logger total is wrong — €210 + €1,840 + €6,400 = €8,450, which matches. No issue.</div></div>
+      <div class="opt" data-correct="true" onclick="pickQ('practice',this)"><div class="opt-letter">B</div><div class="opt-text">INV-0503 for €6,400 was paid autonomously with no escalation or approval gate. The auto-approve threshold is €500 — any amount above this requires finance manager notification before payment. The log shows no threshold_check step and no escalation ACTION before the €6,400 payment was submitted.</div></div>
+      <div class="opt" data-correct="false" onclick="pickQ('practice',this)"><div class="opt-letter">C</div><div class="opt-text">The payment for Bergen Cold Storage (€1,840) should have been flagged — it's above the auto-approve threshold and no approval is shown.</div></div>
+    </div>
+    <div class="feedback" id="practiceFeedback"></div>
+    <div class="cta-row">
+      <span class="cta-hint">Final test</span>
+      <button class="btn btn-primary" id="practiceNext" onclick="goPhase(4)" disabled>Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 4 -->
+<div class="phase" data-phase="4">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 5 of 6</span><span class="sh-title">What good log coverage looks like</span></div>
+      <span class="sh-time">3 min</span>
+    </div>
+    <div class="card">
+      <h3>A complete log entry for a consequential action</h3>
+      <p>Not all log entries need equal detail. A read operation can log a single INFO line. A payment submission needs more — enough to reconstruct the decision chain and verify it was authorised.</p>
+    </div>
+    <div class="log-block">
+      <div class="lb-header"><span class="lb-title">Complete payment log — €6,400 payment (correct version)</span></div>
+      <div class="lb-body">
+        <div class="log-line"><span class="ll-ts">14:00:20</span><span class="ll-level info">INFO</span><span class="ll-msg"><span class="inv">invoice_reader</span> → read INV-0503: amount=<span class="hlt">6400</span></span></div>
+        <div class="log-line"><span class="ll-ts">14:00:21</span><span class="ll-level info">INFO</span><span class="ll-msg"><span class="inv">po_matcher</span> → PO-388 matched, variance=0</span></div>
+        <div class="log-line"><span class="ll-ts">14:00:21</span><span class="ll-level warn">WARN</span><span class="ll-msg"><span class="inv">threshold_check</span> → amount 6400 &gt; 500: <span class="hlt">above auto-approve threshold. Escalation required.</span></span></div>
+        <div class="log-line"><span class="ll-ts">14:00:22</span><span class="ll-level action">ACTION</span><span class="ll-msg"><span class="inv">escalation_router</span> → notified finance-manager@nordvik.no: INV-0503, €6400, approval required</span></div>
+        <div class="log-line"><span class="ll-ts">14:08:14</span><span class="ll-level action">ACTION</span><span class="ll-msg"><span class="inv">approval_gate</span> → approved by finance-manager@nordvik.no at 14:08. Proceeding to payment.</span></div>
+        <div class="log-line"><span class="ll-ts">14:08:15</span><span class="ll-level action">ACTION</span><span class="ll-msg"><span class="inv">payment_processor</span> → submitted: payee=Stavanger IT, amount=<span class="ok">6400</span>, tx_id=TX-9003</span></div>
+      </div>
+    </div>
+    <div class="callout gold">
+      <div class="callout-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M8 7v5M8 5.5v.5"/></svg></div>
+      <div><strong>The difference:</strong> The original log showed a €6,400 payment with no evidence of authorisation. The correct log shows the full decision chain: threshold check → escalation → approval received → payment. Any auditor can reconstruct the authorisation from the log alone.</div>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Final pass test</span>
+      <button class="btn btn-primary" onclick="goPhase(5)">Pass test →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 5 -->
+<div class="phase" data-phase="5">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 6 of 6</span><span class="sh-title">Pass — hidden test</span></div>
+      <span class="sh-time">3 min</span>
+    </div>
+    <div class="card">
+      <p class="quiz-context">A compliance officer asks for the log of all payments made by the invoice agent over the past month. The log shows 120 successful payments with correct INFO and ACTION entries. The compliance officer says: "This log doesn't tell me enough for an audit — I can see what happened but not whether it was authorised." The operations manager responds: "It shows all the payments were made successfully."</p>
+      <div class="quiz-q">Who is right?</div>
+      <div class="opt-list" id="passOpts">
+        <div class="opt" data-correct="false" onclick="pickQ('pass',this)"><div class="opt-letter">A</div><div class="opt-text">The operations manager — a successful payment log is sufficient evidence of correct operation.</div></div>
+        <div class="opt" data-correct="true" onclick="pickQ('pass',this)"><div class="opt-letter">B</div><div class="opt-text">The compliance officer. A log that shows payments were made but not whether they were authorised is operationally complete but governance-incomplete. An audit-ready log must show the authorisation chain for each payment: threshold check, escalation (where triggered), and approval received. "It happened" is not the same as "it was authorised to happen."</div></div>
+        <div class="opt" data-correct="false" onclick="pickQ('pass',this)"><div class="opt-letter">C</div><div class="opt-text">Both are right — the log is sufficient for operations and a separate authorisation record is needed for compliance.</div></div>
+      </div>
+      <div class="feedback" id="passFeedback"></div>
+    </div>
+    <div class="pass-screen" id="passScreen">
+      <div class="ps-glyph">✦</div>
+      <div class="ps-title">Module 22 complete</div>
+      <p class="ps-sub">You can read execution logs, apply the five-step governance scan, identify missing authorisation chains, and explain the difference between an operational log and an audit-ready governance log.</p>
+      <button class="ps-next" onclick="location.href=`AGNUS - Academy M23 - Spotting Scope Drift.html`">Continue to →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const TOTAL=6;
+function renderTrack(a){document.getElementById('phaseTrack').innerHTML=Array.from({length:TOTAL},(_,i)=>`<div class="ph ${i<a?'done':i===a?'active':''}"></div>`).join('');}
+function goPhase(n){document.querySelectorAll('.phase').forEach(p=>p.classList.remove('active'));document.querySelector(`[data-phase="${n}"]`).classList.add('active');renderTrack(n);window.scrollTo({top:0,behavior:'smooth'});}
+renderTrack(0);
+function pickQ(which,el){
+  document.querySelectorAll(`#${which}Opts .opt`).forEach(o=>{o.onclick=null;o.style.cursor='default';});
+  const correct=el.dataset.correct==='true';el.classList.add(correct?'correct':'wrong');
+  const fb=document.getElementById(`${which}Feedback`);fb.className='feedback '+(correct?'pass':'fail');
+  if(which==='practice'){
+    fb.innerHTML=correct?'<strong>Correct.</strong> Step 2 of the scan: verify every ACTION has preceding verification. The €6,400 payment at 14:00:22 has: read → PO match → payment. Missing: threshold_check (which should have returned WARN since 6400 > 500) and escalation ACTION (finance manager notification). The payment was above the auto-approve threshold and was paid without going through the required approval gate.':'<strong>Not quite.</strong> Apply Step 2 of the scan to the €6,400 payment. What verification steps should appear before a payment of that size? Compare what\'s in the log with what the configuration requires for a payment above the auto-approve threshold.';
+    document.getElementById('practiceNext').disabled=false;
+  } else {
+    fb.innerHTML=correct?'<strong>Correct — M22 complete.</strong> A payment log that shows 120 successful payments demonstrates the agent worked. It doesn\'t demonstrate the payments were authorised. An audit requires the authorisation chain for each payment: threshold check, escalation where triggered, and approval received. The compliance officer needs to be able to reconstruct the authorisation decision from the log — not just confirm the payment occurred.':'<strong>Not quite.</strong> The operations manager is describing what the log shows (that payments happened). The compliance officer is describing what it\'s missing (evidence that the payments were authorised to happen). Both describe the same log correctly — but governance requires the second, not just the first.';
+    if(correct){setTimeout(()=>{document.getElementById('passScreen').style.display='block';renderTrack(TOTAL);},700);}
+  }
+}
+</script>
+</body>
+</html>

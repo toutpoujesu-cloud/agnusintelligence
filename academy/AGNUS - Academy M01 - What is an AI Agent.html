@@ -1,0 +1,199 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Academy — M01 What is an AI Agent?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#F8F6F2;--canvas:#FDFCFA;--panel:#FFFFFF;--panel-2:#F2F0EB;--line:#E5E2D9;--line-2:#D1CEC4;--ink:#18202A;--ink-2:#4A5261;--ink-3:#8E96A2;--navy:#17263C;--navy-2:#0F1A28;--gold:#9A7633;--gold-light:#B59048;--gold-soft:#F6F0E3;--gold-dim:rgba(154,118,51,.13);--pass:#1A7E4A;--pass-dim:rgba(26,126,74,.1);}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:Manrope,sans-serif;-webkit-font-smoothing:antialiased}
+.top-rail{background:var(--navy-2);color:#fff;display:flex;align-items:center;height:48px;padding:0 20px;gap:18px}
+.tr-brand{font-weight:800;font-size:13.5px}
+.tr-crumb{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.tr-title{font-size:13px;font-weight:700}
+.tr-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.prog-dots{display:flex;gap:5px}
+.prog-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.2)}
+.prog-dot.done{background:var(--gold-light)}
+.prog-dot.active{background:#fff}
+.tr-btn{font-family:Manrope,sans-serif;font-size:12px;font-weight:700;padding:7px 14px;border-radius:7px;border:1px solid rgba(255,255,255,.18);color:#fff;background:rgba(255,255,255,.07);cursor:pointer}
+.wrap{max-width:760px;margin:0 auto;padding:44px 24px 100px}
+.step-banner{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:28px}
+.sb-step{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.sb-count{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-3)}
+.hero{background:var(--navy);border-radius:16px;padding:32px 34px;display:grid;gap:16px;margin-bottom:24px}
+.hero h1{font-weight:800;font-size:26px;letter-spacing:-.026em;color:#fff;line-height:1.15}
+.hero p{font-family:Newsreader,serif;font-style:italic;font-size:16px;line-height:1.7;color:rgba(245,244,241,.78)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px 26px;margin-bottom:20px}
+.card h3{font-size:15px;font-weight:700;margin-bottom:10px}
+.card p{font-size:14.5px;line-height:1.68;color:var(--ink-2)}
+.diagram{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:0;align-items:center;margin:20px 0}
+.dg-node{background:var(--panel-2);border:1px solid var(--line);border-radius:10px;padding:14px;text-align:center}
+.dg-node .n{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--gold);text-transform:uppercase;letter-spacing:.1em}
+.dg-node .t{font-weight:700;font-size:13.5px;margin-top:4px}
+.dg-arrow{text-align:center;color:var(--line-2);font-size:16px}
+.opt-list{display:grid;gap:10px;margin:16px 0}
+.opt{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border:1.5px solid var(--line-2);border-radius:10px;cursor:pointer}
+.opt:hover{border-color:var(--navy);background:#F9F8F5}
+.opt.correct{border-color:var(--pass);background:var(--pass-dim)}
+.opt.wrong{border-color:#B4432E;background:#FEF0ED}
+.opt .letter{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;color:var(--ink-3);flex:none;width:20px}
+.opt .text{font-size:14px;line-height:1.5}
+.feedback{display:none;margin-top:14px;padding:16px 18px;border-radius:10px;font-size:13.5px;line-height:1.6}
+.feedback.pass{display:block;background:var(--pass-dim);border-left:3px solid var(--pass);color:var(--ink)}
+.feedback.fail{display:block;background:#FEF0ED;border-left:3px solid #B4432E;color:var(--ink)}
+.cta-row{display:flex;justify-content:flex-end;margin-top:24px}
+.btn{font-family:Manrope,sans-serif;font-weight:700;font-size:14px;padding:13px 26px;border-radius:10px;border:none;background:var(--navy);color:#fff;cursor:pointer}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.pass-screen{display:none;text-align:center;padding:44px 30px;background:var(--navy);border-radius:16px;color:#fff}
+.pass-screen h2{font-size:22px;font-weight:800;margin-bottom:10px}
+.pass-screen p{font-size:13.5px;color:rgba(255,255,255,.7);margin-bottom:20px}
+.step{display:none}
+.step.active{display:block}
+</style>
+</head>
+<body>
+
+<header class="top-rail">
+  <span class="tr-brand">AGNUS Academy</span>
+  <span class="tr-crumb">Level 1 · Understand</span>
+  <span class="tr-title">M01 — What is an AI Agent?</span>
+  <div class="tr-right">
+    <div class="prog-dots" id="progDots"></div>
+    <button class="tr-btn" onclick="location.href='AGNUS - Academy App.html'">← Dashboard</button>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- STEP 1: UNDERSTAND -->
+  <section class="step active" data-step="0">
+    <div class="step-banner"><span class="sb-step">Step 1 of 4 — Understand</span><span class="sb-count">4 min</span></div>
+    <div class="hero">
+      <h1>An agent is a loop, not a single answer.</h1>
+      <p>A chatbot answers once. An AI agent <em>plans</em>, <em>acts</em>, checks the result, and decides what to do next — repeating that loop until the task is done or it needs you.</p>
+    </div>
+    <div class="card">
+      <h3>The core loop</h3>
+      <div class="diagram">
+        <div class="dg-node"><div class="n">01</div><div class="t">Plan</div></div>
+        <div class="dg-arrow">→</div>
+        <div class="dg-node"><div class="n">02</div><div class="t">Act</div></div>
+        <div class="dg-arrow">→</div>
+        <div class="dg-node"><div class="n">03</div><div class="t">Observe</div></div>
+      </div>
+      <p>The agent repeats this loop — planning a step, taking an action (like calling a tool), and observing the result — until the task is complete. Each pass through the loop can change its next plan.</p>
+    </div>
+    <div class="cta-row"><button class="btn" onclick="goStep(1)">See it in action →</button></div>
+  </section>
+
+  <!-- STEP 2: SEE -->
+  <section class="step" data-step="1">
+    <div class="step-banner"><span class="sb-step">Step 2 of 4 — See</span><span class="sb-count">3 min</span></div>
+    <div class="card">
+      <h3>A real agent trace</h3>
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.9;color:var(--ink);background:var(--panel-2);border-radius:8px;padding:16px 18px;margin-top:10px">
+        Task: "Find this week's top AI news story."<br><br>
+        <span style="color:var(--gold)">Plan:</span> search recent AI news sources<br>
+        <span style="color:var(--gold)">Act:</span> call search_web("AI news this week")<br>
+        <span style="color:var(--gold)">Observe:</span> 8 results returned<br>
+        <span style="color:var(--gold)">Plan:</span> read the top 3 for relevance<br>
+        <span style="color:var(--gold)">Act:</span> call fetch_page() × 3<br>
+        <span style="color:var(--gold)">Observe:</span> one story clearly dominant<br>
+        <span style="color:var(--pass)">Done:</span> "Story X is the top AI news this week — here's why."
+      </p>
+    </div>
+    <div class="card">
+      <h3>Why this matters</h3>
+      <p>Notice the agent didn't just answer from memory — it planned, took real actions, and used what it observed to decide its next step. That loop is what separates an agent from a single-turn reply.</p>
+    </div>
+    <div class="cta-row"><button class="btn" onclick="goStep(2)">Try it yourself →</button></div>
+  </section>
+
+  <!-- STEP 3: PRACTICE -->
+  <section class="step" data-step="2">
+    <div class="step-banner"><span class="sb-step">Step 3 of 4 — Practice</span><span class="sb-count">3 min</span></div>
+    <div class="card">
+      <h3>Which of these is a single-turn reply, not an agent loop?</h3>
+      <div class="opt-list" id="practiceOpts">
+        <div class="opt" data-correct="false" onclick="pickPractice(this)"><span class="letter">A</span><span class="text">The system searches for flight prices, compares three sites, and books the cheapest one.</span></div>
+        <div class="opt" data-correct="true" onclick="pickPractice(this)"><span class="letter">B</span><span class="text">You ask "what's the capital of France?" and it replies "Paris" — no tools called, no follow-up steps.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPractice(this)"><span class="letter">C</span><span class="text">The system reads your calendar, finds a conflict, and reschedules the meeting automatically.</span></div>
+      </div>
+      <div class="feedback" id="practiceFeedback"></div>
+    </div>
+    <div class="cta-row"><button class="btn" id="practiceNext" onclick="goStep(3)" disabled>Continue →</button></div>
+  </section>
+
+  <!-- STEP 4: PASS (HIDDEN TEST) -->
+  <section class="step" data-step="3">
+    <div class="step-banner"><span class="sb-step">Step 4 of 4 — Pass</span><span class="sb-count">Hidden test</span></div>
+    <div class="card">
+      <h3>New scenario — no hints</h3>
+      <p style="margin-bottom:14px">A customer support tool reads an incoming ticket, checks the order database, and replies with a tracking number — all without a human involved. Does this qualify as an agent loop?</p>
+      <div class="opt-list" id="passOpts">
+        <div class="opt" data-correct="true" onclick="pickPass(this)"><span class="letter">A</span><span class="text">Yes — it planned (check the order), acted (queried the database), and observed the result before replying.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">B</span><span class="text">No — it only sent one message, so it can't be an agent.</span></div>
+      </div>
+      <div class="feedback" id="passFeedback"></div>
+    </div>
+    <div class="pass-screen" id="passScreen">
+      <h2>Module 01 complete</h2>
+      <p>Agent loop recognition confirmed.</p>
+      <button class="tr-btn" onclick="location.href='AGNUS - Academy App.html'">← Dashboard</button>
+    </div>
+  </section>
+
+</div>
+
+<script>
+const TOTAL_STEPS = 4;
+function renderDots(active){
+  document.getElementById('progDots').innerHTML = Array.from({length:TOTAL_STEPS}).map((_,i)=>
+    '<div class="prog-dot '+(i<active?'done':i===active?'active':'')+'"></div>').join('');
+}
+function goStep(i){
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  document.querySelector('.step[data-step="'+i+'"]').classList.add('active');
+  renderDots(i);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+renderDots(0);
+
+function pickPractice(el){
+  document.querySelectorAll('#practiceOpts .opt').forEach(o=>{o.onclick=null;});
+  const correct = el.dataset.correct === 'true';
+  el.classList.add(correct?'correct':'wrong');
+  const fb = document.getElementById('practiceFeedback');
+  fb.className = 'feedback ' + (correct?'pass':'fail');
+  fb.textContent = correct
+    ? 'Correct. Option B is a single reply with no plan-act-observe loop — that\'s a chatbot response, not an agent.'
+    : 'Not quite. Look for the option with no tool calls and no multi-step loop — B fits that.';
+  document.getElementById('practiceNext').disabled = false;
+}
+function pickPass(el){
+  document.querySelectorAll('#passOpts .opt').forEach(o=>{o.onclick=null;});
+  const correct = el.dataset.correct === 'true';
+  el.classList.add(correct?'correct':'wrong');
+  const fb = document.getElementById('passFeedback');
+  fb.className = 'feedback ' + (correct?'pass':'fail');
+  fb.textContent = correct
+    ? 'Correct — M01 complete. Even without a visible back-and-forth, this system planned, acted, and observed before responding. That loop — not the number of messages — is what makes it an agent.'
+    : 'Not quite. Count the internal steps: checking the order database is an action, and using its result to reply is observing. That loop qualifies it as an agent, even in one visible message.';
+  if(correct){ setTimeout(()=>{ document.getElementById('passScreen').style.display='block'; renderDots(4); }, 600); }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Algorithmic Accountability: From Principle to Practice — AGNUS Research</title>
+<meta name="description" content="Algorithmic accountability means being able to answer for what an automated system does — to those it affects, to regulators, and to the public. It is not the same as explainability, transparency, or fairness, though it requires all three." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>a,a:visited{color:inherit}
+.prose h3{font-family:var(--font-sans);font-weight:700;font-size:19px;letter-spacing:-.018em;margin:32px 0 14px}
+.pillar-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:#F0FFF4;color:#1A6B3B;border:1px solid #9ED8B3;border-radius:4px;padding:3px 8px;margin-bottom:16px}
+.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
+.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
+.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s}
+.rsub a:hover{color:var(--ink);background:var(--line-soft,rgba(0,0,0,.04))}
+.accountability-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:13px}
+.accountability-table th{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);font-weight:600;text-align:left;padding:10px 14px;border-bottom:2px solid var(--line);background:var(--paper-warm,#F7F5F0)}
+.accountability-table td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+.accountability-table tr:last-child td{border-bottom:none}
+</style>
+</head>
+<body>
+<div class="art-progress"><i id="progBar"></i></div>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Marketplace.html">Marketplace</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+      <a href="AGNUS - Business.html">Business</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+      <button class="hamburger" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="rsub"><div class="rsub-inner">
+  <a href="AGNUS - Research.html">Research Home</a>
+  <a href="AGNUS - Research Topic.html">AI Audit</a>
+</div></div>
+
+<header class="art-head">
+  <div class="container">
+    <div class="pillar-tag">AI Audit</div>
+    <h1>Algorithmic Accountability: From Principle to Practice</h1>
+    <p class="art-abstract">Algorithmic accountability means being able to answer for what an automated system does — to those it affects, to regulators, and to the public. It is not the same as explainability, transparency, or fairness, though it requires elements of all three. This article defines what algorithmic accountability demands in practice, how it differs from related concepts, and what the audit function's role is in establishing it.</p>
+    <div data-rc="articleMeta" data-rc-arg="AR-000532"></div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="art-shell">
+    <aside class="art-toc"><div class="toc-h">Contents</div><ol id="tocList"></ol></aside>
+    <article class="prose" id="prose">
+
+      <h2 id="s-definition">What algorithmic accountability means</h2>
+      <p>Accountability in its classic form is the obligation to answer for one's actions — to justify decisions, accept consequences for errors, and be subject to sanction when obligations are violated. Applied to algorithmic systems, accountability requires: (1) that someone can be identified who is responsible for the system's decisions and their consequences; (2) that those decisions can be explained in terms that the affected parties and decision-makers can understand; (3) that where errors or harms occur, there is a mechanism for redress; and (4) that the responsible party can demonstrate, on demand, that they have met their obligations.</p>
+      <p>This is substantially more demanding than what most organisations currently provide. Many AI systems are deployed with no identified accountable person below the executive level; with explanations available only for technical audiences; with no redress mechanism for affected individuals; and with no evidence of obligation-meeting that survives an audit.</p>
+
+      <h2 id="s-distinction">Accountability versus related concepts</h2>
+      <table class="accountability-table">
+        <thead><tr><th>Concept</th><th>What it means</th><th>Relation to accountability</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Transparency</strong></td><td>Information about the AI system is available — what it does, how it is trained, what data it uses.</td><td>Necessary condition for accountability — you cannot be accountable for a black box. But transparency alone is not accountability.</td></tr>
+          <tr><td><strong>Explainability</strong></td><td>Specific decisions made by the AI can be explained — the factors that influenced them, the weight given to each, the counterfactuals.</td><td>Required for decision-level accountability. Without explainability, the affected person cannot challenge a decision and the accountable person cannot justify it.</td></tr>
+          <tr><td><strong>Fairness</strong></td><td>The AI system produces outputs that do not discriminate unfairly across protected characteristics.</td><td>Fairness is a substantive obligation — one of the things accountability requires the accountable person to demonstrate. An unfair system is one for which the accountable person is answerable.</td></tr>
+          <tr><td><strong>Auditability</strong></td><td>The AI system and its decisions can be examined by an independent third party.</td><td>Auditability is the mechanism through which accountability is verified. An accountable person must be able to produce evidence of their obligations — which requires the system to be auditable.</td></tr>
+          <tr><td><strong>Accountability</strong></td><td>Someone can be identified who is responsible, can explain decisions, can be sanctioned for failures, and can demonstrate obligation-compliance.</td><td>The outcome that transparency, explainability, fairness, and auditability collectively produce — when they are functioning.</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="s-legal">Legal and regulatory accountability structures</h2>
+      <p>The EU AI Act creates layered accountability. Providers bear primary accountability for high-risk AI systems — they must implement the conformity assessment, produce technical documentation, and register the system. Deployers bear accountability for their use of the system — they must implement appropriate human oversight, inform affected persons of AI use, and maintain logs. Importers and distributors bear accountability for what they place on the market.</p>
+      <p>This layered accountability structure means that no party can escape responsibility entirely by pointing to another. A provider cannot avoid accountability by arguing that the deployer configured the system incorrectly — the system must be designed to be safe when correctly configured. A deployer cannot avoid accountability by arguing that the provider built a defective system — the deployer bears independent obligations for human oversight and use-case appropriateness.</p>
+
+      <h2 id="s-audit">The audit function's role</h2>
+      <p>The audit function — whether internal audit or third-party audit — performs two accountability-enabling functions: evidence production and independent verification. Evidence production means creating a structured record of what the AI system does, what decisions it has made, what controls are in place, and what outcomes have resulted. Independent verification means assessing that evidence against defined criteria and providing an opinion on whether the accountable party has met their obligations.</p>
+      <p>For the audit function to perform these roles, three conditions must be met: access (the audit function must have access to the systems, data, and processes it is evaluating); independence (the audit function must be organisationally independent from those it is evaluating); and criteria (there must be defined standards against which to evaluate — not just general principles).</p>
+      <p>The maturation of the AI audit field is primarily a matter of developing the third condition: criteria that are sufficiently specific to support a meaningful audit opinion, yet sufficiently general to apply across AI systems of different types and deployment contexts. ISO 42001 and the EU AI Act's conformity assessment requirements represent the current best-developed criteria, but they are not yet sufficient to support the kind of rigorous audit opinions that financial statement auditing, for example, has produced for decades.</p>
+
+      <h2 id="s-redress">Individual redress and the right to explanation</h2>
+      <p>The GDPR's right to explanation (Article 22) gives individuals the right not to be subject to a decision based solely on automated processing that significantly affects them, without the ability to request human review and an explanation of the decision. This is the operational core of individual algorithmic accountability. Organisations using automated decision-making must have a working explanation mechanism — not a theoretical commitment to explainability, but a process through which a named individual can request a decision review and receive a meaningful explanation.</p>
+      <p>In practice, most organisations' explanation mechanisms are inadequate: they produce generic system-level descriptions rather than decision-specific explanations; they are slow; and they are not effectively communicated to affected individuals. Improving individual redress mechanisms is one of the most concrete and high-impact investments an organisation can make in algorithmic accountability.</p>
+
+      <div id="sources" class="art-sources">
+        <h2>Sources</h2>
+        <ul>
+          <li>EU AI Act (Regulation (EU) 2024/1689) — Articles 13, 14, 26, 79</li>
+          <li>GDPR — Article 22 (Automated decision-making), Recital 71</li>
+          <li>ISO/IEC 42001:2023 — AI management system</li>
+          <li>Diakopoulos, N. — "Accountability in Algorithmic Decision Making," Communications of the ACM, 2016</li>
+          <li>AGNUS Research — AI Audit · AR-000532</li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</div>
+<script src="agnus.js"></script>
+</body>
+</html>

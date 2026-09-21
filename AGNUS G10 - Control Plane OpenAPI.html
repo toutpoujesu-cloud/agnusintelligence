@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AGNUS Control Plane — OpenAPI v1</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #0B0F18; color: #E2E8F0; font-family: Manrope, sans-serif; -webkit-font-smoothing: antialiased; line-height: 1.6; font-size: 14px; }
+
+.topbar { background: #0F1A28; border-bottom: 1px solid #1E2D42; padding: 0 32px; height: 52px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 50; }
+.topbar-left { display: flex; align-items: center; gap: 16px; }
+.wordmark { font-weight: 800; font-size: 14px; letter-spacing: -.01em; }
+.tl-sep { color: #1E2D42; font-size: 18px; }
+.doc-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: #4A6080; }
+.doc-id { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: #B59048; }
+.api-ver { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #3ECF86; background: rgba(62,207,134,.1); border: 1px solid rgba(62,207,134,.2); border-radius: 5px; padding: 3px 10px; }
+
+.wrap { max-width: 1000px; margin: 0 auto; padding: 56px 24px 96px; }
+
+/* header */
+.doc-header { margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid #1E2D42; }
+.eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: #4A6080; margin-bottom: 16px; }
+.doc-header h1 { font-size: 34px; font-weight: 800; letter-spacing: -.03em; line-height: 1.15; margin-bottom: 14px; }
+.doc-header .lede { font-size: 14.5px; color: #6B82A4; line-height: 1.65; max-width: 620px; }
+
+/* base URL */
+.base-url { background: #0F161F; border: 1px solid #1A2535; border-radius: 10px; padding: 16px 20px; margin-bottom: 40px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.base-url .bu-k { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: #4A6080; flex-shrink: 0; }
+.base-url .bu-v { font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #B59048; }
+.base-url .bu-note { font-size: 12px; color: #3A4F68; margin-left: auto; }
+
+/* auth */
+.auth-box { background: #0F161F; border: 1px solid #1A2535; border-left: 3px solid #B59048; border-radius: 10px; padding: 16px 20px; margin-bottom: 40px; }
+.auth-box .ak { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: #B59048; margin-bottom: 8px; }
+.auth-box p { font-size: 13px; color: #6B82A4; line-height: 1.6; }
+.auth-box code { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: #C8D8EA; background: #111D2C; border: 1px solid #1E2D42; border-radius: 5px; padding: 1px 7px; }
+
+/* section heading */
+.section-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid #1E2D42; }
+.section-head h2 { font-size: 14px; font-weight: 700; letter-spacing: -.01em; }
+.section-count { font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #4A6080; letter-spacing: .1em; }
+
+/* endpoint card */
+.endpoint { border: 1px solid #1E2D42; border-radius: 12px; overflow: hidden; margin-bottom: 10px; }
+.ep-head { display: flex; align-items: center; gap: 14px; padding: 14px 18px; background: #0D1420; cursor: default; flex-wrap: wrap; }
+.method { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: .08em; padding: 4px 11px; border-radius: 6px; flex-shrink: 0; }
+.GET    { background: rgba(62,207,134,.12); color: #3ECF86; border: 1px solid rgba(62,207,134,.24); }
+.POST   { background: rgba(77,158,255,.12); color: #4D9EFF; border: 1px solid rgba(77,158,255,.24); }
+.PUT    { background: rgba(224,179,84,.12); color: #E0B354; border: 1px solid rgba(224,179,84,.24); }
+.DELETE { background: rgba(240,119,106,.12); color: #F0776A; border: 1px solid rgba(240,119,106,.24); }
+.ep-path { font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #C8D8EA; }
+.ep-path em { color: #B59048; font-style: normal; }
+.ep-title { font-size: 13px; font-weight: 600; color: #8BA3C4; margin-left: auto; }
+
+.ep-body { padding: 18px 20px; background: #0B1018; display: grid; gap: 18px; }
+.ep-desc { font-size: 13.5px; color: #6B82A4; line-height: 1.65; max-width: 680px; }
+
+.ep-section h4 { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: #4A6080; margin-bottom: 10px; }
+.param-table { width: 100%; border-collapse: collapse; }
+.param-table th { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: #3A4F68; padding: 0 0 8px; text-align: left; border-bottom: 1px solid #1A2535; }
+.param-table td { padding: 9px 0; border-bottom: 1px solid #111D2C; font-size: 12.5px; vertical-align: top; }
+.param-table td:first-child { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: #C8D8EA; padding-right: 20px; }
+.param-table td:nth-child(2) { color: #4D9EFF; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding-right: 20px; }
+.param-table td:nth-child(3) { color: #3ECF86; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; padding-right: 20px; }
+.param-table td:last-child { color: #6B82A4; }
+.param-table tr:last-child td { border-bottom: none; }
+
+.response-box { background: #0A1420; border: 1px solid #1A2535; border-radius: 8px; padding: 14px 16px; }
+.response-box .rb-k { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: #3ECF86; margin-bottom: 8px; }
+.response-box pre { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: #8BA3C4; line-height: 1.65; overflow-x: auto; }
+.response-box .key { color: #4D9EFF; }
+.response-box .str { color: #3ECF86; }
+.response-box .num { color: #E0B354; }
+.response-box .bool { color: #F0776A; }
+
+/* error codes */
+.errors { display: flex; gap: 8px; flex-wrap: wrap; }
+.err-code { font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 3px 10px; border-radius: 5px; }
+.err-400 { background: rgba(224,179,84,.1); color: #E0B354; border: 1px solid rgba(224,179,84,.2); }
+.err-401 { background: rgba(240,119,106,.1); color: #F0776A; border: 1px solid rgba(240,119,106,.2); }
+.err-404 { background: rgba(77,158,255,.1); color: #4D9EFF; border: 1px solid rgba(77,158,255,.2); }
+.err-422 { background: rgba(224,179,84,.1); color: #E0B354; border: 1px solid rgba(224,179,84,.2); }
+.err-429 { background: rgba(181,144,72,.1); color: #B59048; border: 1px solid rgba(181,144,72,.2); }
+.err-500 { background: rgba(240,119,106,.1); color: #F0776A; border: 1px solid rgba(240,119,106,.2); }
+
+/* endpoint groups */
+.ep-group { margin-bottom: 44px; }
+
+.doc-footer { margin-top: 64px; padding-top: 24px; border-top: 1px solid #1E2D42; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.doc-footer .df-l { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #2A3A50; }
+.doc-footer .df-r { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #4A6080; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <span class="wordmark">AGNUS</span>
+    <span class="tl-sep">/</span>
+    <span class="doc-label">Control Plane</span>
+    <span class="doc-id">G10</span>
+  </div>
+  <span class="api-ver">API v1 · Phase C</span>
+</div>
+
+<div class="wrap">
+
+  <div class="doc-header">
+    <div class="eyebrow">G10 · OpenAPI Specification · Control Plane v1</div>
+    <h1>AGNUS Control Plane API</h1>
+    <p class="lede">10 endpoints covering article management, intelligence records, reviews, agents, source registry, and pipeline operations. Read endpoints are available to all API subscribers. Write endpoints require the <code style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#C8D8EA;background:#111D2C;border:1px solid #1E2D42;border-radius:4px;padding:1px 6px;">control-plane:write</code> scope.</p>
+  </div>
+
+  <div class="base-url">
+    <span class="bu-k">Base URL</span>
+    <span class="bu-v">https://api.agnus.io/v1</span>
+    <span class="bu-note">Phase C — not yet live</span>
+  </div>
+
+  <div class="auth-box">
+    <div class="ak">Authentication</div>
+    <p>All requests require a bearer token in the <code>Authorization</code> header: <code>Authorization: Bearer &lt;API_KEY&gt;</code>. API keys are issued per organisation. Keys carry one or more scopes: <code>read</code> (all GET endpoints), <code>control-plane:write</code> (POST, PUT, DELETE), <code>pipeline:trigger</code> (pipeline operations). Rate limits: 120 requests / minute on read; 20 / minute on write.</p>
+  </div>
+
+  <!-- ── ARTICLES ── -->
+  <div class="ep-group">
+    <div class="section-head">
+      <h2>Articles</h2>
+      <span class="section-count">4 endpoints</span>
+    </div>
+
+    <!-- GET /articles -->
+    <div class="endpoint">
+      <div class="ep-head">
+        <span class="method GET">GET</span>
+        <span class="ep-path">/articles</span>
+        <span class="ep-title">List research articles</span>
+      </div>
+      <div class="ep-body">
+        <p class="ep-desc">Returns a paginated list of research articles. Filterable by pillar, jurisdiction, content type, status and publication date. Sorted by <code style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#C8D8EA;background:#111D2C;border:1px solid #1E2D42;border-radius:4px;padding:1px 6px;">published</code> descending by default.</p>
+        <div class="ep-section">
+          <h4>Query parameters</h4>
+          <table class="param-table">
+            <tr><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr>
+            <tr><td>pillar</td><td>string</td><td>optional</td><td>Filter by pillar slug: <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">eu-ai-act</code>, <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">ai-governance</code>, <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">ai-agents</code>, <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">ai-security</code>, <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">ai-audit</code>, <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">data-governance</code>, <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">standards</code>, <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">countries</code></td></tr>
+            <tr><td>jurisdiction</td><td>string</td><td>optional</td><td>ISO country code or <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">International</code> / <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">European Union</code></td></tr>
+            <tr><td>status</td><td>string</td><td>optional</td><td><code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">current</code> · <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">updated</code> · <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">archived</code></td></tr>
+            <tr><td>limit</td><td>integer</td><td>optional</td><td>1–100. Default: 20</td></tr>
+            <tr><td>offset</td><td>integer</td><td>optional</td><td>Pagination offset. Default: 0</td></tr>
+          </table>
+        </div>
+        <div class="ep-section">
+          <h4>Response 200</h4>
+          <div class="response-box">
+            <div class="rb-k">application/json</div>
+            <pre>{
+  <span class="key">"total"</span>: <span class="num">85</span>,
+  <span class="key">"limit"</span>: <span class="num">20</span>,
+  <span class="key">"offset"</span>: <span class="num">0</span>,
+  <span class="key">"items"</span>: [
+    {
+      <span class="key">"article_id"</span>: <span class="str">"AR-000142"</span>,
+      <span class="key">"slug"</span>: <span class="str">"human-oversight-article-14"</span>,
+      <span class="key">"pillar"</span>: <span class="str">"EU AI Act"</span>,
+      <span class="key">"title"</span>: <span class="str">"Human Oversight (Article 14)"</span>,
+      <span class="key">"status"</span>: <span class="str">"current"</span>,
+      <span class="key">"published"</span>: <span class="str">"2026-07-18"</span>,
+      <span class="key">"reading_time"</span>: <span class="num">12</span>,
+      <span class="key">"jurisdiction"</span>: <span class="str">"European Union"</span>
+    }
+  ]
+}</pre>
+          </div>
+        </div>
+        <div class="ep-section">
+          <h4>Error responses</h4>
+          <div class="errors">
+            <span class="err-code err-401">401 Unauthorized</span>
+            <span class="err-code err-429">429 Rate Limit</span>
+            <span class="err-code err-500">500 Internal Error</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GET /articles/{id} -->
+    <div class="endpoint">
+      <div class="ep-head">
+        <span class="method GET">GET</span>
+        <span class="ep-path">/articles/<em>{article_id}</em></span>
+        <span class="ep-title">Retrieve article</span>
+      </div>
+      <div class="ep-body">
+        <p class="ep-desc">Returns the full article object including standfirst, actors affected, related articles, sources, and all metadata fields. The <code style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#C8D8EA;background:#111D2C;border:1px solid #1E2D42;border-radius:4px;padding:1px 6px;">article_id</code> follows the pattern <code style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8BA3C4;">AR-XXXXXX</code>.</p>
+        <div class="ep-section">
+          <h4>Path parameters</h4>
+          <table class="param-table">
+            <tr><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr>
+            <tr><td>article_id</td><td>string</td><td>required</td><td>AGNUS article ID, e.g. <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">AR-000142</code></td></tr>
+          </table>
+        </div>
+        <div class="ep-section">
+          <h4>Response 200</h4>
+          <div class="response-box">
+            <div class="rb-k">application/json</div>
+            <pre>{
+  <span class="key">"article_id"</span>: <span class="str">"AR-000142"</span>,
+  <span class="key">"slug"</span>: <span class="str">"human-oversight-article-14"</span>,
+  <span class="key">"pillar"</span>: <span class="str">"EU AI Act"</span>,
+  <span class="key">"subtopic"</span>: <span class="str">"Human Oversight"</span>,
+  <span class="key">"title"</span>: <span class="str">"Human Oversight (Article 14)"</span>,
+  <span class="key">"content_type"</span>: <span class="str">"analysis"</span>,
+  <span class="key">"author"</span>: <span class="str">"jean-daniel-alexis"</span>,
+  <span class="key">"published"</span>: <span class="str">"2026-07-18"</span>,
+  <span class="key">"last_updated"</span>: <span class="str">"2026-09-16"</span>,
+  <span class="key">"status"</span>: <span class="str">"current"</span>,
+  <span class="key">"reading_time"</span>: <span class="num">12</span>,
+  <span class="key">"jurisdiction"</span>: <span class="str">"European Union"</span>,
+  <span class="key">"regulation"</span>: <span class="str">"EU AI Act"</span>,
+  <span class="key">"actors_affected"</span>: [<span class="str">"Provider"</span>, <span class="str">"Deployer"</span>],
+  <span class="key">"standfirst"</span>: <span class="str">"..."</span>,
+  <span class="key">"related_articles"</span>: [<span class="str">"AR-000240"</span>, <span class="str">"AR-000250"</span>],
+  <span class="key">"sources"</span>: [<span class="str">"SRC-0001"</span>, <span class="str">"SRC-0002"</span>]
+}</pre>
+          </div>
+        </div>
+        <div class="ep-section">
+          <h4>Error responses</h4>
+          <div class="errors">
+            <span class="err-code err-401">401 Unauthorized</span>
+            <span class="err-code err-404">404 Not Found</span>
+            <span class="err-code err-429">429 Rate Limit</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- POST /articles -->
+    <div class="endpoint">
+      <div class="ep-head">
+        <span class="method POST">POST</span>
+        <span class="ep-path">/articles</span>
+        <span class="ep-title">Register article — requires control-plane:write</span>
+      </div>
+      <div class="ep-body">
+        <p class="ep-desc">Registers a new article in the AGNUS data layer. The article enters <code style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#C8D8EA;background:#111D2C;border:1px solid #1E2D42;border-radius:4px;padding:1px 6px;">draft</code> status and must be explicitly published via <code style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#C8D8EA;background:#111D2C;border:1px solid #1E2D42;border-radius:4px;padding:1px 6px;">POST /articles/{id}/publish</code>. The system assigns the next available <code style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8BA3C4;">AR-XXXXXX</code> ID.</p>
+        <div class="ep-section">
+          <h4>Request body — application/json</h4>
+          <table class="param-table">
+            <tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr>
+            <tr><td>slug</td><td>string</td><td>required</td><td>URL-safe identifier, e.g. <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">human-oversight-article-14</code></td></tr>
+            <tr><td>pillar</td><td>string</td><td>required</td><td>Research pillar name</td></tr>
+            <tr><td>subtopic</td><td>string</td><td>required</td><td>Sub-topic within the pillar</td></tr>
+            <tr><td>title</td><td>string</td><td>required</td><td>Full article title</td></tr>
+            <tr><td>content_type</td><td>string</td><td>required</td><td><code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">analysis</code> · <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">guide</code> · <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">reference</code> · <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">deep-dive</code></td></tr>
+            <tr><td>standfirst</td><td>string</td><td>required</td><td>One-paragraph summary for feeds and metadata</td></tr>
+            <tr><td>jurisdiction</td><td>string</td><td>required</td><td>ISO country code, <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">European Union</code> or <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">International</code></td></tr>
+            <tr><td>actors_affected</td><td>string[]</td><td>required</td><td>Array of actor types: Provider, Deployer, Board, etc.</td></tr>
+            <tr><td>author</td><td>string</td><td>optional</td><td>Author slug. Defaults to API key owner.</td></tr>
+          </table>
+        </div>
+        <div class="ep-section">
+          <h4>Response 201</h4>
+          <div class="response-box">
+            <div class="rb-k">application/json</div>
+            <pre>{ <span class="key">"article_id"</span>: <span class="str">"AR-000597"</span>, <span class="key">"status"</span>: <span class="str">"draft"</span>, <span class="key">"created_at"</span>: <span class="str">"2026-09-19T14:22:00Z"</span> }</pre>
+          </div>
+        </div>
+        <div class="ep-section">
+          <h4>Error responses</h4>
+          <div class="errors">
+            <span class="err-code err-400">400 Bad Request</span>
+            <span class="err-code err-401">401 Unauthorized</span>
+            <span class="err-code err-422">422 Validation Error</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- POST /articles/{id}/publish -->
+    <div class="endpoint">
+      <div class="ep-head">
+        <span class="method POST">POST</span>
+        <span class="ep-path">/articles/<em>{article_id}</em>/publish</span>
+        <span class="ep-title">Publish article — requires control-plane:write</span>
+      </div>
+      <div class="ep-body">
+        <p class="ep-desc">Moves an article from <code style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#C8D8EA;background:#111D2C;border:1px solid #1E2D42;border-radius:4px;padding:1px 6px;">draft</code> to <code style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#C8D8EA;background:#111D2C;border:1px solid #1E2D42;border-radius:4px;padding:1px 6px;">current</code> status. Sets <code style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8BA3C4;">published</code> timestamp to now. Triggers the article to appear in the live Research feed and Intelligence tickers within 60 seconds.</p>
+        <div class="ep-section">
+          <h4>Response 200</h4>
+          <div class="response-box">
+            <div class="rb-k">application/json</div>
+            <pre>{ <span class="key">"article_id"</span>: <span class="str">"AR-000597"</span>, <span class="key">"status"</span>: <span class="str">"current"</span>, <span class="key">"published"</span>: <span class="str">"2026-09-19"</span> }</pre>
+          </div>
+        </div>
+        <div class="ep-section">
+          <h4>Error responses</h4>
+          <div class="errors">
+            <span class="err-code err-401">401 Unauthorized</span>
+            <span class="err-code err-404">404 Not Found</span>
+            <span class="err-code err-422">422 — Article already published</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── INTELLIGENCE ── -->
+  <div class="ep-group">
+    <div class="section-head">
+      <h2>Intelligence</h2>
+      <span class="section-count">2 endpoints</span>
+    </div>
+
+    <!-- GET /intelligence -->
+    <div class="endpoint">
+      <div class="ep-head">
+        <span class="method GET">GET</span>
+        <span class="ep-path">/intelligence</span>
+        <span class="ep-title">List intelligence records</span>
+      </div>
+      <div class="ep-body">
+        <p class="ep-desc">Returns the AGNUS intelligence feed. Each record is a regulatory event, enforcement action, court decision, or guidance publication with AGNUS editorial classification. Filterable by jurisdiction, category, and date range.</p>
+        <div class="ep-section">
+          <h4>Query parameters</h4>
+          <table class="param-table">
+            <tr><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr>
+            <tr><td>jurisdiction</td><td>string</td><td>optional</td><td>ISO code or region name</td></tr>
+            <tr><td>category</td><td>string</td><td>optional</td><td><code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">regulation</code> · <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">enforcement</code> · <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">guidance</code> · <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">litigation</code></td></tr>
+            <tr><td>since</td><td>date</td><td>optional</td><td>ISO 8601 date — returns records on or after</td></tr>
+            <tr><td>limit</td><td>integer</td><td>optional</td><td>1–100. Default: 20</td></tr>
+          </table>
+        </div>
+        <div class="ep-section">
+          <h4>Response 200</h4>
+          <div class="response-box">
+            <div class="rb-k">application/json</div>
+            <pre>{ <span class="key">"total"</span>: <span class="num">3</span>, <span class="key">"items"</span>: [{ <span class="key">"record_id"</span>: <span class="str">"IR-000117"</span>, <span class="key">"title"</span>: <span class="str">"EU GPAI Codes of Practice — Final Round"</span>, <span class="key">"jurisdiction"</span>: <span class="str">"European Union"</span>, <span class="key">"category"</span>: <span class="str">"regulation"</span>, <span class="key">"published"</span>: <span class="str">"2026-09-01"</span>, <span class="key">"significance"</span>: <span class="str">"high"</span> }] }</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- POST /intelligence -->
+    <div class="endpoint">
+      <div class="ep-head">
+        <span class="method POST">POST</span>
+        <span class="ep-path">/intelligence</span>
+        <span class="ep-title">Submit intelligence record — requires control-plane:write</span>
+      </div>
+      <div class="ep-body">
+        <p class="ep-desc">Submits a new intelligence record to the AGNUS feed. Used by the Intelligence Monitoring Agent and authorised partner systems. Records enter a brief editorial review queue before publication (automated for Agent submissions, manual for API submissions).</p>
+        <div class="ep-section">
+          <h4>Request body — application/json</h4>
+          <table class="param-table">
+            <tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr>
+            <tr><td>title</td><td>string</td><td>required</td><td>Headline for the intelligence record</td></tr>
+            <tr><td>summary</td><td>string</td><td>required</td><td>2–4 sentence editorial summary</td></tr>
+            <tr><td>jurisdiction</td><td>string</td><td>required</td><td>ISO code or region</td></tr>
+            <tr><td>category</td><td>string</td><td>required</td><td>regulation · enforcement · guidance · litigation</td></tr>
+            <tr><td>significance</td><td>string</td><td>required</td><td>low · medium · high · critical</td></tr>
+            <tr><td>source_url</td><td>string</td><td>required</td><td>Primary source URL</td></tr>
+            <tr><td>event_date</td><td>date</td><td>optional</td><td>When the event occurred. Defaults to today.</td></tr>
+          </table>
+        </div>
+        <div class="ep-section">
+          <h4>Response 201</h4>
+          <div class="response-box">
+            <div class="rb-k">application/json</div>
+            <pre>{ <span class="key">"record_id"</span>: <span class="str">"IR-000124"</span>, <span class="key">"status"</span>: <span class="str">"pending_review"</span> }</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SOURCES ── -->
+  <div class="ep-group">
+    <div class="section-head">
+      <h2>Sources</h2>
+      <span class="section-count">2 endpoints</span>
+    </div>
+
+    <!-- GET /sources -->
+    <div class="endpoint">
+      <div class="ep-head">
+        <span class="method GET">GET</span>
+        <span class="ep-path">/sources</span>
+        <span class="ep-title">List registered sources</span>
+      </div>
+      <div class="ep-body">
+        <p class="ep-desc">Returns the AGNUS source registry. Sources are primary regulatory documents, court decisions, official guidance and academic papers that underpin the research articles. Each source carries an authority classification and verifiability status.</p>
+        <div class="ep-section">
+          <h4>Query parameters</h4>
+          <table class="param-table">
+            <tr><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr>
+            <tr><td>authority</td><td>string</td><td>optional</td><td><code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">primary</code> · <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">guidance</code> · <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">standard</code> · <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">academic</code></td></tr>
+            <tr><td>article_id</td><td>string</td><td>optional</td><td>Return only sources cited by this article</td></tr>
+            <tr><td>limit</td><td>integer</td><td>optional</td><td>1–100. Default: 50</td></tr>
+          </table>
+        </div>
+        <div class="ep-section">
+          <h4>Response 200</h4>
+          <div class="response-box">
+            <div class="rb-k">application/json</div>
+            <pre>{ <span class="key">"total"</span>: <span class="num">76</span>, <span class="key">"items"</span>: [{ <span class="key">"source_id"</span>: <span class="str">"SRC-0001"</span>, <span class="key">"title"</span>: <span class="str">"Regulation (EU) 2024/1689 — AI Act"</span>, <span class="key">"authority"</span>: <span class="str">"primary"</span>, <span class="key">"verified"</span>: <span class="bool">true</span>, <span class="key">"url"</span>: <span class="str">"https://eur-lex.europa.eu/..."</span> }] }</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- POST /sources -->
+    <div class="endpoint">
+      <div class="ep-head">
+        <span class="method POST">POST</span>
+        <span class="ep-path">/sources</span>
+        <span class="ep-title">Register source — requires control-plane:write</span>
+      </div>
+      <div class="ep-body">
+        <p class="ep-desc">Registers a new source in the AGNUS source registry. Assigns the next available <code style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8BA3C4;">SRC-XXXX</code> ID. Sources are available immediately for citation in new articles via the <code style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8BA3C4;">sources</code> field on POST /articles.</p>
+        <div class="ep-section">
+          <h4>Request body — application/json</h4>
+          <table class="param-table">
+            <tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr>
+            <tr><td>title</td><td>string</td><td>required</td><td>Full title of the source document</td></tr>
+            <tr><td>authority</td><td>string</td><td>required</td><td>primary · guidance · standard · academic · supporting</td></tr>
+            <tr><td>url</td><td>string</td><td>required</td><td>Canonical URL of the source</td></tr>
+            <tr><td>organisation</td><td>string</td><td>optional</td><td>Issuing body, e.g. European Commission, NIST</td></tr>
+            <tr><td>published_date</td><td>date</td><td>optional</td><td>Date of source publication</td></tr>
+          </table>
+        </div>
+        <div class="ep-section">
+          <h4>Response 201</h4>
+          <div class="response-box">
+            <div class="rb-k">application/json</div>
+            <pre>{ <span class="key">"source_id"</span>: <span class="str">"SRC-0077"</span>, <span class="key">"verified"</span>: <span class="bool">false</span>, <span class="key">"created_at"</span>: <span class="str">"2026-09-19T14:30:00Z"</span> }</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PIPELINE ── -->
+  <div class="ep-group">
+    <div class="section-head">
+      <h2>Pipeline</h2>
+      <span class="section-count">2 endpoints</span>
+    </div>
+
+    <!-- POST /pipeline/trigger -->
+    <div class="endpoint">
+      <div class="ep-head">
+        <span class="method POST">POST</span>
+        <span class="ep-path">/pipeline/trigger</span>
+        <span class="ep-title">Trigger pipeline run — requires pipeline:trigger</span>
+      </div>
+      <div class="ep-body">
+        <p class="ep-desc">Triggers an article pipeline run for one or more articles. The pipeline validates content, runs the editorial AI layer, checks cross-references, and queues the article for human review. Returns a <code style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#8BA3C4;">job_id</code> for status polling.</p>
+        <div class="ep-section">
+          <h4>Request body — application/json</h4>
+          <table class="param-table">
+            <tr><th>Field</th><th>Type</th><th>Required</th><th>Description</th></tr>
+            <tr><td>article_ids</td><td>string[]</td><td>required</td><td>One or more AR-IDs to process</td></tr>
+            <tr><td>mode</td><td>string</td><td>optional</td><td><code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">validate</code> (dry run) · <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">full</code> (default)</td></tr>
+          </table>
+        </div>
+        <div class="ep-section">
+          <h4>Response 202</h4>
+          <div class="response-box">
+            <div class="rb-k">application/json</div>
+            <pre>{ <span class="key">"job_id"</span>: <span class="str">"pipe_9f3a2c"</span>, <span class="key">"status"</span>: <span class="str">"queued"</span>, <span class="key">"article_count"</span>: <span class="num">3</span> }</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GET /pipeline/{job_id} -->
+    <div class="endpoint">
+      <div class="ep-head">
+        <span class="method GET">GET</span>
+        <span class="ep-path">/pipeline/<em>{job_id}</em></span>
+        <span class="ep-title">Get pipeline job status</span>
+      </div>
+      <div class="ep-body">
+        <p class="ep-desc">Returns the current status of a pipeline job. Poll every 5–10 seconds until <code style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#C8D8EA;background:#111D2C;border:1px solid #1E2D42;border-radius:4px;padding:1px 6px;">status</code> is <code style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#3ECF86;">completed</code>, <code style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#F0776A;">failed</code> or <code style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#E0B354;">pending_review</code>.</p>
+        <div class="ep-section">
+          <h4>Response 200</h4>
+          <div class="response-box">
+            <div class="rb-k">application/json</div>
+            <pre>{
+  <span class="key">"job_id"</span>: <span class="str">"pipe_9f3a2c"</span>,
+  <span class="key">"status"</span>: <span class="str">"pending_review"</span>,
+  <span class="key">"started_at"</span>: <span class="str">"2026-09-19T14:31:00Z"</span>,
+  <span class="key">"articles"</span>: [
+    { <span class="key">"article_id"</span>: <span class="str">"AR-000597"</span>, <span class="key">"status"</span>: <span class="str">"pending_review"</span>, <span class="key">"validation_score"</span>: <span class="num">0.94</span> }
+  ]
+}</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUMMARY TABLE -->
+  <div style="margin-top:8px; background:#0F161F; border:1px solid #1A2535; border-radius:14px; overflow:hidden;">
+    <div style="padding:16px 20px; border-bottom:1px solid #1A2535;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#4A6080;">All 10 endpoints at a glance</div>
+    </div>
+    <table style="width:100%;border-collapse:collapse;">
+      <tr style="background:#0B1018;">
+        <th style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#3A4F68;padding:10px 20px;text-align:left;border-bottom:1px solid #1A2535;">Method</th>
+        <th style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#3A4F68;padding:10px 20px;text-align:left;border-bottom:1px solid #1A2535;">Path</th>
+        <th style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#3A4F68;padding:10px 20px;text-align:left;border-bottom:1px solid #1A2535;">Scope</th>
+        <th style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#3A4F68;padding:10px 20px;text-align:left;border-bottom:1px solid #1A2535;">Description</th>
+      </tr>
+      <tr><td style="padding:10px 20px;border-bottom:1px solid #111D2C;"><span class="method GET" style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;letter-spacing:.06em;padding:2px 9px;border-radius:5px;background:rgba(62,207,134,.12);color:#3ECF86;border:1px solid rgba(62,207,134,.24);">GET</span></td><td style="padding:10px 20px;border-bottom:1px solid #111D2C;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#C8D8EA;">/articles</td><td style="padding:10px 20px;border-bottom:1px solid #111D2C;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#4A6080;">read</td><td style="padding:10px 20px;border-bottom:1px solid #111D2C;font-size:12.5px;color:#6B82A4;">List research articles</td></tr>
+      <tr><td style="padding:10px 20px;border-bottom:1px solid #111D2C;"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;letter-spacing:.06em;padding:2px 9px;border-radius:5px;background:rgba(62,207,134,.12);color:#3ECF86;border:1px solid rgba(62,207,134,.24);">GET</span></td><td style="padding:10px 20px;border-bottom:1px solid #111D2C;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#C8D8EA;">/articles/{article_id}</td><td style="padding:10px 20px;border-bottom:1px solid #111D2C;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#4A6080;">read</td><td style="padding:10px 20px;border-bottom:1px solid #111D2C;font-size:12.5px;color:#6B82A4;">Retrieve article</td></tr>
+      <tr><td style="padding:10px 20px;border-bottom:1px solid #111D2C;"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;letter-spacing:.06em;padding:2px 9px;border-radius:5px;background:rgba(77,158,255,.12);color:#4D9EFF;border:1px solid rgba(77,158,255,.24);">POST</span></td><td style="padding:10px 20px;border-bottom:1px solid #111D2C;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#C8D8EA;">/articles</td><td style="padding:10px 20px;border-bottom:1px solid #111D2C;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#4A6080;">control-plane:write</td><td style="padding:10px 20px;border-bottom:1px solid #111D2C;font-size:12.5px;color:#6B82A4;">Register article</td></tr>
+      <tr><td style="padding:10px 20px;border-bottom:1px solid #111D2C;"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;letter-spacing:.06em;padding:2px 9px;border-radius:5px;background:rgba(77,158,255,.12);color:#4D9EFF;border:1px solid rgba(77,158,255,.24);">POST</span></td><td style="padding:10px 20px;border-bottom:1px solid #111D2C;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#C8D8EA;">/articles/{article_id}/publish</td><td style="padding:10px 20px;border-bottom:1px solid #111D2C;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#4A6080;">control-plane:write</td><td style="padding:10px 20px;border-bottom:1px solid #111D2C;font-size:12.5px;color:#6B82A4;">Publish article</td></tr>
+      <tr><td style="padding:10px 20px;border-bottom:1px solid #111D2C;"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;letter-spacing:.06em;padding:2px 9px;border-radius:5px;background:rgba(62,207,134,.12);color:#3ECF86;border:1px solid rgba(62,207,134,.24);">GET</span></td><td style="padding:10px 20px;border-bottom:1px solid #111D2C;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#C8D8EA;">/intelligence</td><td style="padding:10px 20px;border-bottom:1px solid #111D2C;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#4A6080;">read</td><td style="padding:10px 20px;border-bottom:1px solid #111D2C;font-size:12.5px;color:#6B82A4;">List intelligence records</td></tr>
+      <tr><td style="padding:10px 20px;border-bottom:1px solid #111D2C;"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;letter-spacing:.06em;padding:2px 9px;border-radius:5px;background:rgba(77,158,255,.12);color:#4D9EFF;border:1px solid rgba(77,158,255,.24);">POST</span></td><td style="padding:10px 20px;border-bottom:1px solid #111D2C;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#C8D8EA;">/intelligence</td><td style="padding:10px 20px;border-bottom:1px solid #111D2C;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#4A6080;">control-plane:write</td><td style="padding:10px 20px;border-bottom:1px solid #111D2C;font-size:12.5px;color:#6B82A4;">Submit intelligence record</td></tr>
+      <tr><td style="padding:10px 20px;border-bottom:1px solid #111D2C;"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;letter-spacing:.06em;padding:2px 9px;border-radius:5px;background:rgba(62,207,134,.12);color:#3ECF86;border:1px solid rgba(62,207,134,.24);">GET</span></td><td style="padding:10px 20px;border-bottom:1px solid #111D2C;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#C8D8EA;">/sources</td><td style="padding:10px 20px;border-bottom:1px solid #111D2C;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#4A6080;">read</td><td style="padding:10px 20px;border-bottom:1px solid #111D2C;font-size:12.5px;color:#6B82A4;">List registered sources</td></tr>
+      <tr><td style="padding:10px 20px;border-bottom:1px solid #111D2C;"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;letter-spacing:.06em;padding:2px 9px;border-radius:5px;background:rgba(77,158,255,.12);color:#4D9EFF;border:1px solid rgba(77,158,255,.24);">POST</span></td><td style="padding:10px 20px;border-bottom:1px solid #111D2C;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#C8D8EA;">/sources</td><td style="padding:10px 20px;border-bottom:1px solid #111D2C;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#4A6080;">control-plane:write</td><td style="padding:10px 20px;border-bottom:1px solid #111D2C;font-size:12.5px;color:#6B82A4;">Register source</td></tr>
+      <tr><td style="padding:10px 20px;border-bottom:1px solid #111D2C;"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;letter-spacing:.06em;padding:2px 9px;border-radius:5px;background:rgba(77,158,255,.12);color:#4D9EFF;border:1px solid rgba(77,158,255,.24);">POST</span></td><td style="padding:10px 20px;border-bottom:1px solid #111D2C;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#C8D8EA;">/pipeline/trigger</td><td style="padding:10px 20px;border-bottom:1px solid #111D2C;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#4A6080;">pipeline:trigger</td><td style="padding:10px 20px;border-bottom:1px solid #111D2C;font-size:12.5px;color:#6B82A4;">Trigger pipeline run</td></tr>
+      <tr><td style="padding:10px 20px;"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:600;letter-spacing:.06em;padding:2px 9px;border-radius:5px;background:rgba(62,207,134,.12);color:#3ECF86;border:1px solid rgba(62,207,134,.24);">GET</span></td><td style="padding:10px 20px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:#C8D8EA;">/pipeline/{job_id}</td><td style="padding:10px 20px;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#4A6080;">read</td><td style="padding:10px 20px;font-size:12.5px;color:#6B82A4;">Get pipeline job status</td></tr>
+    </table>
+  </div>
+
+  <div class="doc-footer">
+    <span class="df-l">G10 · AGNUS Control Plane OpenAPI v1 · Internal Spec</span>
+    <span class="df-r">19 September 2026 · Phase C — not yet live</span>
+  </div>
+
+</div>
+</body>
+</html>

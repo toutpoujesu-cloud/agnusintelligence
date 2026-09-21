@@ -1,0 +1,122 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Agentic AI Risk: The Capability-Control Gap — AGNUS Research</title>
+<meta name="description" content="The risk profile of agentic AI is qualitatively different from AI systems that produce outputs for human review. When AI can act — not just advise — the consequences of misalignment, error, and misuse are immediate and potentially irreversible. This article maps the risk landscape." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>a,a:visited{color:inherit}
+.prose h3{font-family:var(--font-sans);font-weight:700;font-size:19px;letter-spacing:-.018em;margin:32px 0 14px}
+.pillar-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:var(--gold-pale,#FEF9ED);color:var(--gold-deep,#8B6914);border:1px solid var(--gold-line,#E8D9A0);border-radius:4px;padding:3px 8px;margin-bottom:16px}
+.risk-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0}
+@media(max-width:700px){.risk-grid{grid-template-columns:1fr}}
+.risk-card{border-radius:8px;padding:20px;border:1px solid var(--line)}
+.risk-card.high{background:#FFF8F8;border-color:#F0CECE}
+.risk-card.medium{background:#FFF5EC;border-color:#EDD9B8}
+.risk-card .rc-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+.risk-card.high .rc-label{color:#A33}
+.risk-card.medium .rc-label{color:#8B5E14}
+.risk-card .rc-title{font-weight:800;font-size:16px;color:var(--ink);margin-bottom:8px;line-height:1.3}
+.risk-card .rc-body{font-size:13px;color:var(--ink-mute);line-height:1.6}
+.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
+.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
+.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s}
+.rsub a:hover{color:var(--ink);background:var(--line-soft,rgba(0,0,0,.04))}
+</style>
+</head>
+<body>
+<div class="art-progress"><i id="progBar"></i></div>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Marketplace.html">Marketplace</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+      <a href="AGNUS - Business.html">Business</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+      <button class="hamburger" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="rsub"><div class="rsub-inner">
+  <a href="AGNUS - Research.html">Research Home</a>
+  <a href="AGNUS - Research Topic.html">AI Agents</a>
+</div></div>
+
+<header class="art-head">
+  <div class="container">
+    <div class="pillar-tag">AI Agents</div>
+    <h1>Agentic AI Risk: The Capability-Control Gap</h1>
+    <p class="art-abstract">The risk profile of agentic AI is qualitatively different from AI systems that produce outputs for human review. When AI can act — not just advise — the consequences of misalignment, error, and misuse are immediate and potentially irreversible. This article maps the risk landscape for agentic AI systems: the capability-control gap, the six primary risk categories, and the controls that close them.</p>
+    <div data-rc="articleMeta" data-rc-arg="AR-000512"></div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="art-shell">
+    <aside class="art-toc"><div class="toc-h">Contents</div><ol id="tocList"></ol></aside>
+    <article class="prose" id="prose">
+
+      <h2 id="s-gap">The capability-control gap</h2>
+      <p>The capability-control gap is the central risk in agentic AI: as agent capabilities increase — more tools, broader access, longer planning horizons — the difficulty of maintaining effective human control increases faster than the capability does. An agent that can send emails, browse the web, and execute code is not three times harder to control than an agent that can only send emails. The interaction between capabilities creates emergent possibilities that no individual capability assessment would predict.</p>
+      <p>This gap is not a temporary problem that will be solved by better AI models. A more capable agent is, by definition, an agent that can do more — which means more potential outcomes, more potential failures, and more potential misuse. The governance response is not to reduce capability but to design control architectures that grow with capability rather than falling behind it.</p>
+
+      <h2 id="s-categories">The six primary risk categories</h2>
+      <div class="risk-grid">
+        <div class="risk-card high"><div class="rc-label">High — Action risk</div><div class="rc-title">Irreversible real-world actions</div><div class="rc-body">An agent with external action capabilities can send emails that cannot be unsent, execute financial transactions that cannot be reversed, delete files that cannot be recovered, and send API calls that trigger downstream processes. The irreversibility of many real-world actions means that errors cannot be corrected after the fact — they can only be prevented before the fact or mitigated afterwards.</div></div>
+        <div class="risk-card high"><div class="rc-label">High — Scope risk</div><div class="rc-title">Scope expansion and task drift</div><div class="rc-body">Agents optimising for their assigned goal may pursue that goal through means the deploying organisation did not intend and would not approve if asked. A research agent told to "find all relevant information" may access internal documents it should not see. A scheduling agent told to "clear the calendar" may cancel appointments that the human would have kept. Scope creep is not malicious — it is the natural result of goal-directed behaviour without clear boundary conditions.</div></div>
+        <div class="risk-card high"><div class="rc-label">High — Injection risk</div><div class="rc-title">Prompt injection via environmental inputs</div><div class="rc-body">Agents that process external content — web pages, documents, emails, API responses — are vulnerable to indirect prompt injection: malicious instructions embedded in environmental content that cause the agent to change its behaviour. An agent browsing the web may encounter a page that instructs it to exfiltrate data or take an action unrelated to its task. OWASP ranks this as the top security risk for LLM applications.</div></div>
+        <div class="risk-card medium"><div class="rc-label">Medium — Accountability risk</div><div class="rc-title">Attribution failure in multi-step tasks</div><div class="rc-body">When a harmful outcome results from a sequence of agent decisions — each individually reasonable — attributing responsibility for the outcome is difficult. The legal and regulatory accountability frameworks for agentic AI are immature. Deploying organisations bear responsibility for foreseeable outcomes from their deployed agents, but the standard of foreseeability for novel agentic behaviours is not yet settled.</div></div>
+        <div class="risk-card medium"><div class="rc-label">Medium — Memory risk</div><div class="rc-title">Persistent state and unintended learning</div><div class="rc-body">Agents with persistent memory can carry errors, biases, or compromised states across sessions. A prompt injection attack in one session may persist in the agent's memory and affect its behaviour in subsequent sessions. Clearing agent memory between sessions is a governance control, not a technical default — many agent frameworks retain state unless explicitly instructed not to.</div></div>
+        <div class="risk-card medium"><div class="rc-label">Medium — Overreliance risk</div><div class="rc-title">Automation bias and uncritical acceptance</div><div class="rc-body">Users and organisations that rely on agentic AI for consequential tasks tend, over time, to accept agent outputs with decreasing critical scrutiny. This automation bias creates a risk that errors compound — not because the agent is failing more often, but because the human review that would catch failures is becoming less rigorous. Governance design must maintain human review quality, not just human review presence.</div></div>
+      </div>
+
+      <h2 id="s-controls">Controls that close the gap</h2>
+
+      <h3>Capability minimisation</h3>
+      <p>The principle of least privilege, applied to AI agents: each agent should have access only to the tools, data, and external systems required to complete its specific task. An agent that needs to read emails to complete a task should not have write access to the email system. An agent that needs to search the web should not have access to internal file systems. Capability minimisation is the most effective single control for reducing action risk and injection risk.</p>
+
+      <h3>Sandboxed execution environments</h3>
+      <p>Consequential agent actions should be executed in a sandboxed environment before they take real-world effect. This is especially important for code execution (where an agent-generated script can be run in an isolated environment before being applied), file operations (where changes can be staged before commit), and external communications (where outbound messages can be queued for review before sending).</p>
+
+      <h3>Human-in-the-loop at consequence boundaries</h3>
+      <p>Human approval should be required at the points where an agent crosses a consequence boundary — the moment it is about to take an irreversible action, contact an external party, or execute a high-value transaction. This is not the same as requiring human review of every agent decision — that would eliminate the efficiency value of the agent entirely. It is targeted oversight at the moments where the cost of error is highest.</p>
+
+      <h3>Anomaly detection and kill switches</h3>
+      <p>Every deployed agentic system should have a defined kill switch — a mechanism for immediately halting agent execution, preserving state, and escalating to human review. The kill switch should be reachable at all times, including when the agent is executing long-running tasks. Anomaly detection — automated monitoring for agent behaviour that deviates from baseline patterns — should trigger the kill switch or a human notification automatically, without requiring a human to be watching in real time.</p>
+
+      <div id="sources" class="art-sources">
+        <h2>Sources</h2>
+        <ul>
+          <li>OWASP Top 10 for LLM Applications — LLM01: Prompt Injection</li>
+          <li>Anthropic — Responsible Scaling Policy, 2024</li>
+          <li>EU AI Act — Article 14: Human oversight of high-risk AI systems</li>
+          <li>NIST AI RMF — Map function: AI system risk identification</li>
+          <li>AGNUS Research — AI Agents · AR-000512</li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</div>
+<script src="agnus.js"></script>
+</body>
+</html>

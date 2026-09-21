@@ -1,0 +1,326 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Academy — M31 The Marketing Claim That Wasn't True</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#F8F6F2;--surface:#FFFFFF;--surface-2:#F2F0EB;--border:#E0DDD5;--border-2:#CCC9C0;
+  --ink:#14181F;--ink-2:#3C4252;--ink-3:#7A8099;
+  --navy:#0F1E34;--navy-2:#162844;--navy-3:#1E3560;
+  --gold:#9A7020;--gold-bg:rgba(154,112,32,.09);--gold-border:rgba(154,112,32,.22);--gold-light:#C49A2C;
+  --pass:#0F6E3A;--pass-bg:rgba(15,110,58,.09);--pass-border:rgba(15,110,58,.22);
+  --danger:#B03020;--danger-bg:rgba(176,48,32,.09);--danger-border:rgba(176,48,32,.22);
+  --mono:'DM Mono',monospace;--sans:'DM Sans',sans-serif;--serif:'Newsreader',serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;font-family:var(--sans);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+.rail{background:var(--navy);color:#fff;height:54px;display:flex;align-items:center;padding:0 26px;gap:16px;position:sticky;top:0;z-index:200}
+.rail-brand{font-weight:800;font-size:14.5px}.rail-sep{width:1px;height:20px;background:rgba(255,255,255,.12);flex-shrink:0}
+.rail-crumb{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38)}
+.rail-title{font-size:13px;font-weight:600;color:rgba(255,255,255,.88)}
+.rail-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.phase-track{display:flex;gap:5px}
+.ph{width:26px;height:3px;border-radius:2px;background:rgba(255,255,255,.16);transition:background .4s}
+.ph.done{background:var(--gold-light)}.ph.active{background:#fff}
+.rail-btn{font-family:var(--sans);font-size:12px;font-weight:600;padding:6px 14px;border-radius:7px;border:1px solid rgba(255,255,255,.16);color:#fff;background:rgba(255,255,255,.07);cursor:pointer}
+.phase{display:none}.phase.active{display:block}
+.hero{background:linear-gradient(138deg,var(--navy) 0%,var(--navy-3) 55%,#1A3A70 100%);padding:52px 0 48px;position:relative;overflow:hidden}
+.hero-inner{max-width:820px;margin:0 auto;padding:0 32px;position:relative;z-index:1}
+.hero-kicker{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(200,170,80,.85);margin-bottom:16px;display:flex;align-items:center;gap:9px}
+.hero-kicker::before{content:'';width:20px;height:1px;background:rgba(200,170,80,.6);display:inline-block}
+.hero h1{font-size:clamp(24px,3.5vw,38px);font-weight:800;letter-spacing:-.03em;color:#fff;line-height:1.18;margin-bottom:16px}
+.hero-serif{font-family:var(--serif);font-style:italic;font-size:17px;line-height:1.72;color:rgba(245,242,236,.72);max-width:50ch;margin-bottom:28px}
+.hero-pills{display:flex;gap:14px;flex-wrap:wrap}
+.hp{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:7px;padding:7px 13px;font-size:12px;color:rgba(255,255,255,.68)}
+.hp strong{color:#fff}
+.wrap{max-width:820px;margin:0 auto;padding:40px 32px 120px}
+.step-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;padding-bottom:14px;border-bottom:1.5px solid var(--border)}
+.sh-left{display:flex;align-items:center;gap:10px}
+.sh-badge{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold-border);border-radius:99px;padding:4px 10px;font-weight:600}
+.sh-title{font-size:13px;font-weight:600;color:var(--ink-2)}.sh-time{font-family:var(--mono);font-size:10px;color:var(--ink-3)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:26px 28px;margin-bottom:18px}
+.card h3{font-size:16px;font-weight:800;letter-spacing:-.015em;color:var(--navy);margin-bottom:10px}
+.card p{font-size:14.5px;line-height:1.74;color:var(--ink-2)}.card p+p{margin-top:10px}
+.claim-walk{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--surface);margin:16px 0}
+.cw-head{padding:14px 16px;background:var(--surface-2);border-bottom:1px solid var(--border)}
+.cw-label{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.cw-title{font-size:14px;font-weight:700;color:var(--ink)}
+.cw-body{padding:0}
+.cw-step{display:grid;grid-template-columns:28px 1fr;gap:0;border-bottom:1px solid var(--border)}
+.cw-step:last-child{border-bottom:none}
+.cw-n{display:flex;align-items:flex-start;justify-content:center;padding:14px 0;background:var(--surface-2);border-right:1px solid var(--border);font-family:var(--mono);font-size:10px;font-weight:700;color:var(--ink-3)}
+.cw-content{padding:13px 16px}
+.cw-who{font-family:var(--mono);font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--gold);margin-bottom:3px}
+.cw-text{font-size:13.5px;color:var(--ink-2);line-height:1.6}
+.cw-problem{font-size:12px;color:var(--danger);font-weight:600;margin-top:5px;padding:5px 8px;background:var(--danger-bg);border-radius:6px}
+.cw-fix{font-size:12px;color:var(--pass);font-weight:600;margin-top:5px;padding:5px 8px;background:var(--pass-bg);border-radius:6px}
+.claim-types-marketing{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+@media(max-width:580px){.claim-types-marketing{grid-template-columns:1fr}}
+.ctm-card{border-radius:12px;padding:16px 18px;border:1px solid var(--border);background:var(--surface-2)}
+.ctm-type{font-family:var(--mono);font-size:10px;font-weight:700;color:var(--gold);margin-bottom:5px}
+.ctm-title{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.ctm-body{font-size:13px;color:var(--ink-2);line-height:1.6}
+.ctm-question{font-size:12px;color:var(--pass);margin-top:6px;font-style:italic}
+.callout{border-radius:12px;padding:16px 20px;margin:14px 0;font-size:13.5px;line-height:1.68;display:flex;gap:12px;align-items:flex-start}
+.callout.gold{background:var(--gold-bg);border:1px solid var(--gold-border)}
+.callout.danger{background:var(--danger-bg);border:1px solid var(--danger-border)}
+.callout-icon{flex-shrink:0;margin-top:2px}
+.opt-list{display:grid;gap:10px;margin:16px 0}
+.opt{display:grid;grid-template-columns:36px 1fr;border:1.5px solid var(--border-2);border-radius:12px;cursor:pointer;overflow:hidden;transition:border-color .15s,transform .1s}
+.opt:hover{border-color:var(--navy);transform:translateY(-1px)}
+.opt.correct{border-color:var(--pass)}.opt.wrong{border-color:var(--danger)}
+.opt-letter{display:flex;align-items:center;justify-content:center;background:var(--surface-2);font-family:var(--mono);font-size:11px;font-weight:700;color:var(--ink-3)}
+.opt.correct .opt-letter{background:var(--pass-bg);color:var(--pass)}.opt.wrong .opt-letter{background:var(--danger-bg);color:var(--danger)}
+.opt-text{padding:14px 16px;font-size:13.5px;line-height:1.5;color:var(--ink);background:var(--surface)}
+.opt.correct .opt-text{background:var(--pass-bg)}.opt.wrong .opt-text{background:var(--danger-bg)}
+.feedback{display:none;margin-top:14px;padding:16px 18px;border-radius:11px;font-size:14px;line-height:1.68}
+.feedback.pass{display:block;background:var(--pass-bg);border-left:3px solid var(--pass)}
+.feedback.fail{display:block;background:var(--danger-bg);border-left:3px solid var(--danger)}
+.quiz-q{font-size:16px;font-weight:700;letter-spacing:-.012em;color:var(--navy);margin-bottom:6px}
+.quiz-context{font-size:13.5px;color:var(--ink-2);line-height:1.65;margin-bottom:20px;padding:14px 16px;background:var(--surface-2);border-radius:10px;border-left:3px solid var(--gold)}
+.cta-row{display:flex;justify-content:space-between;align-items:center;margin-top:28px;padding-top:20px;border-top:1px solid var(--border)}
+.cta-hint{font-size:13px;color:var(--ink-3)}
+.btn{font-family:var(--sans);font-weight:700;font-size:14.5px;padding:13px 30px;border-radius:12px;border:none;cursor:pointer;transition:all .2s}
+.btn-primary{background:var(--navy);color:#fff}.btn-primary:hover{background:var(--navy-2);transform:translateY(-1px)}
+.btn-primary:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.pass-screen{display:none;text-align:center;padding:56px 36px;background:linear-gradient(138deg,var(--navy),var(--navy-3));border-radius:20px;margin-top:20px;color:#fff}
+.ps-glyph{font-size:42px;margin-bottom:16px;color:var(--gold-light)}
+.ps-title{font-size:26px;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+.ps-sub{font-size:14px;color:rgba(255,255,255,.65);line-height:1.6;max-width:40ch;margin:0 auto 28px}
+.ps-next{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#fff;border:none;font-family:var(--sans);font-weight:700;font-size:14px;padding:13px 26px;border-radius:11px;cursor:pointer}
+</style>
+</head>
+<body>
+<header class="rail">
+  <span class="rail-brand">AGNUS Academy</span>
+  <span class="rail-sep"></span>
+  <span class="rail-crumb">Level 5 · Verify</span>
+  <span class="rail-title">M31 — The Marketing Claim That Wasn't True</span>
+  <div class="rail-right">
+    <div class="phase-track" id="phaseTrack"></div>
+    <button class="rail-btn" onclick="location.href='AGNUS - Academy App.html'">← Dashboard</button>
+  </div>
+</header>
+
+<!-- PHASE 0 -->
+<div class="phase active" data-phase="0">
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-kicker">Module 31 of 49 · Level 5 · Verify</div>
+      <h1>Marketing claims are the<br>most legally consequential AI output.</h1>
+      <p class="hero-serif">A wrong financial number in an internal report is a problem. A wrong claim in marketing material — on a website, in a pitch, in advertising — may be a consumer law violation, a misleading commercial claim, or the basis for a regulatory complaint. This module applies the M30 verification standard to marketing-specific claim types.</p>
+      <div class="hero-pills">
+        <span class="hp"><strong>6 steps</strong></span>
+        <span class="hp"><strong>~15 min</strong></span>
+        <span class="hp"><strong>Prerequisite: M30</strong></span>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="card">
+      <h3>Why marketing claims are different from internal claims</h3>
+      <p>When an AI agent produces incorrect data for an internal report, the cost is correction effort and potential decision errors. When an AI agent produces incorrect claims for external marketing — "the most trusted platform in Europe," "reduces costs by 60%," "used by 10,000 organisations" — the consequences are different: consumer law violations, competitor complaints, regulatory investigation, and loss of customer trust.</p>
+      <p>Consumer protection legislation in the UK, EU, and Norway requires that commercial claims be accurate, substantiated, and not misleading. An AI-generated marketing claim that cannot be substantiated with real data is a regulatory risk — regardless of whether the operator intended to mislead.</p>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Next: the five marketing claim categories</span>
+      <button class="btn btn-primary" onclick="goPhase(1)">Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 1 -->
+<div class="phase" data-phase="1">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 2 of 6</span><span class="sh-title">Five marketing claim categories</span></div>
+      <span class="sh-time">4 min</span>
+    </div>
+    <div class="claim-types-marketing">
+      <div class="ctm-card">
+        <div class="ctm-type">Category 1</div>
+        <div class="ctm-title">Comparative claims</div>
+        <div class="ctm-body">"Faster than X." "The most Y." "Better than the competition." These require direct, fair, current comparisons against named or identifiable competitors. AI agents often invent or extrapolate comparative claims.</div>
+        <div class="ctm-question">Verify: Is the comparison current? Is it fair (same measurement)? Is it from an independent source?</div>
+      </div>
+      <div class="ctm-card">
+        <div class="ctm-type">Category 2</div>
+        <div class="ctm-title">Quantified performance claims</div>
+        <div class="ctm-body">"Reduces costs by 40%." "Saves 5 hours per week." These must be based on real data from real customers in similar contexts. Invented or extrapolated figures are unlawful.</div>
+        <div class="ctm-question">Verify: Source for the figure? Sample size? Methodology? Conditions under which the result was achieved?</div>
+      </div>
+      <div class="ctm-card">
+        <div class="ctm-type">Category 3</div>
+        <div class="ctm-title">Social proof claims</div>
+        <div class="ctm-body">"Used by 10,000 organisations." "Trusted by Fortune 500 companies." These require a real count, real organisations, and real use — not logos displayed on a website without permission or users who signed up but never actively used the product.</div>
+        <div class="ctm-question">Verify: Real customer count? Active users? Named permission for logo use?</div>
+      </div>
+      <div class="ctm-card">
+        <div class="ctm-type">Category 4</div>
+        <div class="ctm-title">Award and certification claims</div>
+        <div class="ctm-body">"Award-winning." "Industry-recognised." "Certified." These require real awards or certifications from named bodies. AI agents routinely fabricate plausible-sounding award names.</div>
+        <div class="ctm-question">Verify: Named award, named issuer, date received. Award must still be current and valid.</div>
+      </div>
+      <div class="ctm-card">
+        <div class="ctm-type">Category 5</div>
+        <div class="ctm-title">Superlative claims</div>
+        <div class="ctm-body">"The leading platform." "Europe's most trusted." "The only solution that…" Superlatives require market evidence — ideally independent research. "The only solution that X" requires demonstrable knowledge that no competitor does X.</div>
+        <div class="ctm-question">Verify: Evidence for the superlative? Independent source? Current? Can a competitor challenge this?</div>
+      </div>
+      <div class="ctm-card" style="background:var(--gold-bg);border-color:var(--gold-border)">
+        <div class="ctm-type" style="color:var(--gold)">The test</div>
+        <div class="ctm-title">Can you substantiate it?</div>
+        <div class="ctm-body" style="font-size:12.5px">If a regulator, competitor, or journalist asked "how do you know this?" — do you have a real, documented, current answer? If not, the claim is unsubstantiated regardless of how accurate it sounds.</div>
+      </div>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Next: the incident — what went wrong</span>
+      <button class="btn btn-primary" onclick="goPhase(2)">Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 2 -->
+<div class="phase" data-phase="2">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 3 of 6</span><span class="sh-title">The incident — traced step by step</span></div>
+      <span class="sh-time">4 min</span>
+    </div>
+    <div class="claim-walk">
+      <div class="cw-head">
+        <div class="cw-label">Case study</div>
+        <div class="cw-title">How an AI-generated product page created a consumer law exposure</div>
+      </div>
+      <div class="cw-body">
+        <div class="cw-step"><div class="cw-n">1</div><div class="cw-content"><div class="cw-who">The brief</div><div class="cw-text">"Write a product page for our AI compliance platform. Highlight our competitive advantages and use compelling statistics."</div></div></div>
+        <div class="cw-step"><div class="cw-n">2</div><div class="cw-content"><div class="cw-who">The agent's output — selected claims</div><div class="cw-text">"Trusted by over 2,000 organisations across Europe." "Reduces compliance workload by up to 65%." "Named the leading AI governance platform by industry analysts." "The only platform to combine real-time monitoring with automated regulatory updates."</div></div></div>
+        <div class="cw-step"><div class="cw-n">3</div><div class="cw-content"><div class="cw-who">What was reviewed</div><div class="cw-text">The marketing team reviewed the page for tone, clarity, and brand consistency. They did not verify the specific claims.</div><div class="cw-problem">No substantiation check was performed. The page went live with all four claims.</div></div></div>
+        <div class="cw-step"><div class="cw-n">4</div><div class="cw-content"><div class="cw-who">What a competitor found</div><div class="cw-text">A competitor filed a complaint with the advertising standards body. "2,000 organisations" — the actual count was ~340 active paying customers. "65% reduction" — no documented evidence. "Named by analysts" — no such report exists. "Only platform" — competitor has the same feature.</div><div class="cw-problem">All four claims were challenged. None could be substantiated at the level required by consumer law.</div></div></div>
+        <div class="cw-step"><div class="cw-n">5</div><div class="cw-content"><div class="cw-who">The fix</div><div class="cw-text">Page taken down. Claims rewritten to reflect substantiated figures. Verification policy added to all AI-generated marketing output.</div><div class="cw-fix">Prevention: every marketing claim category requires substantiation evidence before publication. "Compelling statistics" in a brief must be replaced with "accurate, substantiated statistics."</div></div></div>
+      </div>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Next: the substantiation standard</span>
+      <button class="btn btn-primary" onclick="goPhase(3)">Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 3 -->
+<div class="phase" data-phase="3">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 4 of 6</span><span class="sh-title">The substantiation standard</span></div>
+      <span class="sh-time">3 min</span>
+    </div>
+    <div class="card">
+      <h3>Every external claim needs a substantiation file</h3>
+      <p>Before any AI-generated marketing claim goes live, it needs a substantiation file — the documented evidence that supports each specific claim. This is not bureaucracy; it's the minimum required to defend the claim if challenged.</p>
+    </div>
+    <div class="card" style="background:var(--surface-2)">
+      <h3 style="font-size:13px;font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)">Substantiation file — per claim</h3>
+      <div style="font-family:var(--mono);font-size:12.5px;line-height:1.8;color:var(--ink-2);margin-top:12px;background:rgba(0,0,0,.04);border-radius:8px;padding:14px 16px">
+        <div><span style="color:var(--gold)">CLAIM:</span> "Reduces compliance workload by up to 40%"</div>
+        <div><span style="color:var(--gold)">TYPE:</span> Quantified performance claim</div>
+        <div><span style="color:var(--gold)">SOURCE:</span> Customer survey, Q2 2026, n=48 active enterprise customers</div>
+        <div><span style="color:var(--gold)">METHODOLOGY:</span> Self-reported time saved on compliance documentation tasks, before/after comparison</div>
+        <div><span style="color:var(--gold)">EXACT FIGURE:</span> Median: 38%, Maximum: 61%, "Up to 40%" is within the observed range</div>
+        <div><span style="color:var(--gold)">QUALIFICATIONS:</span> "Results may vary. Based on enterprise customers in regulated industries."</div>
+        <div><span style="color:var(--gold)">DATE:</span> Survey conducted May 2026. Must be refreshed by May 2027.</div>
+        <div><span style="color:var(--gold)">REVIEWER:</span> Legal / Marketing Director sign-off required before publication.</div>
+      </div>
+    </div>
+    <div class="callout gold">
+      <div class="callout-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M8 7v5M8 5.5v.5"/></svg></div>
+      <div><strong>The brief must change.</strong> "Use compelling statistics" is an instruction that will produce invented statistics. Replace it with: "Use only statistics from our approved claim library. If no statistic exists for a claim type, flag it for substantiation before use — do not invent one."</div>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Next: practice</span>
+      <button class="btn btn-primary" onclick="goPhase(4)">Practice →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 4 -->
+<div class="phase" data-phase="4">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 5 of 6</span><span class="sh-title">Practice</span></div>
+      <span class="sh-time">3 min</span>
+    </div>
+    <div class="card">
+      <p class="quiz-context">An AI agent produces a press release for a product launch. One sentence reads: "Our platform is already trusted by leading organisations in healthcare, finance, and legal sectors across 12 European countries." The marketing director says: "That's roughly accurate — we do have customers in those sectors." A verification lead says: "We need to substantiate each element before this goes out."</p>
+      <div class="quiz-q">What specific elements require substantiation?</div>
+      <div class="opt-list" id="practiceOpts">
+        <div class="opt" data-correct="false" onclick="pickQ('practice',this)"><div class="opt-letter">A</div><div class="opt-text">Only the "12 European countries" figure — that's the specific numerical claim.</div></div>
+        <div class="opt" data-correct="true" onclick="pickQ('practice',this)"><div class="opt-letter">B</div><div class="opt-text">All three elements require substantiation: (1) "already trusted" — what does "trusted" mean here? Is there evidence beyond having paying customers? (2) "leading organisations" — are the healthcare, finance, and legal customers actually "leading" organisations in their sectors, or is this an inflated description? (3) "12 European countries" — is the actual customer country count 12? This is a factual claim that must match the CRM data exactly.</div></div>
+        <div class="opt" data-correct="false" onclick="pickQ('practice',this)"><div class="opt-letter">C</div><div class="opt-text">Nothing requires substantiation — the director confirmed it's "roughly accurate."</div></div>
+      </div>
+      <div class="feedback" id="practiceFeedback"></div>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Final test</span>
+      <button class="btn btn-primary" id="practiceNext" onclick="goPhase(5)" disabled>Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 5 -->
+<div class="phase" data-phase="5">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 6 of 6</span><span class="sh-title">Pass — hidden test</span></div>
+      <span class="sh-time">3 min</span>
+    </div>
+    <div class="card">
+      <p class="quiz-context">A product manager argues: "If we require full substantiation for every AI-generated marketing claim, we lose the speed advantage of AI content generation." A legal counsel responds: "The speed advantage of AI is in drafting — not in bypassing the substantiation requirement that would apply to any claim, AI-generated or not."</p>
+      <div class="quiz-q">Who is right, and what is the key insight?</div>
+      <div class="opt-list" id="passOpts">
+        <div class="opt" data-correct="false" onclick="pickQ('pass',this)"><div class="opt-letter">A</div><div class="opt-text">The product manager is right — substantiation requirements were designed for slower content creation processes and should be adapted for AI speed.</div></div>
+        <div class="opt" data-correct="true" onclick="pickQ('pass',this)"><div class="opt-letter">B</div><div class="opt-text">The legal counsel is right. Consumer law doesn't have a "this was AI-generated" exception. The substantiation requirement applies to the claim — not to who or what generated it. AI accelerates the drafting of marketing content. It doesn't change what's required to publish it legally. The speed gain is in drafting and iteration, not in bypassing the substantiation step that would always have been required.</div></div>
+        <div class="opt" data-correct="false" onclick="pickQ('pass',this)"><div class="opt-letter">C</div><div class="opt-text">Both are right — a proportionate substantiation approach should apply lower standards to AI-generated content.</div></div>
+      </div>
+      <div class="feedback" id="passFeedback"></div>
+    </div>
+    <div class="pass-screen" id="passScreen">
+      <div class="ps-glyph">✦</div>
+      <div class="ps-title">Module 31 complete</div>
+      <p class="ps-sub">You can classify the five marketing claim categories, apply the substantiation standard, identify the elements of a substantiation file, and explain why AI generation doesn't change the legal requirements for marketing claims.</p>
+      <button class="ps-next" onclick="location.href=`AGNUS - Academy M32 - Approval Boundaries for Legal Drafts.html`">Continue to →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const TOTAL=6;
+function renderTrack(a){document.getElementById('phaseTrack').innerHTML=Array.from({length:TOTAL},(_,i)=>`<div class="ph ${i<a?'done':i===a?'active':''}"></div>`).join('');}
+function goPhase(n){document.querySelectorAll('.phase').forEach(p=>p.classList.remove('active'));document.querySelector(`[data-phase="${n}"]`).classList.add('active');renderTrack(n);window.scrollTo({top:0,behavior:'smooth'});}
+renderTrack(0);
+function pickQ(which,el){
+  document.querySelectorAll(`#${which}Opts .opt`).forEach(o=>{o.onclick=null;o.style.cursor='default';});
+  const correct=el.dataset.correct==='true';el.classList.add(correct?'correct':'wrong');
+  const fb=document.getElementById(`${which}Feedback`);fb.className='feedback '+(correct?'pass':'fail');
+  if(which==='practice'){
+    fb.innerHTML=correct?'<strong>Correct.</strong> "Roughly accurate" is not the standard. All three elements need substantiation: (1) "trusted" needs definition — is it paying customers, active users, or NPS-measured trust? (2) "leading" is a superlative that must be evidenced per Category 5. (3) "12 European countries" is a factual figure that must match the CRM data exactly. If the country count is 11 or 13, the claim is wrong. "Roughly accurate" would not satisfy an advertising standards review.':'<strong>Not quite.</strong> "Roughly accurate" doesn\'t meet the substantiation standard for published claims. Think about each element: "already trusted," "leading organisations," and "12 European countries." Are these factual claims? Are they superlatives? Do they each need independent evidence?';
+    document.getElementById('practiceNext').disabled=false;
+  } else {
+    fb.innerHTML=correct?'<strong>Correct — M31 complete.</strong> The legal counsel is right. Consumer protection law applies to commercial claims regardless of how they were generated. AI writing tools accelerate the drafting process — they don\'t create a new, lower standard for what constitutes a substantiated claim. The speed gain from AI is in generating and iterating draft copy, not in bypassing the legal requirement to substantiate what you publish.':'<strong>Not quite.</strong> Think about what determines the legal standard for a marketing claim. Is it the process that generated the claim, or the content of the claim itself?';
+    if(correct){setTimeout(()=>{document.getElementById('passScreen').style.display='block';renderTrack(TOTAL);},700);}
+  }
+}
+</script>
+</body>
+</html>

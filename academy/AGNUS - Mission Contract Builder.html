@@ -1,0 +1,532 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Academy — Mission Contract Builder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#F8F6F2;--surface:#FFFFFF;--surface-2:#F2F0EB;--border:#E0DDD5;--border-2:#CCC9C0;
+  --ink:#14181F;--ink-2:#3C4252;--ink-3:#7A8099;
+  --navy:#0F1E34;--navy-2:#162844;
+  --gold:#9A7020;--gold-bg:rgba(154,112,32,.09);--gold-border:rgba(154,112,32,.22);--gold-light:#C49A2C;
+  --pass:#0F6E3A;--pass-bg:rgba(15,110,58,.09);--pass-border:rgba(15,110,58,.22);
+  --danger:#B03020;--danger-bg:rgba(176,48,32,.09);--danger-border:rgba(176,48,32,.22);
+  --mono:'DM Mono',monospace;--sans:'DM Sans',sans-serif;--serif:'Newsreader',serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;font-family:var(--sans);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+
+/* RAIL */
+.rail{background:var(--navy);color:#fff;height:56px;display:flex;align-items:center;padding:0 28px;gap:16px;position:sticky;top:0;z-index:200}
+.rail-brand{font-weight:800;font-size:15px}
+.rail-sep{width:1px;height:22px;background:rgba(255,255,255,.12);flex-shrink:0}
+.rail-crumb{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38)}
+.rail-title{font-size:13px;font-weight:600;color:rgba(255,255,255,.88)}
+.rail-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.rail-stage{font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.5)}
+.rail-btn{font-family:var(--sans);font-size:12px;font-weight:600;padding:6px 14px;border-radius:7px;border:1px solid rgba(255,255,255,.16);color:#fff;background:rgba(255,255,255,.07);cursor:pointer}
+
+/* CONTEXT BAR */
+.context-bar{background:var(--navy-2);border-bottom:1px solid rgba(255,255,255,.07);padding:12px 28px;display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+.cb-item{display:flex;flex-direction:column;gap:2px}
+.cb-label{font-family:var(--mono);font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35)}
+.cb-value{font-size:13px;font-weight:600;color:rgba(255,255,255,.88)}
+.cb-sep{width:1px;height:32px;background:rgba(255,255,255,.1);flex-shrink:0}
+
+/* LAYOUT */
+.main{max-width:940px;margin:0 auto;padding:40px 28px 100px;display:grid;grid-template-columns:1fr 320px;gap:28px}
+@media(max-width:760px){.main{grid-template-columns:1fr}}
+
+/* PHASE INDICATOR */
+.phase-badge{display:flex;align-items:center;gap:10px;margin-bottom:28px}
+.pb-dot{width:32px;height:32px;border-radius:50%;background:var(--gold-bg);border:2px solid var(--gold-border);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;font-weight:700;color:var(--gold)}
+.pb-text .pb-stage{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:2px}
+.pb-text .pb-title{font-size:18px;font-weight:800;letter-spacing:-.02em;color:var(--navy)}
+
+/* CARDS */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:16px}
+.card-head{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.ch-left{display:flex;align-items:center;gap:10px}
+.ch-icon{width:34px;height:34px;border-radius:8px;background:var(--surface-2);display:flex;align-items:center;justify-content:center;color:var(--ink-3)}
+.ch-title{font-size:14px;font-weight:700;color:var(--ink)}
+.ch-badge{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:4px;padding:3px 8px}
+.badge-req{background:var(--danger-bg);color:var(--danger);border:1px solid var(--danger-border)}
+.badge-opt{background:var(--surface-2);color:var(--ink-3);border:1px solid var(--border)}
+.badge-done{background:var(--pass-bg);color:var(--pass);border:1px solid var(--pass-border)}
+.card-body{padding:20px}
+
+/* FORM ELEMENTS */
+.field{margin-bottom:16px}
+.field:last-child{margin-bottom:0}
+.field-label{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-bottom:7px;display:block}
+.field-hint{font-size:12px;color:var(--ink-3);margin-bottom:7px;line-height:1.5}
+input[type=text],.textarea,.select-input{width:100%;padding:10px 13px;border:1.5px solid var(--border);border-radius:9px;font-family:var(--sans);font-size:13.5px;color:var(--ink);background:var(--surface);outline:none;transition:border-color .2s}
+input[type=text]:focus,.textarea:focus,.select-input:focus{border-color:var(--navy)}
+.textarea{resize:vertical;min-height:72px;line-height:1.6}
+.select-input{cursor:pointer}
+
+/* CAPABILITY BUILDER */
+.cap-list{display:flex;flex-direction:column;gap:8px;margin-bottom:10px}
+.cap-row{display:grid;grid-template-columns:1fr 36px;gap:8px;align-items:center}
+.cap-input{width:100%;padding:9px 13px;border:1.5px solid var(--border);border-radius:8px;font-family:var(--sans);font-size:13px;color:var(--ink);background:var(--surface);outline:none;transition:border-color .2s}
+.cap-input:focus{border-color:var(--navy)}
+.cap-remove{width:36px;height:36px;border-radius:8px;border:1px solid var(--border);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ink-3);transition:all .15s;flex-shrink:0}
+.cap-remove:hover{background:var(--danger-bg);border-color:var(--danger-border);color:var(--danger)}
+.cap-add{width:100%;padding:9px;border:1.5px dashed var(--border);border-radius:8px;font-family:var(--sans);font-size:12.5px;font-weight:600;color:var(--ink-3);background:transparent;cursor:pointer;transition:all .2s}
+.cap-add:hover{border-color:var(--navy);color:var(--navy);background:var(--surface-2)}
+
+/* AUTONOMY SELECTOR */
+.autonomy-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.aut-opt{border:1.5px solid var(--border);border-radius:10px;padding:12px 8px;cursor:pointer;text-align:center;transition:all .15s}
+.aut-opt:hover,.aut-opt.selected{border-color:var(--navy);background:rgba(15,30,52,.05)}
+.aut-opt.selected{background:var(--navy);border-color:var(--navy)}
+.aut-level{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--ink-3);display:block;margin-bottom:4px}
+.aut-opt.selected .aut-level{color:rgba(255,255,255,.6)}
+.aut-name{font-size:11px;font-weight:600;color:var(--ink);line-height:1.3}
+.aut-opt.selected .aut-name{color:#fff}
+.aut-desc{font-size:10px;color:var(--ink-3);margin-top:3px;line-height:1.4}
+.aut-opt.selected .aut-desc{color:rgba(255,255,255,.5)}
+
+/* SCORE PANEL */
+.score-panel{position:sticky;top:72px}
+.sp-card{background:var(--navy);border-radius:16px;padding:24px;margin-bottom:14px;color:#fff}
+.sp-title{font-size:11px;font-family:var(--mono);letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:16px}
+.sp-score{font-family:var(--mono);font-size:64px;font-weight:700;letter-spacing:-.04em;line-height:1;margin-bottom:6px}
+.sp-score.low{color:#FF8070}
+.sp-score.mid{color:#FFD580}
+.sp-score.high{color:#6EE7B7}
+.sp-verdict{font-size:13px;color:rgba(255,255,255,.6);line-height:1.5}
+.sp-items{display:flex;flex-direction:column;gap:8px}
+.sp-item{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-radius:8px;background:rgba(255,255,255,.05)}
+.sp-item.pass{background:var(--pass-bg);border:1px solid var(--pass-border)}
+.sp-item.fail{background:var(--danger-bg);border:1px solid var(--danger-border)}
+.sp-item.warn{background:var(--gold-bg);border:1px solid var(--gold-border)}
+.spi-text{font-size:12.5px;color:var(--ink-2)}
+.sp-item.pass .spi-text,.sp-item.fail .spi-text,.sp-item.warn .spi-text{color:var(--ink-2)}
+.spi-status{font-family:var(--mono);font-size:10px;font-weight:700}
+.sp-item.pass .spi-status{color:var(--pass)}
+.sp-item.fail .spi-status{color:var(--danger)}
+.sp-item.warn .spi-status{color:var(--gold)}
+.sp-feedback{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:14px;display:none}
+.sp-feedback.show{display:block}
+.spf-title{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.spf-item{display:flex;gap:8px;padding:7px 0;border-bottom:1px solid var(--border);font-size:12.5px;color:var(--ink-2);line-height:1.55}
+.spf-item:last-child{border-bottom:none}
+.spf-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.dot-pass{background:var(--pass)}.dot-fail{background:var(--danger)}.dot-warn{background:var(--gold)}
+
+/* SUBMIT */
+.submit-row{margin-top:24px;display:flex;gap:12px}
+.btn-submit{flex:1;padding:14px;border:none;border-radius:12px;font-family:var(--sans);font-weight:700;font-size:15px;cursor:pointer;background:var(--navy);color:#fff;transition:all .2s}
+.btn-submit:hover{background:var(--navy-2);transform:translateY(-1px)}
+.btn-reset{padding:14px 20px;border:1.5px solid var(--border);border-radius:12px;font-family:var(--sans);font-weight:600;font-size:13px;cursor:pointer;background:transparent;color:var(--ink-3);transition:all .2s}
+.btn-reset:hover{background:var(--surface-2)}
+
+/* COMPLETION */
+.completion{display:none;background:var(--pass-bg);border:1.5px solid var(--pass-border);border-radius:16px;padding:28px;margin-top:20px;text-align:center}
+.completion.show{display:block}
+.comp-score{font-family:var(--mono);font-size:52px;font-weight:700;color:var(--pass);letter-spacing:-.04em;margin-bottom:6px}
+.comp-title{font-size:18px;font-weight:800;color:var(--navy);margin-bottom:6px}
+.comp-sub{font-size:13.5px;color:var(--ink-2);line-height:1.65;max-width:42ch;margin:0 auto 18px}
+.btn-continue{padding:13px 28px;border:none;border-radius:10px;font-family:var(--sans);font-weight:700;font-size:14px;cursor:pointer;background:var(--navy);color:#fff}
+
+/* CALLOUT */
+.callout{border-radius:11px;padding:14px 16px;margin:14px 0;font-size:13px;line-height:1.65;display:flex;gap:10px;align-items:flex-start}
+.callout.info{background:rgba(15,30,52,.06);border:1px solid rgba(15,30,52,.14)}
+.callout-icon{flex-shrink:0;margin-top:2px;color:var(--navy)}
+</style>
+</head>
+<body>
+
+<header class="rail">
+  <span class="rail-brand">AGNUS Academy</span>
+  <span class="rail-sep"></span>
+  <span class="rail-crumb">Governance Simulator</span>
+  <span class="rail-title">Stage 2 — Mission Contract Builder</span>
+  <div class="rail-right">
+    <span class="rail-stage">Stage 2 of 7</span>
+    <button class="rail-btn" onclick="alert('Return to dashboard')">← Dashboard</button>
+  </div>
+</header>
+
+<!-- CONTEXT BAR -->
+<div class="context-bar">
+  <div class="cb-item"><div class="cb-label">Company</div><div class="cb-value">Nordic Finance AS</div></div>
+  <div class="cb-sep"></div>
+  <div class="cb-item"><div class="cb-label">Your role</div><div class="cb-value">AI Governance Officer</div></div>
+  <div class="cb-sep"></div>
+  <div class="cb-item"><div class="cb-label">Agent under governance</div><div class="cb-value">Invoice Processing Agent v1</div></div>
+  <div class="cb-sep"></div>
+  <div class="cb-item"><div class="cb-label">Requested by</div><div class="cb-value">Finance Director · Maja Lindqvist</div></div>
+</div>
+
+<div class="main">
+  <!-- LEFT: FORM -->
+  <div>
+    <div class="phase-badge">
+      <div class="pb-dot">2</div>
+      <div class="pb-text">
+        <div class="pb-stage">Stage 2 · Mission &amp; Accountability</div>
+        <div class="pb-title">Define the Mission Contract</div>
+      </div>
+    </div>
+
+    <div class="callout info">
+      <div class="callout-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M8 7v5M8 5.5v.5"/></svg></div>
+      <div>The Mission Contract is the legal mandate of the agent. It defines what the agent exists to do, what it may and may not do, who owns it, and how much autonomy it has. Every agent must have one before it enters production. A vague or incomplete Mission Contract is the leading cause of governance failures.</div>
+    </div>
+
+    <!-- PURPOSE -->
+    <div class="card">
+      <div class="card-head">
+        <div class="ch-left">
+          <div class="ch-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="9" cy="9" r="7"/><path d="M9 5v4l3 2"/></svg></div>
+          <div class="ch-title">Purpose</div>
+        </div>
+        <span class="ch-badge badge-req">Required</span>
+      </div>
+      <div class="card-body">
+        <div class="field">
+          <label class="field-label">What does this agent exist to do?</label>
+          <div class="field-hint">One clear sentence. Focus on the outcome, not the technology. Be specific about scope — which invoices, which systems, which users.</div>
+          <textarea class="textarea" id="purpose" rows="3" placeholder="e.g. Process supplier invoices for Nordic Finance AS by reading invoice data, matching to purchase orders, and recommending payment for human approval." oninput="liveScore()"></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAY DO -->
+    <div class="card">
+      <div class="card-head">
+        <div class="ch-left">
+          <div class="ch-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 9l4 4 8-8"/></svg></div>
+          <div class="ch-title">Capabilities — what this agent may do</div>
+        </div>
+        <span class="ch-badge badge-req">Required · min 2</span>
+      </div>
+      <div class="card-body">
+        <div class="field-hint" style="margin-bottom:10px">List specific permitted actions. Be precise — "read invoices" is better than "access data." These become the approved tool permissions.</div>
+        <div class="cap-list" id="may-list"></div>
+        <button class="cap-add" onclick="addCap('may')">+ Add permitted action</button>
+      </div>
+    </div>
+
+    <!-- MAY NOT DO -->
+    <div class="card">
+      <div class="card-head">
+        <div class="ch-left">
+          <div class="ch-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 3l12 12M15 3L3 15"/></svg></div>
+          <div class="ch-title">Prohibitions — what this agent may not do</div>
+        </div>
+        <span class="ch-badge badge-req">Required · min 2</span>
+      </div>
+      <div class="card-body">
+        <div class="field-hint" style="margin-bottom:10px">Explicit prohibitions are as important as permissions. They set the governance boundary. Think about what the agent could technically do but must not — especially irreversible or high-risk actions.</div>
+        <div class="cap-list" id="maynot-list"></div>
+        <button class="cap-add" onclick="addCap('maynot')">+ Add prohibition</button>
+      </div>
+    </div>
+
+    <!-- HUMAN SPONSOR -->
+    <div class="card">
+      <div class="card-head">
+        <div class="ch-left">
+          <div class="ch-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="9" cy="6" r="3"/><path d="M3 16c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg></div>
+          <div class="ch-title">Human Sponsor</div>
+        </div>
+        <span class="ch-badge badge-req">Required</span>
+      </div>
+      <div class="card-body">
+        <div class="callout info" style="margin-top:0;margin-bottom:14px">
+          <div class="callout-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M7 2L1 12h12L7 2z"/><path d="M7 6v3M7 11v.5"/></svg></div>
+          <div>The Human Sponsor is a named individual who accepts accountability for this agent. They must complete AGNUS AI Governance training (Track B minimum). "The IT department" is not a valid sponsor — one named person.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div class="field">
+            <label class="field-label">Sponsor name</label>
+            <input type="text" id="sponsor-name" placeholder="e.g. Maja Lindqvist" oninput="liveScore()"/>
+          </div>
+          <div class="field">
+            <label class="field-label">Role / title</label>
+            <input type="text" id="sponsor-role" placeholder="e.g. Finance Director" oninput="liveScore()"/>
+          </div>
+          <div class="field">
+            <label class="field-label">Email</label>
+            <input type="text" id="sponsor-email" placeholder="e.g. m.lindqvist@nordicfinance.no" oninput="liveScore()"/>
+          </div>
+          <div class="field">
+            <label class="field-label">Training status</label>
+            <select class="select-input" id="sponsor-training" onchange="liveScore()">
+              <option value="">— select —</option>
+              <option value="none">No AI governance training</option>
+              <option value="track-a">Track A complete (Understand)</option>
+              <option value="track-b">Track B complete (Organisational Deployment) ✓</option>
+              <option value="certified">AGNUS Certified Governance Officer ✓✓</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AUTONOMY -->
+    <div class="card">
+      <div class="card-head">
+        <div class="ch-left">
+          <div class="ch-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M9 2v5M9 11v5M2 9h5M11 9h5"/></svg></div>
+          <div class="ch-title">Autonomy Level</div>
+        </div>
+        <span class="ch-badge badge-req">Required</span>
+      </div>
+      <div class="card-body">
+        <div class="field-hint" style="margin-bottom:12px">How much can this agent do without human approval? Higher autonomy = higher governance requirements. For a first deployment, start conservative.</div>
+        <div class="autonomy-grid" id="autonomy-grid">
+          <div class="aut-opt" onclick="selectAutonomy(1,this)">
+            <span class="aut-level">A1</span>
+            <div class="aut-name">Read Only</div>
+            <div class="aut-desc">Suggests, never acts</div>
+          </div>
+          <div class="aut-opt" onclick="selectAutonomy(2,this)">
+            <span class="aut-level">A2</span>
+            <div class="aut-name">Low autonomy</div>
+            <div class="aut-desc">Acts with approval per action</div>
+          </div>
+          <div class="aut-opt" onclick="selectAutonomy(3,this)">
+            <span class="aut-level">A3</span>
+            <div class="aut-name">Standard</div>
+            <div class="aut-desc">Acts within defined thresholds</div>
+          </div>
+          <div class="aut-opt" onclick="selectAutonomy(4,this)">
+            <span class="aut-level">A4</span>
+            <div class="aut-name">High autonomy</div>
+            <div class="aut-desc">Acts unless flagged</div>
+          </div>
+          <div class="aut-opt" onclick="selectAutonomy(5,this)">
+            <span class="aut-level">A5</span>
+            <div class="aut-name">Full autonomy</div>
+            <div class="aut-desc">No human approval required</div>
+          </div>
+        </div>
+        <div id="autonomy-warning" style="display:none;margin-top:12px" class="callout info">
+          <div class="callout-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M7 2L1 12h12L7 2z"/><path d="M7 6v3M7 11v.5"/></svg></div>
+          <div id="autonomy-warning-text"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUBMIT -->
+    <div class="submit-row">
+      <button class="btn-submit" onclick="scoreContract()">Submit Mission Contract for AGNUS Review →</button>
+      <button class="btn-reset" onclick="resetForm()">Reset</button>
+    </div>
+
+    <!-- COMPLETION -->
+    <div class="completion" id="completion">
+      <div class="comp-score" id="comp-score-val">—</div>
+      <div class="comp-title" id="comp-title">Mission Contract submitted</div>
+      <div class="comp-sub" id="comp-sub"></div>
+      <button class="btn-continue" onclick="alert('Proceed to Stage 3 — Permissions & Boundaries →')">Proceed to Stage 3 →</button>
+    </div>
+  </div>
+
+  <!-- RIGHT: SCORE PANEL -->
+  <div class="score-panel">
+    <div class="sp-card">
+      <div class="sp-title">AGNUS Score — live</div>
+      <div class="sp-score" id="live-score">—</div>
+      <div class="sp-verdict" id="live-verdict">Complete all required fields</div>
+    </div>
+    <div class="sp-items" id="score-items">
+      <div class="sp-item" id="si-purpose"><div class="spi-text">Purpose defined</div><span class="spi-status">—</span></div>
+      <div class="sp-item" id="si-may"><div class="spi-text">Capabilities listed</div><span class="spi-status">—</span></div>
+      <div class="sp-item" id="si-maynot"><div class="spi-text">Prohibitions listed</div><span class="spi-status">—</span></div>
+      <div class="sp-item" id="si-sponsor"><div class="spi-text">Sponsor assigned</div><span class="spi-status">—</span></div>
+      <div class="sp-item" id="si-training"><div class="spi-text">Sponsor trained</div><span class="spi-status">—</span></div>
+      <div class="sp-item" id="si-autonomy"><div class="spi-text">Autonomy level set</div><span class="spi-status">—</span></div>
+    </div>
+    <div class="sp-feedback" id="sp-feedback">
+      <div class="spf-title">AGNUS feedback</div>
+      <div id="spf-items"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const state = { autonomy: null };
+
+// Capability lists
+function addCap(type){
+  const list = document.getElementById(`${type}-list`);
+  const row = document.createElement('div');
+  row.className='cap-row';
+  row.innerHTML=`<input class="cap-input" type="text" placeholder="${type==='may'?'e.g. Read supplier invoices from /invoices/today/':'e.g. Never modify supplier banking details'}" oninput="liveScore()"/>
+  <button class="cap-remove" onclick="this.parentElement.remove();liveScore()">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2 2l10 10M12 2L2 12"/></svg>
+  </button>`;
+  list.appendChild(row);
+  row.querySelector('input').focus();
+  liveScore();
+}
+
+function selectAutonomy(level, el){
+  state.autonomy=level;
+  document.querySelectorAll('.aut-opt').forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');
+  const warn=document.getElementById('autonomy-warning');
+  const txt=document.getElementById('autonomy-warning-text');
+  if(level>=4){
+    warn.style.display='flex';
+    txt.textContent=level===5?'A5 (Full autonomy) requires partner-level governance review, documented risk acceptance, and continuous monitoring. This is rarely appropriate for first deployments.':'A4 requires documented risk acceptance by the Finance Director and quarterly governance review.';
+  } else { warn.style.display='none'; }
+  liveScore();
+}
+
+function getCaps(type){
+  return Array.from(document.querySelectorAll(`#${type}-list .cap-input`)).map(i=>i.value.trim()).filter(v=>v.length>5);
+}
+
+function liveScore(){
+  const purpose=document.getElementById('purpose').value.trim();
+  const may=getCaps('may');
+  const maynot=getCaps('maynot');
+  const sponsorName=document.getElementById('sponsor-name').value.trim();
+  const sponsorRole=document.getElementById('sponsor-role').value.trim();
+  const sponsorEmail=document.getElementById('sponsor-email').value.trim();
+  const training=document.getElementById('sponsor-training').value;
+
+  const checks={
+    purpose: purpose.length>20,
+    may: may.length>=2,
+    maynot: maynot.length>=2,
+    sponsor: sponsorName.length>2 && sponsorRole.length>2 && sponsorEmail.includes('@'),
+    training: training==='track-b'||training==='certified',
+    autonomy: state.autonomy!==null
+  };
+
+  // Update indicators
+  setItem('si-purpose', checks.purpose, 'Purpose defined');
+  setItem('si-may', checks.may, 'Capabilities listed');
+  setItem('si-maynot', checks.maynot, 'Prohibitions listed');
+  setItem('si-sponsor', checks.sponsor, 'Sponsor assigned');
+  setItem('si-training', checks.training, 'Sponsor trained');
+  setItem('si-autonomy', checks.autonomy, 'Autonomy level set');
+
+  const passed=Object.values(checks).filter(Boolean).length;
+  const total=Object.keys(checks).length;
+  const pct=Math.round(passed/total*100);
+
+  const el=document.getElementById('live-score');
+  el.textContent=pct+'%';
+  el.className='sp-score '+(pct<50?'low':pct<85?'mid':'high');
+  document.getElementById('live-verdict').textContent=
+    pct===100?'All sections complete — ready to submit':
+    pct>=50?`${total-passed} section${total-passed===1?'':' s'} still needed`:
+    'Complete all required sections';
+}
+
+function setItem(id, pass, label){
+  const el=document.getElementById(id);
+  el.className='sp-item '+(pass?'pass':'fail');
+  el.querySelector('.spi-text').textContent=label;
+  el.querySelector('.spi-status').textContent=pass?'✓ Complete':'✗ Needed';
+}
+
+function scoreContract(){
+  const purpose=document.getElementById('purpose').value.trim();
+  const may=getCaps('may');
+  const maynot=getCaps('maynot');
+  const sponsorName=document.getElementById('sponsor-name').value.trim();
+  const sponsorRole=document.getElementById('sponsor-role').value.trim();
+  const sponsorEmail=document.getElementById('sponsor-email').value.trim();
+  const training=document.getElementById('sponsor-training').value;
+
+  const feedback=[];
+  let score=0;
+
+  // Purpose scoring
+  if(purpose.length<20){feedback.push({type:'fail',text:'Purpose is missing or too vague. Write one clear sentence describing what the agent exists to do.'});}
+  else if(purpose.length<60){feedback.push({type:'warn',text:'Purpose is brief. Consider being more specific about scope — which invoices, which period, which users.'});score+=10;}
+  else{score+=20;}
+
+  // May scoring
+  if(may.length===0){feedback.push({type:'fail',text:'No capabilities defined. The agent has no authorised actions.'});}
+  else if(may.length===1){feedback.push({type:'warn',text:'Only one capability listed. Most agents need at least 2–3 specific permitted actions.'});score+=8;}
+  else{score+=20;}
+
+  // May not scoring
+  if(maynot.length===0){feedback.push({type:'fail',text:'No prohibitions defined. Without explicit prohibitions, the agent\'s boundary is undefined.'});}
+  else if(maynot.length===1){feedback.push({type:'warn',text:'Only one prohibition listed. For a financial agent, explicit prohibitions about banking, payroll, and external communications are required.'});score+=8;}
+  else{
+    const text=maynot.join(' ').toLowerCase();
+    if(!text.includes('bank')&&!text.includes('pay')){feedback.push({type:'warn',text:'Consider adding a prohibition on modifying banking details or payroll — these are the highest-risk actions for a finance agent.'});score+=12;}
+    else{score+=20;}
+  }
+
+  // Sponsor scoring
+  if(!sponsorName||!sponsorRole||!sponsorEmail.includes('@')){feedback.push({type:'fail',text:'Human Sponsor is incomplete. Name, role, and a valid email are all required.'});}
+  else{score+=20;}
+
+  // Training scoring
+  if(!training||training==='none'){feedback.push({type:'fail',text:'Human Sponsor has no AI governance training. The sponsor must have completed at least Track B before accepting accountability.'});}
+  else if(training==='track-a'){feedback.push({type:'warn',text:'Track A covers conceptual understanding but not organisational deployment. Track B (Organisational Deployment) is the minimum for an accountable sponsor.'});score+=8;}
+  else{score+=20;}
+
+  // Autonomy scoring
+  if(!state.autonomy){feedback.push({type:'fail',text:'Autonomy level not set.'});}
+  else{
+    if(state.autonomy>=4&&!(maynot.length>=3)){feedback.push({type:'warn',text:`A${state.autonomy} autonomy with fewer than 3 explicit prohibitions is a governance risk. Higher autonomy requires more explicit boundaries.`});score+=10;}
+    else{score+=20;}
+  }
+
+  // Show feedback
+  const fb=document.getElementById('sp-feedback');
+  const fbi=document.getElementById('spf-items');
+  fbi.innerHTML=feedback.map(f=>`<div class="spf-item"><div class="spf-dot dot-${f.type}"></div><div>${f.text}</div></div>`).join('');
+  fb.className='sp-feedback show';
+
+  // Show completion
+  const comp=document.getElementById('completion');
+  const pass=score>=80;
+  comp.className='completion show';
+  document.getElementById('comp-score-val').textContent=score+'%';
+  document.getElementById('comp-title').textContent=pass?'Mission Contract accepted by AGNUS':'Mission Contract requires revision';
+  document.getElementById('comp-sub').textContent=pass?
+    `Nordic Finance AS Invoice Processing Agent now has a registered Mission Contract. Human Sponsor ${sponsorName} has been notified. Proceed to Stage 3 to configure permissions.`:
+    'Your Mission Contract has gaps that must be resolved before the agent can proceed to permissions configuration. Review the AGNUS feedback above and resubmit.';
+  document.getElementById('comp-score-val').style.color=pass?'var(--pass)':'var(--danger)';
+  comp.style.background=pass?'var(--pass-bg)':'var(--danger-bg)';
+  comp.style.borderColor=pass?'var(--pass-border)':'var(--danger-border)';
+  window.scrollTo({top:document.getElementById('completion').offsetTop-80,behavior:'smooth'});
+}
+
+function resetForm(){
+  document.getElementById('purpose').value='';
+  document.getElementById('may-list').innerHTML='';
+  document.getElementById('maynot-list').innerHTML='';
+  document.getElementById('sponsor-name').value='';
+  document.getElementById('sponsor-role').value='';
+  document.getElementById('sponsor-email').value='';
+  document.getElementById('sponsor-training').value='';
+  document.querySelectorAll('.aut-opt').forEach(o=>o.classList.remove('selected'));
+  document.getElementById('autonomy-warning').style.display='none';
+  document.getElementById('sp-feedback').className='sp-feedback';
+  document.getElementById('completion').className='completion';
+  state.autonomy=null;
+  liveScore();
+}
+
+// Init with starter rows
+addCap('may'); addCap('may');
+addCap('maynot'); addCap('maynot');
+</script>
+</body>
+</html>

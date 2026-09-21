@@ -1,0 +1,120 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Third-Party AI Auditing: Independence, Standards and What to Expect — AGNUS Research</title>
+<meta name="description" content="Third-party AI auditing is becoming a regulatory requirement for high-risk AI systems. Understanding what an audit is, what it is not, and what the standards require is essential for both providers commissioning audits and deployers relying on audit conclusions." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>a,a:visited{color:inherit}
+.prose h3{font-family:var(--font-sans);font-weight:700;font-size:19px;letter-spacing:-.018em;margin:32px 0 14px}
+.pillar-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:#F0FFF4;color:#1A6B3B;border:1px solid #9ED8B3;border-radius:4px;padding:3px 8px;margin-bottom:16px}
+.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
+.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
+.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s}
+.rsub a:hover{color:var(--ink);background:var(--line-soft,rgba(0,0,0,.04))}
+.audit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:20px 0}
+@media(max-width:700px){.audit-grid{grid-template-columns:1fr}}
+.audit-type{background:var(--paper-warm,#F7F5F0);border:1px solid var(--line);border-radius:8px;padding:16px}
+.audit-type .at-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:6px}
+.audit-type .at-title{font-weight:700;font-size:15px;color:var(--ink);margin-bottom:6px}
+.audit-type .at-body{font-size:12.5px;color:var(--ink-mute);line-height:1.55}
+</style>
+</head>
+<body>
+<div class="art-progress"><i id="progBar"></i></div>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Marketplace.html">Marketplace</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+      <a href="AGNUS - Business.html">Business</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+      <button class="hamburger" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="rsub"><div class="rsub-inner">
+  <a href="AGNUS - Research.html">Research Home</a>
+  <a href="AGNUS - Research Topic.html">AI Audit</a>
+</div></div>
+
+<header class="art-head">
+  <div class="container">
+    <div class="pillar-tag">AI Audit</div>
+    <h1>Third-Party AI Auditing: Independence, Standards and What to Expect</h1>
+    <p class="art-abstract">Third-party AI auditing is becoming a regulatory requirement — mandatory for high-risk AI under the EU AI Act, required for GPAI providers under the Act's implementing regulation, and increasingly expected by sector regulators in financial services, healthcare, and critical infrastructure. This article covers what a third-party AI audit is, the independence requirements that make it credible, the standards it is assessed against, and what providers and deployers should expect from the process.</p>
+    <div data-rc="articleMeta" data-rc-arg="AR-000531"></div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="art-shell">
+    <aside class="art-toc"><div class="toc-h">Contents</div><ol id="tocList"></ol></aside>
+    <article class="prose" id="prose">
+
+      <h2 id="s-what">What a third-party AI audit is</h2>
+      <p>A third-party AI audit is an independent, structured evaluation of an AI system — or an AI management system — against defined criteria, conducted by an entity that is organisationally and financially independent from both the system's developer and its deployer. The output of an audit is an audit report that provides an opinion on conformity: whether the system or management system meets the specified requirements.</p>
+      <p>This is distinct from several related activities that are often confused with auditing:</p>
+      <p><strong>Internal review</strong> is not an audit. A review conducted by the developer's own team, even against formal criteria, is not third-party auditing. Its conclusions do not have the same credibility as an independent assessment.</p>
+      <p><strong>Testing and evaluation</strong> is not an audit. Red teaming, performance benchmarking, and safety evaluation are inputs to an audit process — they generate evidence — but they are not substitutes for an independent audit that interprets and evaluates that evidence against a standard.</p>
+      <p><strong>Certification</strong> is not the same as auditing, though it builds on it. Certification is the formal attestation that a system or management system conforms to a specified standard. Certification requires an audit — but an audit does not always result in certification.</p>
+
+      <h2 id="s-types">Types of AI audit</h2>
+      <div class="audit-grid">
+        <div class="audit-type"><div class="at-label">Management system audit</div><div class="at-title">ISO 42001 conformity audit</div><div class="at-body">Assesses whether the organisation's AI management system — processes, policies, controls, governance — conforms to ISO/IEC 42001. Evaluates the system, not individual AI products. Can result in certification.</div></div>
+        <div class="audit-type"><div class="at-label">Product conformity audit</div><div class="at-title">EU AI Act conformity assessment</div><div class="at-body">Assesses whether a specific high-risk AI system meets the requirements of the EU AI Act — data governance, technical documentation, transparency, human oversight, accuracy, robustness, cybersecurity. Required for Annex I Category 1 high-risk systems.</div></div>
+        <div class="audit-type"><div class="at-label">Sector regulatory audit</div><div class="at-title">FCA, EBA, FDA review</div><div class="at-body">Sector-specific AI governance review conducted by or on behalf of a financial, healthcare, or other sector regulator. Uses sector-specific criteria alongside general AI governance standards. Growing in frequency following regulatory guidance publications.</div></div>
+      </div>
+
+      <h2 id="s-independence">Independence requirements</h2>
+      <p>The credibility of a third-party audit depends on the independence of the auditing body. For EU AI Act conformity assessments under Article 33, the notified body performing the assessment must be accredited by a national accreditation body — in the EU, this is typically the national body designated under Regulation (EC) No 765/2008. Accreditation confirms that the notified body meets defined competence, impartiality, and operational requirements.</p>
+      <p>Independence has two dimensions: organisational independence (the audit body is not part of the audited organisation and has no financial interest in the outcome other than the audit fee) and technical independence (the auditor has no prior involvement in the design, development, or deployment of the system being audited). Both must be present for the audit to be credible.</p>
+      <p>The conflict of interest risk is real: early-stage AI auditing markets have seen audit bodies that also provide AI consulting services to the same clients, creating financial incentives that compromise independence. Buyers of AI audit services should ask explicitly whether the audit body provides any consulting, advisory, or implementation services to the audited organisation in the same subject area.</p>
+
+      <h2 id="s-standards">Standards and criteria</h2>
+      <p>A third-party AI audit must be conducted against defined criteria. The main standards currently applicable are:</p>
+      <p><strong>ISO/IEC 42001:2023</strong> — AI management system standard. Specifies requirements for establishing, implementing, maintaining, and continuously improving an AI management system. The primary standard for management system auditing and certification.</p>
+      <p><strong>ISO/IEC 23894:2023</strong> — AI risk management guidance. Provides guidance on AI risk management processes. Not a certifiable standard, but an important reference for risk-focused audit criteria.</p>
+      <p><strong>EU AI Act, Annex IV</strong> — Technical documentation requirements for high-risk AI systems. Provides the detailed technical criteria against which conformity assessments are conducted.</p>
+      <p><strong>NIST AI RMF</strong> — Framework for AI risk management. Not a standard against which certification is available, but widely used as an evaluation framework by sector regulators and in voluntary assurance programmes.</p>
+
+      <h2 id="s-what-expect">What providers should expect from the audit process</h2>
+      <p>An AI audit typically proceeds in four stages: scoping and planning (defining the system under audit, the applicable standards, the audit methodology, and the evidence required); evidence collection (the auditor reviews documentation, conducts technical testing, interviews key personnel, and inspects operational processes); evaluation (the auditor assesses the evidence against the criteria and identifies conformities, non-conformities, and observations); and reporting (the auditor issues a formal report with findings, conclusions, and — if applicable — a certification decision).</p>
+      <p>Providers should expect the audit to be resource-intensive. Preparing for a meaningful conformity assessment against the EU AI Act's Annex IV requirements typically requires 3–6 months of preparation for a well-governed provider, and longer for organisations starting from a lower maturity baseline. The audit itself may take several weeks of active engagement.</p>
+
+      <div id="sources" class="art-sources">
+        <h2>Sources</h2>
+        <ul>
+          <li>ISO/IEC 42001:2023 — Artificial intelligence — Management system</li>
+          <li>ISO/IEC 23894:2023 — Artificial intelligence — Risk management</li>
+          <li>EU AI Act (Regulation (EU) 2024/1689) — Article 33, Annex IV</li>
+          <li>Regulation (EC) No 765/2008 — Accreditation framework</li>
+          <li>AGNUS Research — AI Audit · AR-000531</li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</div>
+<script src="agnus.js"></script>
+</body>
+</html>

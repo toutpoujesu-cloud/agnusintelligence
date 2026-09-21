@@ -1,0 +1,170 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI and Data Subject Rights: How GDPR Rights Apply When an AI System Processes Your Data — AGNUS Research</title>
+<meta name="description" content="GDPR grants individuals rights over their personal data. When that data is processed by an AI system — used to train a model, generate a profile, or make a decision — those rights create specific obligations for the AI deployer. This article maps each data subject right and how it applies to AI deployments." />
+<link rel="canonical" href="https://agnus.example/research/ai-data-governance/data-subject-rights-ai/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="AI and Data Subject Rights: How GDPR Rights Apply When an AI System Processes Your Data" />
+<meta property="article:published_time" content="2026-09-11" />
+<meta property="article:author" content="Jean-Daniel Alexis" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>
+a,a:visited{color:inherit}
+.prose h3{font-family:var(--font-sans);font-weight:700;font-size:19px;letter-spacing:-.018em;margin:32px 0 14px}
+.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
+.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
+.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s}
+.rsub a:hover{color:var(--ink);background:var(--line-soft,rgba(0,0,0,.04))}
+.rsub a.on{color:var(--gold-deep);font-weight:600}
+.pillar-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:var(--gold-pale,#FEF9ED);color:var(--gold-deep,#8B6914);border:1px solid var(--gold-line,#E8D9A0);border-radius:4px;padding:3px 8px;margin-bottom:16px}
+.rights-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:13px}
+.rights-table th{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);font-weight:600;text-align:left;padding:10px 14px;border-bottom:2px solid var(--line);background:var(--paper-warm,#F7F5F0)}
+.rights-table td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+.rights-table tr:last-child td{border-bottom:none}
+.rt-hard{color:#1A5C1A;font-weight:600}.rt-difficult{color:#8B6914;font-weight:600}.rt-contested{color:#8B1414;font-weight:600}
+</style>
+</head>
+<body>
+<div class="art-progress"><i id="progBar"></i></div>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+    </div>
+  </div>
+</nav>
+<div class="rsub">
+  <div class="rsub-inner">
+    <a href="#rights-overview">Rights overview</a>
+    <a href="#ai-complications">AI complications</a>
+    <a href="#right-to-erasure">Right to erasure</a>
+    <a href="#article-22">Article 22</a>
+    <a href="#sources">Sources</a>
+  </div>
+</div>
+<main class="art-layout">
+  <article class="art-main">
+    <header class="art-header">
+      <span class="pillar-tag">AI Data Governance</span>
+      <h1 class="art-h1">AI and Data Subject Rights: How GDPR Rights Apply When an AI System Processes Your Data</h1>
+      <p class="art-lede">GDPR gives individuals rights over their personal data — to access it, correct it, erase it, object to its use, and receive an explanation for automated decisions. When an AI system processes personal data, these rights do not disappear. They become significantly harder to fulfil. This article maps each right and the specific AI implementation challenges each creates.</p>
+      <div class="art-meta">
+        <span>Jean-Daniel Alexis</span><span class="meta-sep">·</span>
+        <span>11 September 2026</span><span class="meta-sep">·</span>
+        <span>AI Data Governance pillar</span><span class="meta-sep">·</span>
+        <span>AR-000680</span>
+      </div>
+    </header>
+    <div class="prose">
+      <h3 id="rights-overview">The seven GDPR data subject rights and their AI implications</h3>
+      <table class="rights-table">
+        <thead><tr><th>Right</th><th>GDPR Article</th><th>AI implication</th><th>Implementation difficulty</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Right of access</strong></td><td>15</td>
+            <td>The individual can request a copy of all personal data processed about them, including data used to train a model or generate a decision about them.</td>
+            <td><span class="rt-hard">Manageable</span> — for inference-stage data. <span class="rt-difficult">Difficult</span> — for training data: what does "personal data processed about X" mean when X is one of millions of training examples?</td>
+          </tr>
+          <tr>
+            <td><strong>Right to rectification</strong></td><td>16</td>
+            <td>The individual can request correction of inaccurate data. For AI, this includes inaccurate training data and inaccurate data used for inference.</td>
+            <td><span class="rt-difficult">Difficult</span> — correcting training data requires retraining or fine-tuning the model. Machine unlearning is an active research area but not yet production-ready at scale.</td>
+          </tr>
+          <tr>
+            <td><strong>Right to erasure ("right to be forgotten")</strong></td><td>17</td>
+            <td>The individual can request deletion of their personal data. For AI systems, this includes data used in model training — the most technically challenging interpretation.</td>
+            <td><span class="rt-contested">Most contested</span> — see detailed discussion below.</td>
+          </tr>
+          <tr>
+            <td><strong>Right to restriction</strong></td><td>18</td>
+            <td>The individual can request that processing is restricted while a dispute is resolved. For AI, this means the model should not use the individual's data while the restriction is in place.</td>
+            <td><span class="rt-difficult">Difficult</span> — runtime restriction of a deployed model on individual-level data is not a standard feature of production AI systems.</td>
+          </tr>
+          <tr>
+            <td><strong>Right to data portability</strong></td><td>20</td>
+            <td>The individual can request their data in a machine-readable format. Applies to data provided by the individual and processed on the basis of consent or contract.</td>
+            <td><span class="rt-hard">Manageable</span> — for structured input data. Limited relevance to training data.</td>
+          </tr>
+          <tr>
+            <td><strong>Right to object</strong></td><td>21</td>
+            <td>The individual can object to processing based on legitimate interests or for direct marketing. For AI, this includes profiling.</td>
+            <td><span class="rt-difficult">Difficult</span> — implementing per-individual exclusion from AI profiling requires infrastructure that most AI systems do not have.</td>
+          </tr>
+          <tr>
+            <td><strong>Rights in automated decision-making</strong></td><td>22</td>
+            <td>Specific rights against solely automated decisions with legal or similarly significant effects. See detailed discussion below.</td>
+            <td><span class="rt-difficult">Difficult</span> — see Article 22 section.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="ai-complications">Why AI complicates data subject rights</h3>
+      <p>The challenge with AI and data subject rights is that AI systems do not process data in the way GDPR was designed to address. GDPR was written for structured data systems — databases with records that can be found, corrected, and deleted. AI training changes the relationship between data and model in ways that make the concept of "your data in the system" difficult to operationalise.</p>
+      <p>When personal data is used to train an AI model, it is transformed from a record into a weight. The individual's data is no longer stored as a distinct item — it has been absorbed into billions of model parameters that collectively represent patterns learned from many individuals' data. Finding, correcting, or deleting one individual's contribution to those patterns is, in the current state of AI engineering, not technically feasible without retraining the model.</p>
+      <p>European Data Protection Authorities have not resolved this question definitively. The Italian DPA's March 2023 temporary ban on ChatGPT raised data subject rights as one concern. The Irish DPA's investigations of foundation model providers are ongoing as of September 2026. Practitioners must work with the best available guidance rather than settled law.</p>
+
+      <h3 id="right-to-erasure">The right to erasure problem in AI</h3>
+      <p>The right to erasure (Article 17) is the most technically challenging data subject right for AI systems. Its three conditions for application all present difficulties:</p>
+      <p><strong>Condition 1: The data is no longer necessary.</strong> If the individual's data was used for training, is it "no longer necessary" after the model is trained? One interpretation is yes — the purpose (training) is complete, so the raw data should be deleted. Most organisations do retain training data for retraining and auditing purposes, which requires a separate retention justification.</p>
+      <p><strong>Condition 2: Consent is withdrawn.</strong> If training was based on consent and consent is withdrawn, the data must be erased — and arguably the model must be retrained without that individual's data. This interpretation would make consent a practically unusable legal basis for AI training, which is why most AI providers do not use consent as their legal basis for training data.</p>
+      <p><strong>Condition 3: The data was unlawfully processed.</strong> If a model was trained on personal data without a lawful basis, the erasure obligation is unambiguous — but it applies to the raw training data. Whether it applies to the model weights that learned from that data is contested.</p>
+      <p>The practical position most organisations adopt: maintain the ability to delete individuals' personal data from training datasets and commit to retraining when a deletion request is received and accepted. For large foundation models where individual retraining is impractical, technical and organisational mitigations (data access controls, output filtering, inference-stage exclusions) may be offered as alternatives — but whether these satisfy the legal requirement is not settled.</p>
+
+      <h3 id="article-22">Article 22: Rights in automated decision-making</h3>
+      <p>GDPR Article 22 restricts solely automated decisions that have a legal or similarly significant effect on individuals. When an AI system makes such a decision, individuals have three specific rights: the right not to be subject to the decision (unless necessary for contract, required by law, or based on explicit consent); the right to obtain human intervention; and the right to express their point of view and contest the decision.</p>
+      <p>For AI deployers, Article 22 compliance requires: identifying which AI-assisted decisions have legal or similarly significant effects; ensuring that those decisions are not solely automated (a human must be meaningfully involved in the decision, not merely rubber-stamping the AI output); and establishing a process for individuals to request human intervention and contest decisions.</p>
+      <p>The European Data Protection Board's 2023 guidelines on automated decision-making emphasise that "meaningful human involvement" requires the human to have the authority and capacity to override the AI's recommendation — not just to confirm it. A human who cannot practically review the decision or who always follows the AI's recommendation does not satisfy Article 22.</p>
+    </div>
+    <section class="art-sources" id="sources">
+      <h2 class="sources-h">Sources and verification</h2>
+      <div class="sources-grid">
+        <div class="source-card"><div class="sc-id">SRC-0001</div><div class="sc-title">GDPR — Articles 15–22</div><div class="sc-org">European Parliament and Council</div><div class="sc-url"><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679" target="_blank" rel="noopener">eur-lex.europa.eu</a></div></div>
+        <div class="source-card"><div class="sc-id">SRC-0062</div><div class="sc-title">EU AI Act — Articles 14 and 26</div><div class="sc-org">European Parliament and Council</div><div class="sc-url"><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689" target="_blank" rel="noopener">eur-lex.europa.eu</a></div></div>
+      </div>
+      <div class="src-registry-note">Article ID: AR-000680 · Sources: SRC-0001, SRC-0062 · Published: 2026-09-11 · AGNUS Research</div>
+    </section>
+  </article>
+  <aside class="art-aside">
+    <div class="aside-block"><div class="aside-label">Pillar</div><a href="AGNUS - Research.html" class="aside-pill">AI Data Governance</a></div>
+    <div class="aside-block">
+      <div class="aside-label">Related articles</div>
+      <ul class="aside-links">
+        <li><a href="AGNUS - Research Article - GDPR and AI.html">GDPR and AI: Where They Intersect</a></li>
+        <li><a href="AGNUS - Research Article - Data Minimisation in AI.html">Data Minimisation in AI Systems</a></li>
+      </ul>
+    </div>
+    <div class="aside-block">
+      <div class="aside-label">Key number</div>
+      <div class="aside-value">72 hours</div>
+      <div class="aside-note">GDPR Article 33: data breach notification to supervisory authority. Also relevant when an AI system is involved in a breach.</div>
+    </div>
+  </aside>
+</main>
+<footer class="footer"><div class="container footer-inner"><div class="footer-copy">© 2026 AGNUS. All rights reserved.</div><div class="footer-links"><a href="AGNUS - Home.html">Home</a><a href="AGNUS - Research.html">Research</a><a href="AGNUS - Academy.html">Academy</a></div></div></footer>
+<script src="agnus-research-data.js"></script>
+<script>(function(){var bar=document.getElementById('progBar');if(!bar)return;window.addEventListener('scroll',function(){var h=document.documentElement;bar.style.width=((h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100)+'%';});})();</script>
+</body>
+</html>

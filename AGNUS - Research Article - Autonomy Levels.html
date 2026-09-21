@@ -1,0 +1,288 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Agentic AI and Autonomy Levels: What A1–A5 Mean for Governance — AGNUS Research</title>
+<meta name="description" content="How autonomous should an AI agent be? This article maps the five autonomy levels from fully supervised to fully autonomous, examines what governance obligations attach at each level, and explains how the EU AI Act's human oversight requirement applies across the spectrum." />
+<link rel="canonical" href="https://agnus.example/research/ai-agents/autonomy-levels/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Agentic AI and Autonomy Levels: What A1–A5 Mean for Governance" />
+<meta property="article:published_time" content="2026-09-11" />
+<meta property="article:author" content="Jean-Daniel Alexis" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>
+a,a:visited{color:inherit}
+.prose h3{font-family:var(--font-sans);font-weight:700;font-size:19px;letter-spacing:-.018em;margin:32px 0 14px}
+.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
+.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
+.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s}
+.rsub a:hover{color:var(--ink);background:var(--line-soft,rgba(0,0,0,.04))}
+.rsub a.on{color:var(--gold-deep);font-weight:600}
+.pillar-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:var(--gold-pale,#FEF9ED);color:var(--gold-deep,#8B6914);border:1px solid var(--gold-line,#E8D9A0);border-radius:4px;padding:3px 8px;margin-bottom:16px}
+.al-spectrum{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin:24px 0;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.al-level{padding:20px 16px;border-right:1px solid var(--line)}
+.al-level:last-child{border-right:none}
+.al-num{font-family:var(--font-mono);font-size:20px;font-weight:700;margin-bottom:4px}
+.al-name{font-family:var(--font-sans);font-weight:800;font-size:13px;margin-bottom:8px;line-height:1.25}
+.al-desc{font-size:12px;color:var(--ink-mute);line-height:1.55}
+.al-oversight{font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;margin-top:10px;padding:4px 8px;border-radius:4px;display:inline-block}
+.al-1{background:#EEF7EE}.al-1 .al-num{color:#2D7A2D}
+.al-2{background:#F4F9EE}.al-2 .al-num{color:#4A7A1A}
+.al-3{background:#FEFBE8}.al-3 .al-num{color:#8B6914}
+.al-4{background:#FEF3E8}.al-4 .al-num{color:#8B4A14}
+.al-5{background:#FEE8E8}.al-5 .al-num{color:#8B1414}
+.al-1 .al-oversight{background:#D6EDD6;color:#1A5C1A}
+.al-2 .al-oversight{background:#DFF0D0;color:#2D5C0A}
+.al-3 .al-oversight{background:#FEF3C4;color:#7A5A00}
+.al-4 .al-oversight{background:#FDDEC0;color:#7A3500}
+.al-5 .al-oversight{background:#FDC0C0;color:#7A0A0A}
+@media(max-width:800px){.al-spectrum{grid-template-columns:1fr 1fr}}
+.gov-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:13px}
+.gov-table th{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);font-weight:600;text-align:left;padding:10px 14px;border-bottom:2px solid var(--line);background:var(--paper-warm,#F7F5F0)}
+.gov-table td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+.gov-table tr:last-child td{border-bottom:none}
+</style>
+</head>
+<body>
+<div class="art-progress"><i id="progBar"></i></div>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+    </div>
+  </div>
+</nav>
+
+<div class="rsub">
+  <div class="rsub-inner">
+    <a href="#spectrum">Autonomy spectrum</a>
+    <a href="#governance">Governance at each level</a>
+    <a href="#eu-ai-act">EU AI Act</a>
+    <a href="#practical">In practice</a>
+    <a href="#sources">Sources</a>
+  </div>
+</div>
+
+<main class="art-layout">
+  <article class="art-main">
+    <header class="art-header">
+      <span class="pillar-tag">AI Agents</span>
+      <h1 class="art-h1">Agentic AI and Autonomy Levels: What A1–A5 Mean for Governance</h1>
+      <p class="art-lede">Autonomy is not binary. Between a fully supervised AI that confirms every action and a fully autonomous agent that acts without checking back, there is a spectrum with five meaningful levels. The level of autonomy you grant an agent determines what governance obligations attach — and what the EU AI Act requires.</p>
+      <div class="art-meta">
+        <span>Jean-Daniel Alexis</span>
+        <span class="meta-sep">·</span>
+        <span>11 September 2026</span>
+        <span class="meta-sep">·</span>
+        <span>AI Agents pillar</span>
+        <span class="meta-sep">·</span>
+        <span>AR-000520</span>
+      </div>
+    </header>
+
+    <div class="prose">
+
+      <h3 id="spectrum">The five autonomy levels</h3>
+      <p>There is no single authoritative taxonomy of AI autonomy levels. The A1–A5 framework used by AGNUS synthesises definitions from the NIST AI RMF, OECD AI Principles, and emerging practitioner literature. It is a practical governance tool, not a regulatory category.</p>
+
+      <div class="al-spectrum">
+        <div class="al-level al-1">
+          <div class="al-num">A1</div>
+          <div class="al-name">Fully supervised</div>
+          <div class="al-desc">Agent takes no action without explicit human confirmation. Every output is a proposal.</div>
+          <span class="al-oversight">Human decides</span>
+        </div>
+        <div class="al-level al-2">
+          <div class="al-num">A2</div>
+          <div class="al-name">Human-confirmed</div>
+          <div class="al-desc">Agent acts autonomously within a pre-approved action set. Actions outside that set require human confirmation.</div>
+          <span class="al-oversight">Human approves exceptions</span>
+        </div>
+        <div class="al-level al-3">
+          <div class="al-num">A3</div>
+          <div class="al-name">Human-monitored</div>
+          <div class="al-desc">Agent acts autonomously within its capability scope. A human monitors and can intervene. Thresholds trigger alerts.</div>
+          <span class="al-oversight">Human monitors</span>
+        </div>
+        <div class="al-level al-4">
+          <div class="al-num">A4</div>
+          <div class="al-name">Human-advised</div>
+          <div class="al-desc">Agent acts autonomously and notifies humans after the fact. Humans can correct but cannot prevent most actions in real time.</div>
+          <span class="al-oversight">Human informed</span>
+        </div>
+        <div class="al-level al-5">
+          <div class="al-num">A5</div>
+          <div class="al-name">Fully autonomous</div>
+          <div class="al-desc">Agent acts entirely independently. No human is in the loop for individual actions. Only system-level oversight applies.</div>
+          <span class="al-oversight">System oversight only</span>
+        </div>
+      </div>
+
+      <p>Most commercial AI agent deployments today operate at A2 or A3. A1 is common during testing and onboarding. A4 and A5 are rare in regulated industries because the EU AI Act and analogous frameworks require meaningful human oversight for consequential decisions — which A4 and A5 by definition cannot provide at the action level.</p>
+
+      <h3 id="governance">What governance obligations attach at each level</h3>
+
+      <table class="gov-table">
+        <thead>
+          <tr>
+            <th>Level</th>
+            <th>Approval requirement</th>
+            <th>Audit trail requirement</th>
+            <th>Incident response</th>
+            <th>EU AI Act Article 14</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>A1</strong></td>
+            <td>Every action</td>
+            <td>Full log of all proposals and human decisions</td>
+            <td>Human already in the loop</td>
+            <td>Satisfied — human is deciding</td>
+          </tr>
+          <tr>
+            <td><strong>A2</strong></td>
+            <td>Pre-approved action set; confirmation for exceptions</td>
+            <td>Log of all actions; flag when human confirmation was required and outcome</td>
+            <td>Exception alerts; human reachable within defined SLA</td>
+            <td>Satisfied if exception handling is real and documented</td>
+          </tr>
+          <tr>
+            <td><strong>A3</strong></td>
+            <td>No per-action approval; threshold-based alerts</td>
+            <td>Full action log with anomaly detection; alert log</td>
+            <td>Defined alert thresholds; human can intervene in real time</td>
+            <td>Conditionally satisfied — depends on whether intervention is meaningful</td>
+          </tr>
+          <tr>
+            <td><strong>A4</strong></td>
+            <td>None — human notified after the fact</td>
+            <td>Full log; post-hoc review process</td>
+            <td>Correction after the fact; rollback mechanisms</td>
+            <td>Likely insufficient for high-risk AI — humans cannot prevent harm they are only informed of</td>
+          </tr>
+          <tr>
+            <td><strong>A5</strong></td>
+            <td>None</td>
+            <td>System-level logs only</td>
+            <td>System-level circuit breakers</td>
+            <td>Insufficient for high-risk AI under the EU AI Act</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="eu-ai-act">What the EU AI Act says about autonomy</h3>
+      <p>The EU AI Act does not use the A1–A5 framework or any equivalent. It does not define "autonomy levels" as a regulatory category. What it does do is set requirements that become progressively harder to satisfy at higher autonomy levels.</p>
+      <p>Article 14 (Human oversight) requires that high-risk AI systems be designed and developed so that natural persons can oversee and understand the system's outputs, intervene, and stop or suspend the system. This requirement applies at the system level, not the individual-action level — but it has practical implications for autonomy. A system operating at A4 (human informed after the fact) cannot satisfy Article 14's requirement for meaningful intervention on most actions, because the actions have already been taken before the human is aware of them.</p>
+      <p>The European Data Protection Board's March 2024 guidelines on automated decision-making under GDPR Article 22 add a further constraint: decisions that have a legal or similarly significant effect on individuals must involve human review. This effectively mandates A1 or A2 for those specific decisions, regardless of the operator's preference for higher autonomy.</p>
+      <p>The practical result is a two-tier structure for many organisations: A3 or A4 for routine, low-consequence actions; A1 or A2 for consequential decisions. The governance challenge is defining the boundary between these two categories clearly enough that the agent can route correctly at runtime.</p>
+
+      <h3 id="practical">Choosing an autonomy level in practice</h3>
+      <p>The question is not "how autonomous should our agent be?" but "for which specific action types should we grant which level of autonomy?" The answer depends on four factors:</p>
+      <p><strong>Consequence of error.</strong> An error in a draft email is consequential in a different way from an error in a financial transaction. The higher the consequence of an uncaught error, the lower the appropriate autonomy level for that action type.</p>
+      <p><strong>Reversibility.</strong> Actions that can be undone warrant higher autonomy levels than actions that cannot. A file deletion and a payment transfer both have significant consequences, but a file in a versioned repository can be restored — a payment transfer is much harder to reverse.</p>
+      <p><strong>Frequency.</strong> High-volume, low-consequence actions are strong candidates for A3. Rare, high-consequence actions are strong candidates for A1 or A2. The operational cost of requiring human approval on every action scales with volume — a design that requires A1 for 1,000 actions per hour is not a governance design; it is a bottleneck.</p>
+      <p><strong>Regulatory exposure.</strong> Actions that trigger GDPR Article 22, EU AI Act Article 14 for high-risk AI, or sector-specific regulations (MiFID II, MDR) impose external constraints on autonomy level that override operational preferences.</p>
+      <p>Documenting the autonomy level assigned to each action type in the agent's Mission Contract is a governance best practice that serves two purposes: it makes the intended governance design explicit, and it creates a record of the decision that can be reviewed if something goes wrong.</p>
+
+    </div>
+
+    <section class="art-sources" id="sources">
+      <h2 class="sources-h">Sources and verification</h2>
+      <div class="sources-grid">
+        <div class="source-card">
+          <div class="sc-id">SRC-0062</div>
+          <div class="sc-title">EU AI Act — Article 14: Human oversight</div>
+          <div class="sc-org">European Parliament and Council</div>
+          <div class="sc-url"><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689" target="_blank" rel="noopener">eur-lex.europa.eu</a></div>
+        </div>
+        <div class="source-card">
+          <div class="sc-id">SRC-0067</div>
+          <div class="sc-title">NIST AI Risk Management Framework 1.0</div>
+          <div class="sc-org">National Institute of Standards and Technology</div>
+          <div class="sc-url"><a href="https://airc.nist.gov/RMF" target="_blank" rel="noopener">airc.nist.gov</a></div>
+        </div>
+        <div class="source-card">
+          <div class="sc-id">SRC-0063</div>
+          <div class="sc-title">OECD AI Principles (updated 2024)</div>
+          <div class="sc-org">Organisation for Economic Co-operation and Development</div>
+          <div class="sc-url"><a href="https://oecd.ai/en/ai-principles" target="_blank" rel="noopener">oecd.ai</a></div>
+        </div>
+      </div>
+      <div class="src-registry-note">Article ID: AR-000520 · Sources: SRC-0062, SRC-0063, SRC-0067 · Published: 2026-09-11 · AGNUS Research</div>
+    </section>
+  </article>
+
+  <aside class="art-aside">
+    <div class="aside-block">
+      <div class="aside-label">Pillar</div>
+      <a href="AGNUS - Research.html" class="aside-pill">AI Agents</a>
+    </div>
+    <div class="aside-block">
+      <div class="aside-label">Related articles</div>
+      <ul class="aside-links">
+        <li><a href="AGNUS - Research Article - Agent Governance.html">AI Agent Governance: Oversight, Accountability and Control</a></li>
+        <li><a href="AGNUS - Research Article - Multi-Agent Systems.html">Multi-Agent Systems: Coordination, Trust and Governance</a></li>
+        <li><a href="AGNUS - Research Article - High-Risk AI.html">High-Risk AI Classification Under the EU AI Act</a></li>
+      </ul>
+    </div>
+    <div class="aside-block">
+      <div class="aside-label">Key number</div>
+      <div class="aside-value">A2–A3</div>
+      <div class="aside-note">Most commercial AI agent deployments today. A4 and A5 are rare in regulated industries because EU AI Act Article 14 requires meaningful human oversight.</div>
+    </div>
+    <div class="aside-block">
+      <div class="aside-cta">
+        <div class="aside-cta-text">Practice autonomy configuration in the AGNUS Control Training Environment</div>
+        <a href="AGNUS - Academy.html" class="btn btn-gold aside-cta-btn">Explore Academy</a>
+      </div>
+    </div>
+  </aside>
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-copy">© 2026 AGNUS. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="AGNUS - Home.html">Home</a>
+      <a href="AGNUS - Research.html">Research</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+    </div>
+  </div>
+</footer>
+<script src="agnus-research-data.js"></script>
+<script>
+(function(){
+  var bar=document.getElementById('progBar');
+  if(!bar)return;
+  window.addEventListener('scroll',function(){
+    var h=document.documentElement;
+    var pct=(h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+    bar.style.width=pct+'%';
+  });
+})();
+</script>
+</body>
+</html>

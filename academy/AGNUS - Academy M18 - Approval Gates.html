@@ -1,0 +1,395 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Academy — M18 Approval Gates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#F8F6F2;--surface:#FFFFFF;--surface-2:#F2F0EB;--border:#E0DDD5;--border-2:#CCC9C0;
+  --ink:#14181F;--ink-2:#3C4252;--ink-3:#7A8099;
+  --navy:#0F1E34;--navy-2:#162844;--navy-3:#1E3560;
+  --gold:#9A7020;--gold-bg:rgba(154,112,32,.09);--gold-border:rgba(154,112,32,.22);--gold-light:#C49A2C;
+  --pass:#0F6E3A;--pass-bg:rgba(15,110,58,.09);--pass-border:rgba(15,110,58,.22);
+  --danger:#B03020;--danger-bg:rgba(176,48,32,.09);--danger-border:rgba(176,48,32,.22);
+  --mono:'DM Mono',monospace;--sans:'DM Sans',sans-serif;--serif:'Newsreader',serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;font-family:var(--sans);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+.rail{background:var(--navy);color:#fff;height:54px;display:flex;align-items:center;padding:0 26px;gap:16px;position:sticky;top:0;z-index:200}
+.rail-brand{font-weight:800;font-size:14.5px}
+.rail-sep{width:1px;height:20px;background:rgba(255,255,255,.12);flex-shrink:0}
+.rail-crumb{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38)}
+.rail-title{font-size:13px;font-weight:600;color:rgba(255,255,255,.88)}
+.rail-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.phase-track{display:flex;gap:5px}
+.ph{width:26px;height:3px;border-radius:2px;background:rgba(255,255,255,.16);transition:background .4s}
+.ph.done{background:var(--gold-light)}.ph.active{background:#fff}
+.rail-btn{font-family:var(--sans);font-size:12px;font-weight:600;padding:6px 14px;border-radius:7px;border:1px solid rgba(255,255,255,.16);color:#fff;background:rgba(255,255,255,.07);cursor:pointer}
+.phase{display:none}.phase.active{display:block}
+.hero{background:linear-gradient(138deg,var(--navy) 0%,var(--navy-3) 55%,#1A3A70 100%);padding:52px 0 48px;position:relative;overflow:hidden}
+.hero-inner{max-width:820px;margin:0 auto;padding:0 32px;position:relative;z-index:1}
+.hero-kicker{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(200,170,80,.85);margin-bottom:16px;display:flex;align-items:center;gap:9px}
+.hero-kicker::before{content:'';width:20px;height:1px;background:rgba(200,170,80,.6);display:inline-block}
+.hero h1{font-size:clamp(24px,3.5vw,38px);font-weight:800;letter-spacing:-.03em;color:#fff;line-height:1.18;margin-bottom:16px}
+.hero-serif{font-family:var(--serif);font-style:italic;font-size:17px;line-height:1.72;color:rgba(245,242,236,.72);max-width:50ch;margin-bottom:28px}
+.hero-pills{display:flex;gap:14px;flex-wrap:wrap}
+.hp{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:7px;padding:7px 13px;font-size:12px;color:rgba(255,255,255,.68)}
+.hp strong{color:#fff}
+.wrap{max-width:820px;margin:0 auto;padding:40px 32px 120px}
+.step-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;padding-bottom:14px;border-bottom:1.5px solid var(--border)}
+.sh-left{display:flex;align-items:center;gap:10px}
+.sh-badge{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold-border);border-radius:99px;padding:4px 10px;font-weight:600}
+.sh-title{font-size:13px;font-weight:600;color:var(--ink-2)}
+.sh-time{font-family:var(--mono);font-size:10px;color:var(--ink-3)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:26px 28px;margin-bottom:18px}
+.card h3{font-size:16px;font-weight:800;letter-spacing:-.015em;color:var(--navy);margin-bottom:10px}
+.card p{font-size:14.5px;line-height:1.74;color:var(--ink-2)}
+.card p+p{margin-top:10px}
+.gate-anatomy{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--surface);margin:16px 0}
+.ga-header{padding:14px 18px;background:var(--surface-2);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.ga-flow{display:flex;align-items:stretch;gap:0}
+.ga-step{flex:1;padding:16px 14px;text-align:center;border-right:1px solid var(--border);position:relative}
+.ga-step:last-child{border-right:none}
+.ga-step .gs-icon{font-size:20px;margin-bottom:7px;display:block}
+.ga-step .gs-label{font-family:var(--mono);font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px}
+.ga-step .gs-text{font-size:12px;color:var(--ink-2);line-height:1.5}
+.ga-step.gate{background:var(--gold-bg);border-color:var(--gold-border)}
+.ga-step.gate .gs-label{color:var(--gold)}
+.ga-step.approved{background:var(--pass-bg)}
+.ga-step.approved .gs-label{color:var(--pass)}
+.ga-step.rejected{background:var(--danger-bg)}
+.ga-step.rejected .gs-label{color:var(--danger)}
+@media(max-width:600px){.ga-flow{flex-direction:column}.ga-step{border-right:none;border-bottom:1px solid var(--border)}.ga-step:last-child{border-bottom:none}}
+.trigger-table{width:100%;border-collapse:collapse;background:var(--surface);border-radius:12px;overflow:hidden;border:1px solid var(--border);margin:16px 0}
+.trigger-table th{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);background:var(--surface-2);padding:10px 14px;text-align:left;border-bottom:1px solid var(--border)}
+.trigger-table td{padding:12px 14px;font-size:13px;border-bottom:1px solid var(--border);color:var(--ink-2);vertical-align:top}
+.trigger-table tr:last-child td{border-bottom:none}
+.gate-sim{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--surface);margin:16px 0}
+.gs-head{padding:14px 18px;background:var(--surface-2);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.gs-body{padding:18px}
+.gs-scenario{background:var(--surface-2);border-radius:10px;padding:14px 16px;margin-bottom:16px;font-size:13.5px;color:var(--ink-2);line-height:1.6;border-left:3px solid var(--gold)}
+.gate-decision{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+@media(max-width:540px){.gate-decision{grid-template-columns:1fr}}
+.gd-btn{padding:14px;border-radius:10px;border:1.5px solid var(--border);background:var(--surface);font-family:var(--sans);font-weight:700;font-size:14px;cursor:pointer;transition:all .15s;text-align:center}
+.gd-btn:hover{transform:translateY(-1px)}
+.gd-btn.approve{border-color:var(--pass-border)}
+.gd-btn.approve:hover{background:var(--pass-bg);color:var(--pass)}
+.gd-btn.reject{border-color:var(--danger-border)}
+.gd-btn.reject:hover{background:var(--danger-bg);color:var(--danger)}
+.gd-btn.selected-approve{background:var(--pass-bg);border-color:var(--pass);color:var(--pass)}
+.gd-btn.selected-reject{background:var(--danger-bg);border-color:var(--danger);color:var(--danger)}
+.gd-result{display:none;padding:14px 16px;border-radius:10px;font-size:13.5px;line-height:1.65;font-weight:600}
+.gd-result.pass{display:block;background:var(--pass-bg);border-left:3px solid var(--pass);color:var(--pass)}
+.gd-result.fail{display:block;background:var(--danger-bg);border-left:3px solid var(--danger);color:var(--danger)}
+.callout{border-radius:12px;padding:16px 20px;margin:14px 0;font-size:13.5px;line-height:1.68;display:flex;gap:12px;align-items:flex-start}
+.callout.gold{background:var(--gold-bg);border:1px solid var(--gold-border)}
+.callout.danger{background:var(--danger-bg);border:1px solid var(--danger-border)}
+.callout-icon{flex-shrink:0;margin-top:2px}
+.opt-list{display:grid;gap:10px;margin:16px 0}
+.opt{display:grid;grid-template-columns:36px 1fr;border:1.5px solid var(--border-2);border-radius:12px;cursor:pointer;overflow:hidden;transition:border-color .15s,transform .1s}
+.opt:hover{border-color:var(--navy);transform:translateY(-1px)}
+.opt.correct{border-color:var(--pass)}.opt.wrong{border-color:var(--danger)}
+.opt-letter{display:flex;align-items:center;justify-content:center;background:var(--surface-2);font-family:var(--mono);font-size:11px;font-weight:700;color:var(--ink-3)}
+.opt.correct .opt-letter{background:var(--pass-bg);color:var(--pass)}.opt.wrong .opt-letter{background:var(--danger-bg);color:var(--danger)}
+.opt-text{padding:14px 16px;font-size:13.5px;line-height:1.5;color:var(--ink);background:var(--surface)}
+.opt.correct .opt-text{background:var(--pass-bg)}.opt.wrong .opt-text{background:var(--danger-bg)}
+.feedback{display:none;margin-top:14px;padding:16px 18px;border-radius:11px;font-size:14px;line-height:1.68}
+.feedback.pass{display:block;background:var(--pass-bg);border-left:3px solid var(--pass)}
+.feedback.fail{display:block;background:var(--danger-bg);border-left:3px solid var(--danger)}
+.quiz-q{font-size:16px;font-weight:700;letter-spacing:-.012em;color:var(--navy);margin-bottom:6px}
+.quiz-context{font-size:13.5px;color:var(--ink-2);line-height:1.65;margin-bottom:20px;padding:14px 16px;background:var(--surface-2);border-radius:10px;border-left:3px solid var(--gold)}
+.cta-row{display:flex;justify-content:space-between;align-items:center;margin-top:28px;padding-top:20px;border-top:1px solid var(--border)}
+.cta-hint{font-size:13px;color:var(--ink-3)}
+.btn{font-family:var(--sans);font-weight:700;font-size:14.5px;padding:13px 30px;border-radius:12px;border:none;cursor:pointer;transition:all .2s}
+.btn-primary{background:var(--navy);color:#fff}.btn-primary:hover{background:var(--navy-2);transform:translateY(-1px)}
+.btn-primary:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.pass-screen{display:none;text-align:center;padding:56px 36px;background:linear-gradient(138deg,var(--navy),var(--navy-3));border-radius:20px;margin-top:20px;color:#fff}
+.ps-glyph{font-size:42px;margin-bottom:16px;color:var(--gold-light)}
+.ps-title{font-size:26px;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+.ps-sub{font-size:14px;color:rgba(255,255,255,.65);line-height:1.6;max-width:40ch;margin:0 auto 28px}
+.ps-next{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#fff;border:none;font-family:var(--sans);font-weight:700;font-size:14px;padding:13px 26px;border-radius:11px;cursor:pointer}
+</style>
+</head>
+<body>
+<header class="rail">
+  <span class="rail-brand">AGNUS Academy</span>
+  <span class="rail-sep"></span>
+  <span class="rail-crumb">Level 3 · Direct</span>
+  <span class="rail-title">M18 — Approval Gates</span>
+  <div class="rail-right">
+    <div class="phase-track" id="phaseTrack"></div>
+    <button class="rail-btn" onclick="location.href='AGNUS - Academy App.html'">← Dashboard</button>
+  </div>
+</header>
+
+<!-- PHASE 0 -->
+<div class="phase active" data-phase="0">
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-kicker">Module 18 of 49 · Level 3 · Direct</div>
+      <h1>An approval gate is a<br>deliberate pause for human judgment.</h1>
+      <p class="hero-serif">Approval gates are the mechanism that keeps humans in the loop for consequential decisions. They are not inefficiency — they are designed checkpoints where the cost of being wrong is high enough that autonomous agent action is not appropriate.</p>
+      <div class="hero-pills">
+        <span class="hp"><strong>6 steps</strong></span>
+        <span class="hp"><strong>~15 min</strong></span>
+        <span class="hp"><strong>Includes interactive gate simulation</strong></span>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="card">
+      <h3>What an approval gate is</h3>
+      <p>An approval gate is a point in an agent's workflow where it stops and waits for human confirmation before proceeding. The agent has prepared an action — assembled the data, verified the conditions, generated the output — but has not executed it. The gate gives a human the opportunity to review, modify, or reject the proposed action before it takes effect.</p>
+      <p>Approval gates are not checks on the agent's intelligence — they are designed control points based on the operator's assessment of where autonomous action carries unacceptable risk. A well-designed approval gate captures the efficiency gains of agent automation while maintaining human authority over the decisions that matter most.</p>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Next: anatomy of an approval gate</span>
+      <button class="btn btn-primary" onclick="goPhase(1)">Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 1 -->
+<div class="phase" data-phase="1">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 2 of 6</span><span class="sh-title">Anatomy of an approval gate</span></div>
+      <span class="sh-time">4 min</span>
+    </div>
+    <div class="gate-anatomy">
+      <div class="ga-header">Approval gate flow — invoice payment example</div>
+      <div class="ga-flow">
+        <div class="ga-step">
+          <span class="gs-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="14" height="14" rx="2"/><path d="M7 10h6M7 7h6M7 13h4"/></svg>
+          </span>
+          <div class="gs-label">Prepare</div>
+          <div class="gs-text">Agent reads invoice, matches PO, calculates amount. Prepares payment instruction but does not submit.</div>
+        </div>
+        <div class="ga-step gate">
+          <span class="gs-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M10 2v9M6 6l4-4 4 4"/><path d="M5 13a6 6 0 0010 0"/></svg>
+          </span>
+          <div class="gs-label">Gate — Human reviews</div>
+          <div class="gs-text">Agent presents: payee, amount, PO reference, invoice date. Human reviews. Approves or rejects.</div>
+        </div>
+        <div class="ga-step approved">
+          <span class="gs-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 10l4 4 8-8"/></svg>
+          </span>
+          <div class="gs-label">Approved path</div>
+          <div class="gs-text">Human approves. Agent submits payment and writes audit log.</div>
+        </div>
+        <div class="ga-step rejected">
+          <span class="gs-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M5 5l10 10M15 5L5 15"/></svg>
+          </span>
+          <div class="gs-label">Rejected path</div>
+          <div class="gs-text">Human rejects. Agent logs the rejection with reason. No payment submitted.</div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Three components of every approval gate</h3>
+      <p><strong>The trigger condition:</strong> The specific criteria that cause the agent to pause and request approval — amount threshold, action type, data sensitivity, external communication.</p>
+      <p style="margin-top:10px"><strong>The presentation package:</strong> What information the agent gives the human at the gate. A gate that presents insufficient information for the human to make a good decision is a gate that will be approved by default — not by judgment.</p>
+      <p style="margin-top:10px"><strong>The action paths:</strong> What happens if approved, what happens if rejected, what happens if there is no response within a timeout. All three must be defined.</p>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Next: what triggers a gate</span>
+      <button class="btn btn-primary" onclick="goPhase(2)">Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 2 -->
+<div class="phase" data-phase="2">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 3 of 6</span><span class="sh-title">Trigger conditions for approval gates</span></div>
+      <span class="sh-time">3 min</span>
+    </div>
+    <table class="trigger-table">
+      <thead><tr><th>Trigger type</th><th>Example condition</th><th>Why this trigger matters</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Threshold</strong></td><td>Payment amount exceeds €500</td><td>Financial risk increases with amount. A threshold-based gate scales oversight proportionally to consequence.</td></tr>
+        <tr><td><strong>Action type</strong></td><td>Any external communication (email to customers or suppliers)</td><td>External communications represent the company publicly. Errors are visible and may create legal commitments.</td></tr>
+        <tr><td><strong>Novel condition</strong></td><td>Invoice has no matching PO, or first transaction with a new supplier</td><td>New or unexpected conditions have higher error rates. A gate for novel conditions catches outliers.</td></tr>
+        <tr><td><strong>Data sensitivity</strong></td><td>Action involves personal data, medical data, or financial data of a third party</td><td>High-sensitivity data processing requires human accountability — both ethically and under GDPR.</td></tr>
+        <tr><td><strong>Irreversibility</strong></td><td>Action cannot be undone — submit payment, delete record, send email</td><td>Reversible actions can be corrected. Irreversible ones cannot. Gates on irreversible actions are the most critical.</td></tr>
+      </tbody>
+    </table>
+    <div class="callout gold">
+      <div class="callout-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M8 7v5M8 5.5v.5"/></svg></div>
+      <div><strong>Not every action needs a gate.</strong> A gate on every single agent action defeats the purpose of automation and trains approvers to click through without reading. Gates should be placed where the cost of being wrong is high — not where they create the appearance of oversight without the substance.</div>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Next: the gate simulation</span>
+      <button class="btn btn-primary" onclick="goPhase(3)">Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 3 — SIMULATION -->
+<div class="phase" data-phase="3">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 4 of 6</span><span class="sh-title">Gate simulation — make the approval decision</span></div>
+      <span class="sh-time">4 min</span>
+    </div>
+    <div class="card">
+      <h3>You are the approver</h3>
+      <p>The agent has prepared three payment instructions. For each one, the gate has paused the agent and presented the package to you. Review each one and decide: approve or reject. There are correct answers — your decision will be evaluated.</p>
+    </div>
+
+    <div class="gate-sim">
+      <div class="gs-head">Gate 1 of 3 — Payment approval request</div>
+      <div class="gs-body">
+        <div class="gs-scenario">
+          <strong>Agent presents:</strong><br/>
+          Payee: Lindqvist Logistics · Amount: €320 · Invoice: INV-2026-0441<br/>
+          PO match: PO-389 confirmed, no variance · Invoice date: 2026-08-22<br/>
+          Supplier relationship: 3 years, 47 previous payments, 0 disputes
+        </div>
+        <div class="gate-decision" id="gate1-btns">
+          <button class="gd-btn approve" onclick="gateDecide(1,'approve',this)">Approve payment</button>
+          <button class="gd-btn reject" onclick="gateDecide(1,'reject',this)">Reject — return to AP team</button>
+        </div>
+        <div class="gd-result" id="gate1-result"></div>
+      </div>
+    </div>
+
+    <div class="gate-sim">
+      <div class="gs-head">Gate 2 of 3 — Payment approval request</div>
+      <div class="gs-body">
+        <div class="gs-scenario">
+          <strong>Agent presents:</strong><br/>
+          Payee: Bergen Tech Solutions · Amount: €8,400 · Invoice: INV-2026-0447<br/>
+          PO match: <span style="color:var(--danger);font-weight:700">No matching PO found</span> · Invoice date: 2026-08-22<br/>
+          Supplier relationship: First transaction with this supplier
+        </div>
+        <div class="gate-decision" id="gate2-btns">
+          <button class="gd-btn approve" onclick="gateDecide(2,'approve',this)">Approve payment</button>
+          <button class="gd-btn reject" onclick="gateDecide(2,'reject',this)">Reject — return to AP team</button>
+        </div>
+        <div class="gd-result" id="gate2-result"></div>
+      </div>
+    </div>
+
+    <div class="gate-sim">
+      <div class="gs-head">Gate 3 of 3 — Payment approval request</div>
+      <div class="gs-body">
+        <div class="gs-scenario">
+          <strong>Agent presents:</strong><br/>
+          Payee: Oslo Print Services · Amount: €1,840 · Invoice: INV-2026-0448<br/>
+          PO match: PO-401 confirmed · Invoice date: 2026-08-22<br/>
+          <span style="color:var(--danger);font-weight:700">Duplicate flag: identical amount submitted by same supplier on 2026-08-15 (INV-2026-0431, paid)</span>
+        </div>
+        <div class="gate-decision" id="gate3-btns">
+          <button class="gd-btn approve" onclick="gateDecide(3,'approve',this)">Approve payment</button>
+          <button class="gd-btn reject" onclick="gateDecide(3,'reject',this)">Reject — return to AP team</button>
+        </div>
+        <div class="gd-result" id="gate3-result"></div>
+      </div>
+    </div>
+
+    <div class="cta-row" id="sim-cta" style="display:none">
+      <span class="cta-hint">All three gates reviewed.</span>
+      <button class="btn btn-primary" onclick="goPhase(4)">Practice →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 4 -->
+<div class="phase" data-phase="4">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 5 of 6</span><span class="sh-title">Practice</span></div>
+      <span class="sh-time">3 min</span>
+    </div>
+    <div class="card">
+      <p class="quiz-context">A team designs an approval gate for customer service agents that sends an alert for every single response before it is sent to the customer. After two weeks, the team notices that approvers are clicking "approve" on every single alert within 3–5 seconds without reading them. Customer service response time has doubled.</p>
+      <div class="quiz-q">What went wrong with this gate design, and what is the principle it violated?</div>
+      <div class="opt-list" id="practiceOpts">
+        <div class="opt" data-correct="false" onclick="pickQ('practice',this)"><div class="opt-letter">A</div><div class="opt-text">The gate was too slow — it needs a faster approval interface.</div></div>
+        <div class="opt" data-correct="true" onclick="pickQ('practice',this)"><div class="opt-letter">B</div><div class="opt-text">The gate was placed on every action regardless of risk. When approvers are presented with too many low-risk gates, they treat all gates as routine and click through without reading — including the ones that actually matter. Gates should be reserved for actions where the cost of being wrong is genuinely high. A gate on every response trained approvers to ignore gates entirely.</div></div>
+        <div class="opt" data-correct="false" onclick="pickQ('practice',this)"><div class="opt-letter">C</div><div class="opt-text">Approvers need better training on how to review gate requests.</div></div>
+      </div>
+      <div class="feedback" id="practiceFeedback"></div>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Final test</span>
+      <button class="btn btn-primary" id="practiceNext" onclick="goPhase(5)" disabled>Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 5 -->
+<div class="phase" data-phase="5">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 6 of 6</span><span class="sh-title">Pass — hidden test</span></div>
+      <span class="sh-time">3 min</span>
+    </div>
+    <div class="card">
+      <p class="quiz-context">An agent's approval gate is triggered when a payment exceeds €5,000. The gate presents to the approver: "Payment ready: €6,200. Approve or reject?" The approver consistently approves within seconds. A review reveals that approvers don't have enough information to make a meaningful decision — they don't know the payee, the invoice reference, or the PO match status from the gate presentation.</p>
+      <div class="quiz-q">Which component of the approval gate is broken?</div>
+      <div class="opt-list" id="passOpts">
+        <div class="opt" data-correct="false" onclick="pickQ('pass',this)"><div class="opt-letter">A</div><div class="opt-text">The trigger condition — €5,000 is too low a threshold.</div></div>
+        <div class="opt" data-correct="true" onclick="pickQ('pass',this)"><div class="opt-letter">B</div><div class="opt-text">The presentation package. The gate is triggering correctly (€6,200 exceeds €5,000 threshold) but presenting insufficient information for the approver to make a real decision. Without payee, invoice reference, and PO match status, "approve or reject" becomes a coin flip. A gate with a poor presentation package trains approvers to approve by default rather than by judgment.</div></div>
+        <div class="opt" data-correct="false" onclick="pickQ('pass',this)"><div class="opt-letter">C</div><div class="opt-text">The action paths — the reject path isn't defined clearly enough.</div></div>
+      </div>
+      <div class="feedback" id="passFeedback"></div>
+    </div>
+    <div class="pass-screen" id="passScreen">
+      <div class="ps-glyph">✦</div>
+      <div class="ps-title">Module 18 complete</div>
+      <p class="ps-sub">You can design approval gates with correct trigger conditions, complete presentation packages, and defined action paths — and explain why gates on too many actions defeat their own purpose.</p>
+      <button class="ps-next" onclick="location.href=`AGNUS - Academy M19 - Multi-Agent Coordination Basics.html`">Continue to →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const TOTAL=6;
+function renderTrack(a){document.getElementById('phaseTrack').innerHTML=Array.from({length:TOTAL},(_,i)=>`<div class="ph ${i<a?'done':i===a?'active':''}"></div>`).join('');}
+function goPhase(n){document.querySelectorAll('.phase').forEach(p=>p.classList.remove('active'));document.querySelector(`[data-phase="${n}"]`).classList.add('active');renderTrack(n);window.scrollTo({top:0,behavior:'smooth'});}
+renderTrack(0);
+let gatesDecided=0;
+const GATES={1:{correct:'approve',approveMsg:'Correct. Standard invoice: matched PO, no variance, established supplier, within threshold. All conditions for approval are met.',rejectMsg:'Not wrong to be cautious — but this is a clean invoice with a 3-year supplier relationship. All standard approval criteria are met.'},2:{correct:'reject',approveMsg:'Incorrect. No matching PO and first transaction with a new supplier are two simultaneous red flags. Approving an €8,400 payment with no PO to a new supplier bypasses the core financial control.',rejectMsg:'Correct. No PO match on a first-transaction supplier is a critical red flag. Return to AP team to verify the PO exists and the supplier is legitimate before any payment.'},3:{correct:'reject',approveMsg:'Incorrect. The duplicate flag shows an identical payment to the same supplier one week ago. Without confirmation that two separate deliveries occurred, approving this risks a duplicate payment.',rejectMsg:'Correct. Duplicate payment flags must be investigated before approval. Same supplier, same amount, one week apart — the AP team needs to confirm whether this represents a second delivery or an error.'}};
+function gateDecide(n,decision,btn){
+  document.querySelectorAll(`#gate${n}-btns button`).forEach(b=>{b.onclick=null;});
+  const g=GATES[n];const correct=decision===g.correct;
+  btn.classList.add(decision==='approve'?'selected-approve':'selected-reject');
+  const res=document.getElementById(`gate${n}-result`);
+  res.className='gd-result '+(correct?'pass':'fail');
+  res.textContent=decision==='approve'?g.approveMsg:g.rejectMsg;
+  gatesDecided++;
+  if(gatesDecided===3) document.getElementById('sim-cta').style.display='flex';
+}
+function pickQ(which,el){
+  document.querySelectorAll(`#${which}Opts .opt`).forEach(o=>{o.onclick=null;o.style.cursor='default';});
+  const correct=el.dataset.correct==='true';el.classList.add(correct?'correct':'wrong');
+  const fb=document.getElementById(`${which}Feedback`);fb.className='feedback '+(correct?'pass':'fail');
+  if(which==='practice'){
+    fb.innerHTML=correct?'<strong>Correct.</strong> Gates on every action create approval fatigue — approvers learn to click through without reading. When a genuinely risky action arrives at the gate, it looks identical to the 200 routine ones before it and gets the same 3-second approval. Gate design requires calibration: reserve gates for actions where the cost of being wrong is high enough to justify the approval overhead.':'<strong>Not quite.</strong> Speed isn\'t the problem — the approvers were responding quickly because they didn\'t believe the decisions mattered. That belief formed because the gates were on every action. When does a gate create real oversight vs. the appearance of oversight?';
+    document.getElementById('practiceNext').disabled=false;
+  } else {
+    fb.innerHTML=correct?'<strong>Correct — M18 complete.</strong> The trigger condition is fine — €5,000 is a reasonable threshold for a high-value payment gate. The problem is the presentation package: "€6,200 — approve or reject?" gives the approver no basis for a real decision. A complete presentation package includes payee, amount, invoice reference, PO match status, and any flags. Without these, approvers approve by default rather than judgment.':'<strong>Not quite.</strong> The trigger is working correctly — it caught a payment above €5,000. The threshold isn\'t the issue. Think about what the approver is seeing when the gate fires. Do they have enough information to make a meaningful decision?';
+    if(correct){setTimeout(()=>{document.getElementById('passScreen').style.display='block';renderTrack(TOTAL);},700);}
+  }
+}
+</script>
+</body>
+</html>

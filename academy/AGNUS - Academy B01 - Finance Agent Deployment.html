@@ -1,0 +1,1091 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Academy — Finance Agent Deployment Simulation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#F4F2EE;--surface:#FFFFFF;--surface-2:#EEF0F5;--surface-3:#E6E8EF;
+  --border:#D8DAE2;--border-2:#C8CAD4;
+  --ink:#0F1623;--ink-2:#3D4558;--ink-3:#7A8099;
+  --navy:#0A1628;--navy-2:#112040;--navy-3:#1A3260;
+  --blue:#1A56A0;--blue-2:#1668C4;--blue-3:#D6E8FF;--blue-4:rgba(26,86,160,.1);
+  --pass:#0F6E3A;--pass-bg:rgba(15,110,58,.09);--pass-border:rgba(15,110,58,.22);
+  --warn:#C4760A;--warn-bg:rgba(196,118,10,.09);--warn-border:rgba(196,118,10,.22);
+  --danger:#B03020;--danger-bg:rgba(176,48,32,.09);--danger-border:rgba(176,48,32,.22);
+  --gold:#9A6F20;--gold-bg:rgba(154,111,32,.09);
+  --mono:'DM Mono',monospace;
+  --sans:'DM Sans',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;font-family:var(--sans);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+
+/* ── RAIL ── */
+.rail{background:var(--navy);color:#fff;height:56px;display:flex;align-items:center;padding:0 28px;gap:16px;position:sticky;top:0;z-index:200;box-shadow:0 1px 0 rgba(255,255,255,.06)}
+.rail-brand{font-weight:800;font-size:15px;letter-spacing:-.01em}
+.rail-sep{width:1px;height:22px;background:rgba(255,255,255,.12);flex-shrink:0}
+.rail-track{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38)}
+.rail-title{font-size:13.5px;font-weight:600;color:rgba(255,255,255,.88)}
+.rail-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.phase-dots{display:flex;gap:6px}
+.pd{width:28px;height:4px;border-radius:2px;background:rgba(255,255,255,.16);transition:background .4s}
+.pd.done{background:var(--blue-2)}
+.pd.active{background:#fff}
+.rail-btn{font-family:var(--sans);font-size:12px;font-weight:600;padding:7px 16px;border-radius:8px;border:1px solid rgba(255,255,255,.16);color:#fff;background:rgba(255,255,255,.07);cursor:pointer;transition:background .2s}
+.rail-btn:hover{background:rgba(255,255,255,.14)}
+
+/* ── PHASES ── */
+.phase{display:none}.phase.active{display:block}
+
+/* ── HERO BAND ── */
+.hero-band{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-3) 60%,#1A3A6A 100%);padding:52px 0 48px;position:relative;overflow:hidden}
+.hero-band::after{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");pointer-events:none}
+.hero-inner{max-width:960px;margin:0 auto;padding:0 32px;position:relative;z-index:1}
+.hero-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(100,160,255,.8);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.hero-eyebrow::before{content:'';display:inline-block;width:24px;height:1px;background:rgba(100,160,255,.6)}
+.hero-band h1{font-size:clamp(26px,3.5vw,40px);font-weight:800;letter-spacing:-.03em;color:#fff;line-height:1.15;margin-bottom:14px;max-width:22ch}
+.hero-band .sub{font-size:16px;color:rgba(255,255,255,.65);line-height:1.65;max-width:54ch;margin-bottom:28px}
+.hero-meta{display:flex;gap:20px;flex-wrap:wrap}
+.hm-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:8px 14px;font-size:12.5px;color:rgba(255,255,255,.7)}
+.hm-pill strong{color:#fff}
+
+/* ── LAYOUT ── */
+.page-body{max-width:960px;margin:0 auto;padding:36px 32px 100px}
+
+/* ── SECTION ── */
+.section{margin-bottom:32px}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid var(--border)}
+.section-head h2{font-size:20px;font-weight:800;letter-spacing:-.02em;color:var(--navy)}
+.section-head .sh-sub{font-size:13px;color:var(--ink-3);margin-top:3px}
+
+/* ── SCENARIO CARD ── */
+.scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+@media(max-width:680px){.scenario-grid{grid-template-columns:1fr}}
+.sc-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px 24px}
+.sc-card .sc-label{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;font-weight:600}
+.sc-card h3{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:8px;letter-spacing:-.01em}
+.sc-card p{font-size:13.5px;color:var(--ink-2);line-height:1.65}
+
+/* ── BUSINESS RULES ── */
+.rules-table{width:100%;border-collapse:collapse;background:var(--surface);border-radius:14px;overflow:hidden;border:1px solid var(--border)}
+.rules-table th{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);background:var(--surface-2);padding:12px 16px;text-align:left;font-weight:600;border-bottom:1px solid var(--border)}
+.rules-table td{padding:14px 16px;font-size:13.5px;border-bottom:1px solid var(--border);color:var(--ink-2);vertical-align:top}
+.rules-table tr:last-child td{border-bottom:none}
+.rules-table .rule-amount{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--ink);white-space:nowrap}
+.rules-table .rule-action{font-weight:600;color:var(--ink)}
+.rule-badge{display:inline-block;font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;border-radius:5px;padding:2px 7px}
+.rb-auto{background:var(--pass-bg);color:var(--pass);border:1px solid var(--pass-border)}
+.rb-notify{background:var(--warn-bg);color:var(--warn);border:1px solid var(--warn-border)}
+.rb-approve{background:var(--danger-bg);color:var(--danger);border:1px solid var(--danger-border)}
+.rb-hold{background:var(--surface-2);color:var(--ink-3);border:1px solid var(--border-2)}
+
+/* ── TOOLS ── */
+.tools-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:20px}
+@media(max-width:700px){.tools-grid{grid-template-columns:1fr 1fr}}
+.tool-chip{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 12px;text-align:center}
+.tool-chip .tc-icon{font-size:20px;margin-bottom:7px}
+.tool-chip .tc-name{font-size:11.5px;font-weight:700;color:var(--ink);line-height:1.3}
+.tool-chip .tc-desc{font-size:10px;color:var(--ink-3);margin-top:3px;line-height:1.4}
+
+/* ── CONFIG LAB ── */
+.config-intro{background:var(--navy);border-radius:14px;padding:24px 28px;margin-bottom:24px;color:#fff}
+.config-intro h3{font-size:18px;font-weight:800;letter-spacing:-.015em;margin-bottom:8px}
+.config-intro p{font-size:14px;color:rgba(255,255,255,.7);line-height:1.65;max-width:60ch}
+
+.config-tool{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:14px;transition:box-shadow .2s}
+.config-tool:hover{box-shadow:0 4px 20px rgba(0,0,0,.07)}
+.ct-head{display:grid;grid-template-columns:52px 1fr;gap:0;border-bottom:1px solid var(--border)}
+.ct-icon-wrap{display:flex;align-items:center;justify-content:center;font-size:22px;background:var(--surface-2);border-right:1px solid var(--border);padding:20px}
+.ct-info{padding:18px 20px}
+.ct-info h4{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.ct-info .ct-sub{font-size:13px;color:var(--ink-3);line-height:1.5}
+.ct-body{padding:20px 24px}
+.ct-body .perm-label{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:12px}
+
+/* Permission selector */
+.perm-selector{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px}
+@media(max-width:540px){.perm-selector{grid-template-columns:1fr 1fr}}
+.perm-opt{border:1.5px solid var(--border);border-radius:10px;padding:12px 10px;cursor:pointer;text-align:center;transition:all .15s}
+.perm-opt:hover{border-color:var(--blue);background:var(--blue-4)}
+.perm-opt.selected{border-color:var(--blue);background:var(--blue-4)}
+.perm-opt .po-badge{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px;display:block}
+.perm-opt .po-desc{font-size:11px;color:var(--ink-3);line-height:1.4}
+.perm-opt.selected .po-badge{color:var(--blue-2)}
+.perm-opt.selected .po-desc{color:var(--ink-2)}
+
+/* Threshold input */
+.threshold-row{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--surface-2);border-radius:10px;margin-bottom:12px}
+.threshold-row label{font-size:13px;font-weight:600;color:var(--ink);flex:1}
+.threshold-row .th-note{font-size:11.5px;color:var(--ink-3)}
+.amount-input{font-family:var(--mono);font-size:14px;font-weight:600;width:100px;padding:8px 12px;border:1.5px solid var(--border);border-radius:8px;background:var(--surface);color:var(--ink);text-align:right}
+.amount-input:focus{outline:none;border-color:var(--blue-2)}
+
+/* Log toggle */
+.log-toggle{display:flex;align-items:center;gap:14px;padding:14px 16px;background:var(--surface-2);border-radius:10px}
+.log-toggle label{font-size:13px;font-weight:600;color:var(--ink);flex:1}
+.toggle-sw{position:relative;width:44px;height:24px;cursor:pointer;flex-shrink:0}
+.toggle-sw input{opacity:0;width:0;height:0}
+.toggle-track{position:absolute;inset:0;background:var(--border-2);border-radius:12px;transition:background .25s}
+.toggle-knob{position:absolute;width:18px;height:18px;background:#fff;border-radius:50%;top:3px;left:3px;transition:transform .25s;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.toggle-sw input:checked + .toggle-track{background:var(--pass)}
+.toggle-sw input:checked ~ .toggle-knob{transform:translateX(20px)}
+
+/* ── SIMULATION PANEL ── */
+.sim-intro{background:var(--navy-2);border-radius:14px;padding:26px 28px;margin-bottom:24px;color:#fff}
+.sim-intro .si-label{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(100,160,255,.8);margin-bottom:10px}
+.sim-intro h3{font-size:20px;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+.sim-intro p{font-size:14px;color:rgba(255,255,255,.65);line-height:1.65;max-width:56ch}
+
+.event-card{background:var(--surface);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:16px;transition:border-color .3s}
+.event-card.running{border-color:var(--blue)}
+.event-card.pass{border-color:var(--pass)}
+.event-card.fail{border-color:var(--danger)}
+.event-card.warn{border-color:var(--warn)}
+
+.ec-head{display:grid;grid-template-columns:52px 1fr auto;gap:0;border-bottom:1px solid var(--border)}
+.ec-num{display:flex;align-items:center;justify-content:center;background:var(--surface-2);border-right:1px solid var(--border);font-family:var(--mono);font-size:13px;font-weight:700;color:var(--ink-3)}
+.ec-desc{padding:16px 18px}
+.ec-desc .ed-label{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px}
+.ec-desc .ed-title{font-size:14.5px;font-weight:700;color:var(--ink)}
+.ec-desc .ed-detail{font-size:12.5px;color:var(--ink-3);margin-top:3px}
+.ec-status{display:flex;align-items:center;padding:16px 18px}
+
+.status-pill{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:6px;padding:5px 10px}
+.sp-pending{background:var(--surface-2);color:var(--ink-3)}
+.sp-running{background:var(--blue-4);color:var(--blue-2)}
+.sp-pass{background:var(--pass-bg);color:var(--pass);border:1px solid var(--pass-border)}
+.sp-fail{background:var(--danger-bg);color:var(--danger);border:1px solid var(--danger-border)}
+.sp-warn{background:var(--warn-bg);color:var(--warn);border:1px solid var(--warn-border)}
+
+.ec-body{padding:18px 20px;background:var(--surface-2);display:none;border-top:1px solid var(--border)}
+.event-card.running .ec-body,.event-card.pass .ec-body,.event-card.fail .ec-body,.event-card.warn .ec-body{display:block}
+.ec-trace{font-family:var(--mono);font-size:12px;line-height:1.8;color:var(--ink-2)}
+.ec-trace .tr-line{display:flex;gap:10px;align-items:baseline}
+.ec-trace .tr-time{color:var(--ink-3);flex-shrink:0;width:60px}
+.ec-trace .tr-action{flex:1}
+.ec-trace .tr-result{}
+.tr-ok{color:var(--pass)}
+.tr-err{color:var(--danger)}
+.tr-warn{color:var(--warn)}
+.tr-info{color:var(--blue-2)}
+
+/* ── SCORE PANEL ── */
+.score-hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-3) 100%);border-radius:20px;padding:40px;margin-bottom:28px;color:#fff;text-align:center}
+.sh-number{font-family:var(--mono);font-size:80px;font-weight:700;line-height:1;letter-spacing:-.04em;margin-bottom:10px}
+.sh-number.perfect{color:#4ADE80}
+.sh-number.good{color:#FBD66B}
+.sh-number.fail{color:#FCA5A5}
+.sh-label{font-size:15px;color:rgba(255,255,255,.65);margin-bottom:4px}
+.sh-verdict{font-size:20px;font-weight:800;color:#fff;letter-spacing:-.015em}
+
+.score-breakdown{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px}
+@media(max-width:600px){.score-breakdown{grid-template-columns:1fr}}
+.sb-card{background:var(--surface);border-radius:14px;padding:20px;border:1.5px solid var(--border);overflow:hidden;position:relative}
+.sb-card.pass-card{border-color:var(--pass-border);background:var(--pass-bg)}
+.sb-card.fail-card{border-color:var(--danger-border);background:var(--danger-bg)}
+.sb-card.warn-card{border-color:var(--warn-border);background:var(--warn-bg)}
+.sbc-label{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px}
+.sbc-event{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.sbc-verdict{font-size:13px;line-height:1.6}
+.sb-card.pass-card .sbc-verdict{color:var(--pass)}
+.sb-card.fail-card .sbc-verdict{color:var(--danger)}
+.sb-card.warn-card .sbc-verdict{color:var(--warn)}
+.sbc-explain{font-size:12.5px;color:var(--ink-2);margin-top:8px;line-height:1.6}
+
+/* ── CERTIFICATE ── */
+.cert{background:var(--surface);border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-bottom:28px}
+.cert-top{background:linear-gradient(135deg,var(--navy),var(--navy-3));padding:48px;text-align:center;position:relative}
+.cert-top::before{content:'';position:absolute;top:16px;left:16px;right:16px;bottom:16px;border:1px solid rgba(255,255,255,.1);border-radius:12px;pointer-events:none}
+.cert-badge{width:64px;height:64px;background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 20px}
+.cert-top h2{font-size:13px;font-family:var(--mono);letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:12px}
+.cert-top h3{font-size:clamp(22px,3vw,32px);font-weight:800;color:#fff;letter-spacing:-.025em;margin-bottom:8px}
+.cert-top .cert-sub{font-size:15px;color:rgba(255,255,255,.6)}
+.cert-body{padding:32px 48px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px;border-top:1px solid var(--border)}
+@media(max-width:600px){.cert-body{grid-template-columns:1fr;padding:24px}}
+.cert-item .ci-label{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:5px}
+.cert-item .ci-value{font-size:14px;font-weight:700;color:var(--ink)}
+.cert-id{font-family:var(--mono);font-size:11px;color:var(--ink-3);text-align:center;padding:0 48px 24px}
+
+/* ── PROGRESS BAR ── */
+.progress-shell{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px 24px;margin-bottom:24px}
+.ps-label{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:10px}
+.ps-bar{height:8px;background:var(--surface-3);border-radius:4px;overflow:hidden}
+.ps-fill{height:8px;background:var(--blue-2);border-radius:4px;transition:width .6s ease}
+
+/* ── CTA ROW ── */
+.cta-row{display:flex;justify-content:space-between;align-items:center;margin-top:32px;padding-top:24px;border-top:1px solid var(--border)}
+.cta-hint{font-size:13px;color:var(--ink-3)}
+.btn{font-family:var(--sans);font-weight:700;font-size:14.5px;padding:14px 32px;border-radius:12px;border:none;cursor:pointer;transition:all .2s;letter-spacing:-.01em}
+.btn-primary{background:var(--blue);color:#fff}
+.btn-primary:hover{background:var(--blue-2);transform:translateY(-1px);box-shadow:0 6px 20px rgba(26,86,160,.3)}
+.btn-primary:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
+.btn-ghost{background:transparent;color:var(--ink-2);border:1px solid var(--border-2)}
+.btn-ghost:hover{background:var(--surface-2)}
+.btn-danger{background:var(--danger);color:#fff}
+
+/* ── CALLOUT ── */
+.callout{border-radius:12px;padding:16px 20px;margin:16px 0;font-size:13.5px;line-height:1.68;display:flex;gap:12px;align-items:flex-start}
+.callout.info{background:var(--blue-4);border:1px solid rgba(26,86,160,.2)}
+.callout.warn{background:var(--warn-bg);border:1px solid var(--warn-border)}
+.callout.danger{background:var(--danger-bg);border:1px solid var(--danger-border)}
+.callout-icon{font-size:16px;flex-shrink:0;margin-top:1px}
+.callout strong{font-weight:700}
+
+/* ── SIM BUTTON ── */
+.run-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:16px;border-radius:12px;border:none;font-family:var(--sans);font-weight:700;font-size:15px;cursor:pointer;transition:all .2s;background:var(--navy);color:#fff;margin-bottom:24px}
+.run-btn:hover{background:var(--navy-2);transform:translateY(-1px);box-shadow:0 6px 20px rgba(10,22,40,.25)}
+.run-btn .rb-dot{width:8px;height:8px;border-radius:50%;background:#4ADE80;animation:pulse 1.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.85)}}
+
+/* ── REVIEW DIFF ── */
+.diff-table{width:100%;border-collapse:collapse;background:var(--surface);border-radius:14px;overflow:hidden;border:1px solid var(--border);margin-bottom:20px}
+.diff-table th{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);background:var(--surface-2);padding:12px 16px;text-align:left;border-bottom:1px solid var(--border)}
+.diff-table td{padding:13px 16px;font-size:13px;border-bottom:1px solid var(--border);vertical-align:top}
+.diff-table tr:last-child td{border-bottom:none}
+.diff-yours{background:rgba(176,48,32,.04)}
+.diff-correct{background:rgba(15,110,58,.04)}
+</style>
+</head>
+<body>
+
+<!-- RAIL -->
+<header class="rail">
+  <span class="rail-brand">AGNUS Academy</span>
+  <span class="rail-sep"></span>
+  <span class="rail-track">Track B · Organisational Deployment</span>
+  <span class="rail-title">Finance Agent Deployment</span>
+  <div class="rail-right">
+    <div class="phase-dots" id="phaseDots"></div>
+    <button class="rail-btn" onclick="location.href='AGNUS - Academy App.html'">← Dashboard</button>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════
+     PHASE 0 — CONTEXT BRIEF
+══════════════════════════════════════════════ -->
+<div class="phase active" data-phase="0">
+
+  <div class="hero-band">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Programme 1 of 5 · Finance</div>
+      <h1>Finance Agent Deployment</h1>
+      <p class="sub">You are the AI deployment lead at Nordvik Group. You have been given an accounts-payable agent and five tools. Your job: configure exactly what the agent can and cannot do — then prove your configuration holds under pressure.</p>
+      <div class="hero-meta">
+        <span class="hm-pill"><strong>Simulation</strong> — Interactive</span>
+        <span class="hm-pill"><strong>Duration</strong> — 25–35 min</span>
+        <span class="hm-pill"><strong>On completion</strong> — Competency record issued</span>
+        <span class="hm-pill"><strong>Track</strong> — B · Organisational Deployment</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-body">
+
+    <div class="section">
+      <div class="section-head">
+        <div><h2>The scenario</h2><div class="sh-sub">Read this carefully — your configuration will be tested against it.</div></div>
+      </div>
+
+      <div class="scenario-grid">
+        <div class="sc-card">
+          <div class="sc-label">The organisation</div>
+          <h3>Nordvik Group</h3>
+          <p>A mid-size Nordic distribution company. Finance department of 12 people. They process approximately 400 supplier invoices per month. The finance director has approved an AI agent to handle routine AP tasks, freeing the team for exception handling and supplier relationship management.</p>
+        </div>
+        <div class="sc-card">
+          <div class="sc-label">The agent</div>
+          <h3>AP Agent v1</h3>
+          <p>An accounts-payable agent connected to Nordvik's ERP system. It monitors the invoice inbox, processes invoices, and interfaces with the payment system. It has no access to bank credentials directly — all payments go through the payment processor tool, which is connected to the bank's API with its own authentication layer.</p>
+        </div>
+        <div class="sc-card">
+          <div class="sc-label">The brief</div>
+          <h3>Your role</h3>
+          <p>You are Nordvik's AI deployment lead. The finance director has handed you the agent and said: "Make it work — but don't let it spend money it shouldn't." You will configure the agent's permission set, set approval thresholds, and define escalation paths. You are accountable for what happens.</p>
+        </div>
+        <div class="sc-card">
+          <div class="sc-label">The risk</div>
+          <h3>What can go wrong</h3>
+          <p>An over-permissioned agent approves payments it shouldn't. An under-permissioned agent creates a backlog and stops paying legitimate invoices on time. Both are failures — one costs money, one costs supplier relationships. The correct configuration is neither too open nor too closed.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <div><h2>Business rules</h2><div class="sh-sub">These are Nordvik's existing approval policies. Your configuration must implement them exactly.</div></div>
+      </div>
+
+      <table class="rules-table">
+        <thead>
+          <tr><th>Invoice amount</th><th>PO match status</th><th>Required action</th><th>Who decides</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="rule-amount">Under €500</td>
+            <td>Matching PO exists</td>
+            <td><span class="rule-action">Approve automatically</span> — no human review required</td>
+            <td><span class="rule-badge rb-auto">Agent</span></td>
+          </tr>
+          <tr>
+            <td class="rule-amount">€500 – €5,000</td>
+            <td>Matching PO exists</td>
+            <td><span class="rule-action">Notify finance manager</span> before payment. Wait for confirmation.</td>
+            <td><span class="rule-badge rb-notify">Finance manager</span></td>
+          </tr>
+          <tr>
+            <td class="rule-amount">Above €5,000</td>
+            <td>Any status</td>
+            <td><span class="rule-action">Finance director approval</span> required. Do not notify manager only.</td>
+            <td><span class="rule-badge rb-approve">Finance director</span></td>
+          </tr>
+          <tr>
+            <td class="rule-amount">Any amount</td>
+            <td>No matching PO</td>
+            <td><span class="rule-action">Hold and flag</span> — never approve. Route to AP team for investigation.</td>
+            <td><span class="rule-badge rb-hold">AP team</span></td>
+          </tr>
+          <tr>
+            <td class="rule-amount">Any amount</td>
+            <td>Duplicate detected</td>
+            <td><span class="rule-action">Quarantine</span> — flag for manual review. Do not process or reject.</td>
+            <td><span class="rule-badge rb-hold">AP team</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout info">
+        <span class="callout-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M8 7v5M8 5.5v.5"/></svg></span>
+        <div><strong>All actions must be logged</strong> — every agent action (read, suggest, approve, escalate, quarantine) must write to the audit log. This is non-negotiable. Finance compliance requires it.</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head">
+        <div><h2>The five tools</h2><div class="sh-sub">These are the tools available to the agent. You will configure each one in the lab.</div></div>
+      </div>
+
+      <div class="tools-grid">
+        <div class="tool-chip"><div class="tc-icon" style="color:var(--ink-2)"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="11" height="15" rx="2"/><path d="M15 2l3 3v12a2 2 0 01-2 2H7"/><path d="M7 9h6M7 12h4"/></svg></div><div class="tc-name">Invoice Reader</div><div class="tc-desc">Reads invoices from the inbox. Extracts supplier, amount, line items.</div></div>
+        <div class="tool-chip"><div class="tc-icon" style="color:var(--ink-2)"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M10 13a5 5 0 007.5.5l2-2a5 5 0 00-7-7L11 6"/><path d="M14 11a5 5 0 00-7.5-.5l-2 2a5 5 0 007 7L13 18"/></svg></div><div class="tc-name">PO Matcher</div><div class="tc-desc">Matches invoice to purchase orders in the ERP. Returns match status and variance.</div></div>
+        <div class="tool-chip"><div class="tc-icon" style="color:var(--ink-2)"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="2" y="5" width="18" height="13" rx="2"/><path d="M2 9h18"/><path d="M6 14h3M13 14h3"/></svg></div><div class="tc-name">Payment Processor</div><div class="tc-desc">Submits payment instruction to the bank API. Irreversible once submitted.</div></div>
+        <div class="tool-chip"><div class="tc-icon" style="color:var(--ink-2)"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 14s1-1 1-5a6 6 0 0112 0c0 4 1 5 1 5H4z"/><path d="M9.5 19a2.5 2.5 0 005 0"/></svg></div><div class="tc-name">Finance Notifier</div><div class="tc-desc">Sends notifications to finance manager or director via email and Slack.</div></div>
+        <div class="tool-chip"><div class="tc-icon" style="color:var(--ink-2)"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="4" y="4" width="14" height="15" rx="2"/><path d="M8 2v4M14 2v4M8 11h6M8 14h4"/><rect x="8" y="2" width="6" height="3" rx="1"/></svg></div><div class="tc-name">Audit Log Writer</div><div class="tc-desc">Writes timestamped records of all agent actions to the compliance log.</div></div>
+      </div>
+
+      <div class="callout warn">
+        <span class="callout-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8 2L1 14h14L8 2z"/><path d="M8 7v3M8 12v.5"/></svg></span>
+        <div><strong>Payment Processor actions are irreversible.</strong> Once a payment instruction is submitted, it cannot be recalled. Configure this tool's permission level with care.</div>
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <span class="cta-hint">You've read the scenario, business rules, and tools. Time to configure the agent.</span>
+      <button class="btn btn-primary" onclick="goPhase(1)">Enter Configuration Lab →</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     PHASE 1 — CONFIGURATION LAB
+══════════════════════════════════════════════ -->
+<div class="phase" data-phase="1">
+
+  <div class="hero-band" style="padding:36px 0 32px">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Phase 2 of 5 · Configuration Lab</div>
+      <h1 style="font-size:clamp(22px,3vw,30px);margin-bottom:8px">Configure the agent's permissions</h1>
+      <p class="sub" style="font-size:14px;margin-bottom:0">Set what each tool can do. Then set the approval thresholds. Your configuration will be tested against five real invoice scenarios.</p>
+    </div>
+  </div>
+
+  <div class="page-body">
+
+    <div class="progress-shell">
+      <div class="ps-label">Configuration progress</div>
+      <div class="ps-bar"><div class="ps-fill" id="configProgress" style="width:0%"></div></div>
+    </div>
+
+    <div class="config-intro">
+      <h3>Permission levels explained</h3>
+      <p>Each tool has four possible permission levels. Choose the level that correctly implements Nordvik's business rules. An under-permissioned tool creates a backlog. An over-permissioned tool creates financial risk. The correct answer is in the business rules you just read.</p>
+    </div>
+
+    <!-- TOOL 1: Invoice Reader -->
+    <div class="config-tool" id="tool-reader">
+      <div class="ct-head">
+        <div class="ct-icon-wrap" style="color:var(--ink-2)"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="11" height="15" rx="2"/><path d="M15 2l3 3v12a2 2 0 01-2 2H7"/><path d="M7 9h6M7 12h4"/></svg></div>
+        <div class="ct-info">
+          <h4>Invoice Reader</h4>
+          <div class="ct-sub">Reads invoices from the inbox and extracts structured data (supplier, amount, line items, dates). This is an input tool — it does not take any financial action.</div>
+        </div>
+      </div>
+      <div class="ct-body">
+        <div class="perm-label">Select permission level for Invoice Reader</div>
+        <div class="perm-selector" id="perm-reader">
+          <div class="perm-opt" data-tool="reader" data-val="none" onclick="setPerm('reader','none',this)"><span class="po-badge" style="color:var(--ink-3)">None</span><div class="po-desc">Tool disabled — agent cannot use it</div></div>
+          <div class="perm-opt" data-tool="reader" data-val="read" onclick="setPerm('reader','read',this)"><span class="po-badge">Read</span><div class="po-desc">Can read and extract data only</div></div>
+          <div class="perm-opt" data-tool="reader" data-val="suggest" onclick="setPerm('reader','suggest',this)"><span class="po-badge">Suggest</span><div class="po-desc">Can read and propose actions for human review</div></div>
+          <div class="perm-opt" data-tool="reader" data-val="act" onclick="setPerm('reader','act',this)"><span class="po-badge">Act</span><div class="po-desc">Can read and automatically proceed</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOOL 2: PO Matcher -->
+    <div class="config-tool" id="tool-matcher">
+      <div class="ct-head">
+        <div class="ct-icon-wrap" style="color:var(--ink-2)"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M10 13a5 5 0 007.5.5l2-2a5 5 0 00-7-7L11 6"/><path d="M14 11a5 5 0 00-7.5-.5l-2 2a5 5 0 007 7L13 18"/></svg></div>
+        <div class="ct-info">
+          <h4>PO Matcher</h4>
+          <div class="ct-sub">Queries the ERP system to find a matching purchase order for an invoice. Returns match status, matched PO number, and any variance. This is a lookup tool — it does not modify any records.</div>
+        </div>
+      </div>
+      <div class="ct-body">
+        <div class="perm-label">Select permission level for PO Matcher</div>
+        <div class="perm-selector" id="perm-matcher">
+          <div class="perm-opt" data-tool="matcher" data-val="none" onclick="setPerm('matcher','none',this)"><span class="po-badge" style="color:var(--ink-3)">None</span><div class="po-desc">Tool disabled</div></div>
+          <div class="perm-opt" data-tool="matcher" data-val="read" onclick="setPerm('matcher','read',this)"><span class="po-badge">Read</span><div class="po-desc">Can query PO database read-only</div></div>
+          <div class="perm-opt" data-tool="matcher" data-val="suggest" onclick="setPerm('matcher','suggest',this)"><span class="po-badge">Suggest</span><div class="po-desc">Can query and propose match results</div></div>
+          <div class="perm-opt" data-tool="matcher" data-val="act" onclick="setPerm('matcher','act',this)"><span class="po-badge">Act</span><div class="po-desc">Can query and automatically act on results</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOOL 3: Payment Processor -->
+    <div class="config-tool" id="tool-payment">
+      <div class="ct-head">
+        <div class="ct-icon-wrap" style="color:var(--ink-2)"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="2" y="5" width="18" height="13" rx="2"/><path d="M2 9h18"/><path d="M6 14h3M13 14h3"/></svg></div>
+        <div class="ct-info">
+          <h4>Payment Processor</h4>
+          <div class="ct-sub">Submits a payment instruction to the bank API. <strong style="color:var(--danger)">This action is irreversible once submitted.</strong> A payment instruction cannot be recalled after it is sent to the bank.</div>
+        </div>
+      </div>
+      <div class="ct-body">
+        <div class="perm-label">Select permission level for Payment Processor</div>
+        <div class="perm-selector" id="perm-payment">
+          <div class="perm-opt" data-tool="payment" data-val="none" onclick="setPerm('payment','none',this)"><span class="po-badge" style="color:var(--ink-3)">None</span><div class="po-desc">Tool disabled — no payments possible</div></div>
+          <div class="perm-opt" data-tool="payment" data-val="read" onclick="setPerm('payment','read',this)"><span class="po-badge">Read</span><div class="po-desc">Can view payment status only — no submission</div></div>
+          <div class="perm-opt" data-tool="payment" data-val="suggest" onclick="setPerm('payment','suggest',this)"><span class="po-badge">Suggest</span><div class="po-desc">Can prepare payment instructions for human approval before submission</div></div>
+          <div class="perm-opt" data-tool="payment" data-val="act" onclick="setPerm('payment','act',this)"><span class="po-badge">Act</span><div class="po-desc">Can submit payments autonomously</div></div>
+        </div>
+
+        <div class="threshold-row">
+          <label>Auto-approve threshold</label>
+          <span class="th-note">Payments <strong>under</strong> this amount may be submitted without human review (if PO matches)</span>
+          <span style="font-family:var(--mono);font-size:13px;color:var(--ink-3)">€</span>
+          <input class="amount-input" type="number" id="threshold-auto" value="500" min="0" max="10000" onchange="updateProgress()"/>
+        </div>
+
+        <div class="threshold-row">
+          <label>Finance manager threshold</label>
+          <span class="th-note">Payments <strong>above</strong> this amount require finance director (not just manager) approval</span>
+          <span style="font-family:var(--mono);font-size:13px;color:var(--ink-3)">€</span>
+          <input class="amount-input" type="number" id="threshold-director" value="5000" min="0" max="100000" onchange="updateProgress()"/>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOOL 4: Finance Notifier -->
+    <div class="config-tool" id="tool-notifier">
+      <div class="ct-head">
+        <div class="ct-icon-wrap" style="color:var(--ink-2)"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 14s1-1 1-5a6 6 0 0112 0c0 4 1 5 1 5H4z"/><path d="M9.5 19a2.5 2.5 0 005 0"/></svg></div>
+        <div class="ct-info">
+          <h4>Finance Notifier</h4>
+          <div class="ct-sub">Sends notifications and approval requests to the finance manager or finance director via email and Slack. Can send informational alerts, approval requests with payment details, or escalation flags.</div>
+        </div>
+      </div>
+      <div class="ct-body">
+        <div class="perm-label">Select permission level for Finance Notifier</div>
+        <div class="perm-selector" id="perm-notifier">
+          <div class="perm-opt" data-tool="notifier" data-val="none" onclick="setPerm('notifier','none',this)"><span class="po-badge" style="color:var(--ink-3)">None</span><div class="po-desc">Tool disabled — no notifications sent</div></div>
+          <div class="perm-opt" data-tool="notifier" data-val="read" onclick="setPerm('notifier','read',this)"><span class="po-badge">Read</span><div class="po-desc">Can read notification history only</div></div>
+          <div class="perm-opt" data-tool="notifier" data-val="suggest" onclick="setPerm('notifier','suggest',this)"><span class="po-badge">Suggest</span><div class="po-desc">Can draft notifications for human review before sending</div></div>
+          <div class="perm-opt" data-tool="notifier" data-val="act" onclick="setPerm('notifier','act',this)"><span class="po-badge">Act</span><div class="po-desc">Can send notifications and approval requests autonomously</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOOL 5: Audit Log Writer -->
+    <div class="config-tool" id="tool-audit">
+      <div class="ct-head">
+        <div class="ct-icon-wrap" style="color:var(--ink-2)"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="4" y="4" width="14" height="15" rx="2"/><path d="M8 2v4M14 2v4M8 11h6M8 14h4"/><rect x="8" y="2" width="6" height="3" rx="1"/></svg></div>
+        <div class="ct-info">
+          <h4>Audit Log Writer</h4>
+          <div class="ct-sub">Writes timestamped records of all agent actions to the compliance audit log. Required by Nordvik's finance compliance policy. Logs are read-only once written and cannot be modified.</div>
+        </div>
+      </div>
+      <div class="ct-body">
+        <div class="perm-label">Audit log — logging requirement</div>
+        <div class="log-toggle">
+          <label>Enable mandatory logging for all agent actions</label>
+          <label class="toggle-sw">
+            <input type="checkbox" id="logging-enabled" onchange="updateProgress()" checked/>
+            <span class="toggle-track"></span>
+            <span class="toggle-knob"></span>
+          </label>
+        </div>
+        <div class="callout info" style="margin-top:12px;margin-bottom:0">
+          <span class="callout-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M8 7v5M8 5.5v.5"/></svg></span>
+          <div>Nordvik's compliance policy requires all agent actions to be logged. This includes read operations, PO matches, approval requests, payment submissions, and escalations. Disabling this is a compliance violation.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <span class="cta-hint" id="configHint">Complete all five tool configurations to proceed.</span>
+      <div style="display:flex;gap:10px">
+        <button class="btn btn-ghost" onclick="goPhase(0)">← Review brief</button>
+        <button class="btn btn-primary" id="runSimBtn" onclick="goPhase(2)" disabled>Run Simulation →</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     PHASE 2 — SIMULATION
+══════════════════════════════════════════════ -->
+<div class="phase" data-phase="2">
+
+  <div class="hero-band" style="padding:36px 0 32px">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Phase 3 of 5 · Incident Simulation</div>
+      <h1 style="font-size:clamp(22px,3vw,30px);margin-bottom:8px">Five invoices are arriving now</h1>
+      <p class="sub" style="font-size:14px;margin-bottom:0">The agent is live. Five invoices are hitting the inbox. Watch what your configuration does to each one.</p>
+    </div>
+  </div>
+
+  <div class="page-body">
+
+    <button class="run-btn" id="runBtn" onclick="runSimulation()">
+      <span class="rb-dot"></span>
+      Start simulation — process 5 invoices
+    </button>
+
+    <div id="events-container">
+      <!-- Event 1 -->
+      <div class="event-card" id="ev-1">
+        <div class="ec-head">
+          <div class="ec-num">01</div>
+          <div class="ec-desc">
+            <div class="ed-label">Invoice INV-2026-0441 · Supplier: Lindqvist Logistics</div>
+            <div class="ed-title">€320 · Office supplies and courier services</div>
+            <div class="ed-detail">PO-2026-0389 · Match confirmed · No variance</div>
+          </div>
+          <div class="ec-status"><span class="status-pill sp-pending" id="ev1-status">Pending</span></div>
+        </div>
+        <div class="ec-body" id="ev1-trace"></div>
+      </div>
+
+      <!-- Event 2 -->
+      <div class="event-card" id="ev-2">
+        <div class="ec-head">
+          <div class="ec-num">02</div>
+          <div class="ec-desc">
+            <div class="ed-label">Invoice INV-2026-0447 · Supplier: Bergen Cold Storage</div>
+            <div class="ed-title">€1,840 · Refrigeration maintenance contract — Q3</div>
+            <div class="ed-detail">PO-2026-0401 · Match confirmed · No variance</div>
+          </div>
+          <div class="ec-status"><span class="status-pill sp-pending" id="ev2-status">Pending</span></div>
+        </div>
+        <div class="ec-body" id="ev2-trace"></div>
+      </div>
+
+      <!-- Event 3 -->
+      <div class="event-card" id="ev-3">
+        <div class="ec-head">
+          <div class="ec-num">03</div>
+          <div class="ec-desc">
+            <div class="ed-label">Invoice INV-2026-0448 · Supplier: Stavanger Print Solutions</div>
+            <div class="ed-title">€210 · Annual print contract renewal</div>
+            <div class="ed-detail" style="color:var(--danger);font-weight:600">⚠ No matching PO found in ERP</div>
+          </div>
+          <div class="ec-status"><span class="status-pill sp-pending" id="ev3-status">Pending</span></div>
+        </div>
+        <div class="ec-body" id="ev3-trace"></div>
+      </div>
+
+      <!-- Event 4 -->
+      <div class="event-card" id="ev-4">
+        <div class="ec-head">
+          <div class="ec-num">04</div>
+          <div class="ec-desc">
+            <div class="ed-label">Invoice INV-2026-0452 · Supplier: Oslo Tech Partners</div>
+            <div class="ed-title">€12,400 · IT infrastructure services — H2 2026</div>
+            <div class="ed-detail">PO-2026-0388 · Match confirmed · No variance</div>
+          </div>
+          <div class="ec-status"><span class="status-pill sp-pending" id="ev4-status">Pending</span></div>
+        </div>
+        <div class="ec-body" id="ev4-trace"></div>
+      </div>
+
+      <!-- Event 5 -->
+      <div class="event-card" id="ev-5">
+        <div class="ec-head">
+          <div class="ec-num">05</div>
+          <div class="ec-desc">
+            <div class="ed-label">Invoice INV-2026-0453 · Supplier: Bergen Cold Storage</div>
+            <div class="ed-title">€1,840 · Refrigeration maintenance contract — Q3</div>
+            <div class="ed-detail" style="color:var(--danger);font-weight:600">⚠ Duplicate detected — identical amount, supplier, and description as INV-2026-0447 (processed earlier this session)</div>
+          </div>
+          <div class="ec-status"><span class="status-pill sp-pending" id="ev5-status">Pending</span></div>
+        </div>
+        <div class="ec-body" id="ev5-trace"></div>
+      </div>
+    </div>
+
+    <div class="cta-row" id="sim-cta" style="display:none">
+      <span class="cta-hint">Simulation complete. Review the agent's decisions before seeing your score.</span>
+      <button class="btn btn-primary" onclick="goPhase(3)">See your score →</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     PHASE 3 — SCORE
+══════════════════════════════════════════════ -->
+<div class="phase" data-phase="3">
+
+  <div class="page-body" style="padding-top:48px">
+
+    <div id="score-hero-block"></div>
+
+    <div class="section">
+      <div class="section-head"><div><h2>Event breakdown</h2><div class="sh-sub">What your configuration did — and what it should have done.</div></div></div>
+      <div class="score-breakdown" id="score-breakdown"></div>
+    </div>
+
+    <div id="config-diff-section" style="display:none">
+      <div class="section">
+        <div class="section-head"><div><h2>Where your configuration diverged</h2><div class="sh-sub">The specific permission settings that produced incorrect outcomes.</div></div></div>
+        <table class="diff-table" id="diff-table">
+          <thead><tr><th>Tool</th><th>Your setting</th><th>Correct setting</th><th>Impact</th></tr></thead>
+          <tbody id="diff-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="cta-row" id="score-cta">
+      <span class="cta-hint" id="score-hint"></span>
+      <div style="display:flex;gap:10px">
+        <button class="btn btn-ghost" onclick="goPhase(1)">Reconfigure and retry</button>
+        <button class="btn btn-primary" id="certBtn" style="display:none" onclick="goPhase(4)">Claim competency record →</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     PHASE 4 — CERTIFICATE
+══════════════════════════════════════════════ -->
+<div class="phase" data-phase="4">
+
+  <div class="page-body" style="padding-top:48px">
+
+    <div class="cert">
+      <div class="cert-top">
+        <div class="cert-badge"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round"><path d="M14 3l2.5 7.5H24l-6 4.5 2.5 7.5L14 18l-6.5 4.5 2.5-7.5-6-4.5h7.5L14 3z"/></svg></div>
+        <h2>Certificate of Competency</h2>
+        <h3>Finance Agent Deployment</h3>
+        <div class="cert-sub">Organisational AI Deployment · Track B · Programme 1</div>
+      </div>
+      <div class="cert-body">
+        <div class="cert-item"><div class="ci-label">Awarded to</div><div class="ci-value" id="cert-name">AGNUS Academy Learner</div></div>
+        <div class="cert-item"><div class="ci-label">Competency</div><div class="ci-value">Finance Agent Deployment — Configured &amp; Verified</div></div>
+        <div class="cert-item"><div class="ci-label">Issued</div><div class="ci-value" id="cert-date"></div></div>
+        <div class="cert-item"><div class="ci-label">Score</div><div class="ci-value" id="cert-score"></div></div>
+        <div class="cert-item"><div class="ci-label">Programme</div><div class="ci-value">AGNUS Academy Track B · Organisational Deployment</div></div>
+        <div class="cert-item"><div class="ci-label">Issuer</div><div class="ci-value">AGNUS Academy</div></div>
+      </div>
+      <div class="cert-id" id="cert-id"></div>
+    </div>
+
+    <div class="callout info">
+      <span class="callout-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="10" height="11" rx="1.5"/><path d="M6 1.5v3M10 1.5v3M5.5 8h5M5.5 10.5h3"/><rect x="5.5" y="1.5" width="5" height="2" rx=".75"/></svg></span>
+      <div><strong>What this competency confirms:</strong> You have configured an accounts-payable AI agent against a defined permission model, set correct approval thresholds, and proven the configuration holds under five real invoice scenarios — including a no-PO invoice and a duplicate payment attempt. This is a verified, practical competency record, not a completion certificate.</div>
+    </div>
+
+    <div style="display:flex;justify-content:center;gap:14px;margin-top:32px">
+      <button class="btn btn-ghost" onclick="window.print()">Print certificate</button>
+      <button class="btn btn-primary" onclick="location.href='AGNUS - Academy B02 - HR Agent Deployment.html'">Next programme →</button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+/* ══ STATE ══ */
+const state = {
+  perms: { reader: null, matcher: null, payment: null, notifier: null, audit: null },
+  thresholdAuto: 500,
+  thresholdDirector: 5000,
+  loggingEnabled: true,
+  score: 0,
+  results: [],
+  simRan: false
+};
+
+/* ══ PHASES ══ */
+const PHASE_COUNT = 5;
+function renderDots(active){
+  document.getElementById('phaseDots').innerHTML = Array.from({length:PHASE_COUNT},(_,i) =>
+    `<div class="pd ${i<active?'done':i===active?'active':''}"></div>`).join('');
+}
+function goPhase(n){
+  document.querySelectorAll('.phase').forEach(p=>p.classList.remove('active'));
+  document.querySelector(`.phase[data-phase="${n}"]`).classList.add('active');
+  renderDots(n);
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(n===3) buildScore();
+  if(n===4) buildCert();
+}
+renderDots(0);
+
+/* ══ CONFIG ══ */
+function setPerm(tool, val, el){
+  state.perms[tool] = val;
+  document.querySelectorAll(`#perm-${tool} .perm-opt`).forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');
+  updateProgress();
+}
+
+function updateProgress(){
+  state.thresholdAuto = parseInt(document.getElementById('threshold-auto').value)||500;
+  state.thresholdDirector = parseInt(document.getElementById('threshold-director').value)||5000;
+  state.loggingEnabled = document.getElementById('logging-enabled').checked;
+
+  const configured = Object.values(state.perms).filter(v=>v!==null).length;
+  const pct = Math.round(configured / 5 * 100);
+  document.getElementById('configProgress').style.width = pct + '%';
+
+  const allSet = configured === 5;
+  const runBtn = document.getElementById('runSimBtn');
+  runBtn.disabled = !allSet;
+  document.getElementById('configHint').textContent = allSet
+    ? 'All tools configured. Ready to run the simulation.'
+    : `${5 - configured} tool${5-configured===1?'':'s'} still need configuration.`;
+}
+
+/* ══ SIMULATION ENGINE ══ */
+const EVENTS = [
+  { id:1, supplier:'Lindqvist Logistics', amount:320, po:true, duplicate:false,
+    desc:'€320 invoice — matching PO, under auto-threshold' },
+  { id:2, supplier:'Bergen Cold Storage', amount:1840, po:true, duplicate:false,
+    desc:'€1,840 invoice — matching PO, above auto-threshold, below director threshold' },
+  { id:3, supplier:'Stavanger Print Solutions', amount:210, po:false, duplicate:false,
+    desc:'€210 invoice — no matching PO' },
+  { id:4, supplier:'Oslo Tech Partners', amount:12400, po:true, duplicate:false,
+    desc:'€12,400 invoice — matching PO, above director threshold' },
+  { id:5, supplier:'Bergen Cold Storage', amount:1840, po:true, duplicate:true,
+    desc:'Duplicate invoice — same supplier, amount, description as Event 2' }
+];
+
+function evaluateEvent(ev){
+  const p = state.perms;
+  const tAuto = state.thresholdAuto;
+  const tDir = state.thresholdDirector;
+  const logging = state.loggingEnabled;
+
+  let trace = [];
+  let outcome = 'pass'; // pass | fail | warn
+  let verdict = '';
+  let explanation = '';
+
+  // Step 1: Read invoice
+  if(!p.reader || p.reader==='none'){
+    trace.push({t:'08:'+String(30+ev.id).padStart(2,'0'),a:'Invoice Reader',r:'BLOCKED — tool disabled',cls:'tr-err'});
+    return {outcome:'fail',trace,verdict:'Agent could not read the invoice. Nothing was processed.',
+      explanation:'Invoice Reader was disabled or not configured. The agent cannot process any invoice without it. This creates a complete backlog — no invoices can be processed at all.'};
+  }
+  trace.push({t:'08:'+String(30+ev.id).padStart(2,'0'),a:'Invoice Reader → Read invoice',r:`Extracted: €${ev.amount} · ${ev.supplier}`,cls:'tr-ok'});
+
+  // Step 2: Check PO
+  if(!p.matcher || p.matcher==='none'){
+    trace.push({t:'08:'+String(30+ev.id+1).padStart(2,'0'),a:'PO Matcher',r:'BLOCKED — tool disabled',cls:'tr-err'});
+    outcome = 'fail';
+    verdict = 'Agent could not check for a matching PO.';
+    explanation = 'PO Matcher was disabled. The agent cannot distinguish between invoices with and without purchase orders. This means it cannot apply Nordvik\'s most critical business rule (no-PO invoices must be held, never approved).';
+    return {outcome,trace,verdict,explanation};
+  }
+
+  if(ev.po){
+    trace.push({t:'08:'+String(30+ev.id+2).padStart(2,'0'),a:'PO Matcher → Query ERP',r:'Match found — PO confirmed, no variance',cls:'tr-ok'});
+  } else {
+    trace.push({t:'08:'+String(30+ev.id+2).padStart(2,'0'),a:'PO Matcher → Query ERP',r:'No matching PO found',cls:'tr-warn'});
+  }
+
+  // Step 3: Duplicate check (built into reader context)
+  if(ev.duplicate){
+    trace.push({t:'08:'+String(30+ev.id+3).padStart(2,'0'),a:'Duplicate check',r:'⚠ Duplicate detected — identical to INV-2026-0447',cls:'tr-warn'});
+
+    // Should quarantine — needs notifier to act and logging
+    if(p.notifier && p.notifier==='act'){
+      trace.push({t:'08:'+String(30+ev.id+4).padStart(2,'0'),a:'Finance Notifier → Flag for AP team',r:'Quarantine notification sent',cls:'tr-ok'});
+      if(logging){
+        trace.push({t:'08:'+String(30+ev.id+5).padStart(2,'0'),a:'Audit Log Writer → Record quarantine',r:'Logged ✓',cls:'tr-ok'});
+      } else {
+        trace.push({t:'08:'+String(30+ev.id+5).padStart(2,'0'),a:'Audit Log Writer',r:'LOGGING DISABLED — no audit record written',cls:'tr-err'});
+        outcome = 'warn';
+      }
+      verdict = outcome==='warn' ? 'Duplicate correctly quarantined — but logging was disabled.' : 'Correct: duplicate detected and quarantined.';
+      explanation = outcome==='warn' ? 'The agent correctly identified and quarantined the duplicate. However, because logging was disabled, this action was not recorded in the audit log — a compliance violation.' : 'The agent correctly detected the duplicate invoice and quarantined it for AP team review. Logging confirmed.';
+    } else {
+      // Can't properly flag
+      if(p.payment && p.payment==='act' && ev.amount < tAuto){
+        trace.push({t:'08:'+String(30+ev.id+4).padStart(2,'0'),a:'Payment Processor → Submit payment',r:'PAYMENT SUBMITTED — €'+ev.amount+' (duplicate!)',cls:'tr-err'});
+        outcome = 'fail';
+        verdict = 'Agent paid a duplicate invoice — €'+ev.amount+' paid twice.';
+        explanation = 'The notifier was not configured to act on duplicates, so the agent fell through to its payment logic. With the payment processor set to Act and the amount under the auto-threshold, it processed the duplicate as a new invoice.';
+      } else {
+        // Agent stuck — no action path
+        trace.push({t:'08:'+String(30+ev.id+4).padStart(2,'0'),a:'Agent decision',r:'No action path configured for duplicate — invoice held in queue',cls:'tr-warn'});
+        outcome = 'warn';
+        verdict = 'Duplicate was not processed — but not properly quarantined either.';
+        explanation = 'The agent had no configured action path for duplicates. While it did not pay the duplicate, it also did not flag it properly for the AP team. The invoice is sitting in a queue with no owner.';
+      }
+    }
+    return {outcome,trace,verdict,explanation};
+  }
+
+  // Step 4: No PO logic
+  if(!ev.po){
+    // Should hold and flag to AP team
+    if(p.notifier && p.notifier==='act'){
+      trace.push({t:'08:'+String(30+ev.id+3).padStart(2,'0'),a:'Rule check → No PO found',r:'Business rule: hold and flag to AP team',cls:'tr-info'});
+      trace.push({t:'08:'+String(30+ev.id+4).padStart(2,'0'),a:'Finance Notifier → Flag to AP team',r:'AP team notified — invoice held',cls:'tr-ok'});
+      if(logging){
+        trace.push({t:'08:'+String(30+ev.id+5).padStart(2,'0'),a:'Audit Log Writer → Record hold',r:'Logged ✓',cls:'tr-ok'});
+        verdict = 'Correct: no-PO invoice held and flagged to AP team.';
+        explanation = 'The agent correctly identified the missing PO and held the invoice. The AP team was notified and the action was logged.';
+      } else {
+        trace.push({t:'08:'+String(30+ev.id+5).padStart(2,'0'),a:'Audit Log Writer',r:'LOGGING DISABLED — no audit record',cls:'tr-err'});
+        outcome = 'warn';
+        verdict = 'No-PO invoice correctly held — but logging was disabled.';
+        explanation = 'The agent held the invoice correctly. However, logging was disabled — this hold action was not recorded in the compliance audit log.';
+      }
+    } else if(p.payment && p.payment==='act'){
+      // Dangerous — might pay anyway
+      trace.push({t:'08:'+String(30+ev.id+3).padStart(2,'0'),a:'Rule check',r:'No PO — but no hold path configured',cls:'tr-warn'});
+      trace.push({t:'08:'+String(30+ev.id+4).padStart(2,'0'),a:'Payment Processor → Submit payment',r:'PAYMENT SUBMITTED — NO PO — €'+ev.amount,cls:'tr-err'});
+      outcome = 'fail';
+      verdict = 'Agent paid an invoice with no purchase order — €'+ev.amount+' unauthorised.';
+      explanation = 'The notifier was not configured to act as a hold/flag path, so the agent fell through to the payment logic. With no explicit instruction to hold no-PO invoices, it processed the payment anyway. This is a critical misconfiguration.';
+    } else {
+      trace.push({t:'08:'+String(30+ev.id+3).padStart(2,'0'),a:'Rule check → No PO',r:'No action path — invoice stalled in queue',cls:'tr-warn'});
+      outcome = 'warn';
+      verdict = 'No-PO invoice was not processed — but not properly routed either.';
+      explanation = 'The agent had no configured path for no-PO invoices. It did not pay it (good) but also did not alert the AP team (bad). The invoice is stuck with no owner or resolution path.';
+    }
+    return {outcome,trace,verdict,explanation};
+  }
+
+  // Step 5: PO confirmed — apply thresholds
+  // Under auto-threshold: agent should pay autonomously
+  if(ev.amount < tAuto){
+    if(p.payment && p.payment==='act'){
+      trace.push({t:'08:'+String(30+ev.id+3).padStart(2,'0'),a:'Threshold check',r:`€${ev.amount} < €${tAuto} — auto-approve eligible`,cls:'tr-info'});
+      trace.push({t:'08:'+String(30+ev.id+4).padStart(2,'0'),a:'Payment Processor → Submit payment',r:`€${ev.amount} submitted to bank`,cls:'tr-ok'});
+      if(logging){
+        trace.push({t:'08:'+String(30+ev.id+5).padStart(2,'0'),a:'Audit Log Writer → Record payment',r:'Logged ✓',cls:'tr-ok'});
+        verdict = `Correct: €${ev.amount} paid automatically — PO matched, under threshold.`;
+        explanation = 'The agent correctly identified this as an auto-approve case: PO confirmed, amount under the threshold, no duplicate. Payment submitted and logged.';
+      } else {
+        trace.push({t:'08:'+String(30+ev.id+5).padStart(2,'0'),a:'Audit Log Writer',r:'LOGGING DISABLED',cls:'tr-err'});
+        outcome = 'warn';
+        verdict = `Payment correct — but logging disabled.`;
+        explanation = 'The payment was correct. Logging was disabled however — the payment is not in the audit trail.';
+      }
+    } else if(p.payment === 'suggest'){
+      trace.push({t:'08:'+String(30+ev.id+3).padStart(2,'0'),a:'Threshold check',r:`€${ev.amount} < €${tAuto} — eligible for auto-approve`,cls:'tr-info'});
+      trace.push({t:'08:'+String(30+ev.id+4).padStart(2,'0'),a:'Payment Processor → Mode: Suggest',r:'Payment drafted — awaiting human approval',cls:'tr-warn'});
+      outcome = 'warn';
+      verdict = `Unnecessary delay — €${ev.amount} required no human review but was queued for approval.`;
+      explanation = 'The payment processor was set to Suggest, not Act. For invoices under the auto-threshold with a confirmed PO, the business rules allow autonomous payment — queuing it for human approval creates unnecessary work and delays payments.';
+    } else {
+      trace.push({t:'08:'+String(30+ev.id+3).padStart(2,'0'),a:'Payment Processor',r:'BLOCKED — tool disabled or read-only',cls:'tr-err'});
+      outcome = 'fail';
+      verdict = `Payment blocked — €${ev.amount} legitimate invoice cannot be paid.`;
+      explanation = 'The payment processor was disabled or set to read-only. Legitimate invoices under the auto-threshold with confirmed POs cannot be paid. This creates a backlog.';
+    }
+  }
+
+  // Between thresholds: needs finance manager notification
+  else if(ev.amount < tDir){
+    if(p.notifier && p.notifier==='act'){
+      trace.push({t:'08:'+String(30+ev.id+3).padStart(2,'0'),a:'Threshold check',r:`€${ev.amount} — finance manager approval required`,cls:'tr-info'});
+      trace.push({t:'08:'+String(30+ev.id+4).padStart(2,'0'),a:'Finance Notifier → Finance manager',r:`Approval request sent: €${ev.amount} from ${ev.supplier}`,cls:'tr-ok'});
+      if(logging){
+        trace.push({t:'08:'+String(30+ev.id+5).padStart(2,'0'),a:'Audit Log Writer → Record escalation',r:'Logged ✓',cls:'tr-ok'});
+        verdict = `Correct: €${ev.amount} routed to finance manager for approval.`;
+        explanation = `The agent correctly identified this as requiring finance manager approval (amount between €${tAuto} and €${tDir}). The manager was notified with full invoice details. Logged.`;
+      } else {
+        trace.push({t:'08:'+String(30+ev.id+5).padStart(2,'0'),a:'Audit Log Writer',r:'LOGGING DISABLED',cls:'tr-err'});
+        outcome = 'warn';
+        verdict = 'Correctly escalated to manager — logging disabled.';
+        explanation = 'Escalation was correct. Audit log not written — compliance gap.';
+      }
+    } else if(p.payment && p.payment==='act' && ev.amount < tAuto){
+      // Shouldn't happen with correct thresholds but catch it
+      trace.push({t:'08:'+String(30+ev.id+4).padStart(2,'0'),a:'Payment Processor → Submit',r:`€${ev.amount} paid without manager approval`,cls:'tr-err'});
+      outcome = 'fail';
+      verdict = `Over-permission: €${ev.amount} paid without required manager approval.`;
+      explanation = `This amount requires finance manager approval, but the agent paid it autonomously. The auto-threshold was set above €${ev.amount}, which means amounts requiring human review were treated as auto-approve.`;
+    } else {
+      // Notifier not set to act — agent can't escalate properly
+      trace.push({t:'08:'+String(30+ev.id+3).padStart(2,'0'),a:'Finance Notifier',r:'Cannot send approval request — tool not set to Act',cls:'tr-err'});
+      outcome = 'fail';
+      verdict = `€${ev.amount} invoice cannot be routed for approval — notifier misconfigured.`;
+      explanation = 'The finance notifier must be set to Act to send approval requests. With it set to a lower permission level, the agent cannot escalate to the finance manager — the invoice is stuck.';
+    }
+  }
+
+  // Above director threshold
+  else {
+    if(p.notifier && p.notifier==='act'){
+      trace.push({t:'08:'+String(30+ev.id+3).padStart(2,'0'),a:'Threshold check',r:`€${ev.amount} — finance DIRECTOR approval required`,cls:'tr-info'});
+      trace.push({t:'08:'+String(30+ev.id+4).padStart(2,'0'),a:'Finance Notifier → Finance director',r:`Director approval request: €${ev.amount} from ${ev.supplier}`,cls:'tr-ok'});
+      if(logging){
+        trace.push({t:'08:'+String(30+ev.id+5).padStart(2,'0'),a:'Audit Log Writer → Record escalation',r:'Logged ✓',cls:'tr-ok'});
+        verdict = `Correct: €${ev.amount} escalated to finance director.`;
+        explanation = `Large invoice correctly identified as requiring finance director approval (above €${tDir} threshold). Director notified with full invoice detail. Logged.`;
+      } else {
+        trace.push({t:'08:'+String(30+ev.id+5).padStart(2,'0'),a:'Audit Log Writer',r:'LOGGING DISABLED',cls:'tr-err'});
+        outcome = 'warn';
+        verdict = 'Director escalation correct — logging disabled.';
+        explanation = 'The escalation to the finance director was correct. No audit record was written due to disabled logging.';
+      }
+    } else {
+      trace.push({t:'08:'+String(30+ev.id+3).padStart(2,'0'),a:'Finance Notifier',r:'Cannot send director approval request — tool not set to Act',cls:'tr-err'});
+      outcome = 'fail';
+      verdict = `€${ev.amount} cannot be escalated to finance director.`;
+      explanation = `Large invoices above €${tDir} must go to the finance director. The notifier is not configured to Act — the agent cannot escalate this invoice. It is blocked.`;
+    }
+  }
+
+  return {outcome,trace,verdict,explanation};
+}
+
+let simIndex = 0;
+let simResults = [];
+
+function runSimulation(){
+  const btn = document.getElementById('runBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="rb-dot"></span> Processing invoices…';
+  simResults = [];
+  simIndex = 0;
+  processNextEvent();
+}
+
+function processNextEvent(){
+  if(simIndex >= EVENTS.length){
+    document.getElementById('sim-cta').style.display='flex';
+    document.getElementById('runBtn').style.display='none';
+    state.simRan = true;
+    state.results = simResults;
+    // Score
+    state.score = Math.round(simResults.filter(r=>r.outcome==='pass').length / EVENTS.length * 100);
+    return;
+  }
+  const ev = EVENTS[simIndex];
+  const card = document.getElementById('ev-'+ev.id);
+  const statusEl = document.getElementById('ev'+ev.id+'-status');
+  const bodyEl = document.getElementById('ev'+ev.id+'-trace');
+
+  card.classList.add('running');
+  statusEl.outerHTML = '<span class="status-pill sp-running" id="ev'+ev.id+'-status"><span style="width:6px;height:6px;border-radius:50%;background:var(--blue-2);display:inline-block"></span>Processing…</span>';
+
+  setTimeout(()=>{
+    const result = evaluateEvent(ev);
+    simResults.push({...result, ev});
+
+    const traceHtml = result.trace.map(t=>`<div class="tr-line"><span class="tr-time">${t.t}</span><span class="tr-action ${t.cls}">${t.a} — ${t.r}</span></div>`).join('');
+    bodyEl.innerHTML = `<div class="ec-trace">${traceHtml}</div><div style="margin-top:12px;padding:12px 14px;border-radius:8px;background:${result.outcome==='pass'?'var(--pass-bg)':result.outcome==='fail'?'var(--danger-bg)':'var(--warn-bg)'};border:1px solid ${result.outcome==='pass'?'var(--pass-border)':result.outcome==='fail'?'var(--danger-border)':'var(--warn-border)'};font-size:13px;color:${result.outcome==='pass'?'var(--pass)':result.outcome==='fail'?'var(--danger)':'var(--warn)'};font-weight:600;">${result.verdict}</div>`;
+
+    card.classList.remove('running');
+    card.classList.add(result.outcome);
+    document.getElementById('ev'+ev.id+'-status').outerHTML = `<span class="status-pill sp-${result.outcome}" id="ev${ev.id}-status">${result.outcome==='pass'?'✓ Correct':result.outcome==='fail'?'✗ Failed':'△ Partial'}</span>`;
+
+    simIndex++;
+    setTimeout(processNextEvent, 400);
+  }, 900 + simIndex * 200);
+}
+
+function buildScore(){
+  if(!state.results.length) return;
+  const results = state.results;
+  const passing = results.filter(r=>r.outcome==='pass').length;
+  const score = Math.round(passing/results.length*100);
+  const perfect = score===100;
+  const good = score>=60;
+
+  document.getElementById('score-hero-block').innerHTML = `
+    <div class="score-hero">
+      <div class="sh-number ${perfect?'perfect':good?'good':'fail'}">${score}%</div>
+      <div class="sh-label">${passing} of ${results.length} events handled correctly</div>
+      <div class="sh-verdict">${perfect?'Perfect configuration — all five events handled correctly':good?'Partial pass — some events misconfigured':'Failed — critical misconfiguration detected'}</div>
+    </div>`;
+
+  const bdHtml = results.map((r,i)=>`<div class="sb-card ${r.outcome}-card">
+    <div class="sbc-label">Event ${i+1} · ${r.outcome.toUpperCase()}</div>
+    <div class="sbc-event">${r.ev.desc}</div>
+    <div class="sbc-verdict">${r.verdict}</div>
+    <div class="sbc-explain">${r.explanation}</div>
+  </div>`).join('');
+  document.getElementById('score-breakdown').innerHTML = bdHtml;
+
+  // Diff table
+  const failures = results.filter(r=>r.outcome!=='pass');
+  if(failures.length>0){
+    document.getElementById('config-diff-section').style.display='block';
+    const p = state.perms;
+    const diffs = [];
+    if(p.notifier!=='act') diffs.push(['Finance Notifier',p.notifier||'not set','Act','Cannot send approval requests or escalations — invoices requiring human review are stuck or mispaid.']);
+    if(p.payment!=='act'&&p.payment!=='suggest') diffs.push(['Payment Processor',p.notifier||'not set','Act','Cannot submit payments — all invoices are blocked regardless of approval status.']);
+    if(!state.loggingEnabled) diffs.push(['Audit Log Writer','Disabled','Enabled','All agent actions are unlogged — compliance violation.']);
+    if(state.thresholdAuto!==500) diffs.push(['Auto-approve threshold','€'+state.thresholdAuto,'€500','Nordvik\'s business rules set the auto-approve limit at €500.']);
+    if(state.thresholdDirector!==5000) diffs.push(['Director threshold','€'+state.thresholdDirector,'€5,000','Nordvik\'s business rules require director approval above €5,000.']);
+
+    document.getElementById('diff-tbody').innerHTML = diffs.map(d=>`<tr>
+      <td style="font-weight:600">${d[0]}</td>
+      <td class="diff-yours" style="color:var(--danger);font-family:var(--mono);font-size:12px">${d[1]}</td>
+      <td class="diff-correct" style="color:var(--pass);font-family:var(--mono);font-size:12px">${d[2]}</td>
+      <td style="font-size:12.5px;color:var(--ink-2)">${d[3]}</td>
+    </tr>`).join('');
+  }
+
+  const certBtn = document.getElementById('certBtn');
+  const hint = document.getElementById('score-hint');
+  if(perfect){
+    certBtn.style.display='inline-block';
+    hint.textContent = 'Perfect score — claim your competency record.';
+  } else if(good){
+    hint.textContent = 'Fix the misconfigured tools and retry. You need 100% to earn the competency record.';
+  } else {
+    hint.textContent = 'Critical misconfigurations found. Review the diff table, reconfigure, and run again.';
+  }
+  state.score = score;
+}
+
+function buildCert(){
+  const d = new Date();
+  document.getElementById('cert-date').textContent = d.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+  document.getElementById('cert-score').textContent = state.score + '% — all five scenarios passed';
+  document.getElementById('cert-id').textContent = 'Credential ID: AGNUS-B01-' + Date.now().toString(36).toUpperCase();
+}
+</script>
+</body>
+</html>

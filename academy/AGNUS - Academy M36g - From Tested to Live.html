@@ -1,0 +1,223 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Academy — M36g From Tested to Live</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#F8F6F2;--panel:#FFFFFF;--panel-2:#F2F0EB;--line:#E5E2D9;--line-2:#D1CEC4;--ink:#18202A;--ink-2:#4A5261;--ink-3:#8E96A2;--navy:#17263C;--navy-2:#0F1A28;--gold:#9A7633;--gold-light:#B59048;--pass:#1A7E4A;--pass-dim:rgba(26,126,74,.1);--danger:#B4432E;--danger-dim:rgba(180,67,46,.08);--warn:#8C5E00;--warn-dim:rgba(140,94,0,.1);}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:Manrope,sans-serif;-webkit-font-smoothing:antialiased}
+.top-rail{background:var(--navy-2);color:#fff;display:flex;align-items:center;height:48px;padding:0 20px;gap:18px}
+.tr-brand{font-weight:800;font-size:13.5px}
+.tr-crumb{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.tr-title{font-size:13px;font-weight:700}
+.tr-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.prog-dots{display:flex;gap:5px}
+.prog-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.2)}
+.prog-dot.done{background:var(--gold-light)}
+.prog-dot.active{background:#fff}
+.tr-btn{font-family:Manrope,sans-serif;font-size:12px;font-weight:700;padding:7px 14px;border-radius:7px;border:1px solid rgba(255,255,255,.18);color:#fff;background:rgba(255,255,255,.07);cursor:pointer}
+.btn{font-family:Manrope,sans-serif;font-weight:700;font-size:13px;padding:11px 20px;border-radius:9px;border:none;background:var(--gold);color:#fff;cursor:pointer}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:16px}
+.card h4{font-size:13.5px;font-weight:700;margin-bottom:9px}
+.card p{font-size:13.5px;line-height:1.65;color:var(--ink-2)}
+.hero-txt h1{font-weight:800;font-size:24px;letter-spacing:-.026em;line-height:1.2;margin-bottom:11px}
+.hero-txt p{font-size:14.5px;line-height:1.65;color:var(--ink-2);margin-bottom:18px}
+.journey{display:flex;align-items:center;gap:4px;flex-wrap:wrap;margin:10px 0}
+.j-step{border:1.5px solid var(--line-2);border-radius:9px;padding:12px 14px;font-size:12px;font-weight:700;text-align:center;min-width:90px}
+.j-arrow{color:var(--ink-3);font-size:15px}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
+.compare-card{border:1.5px solid var(--line-2);border-radius:10px;padding:16px}
+.compare-card .cc-label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.compare-card ul{padding-left:18px;font-size:13px;color:var(--ink-2);line-height:1.7}
+.req-row{display:flex;gap:8px;align-items:flex-start;font-size:13px;padding:8px 0;border-bottom:1px solid var(--panel-2)}
+.req-row:last-child{border-bottom:none}
+.backup-diagram{display:flex;align-items:center;justify-content:center;gap:0;margin:16px 0;flex-wrap:wrap}
+.bd-node{display:flex;flex-direction:column;align-items:center;gap:8px;width:130px}
+.bd-icon{width:56px;height:56px;border-radius:14px;display:grid;place-items:center;color:#fff}
+.bd-icon.machine{background:var(--navy)}
+.bd-icon.github{background:#1a1a1a}
+.bd-icon.shield{background:var(--pass)}
+.bd-label{font-size:12px;font-weight:700;text-align:center}
+.bd-sub{font-size:10.5px;color:var(--ink-3);text-align:center}
+.bd-connector{flex:1;min-width:30px;display:flex;align-items:center;justify-content:center;color:var(--ink-3);font-size:18px;padding-bottom:34px}
+.milestone-track{display:flex;align-items:center;gap:0;margin:16px 0;flex-wrap:wrap}
+.mt-dot{width:34px;height:34px;border-radius:50%;background:var(--pass);color:#fff;display:grid;place-items:center;font-size:14px;font-weight:800;flex:none}
+.mt-dot.broken{background:var(--danger)}
+.mt-line{flex:1;min-width:20px;height:2px;background:var(--line-2)}
+.mt-save{font-family:'IBM Plex Mono',monospace;font-size:8.5px;color:var(--pass);position:relative;top:22px;white-space:nowrap;margin-left:-14px}
+.revert-arrow{display:flex;align-items:center;gap:6px;margin-top:28px;font-size:11.5px;color:var(--gold);font-weight:700}
+</style>
+</head>
+<body>
+
+<header class="top-rail">
+  <span class="tr-brand">AGNUS Academy</span>
+  <span class="tr-crumb">Level 6 · Build</span>
+  <span class="tr-title">M36g — From Tested to Live</span>
+  <div class="tr-right">
+    <div class="prog-dots" id="progDots"></div>
+    <button class="tr-btn" onclick="location.href='AGNUS - Academy App.html'">← Dashboard</button>
+  </div>
+</header>
+
+<div style="max-width:760px;margin:0 auto;padding:36px 24px 100px">
+
+  <div class="step-banner" style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:22px">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)">Learn</span>
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-3)" id="pageLabel">Page 1 of 4</span>
+  </div>
+
+  <div class="lp" data-p="0">
+    <div class="hero-txt">
+      <h1>Tested locally is not the same as live in the real world.</h1>
+      <p>Your app has passed every scenario on your machine. That's necessary, but it isn't the finish line — a real user needs a real URL, and going live changes what's actually at risk.</p>
+    </div>
+    <div class="card">
+      <h4>Why this matters</h4>
+      <p>The same verification-first principle applies one more time: an agent saying "it's deployed" is not evidence until you've confirmed the live version actually behaves the way your tested version did. Deployment is not automatic proof that everything still works.</p>
+    </div>
+  </div>
+
+  <div class="lp" data-p="1" style="display:none">
+    <div class="hero-txt">
+      <h1>What changes between local and production.</h1>
+      <p>Your machine is a safe, private environment. A live URL is public — and that changes what has to be handled correctly.</p>
+    </div>
+    <div class="compare-grid">
+      <div class="compare-card">
+        <div class="cc-label">Local (your machine)</div>
+        <ul>
+          <li>Only you can access it</li>
+          <li>Mistakes cost nothing but your own time</li>
+          <li>Secrets can sit in plain files</li>
+        </ul>
+      </div>
+      <div class="compare-card">
+        <div class="cc-label">Production (live)</div>
+        <ul>
+          <li>Anyone with the URL can access it</li>
+          <li>A mistake is a real user's real problem</li>
+          <li>Secrets must be stored as protected environment variables, never committed to the code</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <h4>Ask the agent to name what needs to change</h4>
+      <p>Before deploying, ask directly: <em>"What in this app needs to change to go from running on my machine to running safely in production?"</em> A good answer names environment variables, error handling for real users, and removing anything meant only for local testing.</p>
+    </div>
+  </div>
+
+  <div class="lp" data-p="2" style="display:none">
+    <div class="hero-txt">
+      <h1>The deploy journey.</h1>
+      <p>Deploying isn't one action — it's a short sequence, and skipping a step is how "it works on my machine" becomes "it's broken for everyone."</p>
+    </div>
+    <div class="card">
+      <div class="journey">
+        <div class="j-step">Choose a host</div><span class="j-arrow">→</span>
+        <div class="j-step">Set environment variables</div><span class="j-arrow">→</span>
+        <div class="j-step">Deploy</div><span class="j-arrow">→</span>
+        <div class="j-step">Re-run the scenario list</div><span class="j-arrow">→</span>
+        <div class="j-step">Confirm live</div>
+      </div>
+    </div>
+    <div class="card">
+      <h4>Re-run the scenario list — on the live URL, not just locally</h4>
+      <p>The scenario document you built in the last module doesn't retire once deployment happens. Run through it again against the real, public URL. A test that passed locally can still fail live — a missing environment variable or a misconfigured host setting can silently break something you already verified.</p>
+    </div>
+  </div>
+
+  <div class="lp" data-p="3" style="display:none">
+    <div class="hero-txt">
+      <h1>If something breaks live, you already have the tools.</h1>
+      <p>This is where the intervention controls from earlier in this Academy apply directly to your own project.</p>
+    </div>
+    <div class="card">
+      <h4>Backup discipline — both local and GitHub</h4>
+      <div class="backup-diagram">
+        <div class="bd-node">
+          <div class="bd-icon machine"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+          <div class="bd-label">Your machine</div>
+          <div class="bd-sub">Local backup</div>
+        </div>
+        <div class="bd-connector">→</div>
+        <div class="bd-node">
+          <div class="bd-icon github"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02.8-.22 1.65-.33 2.5-.33.85 0 1.7.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85 0 1.34-.01 2.42-.01 2.75 0 .27.18.58.69.48A10 10 0 0022 12c0-5.52-4.48-10-10-10z"/></svg></div>
+          <div class="bd-label">GitHub</div>
+          <div class="bd-sub">Remote backup</div>
+        </div>
+        <div class="bd-connector">→</div>
+        <div class="bd-node">
+          <div class="bd-icon shield"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <div class="bd-label">Two safe copies</div>
+          <div class="bd-sub">Never rely on one</div>
+        </div>
+      </div>
+      <div style="margin:22px 0 4px">
+        <div class="scaffold-label" style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:14px">Update both after every working milestone</div>
+        <div class="milestone-track">
+          <div class="mt-dot">1</div><div class="mt-line"></div>
+          <div class="mt-dot">2</div><div class="mt-line"></div>
+          <div class="mt-dot">3</div><div class="mt-line"></div>
+          <div class="mt-dot broken">✕</div><div class="mt-line"></div>
+          <div class="mt-dot" style="background:var(--panel-2);color:var(--ink-3);border:2px dashed var(--line-2)">4</div>
+        </div>
+        <div class="revert-arrow">↩ If milestone 4 breaks everything, revert straight back to milestone 3 — not back to zero.</div>
+      </div>
+      <div style="display:grid;gap:10px;margin-top:18px">
+        <div class="req-row"><div class="cb"></div><span>Keep a backup on your own machine, and also push it to GitHub — two independent copies, not one.</span></div>
+        <div class="req-row"><div class="cb"></div><span>After every milestone that works, update both backups — don't wait until the whole project is finished.</span></div>
+        <div class="req-row"><div class="cb"></div><span>If the app breaks or something fatal happens, you can revert to the last working milestone instead of losing everything.</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <h4>Rollback discipline</h4>
+      <div style="display:grid;gap:10px">
+        <div class="req-row"><div class="cb"></div><span>Know how to roll back to the last working version before you deploy — not after something breaks.</span></div>
+        <div class="req-row"><div class="cb"></div><span>If a scenario fails on the live URL, don't leave the broken version up while you investigate — roll back first, then fix.</span></div>
+        <div class="req-row"><div class="cb"></div><span>Log the incident in your project's Logs document: what broke, what caused it, how it was fixed — the same discipline from The Protocol.</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <h4>You're ready</h4>
+      <p>You now know why local success isn't the finish line, what changes in production, the deploy sequence, and how to respond with rollback discipline if something breaks live. This completes the Level 6 build arc: architecture, build, test, and now deployment.</p>
+    </div>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;margin-top:26px">
+    <button class="btn" id="backBtn" onclick="nav(-1)" style="background:var(--panel-2);color:var(--ink);border:1.5px solid var(--line-2);visibility:hidden">← Back</button>
+    <button class="btn" id="nextBtn" onclick="nav(1)" style="background:var(--navy)">Next →</button>
+  </div>
+</div>
+
+<script>
+const PAGES = 4;
+let idx = 0;
+function nav(dir){
+  idx = Math.max(0, Math.min(PAGES-1, idx+dir));
+  document.querySelectorAll('.lp').forEach(p => p.style.display = Number(p.dataset.p)===idx ? 'block' : 'none');
+  document.getElementById('pageLabel').textContent = 'Page ' + (idx+1) + ' of ' + PAGES;
+  document.getElementById('backBtn').style.visibility = idx===0 ? 'hidden' : 'visible';
+  const nb = document.getElementById('nextBtn');
+  nb.textContent = idx===PAGES-1 ? 'Module complete → Dashboard' : 'Next →';
+  nb.onclick = idx===PAGES-1 ? function(){ location.href=`AGNUS - Academy M37 - Build Your First Guardrail.html`; } : function(){ nav(1); };
+  document.getElementById('progDots').innerHTML = Array.from({length:PAGES}).map((_,i)=>
+    '<div class="prog-dot '+(i<idx?'done':i===idx?'active':'')+'"></div>').join('');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+nav(0);
+</script>
+</body>
+</html>

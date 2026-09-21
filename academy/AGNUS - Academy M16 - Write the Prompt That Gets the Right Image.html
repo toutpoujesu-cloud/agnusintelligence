@@ -1,0 +1,167 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Academy — M16 Write the Prompt That Gets the Right Image</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#F8F6F2;--panel:#FFFFFF;--panel-2:#F2F0EB;--line:#E5E2D9;--line-2:#D1CEC4;--ink:#18202A;--ink-2:#4A5261;--ink-3:#8E96A2;--navy:#17263C;--navy-2:#0F1A28;--gold:#9A7633;--gold-light:#B59048;--pass:#1A7E4A;--pass-dim:rgba(26,126,74,.1);--danger:#B4432E;--danger-dim:rgba(180,67,46,.08);--code-bg:#0D1420;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:Manrope,sans-serif;-webkit-font-smoothing:antialiased}
+.top-rail{background:var(--navy-2);color:#fff;display:flex;align-items:center;height:48px;padding:0 20px;gap:18px}
+.tr-brand{font-weight:800;font-size:13.5px}
+.tr-crumb{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.tr-title{font-size:13px;font-weight:700}
+.tr-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.prog-dots{display:flex;gap:5px}
+.prog-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.2)}
+.prog-dot.done{background:var(--gold-light)}
+.prog-dot.active{background:#fff}
+.tr-btn{font-family:Manrope,sans-serif;font-size:12px;font-weight:700;padding:7px 14px;border-radius:7px;border:1px solid rgba(255,255,255,.18);color:#fff;background:rgba(255,255,255,.07);cursor:pointer}
+.shell{display:grid;grid-template-columns:1fr 1.1fr;height:calc(100vh - 48px)}
+.left{padding:36px 40px;overflow-y:auto;border-right:1px solid var(--line)}
+.right{background:var(--code-bg);display:flex;flex-direction:column;overflow:hidden}
+.step-banner{margin-bottom:22px}
+.sb-step{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.hero-txt h1{font-weight:800;font-size:23px;letter-spacing:-.024em;line-height:1.2;margin-bottom:10px}
+.hero-txt p{font-size:14.5px;line-height:1.65;color:var(--ink-2);margin-bottom:18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:16px}
+.card h4{font-size:13px;font-weight:700;margin-bottom:8px}
+.card p{font-size:13.5px;line-height:1.6;color:var(--ink-2)}
+.req-row{display:flex;gap:8px;align-items:baseline;font-size:13px;padding:6px 0;border-bottom:1px solid var(--panel-2)}
+.req-row:last-child{border-bottom:none}
+.req-k{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-3);width:90px;flex:none}
+.imtool-head{padding:12px 18px;border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:10px}
+.imtool-dot{width:8px;height:8px;border-radius:50%}
+.imtool-dot.r{background:#F1998C}.imtool-dot.y{background:#E8C888}.imtool-dot.g{background:#5FD9A0}
+.imtool-title{font-family:'IBM Plex Mono',monospace;font-size:11px;color:rgba(255,255,255,.5);margin-left:6px}
+.imtool-body{flex:1;padding:20px;overflow-y:auto;display:flex;flex-direction:column}
+.prompt-bar{display:flex;gap:10px;margin-bottom:18px}
+.prompt-bar input{flex:1;background:#131B29;border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:13px 16px;color:#E8ECF1;font-family:Manrope,sans-serif;font-size:13.5px}
+.prompt-bar input::placeholder{color:rgba(232,236,241,.35)}
+.imtool-btn{font-family:Manrope,sans-serif;font-weight:700;font-size:13px;padding:12px 20px;border-radius:10px;border:none;background:var(--gold);color:#fff;cursor:pointer;white-space:nowrap}
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.result-tile{aspect-ratio:1;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.08)}
+.result-tile .rt-icon{opacity:.9}
+.result-tile .rt-label{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.85);text-align:center;padding:0 10px}
+.sim-label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:10px}
+.analysis-box{margin-top:auto;padding:14px 16px;border-radius:10px;font-size:12.5px;line-height:1.6;display:none}
+.analysis-box.match{display:block;background:rgba(26,126,74,.14);color:#DFF5E8;border:1px solid rgba(26,126,74,.35)}
+.analysis-box.mismatch{display:block;background:rgba(180,67,46,.14);color:#F8DAD4;border:1px solid rgba(180,67,46,.35)}
+.next-cta{display:none;margin-top:14px;text-align:right}
+.btn{font-family:Manrope,sans-serif;font-weight:700;font-size:13px;padding:11px 20px;border-radius:9px;border:none;background:var(--gold);color:#fff;cursor:pointer}
+</style>
+</head>
+<body>
+
+<header class="top-rail">
+  <span class="tr-brand">AGNUS Academy</span>
+  <span class="tr-crumb">Level 3 · Direct</span>
+  <span class="tr-title">M16 — Write the Prompt That Gets the Right Image</span>
+  <div class="tr-right">
+    <div class="prog-dots"><div class="prog-dot done"></div><div class="prog-dot active"></div><div class="prog-dot"></div></div>
+    <button class="tr-btn" onclick="location.href='AGNUS - Academy App.html'">← Dashboard</button>
+  </div>
+</header>
+
+<div class="shell">
+  <div class="left">
+    <div class="step-banner"><span class="sb-step">Step 2 of 3 — Direct</span></div>
+    <div class="hero-txt">
+      <h1>Direct the image tool like you'd direct a photographer.</h1>
+      <p>An image generator can't read your brand deck. Every visual requirement — palette, mood, composition, subject — has to be in the prompt itself, or the tool will fill the gap with its own guess.</p>
+    </div>
+    <div class="card">
+      <h4>Task</h4>
+      <p>Write the prompt for a hero banner image for a coastal outdoor apparel brand's autumn campaign.</p>
+    </div>
+    <div class="card">
+      <h4>What a strong prompt names explicitly</h4>
+      <div class="req-row"><span class="req-k">Subject</span><span>What's actually in frame — not just a mood word.</span></div>
+      <div class="req-row"><span class="req-k">Palette</span><span>Specific colors or tones, not "nice colors."</span></div>
+      <div class="req-row"><span class="req-k">Setting</span><span>Where the scene takes place — grounds the whole image.</span></div>
+      <div class="req-row"><span class="req-k">Style</span><span>Photographic vs. illustrated, lighting, mood — named, not implied.</span></div>
+    </div>
+    <div class="card">
+      <h4>Why this matters</h4>
+      <p>This is a live simulation, not a real generator — but the lesson transfers directly: whichever tool you actually use (Midjourney, DALL·E, or others), it fills any unstated requirement with its own default. Naming the requirement is what removes the guesswork.</p>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="imtool-head"><span class="imtool-dot r"></span><span class="imtool-dot y"></span><span class="imtool-dot g"></span><span class="imtool-title">image-tool — simulation</span></div>
+    <div class="imtool-body">
+      <div class="prompt-bar">
+        <input id="imgPrompt" placeholder="/imagine a hero banner for..." />
+        <button class="imtool-btn" onclick="generateImage()">Generate →</button>
+      </div>
+      <div id="genArea">
+        <div style="text-align:center;color:rgba(255,255,255,.3);font-size:13px;margin-top:40px">Your generated results will appear here.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function iconSVG(kind){
+  const icons = {
+    generic: '<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>',
+    coastal: '<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 18c2-2 4-2 6 0s4 2 6 0 4-2 6 0M3 9l9-6 9 6"/><path d="M5 9v9M19 9v9"/></svg>',
+    studio: '<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="2"/><circle cx="12" cy="12" r="3"/></svg>'
+  };
+  return icons[kind] || icons.generic;
+}
+function tile(bg, label, kind){
+  return '<div class="result-tile" style="background:' + bg + '"><div class="rt-icon" style="color:rgba(255,255,255,.8)">' + iconSVG(kind) + '</div><div class="rt-label">' + label + '</div></div>';
+}
+
+function generateImage(){
+  const p = document.getElementById('imgPrompt').value.trim().toLowerCase();
+  if (!p) return;
+  const hasSetting = p.includes('coast') || p.includes('beach') || p.includes('cliff') || p.includes('ocean') || p.includes('shore');
+  const hasPalette = p.includes('color') || p.includes('palette') || p.includes('tone') || /#[0-9a-f]{3,6}/.test(p) || p.includes('navy') || p.includes('rust') || p.includes('sand') || p.includes('cream');
+  const hasSubject = p.includes('model') || p.includes('person') || p.includes('jacket') || p.includes('apparel') || p.includes('product') || p.includes('figure');
+  const hasStyle = p.includes('photograph') || p.includes('lighting') || p.includes('cinematic') || p.includes('golden hour') || p.includes('studio') || p.includes('illustrat');
+  const score = [hasSetting, hasPalette, hasSubject, hasStyle].filter(Boolean).length;
+
+  const area = document.getElementById('genArea');
+  let grid, analysis, analysisClass, showNext;
+
+  if (score >= 3) {
+    grid = tile('linear-gradient(135deg,#8A9B8E,#D9C9A8)', 'Coastal scene · warm autumn palette · figure in frame', 'coastal')
+         + tile('linear-gradient(135deg,#6E7F73,#C9B999)', 'Coastal scene · warm autumn palette · figure in frame', 'coastal');
+    analysis = 'Strong prompt. You named the setting, palette, subject, and style — the results are consistent with each other and with the brief, because there was little left for the tool to guess.';
+    analysisClass = 'match';
+    showNext = true;
+  } else if (score === 0) {
+    grid = tile('#2A3341', 'Generic composition — no clear direction', 'generic')
+         + tile('#3A4250', 'Different generic composition', 'generic');
+    analysis = 'This prompt gave the tool almost nothing to work with. Notice the two results don\'t even agree with each other — with no requirements stated, each generation makes independent, unrelated guesses.';
+    analysisClass = 'mismatch';
+    showNext = false;
+  } else {
+    grid = tile('#4A5568', 'Studio-style, ambiguous setting', 'studio')
+         + tile('#5B4A3A', 'Outdoor-style, different palette', 'coastal');
+    analysis = 'Partial credit — you named ' + score + ' of the 4 requirements. Notice the two results disagree on what\'s missing: without a stated setting and palette, the tool can\'t stay consistent across attempts. Add the missing specifics from the card on the left.';
+    analysisClass = 'mismatch';
+    showNext = false;
+  }
+
+  area.innerHTML = '<div class="sim-label">Simulated results — not a real image generator</div>'
+    + '<div class="result-grid">' + grid + '</div>'
+    + '<div class="analysis-box ' + analysisClass + '">' + analysis + '</div>'
+    + (showNext ? '<div class="next-cta" style="display:block"><button class="btn" onclick="alert(\'Module complete → Dashboard\')">Module complete → Dashboard</button></div>' : '');
+}
+</script>
+</body>
+</html>

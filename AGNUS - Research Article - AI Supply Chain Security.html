@@ -1,0 +1,212 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Supply Chain Attacks on AI Systems: How Third-Party Models and Tools Become Attack Vectors — AGNUS Research</title>
+<meta name="description" content="AI systems depend on third-party models, datasets, APIs, and tools. Each dependency is a potential supply chain attack vector. This article examines the threat landscape, real-world attack patterns, and the governance controls that reduce exposure." />
+<link rel="canonical" href="https://agnus.example/research/ai-security/supply-chain-attacks/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Supply Chain Attacks on AI Systems: How Third-Party Models and Tools Become Attack Vectors" />
+<meta property="article:published_time" content="2026-09-11" />
+<meta property="article:author" content="Jean-Daniel Alexis" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>
+a,a:visited{color:inherit}
+.prose h3{font-family:var(--font-sans);font-weight:700;font-size:19px;letter-spacing:-.018em;margin:32px 0 14px}
+.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
+.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
+.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s}
+.rsub a:hover{color:var(--ink);background:var(--line-soft,rgba(0,0,0,.04))}
+.rsub a.on{color:var(--gold-deep);font-weight:600}
+.pillar-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:var(--gold-pale,#FEF9ED);color:var(--gold-deep,#8B6914);border:1px solid var(--gold-line,#E8D9A0);border-radius:4px;padding:3px 8px;margin-bottom:16px}
+.vec-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0}
+@media(max-width:700px){.vec-grid{grid-template-columns:1fr}}
+.vec-card{background:var(--paper-warm,#F7F5F0);border:1px solid var(--line);border-radius:8px;padding:18px 20px}
+.vec-card .vc-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:6px}
+.vec-card .vc-title{font-family:var(--font-sans);font-weight:800;font-size:15px;color:var(--ink);margin-bottom:6px}
+.vec-card .vc-body{font-size:13px;color:var(--ink-mute);line-height:1.6}
+.ctrl-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:13px}
+.ctrl-table th{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);font-weight:600;text-align:left;padding:10px 14px;border-bottom:2px solid var(--line);background:var(--paper-warm,#F7F5F0)}
+.ctrl-table td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+.ctrl-table tr:last-child td{border-bottom:none}
+</style>
+</head>
+<body>
+<div class="art-progress"><i id="progBar"></i></div>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+    </div>
+  </div>
+</nav>
+<div class="rsub">
+  <div class="rsub-inner">
+    <a href="#threat">Threat landscape</a>
+    <a href="#vectors">Attack vectors</a>
+    <a href="#controls">Controls</a>
+    <a href="#regulation">Regulation</a>
+    <a href="#sources">Sources</a>
+  </div>
+</div>
+<main class="art-layout">
+  <article class="art-main">
+    <header class="art-header">
+      <span class="pillar-tag">AI Security</span>
+      <h1 class="art-h1">Supply Chain Attacks on AI Systems: How Third-Party Models and Tools Become Attack Vectors</h1>
+      <p class="art-lede">Every AI system depends on components it did not build: foundation models from third-party providers, fine-tuned weights from open repositories, datasets from external sources, APIs from third parties, and tools that call external services. Each dependency is a potential supply chain attack vector. This article maps the threat landscape and the controls that reduce exposure.</p>
+      <div class="art-meta">
+        <span>Jean-Daniel Alexis</span><span class="meta-sep">·</span>
+        <span>11 September 2026</span><span class="meta-sep">·</span>
+        <span>AI Security pillar</span><span class="meta-sep">·</span>
+        <span>AR-000550</span>
+      </div>
+    </header>
+    <div class="prose">
+      <h3 id="threat">The AI supply chain threat landscape</h3>
+      <p>Classical software supply chain attacks target dependencies: malicious code inserted into a library, a package manager poisoned, a build pipeline compromised. AI supply chain attacks follow the same logic but operate across a broader and less well-understood dependency surface.</p>
+      <p>The AI supply chain includes: the foundation model itself (weights, training data, alignment process); fine-tuning datasets and procedures; embedding models; retrieval databases and their contents; tools and APIs the agent calls; plugins and extensions; and the infrastructure that serves the model. Each layer has been successfully attacked in practice.</p>
+      <p>What makes AI supply chain attacks particularly insidious is that the effects may be subtle and delayed. A backdoor in a foundation model may only activate on specific trigger inputs. Poisoned training data may produce systematically biased outputs rather than dramatic failures. A compromised retrieval database may return attacker-controlled content only when certain queries are made. None of these appear in standard functional testing.</p>
+
+      <h3 id="vectors">The four primary attack vectors</h3>
+      <div class="vec-grid">
+        <div class="vec-card">
+          <div class="vc-label">Vector 1</div>
+          <div class="vc-title">Poisoned training data</div>
+          <div class="vc-body">Attacker inserts malicious examples into training data to influence model behaviour. Effects may include backdoors (specific inputs trigger harmful outputs), systematic bias, or capability degradation. Particularly relevant for fine-tuned models using open or third-party datasets.</div>
+        </div>
+        <div class="vec-card">
+          <div class="vc-label">Vector 2</div>
+          <div class="vc-title">Compromised model weights</div>
+          <div class="vc-body">Open-weight models shared via public repositories (Hugging Face, GitHub) may be modified before download. The modification may be invisible to standard evaluation because it only activates on trigger inputs. Weight hashing alone is insufficient — the hash must be verified against a trusted source, not just the repository.</div>
+        </div>
+        <div class="vec-card">
+          <div class="vc-label">Vector 3</div>
+          <div class="vc-title">Malicious tool responses</div>
+          <div class="vc-body">When an agent calls a third-party API or reads from an external data source, the response may contain embedded instructions designed to manipulate the agent's subsequent actions — indirect prompt injection delivered via tool call response. The agent treats the attacker-controlled content as legitimate tool output.</div>
+        </div>
+        <div class="vec-card">
+          <div class="vc-label">Vector 4</div>
+          <div class="vc-title">Retrieval database poisoning</div>
+          <div class="vc-body">In RAG (retrieval-augmented generation) systems, the retrieved content is incorporated into the model's context. An attacker who can write to the retrieval database can insert content that steers the model's outputs when specific queries are made — without modifying the model itself.</div>
+        </div>
+      </div>
+
+      <h3 id="controls">Governance and technical controls</h3>
+      <table class="ctrl-table">
+        <thead><tr><th>Control</th><th>What it addresses</th><th>How to implement</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Model provenance registry</strong></td>
+            <td>Compromised weights, unverified sources</td>
+            <td>Maintain a registry of all foundation models in use, their source, version, download hash, and the trusted source the hash was verified against. Never trust a hash verified only against the repository where the file was downloaded.</td>
+          </tr>
+          <tr>
+            <td><strong>Dataset provenance documentation</strong></td>
+            <td>Poisoned training and fine-tuning data</td>
+            <td>Document the provenance, collection methodology, and known biases of all datasets used for training or fine-tuning. For fine-tuning, prefer closed, verified datasets over open community contributions.</td>
+          </tr>
+          <tr>
+            <td><strong>Tool response sandboxing</strong></td>
+            <td>Malicious tool responses / indirect prompt injection</td>
+            <td>Treat all tool call responses as untrusted external input. The model should not have authority to take actions based solely on instructions embedded in tool responses. A policy layer should evaluate proposed actions before execution, regardless of their source.</td>
+          </tr>
+          <tr>
+            <td><strong>RAG content integrity checks</strong></td>
+            <td>Retrieval database poisoning</td>
+            <td>Apply content integrity validation to retrieved documents. Maintain a known-good hash of retrieval database contents and alert when unverified content is retrieved. For high-risk queries, require human review of retrieved content before it influences the model's output.</td>
+          </tr>
+          <tr>
+            <td><strong>Third-party vendor assessment</strong></td>
+            <td>All external dependencies</td>
+            <td>Assess AI-specific supply chain risks for all third-party providers: model providers, API providers, dataset sources, plugin developers. The EU AI Act's technical documentation requirements (Article 11) extend to information about third-party components used in the system.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="regulation">What regulation says about supply chain security</h3>
+      <p>The EU AI Act addresses supply chain security implicitly through its technical documentation (Article 11) and conformity assessment (Article 43) requirements. Providers of high-risk AI must document the data used to train and test the system, including data governance practices. For models using third-party training data, this documentation requirement applies to the third-party data as well as first-party data.</p>
+      <p>The EU Cyber Resilience Act (CRA), which entered into force in December 2024 and will apply from December 2027, explicitly addresses software supply chain security for connected products. AI components embedded in products within CRA scope must comply with its supply chain requirements — including security updates, vulnerability disclosure, and software bill of materials (SBOM) documentation.</p>
+      <p>NIST's AI RMF Playbook addresses supply chain risk in its GOVERN 1.7 and MAP 5.1 actions, requiring organisations to document and evaluate risks from third-party AI components. The practical requirement is a maintained inventory of all AI supply chain dependencies and a periodic reassessment of their security posture.</p>
+    </div>
+    <section class="art-sources" id="sources">
+      <h2 class="sources-h">Sources and verification</h2>
+      <div class="sources-grid">
+        <div class="source-card">
+          <div class="sc-id">SRC-0068</div>
+          <div class="sc-title">OWASP Top 10 for LLM Applications</div>
+          <div class="sc-org">OWASP Foundation</div>
+          <div class="sc-url"><a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" target="_blank" rel="noopener">owasp.org</a></div>
+          <div class="sc-note">LLM03: Training Data Poisoning and LLM08: Excessive Permissions — the two most applicable OWASP categories for supply chain attacks.</div>
+        </div>
+        <div class="source-card">
+          <div class="sc-id">SRC-0062</div>
+          <div class="sc-title">EU AI Act — Article 11: Technical documentation</div>
+          <div class="sc-org">European Parliament and Council</div>
+          <div class="sc-url"><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689" target="_blank" rel="noopener">eur-lex.europa.eu</a></div>
+        </div>
+        <div class="source-card">
+          <div class="sc-id">SRC-0067</div>
+          <div class="sc-title">NIST AI RMF Playbook — GOVERN 1.7 and MAP 5.1</div>
+          <div class="sc-org">National Institute of Standards and Technology</div>
+          <div class="sc-url"><a href="https://airc.nist.gov/Docs/2" target="_blank" rel="noopener">airc.nist.gov</a></div>
+        </div>
+      </div>
+      <div class="src-registry-note">Article ID: AR-000550 · Sources: SRC-0062, SRC-0067, SRC-0068 · Published: 2026-09-11 · AGNUS Research</div>
+    </section>
+  </article>
+  <aside class="art-aside">
+    <div class="aside-block">
+      <div class="aside-label">Pillar</div>
+      <a href="AGNUS - Research.html" class="aside-pill">AI Security</a>
+    </div>
+    <div class="aside-block">
+      <div class="aside-label">Related articles</div>
+      <ul class="aside-links">
+        <li><a href="AGNUS - Research Article - Prompt Injection.html">Prompt Injection: Attack Taxonomy and Defences</a></li>
+        <li><a href="AGNUS - Research Article - Agent Incident Response.html">AI Agent Incident Response</a></li>
+        <li><a href="AGNUS - Research Article - Documentation.html">Technical Documentation (EU AI Act Article 11)</a></li>
+      </ul>
+    </div>
+    <div class="aside-block">
+      <div class="aside-label">Key regulation</div>
+      <div class="aside-value">EU CRA — Dec 2027</div>
+      <div class="aside-note">The EU Cyber Resilience Act applies from December 2027. AI components in connected products must comply with its supply chain security requirements.</div>
+    </div>
+  </aside>
+</main>
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-copy">© 2026 AGNUS. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="AGNUS - Home.html">Home</a>
+      <a href="AGNUS - Research.html">Research</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+    </div>
+  </div>
+</footer>
+<script src="agnus-research-data.js"></script>
+<script>(function(){var bar=document.getElementById('progBar');if(!bar)return;window.addEventListener('scroll',function(){var h=document.documentElement;bar.style.width=((h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100)+'%';});})();</script>
+</body>
+</html>

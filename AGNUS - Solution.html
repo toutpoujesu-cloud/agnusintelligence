@@ -1,0 +1,399 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Customer Support Agent — AGNUS</title>
+<meta name="description" content="The AGNUS solution page: what the Customer Support Agent solves, how it works, what it costs, what it returns, and where it fits in your AI transformation — one connected decision." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<style>
+/* cache-safe v1.0 tokens (in case a stale agnus.css is served) */
+:root{ --bg:#F8F7F4; --paper:#FCFBF8; --paper-warm:#F3F1EC; --paper-2:#ECE9E1; --char:#1C1B19; --char-2:#272522; --char-3:#2A2825; --ink:#1D1D1F; --ink-soft:#6E6B66; --ink-mute:#908D86; --ink-faint:#B8B4AB; --gold:#B28A42; --gold-deep:#8F6E32; --gold-mid:#C9A96A; --gold-light:#E7D6AE; --gold-soft:#FFF8EA; --gold-grad:linear-gradient(100deg,#8F6E32 0%,#E7D6AE 42%,#B28A42 70%,#E7D6AE 100%); --line:#E7E2D8; --line-soft:#F0ECE3; --line-strong:#DAD4C8; --line-dark:#393530; --success:#2E8B57; --pass:#2E8B57; --warn:#C67A00; --error:#B83C3C; --sapphire:#3E6AE1; --sh-1:0 1px 2px rgba(28,27,25,.05); --sh-2:0 18px 44px -28px rgba(28,27,25,.09); --sh-3:0 40px 80px -44px rgba(28,27,25,.14); --gold-glow:0 0 24px -6px rgba(178,138,66,.45); }
+:root { --ind:#A86D4A; --ind-soft:rgba(168,109,74,0.13);
+  --graphite:#161513; --graphite-2:#201E1B; --graphite-3:#2A2724;
+  --tex:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 var(--pad-x); }
+
+/* breadcrumb */
+.sol-crumbs { display:flex; align-items:center; gap:10px; font-family:var(--font-mono); font-size:11.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-mute); padding: 26px 0 6px; }
+.sol-crumbs a:hover { color: var(--gold-deep); }
+.sol-crumbs .sep { color: var(--ink-faint); }
+.sol-crumbs .here { color: var(--ink); }
+
+/* HERO */
+.sh { display:grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(28px,4vw,60px); align-items:center; padding: clamp(26px,3.4vw,46px) 0 clamp(34px,4vw,56px); }
+.sh .tags { display:flex; gap:9px; flex-wrap:wrap; margin-bottom:20px; }
+.sh h1 { font-family:var(--font-sans); font-weight:700; font-size:clamp(34px,4.8vw,60px); line-height:0.98; letter-spacing:-0.035em; margin:0 0 14px; }
+.sh .promise { font-family:var(--font-serif); font-style:italic; font-weight:300; font-size:clamp(19px,2.2vw,25px); line-height:1.45; color:var(--ink-soft); margin:0 0 24px; max-width:36ch; }
+.sh .score-row { display:flex; align-items:center; gap:22px; margin-bottom:26px; flex-wrap:wrap; }
+.sh .agscore { display:flex; align-items:baseline; gap:9px; }
+.sh .agscore .n { font-family:var(--font-sans); font-weight:800; font-size:40px; letter-spacing:-0.04em; color:var(--ink); line-height:1; }
+.sh .agscore .d { font-family:var(--font-mono); font-size:12px; color:var(--ink-mute); }
+.sh .agscore .stars { color: var(--gold); font-size:16px; }
+.sh .meta-inline { font-family:var(--font-mono); font-size:12.5px; color:var(--ink-mute); display:flex; gap:7px; align-items:center; }
+.sh .meta-inline b { color:var(--ink); font-weight:600; }
+.sh .cta { display:flex; gap:12px; flex-wrap:wrap; }
+.sh-visual { position:relative; border-radius:24px; overflow:hidden; aspect-ratio: 4/3.4; background:var(--graphite); border:1px solid var(--line); isolation:isolate; }
+.sh-visual image-slot { width:100%; height:100%; display:block; filter:grayscale(.3) brightness(.78) contrast(1.04); }
+.sh-visual .v-scrim { position:absolute; inset:0; z-index:1; background:linear-gradient(0deg, rgba(16,15,13,0.6), transparent 50%), linear-gradient(120deg, var(--ind-soft), transparent 55%); }
+.sh-visual .v-cap { position:absolute; left:0; right:0; bottom:0; z-index:2; padding:20px 22px; font-family:var(--font-mono); font-size:11px; letter-spacing:0.04em; color:rgba(245,244,241,0.78); display:flex; align-items:center; gap:9px; }
+.sh-visual .v-cap .dot { width:7px;height:7px;border-radius:50%;background:var(--success); box-shadow:0 0 0 0 var(--success); animation:lp 2s ease-out infinite; }
+@keyframes lp{0%{box-shadow:0 0 0 0 rgba(46,139,87,.5);}70%{box-shadow:0 0 0 8px transparent;}100%{box-shadow:0 0 0 0 transparent;}}
+
+/* section frame */
+.sol-sec { padding: clamp(40px,5vw,72px) 0; border-top:1px solid var(--line); }
+.sol-sec.warm { background: var(--paper-warm); }
+.sol-h { font-family:var(--font-sans); font-weight:700; font-size:clamp(24px,3vw,38px); letter-spacing:-0.03em; margin:0 0 8px; }
+.sol-lede { font-family:var(--font-serif); font-weight:300; font-size:17px; color:var(--ink-soft); margin:0 0 30px; max-width:60ch; }
+
+/* problem → solution */
+.ps { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.ps .col { border:1px solid var(--line); border-radius:18px; padding:28px; background:var(--paper); box-shadow:var(--sh-1); }
+.ps .col.dark { background:var(--graphite); color:#fff; border-color:transparent; position:relative; overflow:hidden; isolation:isolate; }
+.ps .col.dark .tx { position:absolute; inset:0; z-index:0; background-image:var(--tex); background-size:200px; opacity:.05; mix-blend-mode:overlay; }
+.ps .col.dark > * { position:relative; z-index:1; }
+.ps .col .lab { font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.14em; text-transform:uppercase; margin-bottom:16px; }
+.ps .col .lab.bad { color:var(--error); }
+.ps .col.dark .lab { color:var(--gold-light); }
+.ps .col ul { list-style:none; margin:0; padding:0; display:grid; gap:14px; }
+.ps .col li { display:flex; gap:12px; font-size:15.5px; line-height:1.4; }
+.ps .col li .mk { flex:none; width:20px; height:20px; border-radius:50%; display:grid; place-items:center; font-size:11px; margin-top:1px; }
+.ps .col li .mk.x { background:color-mix(in srgb,var(--error) 14%,transparent); color:var(--error); }
+.ps .col.dark li .mk { background:rgba(231,214,174,0.16); color:var(--gold-light); }
+.ps .col.dark li { color:rgba(245,244,241,0.86); }
+
+/* how it works — steps */
+.steps { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; counter-reset:s; }
+.step { border:1px solid var(--line); border-radius:18px; padding:24px 22px; background:var(--paper); position:relative; box-shadow:var(--sh-1); transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease; }
+.step:hover { transform:translateY(-4px); box-shadow:var(--sh-2); }
+.step .num { counter-increment:s; font-family:var(--font-mono); font-size:12px; color:var(--ind); font-weight:600; letter-spacing:0.1em; }
+.step .num::before { content:"0" counter(s); }
+.step h4 { font-family:var(--font-sans); font-weight:700; font-size:18px; letter-spacing:-0.02em; margin:12px 0 8px; }
+.step p { font-size:14px; color:var(--ink-soft); margin:0; line-height:1.5; }
+.step .time { margin-top:14px; font-family:var(--font-mono); font-size:11px; color:var(--ink-mute); }
+
+/* capabilities */
+.caps { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.capc { border:1px solid var(--line); border-radius:16px; padding:24px; background:var(--paper); }
+.capc .ci { width:40px; height:40px; border-radius:11px; background:var(--ind-soft); color:var(--ind); display:grid; place-items:center; font-family:var(--font-serif); font-style:italic; font-size:18px; margin-bottom:16px; }
+.capc h4 { font-family:var(--font-sans); font-weight:700; font-size:16.5px; letter-spacing:-0.015em; margin:0 0 6px; }
+.capc p { font-size:13.5px; color:var(--ink-soft); margin:0; line-height:1.5; }
+
+/* ROI */
+.roi { display:grid; grid-template-columns:0.9fr 1.1fr; gap:clamp(26px,4vw,56px); align-items:center; }
+.roi-stats { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); border-radius:18px; overflow:hidden; }
+.roi-stat { background:var(--paper); padding:26px 22px; }
+.roi-stat .v { font-family:var(--font-sans); font-weight:800; font-size:clamp(28px,3.4vw,40px); letter-spacing:-0.035em; color:var(--ink); line-height:1; }
+.roi-stat .v .pre { color:var(--success); }
+.roi-stat .l { font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-mute); margin-top:9px; }
+.roi-note { }
+.roi-note .kicker { margin-bottom:16px; }
+.roi-note h3 { font-family:var(--font-sans); font-weight:700; font-size:clamp(22px,2.6vw,30px); letter-spacing:-0.03em; margin:0 0 12px; }
+.roi-note p { font-size:15.5px; color:var(--ink-soft); line-height:1.6; margin:0 0 18px; }
+
+/* reviews */
+.revs { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.rev { border:1px solid var(--line); border-radius:16px; padding:24px; background:var(--paper); display:flex; flex-direction:column; box-shadow:var(--sh-1); }
+.rev .stars { color:var(--gold); font-size:14px; margin-bottom:12px; }
+.rev p { font-family:var(--font-serif); font-size:16px; line-height:1.5; color:var(--ink); margin:0 0 18px; }
+.rev .who { margin-top:auto; display:flex; align-items:center; gap:12px; }
+.rev .who .av { width:38px; height:38px; border-radius:50%; background:var(--ind-soft); color:var(--ind); display:grid; place-items:center; font-weight:700; font-size:14px; flex:none; }
+.rev .who .nm { font-size:13.5px; font-weight:600; }
+.rev .who .rl { font-family:var(--font-mono); font-size:11px; color:var(--ink-mute); }
+
+/* ecosystem — connected journey */
+.eco { background:var(--graphite); color:#fff; position:relative; overflow:hidden; isolation:isolate; }
+.eco .tx { position:absolute; inset:0; z-index:0; background-image:var(--tex); background-size:220px; opacity:.05; mix-blend-mode:overlay; }
+.eco .glow { position:absolute; inset:0; z-index:0; background:radial-gradient(70% 80% at 82% 0%, var(--ind-soft), transparent 60%); }
+.eco .wrap { position:relative; z-index:1; }
+.eco .sol-h { color:#fff; }
+.eco .sol-lede { color:rgba(245,244,241,0.66); }
+.eco-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.eco-card { display:block; border:1px solid rgba(245,244,241,0.14); border-radius:16px; padding:22px; background:rgba(245,244,241,0.04); backdrop-filter:blur(10px); transition:border-color .3s ease, transform .4s cubic-bezier(.2,.8,.2,1), background .3s ease; }
+.eco-card:hover { border-color:var(--ind); transform:translateY(-4px); background:rgba(245,244,241,0.07); }
+.eco-card .ek { font-family:var(--font-mono); font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold-light); margin-bottom:12px; }
+.eco-card h4 { font-family:var(--font-sans); font-weight:700; font-size:18px; letter-spacing:-0.02em; margin:0 0 6px; color:#fff; }
+.eco-card p { font-size:13.5px; color:rgba(245,244,241,0.6); margin:0 0 14px; line-height:1.5; }
+.eco-card .go { font-family:var(--font-mono); font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:#fff; display:inline-flex; align-items:center; gap:7px; }
+.eco-card .go b { color:var(--ind); }
+.eco-journey { display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-top:30px; padding-top:26px; border-top:1px solid rgba(245,244,241,0.1); }
+.eco-journey .jl { font-family:var(--font-mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(245,244,241,0.5); }
+.eco-journey .jv { font-family:var(--font-sans); font-weight:700; font-size:20px; letter-spacing:-0.02em; color:var(--gold-light); }
+
+/* sticky buy bar */
+.buybar { position:sticky; bottom:0; z-index:50; background:rgba(252,251,248,0.9); backdrop-filter:saturate(180%) blur(16px); border-top:1px solid var(--line); }
+.buybar-in { display:flex; align-items:center; justify-content:space-between; gap:18px; padding:14px 0; flex-wrap:wrap; }
+.buybar .bb-l { display:flex; align-items:center; gap:14px; }
+.buybar .bb-glyph { width:42px; height:42px; border-radius:11px; background:var(--graphite); color:var(--gold-light); display:grid; place-items:center; font-family:var(--font-serif); font-style:italic; font-size:19px; flex:none; }
+.buybar .bb-n { font-weight:700; font-size:16px; letter-spacing:-0.02em; }
+.buybar .bb-d { font-family:var(--font-mono); font-size:11.5px; color:var(--ink-mute); }
+.buybar .bb-r { display:flex; align-items:center; gap:12px; }
+.buybar .bb-price { font-family:var(--font-mono); font-size:13px; color:var(--ink); }
+.buybar .bb-price b { font-family:var(--font-sans); font-weight:800; font-size:20px; letter-spacing:-0.03em; }
+
+@media (max-width:920px){ .sh{grid-template-columns:1fr;} .ps{grid-template-columns:1fr;} .steps{grid-template-columns:1fr 1fr;} .caps,.revs,.eco-grid{grid-template-columns:1fr;} .roi{grid-template-columns:1fr;} }
+@media (max-width:560px){ .steps{grid-template-columns:1fr;} .roi-stats{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+
+<!-- ticker -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-label">Today's Intelligence</div>
+  <div class="ticker-track">
+    <span><span class="tk">VERIFIED</span> Customer Support Agent scored 9.4 / 10</span><span class="dot"></span>
+    <span><span class="tk">DEPLOYED BY</span> 2,400+ ecommerce stores</span><span class="dot"></span>
+    <span><span class="tk">AVG IMPACT</span> <span class="up">&nbsp;−73% first-response time</span></span><span class="dot"></span>
+    <span><span class="tk">VERIFIED</span> Customer Support Agent scored 9.4 / 10</span><span class="dot"></span>
+    <span><span class="tk">DEPLOYED BY</span> 2,400+ ecommerce stores</span><span class="dot"></span>
+    <span><span class="tk">AVG IMPACT</span> <span class="up">&nbsp;−73% first-response time</span></span><span class="dot"></span>
+  </div>
+</div>
+
+<!-- nav -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Marketplace.html" class="active">Marketplace</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Practice.html">Practice</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+      <a href="AGNUS - Business.html">Business</a>
+      </div>
+    <div class="nav-right">
+      <a href="AGNUS - Explore.html" class="nav-search">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="6"/><path d="M14 14l4 4"/></svg>
+        Search <kbd>/</kbd>
+      </a>
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+      <button class="hamburger" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="m-drawer">
+    <a href="AGNUS - Explore.html">Explore</a>
+    <a href="AGNUS - Marketplace.html">Marketplace</a>
+    <a href="AGNUS - Intelligence.html">Intelligence</a>
+    <a href="AGNUS - Review.html">Reviews</a>
+    <a href="AGNUS - Agents.html">Agents</a>
+    <a href="AGNUS - Academy.html">Academy</a>
+    <a href="AGNUS - Business.html">Business</a>
+    <a href="AGNUS - Home.html#premium" style="color: var(--gold-deep);">Premium Membership</a>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="sol-crumbs">
+    <a href="AGNUS - Marketplace.html">Marketplace</a><span class="sep">/</span>
+    <a href="AGNUS - Agents.html">AI Agents</a><span class="sep">/</span>
+    <span class="here">Customer Support Agent</span>
+  </div>
+
+  <!-- HERO -->
+  <header class="sh">
+    <div>
+      <div class="tags">
+        <span class="tag tag-verified"><span style="color:var(--gold-deep)">✦</span> AGNUS Verified</span>
+        <span class="tag tag-premium">AI Agent</span>
+        <span class="tag" style="color:var(--ind);background:var(--ind-soft);border:1px solid color-mix(in srgb,var(--ind) 30%,transparent)">For Ecommerce</span>
+      </div>
+      <h1>Customer Support Agent</h1>
+      <p class="promise">"Answers every customer the moment they ask — day, night, in any language."</p>
+      <div class="score-row">
+        <div class="agscore"><span class="n">9.4</span><span class="d">AGNUS<br/>Score</span></div>
+        <div class="agscore"><span class="stars">★★★★★</span></div>
+        <div class="meta-inline"><b>4.8</b>&nbsp;· 1,240 reviews</div>
+      </div>
+      <div class="cta">
+        <a href="AGNUS - Home.html#premium" class="btn btn-dark btn-lg">Deploy this agent <span class="arr">→</span></a>
+        <a href="AGNUS - Compare.html" class="btn btn-light btn-lg">Compare alternatives</a>
+      </div>
+    </div>
+    <div class="sh-visual">
+      <image-slot id="sol-hero" shape="rect" placeholder="Editorial · a calm ecommerce ops desk at night, a single screen glowing — support handled. Cinematic, warm, premium."></image-slot>
+      <div class="v-scrim"></div>
+      <div class="v-cap"><span class="dot"></span> Live · resolving a return request in 4 seconds</div>
+    </div>
+  </header>
+</div>
+
+<!-- PROBLEM → SOLUTION -->
+<section class="sol-sec warm">
+  <div class="wrap">
+    <h2 class="sol-h">What it solves</h2>
+    <p class="sol-lede">Support is the first thing that breaks when you grow — and the first thing customers judge you on.</p>
+    <div class="ps">
+      <div class="col">
+        <div class="lab bad">Without it</div>
+        <ul>
+          <li><span class="mk x">✕</span> Tickets pile up overnight; mornings start behind.</li>
+          <li><span class="mk x">✕</span> Customers wait hours for a one-line answer.</li>
+          <li><span class="mk x">✕</span> Your team copies the same reply 40 times a day.</li>
+          <li><span class="mk x">✕</span> After-hours and weekend questions go cold.</li>
+        </ul>
+      </div>
+      <div class="col dark">
+        <div class="tx"></div>
+        <div class="lab">With the AGNUS agent</div>
+        <ul>
+          <li><span class="mk">✓</span> Every message answered in seconds, around the clock.</li>
+          <li><span class="mk">✓</span> Order status, returns and FAQs resolved end-to-end.</li>
+          <li><span class="mk">✓</span> Hands off to a human the moment nuance is needed.</li>
+          <li><span class="mk">✓</span> Speaks your brand voice in 30+ languages.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="sol-sec">
+  <div class="wrap">
+    <h2 class="sol-h">How it works</h2>
+    <p class="sol-lede">From signup to first resolved ticket in about twelve minutes. No engineers required.</p>
+    <div class="steps">
+      <div class="step"><div class="num"></div><h4>Connect</h4><p>Link your store, help desk and inbox with one click — Shopify, Zendesk, Gmail and more.</p><div class="time">~3 min</div></div>
+      <div class="step"><div class="num"></div><h4>Teach</h4><p>It reads your policies, past tickets and product catalog to learn your voice and rules.</p><div class="time">~5 min</div></div>
+      <div class="step"><div class="num"></div><h4>Test</h4><p>Watch it answer real past tickets in a sandbox. Approve, tweak, or set guardrails.</p><div class="time">~3 min</div></div>
+      <div class="step"><div class="num"></div><h4>Go live</h4><p>Flip it on. It handles tier-one instantly and escalates the rest to your team.</p><div class="time">~1 min</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section class="sol-sec warm">
+  <div class="wrap">
+    <h2 class="sol-h">What it can do</h2>
+    <p class="sol-lede">Not a chatbot. An agent that takes action across the tools you already use.</p>
+    <div class="caps">
+      <div class="capc"><div class="ci">⟁</div><h4>Resolve, not deflect</h4><p>Looks up the order, issues the refund, updates the address — then confirms it's done.</p></div>
+      <div class="capc"><div class="ci">⟲</div><h4>Always escalates well</h4><p>Knows the edge of its competence and hands a full context summary to a human.</p></div>
+      <div class="capc"><div class="ci">✦</div><h4>On-brand, every time</h4><p>Trained on your tone. Warm, terse, playful — whatever your brand sounds like.</p></div>
+      <div class="capc"><div class="ci">⌬</div><h4>30+ languages</h4><p>Detects and replies in the customer's language without a separate setup.</p></div>
+      <div class="capc"><div class="ci">▤</div><h4>Learns continuously</h4><p>Every human correction becomes training. It's measurably better each week.</p></div>
+      <div class="capc"><div class="ci">◎</div><h4>Full audit trail</h4><p>Every action logged and reversible. Compliance and trust built in.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ROI -->
+<section class="sol-sec">
+  <div class="wrap">
+    <div class="roi">
+      <div class="roi-stats">
+        <div class="roi-stat"><div class="v"><span class="pre">−</span>73%</div><div class="l">First-response time</div></div>
+        <div class="roi-stat"><div class="v"><span class="pre">+</span>2,800<span style="font-size:0.5em">€/mo</span></div><div class="l">Labor value reclaimed</div></div>
+        <div class="roi-stat"><div class="v">68%</div><div class="l">Tickets fully auto-resolved</div></div>
+        <div class="roi-stat"><div class="v"><span class="pre">+</span>11<span style="font-size:0.5em">pts</span></div><div class="l">CSAT improvement</div></div>
+      </div>
+      <div class="roi-note">
+        <div class="kicker"><span class="ix">◆</span> The numbers</div>
+        <h3>It pays for itself in the first week.</h3>
+        <p>At €39/month, the agent typically replaces 20–30 hours of repetitive support work — before you count the revenue saved by answering buyers instantly instead of hours later.</p>
+        <a href="AGNUS - Tools.html" class="btn btn-light">Run your own ROI estimate <span class="arr">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="sol-sec warm">
+  <div class="wrap">
+    <h2 class="sol-h">What operators say</h2>
+    <p class="sol-lede">1,240 verified reviews · 4.8 average.</p>
+    <div class="revs">
+      <div class="rev"><div class="stars">★★★★★</div><p>"We went from a 6-hour response time to under a minute. Our weekend support just… runs itself now."</p><div class="who"><div class="av">MR</div><div><div class="nm">Marco R.</div><div class="rl">Founder · DTC apparel</div></div></div></div>
+      <div class="rev"><div class="stars">★★★★★</div><p>"The escalation is what sold me. It never pretends to know. When it's unsure, I get a clean summary and I take over."</p><div class="who"><div class="av">SL</div><div><div class="nm">Sofia L.</div><div class="rl">Head of CX · Marketplace</div></div></div></div>
+      <div class="rev"><div class="stars">★★★★<span style="color:var(--ink-faint)">★</span></div><p>"Setup genuinely took twelve minutes. Multilingual support out of the box doubled our reach overnight."</p><div class="who"><div class="av">JK</div><div><div class="nm">Jonas K.</div><div class="rl">Owner · Electronics store</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ECOSYSTEM / CONNECTED JOURNEY -->
+<section class="sol-sec eco">
+  <div class="tx"></div><div class="glow"></div>
+  <div class="wrap">
+    <h2 class="sol-h">This is one move in a bigger play.</h2>
+    <p class="sol-lede">Customers who deploy this agent usually take these next steps. AGNUS keeps the whole journey connected.</p>
+    <div class="eco-grid">
+      <a href="AGNUS - Compare.html" class="eco-card"><div class="ek">Compare</div><h4>Support Agent vs Intercom Fin</h4><p>See how the AGNUS agent stacks against the incumbents on resolution and cost.</p><span class="go">Read comparison <b>→</b></span></a>
+      <a href="AGNUS - Marketplace.html" class="eco-card"><div class="ek">Collection</div><h4>AI for Ecommerce</h4><p>The full world: support, cart recovery, product copy and email flows, assembled.</p><span class="go">Enter this world <b>→</b></span></a>
+      <a href="AGNUS - Academy.html" class="eco-card"><div class="ek">Course</div><h4>Master Customer AI</h4><p>A 40-minute path on designing support automation that customers actually love.</p><span class="go">Start learning <b>→</b></span></a>
+      <a href="AGNUS - Prompts.html" class="eco-card"><div class="ek">Prompt Pack</div><h4>200 Support Prompts</h4><p>Refund, escalation and tone templates to fine-tune the agent's replies.</p><span class="go">Get the pack <b>→</b></span></a>
+      <a href="AGNUS - Agents.html" class="eco-card"><div class="ek">Pair with</div><h4>Sales Agent</h4><p>Turn resolved tickets into upsells. The two agents share context automatically.</p><span class="go">View agent <b>→</b></span></a>
+      <a href="AGNUS - Business.html" class="eco-card"><div class="ek">Guide</div><h4>Roll out across your team</h4><p>The change-management playbook for getting your CX team to trust automation.</p><span class="go">Read guide <b>→</b></span></a>
+    </div>
+    <div class="eco-journey">
+      <span class="jl">Estimated learning + setup journey</span>
+      <span class="jv">1 hour 25 minutes</span>
+    </div>
+  </div>
+</section>
+
+<!-- footer -->
+<footer>
+  <div class="container">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+        <p>Intelligence for the future of work. The trusted source for what's happening, which tools matter, and where AI is heading.</p>
+        <form class="fsearch" onsubmit="return false;"><input type="email" placeholder="Your email for the daily brief" aria-label="Email" /><button type="submit">Subscribe</button></form>
+      </div>
+      <div class="foot-col"><h5>Marketplace</h5><ul>
+        <li><a href="AGNUS - Marketplace.html">Collections</a></li>
+        <li><a href="AGNUS - Agents.html">AI Agents</a></li>
+        <li><a href="AGNUS - Prompts.html">Prompt Packs</a></li>
+        <li><a href="AGNUS - Business.html">Workflows &amp; Templates</a></li>
+        <li><a href="AGNUS - Marketplace.html"><span class="gd">AGNUS Verified</span></a></li>
+      </ul></div>
+      <div class="foot-col"><h5>Discover</h5><ul>
+        <li><a href="AGNUS - Explore.html">Explore</a></li>
+        <li><a href="AGNUS - Review.html">AI Reviews</a></li>
+        <li><a href="AGNUS - Compare.html">AI Comparisons</a></li>
+        <li><a href="AGNUS - Intelligence.html">Intelligence Journal</a></li>
+        <li><a href="AGNUS - Tools.html">Free AI Tools</a></li>
+      </ul></div>
+      <div class="foot-col"><h5>Company</h5><ul>
+        <li><a href="#">About AGNUS</a></li>
+        <li><a href="#">Our methodology</a></li>
+        <li><a href="AGNUS - Awards.html">The AGNUS Awards</a></li>
+        <li><a href="#">Become a creator</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="AGNUS - Dashboard.html" class="gd">Editorial Dashboard ↗</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 AGNUS · Truth before hype.</span><div class="fb-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Editorial Policy</a><a href="#">Advertise</a></div></div>
+  </div>
+</footer>
+
+<!-- sticky buy bar -->
+<div class="buybar">
+  <div class="wrap buybar-in">
+    <div class="bb-l">
+      <div class="bb-glyph">⟁</div>
+      <div><div class="bb-n">Customer Support Agent</div><div class="bb-d">AGNUS Verified · 9.4 · 12-min setup</div></div>
+    </div>
+    <div class="bb-r">
+      <div class="bb-price"><b>€39</b>/mo · 14-day trial</div>
+      <a href="AGNUS - Home.html#premium" class="btn btn-dark">Deploy this agent <span class="arr">→</span></a>
+    </div>
+  </div>
+</div>
+
+<script src="image-slot.js"></script>
+</body>
+</html>

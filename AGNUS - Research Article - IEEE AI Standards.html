@@ -1,0 +1,172 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>IEEE Standards for AI: What Engineers and Deployers Need to Know — AGNUS Research</title>
+<meta name="description" content="IEEE has developed a body of AI-relevant standards covering transparency, accountability, autonomous systems, and algorithmic bias. This article maps the most relevant IEEE standards for AI governance practitioners, explains how they relate to ISO and NIST frameworks, and identifies where IEEE provides technical specificity that governance frameworks lack." />
+<link rel="canonical" href="https://agnus.example/research/standards/ieee-ai-standards/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="IEEE Standards for AI: What Engineers and Deployers Need to Know" />
+<meta property="article:published_time" content="2026-09-11" />
+<meta property="article:author" content="Jean-Daniel Alexis" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>
+a,a:visited{color:inherit}
+.prose h3{font-family:var(--font-sans);font-weight:700;font-size:19px;letter-spacing:-.018em;margin:32px 0 14px}
+.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
+.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
+.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s}
+.rsub a:hover{color:var(--ink);background:var(--line-soft,rgba(0,0,0,.04))}
+.rsub a.on{color:var(--gold-deep);font-weight:600}
+.pillar-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:var(--gold-pale,#FEF9ED);color:var(--gold-deep,#8B6914);border:1px solid var(--gold-line,#E8D9A0);border-radius:4px;padding:3px 8px;margin-bottom:16px}
+.ieee-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:13px}
+.ieee-table th{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);font-weight:600;text-align:left;padding:10px 14px;border-bottom:2px solid var(--line);background:var(--paper-warm,#F7F5F0)}
+.ieee-table td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+.ieee-table tr:last-child td{border-bottom:none}
+.ieee-pub{color:#1A5C1A;font-weight:600}.ieee-dev{color:#8B6914;font-weight:600}
+</style>
+</head>
+<body>
+<div class="art-progress"><i id="progBar"></i></div>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+    </div>
+  </div>
+</nav>
+<div class="rsub">
+  <div class="rsub-inner">
+    <a href="#role">IEEE's role</a>
+    <a href="#key-standards">Key standards</a>
+    <a href="#vs-iso-nist">vs. ISO and NIST</a>
+    <a href="#for-practitioners">For practitioners</a>
+    <a href="#sources">Sources</a>
+  </div>
+</div>
+<main class="art-layout">
+  <article class="art-main">
+    <header class="art-header">
+      <span class="pillar-tag">Standards</span>
+      <h1 class="art-h1">IEEE Standards for AI: What Engineers and Deployers Need to Know</h1>
+      <p class="art-lede">ISO and NIST dominate AI governance discussions, but IEEE has developed a body of technical AI standards that are directly relevant to practitioners — particularly those building or deploying AI systems where technical specificity matters. This article maps the most relevant IEEE AI standards, explains their relationship to ISO and NIST frameworks, and identifies where IEEE fills gaps that governance frameworks leave open.</p>
+      <div class="art-meta">
+        <span>Jean-Daniel Alexis</span><span class="meta-sep">·</span>
+        <span>11 September 2026</span><span class="meta-sep">·</span>
+        <span>Standards pillar</span><span class="meta-sep">·</span>
+        <span>AR-000720</span>
+      </div>
+    </header>
+    <div class="prose">
+      <h3 id="role">IEEE's role in AI standardisation</h3>
+      <p>The Institute of Electrical and Electronics Engineers (IEEE) develops technical standards across engineering domains. In AI, IEEE has focused on three areas: transparency and interpretability of automated decisions (IEEE 7001, IEEE 7010), the ethics of autonomous systems (IEEE 7000 series broadly), and algorithmic bias (IEEE 2894).</p>
+      <p>IEEE standards differ from ISO management system standards (like ISO 42001) in their orientation: they tend to be more technical and more specific about how systems should behave, rather than how organisations should be governed. They provide engineering guidance where governance frameworks provide organisational guidance.</p>
+      <p>For AI governance practitioners, IEEE standards are most relevant when: designing systems that must demonstrate accountability for automated decisions; evaluating whether an AI system meets transparency requirements; or specifying technical requirements for AI procurement. They complement, rather than replace, ISO and NIST frameworks.</p>
+
+      <h3 id="key-standards">The key IEEE AI standards</h3>
+      <table class="ieee-table">
+        <thead><tr><th>Standard</th><th>Title and scope</th><th>Key requirements</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>IEEE 7001-2021</strong></td>
+            <td>Transparency of Autonomous Systems. Defines five levels of transparency and the conditions under which each level is appropriate.</td>
+            <td>Systems must document which decisions are automated, what information is used, and what the system can and cannot explain about its decisions. Five transparency levels from "no explanation" to "full causal explanation."</td>
+            <td><span class="ieee-pub">Published 2021</span></td>
+          </tr>
+          <tr>
+            <td><strong>IEEE 7010-2020</strong></td>
+            <td>Recommended Practice for Assessing the Impact of Autonomous and Intelligent Systems on Human Well-Being. Provides a methodology for wellbeing impact assessment.</td>
+            <td>Defines metrics for eight wellbeing dimensions (education, work, relationships, safety, etc.) and a methodology for assessing AI system impact on each. Precursor to the EU AI Act's FRIA requirement.</td>
+            <td><span class="ieee-pub">Published 2020</span></td>
+          </tr>
+          <tr>
+            <td><strong>IEEE 2894-2024</strong></td>
+            <td>Guide for an Ethical Framework for Artificial Intelligence and Automated Decision Systems. Covers fairness definitions, bias measurement, and accountability structures.</td>
+            <td>Provides guidance on fairness metric selection, bias testing methodology, accountability chain documentation, and the relationship between technical bias metrics and legal discrimination standards.</td>
+            <td><span class="ieee-pub">Published 2024</span></td>
+          </tr>
+          <tr>
+            <td><strong>IEEE 7000-2021</strong></td>
+            <td>Model Process for Addressing Ethical Concerns During System Design. Provides a process for embedding ethical considerations into the system engineering lifecycle.</td>
+            <td>Identifies "value-based engineering" as a design practice. Requires consideration of stakeholder values at each phase of system design. Complementary to ISO 42001.</td>
+            <td><span class="ieee-pub">Published 2021</span></td>
+          </tr>
+          <tr>
+            <td><strong>IEEE P3119</strong></td>
+            <td>Standard for the Procurement of Artificial Intelligence and Automated Decision Systems. Covers what buyers should require from AI vendors.</td>
+            <td>Specifies vendor documentation requirements, performance testing standards, and contractual provisions for AI procurement. Directly relevant to deployer governance.</td>
+            <td><span class="ieee-dev">In development</span></td>
+          </tr>
+          <tr>
+            <td><strong>IEEE P2976</strong></td>
+            <td>Recommended Practice for Privacy and Security for Federated Machine Learning. Technical guidance for privacy-preserving ML.</td>
+            <td>Covers federated learning security, model inversion defences, differential privacy implementation, and secure aggregation protocols.</td>
+            <td><span class="ieee-dev">In development</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="vs-iso-nist">IEEE vs. ISO 42001 vs. NIST AI RMF</h3>
+      <p><strong>IEEE:</strong> Technical and engineering-oriented. Tells you how systems should behave and how to measure behaviour. Most useful for developers, AI architects, and technical auditors. Does not prescribe organisational management systems.</p>
+      <p><strong>ISO 42001:</strong> Management system standard. Tells you how to organise and manage AI governance. Most useful for organisations seeking certification, demonstrating compliance, and structuring governance programmes. Does not specify technical system behaviour in detail.</p>
+      <p><strong>NIST AI RMF:</strong> Risk management framework. Tells you how to organise risk management work. Most useful as a process framework for implementing AI risk management. Does not prescribe specific metrics or technical tests.</p>
+      <p>The three frameworks are complementary. A complete AI governance programme might use ISO 42001 as the management system structure, NIST AI RMF as the risk management process, and IEEE standards as the technical specifications for how specific systems should behave and be tested.</p>
+
+      <h3 id="for-practitioners">For practitioners: where IEEE adds most value</h3>
+      <p><strong>Transparency requirements.</strong> The EU AI Act requires transparency for high-risk AI (Article 13) and for general-purpose AI (Article 50). It specifies that systems must provide enough information for users to make informed decisions, but does not specify what technical transparency mechanisms are required. IEEE 7001's five transparency levels provide a practical implementation framework.</p>
+      <p><strong>Fairness metric selection.</strong> The EU AI Act requires that high-risk AI systems achieve an appropriate level of accuracy across different groups (Article 15). It does not specify which fairness metric is appropriate. IEEE 2894 provides guidance on fairness metric selection and the trade-offs between metrics — filling a technical gap that the EU AI Act leaves open.</p>
+      <p><strong>Procurement specifications.</strong> When procuring AI from vendors, IEEE P3119 (once finalised) will provide a technical specification for what buyers should require — complementing the governance framework approach in AGNUS's AI Procurement Governance article.</p>
+    </div>
+    <section class="art-sources" id="sources">
+      <h2 class="sources-h">Sources and verification</h2>
+      <div class="sources-grid">
+        <div class="source-card"><div class="sc-id">SRC-0074</div><div class="sc-title">IEEE 7001-2021: Transparency of Autonomous Systems</div><div class="sc-org">IEEE</div><div class="sc-url"><a href="https://standards.ieee.org/ieee/7001/6929/" target="_blank" rel="noopener">standards.ieee.org</a></div><div class="sc-note">Published 2021. Full standard available for purchase. Summary available at standards.ieee.org.</div></div>
+        <div class="source-card"><div class="sc-id">SRC-0071</div><div class="sc-title">ISO/IEC 42001:2023 — AI Management System</div><div class="sc-org">International Organisation for Standardisation</div><div class="sc-url"><a href="https://www.iso.org/standard/81230.html" target="_blank" rel="noopener">iso.org</a></div></div>
+        <div class="source-card"><div class="sc-id">SRC-0067</div><div class="sc-title">NIST AI RMF 1.0</div><div class="sc-org">National Institute of Standards and Technology</div><div class="sc-url"><a href="https://airc.nist.gov/RMF" target="_blank" rel="noopener">airc.nist.gov</a></div></div>
+      </div>
+      <div class="src-registry-note">Article ID: AR-000720 · Sources: SRC-0067, SRC-0071, SRC-0074 · Published: 2026-09-11 · AGNUS Research</div>
+    </section>
+  </article>
+  <aside class="art-aside">
+    <div class="aside-block"><div class="aside-label">Pillar</div><a href="AGNUS - Research.html" class="aside-pill">Standards</a></div>
+    <div class="aside-block">
+      <div class="aside-label">Related articles</div>
+      <ul class="aside-links">
+        <li><a href="AGNUS - Research Article - ISO 42001.html">ISO/IEC 42001: AI Management Systems</a></li>
+        <li><a href="AGNUS - Research Article - Governance Frameworks.html">AI Governance Frameworks</a></li>
+        <li><a href="AGNUS - Research Article - NIST AI RMF Implementation.html">NIST AI RMF in Practice</a></li>
+      </ul>
+    </div>
+    <div class="aside-block">
+      <div class="aside-label">Most relevant for</div>
+      <div class="aside-value">IEEE 7001 + 2894</div>
+      <div class="aside-note">IEEE 7001 (transparency levels) and IEEE 2894 (fairness metrics) are the most practically useful IEEE standards for AI governance practitioners today.</div>
+    </div>
+  </aside>
+</main>
+<footer class="footer"><div class="container footer-inner"><div class="footer-copy">© 2026 AGNUS. All rights reserved.</div><div class="footer-links"><a href="AGNUS - Home.html">Home</a><a href="AGNUS - Research.html">Research</a><a href="AGNUS - Academy.html">Academy</a></div></div></footer>
+<script src="agnus-research-data.js"></script>
+<script>(function(){var bar=document.getElementById('progBar');if(!bar)return;window.addEventListener('scroll',function(){var h=document.documentElement;bar.style.width=((h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100)+'%';});})();</script>
+</body>
+</html>

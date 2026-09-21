@@ -1,0 +1,201 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Academy — M43 The Quarterly Agent Audit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#10161F;--panel:#161D29;--panel-2:#1D2531;--line:#2A3341;--line-2:#3A4557;--ink:#EDEFF3;--ink-2:#A7AFBD;--ink-3:#6B7484;--navy:#17263C;--navy-2:#0B0F16;--gold:#C9A96A;--gold-light:#E0C48C;--gold-dim:rgba(201,169,106,.14);--pass:#3FCB86;--pass-dim:rgba(63,203,134,.1);--danger:#F0776A;--danger-dim:rgba(240,119,106,.1);--warn:#E0B354;--warn-dim:rgba(224,179,84,.1);}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);background-image:radial-gradient(circle at 15% 0%,rgba(201,169,106,.06),transparent 40%),radial-gradient(circle at 90% 100%,rgba(63,203,134,.04),transparent 45%);color:var(--ink);font-family:Manrope,sans-serif;-webkit-font-smoothing:antialiased}
+.top-rail{background:var(--navy-2);color:#fff;display:flex;align-items:center;height:48px;padding:0 20px;gap:18px;border-bottom:1px solid rgba(255,255,255,.06)}
+.tr-brand{font-weight:800;font-size:13.5px}
+.tr-crumb{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.tr-title{font-size:13px;font-weight:700}
+.tr-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.prog-dots{display:flex;gap:5px}
+.prog-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.2)}
+.prog-dot.done{background:var(--gold-light)}
+.prog-dot.active{background:#fff}
+.tr-btn{font-family:Manrope,sans-serif;font-size:12px;font-weight:700;padding:7px 14px;border-radius:7px;border:1px solid rgba(255,255,255,.18);color:#fff;background:rgba(255,255,255,.07);cursor:pointer}
+.wrap{max-width:1040px;margin:0 auto;padding:36px 30px 100px}
+.step-banner{margin-bottom:22px}
+.sb-step{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.hero-txt h1{font-weight:800;font-size:26px;letter-spacing:-.026em;line-height:1.2;margin-bottom:12px;color:#fff}
+.hero-txt p{font-size:14.5px;line-height:1.7;color:var(--ink-2);margin-bottom:26px;max-width:74ch}
+.summary-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-bottom:28px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.sum-card{background:var(--panel);padding:18px 20px}
+.sum-card .k{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.sum-card .v{font-weight:800;font-size:24px;margin-top:6px;color:#fff;font-family:'IBM Plex Mono',monospace}
+.agent-list{display:grid;gap:14px;margin-bottom:28px}
+.agent-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px 26px;transition:border-color .2s}
+.agent-card:hover{border-color:var(--line-2)}
+.agent-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.agent-name{font-weight:700;font-size:16px;color:#fff}
+.agent-team{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--gold);margin-top:3px;letter-spacing:.04em}
+.badge{font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:999px}
+.badge.unreviewed{background:var(--panel-2);color:var(--ink-3);border:1px solid var(--line)}
+.evidence-line{font-size:13.5px;line-height:1.65;color:var(--ink-2);padding:10px 0 10px 18px;border-top:1px solid var(--panel-2);position:relative}
+.evidence-line::before{content:'';position:absolute;left:0;top:17px;width:5px;height:5px;border-radius:50%;background:var(--gold-dim);border:1px solid var(--gold)}
+.decision-row{display:flex;gap:10px;margin-top:18px}
+.dec-btn{font-family:Manrope,sans-serif;font-weight:700;font-size:12.5px;padding:10px 18px;border-radius:9px;border:1.5px solid var(--line-2);background:transparent;cursor:pointer;color:var(--ink-2);transition:.15s}
+.dec-btn:hover{border-color:var(--gold);color:#fff}
+.dec-btn.approve.picked{background:var(--pass-dim);border-color:var(--pass);color:var(--pass)}
+.dec-btn.escalate.picked{background:var(--danger-dim);border-color:var(--danger);color:var(--danger)}
+.dec-btn.monitor.picked{background:var(--warn-dim);border-color:var(--warn);color:var(--warn)}
+.rationale{display:none;margin-top:14px;padding:14px 16px;border-radius:9px;font-size:12.5px;line-height:1.6;border-left:3px solid}
+.rationale.correct{display:block;background:var(--pass-dim);color:var(--ink);border-left-color:var(--pass)}
+.rationale.incorrect{display:block;background:var(--warn-dim);color:var(--ink);border-left-color:var(--warn)}
+.submit-row{display:flex;justify-content:flex-end;margin-top:8px}
+.btn{font-family:Manrope,sans-serif;font-weight:700;font-size:14px;padding:14px 28px;border-radius:10px;border:none;background:var(--gold);color:#12161F;cursor:pointer}
+.btn:hover{background:var(--gold-light)}
+.btn:disabled{opacity:.3;cursor:not-allowed}
+.final-verdict{display:none;margin-top:26px;padding:26px 28px;border-radius:14px;background:var(--panel);border:1px solid var(--gold);}
+.final-verdict h2{font-size:20px;font-weight:800;margin-bottom:10px;color:#fff}
+.final-verdict p{font-size:13.5px;color:var(--ink-2);line-height:1.7;margin-bottom:18px}
+</style>
+</head>
+<body>
+
+<header class="top-rail">
+  <span class="tr-brand">AGNUS Academy</span>
+  <span class="tr-crumb">Level 7 · Govern</span>
+  <span class="tr-title">M43 — The Quarterly Agent Audit</span>
+  <div class="tr-right">
+    <div class="prog-dots"><div class="prog-dot done"></div><div class="prog-dot active"></div><div class="prog-dot"></div></div>
+    <button class="tr-btn" onclick="location.href='AGNUS - Academy App.html'">← Dashboard</button>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="step-banner"><span class="sb-step">Step 2 of 3 — Govern</span></div>
+  <div class="hero-txt">
+    <h1>You oversee four teams. Not every deviation needs the same response.</h1>
+    <p>Governing AI at scale means reviewing evidence across many deployments and deciding a proportionate response for each — approve, monitor, or escalate. Review each agent's compliance record below and make your call before the summary is submitted.</p>
+  </div>
+
+  <div class="summary-row">
+    <div class="sum-card"><div class="k">Agents reviewed</div><div class="v" id="reviewedCount">0/4</div></div>
+    <div class="sum-card"><div class="k">Deployments audited</div><div class="v">4</div></div>
+    <div class="sum-card"><div class="k">Quarter</div><div class="v" style="font-size:15px">Q3 2026</div></div>
+    <div class="sum-card"><div class="k">Policy standard</div><div class="v" style="font-size:15px">Verification-first</div></div>
+  </div>
+
+  <div class="agent-list" id="agentList"></div>
+
+  <div class="submit-row"><button class="btn" id="submitBtn" onclick="submitAudit()" disabled>Submit audit →</button></div>
+
+  <div class="final-verdict" id="finalVerdict">
+    <h2 id="fvTitle"></h2>
+    <p id="fvText"></p>
+    <button class="tr-btn" onclick="location.href='AGNUS - Academy App.html'" style="background:var(--gold);border-color:var(--gold)">← Dashboard</button>
+  </div>
+</div>
+
+<script>
+const AGENTS = [
+  {
+    name: 'Support-Bot v4', team: 'Customer Support',
+    evidence: [
+      'Every "issue resolved" reply this quarter includes a specific action taken (ticket ID, log excerpt, or test result).',
+      'Zero escalations from customers disputing a false resolution claim.',
+      'Passed random sample audit: 40/40 claims independently verified as accurate.'
+    ],
+    correct: 'approve',
+    rationale: 'Approve is correct. The evidence shows consistent, checkable verification behind every claim, with an independent audit confirming it. No governance action is needed beyond routine monitoring.'
+  },
+  {
+    name: 'Deploy-Agent v2', team: 'Platform Engineering',
+    evidence: [
+      'Two "migration successful" reports this quarter were later found to be based on script re-reading, not an actual run.',
+      'No production incidents resulted, but the pattern matches exactly what M29 identified as a deviation.',
+      'The team has not yet updated their instruction to require independent verification.'
+    ],
+    correct: 'escalate',
+    rationale: 'Escalate is correct. This is the exact false-confidence pattern from M29 — it happened twice, and the team has not fixed the underlying instruction. Waiting for an actual incident before acting is not proportionate given clear, repeated evidence.'
+  },
+  {
+    name: 'Research-Assist v1', team: 'Market Intelligence',
+    evidence: [
+      'Most briefs this quarter cite sources correctly.',
+      'One brief included a single uncited statistic, caught by a human reviewer before publication — not by the agent\u2019s own instruction.',
+      'The team has not investigated why that one instance occurred.'
+    ],
+    correct: 'monitor',
+    rationale: 'Monitor is correct. One caught incident isn\u2019t yet a confirmed pattern — escalating immediately would be disproportionate. But it should not be silently approved either: an unexplained gap deserves continued, closer attention next quarter.'
+  },
+  {
+    name: 'Compliance-Check v3', team: 'Legal Operations',
+    evidence: [
+      'This agent flags contract clauses for review, and every flag this quarter included the specific clause text and the rule it may violate.',
+      'Legal team confirms zero false positives and zero missed flags in a full manual cross-check.',
+      'Deployment has run for two full quarters with this consistent record.'
+    ],
+    correct: 'approve',
+    rationale: 'Approve is correct. Two full quarters of a fully cross-checked, error-free record is strong, sustained evidence — this is exactly the kind of verified performance that should be approved, not held back out of excess caution.'
+  }
+];
+
+let decisions = {};
+
+function render(){
+  const list = document.getElementById('agentList');
+  list.innerHTML = AGENTS.map((a,i) => `
+    <div class="agent-card">
+      <div class="agent-head">
+        <div><div class="agent-name">${a.name}</div><div class="agent-team">${a.team}</div></div>
+        <span class="badge unreviewed" id="badge-${i}">Not reviewed</span>
+      </div>
+      ${a.evidence.map(e => '<div class="evidence-line">' + e + '</div>').join('')}
+      <div class="decision-row">
+        <button class="dec-btn approve" onclick="decide(${i},'approve')">Approve</button>
+        <button class="dec-btn monitor" onclick="decide(${i},'monitor')">Monitor</button>
+        <button class="dec-btn escalate" onclick="decide(${i},'escalate')">Escalate</button>
+      </div>
+      <div class="rationale" id="rationale-${i}"></div>
+    </div>
+  `).join('');
+}
+render();
+
+function decide(i, choice){
+  decisions[i] = choice;
+  document.querySelectorAll('.agent-card')[i].querySelectorAll('.dec-btn').forEach(b => b.classList.remove('picked'));
+  document.querySelectorAll('.agent-card')[i].querySelector('.dec-btn.' + choice).classList.add('picked');
+  const correct = choice === AGENTS[i].correct;
+  const badge = document.getElementById('badge-' + i);
+  badge.textContent = choice.charAt(0).toUpperCase() + choice.slice(1);
+  badge.className = 'badge ' + (correct ? 'unreviewed' : 'unreviewed');
+  badge.style.background = correct ? 'rgba(26,126,74,.14)' : 'rgba(140,94,0,.14)';
+  badge.style.color = correct ? '#1A7E4A' : '#8C5E00';
+  const r = document.getElementById('rationale-' + i);
+  r.className = 'rationale ' + (correct ? 'correct' : 'incorrect');
+  r.textContent = AGENTS[i].rationale;
+
+  document.getElementById('reviewedCount').textContent = Object.keys(decisions).length + '/4';
+  document.getElementById('submitBtn').disabled = Object.keys(decisions).length < 4;
+}
+
+function submitAudit(){
+  const allCorrect = AGENTS.every((a,i) => decisions[i] === a.correct);
+  const fv = document.getElementById('finalVerdict');
+  fv.style.display = 'block';
+  document.getElementById('fvTitle').textContent = allCorrect ? 'Correct — M43 complete.' : 'Audit submitted — review your calls.';
+  document.getElementById('fvText').textContent = allCorrect
+    ? 'You matched severity to evidence across all four cases: approving sustained, verified performance, escalating a repeated and unaddressed deviation, and monitoring a single unexplained gap rather than over- or under-reacting. That calibration — not treating every case the same — is the core skill of governing AI at scale.'
+    : 'A governance decision should match the strength and pattern of the evidence, not just whether something went wrong once. Review the rationale under each card: a repeated, unaddressed deviation calls for escalation; a single unexplained gap calls for monitoring, not approval or escalation; and a sustained, independently verified record can be approved.';
+  fv.scrollIntoView({behavior:'smooth'});
+}
+</script>
+</body>
+</html>

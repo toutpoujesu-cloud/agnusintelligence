@@ -1,0 +1,978 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AGNUS Research — Understanding the systems shaping artificial intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>
+a,a:visited{color:inherit}
+.prose a:not(.btn),a.inline-link{color:var(--sapphire)}
+.prose a:not(.btn):hover,a.inline-link:hover{color:var(--sapphire-deep)}
+.sec-head{display:grid;grid-template-columns:1fr auto;gap:26px;align-items:end;margin-bottom:clamp(30px,3.6vw,54px)}
+.sec-head .copy .h-section{margin-top:16px}
+.sec-head .sec-cta{justify-self:end}
+@media (max-width:820px){.sec-head{grid-template-columns:1fr}.sec-head .sec-cta{justify-self:start}}
+
+.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
+.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
+.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s}
+.rsub a:hover{color:var(--ink);background:var(--line-soft,rgba(0,0,0,.04))}
+.rsub a.on{color:var(--gold-deep);font-weight:600}
+.rsub .rsub-sep{width:1px;height:16px;background:var(--line-strong);margin:0 6px;flex:none}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ TICKER ═══════════ -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-label">Regulatory Monitor</div>
+  <div class="ticker-track">
+    <span><span class="tk">EU AI ACT</span> GPAI obligations — transparency documentation guidance in circulation</span><span class="dot"></span>
+    <span><span class="tk">STANDARDS</span> CEN-CENELEC JTC 21 work programme progressing on AI trustworthiness</span><span class="dot"></span>
+    <span><span class="tk">NORWAY</span> EEA incorporation process under national assessment</span><span class="dot"></span>
+    <span><span class="tk">ITALY</span> National implementation and competent-authority designation ongoing</span><span class="dot"></span>
+    <span><span class="tk">SECURITY</span> Indirect prompt injection remains the dominant agent attack surface</span><span class="dot"></span>
+    <span><span class="tk">EU AI ACT</span> GPAI obligations — transparency documentation guidance in circulation</span><span class="dot"></span>
+    <span><span class="tk">STANDARDS</span> CEN-CENELEC JTC 21 work programme progressing on AI trustworthiness</span><span class="dot"></span>
+    <span><span class="tk">NORWAY</span> EEA incorporation process under national assessment</span><span class="dot"></span>
+    <span><span class="tk">ITALY</span> National implementation and competent-authority designation ongoing</span><span class="dot"></span>
+    <span><span class="tk">SECURITY</span> Indirect prompt injection remains the dominant agent attack surface</span><span class="dot"></span>
+  </div>
+</div>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Marketplace.html">Marketplace</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Practice.html">Practice</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+      <a href="AGNUS - Business.html">Business</a>
+      </div>
+    <div class="nav-right">
+      <button class="nav-search" onclick="document.getElementById('rsq').focus()">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="6"/><path d="M14 14l4 4"/></svg>
+        Search Research
+        <kbd>/</kbd>
+      </button>
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+      <button class="hamburger" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="m-drawer">
+    <a href="AGNUS - Explore.html">Explore</a>
+    <a href="AGNUS - Marketplace.html">Marketplace</a>
+    <a href="AGNUS - Intelligence.html">Intelligence</a>
+    <a href="AGNUS - Research.html" class="active">Research</a>
+    <a href="AGNUS - Review.html">Reviews</a>
+    <a href="AGNUS - Compare.html">Compare</a>
+    <a href="AGNUS - Agents.html">Agents</a>
+    <a href="AGNUS - Academy.html">Academy</a>
+    <a href="AGNUS - Business.html">Business</a>
+    <a href="AGNUS - Home.html#premium" style="color:var(--gold-deep)">Premium Membership</a>
+  </div>
+</nav>
+<div class="rsub"><div class="rsub-inner">
+<a href="AGNUS - Research.html" class="on">Research Home</a>
+<a href="AGNUS - Research.html#taxonomy">Topics</a>
+<a href="AGNUS - Research Topic.html">EU AI Act</a>
+<a href="AGNUS - Research Country.html">Countries</a>
+<a href="AGNUS - Research Sources.html">Sources</a>
+<a href="AGNUS - Research Calendar.html">Calendar</a>
+<a href="AGNUS - Research Methodology.html">Methodology</a>
+<a href="AGNUS - Research Author.html">Authors</a>
+<a href="AGNUS - Research.html#library">All Articles</a>
+</div></div>
+
+
+<!-- ═══════════ HERO ═══════════ -->
+<header class="rs-hero" id="top">
+  <div class="container">
+    <div class="kicker"><span class="ix">AGNUS</span> Research</div>
+    <h1>Understanding the systems shaping artificial intelligence.</h1>
+    <p class="rs-sub">Independent research and practical guidance on AI governance, regulation, agents, security, auditing, data and emerging standards.</p>
+
+    <div class="rs-searchwrap">
+      <div class="rs-searchlabel">Search AGNUS Research</div>
+      <label class="rs-search">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="6"/><path d="M14 14l4.5 4.5" stroke-linecap="round"/></svg>
+        <input id="rsq" type="search" placeholder="Search AI governance, EU AI Act, agents, security, standards…" aria-label="Search AGNUS Research" />
+      </label>
+      <div class="rs-scope">
+        <span>Topics</span><span>Regulations</span><span>Articles</span><span>Countries</span><span>Standards</span><span>Authorities</span><span>AI systems</span><span>Agents</span><span>Security threats</span>
+      </div>
+    </div>
+
+    <div class="rs-langbar">
+      <span>Language</span>
+      <button aria-current="true">English</button>
+      <button disabled title="Planned">Norsk</button>
+      <button disabled title="Planned">Italiano</button>
+      <button disabled title="Planned">Deutsch</button>
+      <button disabled title="Planned">Français</button>
+      <button disabled title="Planned">Svenska</button>
+      <button disabled title="Planned">Dansk</button>
+      <button disabled title="Planned">Nederlands</button>
+      <button disabled title="Planned">Español</button>
+    </div>
+
+    <div style="margin-top:30px"><span class="demo-note"><span class="d"></span>Demo content — counts, dates and records are placeholders pending the AGNUS intelligence database</span></div>
+  </div>
+</header>
+
+<!-- ═══════════ PRIMARY TAXONOMY ═══════════ -->
+<section id="taxonomy">
+  <div class="container">
+    <div class="sec-head">
+      <div class="copy">
+        <div class="kicker"><span class="ix">01</span> Research Taxonomy</div>
+        <h2 class="h-section">Eight research pillars.<br />One knowledge structure.</h2>
+      </div>
+      <a href="#directory" class="btn btn-light sec-cta">Browse directory <span class="arr">→</span></a>
+    </div>
+
+    <div class="pillars" id="pillarGrid"></div>
+  </div>
+</section>
+
+<!-- ═══════════ FEATURED RESEARCH ═══════════ -->
+<section class="warm" id="featured">
+  <div class="container">
+    <div class="sec-head">
+      <div class="copy">
+        <div class="kicker"><span class="ix">02</span> Featured Research</div>
+        <h2 class="h-section">What it means, what the rules<br />are, and what to do.</h2>
+      </div>
+      <a href="#latest" class="btn btn-light sec-cta">Latest research <span class="arr">→</span></a>
+    </div>
+
+    <div class="feat-grid">
+      <a class="feat-lead" href="AGNUS - Research Article - AI Act Explained.html">
+        <figure>
+          <image-slot id="rs-feat-lead" shape="rect" fit="cover" placeholder="Lead research image · institutional architecture, EU quarter glass façade, or a calm reading room. Editorial, restrained, no robots, no neon. 16:10."></image-slot>
+        </figure>
+        <div class="rcat">EU AI Act <span class="sub">· AI Act Explained</span></div>
+        <h3>The EU AI Act: A Practical Guide for Organizations</h3>
+        <p class="feat-abstract">A structured explanation of the regulation, who it affects, its obligations and the implementation timeline.</p>
+        <div class="rmeta">
+          <span class="au">Jean-Daniel Alexis</span><span class="sepd"></span>
+          <span>Updated 11 August 2026</span><span class="sepd"></span>
+          <span class="jur">EU</span><span class="sepd"></span>
+          <span>18 min read</span><span class="sepd"></span>
+          <span class="rstatus current"><span class="sd"></span>Current</span>
+        </div>
+      </a>
+
+      <div class="feat-side">
+        <a class="feat-item" href="AGNUS - Research Article - AI Governance Structures.html">
+          <div>
+            <div class="rcat">AI Governance</div>
+            <h4>Building an AI governance operating model</h4>
+            <p class="fi-abs">How accountability, oversight and decision rights are distributed across an organization.</p>
+            <div class="rmeta"><span>Updated 04 Aug 2026</span><span class="sepd"></span><span>14 min</span></div>
+          </div>
+          <div class="fi-thumb"><image-slot id="rs-feat-2" shape="rect" fit="cover" placeholder="Governance · minimal boardroom detail or organisational diagram. Square."></image-slot></div>
+        </a>
+        <a class="feat-item" href="AGNUS - Research Article - Prompt Injection.html">
+          <div>
+            <div class="rcat">AI Security</div>
+            <h4>Indirect prompt injection in agent systems</h4>
+            <p class="fi-abs">Why retrieved content is an untrusted input surface, and what controls actually contain it.</p>
+            <div class="rmeta"><span>Updated 29 Jul 2026</span><span class="sepd"></span><span>16 min</span></div>
+          </div>
+          <div class="fi-thumb"><image-slot id="rs-feat-3" shape="rect" fit="cover" placeholder="Security · abstract layered geometry or data-flow diagram. Square."></image-slot></div>
+        </a>
+        <a class="feat-item" href="AGNUS - Research Article - Mission Contracts.html">
+          <div>
+            <div class="rcat">AI Agents</div>
+            <h4>Agent identity, permissions and human approval</h4>
+            <p class="fi-abs">Treating an agent as a governed actor with credentials, scope limits and an approval boundary.</p>
+            <div class="rmeta"><span>Updated 22 Jul 2026</span><span class="sepd"></span><span>12 min</span></div>
+          </div>
+          <div class="fi-thumb"><image-slot id="rs-feat-4" shape="rect" fit="cover" placeholder="Agents · abstract node/permission structure. Square."></image-slot></div>
+        </a>
+        <a class="feat-item" href="AGNUS - Research Article - Audit Trails.html" style="border-bottom:none">
+          <div>
+            <div class="rcat">AI Audit</div>
+            <h4>Tamper-evident logging for AI decisions</h4>
+            <p class="fi-abs">What evidence auditors ask for, and how to produce it without redesigning every system.</p>
+            <div class="rmeta"><span>Updated 18 Jul 2026</span><span class="sepd"></span><span>11 min</span></div>
+          </div>
+          <div class="fi-thumb"><image-slot id="rs-feat-5" shape="rect" fit="cover" placeholder="Audit · archival ledger or records detail, restrained. Square."></image-slot></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ LATEST RESEARCH ═══════════ -->
+<section id="latest">
+  <div class="container">
+    <div class="sec-head">
+      <div class="copy">
+        <div class="kicker"><span class="ix">03</span> Latest Research</div>
+        <h2 class="h-section">Newly published<br />and newly reviewed.</h2>
+      </div>
+    </div>
+
+    <div class="filterbar" role="group" aria-label="Filter latest research">
+      <button class="fchip" aria-pressed="true" data-f="all">All</button>
+      <button class="fchip" aria-pressed="false" data-f="governance">Governance</button>
+      <button class="fchip" aria-pressed="false" data-f="euaiact">EU AI Act</button>
+      <button class="fchip" aria-pressed="false" data-f="agents">Agents</button>
+      <button class="fchip" aria-pressed="false" data-f="security">Security</button>
+      <button class="fchip" aria-pressed="false" data-f="audit">Audit</button>
+      <button class="fchip" aria-pressed="false" data-f="data">Data</button>
+      <button class="fchip" aria-pressed="false" data-f="standards">Standards</button>
+      <button class="fchip" aria-pressed="false" data-f="countries">Countries</button>
+      <span class="fspacer"></span>
+      <button class="fmore" onclick="openDrawer()">
+        <svg width="13" height="13" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 6h14M6 10h8M8 14h4"/></svg>
+        All filters
+      </button>
+    </div>
+
+    <div class="latest-list" id="latestList"></div>
+
+    <div style="margin-top:36px;display:flex;gap:14px;flex-wrap:wrap">
+      <a href="#taxonomy" class="btn btn-dark">Browse all research <span class="arr">→</span></a>
+      <span class="demo-note" style="align-self:center"><span class="d"></span>Demo feed</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ REGULATORY INTELLIGENCE ═══════════ -->
+<section class="dark" id="regulatory">
+  <div class="container">
+    <div class="sec-head">
+      <div class="copy">
+        <div class="kicker"><span class="ix">04</span> Regulatory Intelligence</div>
+        <h2 class="h-section" style="color:#fff">The regulatory picture,<br />continuously monitored.</h2>
+      </div>
+      <div class="sec-cta"><span class="demo-note"><span class="d"></span>Demo records</span></div>
+    </div>
+
+    <div class="reg-grid">
+      <div class="reg-card">
+        <div class="rc-top">
+          <h3>EU AI Act</h3>
+          <span class="impl-status impl-monitored"><span class="sd"></span>Monitored</span>
+        </div>
+        <div class="rc-rows">
+          <div class="rc-row"><span class="k">Status</span><span class="v">In force · phased application</span></div>
+          <div class="rc-row"><span class="k">Current development</span><span class="v">GPAI transparency &amp; documentation guidance</span></div>
+          <div class="rc-row"><span class="k">Next deadline</span><span class="v gold">High-risk obligations phase</span></div>
+          <div class="rc-row"><span class="k">Latest guidance</span><span class="v">European Commission · AI Office</span></div>
+        </div>
+        <div class="rc-foot"><span>Last monitored</span><span>11 Aug 2026</span></div>
+      </div>
+
+      <div class="reg-card">
+        <div class="rc-top">
+          <h3>Norway</h3>
+          <span class="impl-status impl-monitored"><span class="sd"></span>Monitored</span>
+        </div>
+        <div class="rc-rows">
+          <div class="rc-row"><span class="k">AI Act / EEA status</span><span class="v">EEA incorporation under assessment</span></div>
+          <div class="rc-row"><span class="k">National authority</span><span class="v">Designation process ongoing</span></div>
+          <div class="rc-row"><span class="k">Latest development</span><span class="v">National consultation on supervision model</span></div>
+          <div class="rc-row"><span class="k">Language</span><span class="v gold">Norwegian edition planned</span></div>
+        </div>
+        <div class="rc-foot"><span>Last monitored</span><span>11 Aug 2026</span></div>
+      </div>
+
+      <div class="reg-card">
+        <div class="rc-top">
+          <h3>Italy</h3>
+          <span class="impl-status impl-monitored"><span class="sd"></span>Monitored</span>
+        </div>
+        <div class="rc-rows">
+          <div class="rc-row"><span class="k">Implementation status</span><span class="v">National alignment in progress</span></div>
+          <div class="rc-row"><span class="k">Competent authorities</span><span class="v">Designation and coordination ongoing</span></div>
+          <div class="rc-row"><span class="k">Latest guidance</span><span class="v">National sectoral guidance under review</span></div>
+          <div class="rc-row"><span class="k">Language</span><span class="v gold">Italian edition planned</span></div>
+        </div>
+        <div class="rc-foot"><span>Last monitored</span><span>11 Aug 2026</span></div>
+      </div>
+    </div>
+
+    <div class="reg-ctas">
+      <a href="AGNUS - Research Country.html#timeline" class="btn btn-gold">View regulatory timeline <span class="arr">→</span></a>
+      <a href="#jurisdictions" class="btn btn-ghost-d">Explore jurisdictions <span class="arr">→</span></a>
+    </div>
+
+    <p style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:.06em;color:var(--on-dark-mute);margin:26px 0 0;max-width:70ch;line-height:1.7">AGNUS Research is an independent publication. It is not an EU institution, regulator or certification body, and nothing here constitutes legal advice.</p>
+  </div>
+</section>
+
+<!-- ═══════════ EXPLORE BY TOPIC ═══════════ -->
+<section id="directory">
+  <div class="container">
+    <div class="sec-head">
+      <div class="copy">
+        <div class="kicker"><span class="ix">05</span> Explore by Topic</div>
+        <h2 class="h-section">The knowledge directory.</h2>
+      </div>
+      <div class="sec-cta"><span class="demo-note"><span class="d"></span>Counts are demo values</span></div>
+    </div>
+
+    <div class="dir-grid" id="dirGrid"></div>
+  </div>
+</section>
+
+<!-- ═══════════ COUNTRY INTELLIGENCE ═══════════ -->
+<section class="warm" id="jurisdictions">
+  <div class="container">
+    <div class="sec-head">
+      <div class="copy">
+        <div class="kicker"><span class="ix">06</span> Country Intelligence</div>
+        <h2 class="h-section">AI Governance<br />by Jurisdiction.</h2>
+      </div>
+      <a href="AGNUS - Research Country.html" class="btn btn-light sec-cta">Explore country intelligence <span class="arr">→</span></a>
+    </div>
+
+    <div class="jur-grid">
+      <a class="jur-card" href="AGNUS - Research Country.html">
+        <figure><image-slot id="rs-jur-eu" shape="rect" fit="cover" placeholder="European Union · institutional architecture, Brussels quarter or European civic building. Editorial photography, 16:9."></image-slot></figure>
+        <div class="jur-body">
+          <div class="jh"><h3>European Union</h3><span class="impl-status impl-phased"><span class="sd"></span>In force · phased</span></div>
+          <div class="jur-rows">
+            <div class="jur-row"><span class="k">Regulation</span><span class="v">EU AI Act · phased application</span></div>
+            <div class="jur-row"><span class="k">Authorities</span><span class="v">European Commission · AI Office</span></div>
+            <div class="jur-row"><span class="k">Guidance</span><span class="v">Codes of practice · harmonised standards</span></div>
+            <div class="jur-row"><span class="k">Enforcement</span><span class="v">National market surveillance authorities</span></div>
+          </div>
+          <span class="jur-cta">Open jurisdiction <span class="arr">→</span></span>
+        </div>
+      </a>
+
+      <a class="jur-card" href="AGNUS - Research Country.html">
+        <figure><image-slot id="rs-jur-no" shape="rect" fit="cover" placeholder="Norway · calm Nordic civic or landscape architecture, Oslo modern building. Editorial photography, 16:9."></image-slot></figure>
+        <div class="jur-body">
+          <div class="jh"><h3>Norway</h3><span class="impl-status impl-progress"><span class="sd"></span>In progress</span></div>
+          <div class="jur-rows">
+            <div class="jur-row"><span class="k">Regulation</span><span class="v">EEA incorporation under assessment</span></div>
+            <div class="jur-row"><span class="k">Authorities</span><span class="v">Designation process ongoing</span></div>
+            <div class="jur-row"><span class="k">Guidance</span><span class="v">National consultation material</span></div>
+            <div class="jur-row"><span class="k">Enforcement</span><span class="v">Supervision model under development</span></div>
+          </div>
+          <span class="jur-cta">Open jurisdiction <span class="arr">→</span></span>
+        </div>
+      </a>
+
+      <a class="jur-card" href="AGNUS - Research Country.html">
+        <figure><image-slot id="rs-jur-it" shape="rect" fit="cover" placeholder="Italy · classical-modern civic architecture, Rome or Milan institutional building. Editorial photography, 16:9."></image-slot></figure>
+        <div class="jur-body">
+          <div class="jh"><h3>Italy</h3><span class="impl-status impl-progress"><span class="sd"></span>In progress</span></div>
+          <div class="jur-rows">
+            <div class="jur-row"><span class="k">Regulation</span><span class="v">National alignment in progress</span></div>
+            <div class="jur-row"><span class="k">Authorities</span><span class="v">Competent-authority designation</span></div>
+            <div class="jur-row"><span class="k">Guidance</span><span class="v">Sectoral guidance under review</span></div>
+            <div class="jur-row"><span class="k">Enforcement</span><span class="v">Coordination framework forming</span></div>
+          </div>
+          <span class="jur-cta">Open jurisdiction <span class="arr">→</span></span>
+        </div>
+      </a>
+    </div>
+
+    <p style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);margin:28px 0 0">Architecture supports Germany · France · Sweden · Denmark · Netherlands · Spain and further jurisdictions</p>
+  </div>
+</section>
+
+<!-- ═══════════ ORIGINAL AGNUS RESEARCH ═══════════ -->
+<section id="reports">
+  <div class="container">
+    <div class="sec-head">
+      <div class="copy">
+        <div class="kicker"><span class="ix">07</span> Original AGNUS Research</div>
+        <h2 class="h-section">Original studies, benchmarks<br />and intelligence from AGNUS.</h2>
+      </div>
+      <a href="AGNUS - Research Report.html" class="btn btn-light sec-cta">All reports <span class="arr">→</span></a>
+    </div>
+
+    <div class="rep-grid">
+      <a class="rep-card" href="AGNUS - Research Report.html">
+        <div class="rep-cover">
+          <div class="rc-kick">AGNUS Research Report · 2026</div>
+          <div><div class="rc-rule"></div><div class="rc-title">State of AI Governance 2026</div></div>
+        </div>
+        <div class="rep-type">Research Report</div>
+        <h4>How organizations are actually governing AI systems</h4>
+        <div class="rp-meta">Aug 2026 · 74 pages <span class="dq">demo</span></div>
+      </a>
+
+      <a class="rep-card" href="AGNUS - Research Report.html">
+        <div class="rep-cover">
+          <div class="rc-kick">AGNUS Threat Report · 2026</div>
+          <div><div class="rc-rule"></div><div class="rc-title">State of AI Agent Security</div></div>
+        </div>
+        <div class="rep-type">Threat Report</div>
+        <h4>Attack surfaces, incidents and containment patterns in agent systems</h4>
+        <div class="rp-meta">Jul 2026 · 58 pages <span class="dq">demo</span></div>
+      </a>
+
+      <a class="rep-card" href="AGNUS - Research Report.html">
+        <div class="rep-cover">
+          <div class="rc-kick">AGNUS Benchmark · 2026</div>
+          <div><div class="rc-rule"></div><div class="rc-title">Agent Governance Benchmark</div></div>
+        </div>
+        <div class="rep-type">Benchmark</div>
+        <h4>Comparative assessment of agent oversight and permission controls</h4>
+        <div class="rp-meta">Jun 2026 · 42 pages <span class="dq">demo</span></div>
+      </a>
+
+      <a class="rep-card" href="AGNUS - Research Report.html">
+        <div class="rep-cover">
+          <div class="rc-kick">AGNUS Country Report · 2026</div>
+          <div><div class="rc-rule"></div><div class="rc-title">AI Regulation in the Nordics</div></div>
+        </div>
+        <div class="rep-type">Country Report</div>
+        <h4>Implementation posture across Norway, Sweden and Denmark</h4>
+        <div class="rp-meta">Jun 2026 · 36 pages <span class="dq">demo</span></div>
+      </a>
+    </div>
+
+    <div style="margin-top:34px;display:flex;flex-wrap:wrap;gap:10px">
+      <span class="rs-scope" style="margin:0"><span>Research Report</span></span>
+      <span class="rs-scope" style="margin:0"><span>Threat Report</span></span>
+      <span class="rs-scope" style="margin:0"><span>Benchmark</span></span>
+      <span class="rs-scope" style="margin:0"><span>Survey</span></span>
+      <span class="rs-scope" style="margin:0"><span>State of AI Governance</span></span>
+      <span class="rs-scope" style="margin:0"><span>State of Agent Security</span></span>
+      <span class="rs-scope" style="margin:0"><span>Country Report</span></span>
+      <span class="rs-scope" style="margin:0"><span>Industry Report</span></span>
+      <span class="rs-scope" style="margin:0"><span>Methodology</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ HOW AGNUS RESEARCH WORKS ═══════════ -->
+<section id="methodology">
+  <div class="container">
+    <div class="sec-head">
+      <div class="copy">
+        <div class="kicker"><span class="ix">08</span> Methodology</div>
+        <h2 class="h-section">How AGNUS Research works.</h2>
+      </div>
+      <a href="AGNUS - Research Methodology.html" class="btn btn-light sec-cta">Explore our methodology <span class="arr">→</span></a>
+    </div>
+
+    <div class="method-grid">
+      <div class="method-step">
+        <span class="ms-n">01</span><h3>Source</h3>
+        <p>Primary legislation, regulators, standards bodies and authoritative material are monitored directly at source.</p>
+      </div>
+      <div class="method-step">
+        <span class="ms-n">02</span><h3>Verify</h3>
+        <p>Sources, dates, jurisdiction, issuing authority and changes are verified before anything is published.</p>
+      </div>
+      <div class="method-step">
+        <span class="ms-n">03</span><h3>Analyze</h3>
+        <p>Information is mapped to regulations, obligations, systems, industries and the actors actually affected.</p>
+      </div>
+      <div class="method-step">
+        <span class="ms-n">04</span><h3>Review</h3>
+        <p>Research stays monitored. When the underlying evidence changes, the research is reviewed and revised.</p>
+      </div>
+    </div>
+
+    <div class="dest-row">
+      <a class="dest-card" href="AGNUS - Research Sources.html">
+        <span class="dst-k">Evidence</span>
+        <h4>Source Library</h4>
+        <p>Every primary source, official publication and standard AGNUS research is built on — with authority, jurisdiction and verification date.</p>
+        <span class="dst-cta">Open the Source Library <span class="arr">→</span></span>
+      </a>
+      <a class="dest-card" href="AGNUS - Research Calendar.html">
+        <span class="dst-k">Timing</span>
+        <h4>AI Regulatory Calendar</h4>
+        <p>Upcoming deadlines, implementation dates, consultations and standards milestones — filtered by jurisdiction and actor.</p>
+        <span class="dst-cta">Open the calendar <span class="arr">→</span></span>
+      </a>
+      <div class="dest-card" style="cursor:default">
+        <span class="dst-k">Alerts</span>
+        <h4>Track what matters</h4>
+        <p>Not a category follow. Tell AGNUS what you care about and hear when a source, deadline or obligation actually changes.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:8px">
+          <span data-rs="trackButton" data-rs-data="&quot;EU AI Act&quot;"></span>
+          <span data-rs="trackButton" data-rs-data="&quot;Norway&quot;"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ RESEARCH BRIEF CTA ═══════════ -->
+<section class="warm" id="brief">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(30px,4vw,68px);align-items:center">
+      <div>
+        <div class="kicker"><span class="ix">09</span> The AGNUS Research Brief</div>
+        <h2 class="h-section" style="margin-top:16px">One considered email.<br />Not a news feed.</h2>
+        <p class="h-lede" style="margin-top:20px;max-width:52ch">A monthly summary of what actually changed in AI governance, regulation and security — what was published, what was revised, and what it means for organizations. No daily noise.</p>
+        <ul style="list-style:none;margin:26px 0 0;padding:0;display:grid;gap:12px;max-width:52ch">
+          <li style="display:flex;gap:12px;align-items:flex-start;font-size:15px;line-height:1.55;color:var(--ink-soft)"><span style="font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;color:var(--gold-deep);padding-top:4px">01</span><div><b style="color:var(--ink)">Regulatory changes</b> — new obligations, guidance and deadlines, with jurisdiction noted.</div></li>
+          <li style="display:flex;gap:12px;align-items:flex-start;font-size:15px;line-height:1.55;color:var(--ink-soft)"><span style="font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;color:var(--gold-deep);padding-top:4px">02</span><div><b style="color:var(--ink)">Revised research</b> — which AGNUS articles were re-reviewed, and what changed in them.</div></li>
+          <li style="display:flex;gap:12px;align-items:flex-start;font-size:15px;line-height:1.55;color:var(--ink-soft)"><span style="font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;color:var(--gold-deep);padding-top:4px">03</span><div><b style="color:var(--ink)">New publications</b> — reports, benchmarks and country analysis as they are released.</div></li>
+        </ul>
+      </div>
+      <div style="background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:clamp(26px,3vw,36px);box-shadow:var(--sh-2)">
+        <div style="font-family:var(--font-mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute)">Subscribe</div>
+        <h3 style="font-family:var(--font-sans);font-weight:700;font-size:21px;letter-spacing:-.024em;margin:12px 0 0">Get the Research Brief</h3>
+        <p style="font-size:14px;line-height:1.6;color:var(--ink-soft);margin:10px 0 22px">Monthly. Free. Unsubscribe in one click.</p>
+        <form onsubmit="return false;" style="display:grid;gap:12px">
+          <input type="email" placeholder="you@organization.com" aria-label="Email address" style="width:100%;border:1px solid var(--line-strong);border-radius:10px;padding:14px 16px;font-family:var(--font-sans);font-size:15px;color:var(--ink);background:#fff;outline:none" />
+          <select aria-label="Primary interest" style="width:100%;border:1px solid var(--line-strong);border-radius:10px;padding:14px 16px;font-family:var(--font-sans);font-size:15px;color:var(--ink-soft);background:#fff;outline:none">
+            <option>Primary interest — all research</option>
+            <option>AI Governance</option>
+            <option>EU AI Act</option>
+            <option>AI Agents</option>
+            <option>AI Security</option>
+            <option>AI Audit</option>
+            <option>Data Governance</option>
+            <option>Standards</option>
+          </select>
+          <button type="submit" class="btn btn-dark" style="width:100%;justify-content:center">Subscribe to the Research Brief <span class="arr">→</span></button>
+        </form>
+        <p style="font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;line-height:1.7;color:var(--ink-mute);margin:18px 0 0">We do not sell or share subscriber data. AGNUS Research is an independent publication and does not provide legal advice.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FILTER DRAWER ═══════════ -->
+<div class="fdrawer-scrim" id="drawerScrim" onclick="closeDrawer()"></div>
+<aside class="fdrawer" id="fdrawer" aria-label="Research filters">
+  <div class="fdrawer-h">
+    <h4>Filter research</h4>
+    <button onclick="closeDrawer()" aria-label="Close">×</button>
+  </div>
+  <div class="fdrawer-body">
+    <div class="fgroup">
+      <h5>Topic</h5>
+      <div class="fopts">
+        <button class="fopt">AI Governance</button><button class="fopt">EU AI Act</button><button class="fopt">AI Agents</button><button class="fopt">AI Security</button><button class="fopt">AI Audit</button><button class="fopt">Data Governance</button><button class="fopt">Standards</button>
+      </div>
+    </div>
+    <div class="fgroup">
+      <h5>Jurisdiction</h5>
+      <div class="fopts"><button class="fopt">European Union</button><button class="fopt">Norway</button><button class="fopt">Italy</button></div>
+    </div>
+    <div class="fgroup">
+      <h5>Content type</h5>
+      <div class="fopts"><button class="fopt">Article</button><button class="fopt">Guide</button><button class="fopt">Research Report</button><button class="fopt">Threat Report</button><button class="fopt">Benchmark</button><button class="fopt">Survey</button></div>
+    </div>
+    <div class="fgroup">
+      <h5>Regulation</h5>
+      <div class="fopts"><button class="fopt">EU AI Act</button><button class="fopt">GDPR</button><button class="fopt">NIS2</button><button class="fopt">DORA</button></div>
+    </div>
+    <div class="fgroup">
+      <h5>Industry</h5>
+      <div class="fopts"><button class="fopt">Financial services</button><button class="fopt">Healthcare</button><button class="fopt">Public sector</button><button class="fopt">Manufacturing</button><button class="fopt">Legal</button></div>
+    </div>
+    <div class="fgroup">
+      <h5>Date</h5>
+      <div class="fopts"><button class="fopt">Last 30 days</button><button class="fopt">Last 6 months</button><button class="fopt">Last 12 months</button><button class="fopt">All time</button></div>
+    </div>
+    <div class="fgroup" style="border-bottom:none">
+      <h5>Research status</h5>
+      <div class="fopts"><button class="fopt">Current</button><button class="fopt">Under review</button><button class="fopt">Archived</button></div>
+    </div>
+  </div>
+  <div class="fdrawer-foot">
+    <button class="btn btn-light btn-sm" onclick="clearFilters()" style="flex:none">Clear</button>
+    <button class="btn btn-dark btn-sm" onclick="closeDrawer()" style="flex:1;justify-content:center">Apply filters</button>
+  </div>
+</aside>
+
+<!-- ═══════════ COMPLETE RESEARCH LIBRARY ═══════════ -->
+<section id="library" style="padding:clamp(64px,7vw,96px) 0 clamp(64px,7vw,96px);background:var(--paper)">
+  <div class="container">
+    <div class="sec-head">
+      <div class="copy">
+        <div class="kicker"><span class="ix">08</span> Complete Research Library</div>
+        <h2 class="h-section">All 100 articles.<br />Every topic covered.</h2>
+      </div>
+    </div>
+    <style>
+      .lib-filters{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:40px}
+      .lib-fb{font-family:var(--font-mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;padding:7px 13px;border-radius:6px;border:1px solid var(--line);background:#fff;color:var(--ink-soft);cursor:pointer;transition:.13s}
+      .lib-fb.on,.lib-fb:hover{border-color:var(--gold-deep);color:var(--gold-deep);background:var(--gold-soft)}
+      .lib-block{margin-bottom:44px}.lib-block[hidden]{display:none!important}
+      .lib-block-head{display:flex;align-items:baseline;gap:14px;margin-bottom:18px;padding-bottom:11px;border-bottom:2px solid var(--line-strong)}
+      .lib-block-head h3{font-family:var(--font-sans);font-weight:700;font-size:18px;letter-spacing:-.01em;margin:0}
+      .lib-count-tag{font-family:var(--font-mono);font-size:10.5px;color:var(--ink-mute)}
+      .lib-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px}
+      @media(max-width:1100px){.lib-grid{grid-template-columns:repeat(3,1fr)}}
+      @media(max-width:760px){.lib-grid{grid-template-columns:repeat(2,1fr)}}
+      @media(max-width:480px){.lib-grid{grid-template-columns:1fr}}
+      .lib-a{display:flex;align-items:center;gap:7px;padding:9px 12px;border:1px solid var(--rule-soft);border-radius:5px;text-decoration:none;color:var(--ink);font-size:13px;font-weight:500;background:#fff;transition:.12s;line-height:1.3}
+      .lib-a::before{content:'→';font-family:var(--font-mono);font-size:10px;color:var(--ink-faint);flex-shrink:0;transition:.12s}
+      .lib-a:hover{border-color:var(--gold-deep);color:var(--gold-deep);background:var(--gold-soft)}
+      .lib-a:hover::before{color:var(--gold-deep)}
+    </style>
+    <div class="lib-filters" id="libFilters"></div>
+    <div id="libBody"></div>
+  </div>
+</section>
+<script>
+(function(){
+var LIBRARY=[
+  {cat:'eu-ai-act',label:'EU AI Act',articles:[
+    ['AI Act Explained','AGNUS - Research Article - AI Act Explained.html'],
+    ['Scope','AGNUS - Research Article - Scope.html'],
+    ['Definitions','AGNUS - Research Article - Definitions.html'],
+    ['High-Risk AI','AGNUS - Research Article - High-Risk AI.html'],
+    ['Risk Classification','AGNUS - Research Article - Risk Classification.html'],
+    ['Provider Obligations','AGNUS - Research Article - Provider Obligations.html'],
+    ['Deployer Obligations','AGNUS - Research Article - Deployer Obligations.html'],
+    ['Importers & Distributors','AGNUS - Research Article - Importers Distributors.html'],
+    ['GPAI Obligations','AGNUS - Research Article - GPAI Obligations.html'],
+    ['Prohibited Practices','AGNUS - Research Article - Prohibited Practices.html'],
+    ['Transparency','AGNUS - Research Article - Transparency.html'],
+    ['Registration','AGNUS - Research Article - Registration.html'],
+    ['Conformity Assessment','AGNUS - Research Article - Conformity Assessment.html'],
+    ['Documentation','AGNUS - Research Article - Documentation.html'],
+    ['Penalties','AGNUS - Research Article - Penalties.html'],
+    ['Deadlines','AGNUS - Research Article - Deadlines.html'],
+    ['Regulatory Sandboxes','AGNUS - Research Article - Regulatory Sandboxes.html'],
+    ['Market Surveillance','AGNUS - Research Article - Market Surveillance.html'],
+    ['Post-Market Monitoring','AGNUS - Research Article - Post-Market Monitoring.html'],
+    ['Incident Reporting','AGNUS - Research Article - Incident Reporting.html'],
+    ['Standards','AGNUS - Research Article - Standards.html'],
+    ['Codes of Practice','AGNUS - Research Article - Codes of Practice.html'],
+    ['EU Harmonised Standards','AGNUS - Research Article - EU Harmonised Standards.html'],
+    ['EU AI Act Harmonised Standards','AGNUS - Research Article - EU AI Act Harmonised Standards.html'],
+    ['EU AI Act: Digital Omnibus In Force','AGNUS - Research Article - EU AI Act Digital Omnibus In Force.html']
+  ]},
+  {cat:'countries',label:'Country Coverage',articles:[
+    ['European Union','AGNUS - Research Article - European-Union.html'],
+    ['United Kingdom','AGNUS - Research Article - United Kingdom.html'],
+    ['United States','AGNUS - Research Article - United States.html'],
+    ['Norway','AGNUS - Research Article - Norway.html'],
+    ['Italy','AGNUS - Research Article - Italy.html'],
+    ['Japan','AGNUS - Research Article - Japan.html'],
+    ['Singapore','AGNUS - Research Article - Singapore.html'],
+    ['South Korea','AGNUS - Research Article - South Korea.html'],
+    ['Canada','AGNUS - Research Article - Canada.html'],
+    ['China','AGNUS - Research Article - China.html'],
+    ['California SB574 AI Legal Duties','AGNUS - Research Article - California SB574 AI Legal Duties.html'],
+    ['NY FOCUS Act','AGNUS - Research Article - NY FOCUS Act.html'],
+    ['UK: AISI LLM Preferences','AGNUS - Research Article - UK AISI LLM Preferences.html'],
+    ['UK: DSIT Open Source AI Cybersecurity','AGNUS - Research Article - UK DSIT Open Source AI Cybersecurity.html'],
+    ['China: CAC AI Enforcement Phase 2','AGNUS - Research Article - China CAC AI Enforcement Phase 2.html'],
+    ['China: Digital Green AI Plan 2030','AGNUS - Research Article - China Digital Green AI Plan 2030.html'],
+    ['South Korea: PIPA AI Amendment','AGNUS - Research Article - South Korea PIPA AI Amendment.html'],
+    ['EU: ChatGPT DSA Designation','AGNUS - Research Article - EU ChatGPT DSA Designation.html'],
+    ['EU: Tech Sovereignty CADA','AGNUS - Research Article - EU Tech Sovereignty CADA.html']
+  ]},
+  {cat:'governance',label:'AI Governance',articles:[
+    ['AI Governance Structures','AGNUS - Research Article - AI Governance Structures.html'],
+    ['AI Governance Maturity','AGNUS - Research Article - AI Governance Maturity.html'],
+    ['Governance Frameworks','AGNUS - Research Article - Governance Frameworks.html'],
+    ['Governance Structure','AGNUS - Research Article - Governance Structure.html'],
+    ['Board AI Governance','AGNUS - Research Article - Board AI Governance.html'],
+    ['Board-Level AI Governance','AGNUS - Research Article - Board-Level AI Governance.html'],
+    ['OECD AI Principles','AGNUS - Research Article - OECD AI Principles.html'],
+    ['IEEE AI Standards','AGNUS - Research Article - IEEE AI Standards.html'],
+    ['ISO 42001','AGNUS - Research Article - ISO 42001.html'],
+    ['ISO 42001 Certification','AGNUS - Research Article - ISO 42001 Certification.html'],
+    ['NIST AI RMF Implementation','AGNUS - Research Article - NIST AI RMF Implementation.html'],
+    ['NIST AI RMF vs EU AI Act','AGNUS - Research Article - NIST AI RMF vs EU AI Act.html'],
+    ['Algorithmic Accountability','AGNUS - Research Article - Algorithmic Accountability.html'],
+    ['Algorithmic Impact Assessment','AGNUS - Research Article - Algorithmic Impact Assessment.html'],
+    ['Fundamental Rights Impact Assessment','AGNUS - Research Article - Fundamental Rights Impact Assessment.html'],
+    ['Continuous AI Monitoring','AGNUS - Research Article - Continuous AI Monitoring.html']
+  ]},
+  {cat:'audit',label:'AI Audit',articles:[
+    ['Audit Trails','AGNUS - Research Article - Audit Trails.html'],
+    ['Audit Trail Design','AGNUS - Research Article - Audit Trail Design.html'],
+    ['Internal AI Audit','AGNUS - Research Article - Internal AI Audit.html'],
+    ['Third-Party AI Auditing','AGNUS - Research Article - Third-Party AI Auditing.html'],
+    ['AI Audit Methodology','AGNUS - Research Article - AI Audit Methodology.html'],
+    ['AI Inventory','AGNUS - Research Article - AI Inventory.html'],
+    ['Logging','AGNUS - Research Article - Logging.html'],
+    ['AI Model Cards','AGNUS - Research Article - AI Model Cards.html']
+  ]},
+  {cat:'security',label:'AI Security',articles:[
+    ['Adversarial Examples','AGNUS - Research Article - Adversarial Examples.html'],
+    ['Prompt Injection','AGNUS - Research Article - Prompt Injection.html'],
+    ['Data Poisoning','AGNUS - Research Article - Data Poisoning.html'],
+    ['Model and Data Poisoning','AGNUS - Research Article - Model and Data Poisoning.html'],
+    ['Model Theft and IP Risk','AGNUS - Research Article - Model Theft and IP Risk.html'],
+    ['AI Supply Chain Security','AGNUS - Research Article - AI Supply Chain Security.html'],
+    ['AI Security by Design','AGNUS - Research Article - AI Security by Design.html'],
+    ['AI Red Teaming','AGNUS - Research Article - AI Red Teaming.html'],
+    ['AI Red Teaming — Deep Dive','AGNUS - Research Article - AI Red Teaming Deep Dive.html']
+  ]},
+  {cat:'agents',label:'AI Agents',articles:[
+    ['Agent Governance','AGNUS - Research Article - Agent Governance.html'],
+    ['Agent Incident Response','AGNUS - Research Article - Agent Incident Response.html'],
+    ['Agentic AI Risk','AGNUS - Research Article - Agentic AI Risk.html'],
+    ['Excessive Agency','AGNUS - Research Article - Excessive Agency.html'],
+    ['Human Oversight of AI Agents','AGNUS - Research Article - Human Oversight AI Agents.html'],
+    ['Mission Contracts','AGNUS - Research Article - Mission Contracts.html'],
+    ['Multi-Agent Systems','AGNUS - Research Article - Multi-Agent Systems.html'],
+    ['Multi-Agent Systems Governance','AGNUS - Research Article - Multi-Agent Systems Governance.html'],
+    ['Autonomy Levels','AGNUS - Research Article - Autonomy Levels.html'],
+    ['AI Agent Least Privilege','AGNUS - Research Article - AI Agent Least Privilege.html']
+  ]},
+  {cat:'data',label:'Data & Privacy',articles:[
+    ['GDPR and AI','AGNUS - Research Article - GDPR and AI.html'],
+    ['Data Minimisation for AI','AGNUS - Research Article - Data Minimisation for AI.html'],
+    ['Data Minimisation in AI','AGNUS - Research Article - Data Minimisation in AI.html'],
+    ['Data Subject Rights and AI','AGNUS - Research Article - Data Subject Rights and AI.html'],
+    ['AI Right to Erasure','AGNUS - Research Article - AI Right to Erasure.html'],
+    ['Cross-Border AI Data Transfers','AGNUS - Research Article - Cross-Border AI Data Transfers.html'],
+    ['Training Data Governance','AGNUS - Research Article - Training Data Governance.html']
+  ]},
+  {cat:'implementation',label:'Implementation',articles:[
+    ['AI Risk Assessment','AGNUS - Research Article - AI Risk Assessment.html'],
+    ['AI Procurement','AGNUS - Research Article - AI Procurement.html'],
+    ['AI Procurement Governance','AGNUS - Research Article - AI Procurement Governance.html'],
+    ['AI Policies and Acceptable Use','AGNUS - Research Article - AI Policies and Acceptable Use.html'],
+    ['Value Chain Responsibilities','AGNUS - Research Article - Value Chain Responsibilities.html'],
+    ['MiFID II AI','AGNUS - Research Article - MiFID II AI.html']
+  ]}
+];
+
+var filtersEl=document.getElementById('libFilters');
+var bodyEl=document.getElementById('libBody');
+var active='all';
+
+function render(){
+  LIBRARY.forEach(function(block){
+    var sec=document.getElementById('lib-'+block.cat);
+    if(!sec){
+      sec=document.createElement('div');
+      sec.className='lib-block';
+      sec.id='lib-'+block.cat;
+      sec.innerHTML='<div class="lib-block-head"><h3>'+block.label+'</h3><span class="lib-count-tag">'+block.articles.length+' articles</span></div>'
+        +'<div class="lib-grid">'+block.articles.map(function(a){return '<a class="lib-a" href="'+a[1]+'">'+a[0]+'</a>';}).join('')+'</div>';
+      bodyEl.appendChild(sec);
+    }
+    sec.hidden=(active!=='all'&&active!==block.cat);
+  });
+}
+
+// Build filter buttons
+var allBtn=document.createElement('button');
+allBtn.className='lib-fb on';allBtn.textContent='All articles';
+allBtn.onclick=function(){active='all';document.querySelectorAll('.lib-fb').forEach(function(b){b.classList.remove('on');});this.classList.add('on');render();};
+filtersEl.appendChild(allBtn);
+LIBRARY.forEach(function(block){
+  var btn=document.createElement('button');
+  btn.className='lib-fb';btn.textContent=block.label;
+  btn.onclick=function(){active=block.cat;document.querySelectorAll('.lib-fb').forEach(function(b){b.classList.remove('on');});this.classList.add('on');render();};
+  filtersEl.appendChild(btn);
+});
+
+render();
+})();
+</script>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="container">
+    <div class="foot-top" style="grid-template-columns:1.35fr 1fr 1fr 1fr 1fr">
+      <div class="foot-brand">
+        <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+        <p>Intelligence for the future of work. The trusted source for what's happening, which tools matter, and where AI is heading.</p>
+        <form class="fsearch" onsubmit="return false;">
+          <input type="email" placeholder="Your email for the daily brief" aria-label="Email" />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+      <div class="foot-col">
+        <h5>Intelligence</h5>
+        <ul>
+          <li><a href="AGNUS - Intelligence.html">AI News</a></li>
+          <li><a href="AGNUS - Intelligence.html">Daily Intelligence</a></li>
+          <li><a href="AGNUS - Research.html#regulatory">Regulatory Intelligence</a></li>
+          <li><a href="AGNUS - Business.html">Industry Intelligence</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Research</h5>
+        <ul>
+          <li><a href="AGNUS - Research Topic.html">AI Governance</a></li>
+          <li><a href="AGNUS - Research Topic.html">EU AI Act</a></li>
+          <li><a href="AGNUS - Research Topic.html">AI Agents</a></li>
+          <li><a href="AGNUS - Research Topic.html">AI Security</a></li>
+          <li><a href="AGNUS - Research Topic.html">AI Audit</a></li>
+          <li><a href="AGNUS - Research Topic.html">Data Governance</a></li>
+          <li><a href="AGNUS - Research Topic.html">Standards</a></li>
+          <li><a href="AGNUS - Research Country.html">Countries</a></li>
+          <li><a href="AGNUS - Research Report.html"><span class="gd">AGNUS Reports</span></a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Discover</h5>
+        <ul>
+          <li><a href="AGNUS - Review.html">AI Reviews</a></li>
+          <li><a href="AGNUS - Compare.html">Comparisons</a></li>
+          <li><a href="AGNUS - Tools.html">AI Tools</a></li>
+          <li><a href="AGNUS - Marketplace.html">Marketplace</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Learn &amp; Build</h5>
+        <ul>
+          <li><a href="AGNUS - Academy.html">Academy</a></li>
+          <li><a href="AGNUS - Prompts.html">Prompt Library</a></li>
+          <li><a href="AGNUS - Agents.html">Agents</a></li>
+          <li><a href="AGNUS - Business.html">Business Automation</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 AGNUS · Truth before hype. · AGNUS Research is an independent publication, not a regulator or certification body.</span>
+      <div class="fb-links">
+        <a href="#">About</a>
+        <a href="#">Methodology</a>
+        <a href="#">Editorial Policy</a>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="image-slot.js"></script>
+<script src="agnus-research-components.js"></script>
+<script src="agnus-research-data.js"></script>
+<script>
+/* ── Research taxonomy (demo structure; mirrors /research/ URL plan) ── */
+const PILLARS = [
+  {n:'01', slug:'eu-ai-act', name:'EU AI Act', desc:'The regulation explained in full — scope, obligations, timelines and enforcement.', count:'54 articles',
+   subs:['Scope & Definitions','Prohibited Practices','High-Risk AI','Provider Obligations','Deployer Obligations','Transparency','Human Oversight','Conformity Assessment','Registration','Post-Market Monitoring','Incident Reporting','Penalties','Regulatory Sandboxes','Standards','Codes of Practice','Deadlines']},
+  {n:'02', slug:'ai-governance', name:'AI Governance', desc:'Frameworks, accountability and oversight structures that keep AI systems under control.', count:'13 articles',
+   subs:['Governance Frameworks','Governance Structures','Risk Assessment','Procurement','AI Policies','Acceptable Use']},
+  {n:'03', slug:'ai-agents', name:'AI Agents', desc:'How agentic AI systems work, how to govern them, and how multi-agent systems create accountability gaps.', count:'18 articles',
+   subs:['Agent Governance','Multi-Agent Systems','Autonomy Levels','Mission Contracts','Incident Response']},
+  {n:'04', slug:'ai-security', name:'AI Security', desc:'Prompt injection, supply chain attacks, excessive agency and security-by-design for AI deployments.', count:'20 articles',
+   subs:['Prompt Injection','Supply Chain Security','Data Poisoning','Excessive Agency','Security by Design']},
+  {n:'05', slug:'ai-audit', name:'AI Audit', desc:'How to audit AI systems, what evidence standards apply, and how to monitor AI in production.', count:'13 articles',
+   subs:['Audit Methodology','Algorithmic Impact Assessment','Model Cards','Audit Trails','Continuous Monitoring']},
+  {n:'06', slug:'ai-data-governance', name:'AI Data Governance', desc:'GDPR, training data legal bases, data subject rights, and cross-border transfers for AI deployments.', count:'15 articles',
+   subs:['GDPR and AI','Data Minimisation','Data Subject Rights','Training Data','Cross-Border Transfers']},
+  {n:'07', slug:'standards', name:'Standards', desc:'ISO 42001, NIST AI RMF, IEEE standards, OECD Principles and EU harmonised standards.', count:'11 articles',
+   subs:['ISO 42001','NIST AI RMF','IEEE Standards','Harmonised Standards','OECD Principles']},
+  {n:'08', slug:'countries', name:'Country Coverage', desc:'National AI governance — what each jurisdiction requires and how it relates to the EU AI Act.', count:'14 articles',
+   subs:['Norway','United Kingdom','United States','Singapore','Japan','South Korea','Italy','Canada','China']},
+];
+/* NOTE: "Original AGNUS Research" is deliberately NOT a taxonomy pillar.
+   It is the publication output of the research product, and lives in its
+   own section (§07). Eight pillars — no more. */
+
+const pg = document.getElementById('pillarGrid');
+PILLARS.forEach((p,i)=>{
+  const href = p.slug==='countries' ? 'AGNUS - Research Country.html' : p.slug==='reports' ? 'AGNUS - Research Report.html' : 'AGNUS - Research Topic.html';
+  const btn = document.createElement('button');
+  btn.className='pillar'; btn.setAttribute('aria-expanded','false'); btn.dataset.i=i;
+  btn.innerHTML = '<div class="pillar-top"><span class="pillar-n">'+p.n+'</span><span class="pillar-count">'+p.count+' <span class="dq">demo</span></span></div>'
+    + '<h3>'+p.name+'</h3><p>'+p.desc+'</p>'
+    + '<span class="pillar-toggle">'+p.subs.length+' subtopics <span class="chev">▾</span></span>';
+  const subs = document.createElement('div');
+  subs.className='pillar-subs'; subs.id='psub-'+i;
+  subs.innerHTML = '<div class="psub-h">'+p.name+' — /research/'+p.slug+'/</div><ul>'
+    + p.subs.map(s=>'<li><a href="'+href+'">'+s+'</a></li>').join('')
+    + '</ul><div style="margin-top:22px"><a href="'+href+'" class="btn btn-light btn-sm">Open '+p.name+' <span class="arr">→</span></a></div>';
+  btn.addEventListener('click',()=>{
+    const open = btn.getAttribute('aria-expanded')==='true';
+    pg.querySelectorAll('.pillar').forEach(b=>b.setAttribute('aria-expanded','false'));
+    pg.querySelectorAll('.pillar-subs').forEach(s=>s.classList.remove('open'));
+    if(!open){ btn.setAttribute('aria-expanded','true'); subs.classList.add('open'); }
+  });
+  pg.appendChild(btn); pg.appendChild(subs);
+});
+
+/* ── Explore-by-topic directory ── */
+const DIR = [
+  {t:'AI Governance', c:'24 articles', h:'AGNUS - Research Topic.html'},
+  {t:'EU AI Act', c:'38 articles', h:'AGNUS - Research Topic.html'},
+  {t:'AI Agents', c:'31 articles', h:'AGNUS - Research Topic.html'},
+  {t:'AI Security', c:'27 articles', h:'AGNUS - Research Topic.html'},
+  {t:'AI Audit', c:'18 articles', h:'AGNUS - Research Topic.html'},
+  {t:'Data Governance', c:'22 articles', h:'AGNUS - Research Topic.html'},
+  {t:'Standards', c:'16 articles', h:'AGNUS - Research Topic.html'},
+  {t:'Countries', c:'12 jurisdictions', h:'AGNUS - Research Country.html'}
+];
+document.getElementById('dirGrid').innerHTML = DIR.map(d=>
+  '<a class="dir-cell" href="'+d.h+'"><h4>'+d.t+'</h4><span class="dc-count">'+d.c+' <span class="dq">demo</span> <span class="arr">→</span></span></a>').join('');
+
+/* ── Latest research feed (taxonomy-led, not a blog feed) ── */
+const LATEST = [
+  {t:'South Korea: AI Framework Act and PIPC PIPA Amendments',a:'South Korea enacted a horizontal AI Framework Act in October 2024 — one of the first outside the EU. The PIPC is now proposing PIPA amendments for AI data processing.',cat:'AI Countries',cy:'South Korea',f:'countries',d:'11 Sep 2026',r:'6 min',s:'cur',href:'AGNUS - Research Article - South Korea.html'},
+  {t:'China: Three AI Regulations, PIPL and Global Standards Ambitions',a:'China has enacted more AI-specific regulations than any other jurisdiction: algorithmic recommendations, deepfakes, and generative AI. How they work and what they require.',cat:'AI Countries',cy:'China',f:'countries',d:'11 Sep 2026',r:'7 min',s:'cur',href:'AGNUS - Research Article - China.html'},
+  {t:'Canada: AIDA, Bill C-27 and the Voluntary Code',a:'AIDA would be the first comprehensive federal AI law in North America. Still pending enactment. Quebec Law 25 already in force with stronger AI protections.',cat:'AI Countries',cy:'Canada',f:'countries',d:'11 Sep 2026',r:'6 min',s:'cur',href:'AGNUS - Research Article - Canada.html'},
+  {t:'Italy: Garante, ChatGPT Enforcement and the Italian AI Strategy',a:'Italy issued the first European DPA ban on ChatGPT in March 2023, establishing that GDPR applies immediately to AI training data and outputs — before the EU AI Act.',cat:'AI Countries',cy:'Italy',f:'countries',d:'11 Sep 2026',r:'5 min',s:'cur',href:'AGNUS - Research Article - Italy.html'},
+  {t:'Japan: Hiroshima Process, Society 5.0 and Agile Governance',a:'Japan produced the Hiroshima AI Process — the closest thing to a global consensus document on advanced AI governance — under its G7 presidency in 2023.',cat:'AI Countries',cy:'Japan',f:'countries',d:'11 Sep 2026',r:'6 min',s:'cur',href:'AGNUS - Research Article - Japan.html'},
+  {t:'Singapore: Model Governance Framework and Smart Nation Strategy',a:'Singapore has built one of the world's most detailed voluntary AI governance frameworks. The MGF v2 is directly usable by organisations developing governance programmes.',cat:'AI Countries',cy:'Singapore',f:'countries',d:'11 Sep 2026',r:'5 min',s:'cur',href:'AGNUS - Research Article - Singapore.html'},
+  {t:'AI Security by Design: Governance Controls Before Deployment',a:'Security controls bolted on after deployment are less effective. Six threat categories, a 20-item pre-deployment checklist, and four ongoing controls.',cat:'AI Security',f:'security',d:'11 Sep 2026',r:'8 min',s:'cur',href:'AGNUS - Research Article - AI Security by Design.html'},
+  {t:'Excessive Agency: When AI Agents Are Given Too Much Permission',a:'OWASP LLM06. Four root causes: overly broad tool access, missing prohibitions, autonomy misconfiguration, inherited permissions. The least-privilege fix.',cat:'AI Security',f:'security',d:'11 Sep 2026',r:'6 min',s:'cur',href:'AGNUS - Research Article - Excessive Agency.html'},
+  {t:'Mission Contracts: How to Define What an AI Agent Is Allowed to Do',a:'Eight required fields for a Mission Contract, a worked example (Nordic Finance AS), the lifecycle, and five common design errors.',cat:'AI Agents',f:'agents',d:'11 Sep 2026',r:'7 min',s:'cur',href:'AGNUS - Research Article - Mission Contracts.html'},
+  {t:'Multi-Agent Systems: Coordination, Trust and Governance',a:'Trust models between agents, delegation chains, the distributed accountability problem, and six governance controls for multi-agent deployments.',cat:'AI Agents',f:'agents',d:'11 Sep 2026',r:'6 min',s:'cur',href:'AGNUS - Research Article - Multi-Agent Systems.html'},
+  {t:'Cross-Border AI Data Transfers: GDPR Chapter V',a:'Training data uploads, inference API calls, and model storage across borders. SCCs, EU-US DPF, adequacy decisions, and Transfer Impact Assessments.',cat:'AI Data Governance',f:'data',d:'11 Sep 2026',r:'7 min',s:'cur',href:'AGNUS - Research Article - Cross-Border AI Data Transfers.html'},
+  {t:'OECD AI Principles: The Foundation of Global AI Governance Policy',a:'Adopted 2019, updated 2024 for generative and agentic AI. Endorsed by 46 countries. Referenced by the EU AI Act, NIST AI RMF, and G7 Hiroshima Process.',cat:'Standards',f:'standards',d:'11 Sep 2026',r:'6 min',s:'cur',href:'AGNUS - Research Article - OECD AI Principles.html'},
+];
+function renderLatest(f){
+  const rows = LATEST.filter(x=>f==='all'||x.f===f);
+  document.getElementById('latestList').innerHTML = rows.map(x=>
+    '<a class="latest-row" href="'+(x.href||'AGNUS - Research Article.html')+'">' 
+    + '<div class="lr-cat">'+x.cat+(x.cy?'<span class="cy">· '+x.cy+'</span>':'')+'</div>'
+    + '<div><h4>'+x.t+'</h4><p class="lr-abs">'+x.a+'</p></div>'
+    + '<div class="lr-side"><span>'+x.d+' · '+x.r+'</span>'
+    + '<span class="rstatus '+x.s+'"><span class="sd"></span>'+(x.s==='current'?'Current':'Under review')+'</span></div></a>'
+  ).join('') || '<p style="padding:40px 0;color:var(--ink-mute)">No demo items in this category yet.</p>';
+}
+renderLatest('all');
+document.querySelectorAll('.filterbar .fchip').forEach(c=>{
+  c.addEventListener('click',()=>{
+    document.querySelectorAll('.filterbar .fchip').forEach(x=>x.setAttribute('aria-pressed','false'));
+    c.setAttribute('aria-pressed','true');
+    renderLatest(c.dataset.f);
+  });
+});
+
+/* ── Filter drawer ── */
+function openDrawer(){ document.getElementById('fdrawer').classList.add('open'); document.getElementById('drawerScrim').classList.add('open'); }
+function closeDrawer(){ document.getElementById('fdrawer').classList.remove('open'); document.getElementById('drawerScrim').classList.remove('open'); }
+function clearFilters(){ document.querySelectorAll('.fgroup .fopt').forEach(b=>b.setAttribute('aria-pressed','false')); }
+document.querySelectorAll('.fgroup .fopt').forEach(b=>{
+  b.setAttribute('aria-pressed','false');
+  b.addEventListener('click',()=>b.setAttribute('aria-pressed', b.getAttribute('aria-pressed')==='true'?'false':'true'));
+});
+
+/* ── "/" focuses research search ── */
+document.addEventListener('keydown',e=>{
+  if(e.key==='/' && document.activeElement.tagName!=='INPUT' && document.activeElement.tagName!=='TEXTAREA'){
+    e.preventDefault(); document.getElementById('rsq').focus();
+  }
+  if(e.key==='Escape') closeDrawer();
+});
+
+/* ── reveal ── */
+const io = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

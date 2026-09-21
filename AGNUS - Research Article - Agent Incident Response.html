@@ -1,0 +1,345 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI Agent Incident Response: What to Do When an Agent Behaves Unexpectedly — AGNUS Research</title>
+<meta name="description" content="AI agents will eventually behave in ways their operators did not intend. This article sets out a structured incident response framework for agentic AI: detection, containment, investigation, evidence preservation, root cause analysis, and regulatory notification obligations." />
+<link rel="canonical" href="https://agnus.example/research/ai-agents/incident-response/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="AI Agent Incident Response: What to Do When an Agent Behaves Unexpectedly" />
+<meta property="article:published_time" content="2026-09-11" />
+<meta property="article:author" content="Jean-Daniel Alexis" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>
+a,a:visited{color:inherit}
+.prose h3{font-family:var(--font-sans);font-weight:700;font-size:19px;letter-spacing:-.018em;margin:32px 0 14px}
+.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
+.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
+.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s}
+.rsub a:hover{color:var(--ink);background:var(--line-soft,rgba(0,0,0,.04))}
+.rsub a.on{color:var(--gold-deep);font-weight:600}
+.pillar-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:var(--gold-pale,#FEF9ED);color:var(--gold-deep,#8B6914);border:1px solid var(--gold-line,#E8D9A0);border-radius:4px;padding:3px 8px;margin-bottom:16px}
+.ir-phases{counter-reset:phase;display:flex;flex-direction:column;gap:0;margin:24px 0;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.ir-phase{counter-increment:phase;display:grid;grid-template-columns:52px 1fr;border-bottom:1px solid var(--line)}
+.ir-phase:last-child{border-bottom:none}
+.ir-phase-num{display:flex;align-items:center;justify-content:center;background:var(--paper-warm,#F7F5F0);border-right:1px solid var(--line);font-family:var(--font-mono);font-size:16px;font-weight:700;color:var(--gold-deep)}
+.ir-phase-body{padding:16px 18px}
+.ir-phase-name{font-family:var(--font-sans);font-weight:800;font-size:15px;color:var(--ink);margin-bottom:6px}
+.ir-phase-desc{font-size:13px;color:var(--ink-mute);line-height:1.6}
+.ir-phase-actions{margin-top:8px;font-size:12px;color:var(--ink-mute)}
+.ir-phase-actions li{margin-bottom:3px;padding-left:12px;position:relative}
+.ir-phase-actions li::before{content:'→';position:absolute;left:0;color:var(--gold-deep)}
+.sev-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:13px}
+.sev-table th{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);font-weight:600;text-align:left;padding:10px 14px;border-bottom:2px solid var(--line);background:var(--paper-warm,#F7F5F0)}
+.sev-table td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+.sev-table tr:last-child td{border-bottom:none}
+.sev-crit{color:#8B1414;font-weight:600}
+.sev-high{color:#8B4A14;font-weight:600}
+.sev-med{color:#8B6914;font-weight:600}
+.sev-low{color:#4A7A1A;font-weight:600}
+.notif-box{background:var(--paper-warm,#F7F5F0);border:1px solid var(--line);border-radius:8px;padding:20px 22px;margin:20px 0}
+.notif-box .nb-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:10px;font-weight:600}
+.notif-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px}
+.notif-row:last-child{border-bottom:none}
+.notif-row .nr-trigger{color:var(--ink-mute)}
+.notif-row .nr-timeline{font-family:var(--font-mono);font-size:12px;font-weight:600;color:var(--ink)}
+.notif-row .nr-authority{font-size:12px;color:var(--ink-mute)}
+</style>
+</head>
+<body>
+<div class="art-progress"><i id="progBar"></i></div>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+    </div>
+  </div>
+</nav>
+
+<div class="rsub">
+  <div class="rsub-inner">
+    <a href="#what">What counts as an incident</a>
+    <a href="#severity">Severity classification</a>
+    <a href="#phases">Response phases</a>
+    <a href="#notification">Notification obligations</a>
+    <a href="#evidence">Evidence preservation</a>
+    <a href="#sources">Sources</a>
+  </div>
+</div>
+
+<main class="art-layout">
+  <article class="art-main">
+    <header class="art-header">
+      <span class="pillar-tag">AI Agents</span>
+      <h1 class="art-h1">AI Agent Incident Response: What to Do When an Agent Behaves Unexpectedly</h1>
+      <p class="art-lede">Every AI agent deployment will eventually produce an unexpected behaviour — an action outside scope, an anomalous output, a policy violation, or a system compromise. Incident response for AI agents differs from classical IT incident response in one critical way: the agent's decision-making process is not directly inspectable. This article sets out a structured response framework for the most common incident types.</p>
+      <div class="art-meta">
+        <span>Jean-Daniel Alexis</span>
+        <span class="meta-sep">·</span>
+        <span>11 September 2026</span>
+        <span class="meta-sep">·</span>
+        <span>AI Agents pillar</span>
+        <span class="meta-sep">·</span>
+        <span>AR-000540</span>
+      </div>
+    </header>
+
+    <div class="prose">
+
+      <h3 id="what">What counts as an AI agent incident</h3>
+      <p>An AI agent incident is any event in which an agent's behaviour deviates from its governed operating parameters in a way that has, or could have, a material consequence. This includes:</p>
+      <p><strong>Scope violation:</strong> The agent takes an action outside its Mission Contract — accessing a resource it is not authorised to access, performing an action type not in its capability set, or exceeding an approval threshold without obtaining approval.</p>
+      <p><strong>Policy violation:</strong> The agent takes an action that its policy engine should have blocked — suggesting either a policy configuration error, a policy evaluation failure, or an attempt to circumvent the policy engine.</p>
+      <p><strong>Anomalous behaviour:</strong> The agent's behaviour changes in a way that is not explained by an instruction change — volume anomalies, unexpected resource access patterns, outputs that differ from historical norms.</p>
+      <p><strong>Suspected compromise:</strong> There is reason to believe the agent's context has been manipulated — through prompt injection, poisoned data, or a compromised tool call response. This is a particularly serious incident type because a compromised agent may propagate malicious instructions to other agents.</p>
+      <p><strong>Consequential error:</strong> The agent produces an output that causes material harm — financial loss, data exposure, incorrect decision, or harm to a person — regardless of whether a policy was technically violated.</p>
+
+      <h3 id="severity">Severity classification</h3>
+      <table class="sev-table">
+        <thead><tr><th>Severity</th><th>Definition</th><th>Examples</th><th>Response SLA</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="sev-crit">Critical</span></td>
+            <td>Confirmed harm or active compromise. Immediate containment required.</td>
+            <td>Payment sent without approval; personal data exposed; confirmed prompt injection; agent operating without any policy controls</td>
+            <td>Immediate — contain within minutes</td>
+          </tr>
+          <tr>
+            <td><span class="sev-high">High</span></td>
+            <td>Policy violation with potential for harm. Fast-track investigation.</td>
+            <td>Out-of-scope resource access; approval threshold exceeded without notification; anomalous action volume; suspected compromise</td>
+            <td>Within 1 hour</td>
+          </tr>
+          <tr>
+            <td><span class="sev-med">Medium</span></td>
+            <td>Policy violation without immediate harm. Standard investigation.</td>
+            <td>Scope boundary test that did not succeed; unexpected output pattern; single instance of anomalous behaviour</td>
+            <td>Within 24 hours</td>
+          </tr>
+          <tr>
+            <td><span class="sev-low">Low</span></td>
+            <td>Near-miss or configuration issue. No harm, preventable with adjustment.</td>
+            <td>Action that would have violated policy but was caught by the policy engine; overly broad capability scope identified in review</td>
+            <td>Within 1 week</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="phases">The six incident response phases</h3>
+
+      <div class="ir-phases">
+        <div class="ir-phase">
+          <div class="ir-phase-num">1</div>
+          <div class="ir-phase-body">
+            <div class="ir-phase-name">Detection</div>
+            <div class="ir-phase-desc">Identify that an incident has occurred or is occurring. For AI agents, detection typically comes from: automated policy engine alerts, audit log anomaly detection, human review of outputs, or an affected party reporting harm.</div>
+            <ul class="ir-phase-actions">
+              <li>Log the detection event with timestamp, source, and initial description</li>
+              <li>Assign a severity classification and incident ID immediately</li>
+              <li>Notify the named human sponsor</li>
+            </ul>
+          </div>
+        </div>
+        <div class="ir-phase">
+          <div class="ir-phase-num">2</div>
+          <div class="ir-phase-body">
+            <div class="ir-phase-name">Containment</div>
+            <div class="ir-phase-desc">Stop the immediate harm. For AI agents, containment means stopping or restricting the agent — not investigating root cause. Containment precedes investigation.</div>
+            <ul class="ir-phase-actions">
+              <li>For Critical severity: terminate the agent session immediately</li>
+              <li>For High severity: restrict to read-only or suspend until investigation</li>
+              <li>Preserve all context: do not clear logs, memory, or tool call histories</li>
+              <li>If other agents may be affected by a compromised context, review their recent actions</li>
+            </ul>
+          </div>
+        </div>
+        <div class="ir-phase">
+          <div class="ir-phase-num">3</div>
+          <div class="ir-phase-body">
+            <div class="ir-phase-name">Evidence preservation</div>
+            <div class="ir-phase-desc">Lock the evidence before it can change or be overwritten. This step is time-critical — session logs, audit records, and tool call histories may be subject to retention policies that delete them.</div>
+            <ul class="ir-phase-actions">
+              <li>Export and hash the full audit log for the affected session</li>
+              <li>Export the agent's Mission Contract at the time of the incident</li>
+              <li>Export all policy engine evaluation records for the affected time window</li>
+              <li>If external systems were affected, request preservation of their logs</li>
+            </ul>
+          </div>
+        </div>
+        <div class="ir-phase">
+          <div class="ir-phase-num">4</div>
+          <div class="ir-phase-body">
+            <div class="ir-phase-name">Investigation</div>
+            <div class="ir-phase-desc">Determine what happened, how it happened, and why the governance controls did not prevent it. For AI agents, this requires reconstructing the event sequence from logs — the agent's reasoning process cannot be directly inspected.</div>
+            <ul class="ir-phase-actions">
+              <li>Reconstruct the action sequence from audit logs with timestamps</li>
+              <li>Identify the specific policy or control that failed or was absent</li>
+              <li>Determine whether the behaviour was within the Mission Contract</li>
+              <li>Assess whether prompt injection or context manipulation may have occurred</li>
+            </ul>
+          </div>
+        </div>
+        <div class="ir-phase">
+          <div class="ir-phase-num">5</div>
+          <div class="ir-phase-body">
+            <div class="ir-phase-name">Notification</div>
+            <div class="ir-phase-desc">Determine whether external notification is required — to regulators, affected individuals, or supervisory authorities. See the notification obligations table below.</div>
+            <ul class="ir-phase-actions">
+              <li>Assess whether GDPR Article 33 (supervisory authority) or Article 34 (data subjects) apply</li>
+              <li>Assess whether EU AI Act Article 73 (serious incident reporting) applies</li>
+              <li>Document the notification decision and its reasoning, whether or not notification is required</li>
+            </ul>
+          </div>
+        </div>
+        <div class="ir-phase">
+          <div class="ir-phase-num">6</div>
+          <div class="ir-phase-body">
+            <div class="ir-phase-name">Remediation and review</div>
+            <div class="ir-phase-desc">Fix the root cause, update the governance controls, and restart the agent under the corrected framework.</div>
+            <ul class="ir-phase-actions">
+              <li>Update the Mission Contract to close the identified gap</li>
+              <li>Update or add policy rules that would have prevented the incident</li>
+              <li>Review similar deployments for the same gap</li>
+              <li>Do not restart the agent until the human sponsor has approved the corrected contract</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <h3 id="notification">Regulatory notification obligations</h3>
+
+      <div class="notif-box">
+        <div class="nb-label">Key notification thresholds</div>
+        <div class="notif-row">
+          <span class="nr-trigger">Personal data breach involving AI agent action</span>
+          <span class="nr-timeline">72 hours</span>
+          <span class="nr-authority">Data Protection Authority (GDPR Art. 33)</span>
+        </div>
+        <div class="notif-row">
+          <span class="nr-trigger">Personal data breach — high risk to individuals</span>
+          <span class="nr-timeline">Without undue delay</span>
+          <span class="nr-authority">Affected individuals (GDPR Art. 34)</span>
+        </div>
+        <div class="notif-row">
+          <span class="nr-trigger">Serious incident involving high-risk AI — death or serious health impact</span>
+          <span class="nr-timeline">15 days</span>
+          <span class="nr-authority">Market surveillance authority (EU AI Act Art. 73)</span>
+        </div>
+        <div class="notif-row">
+          <span class="nr-trigger">Serious incident involving high-risk AI — other serious harm</span>
+          <span class="nr-timeline">2 days</span>
+          <span class="nr-authority">Market surveillance authority (EU AI Act Art. 73)</span>
+        </div>
+        <div class="notif-row">
+          <span class="nr-trigger">Serious incident in financial services AI</span>
+          <span class="nr-timeline">Sector-specific</span>
+          <span class="nr-authority">Financial supervisory authority (sector regulation)</span>
+        </div>
+      </div>
+
+      <p>The EU AI Act's serious incident definition covers incidents that directly or indirectly lead to death, serious harm to health, significant property damage, or fundamental rights violations. For most AI agent incidents in commercial settings, the notification threshold will be GDPR Article 33 (personal data breach) rather than the AI Act. Both may apply simultaneously.</p>
+
+      <h3 id="evidence">Evidence preservation and the audit trail</h3>
+      <p>The most common failure in AI agent incident response is evidence loss. When an agent session ends, its context — the full sequence of inputs, tool calls, and outputs — may be deleted or overwritten. If the incident is identified after the session has ended, critical evidence may already be gone.</p>
+      <p>The mitigation is pre-incident: audit logs must be written to append-only storage with a retention period longer than the expected interval between incidents. Logs that cannot be written to (only read from and audited) cannot be tampered with after the fact — which matters when the logs are submitted to a regulatory authority or used in litigation.</p>
+      <p>The minimum evidence that should be preserved for every incident includes: the full action log for the affected session with timestamps; the agent's Mission Contract at the time of the incident; the policy engine evaluation records; any external system logs from systems the agent interacted with; and any outputs the agent produced. These should be exported, hashed (SHA-256 minimum), and stored in a location the affected agent cannot access.</p>
+
+    </div>
+
+    <section class="art-sources" id="sources">
+      <h2 class="sources-h">Sources and verification</h2>
+      <div class="sources-grid">
+        <div class="source-card">
+          <div class="sc-id">SRC-0060</div>
+          <div class="sc-title">EU AI Act — Article 73: Reporting of serious incidents</div>
+          <div class="sc-org">European Parliament and Council</div>
+          <div class="sc-url"><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689" target="_blank" rel="noopener">eur-lex.europa.eu</a></div>
+          <div class="sc-note">Confirmed clean (no Digital Omnibus disclaimer). Three-tier timeline: 15/2/10 days depending on severity. Providers of high-risk AI must notify market surveillance authorities.</div>
+        </div>
+        <div class="source-card">
+          <div class="sc-id">SRC-0001</div>
+          <div class="sc-title">GDPR — Articles 33 and 34: Personal data breach notification</div>
+          <div class="sc-org">European Parliament and Council</div>
+          <div class="sc-url"><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679" target="_blank" rel="noopener">eur-lex.europa.eu</a></div>
+          <div class="sc-note">72-hour notification to supervisory authority (Art. 33); notification to data subjects without undue delay when high risk (Art. 34).</div>
+        </div>
+        <div class="source-card">
+          <div class="sc-id">SRC-0068</div>
+          <div class="sc-title">OWASP Top 10 for Large Language Model Applications</div>
+          <div class="sc-org">OWASP Foundation</div>
+          <div class="sc-url"><a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" target="_blank" rel="noopener">owasp.org</a></div>
+          <div class="sc-note">LLM01: Prompt Injection and LLM06: Excessive Agency — the two most common incident triggers in agentic deployments.</div>
+        </div>
+      </div>
+      <div class="src-registry-note">Article ID: AR-000540 · Sources: SRC-0001, SRC-0060, SRC-0068 · Published: 2026-09-11 · AGNUS Research</div>
+    </section>
+  </article>
+
+  <aside class="art-aside">
+    <div class="aside-block">
+      <div class="aside-label">Pillar</div>
+      <a href="AGNUS - Research.html" class="aside-pill">AI Agents</a>
+    </div>
+    <div class="aside-block">
+      <div class="aside-label">Related articles</div>
+      <ul class="aside-links">
+        <li><a href="AGNUS - Research Article - Incident Reporting.html">EU AI Act: Incident Reporting (Article 73)</a></li>
+        <li><a href="AGNUS - Research Article - Audit Trails.html">Audit Trails for AI Systems</a></li>
+        <li><a href="AGNUS - Research Article - Agent Governance.html">AI Agent Governance: Oversight, Accountability and Control</a></li>
+        <li><a href="AGNUS - Research Article - Prompt Injection.html">Prompt Injection: Attack Taxonomy and Defences</a></li>
+      </ul>
+    </div>
+    <div class="aside-block">
+      <div class="aside-label">Key timeline</div>
+      <div class="aside-value">72 hours</div>
+      <div class="aside-note">GDPR Article 33: personal data breach notification to supervisory authority. The clock starts when the controller becomes aware.</div>
+    </div>
+  </aside>
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-copy">© 2026 AGNUS. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="AGNUS - Home.html">Home</a>
+      <a href="AGNUS - Research.html">Research</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+    </div>
+  </div>
+</footer>
+<script src="agnus-research-data.js"></script>
+<script>
+(function(){
+  var bar=document.getElementById('progBar');
+  if(!bar)return;
+  window.addEventListener('scroll',function(){
+    var h=document.documentElement;
+    var pct=(h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+    bar.style.width=pct+'%';
+  });
+})();
+</script>
+</body>
+</html>

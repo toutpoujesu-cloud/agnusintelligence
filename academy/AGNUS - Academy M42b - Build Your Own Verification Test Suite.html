@@ -1,0 +1,191 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Academy — M42b Build Your Own Verification Test Suite</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#F8F6F2;--panel:#FFFFFF;--panel-2:#F2F0EB;--line:#E5E2D9;--line-2:#D1CEC4;--ink:#18202A;--ink-2:#4A5261;--ink-3:#8E96A2;--navy:#17263C;--navy-2:#0F1A28;--gold:#9A7633;--gold-light:#B59048;--pass:#1A7E4A;--pass-dim:rgba(26,126,74,.1);--danger:#B4432E;--danger-dim:#FEF0ED;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:Manrope,sans-serif;-webkit-font-smoothing:antialiased}
+.top-rail{background:var(--navy-2);color:#fff;display:flex;align-items:center;height:48px;padding:0 20px;gap:18px}
+.tr-brand{font-weight:800;font-size:13.5px}
+.tr-crumb{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.tr-title{font-size:13px;font-weight:700}
+.tr-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.prog-dots{display:flex;gap:5px}
+.prog-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.2)}
+.prog-dot.done{background:var(--gold-light)}
+.prog-dot.active{background:#fff}
+.tr-btn{font-family:Manrope,sans-serif;font-size:12px;font-weight:700;padding:7px 14px;border-radius:7px;border:1px solid rgba(255,255,255,.18);color:#fff;background:rgba(255,255,255,.07);cursor:pointer}
+.wrap{max-width:820px;margin:0 auto;padding:44px 24px 100px}
+.step-banner{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:28px}
+.sb-step{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.sb-count{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-3)}
+.hero{background:var(--navy);border-radius:16px;padding:32px 34px;display:grid;gap:16px;margin-bottom:24px}
+.hero h1{font-weight:800;font-size:26px;letter-spacing:-.026em;color:#fff;line-height:1.15}
+.hero p{font-family:Newsreader,serif;font-style:italic;font-size:16px;line-height:1.7;color:rgba(245,244,241,.78)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px 26px;margin-bottom:20px}
+.card h3{font-size:15px;font-weight:700;margin-bottom:10px}
+.card h4{font-size:13px;font-weight:700;margin:16px 0 10px;color:var(--navy)}
+.card p{font-size:14.5px;line-height:1.68;color:var(--ink-2)}
+.test-case-row{display:grid;grid-template-columns:auto 1fr 1fr;gap:10px;padding:10px 0;border-bottom:1px solid var(--panel-2);align-items:center}
+.test-case-row:last-child{border-bottom:none}
+.tcr-num{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:800;color:var(--gold)}
+.tcr-input,.tcr-input2{border:1.5px solid var(--line-2);border-radius:7px;padding:8px 10px;font-size:12.5px;font-family:Manrope,sans-serif}
+.test-suite-box{border:1.5px solid var(--line-2);border-radius:10px;padding:16px 18px;margin:14px 0;background:var(--panel-2)}
+.add-row-btn{font-family:Manrope,sans-serif;font-size:12px;font-weight:700;color:var(--navy);background:none;border:1.5px dashed var(--line-2);border-radius:8px;padding:8px 14px;margin-top:10px;cursor:pointer}
+.covered-check{display:none;margin-top:14px;padding:14px 16px;border-radius:9px;font-size:13px;line-height:1.6}
+.opt-list{display:grid;gap:10px;margin:16px 0}
+.opt{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border:1.5px solid var(--line-2);border-radius:10px;cursor:pointer}
+.opt:hover{border-color:var(--navy);background:#F9F8F5}
+.opt.correct{border-color:var(--pass);background:var(--pass-dim)}
+.opt.wrong{border-color:var(--danger);background:var(--danger-dim)}
+.opt .letter{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;color:var(--ink-3);flex:none;width:20px}
+.opt .text{font-size:14px;line-height:1.5}
+.feedback{display:none;margin-top:14px;padding:16px 18px;border-radius:10px;font-size:13.5px;line-height:1.6}
+.feedback.pass{display:block;background:var(--pass-dim);border-left:3px solid var(--pass);color:var(--ink)}
+.feedback.fail{display:block;background:var(--danger-dim);border-left:3px solid var(--danger);color:var(--ink)}
+.cta-row{display:flex;justify-content:flex-end;margin-top:24px}
+.btn{font-family:Manrope,sans-serif;font-weight:700;font-size:14px;padding:13px 26px;border-radius:10px;border:none;background:var(--navy);color:#fff;cursor:pointer}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.pass-screen{display:none;text-align:center;padding:44px 30px;background:var(--navy);border-radius:16px;color:#fff}
+.pass-screen h2{font-size:22px;font-weight:800;margin-bottom:10px}
+.pass-screen p{font-size:13.5px;color:rgba(255,255,255,.7);margin-bottom:20px}
+.step{display:none}
+.step.active{display:block}
+</style>
+</head>
+<body>
+
+<header class="top-rail">
+  <span class="tr-brand">AGNUS Academy</span>
+  <span class="tr-crumb">Level 6 · Build</span>
+  <span class="tr-title">M42b — Build Your Own Verification Test Suite</span>
+  <div class="tr-right">
+    <div class="prog-dots" id="progDots"></div>
+    <button class="tr-btn" onclick="location.href='AGNUS - Academy App.html'">← Dashboard</button>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="step active" data-step="0">
+    <div class="step-banner"><span class="sb-step">Step 1 of 4 — Understand</span><span class="sb-count">4 min</span></div>
+    <div class="hero">
+      <h1>Closing out Level 6: don't just pass the tests given to you — write your own.</h1>
+      <p>Every module so far in this level tested you against a case someone else designed. The actual skill of building a guardrail is anticipating the cases that would break it before they happen in production.</p>
+    </div>
+    <div class="card">
+      <h3>Why this matters</h3>
+      <p>A guardrail that's only ever been checked against the one example used to build it is largely untested. Writing your own test cases — including deliberately adversarial ones designed to slip past the rule — is what actually tells you whether a guardrail holds up, closing the loop from M36f's testing discipline back to the design work across this entire level.</p>
+    </div>
+    <div class="cta-row"><button class="btn" onclick="goStep(1)">See a real test suite →</button></div>
+  </section>
+
+  <section class="step" data-step="1">
+    <div class="step-banner"><span class="sb-step">Step 2 of 4 — See</span><span class="sb-count">4 min</span></div>
+    <div class="card">
+      <h3>A test suite for M40's fact-check gate</h3>
+      <div class="test-suite-box">
+        <div class="test-case-row"><span class="tcr-num">01</span><span>"Founded in 2019."</span><span style="color:var(--pass);font-weight:700">Should pass — routine fact</span></div>
+        <div class="test-case-row"><span class="tcr-num">02</span><span>"Trusted by industry leaders worldwide."</span><span style="color:var(--danger);font-weight:700">Should flag — vague, unsourced</span></div>
+        <div class="test-case-row"><span class="tcr-num">03</span><span>"Our data shows 40% faster results (Q3 internal study, n=1,200)."</span><span style="color:var(--pass);font-weight:700">Should pass — sourced</span></div>
+        <div class="test-case-row"><span class="tcr-num">04</span><span>"Everyone knows this is the best option."</span><span style="color:var(--danger);font-weight:700">Should flag — unverifiable opinion stated as fact</span></div>
+      </div>
+      <h4>Why case 4 is the interesting one</h4>
+      <p>Cases 1–3 test the obvious distinction the gate was built for. Case 4 is an adversarial test: it contains no number at all, so a naive gate built only to catch statistics (like the flawed one M40's Pass step described) would let it straight through — even though it's exactly the kind of confident, unverifiable claim the gate exists to catch. A good test suite deliberately hunts for gaps like this.</p>
+    </div>
+    <div class="cta-row"><button class="btn" onclick="goStep(2)">Write your own cases →</button></div>
+  </section>
+
+  <section class="step" data-step="2">
+    <div class="step-banner"><span class="sb-step">Step 3 of 4 — Build</span><span class="sb-count">5 min</span></div>
+    <div class="card">
+      <h3>Write two test cases of your own for a fact-check gate</h3>
+      <p style="margin-bottom:10px">Write one case that should clearly pass, and one adversarial case designed to find a gap — something that might slip past a naive version of the gate.</p>
+      <div class="test-suite-box">
+        <div class="test-case-row"><span class="tcr-num">A</span><input class="tcr-input" id="caseA" placeholder="A claim that should pass..."><input class="tcr-input2" id="verdictA" placeholder="Expected verdict + why"></div>
+        <div class="test-case-row"><span class="tcr-num">B</span><input class="tcr-input" id="caseB" placeholder="An adversarial claim that should be flagged..."><input class="tcr-input2" id="verdictB" placeholder="Expected verdict + why"></div>
+      </div>
+      <div class="covered-check" id="caseFeedback"></div>
+    </div>
+    <div class="cta-row"><button class="btn" id="caseNext" onclick="goStep(3)" disabled>Continue →</button></div>
+  </section>
+
+  <section class="step" data-step="3">
+    <div class="step-banner"><span class="sb-step">Step 4 of 4 — Pass</span><span class="sb-count">Hidden test</span></div>
+    <div class="card">
+      <h3>New scenario — no hints</h3>
+      <p style="margin-bottom:14px">A team tests their fact-check gate only against the exact examples used to originally build it, and it passes 100% of them. What does this "100% pass rate" actually prove?</p>
+      <div class="opt-list" id="passOpts">
+        <div class="opt" data-correct="true" onclick="pickPass(this)"><span class="letter">A</span><span class="text">Very little — passing the cases it was designed around doesn't tell you whether it handles cases it wasn't built for, which is the actual test of a robust guardrail.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">B</span><span class="text">It proves the gate is fully reliable in all situations.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">C</span><span class="text">It proves no further testing is ever needed.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">D</span><span class="text">A 100% pass rate is only meaningful if it's above 90%.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">E</span><span class="text">This means the gate can safely be removed since it never fails.</span></div>
+      </div>
+      <div class="feedback" id="passFeedback"></div>
+    </div>
+    <div class="pass-screen" id="passScreen">
+      <h2>Module 42b complete — Level 6 finished</h2>
+      <p>You're ready for the Level 6 Checkpoint.</p>
+      <button class="tr-btn" onclick="alert('Go to Level 6 Checkpoint')">Go to Level 6 Checkpoint →</button>
+    </div>
+  </section>
+
+</div>
+
+<script>
+const TOTAL_STEPS = 4;
+function renderDots(active){
+  document.getElementById('progDots').innerHTML = Array.from({length:TOTAL_STEPS}).map((_,i)=>
+    '<div class="prog-dot '+(i<active?'done':i===active?'active':'')+'"></div>').join('');
+}
+function goStep(i){
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  document.querySelector('.step[data-step="'+i+'"]').classList.add('active');
+  renderDots(i);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+renderDots(0);
+
+function checkCases(){
+  const a = document.getElementById('caseA').value.trim();
+  const b = document.getElementById('caseB').value.trim();
+  const va = document.getElementById('verdictA').value.trim();
+  const vb = document.getElementById('verdictB').value.trim();
+  const fb = document.getElementById('caseFeedback');
+  if (a.length > 8 && b.length > 8 && va.length > 5 && vb.length > 5) {
+    fb.style.display = 'block';
+    fb.style.cssText = 'display:block;padding:14px 16px;border-radius:9px;font-size:13px;line-height:1.6;background:var(--pass-dim);border-left:3px solid var(--pass)';
+    fb.textContent = "Good — you've written a passing case and an adversarial one with expected verdicts for both. There's no single correct pair of test cases here; what matters is that your adversarial case genuinely probes for a gap, the same way case 4 in Step 2 did.";
+    document.getElementById('caseNext').disabled = false;
+  }
+}
+['caseA','caseB','verdictA','verdictB'].forEach(id => document.getElementById(id).addEventListener('input', checkCases));
+
+function pickPass(el){
+  document.querySelectorAll('#passOpts .opt').forEach(o=>{o.onclick=null;});
+  const correct = el.dataset.correct === 'true';
+  el.classList.add(correct?'correct':'wrong');
+  const fb = document.getElementById('passFeedback');
+  fb.className = 'feedback ' + (correct?'pass':'fail');
+  fb.textContent = correct
+    ? "Correct — M42b complete, and Level 6 finished. A test suite built entirely from the cases used to design the gate can't reveal that gate's own blind spots — it's testing whether the gate remembers its own training, not whether it generalizes. Adversarial cases, deliberately designed to probe for gaps, are what a real test of robustness requires. You're ready for the Level 6 Checkpoint."
+    : "Not quite. A 100% pass rate on self-referential test cases doesn't prove reliability, safety, or that no further testing is needed — it just confirms the gate handles the cases it was already built around.";
+  if(correct){ setTimeout(()=>{ document.getElementById('passScreen').style.display='block'; renderDots(4); }, 600); }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Jean-Daniel Alexis — AGNUS Research</title>
+<meta name="description" content="Founder & Research Director, AGNUS. Research on AI governance, European AI regulation, AI agents, AI security and auditability." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>a,a:visited{color:inherit}
+.sec-head{display:grid;grid-template-columns:1fr auto;gap:26px;align-items:end;margin-bottom:clamp(28px,3.4vw,48px)}
+.sec-head .copy .h-section{margin-top:16px}
+.sec-head .sec-cta{justify-self:end}
+.rs-crumb{display:flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute)}
+.rs-crumb a:hover{color:var(--gold-deep)}
+.rs-crumb .sep{color:var(--line-strong)}
+@media (max-width:820px){.sec-head{grid-template-columns:1fr}.sec-head .sec-cta{justify-self:start}}
+
+.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
+.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
+.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s}
+.rsub a:hover{color:var(--ink);background:var(--line-soft,rgba(0,0,0,.04))}
+.rsub a.on{color:var(--gold-deep);font-weight:600}
+.rsub .rsub-sep{width:1px;height:16px;background:var(--line-strong);margin:0 6px;flex:none}
+</style>
+</head>
+<body><nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Marketplace.html">Marketplace</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Practice.html">Practice</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+      <a href="AGNUS - Business.html">Business</a>
+      </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+      <button class="hamburger" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="m-drawer">
+    <a href="AGNUS - Explore.html">Explore</a><a href="AGNUS - Intelligence.html">Intelligence</a><a href="AGNUS - Research.html" class="active">Research</a><a href="AGNUS - Review.html">Reviews</a><a href="AGNUS - Academy.html">Academy</a><a href="AGNUS - Business.html">Business</a>
+  </div>
+</nav>
+<div class="rsub"><div class="rsub-inner">
+<a href="AGNUS - Research.html">Research Home</a>
+<a href="AGNUS - Research.html#taxonomy">Topics</a>
+<a href="AGNUS - Research Topic.html">EU AI Act</a>
+<a href="AGNUS - Research Country.html">Countries</a>
+<a href="AGNUS - Research Sources.html">Sources</a>
+<a href="AGNUS - Research Calendar.html">Calendar</a>
+<a href="AGNUS - Research Methodology.html">Methodology</a>
+<a href="AGNUS - Research Author.html" class="on">Authors</a>
+</div></div>
+
+<div class="container" style="padding-top:26px">
+  <nav class="rs-crumb" aria-label="Breadcrumb"><a href="AGNUS - Research.html" class="active">Research</a><span class="sep">/</span><span>Authors / Jean-Daniel Alexis</span></nav>
+</div>
+
+<header class="container au-hero">
+  <div class="au-photo">JA</div>
+  <div>
+    <div class="kicker"><span class="ix">◆</span> Author</div>
+    <h1>Jean-Daniel Alexis</h1>
+    <p class="au-role">Founder &amp; Research Director, AGNUS</p>
+    <div class="au-stats" id="auStats"></div>
+  </div>
+</header>
+
+<section>
+  <div class="container" style="max-width:960px">
+    <div class="art-shell" style="grid-template-columns:minmax(0,1fr) 268px">
+      <article class="prose">
+        <h2 id="about">About</h2>
+        <p id="auBio"></p>
+        <p id="auApproach"></p>
+
+        <h2 id="areas">Research areas</h2>
+        <div class="sub-dir" id="auAreas"></div>
+
+        <h2 id="latest">Latest research</h2>
+        <div id="auLatest"></div>
+
+        <h2 id="methodology">Research methodology</h2>
+        <p>Research published under this byline follows the AGNUS method: source from primary material, verify authority and currency, analyse against structured taxonomy, and keep the result under review when the underlying evidence changes. Interpretation is labelled separately from the text it interprets.</p>
+        <p><a class="inline-link" href="AGNUS - Research Methodology.html">Read the full methodology →</a></p>
+
+        <h2 id="disclosures">Disclosures</h2>
+        <p id="auDisc"></p>
+
+        <h2 id="contact">Professional links</h2>
+        <p>Corrections, source challenges and research enquiries are welcomed. AGNUS publishes corrections openly with a dated revision note.</p>
+      </article>
+
+      <aside class="art-rail">
+        <div class="trustpanel">
+          <div class="tp-h"><h4>Publication record</h4></div>
+          <div class="tp-rows" id="auRecord"></div>
+          <div class="tp-disclaim">Counts are computed from the research database. AGNUS does not publish estimated or aspirational publication figures.</div>
+        </div>
+        <div class="railbox">
+          <h5>Institutional</h5>
+          <div class="rb-list">
+            <a href="AGNUS - Research Methodology.html">Methodology</a>
+            <a href="AGNUS - Research Sources.html">Source Library</a>
+            <a href="AGNUS - Research Calendar.html">Regulatory Calendar</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-top" style="grid-template-columns:1.35fr 1fr 1fr 1fr 1fr">
+      <div class="foot-brand">
+        <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+        <p>Intelligence for the future of work. The trusted source for what's happening, which tools matter, and where AI is heading.</p>
+        <form class="fsearch" onsubmit="return false;">
+          <input type="email" placeholder="Your email for the Research Brief" aria-label="Email" />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+      <div class="foot-col">
+        <h5>Research</h5>
+        <ul>
+          <li><a href="AGNUS - Research Topic.html">AI Governance</a></li>
+          <li><a href="AGNUS - Research Topic.html">EU AI Act</a></li>
+          <li><a href="AGNUS - Research Topic.html">AI Agents</a></li>
+          <li><a href="AGNUS - Research Topic.html">AI Security</a></li>
+          <li><a href="AGNUS - Research Topic.html">AI Audit</a></li>
+          <li><a href="AGNUS - Research Topic.html">Data Governance</a></li>
+          <li><a href="AGNUS - Research Topic.html">Standards</a></li>
+          <li><a href="AGNUS - Research Country.html">Countries</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Evidence</h5>
+        <ul>
+          <li><a href="AGNUS - Research Sources.html">Source Library</a></li>
+          <li><a href="AGNUS - Research Calendar.html">Regulatory Calendar</a></li>
+          <li><a href="AGNUS - Research Methodology.html">Methodology</a></li>
+          <li><a href="AGNUS - Research Report.html">AGNUS Reports</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Discover</h5>
+        <ul>
+          <li><a href="AGNUS - Review.html">AI Reviews</a></li>
+          <li><a href="AGNUS - Compare.html">Comparisons</a></li>
+          <li><a href="AGNUS - Tools.html">AI Tools</a></li>
+          <li><a href="AGNUS - Marketplace.html">Marketplace</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Learn &amp; Build</h5>
+        <ul>
+          <li><a href="AGNUS - Academy.html">Academy</a></li>
+          <li><a href="AGNUS - Prompts.html">Prompt Library</a></li>
+          <li><a href="AGNUS - Agents.html">Agents</a></li>
+          <li><a href="AGNUS - Business.html">Business Automation</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 AGNUS · Truth before hype. · AGNUS Research is an independent publication, not a regulator or certification body.</span>
+      <div class="fb-links">
+        <a href="#">About</a><a href="AGNUS - Research Methodology.html">Methodology</a><a href="#">Editorial Policy</a><a href="#">Privacy</a><a href="#">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="image-slot.js"></script>
+<script src="agnus-research-data.js"></script>
+<script src="agnus-research-components.js"></script>
+<script src="agnus-research-components2.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var slug = 'jean-daniel-alexis';
+  var a = AR.byAuthor(slug);
+  document.getElementById('auBio').textContent = a.bio;
+  document.getElementById('auApproach').textContent = a.approach;
+  document.getElementById('auDisc').textContent = a.disclosures;
+
+  document.getElementById('auAreas').innerHTML = a.focus.map(function (f) {
+    return '<a href="AGNUS - Research Topic.html">' + f + '</a>';
+  }).join('');
+
+  /* Real counts only (§33) */
+  var authored = AR.counts.authoredBy(slug);
+  var reviewed = AR.counts.reviewedBy(slug);
+  var lastRev  = AR.counts.lastReviewFor(slug);
+  var stats = [
+    ['Articles authored', authored],
+    ['Articles reviewed', reviewed],
+    ['Research areas', a.focus.length],
+    ['Latest review', AR.fmtShort(lastRev)]
+  ];
+  document.getElementById('auStats').innerHTML = stats.map(function (s) {
+    return '<div class="au-stat"><span class="k">' + s[0] + '</span><span class="v">' + s[1] + '</span></div>';
+  }).join('');
+  document.getElementById('auRecord').innerHTML = stats.map(function (s) {
+    return '<div class="tp-row"><span class="k">' + s[0] + '</span><span class="v">' + s[1] + '</span></div>';
+  }).join('') + '<div class="tp-row"><span class="k">Demo data</span><span class="v soft">Prototype records</span></div>';
+
+  var list = AR.articlesByAuthor(slug).sort(function (x, y) {
+    return (y.last_updated || '').localeCompare(x.last_updated || '');
+  });
+  document.getElementById('auLatest').innerHTML = '<div class="latest-list">' + list.map(function (x) {
+    var p = AR.byPillar(x.pillar);
+    return '<a class="latest-row" href="'+AR.articleUrl(x.article_id)+'">'
+      + '<div class="lr-cat">' + (p ? p.name.toUpperCase() : '') + (x.subtopic ? '<span class="cy">· ' + x.subtopic + '</span>' : '') + '</div>'
+      + '<div><h4>' + x.title + '</h4><p class="lr-abs">' + (x.standfirst || '') + '</p></div>'
+      + '<div class="lr-side"><span>' + AR.fmtShort(x.last_updated) + ' · ' + x.reading_time + ' min</span>'
+      + RC.statusPill(x.status) + '</div></a>';
+  }).join('') + '</div>';
+});
+</script>
+</body>
+</html>

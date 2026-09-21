@@ -1,0 +1,871 @@
+﻿<!DOCTYPE html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AGNUS — Story Builder</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0d1117;--card:#161b22;--card2:#1c2128;--line:#2d333b;
+  --ink:#c9d1d9;--ink-mute:#7d8590;--blue:#58a6ff;--blue-d:rgba(88,166,255,.14);
+  --success:#3fb950;--gold:#d29922;--orange:#db6d28;--purple:#a78bfa;
+  --teal:#2dd4bf;--red:#f85149;--font:Manrope,system-ui,sans-serif;--mono:'JetBrains Mono',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);height:100vh;display:flex;flex-direction:column;overflow:hidden;font-size:13px;}
+::-webkit-scrollbar{width:4px;height:4px;}::-webkit-scrollbar-track{background:transparent;}::-webkit-scrollbar-thumb{background:var(--line);border-radius:2px;}
+
+/* ── TOP NAV ── */
+.top-nav{display:flex;align-items:center;gap:14px;padding:0 16px;height:44px;background:var(--card);border-bottom:1px solid var(--line);flex-shrink:0;}
+.logo-mark{width:28px;height:28px;background:linear-gradient(135deg,#d29922,#f59e0b);border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;color:#0d1117;flex-shrink:0;}
+.nav-sep{width:1px;height:18px;background:var(--line);}
+.nav-title{font-weight:800;font-size:14px;color:var(--ink);flex-shrink:0;}
+.mission-tag{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--ink-mute);flex-shrink:0;}
+.mission-tag b{color:var(--ink);font-weight:600;}
+.edit-btn{background:none;border:none;color:var(--ink-mute);cursor:pointer;font-size:11px;padding:2px;line-height:1;}
+.nav-spacer{flex:1;}
+.score-chip{font-size:11px;color:var(--ink-mute);white-space:nowrap;}
+.score-chip b{font-weight:700;}
+.time-chip{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--ink-mute);}
+.status-pill{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--success);font-weight:600;}
+.dot-green{width:7px;height:7px;border-radius:50%;background:var(--success);box-shadow:0 0 0 2px rgba(63,185,80,.2);}
+.avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--purple));display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;flex-shrink:0;}
+
+/* ── STEPS BAR ── */
+.steps-bar{display:flex;align-items:stretch;padding:0 16px;background:var(--card);border-bottom:1px solid var(--line);flex-shrink:0;overflow-x:auto;}
+.step{display:flex;align-items:center;gap:8px;padding:7px 14px 7px 12px;cursor:pointer;border-bottom:2px solid transparent;min-width:140px;transition:all .15s;flex-shrink:0;}
+.step.done{border-bottom-color:var(--success);}
+.step.active{border-bottom-color:var(--blue);}
+.step:hover:not(.done):not(.active){background:rgba(255,255,255,.03);}
+.step-num{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;}
+.step.done .step-num{background:var(--success);color:#0d1117;}
+.step.active .step-num{background:var(--blue);color:#0d1117;}
+.step:not(.done):not(.active) .step-num{background:var(--card2);color:var(--ink-mute);border:1px solid var(--line);}
+.step-info{display:flex;flex-direction:column;gap:1px;}
+.step-name{font-size:12px;font-weight:700;color:var(--ink);}
+.step-desc{font-size:10px;color:var(--ink-mute);}
+.step-badge{display:flex;align-items:center;gap:4px;margin-top:3px;}
+.step-badge .bd{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+.step-badge .bl{font-size:9px;font-weight:600;}
+.step-arrow{color:var(--line);font-size:14px;align-self:center;flex-shrink:0;margin:0 2px;}
+
+/* ── MAIN LAYOUT ── */
+.main-layout{display:flex;flex:1;overflow:hidden;min-height:0;}
+
+/* ── LEFT SIDEBAR ── */
+.left-sb{width:196px;flex-shrink:0;border-right:1px solid var(--line);display:flex;flex-direction:column;overflow:hidden;}
+.sb-header{padding:9px 14px;font-size:9px;font-weight:700;letter-spacing:.8px;color:var(--ink-mute);text-transform:uppercase;border-bottom:1px solid var(--line);flex-shrink:0;}
+.blocks-list{flex:1;overflow-y:auto;padding:5px 0;}
+.block-item{display:flex;align-items:center;gap:9px;padding:8px 14px;cursor:pointer;border-left:2px solid transparent;transition:all .12s;}
+.block-item:hover{background:rgba(255,255,255,.04);}
+.block-item.active{background:rgba(88,166,255,.08);border-left-color:var(--blue);}
+.block-icon{width:24px;height:24px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;border:1px solid var(--line);}
+.block-label{flex:1;min-width:0;font-size:12px;font-weight:600;color:var(--ink);}
+.block-count{font-size:10px;color:var(--ink-mute);font-family:var(--mono);flex-shrink:0;}
+.add-block{display:flex;align-items:center;gap:8px;padding:10px 14px;border-top:1px solid var(--line);cursor:pointer;font-size:12px;color:var(--blue);font-weight:600;flex-shrink:0;transition:background .12s;}
+.add-block:hover{background:rgba(88,166,255,.06);}
+
+/* ── CENTER PANEL ── */
+.center-panel{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0;}
+.panel-header{display:flex;align-items:center;gap:8px;padding:6px 14px;border-bottom:1px solid var(--line);flex-shrink:0;}
+.panel-title{font-size:15px;font-weight:800;color:var(--ink);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.draft-badge{background:rgba(107,114,128,.15);color:#8b949e;border:1px solid rgba(107,114,128,.25);border-radius:4px;padding:2px 8px;font-size:10px;font-weight:700;font-family:var(--mono);flex-shrink:0;}
+.panel-tabs{display:flex;padding:0 16px;border-bottom:1px solid var(--line);flex-shrink:0;overflow-x:auto;gap:0;}
+.ptab{padding:8px 14px;font-size:11px;font-weight:500;color:var(--ink-mute);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:all .12s;}
+.ptab:hover{color:var(--ink);}
+.ptab.active{color:var(--blue);border-bottom-color:var(--blue);font-weight:700;}
+
+/* ── OVERVIEW 3-COL ── */
+.overview-3col{display:flex;flex:1;overflow:hidden;min-height:0;width:100%;}
+.ov-col{border-right:1px solid var(--line);display:flex;flex-direction:column;overflow:hidden;min-height:0;flex:1;min-width:0;}
+.ov-col:last-child{border-right:none;}
+.ov-col-header{padding:6px 12px;font-size:9px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--ink-mute);border-bottom:1px solid var(--line);flex-shrink:0;}
+.ov-col-body{flex:1;overflow-y:auto;padding:8px 12px;display:flex;flex-direction:column;gap:8px;min-height:0;}
+.ov-col-footer{padding:6px 12px;border-top:1px solid var(--line);flex-shrink:0;}
+.ov-col-footer a{font-size:11px;color:var(--blue);text-decoration:none;font-weight:500;cursor:pointer;}
+
+/* Competitor row */
+.comp-row{display:flex;align-items:center;gap:8px;padding:3px 0;}
+.comp-logo{width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;flex-shrink:0;border:1px solid var(--line);}
+.comp-info{flex:1;min-width:0;}
+.comp-name{font-size:11px;font-weight:700;color:var(--ink);}
+.comp-url{font-size:10px;color:var(--ink-mute);}
+.comp-ring-wrap{position:relative;flex-shrink:0;}
+.comp-ring-val{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:9px;font-weight:700;color:var(--ink);font-family:var(--mono);line-height:1;}
+.comp-ring-label{position:absolute;top:calc(50% + 8px);left:50%;transform:translate(-50%,0);font-size:7px;color:var(--ink-mute);white-space:nowrap;}
+.comp-articles{flex-shrink:0;text-align:right;min-width:36px;}
+.comp-articles .num{font-size:14px;font-weight:700;color:var(--ink);}
+.comp-articles .lbl{font-size:9px;color:var(--ink-mute);}
+
+/* Gap row */
+.gap-row{display:flex;align-items:flex-start;gap:8px;padding:8px 10px;background:var(--card2);border:1px solid var(--line);border-radius:7px;}
+.gap-icon-wrap{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;}
+.gap-info{flex:1;min-width:0;}
+.gap-title{font-size:11px;font-weight:700;color:var(--ink);margin-bottom:2px;}
+.gap-desc{font-size:10px;color:var(--ink-mute);line-height:1.4;}
+.impact{font-size:9px;font-weight:700;padding:2px 7px;border-radius:10px;white-space:nowrap;flex-shrink:0;align-self:flex-start;}
+.impact-high{background:rgba(248,81,73,.15);color:#f85149;}
+.impact-medium{background:rgba(210,153,34,.15);color:#d29922;}
+.impact-low{background:rgba(125,133,144,.12);color:#7d8590;}
+
+/* Outline */
+.outline-tree{display:flex;flex-direction:column;gap:3px;}
+.outline-item{display:flex;align-items:baseline;gap:7px;padding:3px 0;}
+.outline-item.h1{padding-left:0;}
+.outline-item.h2{padding-left:10px;}
+.outline-item.h3{padding-left:22px;}
+.outline-tag{font-size:9px;font-weight:700;font-family:var(--mono);color:var(--ink-mute);width:18px;flex-shrink:0;}
+.outline-text{font-size:11px;color:var(--ink);line-height:1.4;}
+.outline-item.h1 .outline-text{font-weight:700;font-size:12px;color:var(--blue);}
+.outline-item.h2 .outline-text{font-weight:600;}
+.outline-item.h3 .outline-text{color:var(--ink-mute);}
+.outline-footer-btn{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border-radius:6px;background:rgba(88,166,255,.1);color:var(--blue);border:1px solid rgba(88,166,255,.2);font-size:11px;font-weight:600;cursor:pointer;transition:all .12s;font-family:var(--font);}
+.outline-footer-btn:hover{background:rgba(88,166,255,.2);}
+
+/* Stub tab */
+.stub-tab{flex:1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;color:var(--ink-mute);padding:40px;text-align:center;overflow:hidden;}
+.stub-icon{font-size:30px;opacity:.3;}
+.stub-title{font-size:14px;font-weight:700;color:var(--ink);}
+.stub-desc{font-size:12px;max-width:320px;line-height:1.6;}
+.stub-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:8px;background:var(--blue);color:#0d1117;font-size:12px;font-weight:700;border:none;cursor:pointer;font-family:var(--font);}
+
+/* ── RIGHT INSPECTOR ── */
+.right-insp{width:220px;flex-shrink:0;border-left:1px solid var(--line);display:flex;flex-direction:column;overflow-y:auto;}
+.insp-section{padding:14px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:9px;}
+.insp-title{font-size:9px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--ink-mute);}
+.insp-row{display:flex;justify-content:space-between;align-items:center;gap:8px;}
+.insp-label{font-size:10px;color:var(--ink-mute);}
+.insp-val{font-size:10px;color:var(--ink);font-weight:600;text-align:right;}
+.insp-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+.pill-sm{font-size:9px;padding:2px 8px;border-radius:10px;font-weight:700;}
+.pill-blue{background:rgba(88,166,255,.15);color:var(--blue);}
+.pill-green{background:rgba(63,185,80,.15);color:var(--success);}
+.pill-red{background:rgba(248,81,73,.15);color:var(--red);}
+.pill-orange{background:rgba(219,109,40,.15);color:var(--orange);}
+.pill-mute{background:rgba(125,133,144,.1);color:var(--ink-mute);}
+
+/* AI Assistant */
+.ai-q{font-size:10px;color:var(--ink-mute);margin-bottom:4px;}
+.ai-actions{display:flex;flex-direction:column;gap:3px;}
+.ai-action{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:7px;cursor:pointer;font-size:11px;color:var(--ink-mute);background:transparent;border:none;width:100%;text-align:left;font-family:var(--font);transition:all .12s;}
+.ai-action:hover{background:rgba(255,255,255,.05);color:var(--ink);}
+.ai-action.active{background:var(--blue);color:#0d1117;font-weight:700;}
+.ai-action-ic{font-size:11px;width:14px;text-align:center;flex-shrink:0;}
+
+/* Block Actions */
+.ba-list{display:flex;flex-direction:column;gap:5px;}
+.ba-btn{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:7px;border:1px solid var(--line);cursor:pointer;font-size:11px;font-weight:600;font-family:var(--font);background:transparent;width:100%;text-align:left;transition:all .12s;}
+.ba-complete{color:var(--success);border-color:rgba(63,185,80,.3);}
+.ba-complete:hover{background:rgba(63,185,80,.1);}
+.ba-dupe,.ba-move{color:var(--ink-mute);}
+.ba-dupe:hover,.ba-move:hover{background:rgba(255,255,255,.04);}
+.ba-delete{color:var(--red);border-color:rgba(248,81,73,.25);}
+.ba-delete:hover{background:rgba(248,81,73,.08);}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:7px;border:1px solid var(--line);background:transparent;color:var(--ink-mute);font-family:var(--font);font-size:11px;font-weight:600;cursor:pointer;transition:all .12s;white-space:nowrap;}
+.btn:hover{background:rgba(255,255,255,.05);color:var(--ink);}
+.btn-primary{background:var(--blue);color:#0d1117;border-color:var(--blue);}
+.btn-primary:hover{background:#79b8ff;border-color:#79b8ff;}
+
+/* ── LEDGER BAR ── */
+.ledger-bar{border-top:1px solid var(--line);background:var(--card);flex-shrink:0;padding:6px 14px;}
+.ledger-top{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.ledger-heading{font-size:9px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--ink-mute);}
+.ledger-filter{background:transparent;border:1px solid var(--line);color:var(--ink-mute);padding:3px 10px;border-radius:5px;font-size:10px;font-family:var(--font);cursor:pointer;}
+.ledger-view-all{margin-left:auto;font-size:11px;color:var(--blue);text-decoration:none;font-weight:500;cursor:pointer;}
+.ledger-cards{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px;}
+.ledger-card{flex-shrink:0;background:var(--card2);border:1px solid var(--line);border-radius:8px;padding:9px 11px;min-width:126px;display:flex;flex-direction:column;gap:3px;}
+.ledger-time{font-size:9px;font-weight:700;color:var(--blue);font-family:var(--mono);}
+.ledger-event{font-size:11px;font-weight:700;color:var(--ink);}
+.ledger-by{font-size:9px;color:var(--ink-mute);}
+.ledger-detail{font-size:9px;color:var(--ink-mute);}
+.ledger-avatar{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--purple));display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#fff;margin-bottom:3px;}
+
+/* Notification toast */
+.toast{position:fixed;bottom:24px;right:24px;background:#22c55e;color:#0d1117;padding:10px 18px;border-radius:10px;font-size:12px;font-weight:700;z-index:9999;transform:translateY(80px);opacity:0;transition:all .3s;pointer-events:none;}
+.toast.show{transform:translateY(0);opacity:1;}
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="top-nav">
+  <div class="logo-mark">A</div>
+  <div class="nav-sep"></div>
+  <span class="nav-title">Story Builder</span>
+  <div class="nav-sep"></div>
+  <div class="mission-tag">
+    Mission: <b id="missionName">Build Restaurant AI Authority Cluster</b>
+    <button class="edit-btn" onclick="editMission()" title="Edit mission name">✎</button>
+  </div>
+  <div class="nav-spacer"></div>
+  <span class="score-chip">SEO <b style="color:#3fb950">81%</b></span>
+  <span class="score-chip">GEO <b style="color:#3fb950">78%</b></span>
+  <span class="score-chip">EEAT <b style="color:#f59e0b">63%</b></span>
+  <span class="score-chip">Voice <b style="color:#f59e0b">71%</b></span>
+  <span class="score-chip">AI Search <b style="color:#58a6ff">68%</b></span>
+  <div class="nav-sep"></div>
+  <div class="time-chip">⏱ <span>Est. Remaining: <b style="color:var(--ink)">14 min</b></span></div>
+  <div class="nav-sep"></div>
+  <div class="status-pill"><div class="dot-green"></div> In Progress</div>
+  <div class="avatar">JD</div>
+</nav>
+
+<!-- STEPS BAR -->
+<div class="steps-bar">
+  <div class="step done" onclick="setStep(0)">
+    <div class="step-num">✓</div>
+    <div class="step-info">
+      <div class="step-name">Discover</div>
+      <div class="step-desc">Find opportunities</div>
+      <div class="step-badge"><div class="bd" style="background:var(--success)"></div><span class="bl" style="color:var(--success)">Completed</span></div>
+    </div>
+  </div>
+  <div class="step-arrow">›</div>
+  <div class="step active" onclick="setStep(1)">
+    <div class="step-num">2</div>
+    <div class="step-info">
+      <div class="step-name">Blueprint</div>
+      <div class="step-desc">Plan the content</div>
+      <div class="step-badge"><div class="bd" style="background:var(--blue)"></div><span class="bl" style="color:var(--blue)">In Progress</span></div>
+    </div>
+  </div>
+  <div class="step-arrow">›</div>
+  <div class="step" onclick="setStep(2)">
+    <div class="step-num">3</div>
+    <div class="step-info">
+      <div class="step-name">Create</div>
+      <div class="step-desc">Generate content</div>
+      <div class="step-badge"><div class="bd" style="background:var(--line)"></div><span class="bl" style="color:var(--ink-mute)">Not Started</span></div>
+    </div>
+  </div>
+  <div class="step-arrow">›</div>
+  <div class="step" onclick="setStep(3)">
+    <div class="step-num">4</div>
+    <div class="step-info">
+      <div class="step-name">Review</div>
+      <div class="step-desc">Human + AI review</div>
+      <div class="step-badge"><div class="bd" style="background:var(--line)"></div><span class="bl" style="color:var(--ink-mute)">Not Started</span></div>
+    </div>
+  </div>
+  <div class="step-arrow">›</div>
+  <div class="step" onclick="setStep(4)">
+    <div class="step-num">5</div>
+    <div class="step-info">
+      <div class="step-name">Publish</div>
+      <div class="step-desc">Deploy everywhere</div>
+      <div class="step-badge"><div class="bd" style="background:var(--line)"></div><span class="bl" style="color:var(--ink-mute)">Not Started</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="main-layout">
+
+  <!-- LEFT SIDEBAR -->
+  <aside class="left-sb">
+    <div class="sb-header">Content Building Blocks</div>
+    <div class="blocks-list" id="blocksList"></div>
+    <div class="add-block" onclick="addBlock()">
+      <span style="font-size:16px;line-height:1">+</span> Add Custom Block
+    </div>
+  </aside>
+
+  <!-- CENTER PANEL -->
+  <main class="center-panel">
+    <div class="panel-header">
+      <span class="panel-title" id="panelTitle">Comparison: Best AI Tools for Restaurants (2026)</span>
+      <span class="draft-badge">Draft</span>
+      <button class="btn" onclick="showToast('Outline exported')">↓ Export Outline</button>
+      <button class="btn" onclick="showToast('Saved')">💾 Save</button>
+      <button class="btn btn-primary" onclick="runAI('Generate Outline')">✦ Generate Outline</button>
+    </div>
+    <div class="panel-tabs" id="panelTabs">
+      <div class="ptab active" onclick="switchTab(this,'overview')">Overview</div>
+      <div class="ptab" onclick="switchTab(this,'competitors')">Competitors</div>
+      <div class="ptab" onclick="switchTab(this,'outline')">Outline</div>
+      <div class="ptab" onclick="switchTab(this,'gaps')">Gaps</div>
+      <div class="ptab" onclick="switchTab(this,'questions')">Questions</div>
+      <div class="ptab" onclick="switchTab(this,'entities')">Entities</div>
+      <div class="ptab" onclick="switchTab(this,'sources')">Sources</div>
+      <div class="ptab" onclick="switchTab(this,'links')">Internal Links</div>
+      <div class="ptab" onclick="switchTab(this,'notes')">Notes</div>
+    </div>
+    <div id="panelBody" style="display:flex;flex-direction:column;flex:1;overflow:hidden;min-height:0;width:100%;"></div>
+  </main>
+
+  <!-- RIGHT INSPECTOR -->
+  <aside class="right-insp">
+    <div class="insp-section">
+      <div class="insp-title">Block Information</div>
+      <div class="insp-row"><span class="insp-label">Type</span><span class="insp-val" id="inspType">Comparison</span></div>
+      <div class="insp-row">
+        <span class="insp-label">Status</span>
+        <span style="display:flex;align-items:center;gap:5px;">
+          <div class="insp-dot" style="background:var(--blue)"></div>
+          <span class="insp-val" id="inspStatus">In Progress</span>
+        </span>
+      </div>
+      <div class="insp-row">
+        <span class="insp-label">Priority</span>
+        <span style="display:flex;align-items:center;gap:5px;">
+          <div class="insp-dot" style="background:var(--red)"></div>
+          <span class="insp-val" id="inspPriority">High</span>
+        </span>
+      </div>
+      <div class="insp-row"><span class="insp-label">Target Keyword</span></div>
+      <div style="font-size:10px;color:var(--ink);font-weight:500;padding:4px 8px;background:var(--card2);border:1px solid var(--line);border-radius:6px;" id="inspKeyword">best ai tools for restaurants</div>
+      <div class="insp-row"><span class="insp-label">Search Intent</span><span class="pill-sm pill-blue">Commercial</span></div>
+      <div class="insp-row"><span class="insp-label">Est. Traffic</span><span class="insp-val">2.4K / month</span></div>
+      <div class="insp-row"><span class="insp-label">Difficulty</span><span class="pill-sm pill-orange">Medium (42)</span></div>
+    </div>
+
+    <div class="insp-section">
+      <div class="insp-title">AI Assistant</div>
+      <div class="ai-q">What would you like to do?</div>
+      <div class="ai-actions" id="aiActions">
+        <button class="ai-action" onclick="runAI('Research Competitors')"><span class="ai-action-ic">⌕</span> Research Competitors</button>
+        <button class="ai-action active" onclick="runAI('Generate Outline')"><span class="ai-action-ic">✦</span> Generate Outline</button>
+        <button class="ai-action" onclick="runAI('Find Content Gaps')"><span class="ai-action-ic">◎</span> Find Content Gaps</button>
+        <button class="ai-action" onclick="runAI('Generate FAQ')"><span class="ai-action-ic">?</span> Generate FAQ</button>
+        <button class="ai-action" onclick="runAI('Find Internal Links')"><span class="ai-action-ic">↗</span> Find Internal Links</button>
+        <button class="ai-action" onclick="runAI('Generate EEAT')"><span class="ai-action-ic">✓</span> Generate EEAT</button>
+        <button class="ai-action" onclick="runAI('Create Comparison Table')"><span class="ai-action-ic">▦</span> Create Comparison Table</button>
+      </div>
+    </div>
+
+    <div class="insp-section">
+      <div class="insp-title">Block Actions</div>
+      <div class="ba-list">
+        <button class="ba-btn ba-complete" onclick="showToast('Marked as complete ✓')">✓ Mark as Complete</button>
+        <button class="ba-btn ba-dupe" onclick="showToast('Block duplicated')">⧉ Duplicate Block</button>
+        <button class="ba-btn ba-move" onclick="showToast('Move mode enabled')">↕ Move Block</button>
+        <button class="ba-btn ba-delete" onclick="confirmDelete()">🗑 Delete Block</button>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<!-- LEDGER BAR -->
+<div class="ledger-bar">
+  <div class="ledger-top">
+    <span class="ledger-heading">Mission Ledger / AI Activity</span>
+    <select class="ledger-filter"><option>All Events</option><option>AI Only</option><option>Human</option><option>Errors</option></select>
+    <span class="ledger-view-all">View Full Log →</span>
+  </div>
+  <div class="ledger-cards" id="ledgerCards"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ── DATA ── */
+var BLOCKS = [
+  { type:'Pillar Page',    icon:'⬡', iconBg:'rgba(210,153,34,.15)',  iconColor:'#d29922', count:'●1',  status:'in_progress', keyword:'ai tools for restaurants guide', traffic:'8.2K' },
+  { type:'Comparison',     icon:'⇄', iconBg:'rgba(88,166,255,.15)',  iconColor:'#58a6ff', count:'2/6', status:'in_progress', keyword:'best ai tools for restaurants',   traffic:'2.4K' },
+  { type:'How To Guide',   icon:'≡', iconBg:'rgba(63,185,80,.15)',   iconColor:'#3fb950', count:'0/4', status:'not_started', keyword:'how to implement ai in restaurant',traffic:'1.1K' },
+  { type:'Review',         icon:'★', iconBg:'rgba(210,153,34,.15)',  iconColor:'#d29922', count:'1/5', status:'in_progress', keyword:'claude for restaurants review',    traffic:'900' },
+  { type:'Buyer Guide',    icon:'◎', iconBg:'rgba(167,139,250,.15)', iconColor:'#a78bfa', count:'0/3', status:'not_started', keyword:'restaurant ai buyer guide',        traffic:'600' },
+  { type:'FAQ',            icon:'?', iconBg:'rgba(45,212,191,.15)',  iconColor:'#2dd4bf', count:'3/8', status:'in_progress', keyword:'restaurant ai faq',                traffic:'400' },
+  { type:'Pricing',        icon:'$', iconBg:'rgba(63,185,80,.15)',   iconColor:'#3fb950', count:'0/2', status:'not_started', keyword:'ai restaurant software pricing',   traffic:'320' },
+  { type:'Alternatives',   icon:'↔', iconBg:'rgba(88,166,255,.15)',  iconColor:'#58a6ff', count:'1/4', status:'in_progress', keyword:'restaurant ai alternatives',       traffic:'280' },
+  { type:'Case Study',     icon:'📋',iconBg:'rgba(210,153,34,.15)',  iconColor:'#d29922', count:'0/3', status:'not_started', keyword:'restaurant ai case study',         traffic:'200' },
+  { type:'Academy Lesson', icon:'🎓',iconBg:'rgba(167,139,250,.15)', iconColor:'#a78bfa', count:'0/6', status:'not_started', keyword:'learn restaurant ai',              traffic:'150' },
+];
+
+var ACTIVE_BLOCK = 1;
+
+var COMPETITORS = [
+  { name:'Claude',           url:'anthropic.com',   score:92, articles:48, color:'#c4a74d', letter:'C', bg:'rgba(196,167,77,.15)' },
+  { name:'ChatGPT',          url:'openai.com',      score:91, articles:63, color:'#a0a0a0', letter:'G', bg:'rgba(160,160,160,.12)' },
+  { name:'Gemini',           url:'google.com',      score:88, articles:35, color:'#4285f4', letter:'G', bg:'rgba(66,133,244,.15)' },
+  { name:'Perplexity',       url:'perplexity.ai',   score:84, articles:27, color:'#22c3a1', letter:'P', bg:'rgba(34,195,161,.15)' },
+  { name:'Microsoft Copilot',url:'microsoft.com',   score:82, articles:31, color:'#00a4ef', letter:'M', bg:'rgba(0,164,239,.15)' },
+  { name:'DeepSeek',         url:'deepseek.com',    score:76, articles:18, color:'#4c94ff', letter:'D', bg:'rgba(76,148,255,.15)' },
+];
+
+var GAPS = [
+  { icon:'$', iconBg:'rgba(63,185,80,.15)',   title:'Pricing & Plans',       desc:'Most competitors lack detailed pricing.',           impact:'high' },
+  { icon:'⚡',iconBg:'rgba(88,166,255,.15)',  title:'API & Integrations',    desc:'Missing API documentation comparison.',             impact:'high' },
+  { icon:'🏢',iconBg:'rgba(167,139,250,.15)', title:'Enterprise Features',   desc:'No deep dive on enterprise capabilities.',          impact:'medium' },
+  { icon:'💬',iconBg:'rgba(45,212,191,.15)',  title:'Customer Support',      desc:'No comparison of support quality.',                 impact:'medium' },
+  { icon:'📊',iconBg:'rgba(210,153,34,.15)',  title:'Benchmarks & Data',     desc:'Lack of performance benchmarks.',                  impact:'low' },
+  { icon:'🔧',iconBg:'rgba(125,133,144,.12)', title:'Implementation Guide',  desc:'No installation / onboarding comparison.',         impact:'low' },
+];
+
+var OUTLINE = [
+  { tag:'H1', text:'Best AI Tools for Restaurants (2026)', level:'h1' },
+  { tag:'H2', text:'How We Tested', level:'h2' },
+  { tag:'H2', text:'Quick Comparison Table', level:'h2' },
+  { tag:'H2', text:'Detailed Reviews', level:'h2' },
+  { tag:'H3', text:'1. Claude', level:'h3' },
+  { tag:'H3', text:'2. ChatGPT', level:'h3' },
+  { tag:'H3', text:'3. Gemini', level:'h3' },
+  { tag:'H3', text:'4. Perplexity', level:'h3' },
+  { tag:'H3', text:'5. Microsoft Copilot', level:'h3' },
+  { tag:'H3', text:'6. DeepSeek', level:'h3' },
+  { tag:'H2', text:'Pricing Comparison', level:'h2' },
+  { tag:'H2', text:'Features Compared', level:'h2' },
+  { tag:'H2', text:'Which AI Tool is Best for You?', level:'h2' },
+  { tag:'H2', text:'FAQ', level:'h2' },
+  { tag:'H2', text:'Conclusion', level:'h2' },
+];
+
+var LEDGER = [
+  { time:'09:41', event:'Mission Started',        by:'By John Doe',     detail:'Instruction received' },
+  { time:'09:43', event:'Competitors Analyzed',   by:'AI Agent',        detail:'Found: 18 · Articles: 222' },
+  { time:'09:45', event:'Content Gaps Identified',by:'AI Agent',        detail:'Gaps Found: 12 · High Impact: 4' },
+  { time:'09:46', event:'Outline Generated',      by:'AI Agent',        detail:'Sections: 12 · Words: 1,842' },
+  { time:'09:48', event:'Entities Extracted',     by:'AI Agent',        detail:'Found: 45 · Linked: 32' },
+  { time:'09:49', event:'FAQ Questions Imported', by:'AI Agent',        detail:'Questions: 38' },
+  { time:'09:50', event:'Sources Collected',      by:'AI Agent',        detail:'Trusted: 26 · Total: 52' },
+  { time:'09:51', event:'User Reviewed',          by:'By John Doe',     detail:'Approved Outline · Changes: 3' },
+];
+
+/* ── RENDER BLOCKS ── */
+function renderBlocks() {
+  var html = '';
+  BLOCKS.forEach(function(b, i) {
+    html += '<div class="block-item' + (i === ACTIVE_BLOCK ? ' active' : '') + '" onclick="selectBlock(' + i + ')">'
+      + '<div class="block-icon" style="background:' + b.iconBg + ';color:' + b.iconColor + ';border-color:rgba(255,255,255,.08);">' + b.icon + '</div>'
+      + '<span class="block-label">' + b.type + '</span>'
+      + '<span class="block-count">' + b.count + '</span>'
+      + '</div>';
+  });
+  document.getElementById('blocksList').innerHTML = html;
+}
+
+/* ── SELECT BLOCK ── */
+function selectBlock(i) {
+  ACTIVE_BLOCK = i;
+  var b = BLOCKS[i];
+  renderBlocks();
+  document.getElementById('panelTitle').textContent = b.type + ': Best AI Tools for Restaurants (2026)';
+  document.getElementById('inspType').textContent = b.type;
+  document.getElementById('inspKeyword').textContent = b.keyword;
+  var statusMap = { in_progress: 'In Progress', not_started: 'Not Started', completed: 'Completed' };
+  document.getElementById('inspStatus').textContent = statusMap[b.status] || b.status;
+}
+
+/* ── RENDER LEDGER ── */
+function renderLedger() {
+  var html = '';
+  LEDGER.forEach(function(e, i) {
+    var isHuman = e.by.indexOf('John') > -1;
+    var avatarHtml = isHuman
+      ? '<div class="ledger-avatar">JD</div>'
+      : '<div class="ledger-avatar" style="background:linear-gradient(135deg,#2dd4bf,#58a6ff);">AI</div>';
+    html += '<div class="ledger-card">' + avatarHtml
+      + '<div class="ledger-time">' + e.time + '</div>'
+      + '<div class="ledger-event">' + e.event + '</div>'
+      + '<div class="ledger-by">' + e.by + '</div>'
+      + '<div class="ledger-detail">' + e.detail + '</div>'
+      + '</div>';
+  });
+  document.getElementById('ledgerCards').innerHTML = html;
+}
+
+/* ── SCORE RING SVG ── */
+function scoreRing(score, color) {
+  var R = 14, C = 2 * Math.PI * R;
+  var filled = C * score / 100;
+  return '<svg width="36" height="36" viewBox="0 0 36 36">'
+    + '<circle cx="18" cy="18" r="' + R + '" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="3"/>'
+    + '<circle cx="18" cy="18" r="' + R + '" fill="none" stroke="' + color + '" stroke-width="3" stroke-dasharray="' + filled.toFixed(1) + ' ' + C.toFixed(1) + '" stroke-linecap="round" stroke-dashoffset="0" transform="rotate(-90 18 18)"/>'
+    + '</svg>';
+}
+
+/* ── TAB CONTENT ── */
+function renderOverview() {
+  var bl = BLOCKS[ACTIVE_BLOCK] || {};
+  var kw = bl.keyword || 'best ai tools';
+  var traffic = bl.traffic || '2.4K';
+  var kpis = [
+    ['Target Keyword', kw, 'var(--blue)', false],
+    ['Search Intent', 'Commercial Investigation', '#d29922', false],
+    ['Difficulty', '42 / 100', '#f59e0b', false],
+    ['Cluster', 'AI Tools Cluster', '#a78bfa', false],
+    ['Opportunity Score', '88 / 100', '#22c55e', false],
+    ['Est. Revenue', '€480 / mo', '#22c55e', false],
+    ['Est. Traffic', traffic+' / mo', '#58a6ff', false],
+    ['Authority Needed', 'DR 55+', '#f85149', false],
+  ];
+  var discoveryItems = [
+    '18 competitors analyzed — Backlinko, HubSpot, Zapier lead with 88–92 content scores but lack API documentation and pricing comparison sections.',
+    'Top PAA cluster: "What AI tools do restaurants use?" appears 3× across Page 1 results — no competitor answers it directly.',
+    'Semantic gap detected: "no-show reduction ROI" and "AI receptionist for small restaurants" have zero coverage across top 10.',
+    'Voice search opportunity: 7 conversational queries with Featured Snippet potential and current zero competition.',
+    'Internal link cluster: 14 existing articles can link to this page — building topical authority of +23% estimated.',
+    'E-E-A-T signal needed: no competitor includes original data or expert quotes — easy differentiation opportunity.'
+  ];
+  return '<div style="flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:14px;">'
+    // KPI grid
+    + '<div style="background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;">'
+    +   '<div style="padding:8px 14px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;">'
+    +     '<span style="font-size:9px;font-weight:700;letter-spacing:.7px;text-transform:uppercase;color:var(--ink-mute);">Mission Intelligence</span>'
+    +     '<span style="font-size:10px;color:var(--success);">● Live</span>'
+    +   '</div>'
+    +   '<div style="display:grid;grid-template-columns:repeat(4,1fr);">'
+    + kpis.map(function(k,i){
+        return '<div style="padding:12px 14px;border-right:'+(i%4<3?'1px solid var(--line)':'none')+';border-bottom:'+(i<4?'1px solid var(--line)':'none')+'">'
+          + '<div style="font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--ink-mute);margin-bottom:5px;">'+k[0]+'</div>'
+          + '<div style="font-size:12px;font-weight:700;color:'+k[2]+';line-height:1.3;word-break:break-word;">'+k[1]+'</div>'
+          + '</div>';
+      }).join('')
+    +   '</div>'
+    + '</div>'
+    // Mission Summary
+    + '<div style="background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;">'
+    +   '<div style="padding:8px 14px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px;">'
+    +     '<span style="font-size:9px;font-weight:700;letter-spacing:.7px;text-transform:uppercase;color:var(--ink-mute);">What AI Has Discovered</span>'
+    +     '<span style="font-size:9px;color:var(--ink-mute);margin-left:auto;">'+discoveryItems.length+' findings</span>'
+    +   '</div>'
+    +   '<div style="display:flex;flex-direction:column;gap:0;">'
+    + discoveryItems.map(function(d,i){
+        var icons = ['⌕','?','◎','🎤','↗','✓'];
+        var colors = ['#58a6ff','#d29922','#22c55e','#a78bfa','#2dd4bf','#f59e0b'];
+        return '<div style="display:flex;align-items:flex-start;gap:12px;padding:10px 14px;border-bottom:'+(i<discoveryItems.length-1?'1px solid var(--line)':'none')+'">'
+          + '<span style="font-size:12px;color:'+colors[i%colors.length]+';flex-shrink:0;margin-top:1px;">'+icons[i%icons.length]+'</span>'
+          + '<span style="font-size:12px;color:var(--ink);line-height:1.5;">'+d+'</span>'
+          + '</div>';
+      }).join('')
+    +   '</div>'
+    + '</div>'
+    + '</div>';
+}
+var TAB_CONTENT = {
+  overview: renderOverview,
+
+  competitors: function() {
+    var rows = COMPETITORS.map(function(c, i) {
+      var bar = '<div style="width:100%;height:3px;background:rgba(255,255,255,.07);border-radius:2px;margin-top:4px;"><div style="width:'+c.score+'%;height:3px;background:'+c.color+';border-radius:2px;"></div></div>';
+      return '<tr style="border-bottom:1px solid var(--line);">'
+        + '<td style="padding:9px 12px;"><div style="display:flex;align-items:center;gap:8px;">'
+        +   '<div style="width:26px;height:26px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;background:'+c.bg+';color:'+c.color+';">'+c.letter+'</div>'
+        +   '<div><div style="font-size:12px;font-weight:600;color:var(--ink);">'+c.name+'</div><div style="font-size:10px;color:var(--ink-mute);">'+c.url+'</div></div>'
+        + '</div></td>'
+        + '<td style="padding:9px 12px;text-align:center;"><span style="font-size:12px;font-weight:700;color:'+c.color+';">'+c.score+'</span>'+bar+'</td>'
+        + '<td style="padding:9px 12px;text-align:center;font-size:12px;color:var(--ink);">'+c.articles+'</td>'
+        + '<td style="padding:9px 12px;font-size:11px;color:var(--ink-mute);">'+(c.gaps||['Pricing','Enterprise','API']).slice(0,2).map(function(g){return '<span style="display:inline-block;background:rgba(210,153,34,.12);color:#d29922;border-radius:4px;padding:1px 6px;font-size:10px;margin:1px;">'+g+'</span>';}).join('')+'</td>'
+        + '<td style="padding:9px 12px;text-align:center;"><span style="font-size:10px;color:var(--ink-mute);">Updated 3d ago</span></td>'
+        + '</tr>';
+    }).join('');
+    return '<div style="flex:1;overflow:hidden;display:flex;flex-direction:column;">'
+      + '<div style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);flex-shrink:0;">'
+      +   '<span style="font-size:11px;color:var(--ink-mute);">18 competitors · sorted by content score</span>'
+      +   '<div style="flex:1;"></div>'
+      +   '<button class="btn" onclick="showToast(\'Refreshing competitor data…\')">↻ Refresh</button>'
+      +   '<button class="btn btn-primary" onclick="showToast(\'Exporting competitor report…\')">↓ Export</button>'
+      + '</div>'
+      + '<div style="flex:1;overflow-y:auto;">'
+      + '<table style="width:100%;border-collapse:collapse;">'
+      + '<thead><tr style="border-bottom:1px solid var(--line);">'
+      + '<th style="padding:7px 12px;text-align:left;font-size:9px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--ink-mute);">Competitor</th>'
+      + '<th style="padding:7px 12px;text-align:center;font-size:9px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--ink-mute);width:90px;">Score</th>'
+      + '<th style="padding:7px 12px;text-align:center;font-size:9px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--ink-mute);width:70px;">Articles</th>'
+      + '<th style="padding:7px 12px;text-align:left;font-size:9px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--ink-mute);">Content Gaps</th>'
+      + '<th style="padding:7px 12px;text-align:center;font-size:9px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--ink-mute);width:100px;">Last Seen</th>'
+      + '</tr></thead><tbody>' + rows + '</tbody>'
+      + '</table></div></div>';
+  },
+
+  outline: function() {
+    return '<div style="flex:1;overflow-y:auto;padding:14px;">'
+      + '<div style="max-width:700px;margin:0 auto;display:flex;flex-direction:column;gap:5px;">'
+      + '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-shrink:0;">'
+      + '<span style="font-size:12px;color:var(--ink-mute);">15 sections · Est. 2,800 words</span>'
+      + '<div style="display:flex;gap:6px;">'
+      + '<button class="btn" style="font-size:11px;" onclick="showToast(\'Outline exported\')">↓ Export</button>'
+      + '<button class="btn btn-primary" style="font-size:11px;" onclick="showToast(\'Outline regenerated\')">✦ Regenerate</button>'
+      + '</div></div>'
+      + OUTLINE.map(function(o, i) {
+          var indent = o.level==='h3'?28:o.level==='h2'?14:0;
+          var fw = o.level==='h1'?'800':o.level==='h2'?'600':'400';
+          var fc = o.level==='h1'?'var(--blue)':'var(--ink)';
+          return '<div style="display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--card);border:1px solid var(--line);border-radius:7px;margin-left:'+indent+'px;cursor:pointer;" onmouseenter="this.style.borderColor=\'var(--blue)\'" onmouseleave="this.style.borderColor=\'var(--line)\'">'
+            + '<span style="font-size:9px;font-family:var(--mono);color:var(--ink-mute);width:18px;flex-shrink:0;">'+o.tag+'</span>'
+            + '<span style="font-size:12px;font-weight:'+fw+';color:'+fc+';flex:1;">'+o.text+'</span>'
+            + '<span style="font-size:10px;color:var(--ink-mute);flex-shrink:0;">'+(80+i*18)+'w</span>'
+            + '<button class="btn" style="padding:2px 7px;font-size:10px;flex-shrink:0;" onclick="event.stopPropagation();showToast(\'Editing: '+o.text.slice(0,20)+'…\')">✎</button>'
+            + '</div>';
+        }).join('')
+      + '</div></div>';
+  },
+
+  gaps: function() {
+    var impactColor = { high:'#f85149', medium:'#d29922', low:'#8b949e' };
+    var rows = GAPS.map(function(g) {
+      var ic = impactColor[g.impact] || '#8b949e';
+      return '<div style="display:flex;align-items:flex-start;gap:12px;padding:12px 14px;background:var(--card);border:1px solid var(--line);border-radius:8px;" onmouseenter="this.style.borderColor=\'var(--blue)\'" onmouseleave="this.style.borderColor=\'var(--line)\'">'
+        + '<div style="width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:'+g.iconBg+';font-size:15px;flex-shrink:0;">'+g.icon+'</div>'
+        + '<div style="flex:1;min-width:0;">'
+        +   '<div style="display:flex;align-items:center;gap:8px;margin-bottom:3px;">'
+        +     '<span style="font-size:12px;font-weight:600;color:var(--ink);">'+g.title+'</span>'
+        +     '<span style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:'+ic+';background:'+ic+'18;border-radius:4px;padding:1px 6px;">'+g.impact+'</span>'
+        +   '</div>'
+        +   '<div style="font-size:11px;color:var(--ink-mute);">'+g.desc+'</div>'
+        + '</div>'
+        + '<button class="btn btn-primary" style="font-size:10px;padding:4px 10px;flex-shrink:0;" onclick="showToast(this.dataset.m)" data-m="Added to outline">+ Add to Outline</button>'
+        + '</div>';
+    }).join('');
+    return '<div style="flex:1;overflow-y:auto;padding:12px;">'
+      + '<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">'
+      +   '<span style="font-size:11px;color:var(--ink-mute);">12 gaps found · 4 high-impact</span>'
+      +   '<div style="flex:1;"></div>'
+      +   '<button class="btn btn-primary" style="font-size:11px;" onclick="showToast(\'All high-impact gaps added to outline\')">Add All High-Impact</button>'
+      + '</div>'
+      + '<div style="display:flex;flex-direction:column;gap:8px;">'+rows+'</div>'
+      + '</div>';
+  },
+
+  questions: function() {
+    var themes = ['What is','How to','Best','vs.','Cost'];
+    var grouped = {};
+    themes.forEach(function(t){ grouped[t]=[]; });
+    QUESTIONS.forEach(function(q){ if(grouped[q.theme]) grouped[q.theme].push(q); });
+    var html = themes.map(function(theme) {
+      var qs = grouped[theme];
+      if(!qs.length) return '';
+      var qRows = qs.map(function(q) {
+        return '<div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-bottom:1px solid var(--line);">'
+          + '<input type="checkbox" style="accent-color:var(--blue);flex-shrink:0;cursor:pointer;" onclick="showToast(\'Question selected\')">'
+          + '<span style="font-size:12px;color:var(--ink);flex:1;">'+q.q+'</span>'
+          + '<span style="font-size:10px;font-family:var(--mono);color:var(--ink-mute);width:52px;text-align:right;">'+q.vol+'</span>'
+          + '<span style="font-size:10px;color:var(--ink-mute);width:28px;text-align:right;" title="Competitors covering">'+q.cov+' co</span>'
+          + '<button class="btn" style="font-size:10px;padding:2px 8px;flex-shrink:0;" onclick="showToast(\'Added to FAQ\')">+ FAQ</button>'
+          + '</div>';
+      }).join('');
+      return '<div style="background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-bottom:8px;">'
+        + '<div style="padding:8px 12px;background:rgba(88,166,255,.06);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;">'
+        +   '<span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--blue);">'+theme+'</span>'
+        +   '<span style="font-size:10px;color:var(--ink-mute);">'+qs.length+' questions</span>'
+        + '</div>'
+        + qRows + '</div>';
+    }).join('');
+    return '<div style="flex:1;overflow-y:auto;padding:12px;">'
+      + '<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">'
+      +   '<span style="font-size:11px;color:var(--ink-mute);">38 questions mapped · sorted by search volume</span>'
+      +   '<div style="flex:1;"></div>'
+      +   '<button class="btn btn-primary" style="font-size:11px;" onclick="showToast(\'All questions added to FAQ section\')">Import All to FAQ</button>'
+      + '</div>'
+      + html + '</div>';
+  },
+
+  entities: function() {
+    var typeColor = { Product:'#58a6ff', Company:'#2dd4bf', Person:'#a78bfa', Concept:'#d29922', Location:'#4ade80' };
+    var rows = ENTITIES.map(function(e) {
+      var tc = typeColor[e.type] || '#8b949e';
+      var linkedBadge = e.linked
+        ? '<span style="font-size:9px;color:#4ade80;background:rgba(74,222,128,.12);border-radius:4px;padding:1px 6px;">Linked</span>'
+        : '<span style="font-size:9px;color:#f85149;background:rgba(248,81,73,.12);border-radius:4px;padding:1px 6px;">Missing</span>';
+      return '<div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-bottom:1px solid var(--line);">'
+        + '<div style="width:30px;height:30px;border-radius:7px;background:'+tc+'18;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:'+tc+';flex-shrink:0;">'+e.name.charAt(0)+'</div>'
+        + '<div style="flex:1;min-width:0;">'
+        +   '<div style="font-size:12px;font-weight:600;color:var(--ink);">'+e.name+'</div>'
+        +   '<div style="font-size:10px;color:'+tc+';">'+e.type+'</div>'
+        + '</div>'
+        + '<span style="font-size:10px;font-family:var(--mono);color:var(--ink-mute);width:50px;text-align:right;">×'+e.mentions+'</span>'
+        + linkedBadge
+        + (e.linked ? '' : '<button class="btn" style="font-size:10px;padding:2px 8px;flex-shrink:0;" onclick="showToast(\''+e.name+' linked to outline\')">Link</button>')
+        + '</div>';
+    }).join('');
+    return '<div style="flex:1;overflow:hidden;display:flex;flex-direction:column;">'
+      + '<div style="padding:8px 14px;border-bottom:1px solid var(--line);flex-shrink:0;display:flex;align-items:center;gap:10px;">'
+      +   '<span style="font-size:11px;color:var(--ink-mute);">45 entities · 13 not yet linked</span>'
+      +   '<div style="flex:1;"></div>'
+      +   '<button class="btn btn-primary" style="font-size:11px;" onclick="showToast(\'All missing entities linked to outline\')">Link All Missing</button>'
+      + '</div>'
+      + '<div style="flex:1;overflow-y:auto;">'+rows+'</div>'
+      + '</div>';
+  },
+
+  sources: function() {
+    var typeColor = { Official:'#58a6ff', Research:'#2dd4bf', Expert:'#a78bfa', Industry:'#d29922' };
+    var rows = SOURCES.map(function(s) {
+      var tc = typeColor[s.type] || '#8b949e';
+      return '<div style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);">'
+        + '<div style="width:34px;height:34px;border-radius:7px;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--ink-mute);flex-shrink:0;">'+s.domain.split('.')[0].slice(0,3).toUpperCase()+'</div>'
+        + '<div style="flex:1;min-width:0;">'
+        +   '<div style="font-size:12px;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+s.title+'</div>'
+        +   '<div style="font-size:10px;color:var(--ink-mute);">'+s.domain+'</div>'
+        + '</div>'
+        + '<div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">'
+        +   '<span style="font-size:9px;font-weight:700;color:'+tc+';background:'+tc+'18;border-radius:4px;padding:1px 6px;">'+s.type+'</span>'
+        +   '<span style="font-size:10px;font-family:var(--mono);color:var(--ink-mute);">DA '+s.da+'</span>'
+        +   '<span style="font-size:10px;font-family:var(--mono);color:#4ade80;">'+s.rel+'%</span>'
+        +   '<button class="btn btn-primary" style="font-size:10px;padding:3px 9px;" onclick="showToast(this.dataset.m)" data-m="Cited">Cite</button>'
+        + '</div>'
+        + '</div>';
+    }).join('');
+    return '<div style="flex:1;overflow:hidden;display:flex;flex-direction:column;">'
+      + '<div style="padding:8px 14px;border-bottom:1px solid var(--line);flex-shrink:0;display:flex;align-items:center;gap:10px;">'
+      +   '<span style="font-size:11px;color:var(--ink-mute);">26 trusted sources · ranked by relevance</span>'
+      +   '<div style="flex:1;"></div>'
+      +   '<button class="btn" style="font-size:11px;" onclick="showToast(\'Auto-citing top 10 sources…\')">Auto-Cite Top 10</button>'
+      + '</div>'
+      + '<div style="flex:1;overflow-y:auto;">'+rows+'</div>'
+      + '</div>';
+  },
+
+  links: function() {
+    var renderLinkRow = function(l, dir) {
+      var arrowColor = dir === 'to' ? '#58a6ff' : '#2dd4bf';
+      var arrow = dir === 'to' ? '←' : '→';
+      var statusColor = l.status === 'Published' ? '#4ade80' : '#d29922';
+      return '<div style="display:flex;align-items:center;gap:10px;padding:9px 14px;border-bottom:1px solid var(--line);">'
+        + '<div style="width:26px;height:26px;border-radius:6px;background:'+arrowColor+'18;display:flex;align-items:center;justify-content:center;font-size:14px;color:'+arrowColor+';flex-shrink:0;">'+arrow+'</div>'
+        + '<div style="flex:1;min-width:0;">'
+        +   '<div style="font-size:12px;font-weight:600;color:var(--ink);">'+l.title+'</div>'
+        +   '<div style="font-size:10px;color:var(--ink-mute);">Anchor: <span style="color:var(--blue);">"'+l.anchor+'"</span></div>'
+        + '</div>'
+        + '<span style="font-size:10px;color:'+statusColor+';flex-shrink:0;">'+l.status+'</span>'
+        + '<span style="font-size:10px;font-family:var(--mono);color:#4ade80;flex-shrink:0;">'+l.relevance+'%</span>'
+        + '<button class="btn" style="font-size:10px;padding:2px 8px;flex-shrink:0;" onclick="showToast(\'Link added\')">Insert</button>'
+        + '</div>';
+    };
+    var toRows = LINKS.to.map(function(l){ return renderLinkRow(l,'to'); }).join('');
+    var fromRows = LINKS.from.map(function(l){ return renderLinkRow(l,'from'); }).join('');
+    var section = function(title, rows, count) {
+      return '<div style="margin-bottom:14px;">'
+        + '<div style="padding:8px 14px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.03);display:flex;align-items:center;justify-content:space-between;">'
+        +   '<span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--ink-mute);">'+title+'</span>'
+        +   '<span style="font-size:10px;color:var(--ink-mute);">'+count+' opportunities</span>'
+        + '</div>'+rows+'</div>';
+    };
+    return '<div style="flex:1;overflow:hidden;display:flex;flex-direction:column;">'
+      + '<div style="padding:8px 14px;border-bottom:1px solid var(--line);flex-shrink:0;display:flex;align-items:center;gap:10px;">'
+      +   '<span style="font-size:11px;color:var(--ink-mute);">18 link opportunities · 6 high-priority</span>'
+      +   '<div style="flex:1;"></div>'
+      +   '<button class="btn btn-primary" style="font-size:11px;" onclick="showToast(\'All links inserted\')">Insert All</button>'
+      + '</div>'
+      + '<div style="flex:1;overflow-y:auto;">'
+      + section('Pages that should link TO this article (receive links)',toRows,LINKS.to.length)
+      + section('Link FROM this article to other content',fromRows,LINKS.from.length)
+      + '</div></div>';
+  },
+
+  notes: function() {
+    return '<div style="flex:1;display:flex;flex-direction:column;padding:14px;gap:10px;">'
+      + '<textarea placeholder="Add notes, research thoughts, or editorial decisions here…" style="flex:1;background:var(--card);border:1px solid var(--line);border-radius:10px;color:var(--ink);font-family:var(--font);font-size:13px;padding:16px;resize:none;outline:none;line-height:1.6;" onfocus="this.style.borderColor=\'var(--blue)\'" onblur="this.style.borderColor=\'var(--line)\'"></textarea>'
+      + '<div style="display:flex;justify-content:flex-end;gap:8px;">'
+      + '<button class="btn" onclick="showToast(\'Note saved\')">Save Note</button>'
+      + '</div></div>';
+  }
+};
+
+function switchTab(el, tabKey) {
+  if (!el) return;
+  document.querySelectorAll('.ptab').forEach(function(t){ t.classList.remove('active'); });
+  el.classList.add('active');
+  var body = document.getElementById('panelBody');
+  var fn = TAB_CONTENT[tabKey];
+  body.innerHTML = fn ? fn() : '<div class="stub-tab"><div class="stub-title">' + tabKey + '</div></div>';
+}
+
+/* ── AI ACTIONS ── */
+function runAI(action) {
+  // Deactivate all, activate clicked
+  document.querySelectorAll('.ai-action').forEach(function(b){ b.classList.remove('active'); });
+  var btns = document.querySelectorAll('.ai-action');
+  btns.forEach(function(b){ if (b.textContent.trim().indexOf(action) > -1) b.classList.add('active'); });
+  showToast('AI running: ' + action + '…');
+  setTimeout(function() { showToast(action + ' complete ✓'); }, 1800);
+}
+
+/* ── STEPS ── */
+function setStep(i) {
+  var steps = document.querySelectorAll('.step');
+  var labels = ['Discover','Blueprint','Create','Review','Publish'];
+  var descs  = ['Find opportunities','Plan the content','Generate content','Human + AI review','Deploy everywhere'];
+  steps.forEach(function(s, idx) {
+    s.classList.remove('done','active');
+    if (idx < i) s.classList.add('done');
+    else if (idx === i) s.classList.add('active');
+    var badge = s.querySelector('.bd');
+    var label = s.querySelector('.bl');
+    if (idx < i) { badge.style.background='var(--success)'; label.style.color='var(--success)'; label.textContent='Completed'; }
+    else if (idx === i) { badge.style.background='var(--blue)'; label.style.color='var(--blue)'; label.textContent='In Progress'; }
+    else { badge.style.background='var(--line)'; label.style.color='var(--ink-mute)'; label.textContent='Not Started'; }
+    var num = s.querySelector('.step-num');
+    if (idx < i) { num.textContent='✓'; }
+    else num.textContent = (idx + 1);
+  });
+  showToast('Step ' + (i+1) + ': ' + labels[i]);
+}
+
+/* ── MISC ── */
+function editMission() {
+  var el = document.getElementById('missionName');
+  var val = prompt('Edit mission name:', el.textContent);
+  if (val && val.trim()) el.textContent = val.trim();
+}
+
+function addBlock() {
+  var type = prompt('Block type (e.g. Newsletter, Landing Page):');
+  if (!type) return;
+  BLOCKS.push({ type:type, icon:'◆', iconBg:'rgba(88,166,255,.12)', iconColor:'var(--blue)', count:'0/0', status:'not_started', keyword:type.toLowerCase(), traffic:'—' });
+  renderBlocks();
+  showToast(type + ' block added');
+}
+
+function confirmDelete() {
+  if (confirm('Delete this block? This cannot be undone.')) {
+    BLOCKS.splice(ACTIVE_BLOCK, 1);
+    ACTIVE_BLOCK = Math.min(ACTIVE_BLOCK, BLOCKS.length - 1);
+    renderBlocks();
+    selectBlock(ACTIVE_BLOCK);
+    showToast('Block deleted');
+  }
+}
+
+function showToast(msg) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(window._toastTimer);
+  window._toastTimer = setTimeout(function(){ t.classList.remove('show'); }, 2200);
+}
+
+/* ── INIT ── */
+renderBlocks();
+renderLedger();
+// Initial tab content
+var body = document.getElementById('panelBody');
+body.innerHTML = renderOverview();
+
+/* ── FIX PANEL HEIGHT ── */
+function syncPanelHeight() {
+  var pb = document.getElementById('panelBody');
+  if (!pb) return;
+  var top = pb.getBoundingClientRect().top;
+  var ledger = document.querySelector('.ledger-bar');
+  var lh = ledger ? ledger.offsetHeight : 0;
+  var h = window.innerHeight - top - lh;
+  pb.style.flex = 'none';
+  pb.style.height = h + 'px';
+  pb.style.display = 'flex';
+  pb.style.flexDirection = 'column';
+  pb.style.overflow = 'hidden';
+  pb.style.width = '100%';
+}
+syncPanelHeight();
+window.addEventListener('resize', syncPanelHeight);
+
+/* Re-sync after tab switch */
+var _origSwitch = switchTab;
+window.switchTab = function(el, key) {
+  _origSwitch(el, key);
+  requestAnimationFrame(syncPanelHeight);
+};
+</script>
+</body>
+</html>

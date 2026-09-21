@@ -1,0 +1,838 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Academy — HR Agent Deployment Simulation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#F4F2EE;--surface:#FFFFFF;--surface-2:#EEF0F5;--surface-3:#E6E8EF;
+  --border:#D8DAE2;--border-2:#C8CAD4;
+  --ink:#0F1623;--ink-2:#3D4558;--ink-3:#7A8099;
+  --navy:#0A1628;--navy-2:#112040;--navy-3:#1A3260;
+  --blue:#1A56A0;--blue-2:#1668C4;--blue-3:#D6E8FF;--blue-4:rgba(26,86,160,.1);
+  --pass:#0F6E3A;--pass-bg:rgba(15,110,58,.09);--pass-border:rgba(15,110,58,.22);
+  --warn:#C4760A;--warn-bg:rgba(196,118,10,.09);--warn-border:rgba(196,118,10,.22);
+  --danger:#B03020;--danger-bg:rgba(176,48,32,.09);--danger-border:rgba(176,48,32,.22);
+  --mono:'DM Mono',monospace;--sans:'DM Sans',sans-serif;
+  --accent:#7C3AED;--accent-bg:rgba(124,58,237,.09);--accent-border:rgba(124,58,237,.22);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;font-family:var(--sans);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+.rail{background:var(--navy);color:#fff;height:56px;display:flex;align-items:center;padding:0 28px;gap:16px;position:sticky;top:0;z-index:200;box-shadow:0 1px 0 rgba(255,255,255,.06)}
+.rail-brand{font-weight:800;font-size:15px;letter-spacing:-.01em}
+.rail-sep{width:1px;height:22px;background:rgba(255,255,255,.12);flex-shrink:0}
+.rail-track{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38)}
+.rail-title{font-size:13.5px;font-weight:600;color:rgba(255,255,255,.88)}
+.rail-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.phase-dots{display:flex;gap:6px}
+.pd{width:28px;height:4px;border-radius:2px;background:rgba(255,255,255,.16);transition:background .4s}
+.pd.done{background:var(--accent)}
+.pd.active{background:#fff}
+.rail-btn{font-family:var(--sans);font-size:12px;font-weight:600;padding:7px 16px;border-radius:8px;border:1px solid rgba(255,255,255,.16);color:#fff;background:rgba(255,255,255,.07);cursor:pointer}
+.rail-btn:hover{background:rgba(255,255,255,.14)}
+.phase{display:none}.phase.active{display:block}
+.hero-band{background:linear-gradient(135deg,#1A0A32 0%,#2E1060 50%,#3A1878 100%);padding:52px 0 48px;position:relative;overflow:hidden}
+.hero-band::after{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.025'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");pointer-events:none}
+.hero-inner{max-width:960px;margin:0 auto;padding:0 32px;position:relative;z-index:1}
+.hero-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(180,140,255,.8);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.hero-eyebrow::before{content:'';display:inline-block;width:24px;height:1px;background:rgba(180,140,255,.6)}
+.hero-band h1{font-size:clamp(26px,3.5vw,40px);font-weight:800;letter-spacing:-.03em;color:#fff;line-height:1.15;margin-bottom:14px;max-width:22ch}
+.hero-band .sub{font-size:16px;color:rgba(255,255,255,.65);line-height:1.65;max-width:54ch;margin-bottom:28px}
+.hero-meta{display:flex;gap:20px;flex-wrap:wrap}
+.hm-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:8px 14px;font-size:12.5px;color:rgba(255,255,255,.7)}
+.hm-pill strong{color:#fff}
+.page-body{max-width:960px;margin:0 auto;padding:36px 32px 100px}
+.section{margin-bottom:32px}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid var(--border)}
+.section-head h2{font-size:20px;font-weight:800;letter-spacing:-.02em;color:var(--navy)}
+.section-head .sh-sub{font-size:13px;color:var(--ink-3);margin-top:3px}
+.scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+@media(max-width:680px){.scenario-grid{grid-template-columns:1fr}}
+.sc-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px 24px}
+.sc-card .sc-label{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;font-weight:600}
+.sc-card h3{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:8px;letter-spacing:-.01em}
+.sc-card p{font-size:13.5px;color:var(--ink-2);line-height:1.65}
+.rules-table{width:100%;border-collapse:collapse;background:var(--surface);border-radius:14px;overflow:hidden;border:1px solid var(--border)}
+.rules-table th{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);background:var(--surface-2);padding:12px 16px;text-align:left;font-weight:600;border-bottom:1px solid var(--border)}
+.rules-table td{padding:14px 16px;font-size:13.5px;border-bottom:1px solid var(--border);color:var(--ink-2);vertical-align:top}
+.rules-table tr:last-child td{border-bottom:none}
+.rule-badge{display:inline-block;font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;border-radius:5px;padding:2px 7px}
+.rb-auto{background:var(--pass-bg);color:var(--pass);border:1px solid var(--pass-border)}
+.rb-hr{background:var(--accent-bg);color:var(--accent);border:1px solid var(--accent-border)}
+.rb-manager{background:var(--warn-bg);color:var(--warn);border:1px solid var(--warn-border)}
+.rb-legal{background:var(--danger-bg);color:var(--danger);border:1px solid var(--danger-border)}
+.rb-hold{background:var(--surface-2);color:var(--ink-3);border:1px solid var(--border-2)}
+.tools-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:20px}
+@media(max-width:700px){.tools-grid{grid-template-columns:1fr 1fr}}
+.tool-chip{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 12px;text-align:center}
+.tool-chip .tc-icon{font-size:20px;margin-bottom:7px}
+.tool-chip .tc-name{font-size:11.5px;font-weight:700;color:var(--ink);line-height:1.3}
+.tool-chip .tc-desc{font-size:10px;color:var(--ink-3);margin-top:3px;line-height:1.4}
+.config-intro{background:var(--navy);border-radius:14px;padding:24px 28px;margin-bottom:24px;color:#fff}
+.config-intro h3{font-size:18px;font-weight:800;letter-spacing:-.015em;margin-bottom:8px}
+.config-intro p{font-size:14px;color:rgba(255,255,255,.7);line-height:1.65;max-width:60ch}
+.config-tool{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:14px;transition:box-shadow .2s}
+.config-tool:hover{box-shadow:0 4px 20px rgba(0,0,0,.07)}
+.ct-head{display:grid;grid-template-columns:52px 1fr;gap:0;border-bottom:1px solid var(--border)}
+.ct-icon-wrap{display:flex;align-items:center;justify-content:center;font-size:22px;background:var(--surface-2);border-right:1px solid var(--border);padding:20px}
+.ct-info{padding:18px 20px}
+.ct-info h4{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.ct-info .ct-sub{font-size:13px;color:var(--ink-3);line-height:1.5}
+.ct-body{padding:20px 24px}
+.ct-body .perm-label{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:12px}
+.perm-selector{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px}
+@media(max-width:540px){.perm-selector{grid-template-columns:1fr 1fr}}
+.perm-opt{border:1.5px solid var(--border);border-radius:10px;padding:12px 10px;cursor:pointer;text-align:center;transition:all .15s}
+.perm-opt:hover{border-color:var(--accent);background:var(--accent-bg)}
+.perm-opt.selected{border-color:var(--accent);background:var(--accent-bg)}
+.perm-opt .po-badge{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px;display:block}
+.perm-opt .po-desc{font-size:11px;color:var(--ink-3);line-height:1.4}
+.perm-opt.selected .po-badge{color:var(--accent)}
+.perm-opt.selected .po-desc{color:var(--ink-2)}
+.log-toggle{display:flex;align-items:center;gap:14px;padding:14px 16px;background:var(--surface-2);border-radius:10px}
+.log-toggle label{font-size:13px;font-weight:600;color:var(--ink);flex:1}
+.toggle-sw{position:relative;width:44px;height:24px;cursor:pointer;flex-shrink:0}
+.toggle-sw input{opacity:0;width:0;height:0}
+.toggle-track{position:absolute;inset:0;background:var(--border-2);border-radius:12px;transition:background .25s}
+.toggle-knob{position:absolute;width:18px;height:18px;background:#fff;border-radius:50%;top:3px;left:3px;transition:transform .25s;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.toggle-sw input:checked+.toggle-track{background:var(--pass)}
+.toggle-sw input:checked~.toggle-knob{transform:translateX(20px)}
+.sim-intro{background:var(--navy-2);border-radius:14px;padding:26px 28px;margin-bottom:24px;color:#fff}
+.si-label{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(180,140,255,.8);margin-bottom:10px}
+.event-card{background:var(--surface);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:16px;transition:border-color .3s}
+.event-card.running{border-color:var(--accent)}
+.event-card.pass{border-color:var(--pass)}
+.event-card.fail{border-color:var(--danger)}
+.event-card.warn{border-color:var(--warn)}
+.ec-head{display:grid;grid-template-columns:52px 1fr auto;gap:0;border-bottom:1px solid var(--border)}
+.ec-num{display:flex;align-items:center;justify-content:center;background:var(--surface-2);border-right:1px solid var(--border);font-family:var(--mono);font-size:13px;font-weight:700;color:var(--ink-3)}
+.ec-desc{padding:16px 18px}
+.ed-label{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px}
+.ed-title{font-size:14.5px;font-weight:700;color:var(--ink)}
+.ed-detail{font-size:12.5px;color:var(--ink-3);margin-top:3px}
+.ec-status{display:flex;align-items:center;padding:16px 18px}
+.status-pill{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:6px;padding:5px 10px}
+.sp-pending{background:var(--surface-2);color:var(--ink-3)}
+.sp-running{background:var(--accent-bg);color:var(--accent)}
+.sp-pass{background:var(--pass-bg);color:var(--pass);border:1px solid var(--pass-border)}
+.sp-fail{background:var(--danger-bg);color:var(--danger);border:1px solid var(--danger-border)}
+.sp-warn{background:var(--warn-bg);color:var(--warn);border:1px solid var(--warn-border)}
+.ec-body{padding:18px 20px;background:var(--surface-2);display:none;border-top:1px solid var(--border)}
+.event-card.running .ec-body,.event-card.pass .ec-body,.event-card.fail .ec-body,.event-card.warn .ec-body{display:block}
+.ec-trace{font-family:var(--mono);font-size:12px;line-height:1.8;color:var(--ink-2)}
+.tr-line{display:flex;gap:10px;align-items:baseline}
+.tr-time{color:var(--ink-3);flex-shrink:0;width:60px}
+.tr-ok{color:var(--pass)}.tr-err{color:var(--danger)}.tr-warn{color:var(--warn)}.tr-info{color:var(--accent)}
+.score-hero{background:linear-gradient(135deg,#1A0A32,#2E1060);border-radius:20px;padding:40px;margin-bottom:28px;color:#fff;text-align:center}
+.sh-number{font-family:var(--mono);font-size:80px;font-weight:700;line-height:1;letter-spacing:-.04em;margin-bottom:10px}
+.sh-number.perfect{color:#A78BFA}.sh-number.good{color:#FBD66B}.sh-number.fail{color:#FCA5A5}
+.sh-label{font-size:15px;color:rgba(255,255,255,.65);margin-bottom:4px}
+.sh-verdict{font-size:20px;font-weight:800;color:#fff;letter-spacing:-.015em}
+.score-breakdown{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px}
+@media(max-width:600px){.score-breakdown{grid-template-columns:1fr}}
+.sb-card{background:var(--surface);border-radius:14px;padding:20px;border:1.5px solid var(--border)}
+.sb-card.pass-card{border-color:var(--pass-border);background:var(--pass-bg)}
+.sb-card.fail-card{border-color:var(--danger-border);background:var(--danger-bg)}
+.sb-card.warn-card{border-color:var(--warn-border);background:var(--warn-bg)}
+.sbc-label{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px}
+.sbc-event{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.sbc-verdict{font-size:13px;line-height:1.6;font-weight:600}
+.sbc-explain{font-size:12.5px;color:var(--ink-2);margin-top:8px;line-height:1.6}
+.sb-card.pass-card .sbc-verdict{color:var(--pass)}
+.sb-card.fail-card .sbc-verdict{color:var(--danger)}
+.sb-card.warn-card .sbc-verdict{color:var(--warn)}
+.cert{background:var(--surface);border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-bottom:28px}
+.cert-top{background:linear-gradient(135deg,#1A0A32,#3A1878);padding:48px;text-align:center;position:relative}
+.cert-top::before{content:'';position:absolute;top:16px;left:16px;right:16px;bottom:16px;border:1px solid rgba(255,255,255,.1);border-radius:12px;pointer-events:none}
+.cert-badge{width:64px;height:64px;background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 20px}
+.cert-top h2{font-size:13px;font-family:var(--mono);letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:12px}
+.cert-top h3{font-size:clamp(22px,3vw,32px);font-weight:800;color:#fff;letter-spacing:-.025em;margin-bottom:8px}
+.cert-top .cert-sub{font-size:15px;color:rgba(255,255,255,.6)}
+.cert-body{padding:32px 48px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px;border-top:1px solid var(--border)}
+@media(max-width:600px){.cert-body{grid-template-columns:1fr;padding:24px}}
+.cert-item .ci-label{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:5px}
+.cert-item .ci-value{font-size:14px;font-weight:700;color:var(--ink)}
+.progress-shell{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px 24px;margin-bottom:24px}
+.ps-bar{height:8px;background:var(--surface-3);border-radius:4px;overflow:hidden}
+.ps-fill{height:8px;background:var(--accent);border-radius:4px;transition:width .6s ease}
+.cta-row{display:flex;justify-content:space-between;align-items:center;margin-top:32px;padding-top:24px;border-top:1px solid var(--border)}
+.cta-hint{font-size:13px;color:var(--ink-3)}
+.btn{font-family:var(--sans);font-weight:700;font-size:14.5px;padding:14px 32px;border-radius:12px;border:none;cursor:pointer;transition:all .2s;letter-spacing:-.01em}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:#6D28D9;transform:translateY(-1px);box-shadow:0 6px 20px rgba(124,58,237,.3)}
+.btn-primary:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:none}
+.btn-ghost{background:transparent;color:var(--ink-2);border:1px solid var(--border-2)}
+.btn-ghost:hover{background:var(--surface-2)}
+.callout{border-radius:12px;padding:16px 20px;margin:16px 0;font-size:13.5px;line-height:1.68;display:flex;gap:12px;align-items:flex-start}
+.callout.info{background:var(--accent-bg);border:1px solid var(--accent-border)}
+.callout.warn{background:var(--warn-bg);border:1px solid var(--warn-border)}
+.callout.danger{background:var(--danger-bg);border:1px solid var(--danger-border)}
+.callout-icon{font-size:16px;flex-shrink:0;margin-top:1px}
+.run-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:16px;border-radius:12px;border:none;font-family:var(--sans);font-weight:700;font-size:15px;cursor:pointer;transition:all .2s;background:var(--navy);color:#fff;margin-bottom:24px}
+.run-btn:hover{background:var(--navy-2);transform:translateY(-1px);box-shadow:0 6px 20px rgba(10,22,40,.25)}
+.rb-dot{width:8px;height:8px;border-radius:50%;background:#A78BFA;animation:pulse 1.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.85)}}
+.diff-table{width:100%;border-collapse:collapse;background:var(--surface);border-radius:14px;overflow:hidden;border:1px solid var(--border);margin-bottom:20px}
+.diff-table th{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);background:var(--surface-2);padding:12px 16px;text-align:left;border-bottom:1px solid var(--border)}
+.diff-table td{padding:13px 16px;font-size:13px;border-bottom:1px solid var(--border);vertical-align:top}
+.diff-table tr:last-child td{border-bottom:none}
+.sensitivity-row{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--surface-2);border-radius:10px;margin-bottom:10px}
+.sensitivity-row label{font-size:13px;font-weight:600;color:var(--ink);flex:1}
+.sensitivity-row .sr-note{font-size:11.5px;color:var(--ink-3)}
+.sens-select{font-family:var(--sans);font-size:13px;padding:8px 12px;border:1.5px solid var(--border);border-radius:8px;background:var(--surface);color:var(--ink);cursor:pointer}
+.sens-select:focus{outline:none;border-color:var(--accent)}
+</style>
+</head>
+<body>
+
+<header class="rail">
+  <span class="rail-brand">AGNUS Academy</span>
+  <span class="rail-sep"></span>
+  <span class="rail-track">Track B · Organisational Deployment</span>
+  <span class="rail-title">HR Agent Deployment</span>
+  <div class="rail-right">
+    <div class="phase-dots" id="phaseDots"></div>
+    <button class="rail-btn" onclick="location.href='AGNUS - Academy App.html'">← Dashboard</button>
+  </div>
+</header>
+
+<!-- PHASE 0 — BRIEF -->
+<div class="phase active" data-phase="0">
+  <div class="hero-band">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Programme 2 of 5 · Human Resources</div>
+      <h1>HR Agent Deployment</h1>
+      <p class="sub">You are the AI deployment lead at Vestland Gruppen. You have been handed an HR process agent and five tools. Configure exactly what the agent can access, act on, and escalate — then prove your configuration handles five real HR scenarios correctly.</p>
+      <div class="hero-meta">
+        <span class="hm-pill"><strong>Simulation</strong> — Interactive</span>
+        <span class="hm-pill"><strong>Duration</strong> — 25–35 min</span>
+        <span class="hm-pill"><strong>On completion</strong> — Competency record issued</span>
+        <span class="hm-pill"><strong>Prerequisite</strong> — B01 Finance Agent Deployment</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-body">
+
+    <div class="section">
+      <div class="section-head"><div><h2>The scenario</h2><div class="sh-sub">HR processes handle sensitive personal data. The stakes here are different from finance — errors affect people's careers and legal rights.</div></div></div>
+      <div class="scenario-grid">
+        <div class="sc-card">
+          <div class="sc-label">The organisation</div>
+          <h3>Vestland Gruppen</h3>
+          <p>A Norwegian professional services firm, 280 employees across four divisions. HR team of 8. They receive approximately 60 employee requests per month: leave applications, contract queries, performance support requests, and administrative updates. The HR director has approved an agent to handle routine administrative processing.</p>
+        </div>
+        <div class="sc-card">
+          <div class="sc-label">The agent</div>
+          <h3>HR Process Agent v1</h3>
+          <p>An HR process agent connected to Vestland's HRIS (Human Resources Information System). It processes employee requests, updates records, communicates decisions, and escalates where required. It operates under Norwegian employment law and GDPR.</p>
+        </div>
+        <div class="sc-card">
+          <div class="sc-label">The critical difference</div>
+          <h3>People, not invoices</h3>
+          <p>Unlike finance, HR errors affect real employees — their employment records, leave entitlements, and legal rights. An agent that makes an incorrect or unauthorised change to an employment record can expose the company to legal liability. Over-permissioning in HR is different from over-permissioning in finance: here it can mean unlawful data access or discriminatory process application.</p>
+        </div>
+        <div class="sc-card">
+          <div class="sc-label">The regulatory context</div>
+          <h3>GDPR + employment law</h3>
+          <p>Employee personal data is processed under GDPR Article 6(1)(b) (contract performance) and Article 6(1)(c) (legal obligation). The agent must not access personal data beyond what is necessary for the specific request (data minimisation). Performance data, medical data, and disciplinary records require additional safeguards.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><div><h2>Business rules</h2><div class="sh-sub">Vestland's HR processing policy. Your configuration must implement these exactly.</div></div></div>
+      <table class="rules-table">
+        <thead><tr><th>Request type</th><th>Conditions</th><th>Required action</th><th>Who decides</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Standard leave request</strong></td>
+            <td>Employee has sufficient leave balance. No medical or disciplinary flag on record.</td>
+            <td>Approve automatically. Update leave balance. Confirm to employee.</td>
+            <td><span class="rule-badge rb-auto">Agent</span></td>
+          </tr>
+          <tr>
+            <td><strong>Leave — insufficient balance</strong></td>
+            <td>Employee requests leave they don't have enough balance for.</td>
+            <td>Decline. Notify employee with balance information. Do not modify any records.</td>
+            <td><span class="rule-badge rb-hr">HR team</span></td>
+          </tr>
+          <tr>
+            <td><strong>Contract or pay query</strong></td>
+            <td>Employee asks about their contract terms or pay.</td>
+            <td>Provide information from their record. Do not modify any records. Log access.</td>
+            <td><span class="rule-badge rb-hr">HR team</span></td>
+          </tr>
+          <tr>
+            <td><strong>Performance-related request</strong></td>
+            <td>Any request that touches a performance review, performance improvement plan, or disciplinary record.</td>
+            <td>Do not access or share performance data. Route to HR business partner. Log the routing.</td>
+            <td><span class="rule-badge rb-manager">HR business partner</span></td>
+          </tr>
+          <tr>
+            <td><strong>Medical or health data</strong></td>
+            <td>Any request involving medical certificates, health conditions, or sick leave beyond 3 days.</td>
+            <td>Do not process. Route immediately to HR director and occupational health. Special category data — GDPR Article 9 applies.</td>
+            <td><span class="rule-badge rb-legal">HR director + OccHealth</span></td>
+          </tr>
+          <tr>
+            <td><strong>Any request</strong></td>
+            <td>All actions.</td>
+            <td>Log every action in the HR audit trail: request received, data accessed, decision made, outcome sent.</td>
+            <td><span class="rule-badge rb-auto">Always</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="callout warn">
+        <span class="callout-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8 2L1 14h14L8 2z"/><path d="M8 7v3M8 12v.5"/></svg></span>
+        <div><strong>Special category data (GDPR Article 9):</strong> Medical, health, and disability data is special category data under GDPR. The agent must never access or process this data directly. Any request touching it must be routed to the HR director immediately — no exceptions, no partial processing.</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><div><h2>The five tools</h2></div></div>
+      <div class="tools-grid">
+        <div class="tool-chip"><div class="tc-icon" style="color:var(--ink-2)"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="11" cy="7" r="4"/><path d="M3 19c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="tc-name">Employee Record Reader</div><div class="tc-desc">Reads employee records from HRIS. Returns name, role, leave balance, contract type.</div></div>
+        <div class="tool-chip"><div class="tc-icon" style="color:var(--ink-2)"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M14 4l4 4L7 19H3v-4L14 4z"/><path d="M13 5l4 4"/></svg></div><div class="tc-name">Record Updater</div><div class="tc-desc">Modifies employee records in HRIS. Can update leave balance, status, and administrative fields.</div></div>
+        <div class="tool-chip"><div class="tc-icon" style="color:var(--ink-2)"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M22 12v7a2 2 0 01-2 2H4a2 2 0 01-2-2v-7"/><path d="M16 6l-5-5-5 5"/><path d="M11 1v13"/></svg></div><div class="tc-name">Employee Communicator</div><div class="tc-desc">Sends messages to employees and managers via email and the internal HR portal.</div></div>
+        <div class="tool-chip"><div class="tc-icon" style="color:var(--ink-2)"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M5 11l6-6 6 6"/><path d="M5 17l6-6 6 6"/></svg></div><div class="tc-name">Escalation Router</div><div class="tc-desc">Routes requests to HR business partners, HR director, or occupational health, with full context.</div></div>
+        <div class="tool-chip"><div class="tc-icon" style="color:var(--ink-2)"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="4" y="4" width="14" height="15" rx="2"/><path d="M8 2v4M14 2v4M8 11h6M8 14h4"/><rect x="8" y="2" width="6" height="3" rx="1"/></svg></div><div class="tc-name">HR Audit Logger</div><div class="tc-desc">Writes timestamped GDPR-compliant audit records of all agent actions and data accessed.</div></div>
+      </div>
+      <div class="callout danger">
+        <span class="callout-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="7" width="10" height="8" rx="2"/><path d="M5 7V5a3 3 0 016 0v2"/></svg></span>
+        <div><strong>Record Updater is a high-risk tool.</strong> Changes to employment records can affect legal entitlements, payroll, and employment law compliance. Configure this tool's permissions very carefully. Unauthorised record modifications can expose Vestland to legal liability.</div>
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <span class="cta-hint">Read the scenario carefully — HR mistakes affect real people's records and legal rights.</span>
+      <button class="btn btn-primary" onclick="goPhase(1)">Enter Configuration Lab →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 1 — CONFIG LAB -->
+<div class="phase" data-phase="1">
+  <div class="hero-band" style="padding:36px 0 32px">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Phase 2 of 5 · Configuration Lab</div>
+      <h1 style="font-size:clamp(22px,3vw,30px);margin-bottom:8px">Configure the HR agent's permissions</h1>
+      <p class="sub" style="font-size:14px;margin-bottom:0">Set permission levels for each tool. Then set the sensitivity classification — what data categories the agent may access. Your configuration will be tested against five real HR scenarios.</p>
+    </div>
+  </div>
+
+  <div class="page-body">
+    <div class="progress-shell">
+      <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:10px">Configuration progress</div>
+      <div class="ps-bar"><div class="ps-fill" id="configProgress" style="width:0%"></div></div>
+    </div>
+
+    <div class="config-intro">
+      <h3>HR configuration is not the same as finance configuration</h3>
+      <p>In finance, the main risk is over-permissioning the payment tool. In HR, the risks are different: accessing data beyond what the request requires (GDPR data minimisation), making unauthorised record changes, and failing to route special-category data correctly. Configure accordingly.</p>
+    </div>
+
+    <!-- Employee Record Reader -->
+    <div class="config-tool">
+      <div class="ct-head">
+        <div class="ct-icon-wrap" style="color:var(--ink-2)"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="11" cy="7" r="4"/><path d="M3 19c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
+        <div class="ct-info">
+          <h4>Employee Record Reader</h4>
+          <div class="ct-sub">Reads employee records from the HRIS. Access is subject to GDPR data minimisation — the agent should only read what it needs for the specific request type.</div>
+        </div>
+      </div>
+      <div class="ct-body">
+        <div class="perm-label">Select permission level for Employee Record Reader</div>
+        <div class="perm-selector" id="perm-reader">
+          <div class="perm-opt" data-val="none" onclick="setPerm('reader','none',this)"><span class="po-badge" style="color:var(--ink-3)">None</span><div class="po-desc">Tool disabled</div></div>
+          <div class="perm-opt" data-val="read" onclick="setPerm('reader','read',this)"><span class="po-badge">Read</span><div class="po-desc">Can read standard HR records</div></div>
+          <div class="perm-opt" data-val="suggest" onclick="setPerm('reader','suggest',this)"><span class="po-badge">Suggest</span><div class="po-desc">Reads and proposes actions for review</div></div>
+          <div class="perm-opt" data-val="act" onclick="setPerm('reader','act',this)"><span class="po-badge">Act</span><div class="po-desc">Reads and proceeds automatically</div></div>
+        </div>
+        <div class="sensitivity-row">
+          <label>Data categories this tool may access</label>
+          <select class="sens-select" id="sens-reader" onchange="updateProgress()">
+            <option value="">— select —</option>
+            <option value="standard">Standard HR data only (name, role, leave balance, contract type)</option>
+            <option value="performance">Standard + performance data</option>
+            <option value="medical">Standard + performance + medical data (all categories)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Record Updater -->
+    <div class="config-tool">
+      <div class="ct-head">
+        <div class="ct-icon-wrap" style="color:var(--ink-2)"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M14 4l4 4L7 19H3v-4L14 4z"/><path d="M13 5l4 4"/></svg></div>
+        <div class="ct-info">
+          <h4>Record Updater</h4>
+          <div class="ct-sub"><strong style="color:var(--danger)">High-risk tool.</strong> Modifies employment records in HRIS. Changes are applied immediately and affect payroll, leave entitlements, and employment status. Unauthorised modifications can create legal liability.</div>
+        </div>
+      </div>
+      <div class="ct-body">
+        <div class="perm-label">Select permission level for Record Updater</div>
+        <div class="perm-selector" id="perm-updater">
+          <div class="perm-opt" data-val="none" onclick="setPerm('updater','none',this)"><span class="po-badge" style="color:var(--ink-3)">None</span><div class="po-desc">Tool disabled — no record modifications</div></div>
+          <div class="perm-opt" data-val="read" onclick="setPerm('updater','read',this)"><span class="po-badge">Read</span><div class="po-desc">View-only — cannot modify</div></div>
+          <div class="perm-opt" data-val="suggest" onclick="setPerm('updater','suggest',this)"><span class="po-badge">Suggest</span><div class="po-desc">Proposes changes for HR approval before applying</div></div>
+          <div class="perm-opt" data-val="act" onclick="setPerm('updater','act',this)"><span class="po-badge">Act</span><div class="po-desc">Applies record changes autonomously</div></div>
+        </div>
+        <div class="sensitivity-row">
+          <label>Record fields this tool may modify</label>
+          <select class="sens-select" id="sens-updater" onchange="updateProgress()">
+            <option value="">— select —</option>
+            <option value="leave">Leave balance only</option>
+            <option value="admin">Leave balance + administrative status fields</option>
+            <option value="all">All record fields including performance and contract data</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Employee Communicator -->
+    <div class="config-tool">
+      <div class="ct-head">
+        <div class="ct-icon-wrap" style="color:var(--ink-2)"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M22 12v7a2 2 0 01-2 2H4a2 2 0 01-2-2v-7"/><path d="M16 6l-5-5-5 5"/><path d="M11 1v13"/></svg></div>
+        <div class="ct-info">
+          <h4>Employee Communicator</h4>
+          <div class="ct-sub">Sends messages to employees and managers. Used to confirm decisions, provide information, and notify of escalations. Content is visible to the employee and retained in HR records.</div>
+        </div>
+      </div>
+      <div class="ct-body">
+        <div class="perm-label">Select permission level for Employee Communicator</div>
+        <div class="perm-selector" id="perm-comms">
+          <div class="perm-opt" data-val="none" onclick="setPerm('comms','none',this)"><span class="po-badge" style="color:var(--ink-3)">None</span><div class="po-desc">Tool disabled — agent cannot communicate with employees</div></div>
+          <div class="perm-opt" data-val="read" onclick="setPerm('comms','read',this)"><span class="po-badge">Read</span><div class="po-desc">Can read communication history only</div></div>
+          <div class="perm-opt" data-val="suggest" onclick="setPerm('comms','suggest',this)"><span class="po-badge">Suggest</span><div class="po-desc">Drafts messages for HR review before sending</div></div>
+          <div class="perm-opt" data-val="act" onclick="setPerm('comms','act',this)"><span class="po-badge">Act</span><div class="po-desc">Sends messages autonomously</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Escalation Router -->
+    <div class="config-tool">
+      <div class="ct-head">
+        <div class="ct-icon-wrap" style="color:var(--ink-2)"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M5 11l6-6 6 6"/><path d="M5 17l6-6 6 6"/></svg></div>
+        <div class="ct-info">
+          <h4>Escalation Router</h4>
+          <div class="ct-sub">Routes requests to the HR business partner, HR director, or occupational health team, with full context attached. This is the critical path for performance-related and medical requests.</div>
+        </div>
+      </div>
+      <div class="ct-body">
+        <div class="perm-label">Select permission level for Escalation Router</div>
+        <div class="perm-selector" id="perm-escalate">
+          <div class="perm-opt" data-val="none" onclick="setPerm('escalate','none',this)"><span class="po-badge" style="color:var(--ink-3)">None</span><div class="po-desc">Tool disabled — cannot escalate</div></div>
+          <div class="perm-opt" data-val="read" onclick="setPerm('escalate','read',this)"><span class="po-badge">Read</span><div class="po-desc">Can view escalation history</div></div>
+          <div class="perm-opt" data-val="suggest" onclick="setPerm('escalate','suggest',this)"><span class="po-badge">Suggest</span><div class="po-desc">Drafts escalation for HR review</div></div>
+          <div class="perm-opt" data-val="act" onclick="setPerm('escalate','act',this)"><span class="po-badge">Act</span><div class="po-desc">Routes escalations autonomously</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HR Audit Logger -->
+    <div class="config-tool">
+      <div class="ct-head">
+        <div class="ct-icon-wrap" style="color:var(--ink-2)"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="4" y="4" width="14" height="15" rx="2"/><path d="M8 2v4M14 2v4M8 11h6M8 14h4"/><rect x="8" y="2" width="6" height="3" rx="1"/></svg></div>
+        <div class="ct-info">
+          <h4>HR Audit Logger</h4>
+          <div class="ct-sub">Writes GDPR-compliant audit records of all agent actions and data accessed. Required under both Vestland's data governance policy and GDPR Article 5(2) accountability principle. Records are immutable once written.</div>
+        </div>
+      </div>
+      <div class="ct-body">
+        <div class="perm-label">Audit logging</div>
+        <div class="log-toggle">
+          <label>Enable GDPR-compliant audit logging for all agent actions</label>
+          <label class="toggle-sw">
+            <input type="checkbox" id="logging-enabled" onchange="updateProgress()" checked/>
+            <span class="toggle-track"></span>
+            <span class="toggle-knob"></span>
+          </label>
+        </div>
+        <div class="callout info" style="margin-top:12px;margin-bottom:0">
+          <span class="callout-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M8 7v5M8 5.5v.5"/></svg></span>
+          <div>Under GDPR Article 5(2), organisations must be able to demonstrate compliance with data protection principles (the accountability principle). Every agent action on employee data must be logged. Disabling this is a GDPR violation.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <span class="cta-hint" id="configHint">Complete all tool configurations to proceed.</span>
+      <div style="display:flex;gap:10px">
+        <button class="btn btn-ghost" onclick="goPhase(0)">← Review brief</button>
+        <button class="btn btn-primary" id="runSimBtn" onclick="goPhase(2)" disabled>Run Simulation →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 2 — SIMULATION -->
+<div class="phase" data-phase="2">
+  <div class="hero-band" style="padding:36px 0 32px">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Phase 3 of 5 · Incident Simulation</div>
+      <h1 style="font-size:clamp(22px,3vw,30px);margin-bottom:8px">Five employee requests arriving now</h1>
+      <p class="sub" style="font-size:14px;margin-bottom:0">Your configuration is live. Five employee requests are hitting the HR system. Watch exactly what your agent does with each one.</p>
+    </div>
+  </div>
+
+  <div class="page-body">
+    <button class="run-btn" id="runBtn" onclick="runSimulation()">
+      <span class="rb-dot"></span>
+      Start simulation — process 5 HR requests
+    </button>
+
+    <div id="events-container">
+      <div class="event-card" id="ev-1">
+        <div class="ec-head">
+          <div class="ec-num">01</div>
+          <div class="ec-desc">
+            <div class="ed-label">Request from: Marte Johansen · Employee ID 0441 · Division: Technology</div>
+            <div class="ed-title">Annual leave request — 5 days, 14–18 October 2026</div>
+            <div class="ed-detail">Current leave balance: 14 days remaining · No performance or medical flag</div>
+          </div>
+          <div class="ec-status"><span class="status-pill sp-pending" id="ev1-status">Pending</span></div>
+        </div>
+        <div class="ec-body" id="ev1-trace"></div>
+      </div>
+
+      <div class="event-card" id="ev-2">
+        <div class="ec-head">
+          <div class="ec-num">02</div>
+          <div class="ec-desc">
+            <div class="ed-label">Request from: Håkon Berg · Employee ID 0388 · Division: Operations</div>
+            <div class="ed-title">Annual leave request — 12 days, 3–18 November 2026</div>
+            <div class="ed-detail" style="color:var(--danger);font-weight:600">⚠ Current leave balance: 8 days remaining — insufficient for 12-day request</div>
+          </div>
+          <div class="ec-status"><span class="status-pill sp-pending" id="ev2-status">Pending</span></div>
+        </div>
+        <div class="ec-body" id="ev2-trace"></div>
+      </div>
+
+      <div class="event-card" id="ev-3">
+        <div class="ec-head">
+          <div class="ec-num">03</div>
+          <div class="ec-desc">
+            <div class="ed-label">Request from: Ingrid Larsen · Employee ID 0512 · Division: Finance</div>
+            <div class="ed-title">Contract query — "Am I on a fixed-term or permanent contract? When does my notice period start?"</div>
+            <div class="ed-detail">Standard employment record query · No performance or medical flag</div>
+          </div>
+          <div class="ec-status"><span class="status-pill sp-pending" id="ev3-status">Pending</span></div>
+        </div>
+        <div class="ec-body" id="ev3-trace"></div>
+      </div>
+
+      <div class="event-card" id="ev-4">
+        <div class="ec-head">
+          <div class="ec-num">04</div>
+          <div class="ec-desc">
+            <div class="ed-label">Request from: Tor Andersen · Employee ID 0299 · Division: Sales</div>
+            <div class="ed-title">Leave request — 3 days sick leave, 19–21 August. Attached: medical certificate from GP.</div>
+            <div class="ed-detail" style="color:var(--danger);font-weight:600">⚠ Medical certificate attached — GDPR Article 9 special category data</div>
+          </div>
+          <div class="ec-status"><span class="status-pill sp-pending" id="ev4-status">Pending</span></div>
+        </div>
+        <div class="ec-body" id="ev4-trace"></div>
+      </div>
+
+      <div class="event-card" id="ev-5">
+        <div class="ec-head">
+          <div class="ec-num">05</div>
+          <div class="ec-desc">
+            <div class="ed-label">Request from: Silje Nygård · Employee ID 0477 · Division: Technology</div>
+            <div class="ed-title">Leave request — 2 days, "need time to deal with PIP feedback" (performance improvement plan)</div>
+            <div class="ed-detail" style="color:var(--warn);font-weight:600">⚠ Request mentions performance improvement plan — performance-related request</div>
+          </div>
+          <div class="ec-status"><span class="status-pill sp-pending" id="ev5-status">Pending</span></div>
+        </div>
+        <div class="ec-body" id="ev5-trace"></div>
+      </div>
+    </div>
+
+    <div class="cta-row" id="sim-cta" style="display:none">
+      <span class="cta-hint">Simulation complete.</span>
+      <button class="btn btn-primary" onclick="goPhase(3)">See your score →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 3 — SCORE -->
+<div class="phase" data-phase="3">
+  <div class="page-body" style="padding-top:48px">
+    <div id="score-hero-block"></div>
+    <div class="section">
+      <div class="section-head"><div><h2>Event breakdown</h2></div></div>
+      <div class="score-breakdown" id="score-breakdown"></div>
+    </div>
+    <div id="config-diff-section" style="display:none">
+      <div class="section">
+        <div class="section-head"><div><h2>Configuration gaps</h2></div></div>
+        <table class="diff-table" id="diff-table">
+          <thead><tr><th>Setting</th><th>Your configuration</th><th>Correct</th><th>Risk</th></tr></thead>
+          <tbody id="diff-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint" id="score-hint"></span>
+      <div style="display:flex;gap:10px">
+        <button class="btn btn-ghost" onclick="goPhase(1)">Reconfigure and retry</button>
+        <button class="btn btn-primary" id="certBtn" style="display:none" onclick="goPhase(4)">Claim competency record →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 4 — CERTIFICATE -->
+<div class="phase" data-phase="4">
+  <div class="page-body" style="padding-top:48px">
+    <div class="cert">
+      <div class="cert-top">
+        <div class="cert-badge"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round"><path d="M14 3l2.5 7.5H24l-6 4.5 2.5 7.5L14 18l-6.5 4.5 2.5-7.5-6-4.5h7.5L14 3z"/></svg></div>
+        <h2>Certificate of Competency</h2>
+        <h3>HR Agent Deployment</h3>
+        <div class="cert-sub">Organisational AI Deployment · Track B · Programme 2</div>
+      </div>
+      <div class="cert-body">
+        <div class="cert-item"><div class="ci-label">Competency</div><div class="ci-value">HR Agent Deployment — Configured &amp; Verified</div></div>
+        <div class="cert-item"><div class="ci-label">Issued</div><div class="ci-value" id="cert-date"></div></div>
+        <div class="cert-item"><div class="ci-label">Score</div><div class="ci-value" id="cert-score"></div></div>
+        <div class="cert-item"><div class="ci-label">Programme</div><div class="ci-value">AGNUS Academy Track B · Organisational Deployment</div></div>
+        <div class="cert-item"><div class="ci-label">Issuer</div><div class="ci-value">AGNUS Academy</div></div>
+        <div class="cert-item"><div class="ci-label">Credential ID</div><div class="ci-value" id="cert-id"></div></div>
+      </div>
+    </div>
+    <div class="callout info">
+      <span class="callout-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="10" height="11" rx="1.5"/><path d="M6 1.5v3M10 1.5v3M5.5 8h5M5.5 10.5h3"/><rect x="5.5" y="1.5" width="5" height="2" rx=".75"/></svg></span>
+      <div><strong>What this confirms:</strong> You configured an HR process agent to handle leave requests, contract queries, and sensitive employee data correctly — including proper routing of GDPR Article 9 special-category medical data and performance-related requests. You demonstrated that HR agent permissions require a different risk model than finance agent permissions.</div>
+    </div>
+    <div style="display:flex;justify-content:center;gap:14px;margin-top:32px">
+      <button class="btn btn-ghost" onclick="window.print()">Print certificate</button>
+      <button class="btn btn-primary" onclick="location.href='AGNUS - Academy B03 - Legal Agent Deployment.html'">Next programme →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const state={perms:{reader:null,updater:null,comms:null,escalate:null,audit:'act'},sensReader:'',sensUpdater:'',logging:true,results:[],score:0};
+const PHASE_COUNT=5;
+function renderDots(a){document.getElementById('phaseDots').innerHTML=Array.from({length:PHASE_COUNT},(_,i)=>`<div class="pd ${i<a?'done':i===a?'active':''}"></div>`).join('');}
+function goPhase(n){document.querySelectorAll('.phase').forEach(p=>p.classList.remove('active'));document.querySelector(`.phase[data-phase="${n}"]`).classList.add('active');renderDots(n);window.scrollTo({top:0,behavior:'smooth'});if(n===3)buildScore();if(n===4)buildCert();}
+renderDots(0);
+function setPerm(tool,val,el){state.perms[tool]=val;document.querySelectorAll(`#perm-${tool} .perm-opt`).forEach(o=>o.classList.remove('selected'));el.classList.add('selected');updateProgress();}
+function updateProgress(){
+  state.sensReader=document.getElementById('sens-reader').value;
+  state.sensUpdater=document.getElementById('sens-updater').value;
+  state.logging=document.getElementById('logging-enabled').checked;
+  const permSet=Object.entries(state.perms).filter(([k])=>k!=='audit').every(([,v])=>v!==null);
+  const configured=['reader','updater','comms','escalate'].filter(k=>state.perms[k]!==null).length + (state.sensReader?1:0) + (state.sensUpdater?1:0);
+  const pct=Math.round(configured/6*100);
+  document.getElementById('configProgress').style.width=pct+'%';
+  const allSet=permSet&&state.sensReader&&state.sensUpdater;
+  document.getElementById('runSimBtn').disabled=!allSet;
+  document.getElementById('configHint').textContent=allSet?'All tools configured. Ready to run the simulation.':`${7-configured} setting${7-configured===1?'':'s'} still needed.`;
+}
+
+const EVENTS=[
+  {id:1,type:'leave_standard',employee:'Marte Johansen',request:'5-day annual leave — sufficient balance, no flags',balance:14,requested:5,hasMedical:false,hasPerf:false},
+  {id:2,type:'leave_insufficient',employee:'Håkon Berg',request:'12-day annual leave — insufficient balance (8 days)',balance:8,requested:12,hasMedical:false,hasPerf:false},
+  {id:3,type:'contract_query',employee:'Ingrid Larsen',request:'Contract type and notice period query',balance:null,requested:null,hasMedical:false,hasPerf:false},
+  {id:4,type:'medical',employee:'Tor Andersen',request:'3-day sick leave with GP medical certificate',balance:null,requested:null,hasMedical:true,hasPerf:false},
+  {id:5,type:'performance',employee:'Silje Nygård',request:'2-day leave mentioning PIP feedback',balance:null,requested:null,hasMedical:false,hasPerf:true},
+];
+
+function evaluateEvent(ev){
+  const p=state.perms;const log=state.logging;const sensR=state.sensReader;const sensU=state.sensUpdater;
+  let trace=[];let outcome='pass';let verdict='';let explanation='';
+  const t=(offset,label,result,cls)=>({t:'09:'+String(10+ev.id*3+offset).toString().padStart(2,'0'),a:label,r:result,cls});
+
+  // Reader check
+  if(!p.reader||p.reader==='none'){
+    trace.push(t(0,'Employee Record Reader','BLOCKED — tool disabled','tr-err'));
+    return{outcome:'fail',trace,verdict:'Agent cannot read any employee record.',explanation:'Employee Record Reader was disabled. The agent cannot process any HR request without it.'};
+  }
+
+  // Medical data — must not be accessed by reader if sensR not 'medical', but must escalate regardless
+  if(ev.hasMedical){
+    trace.push(t(0,'Employee Record Reader → Check request type','Medical certificate detected — GDPR Art. 9 special category data','tr-warn'));
+    if(sensR==='medical'){
+      trace.push(t(1,'Employee Record Reader → Read medical data','GDPR VIOLATION — agent accessed special category data it should not process','tr-err'));
+      outcome='fail';verdict='GDPR violation: agent accessed medical data.';explanation='The record reader was configured to access medical data. Under GDPR Article 9, special category data requires explicit additional safeguards and cannot be processed by an automated system without appropriate legal basis and DPA review. This is a compliance failure.';
+      return{outcome,trace,verdict,explanation};
+    }
+    trace.push(t(1,'Employee Record Reader','Medical data access blocked — correct','tr-ok'));
+    if(!p.escalate||p.escalate==='none'||p.escalate==='read'||p.escalate==='suggest'){
+      trace.push(t(2,'Escalation Router','Cannot route to HR director — tool not set to Act','tr-err'));
+      outcome='fail';verdict='Medical data request not escalated to HR director.';explanation='Medical requests must be immediately routed to the HR director and occupational health. The escalation router was not configured to Act — this critical routing could not happen.';
+    } else {
+      trace.push(t(2,'Escalation Router → HR Director + OccHealth','Escalated with request context (no medical data attached)','tr-ok'));
+      if(p.comms&&p.comms==='act'){trace.push(t(3,'Employee Communicator → Employee','Acknowledgement sent: request received, specialist team will contact you','tr-ok'));}
+      if(log){trace.push(t(4,'HR Audit Logger → Record escalation','GDPR Art. 9 routing logged ✓','tr-ok'));verdict='Correct: medical request escalated to HR director and OccHealth. No medical data accessed.';explanation='The agent correctly identified the medical certificate, blocked access to the content, and routed to the HR director and occupational health. GDPR Article 9 requirements met.';}
+      else{trace.push(t(4,'HR Audit Logger','LOGGING DISABLED — GDPR violation: no audit record','tr-err'));outcome='warn';verdict='Medical request escalated — but GDPR audit log not written.';explanation='The escalation was correct. However, logging was disabled. Under GDPR Article 5(2), all processing of personal data (including routing decisions about special category data) must be documented. This is a GDPR accountability violation.';}
+    }
+    return{outcome,trace,verdict,explanation};
+  }
+
+  // Performance-related
+  if(ev.hasPerf){
+    trace.push(t(0,'Employee Record Reader → Read standard record','Request parsed — performance improvement plan mentioned','tr-warn'));
+    if(sensR==='performance'||sensR==='medical'){
+      trace.push(t(1,'Employee Record Reader → Access performance data','Performance data accessed — should not be accessed by agent','tr-err'));
+      outcome='fail';verdict='Agent accessed performance data it should not have accessed.';explanation='The record reader was configured to access performance data. The business rules require all performance-related requests to be routed to the HR business partner without the agent accessing or using the performance data itself. Accessing this data violates the data minimisation principle (GDPR Article 5(1)(c)).';}
+    else{
+      trace.push(t(1,'Employee Record Reader','Performance data access blocked — correct','tr-ok'));
+      if(!p.escalate||p.escalate==='none'||p.escalate==='read'||p.escalate==='suggest'){
+        trace.push(t(2,'Escalation Router','Cannot route to HR business partner — not set to Act','tr-err'));
+        outcome='fail';verdict='Performance request not routed to HR business partner.';explanation='Performance-related requests must go to the HR business partner. The escalation router was not configured to Act — this routing cannot happen.';
+      } else {
+        trace.push(t(2,'Escalation Router → HR Business Partner','Routed with request context (no performance data)','tr-ok'));
+        if(p.comms&&p.comms==='act'){trace.push(t(3,'Employee Communicator → Employee','Acknowledgement sent: your request has been passed to your HR business partner','tr-ok'));}
+        if(log){trace.push(t(4,'HR Audit Logger → Record routing','Performance request routing logged ✓','tr-ok'));verdict='Correct: performance-related request routed to HR business partner. No performance data accessed.';explanation='The agent correctly identified the performance context, blocked access to performance data, and routed to the HR business partner.';}
+        else{trace.push(t(4,'HR Audit Logger','LOGGING DISABLED','tr-err'));outcome='warn';verdict='Performance request correctly routed — logging disabled.';explanation='Routing was correct. Audit log not written — accountability violation.';}
+      }
+    }
+    return{outcome,trace,verdict,explanation};
+  }
+
+  // Contract query — read only, no record modification
+  if(ev.type==='contract_query'){
+    trace.push(t(0,'Employee Record Reader → Read record','Contract type: Permanent. Notice period: 3 months per contract.','tr-ok'));
+    if(p.updater==='act'&&sensU!=='leave'){
+      // Check if agent would try to modify anything it shouldn't
+      trace.push(t(1,'Record Updater — no modification required','Agent attempted no modification — correct','tr-ok'));
+    }
+    if(!p.comms||p.comms==='none'){
+      trace.push(t(1,'Employee Communicator','BLOCKED — cannot respond to employee','tr-err'));
+      outcome='fail';verdict='Agent could read the record but cannot respond to the employee.';explanation='The communicator was disabled. The agent has the answer but cannot deliver it. The employee receives no response.';
+    } else if(p.comms==='act'){
+      trace.push(t(1,'Employee Communicator → Employee','Contract information provided: Permanent contract, 3-month notice period.','tr-ok'));
+      if(log){trace.push(t(2,'HR Audit Logger','Data access + communication logged ✓','tr-ok'));verdict='Correct: contract information provided from record. No modification made.';explanation='The agent read the relevant contract fields and communicated the answer. No record was modified — data minimisation principle respected. Logged.';}
+      else{trace.push(t(2,'HR Audit Logger','LOGGING DISABLED','tr-err'));outcome='warn';verdict='Contract query answered correctly — logging disabled.';explanation='Response was correct. Audit log not written.';}
+    } else {
+      trace.push(t(1,'Employee Communicator','Mode: Suggest — response drafted, awaiting HR review','tr-warn'));
+      outcome='warn';verdict='Correct but unnecessary delay — simple contract query queued for human review.';explanation='The communicator was set to Suggest. A standard contract query with no sensitive elements does not require HR review of every response. This creates unnecessary queue volume for the HR team.';
+    }
+    return{outcome,trace,verdict,explanation};
+  }
+
+  // Insufficient leave
+  if(ev.type==='leave_insufficient'){
+    trace.push(t(0,'Employee Record Reader → Check balance','Balance: 8 days. Requested: 12 days. Insufficient.','tr-warn'));
+    if(p.updater==='act'){
+      trace.push(t(1,'Record Updater','Balance override attempted — balance set to requested days','tr-err'));
+      outcome='fail';verdict='Agent overrode leave balance to approve an insufficient balance request.';explanation='The record updater was configured to Act with broad field access. The agent resolved the balance deficit by modifying the record — a serious error that grants leave entitlement that does not exist.';
+    } else {
+      trace.push(t(1,'Record Updater — no modification','Correct: no balance modification — agent cannot create entitlement that does not exist','tr-ok'));
+      if(!p.comms||p.comms==='none'){
+        trace.push(t(2,'Employee Communicator','BLOCKED — cannot notify employee of decline','tr-err'));
+        outcome='fail';verdict='Leave correctly declined but employee was not notified.';explanation='The communicator was disabled. The employee receives no response — they do not know their request was declined or why. This is a process failure.';
+      } else if(p.comms==='act'){
+        trace.push(t(2,'Employee Communicator → Employee','Request declined: insufficient balance (8 days available, 12 requested). Current balance: 8 days.','tr-ok'));
+        if(log){trace.push(t(3,'HR Audit Logger','Decline + communication logged ✓','tr-ok'));verdict='Correct: leave declined, employee notified with balance information. No record modified.';explanation='The agent correctly declined the request, communicated the reason with current balance information, and made no record modification. Logged.';}
+        else{trace.push(t(3,'HR Audit Logger','LOGGING DISABLED','tr-err'));outcome='warn';verdict='Leave correctly declined and communicated — logging disabled.';explanation='Handling was correct. Audit log not written.';}
+      } else {
+        trace.push(t(2,'Employee Communicator','Suggest mode — decline drafted for HR review','tr-warn'));
+        outcome='warn';verdict='Correct decline but queued unnecessarily.';explanation='A clear insufficient-balance decline does not need HR review of every notification. Suggest mode creates unnecessary workload.';
+      }
+    }
+    return{outcome,trace,verdict,explanation};
+  }
+
+  // Standard leave
+  trace.push(t(0,'Employee Record Reader → Check record','Balance: '+ev.balance+' days. No performance or medical flag.','tr-ok'));
+  trace.push(t(1,'Leave eligibility check','Requested '+ev.requested+' days — balance sufficient. No flags.','tr-ok'));
+  if(!p.updater||p.updater==='none'||p.updater==='read'){
+    trace.push(t(2,'Record Updater','BLOCKED — cannot update leave balance','tr-err'));
+    outcome='fail';verdict='Agent cannot approve leave — record updater not configured to modify records.';explanation='Standard leave approval requires the leave balance to be updated. The record updater was disabled or read-only. No approval can be processed.';
+  } else if(p.updater==='suggest'){
+    trace.push(t(2,'Record Updater','Suggest mode — approval drafted for HR review','tr-warn'));
+    outcome='warn';verdict='Standard leave approval queued for HR review unnecessarily.';explanation='A standard leave request with sufficient balance and no flags does not require human review. Suggest mode creates unnecessary queue volume for routine approvals.';
+  } else {
+    // Act — check field access
+    if(sensU==='leave'||sensU==='admin'){
+      trace.push(t(2,'Record Updater → Update leave balance','Balance updated: '+ev.balance+' → '+(ev.balance-ev.requested)+' days','tr-ok'));
+      if(p.comms&&p.comms==='act'){trace.push(t(3,'Employee Communicator → Employee','Leave approved: '+ev.requested+' days confirmed ('+ev.requested+' Oct 14–18). Remaining balance: '+(ev.balance-ev.requested)+' days.','tr-ok'));}
+      if(log){trace.push(t(4,'HR Audit Logger → Record approval','Leave approval + balance update logged ✓','tr-ok'));verdict='Correct: leave approved, balance updated, employee confirmed.';explanation='Standard leave request handled correctly: eligibility confirmed, balance updated, employee notified, action logged.';}
+      else{trace.push(t(4,'HR Audit Logger','LOGGING DISABLED','tr-err'));outcome='warn';verdict='Leave correctly approved — logging disabled.';explanation='Approval was correct. GDPR audit log not written.';}
+    } else {
+      trace.push(t(2,'Record Updater → Attempt to update','Update blocked — field access restriction prevents leave balance modification','tr-err'));
+      outcome='fail';verdict='Agent cannot update leave balance — field access too restrictive.';explanation:'Record updater was set to Act but field access was restricted. Leave balance field cannot be updated.';}
+  }
+  return{outcome,trace,verdict,explanation};
+}
+
+let simIndex=0;let simResults=[];
+function runSimulation(){
+  const btn=document.getElementById('runBtn');btn.disabled=true;
+  btn.innerHTML='<span class="rb-dot"></span> Processing HR requests…';
+  simResults=[];simIndex=0;processNext();
+}
+function processNext(){
+  if(simIndex>=EVENTS.length){
+    document.getElementById('sim-cta').style.display='flex';
+    document.getElementById('runBtn').style.display='none';
+    state.results=simResults;
+    state.score=Math.round(simResults.filter(r=>r.outcome==='pass').length/EVENTS.length*100);
+    return;
+  }
+  const ev=EVENTS[simIndex];
+  const card=document.getElementById('ev-'+ev.id);
+  const statusEl=document.getElementById('ev'+ev.id+'-status');
+  card.classList.add('running');
+  statusEl.outerHTML=`<span class="status-pill sp-running" id="ev${ev.id}-status"><span style="width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block"></span>Processing…</span>`;
+  setTimeout(()=>{
+    const result=evaluateEvent(ev);simResults.push({...result,ev});
+    const traceHtml=result.trace.map(t=>`<div class="tr-line"><span class="tr-time">${t.t}</span><span class="tr-action ${t.cls}">${t.a} — ${t.r}</span></div>`).join('');
+    document.getElementById('ev'+ev.id+'-trace').innerHTML=`<div class="ec-trace">${traceHtml}</div><div style="margin-top:12px;padding:12px 14px;border-radius:8px;background:${result.outcome==='pass'?'var(--pass-bg)':result.outcome==='fail'?'var(--danger-bg)':'var(--warn-bg)'};border:1px solid ${result.outcome==='pass'?'var(--pass-border)':result.outcome==='fail'?'var(--danger-border)':'var(--warn-border)'};font-size:13px;color:${result.outcome==='pass'?'var(--pass)':result.outcome==='fail'?'var(--danger)':'var(--warn)'};font-weight:600;">${result.verdict}</div>`;
+    card.classList.remove('running');card.classList.add(result.outcome);
+    document.getElementById('ev'+ev.id+'-status').outerHTML=`<span class="status-pill sp-${result.outcome}" id="ev${ev.id}-status">${result.outcome==='pass'?'✓ Correct':result.outcome==='fail'?'✗ Failed':'△ Partial'}</span>`;
+    simIndex++;setTimeout(processNext,400);
+  },900+simIndex*200);
+}
+
+function buildScore(){
+  if(!state.results.length)return;
+  const results=state.results;
+  const passing=results.filter(r=>r.outcome==='pass').length;
+  const score=Math.round(passing/results.length*100);
+  state.score=score;
+  const perfect=score===100;const good=score>=60;
+  document.getElementById('score-hero-block').innerHTML=`<div class="score-hero"><div class="sh-number ${perfect?'perfect':good?'good':'fail'}">${score}%</div><div class="sh-label">${passing} of ${results.length} requests handled correctly</div><div class="sh-verdict">${perfect?'Perfect configuration — all five HR requests handled correctly':good?'Partial pass — some requests misconfigured':'Critical misconfiguration — review the GDPR and escalation settings'}</div></div>`;
+  document.getElementById('score-breakdown').innerHTML=results.map((r,i)=>`<div class="sb-card ${r.outcome}-card"><div class="sbc-label">Event ${i+1} · ${r.outcome.toUpperCase()}</div><div class="sbc-event">${r.ev.request}</div><div class="sbc-verdict">${r.verdict}</div><div class="sbc-explain">${r.explanation}</div></div>`).join('');
+  const failures=results.filter(r=>r.outcome!=='pass');
+  if(failures.length){
+    document.getElementById('config-diff-section').style.display='block';
+    const p=state.perms;const diffs=[];
+    if(state.sensReader==='medical'||state.sensReader==='performance') diffs.push(['Employee Record Reader — data access',state.sensReader==='medical'?'Standard + performance + medical':'Standard + performance','Standard HR data only','GDPR data minimisation violation — accessing more data categories than the request requires.']);
+    if(p.escalate!=='act') diffs.push(['Escalation Router',p.escalate||'not set','Act','Cannot route medical or performance-related requests — critical escalation path broken.']);
+    if(p.comms!=='act') diffs.push(['Employee Communicator',p.comms||'not set','Act','Cannot respond to employees — creates process failures and unanswered requests.']);
+    if(!state.logging) diffs.push(['HR Audit Logger','Disabled','Enabled','GDPR Article 5(2) accountability principle violated — all agent actions must be documented.']);
+    if(sensU==='all') diffs.push(['Record Updater — field access','All fields including performance and contract','Leave balance only (or admin)','Agent can modify fields it has no business reason to modify — data minimisation violation.']);
+    document.getElementById('diff-tbody').innerHTML=diffs.map(d=>`<tr><td style="font-weight:600">${d[0]}</td><td style="color:var(--danger);font-family:var(--mono);font-size:12px">${d[1]}</td><td style="color:var(--pass);font-family:var(--mono);font-size:12px">${d[2]}</td><td style="font-size:12.5px;color:var(--ink-2)">${d[3]}</td></tr>`).join('');
+  }
+  const certBtn=document.getElementById('certBtn');const hint=document.getElementById('score-hint');
+  if(perfect){certBtn.style.display='inline-block';hint.textContent='Perfect score — claim your competency record.';}
+  else if(good){hint.textContent='Fix the misconfigured settings and retry. 100% required for the competency record.';}
+  else{hint.textContent='Critical misconfigurations found. Review the GDPR rules and escalation paths, reconfigure, and retry.';}
+  state.score=score;
+}
+function buildCert(){
+  const d=new Date();
+  document.getElementById('cert-date').textContent=d.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+  document.getElementById('cert-score').textContent=state.score+'% — all five scenarios passed';
+  document.getElementById('cert-id').textContent='AGNUS-B02-'+Date.now().toString(36).toUpperCase();
+}
+</script>
+</body>
+</html>

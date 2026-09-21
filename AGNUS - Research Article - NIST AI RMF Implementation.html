@@ -1,0 +1,186 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NIST AI RMF in Practice: How to Implement the Four Functions — AGNUS Research</title>
+<meta name="description" content="The NIST AI Risk Management Framework defines four functions: GOVERN, MAP, MEASURE, and MANAGE. This article maps each function to practical implementation steps, explains how the functions work together, and shows how the AI RMF aligns with EU AI Act requirements." />
+<link rel="canonical" href="https://agnus.example/research/standards/nist-ai-rmf-implementation/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="NIST AI RMF in Practice: How to Implement the Four Functions" />
+<meta property="article:published_time" content="2026-09-11" />
+<meta property="article:author" content="Jean-Daniel Alexis" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>
+a,a:visited{color:inherit}
+.prose h3{font-family:var(--font-sans);font-weight:700;font-size:19px;letter-spacing:-.018em;margin:32px 0 14px}
+.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
+.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
+.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s}
+.rsub a:hover{color:var(--ink);background:var(--line-soft,rgba(0,0,0,.04))}
+.rsub a.on{color:var(--gold-deep);font-weight:600}
+.pillar-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:var(--gold-pale,#FEF9ED);color:var(--gold-deep,#8B6914);border:1px solid var(--gold-line,#E8D9A0);border-radius:4px;padding:3px 8px;margin-bottom:16px}
+.fn-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0}
+@media(max-width:700px){.fn-grid{grid-template-columns:1fr}}
+.fn-card{border-radius:10px;border:1px solid var(--line);padding:18px 20px}
+.fn-card.govern{background:rgba(138,92,0,.05);border-color:rgba(138,92,0,.2)}
+.fn-card.map{background:rgba(26,78,138,.05);border-color:rgba(26,78,138,.2)}
+.fn-card.measure{background:rgba(15,110,58,.05);border-color:rgba(15,110,58,.2)}
+.fn-card.manage{background:rgba(139,92,246,.05);border-color:rgba(139,92,246,.2)}
+.fn-card .fc-label{font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+.fn-card.govern .fc-label{color:#8A5C00}
+.fn-card.map .fc-label{color:#1A4E8A}
+.fn-card.measure .fc-label{color:#0F6E3A}
+.fn-card.manage .fc-label{color:#5C1E8A}
+.fn-card h3{font-size:16px;font-weight:800;margin-bottom:6px;color:var(--ink)}
+.fn-card p{font-size:13px;color:var(--ink-mute);line-height:1.6}
+.map-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:13px}
+.map-table th{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);font-weight:600;text-align:left;padding:10px 14px;border-bottom:2px solid var(--line);background:var(--paper-warm,#F7F5F0)}
+.map-table td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+.map-table tr:last-child td{border-bottom:none}
+</style>
+</head>
+<body>
+<div class="art-progress"><i id="progBar"></i></div>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+    </div>
+  </div>
+</nav>
+<div class="rsub">
+  <div class="rsub-inner">
+    <a href="#overview">Overview</a>
+    <a href="#govern">GOVERN</a>
+    <a href="#map">MAP</a>
+    <a href="#measure">MEASURE</a>
+    <a href="#manage">MANAGE</a>
+    <a href="#eu-alignment">EU alignment</a>
+    <a href="#sources">Sources</a>
+  </div>
+</div>
+<main class="art-layout">
+  <article class="art-main">
+    <header class="art-header">
+      <span class="pillar-tag">Standards</span>
+      <h1 class="art-h1">NIST AI RMF in Practice: How to Implement the Four Functions</h1>
+      <p class="art-lede">The NIST AI Risk Management Framework (AI RMF 1.0) organises AI risk management into four core functions: GOVERN, MAP, MEASURE, and MANAGE. Unlike compliance frameworks that tell you what to do, the AI RMF tells you how to organise the work. This article maps each function to concrete implementation steps and shows where the AI RMF aligns with EU AI Act requirements.</p>
+      <div class="art-meta">
+        <span>Jean-Daniel Alexis</span><span class="meta-sep">·</span>
+        <span>11 September 2026</span><span class="meta-sep">·</span>
+        <span>Standards pillar</span><span class="meta-sep">·</span>
+        <span>AR-000710</span>
+      </div>
+    </header>
+    <div class="prose">
+      <h3 id="overview">Overview: four functions, not a checklist</h3>
+      <p>The NIST AI RMF is structured around four core functions that map the lifecycle of AI risk management. They are not a checklist — they are an organisational model for how risk management work should be structured. Each function has sub-categories (actions) and practitioner guidance in the AI RMF Playbook.</p>
+      <div class="fn-grid">
+        <div class="fn-card govern">
+          <div class="fc-label">Function 1</div>
+          <h3>GOVERN</h3>
+          <p>Establishes the policies, roles, and processes that enable the other three functions to operate. Before you can map, measure, or manage AI risk, you need an organisational structure that is accountable for doing so.</p>
+        </div>
+        <div class="fn-card map">
+          <div class="fc-label">Function 2</div>
+          <h3>MAP</h3>
+          <p>Identifies and categorises AI risks for specific systems in their deployment context. Where and how can this AI system cause harm? Who is affected? What are the dependencies and failure modes?</p>
+        </div>
+        <div class="fn-card measure">
+          <div class="fc-label">Function 3</div>
+          <h3>MEASURE</h3>
+          <p>Assesses and tracks identified risks using appropriate metrics and evaluation methods. How severe is each risk? How probable? How are risks changing over time?</p>
+        </div>
+        <div class="fn-card manage">
+          <div class="fc-label">Function 4</div>
+          <h3>MANAGE</h3>
+          <p>Implements risk treatments and monitors their effectiveness. What controls reduce each risk? Are those controls working? What do we do when risks change?</p>
+        </div>
+      </div>
+
+      <h3 id="govern">GOVERN: Building the accountability structure</h3>
+      <p>The GOVERN function establishes the organisational conditions for AI risk management. Its key actions include GOVERN 1.1 (documenting risk management policies, processes, and procedures), GOVERN 1.2 (identifying roles and responsibilities), GOVERN 1.7 (establishing third-party risk management processes), and GOVERN 6.1 (ensuring risk management processes are funded and staffed).</p>
+      <p>In practice, GOVERN translates to three deliverables: a written AI governance policy that applies across the organisation; a documented set of roles with named individuals and clear accountabilities; and a governance committee or board that meets regularly to review AI risk. An organisation that cannot point to all three has not implemented GOVERN.</p>
+      <p>GOVERN 1.7 specifically addresses AI supply chain and third-party AI components — requiring organisations to understand and manage risks from vendors, pre-trained models, and datasets. This is the GOVERN action most directly relevant to organisations deploying third-party AI systems.</p>
+
+      <h3 id="map">MAP: Identifying risks in context</h3>
+      <p>The MAP function identifies risks for a specific AI system in its specific deployment context. The same AI model may present different risks in a healthcare setting versus a financial services setting versus a retail setting. MAP requires context-specific analysis, not just a generic risk taxonomy.</p>
+      <p>MAP 2.1 requires categorising the AI system according to the contexts in which it will operate, the stakeholders it will affect, and the decisions it will inform. MAP 5.1 requires identifying and documenting third-party components and their associated risks. MAP 5.2 requires assessing the risks of these components to the overall system.</p>
+      <p>The most common failure in MAP is generalising risks from one context to another. A content moderation AI has different risk profiles in consumer social media, in enterprise collaboration tools, and in medical image classification. The MAP function requires that each deployment context be assessed independently.</p>
+
+      <h3 id="measure">MEASURE: Quantifying and tracking risks</h3>
+      <p>The MEASURE function moves from risk identification to risk quantification. MEASURE 1.1 requires establishing and documenting metrics for each identified risk category. MEASURE 2.1 requires testing AI systems against their performance claims before deployment. MEASURE 2.5 requires assessing fairness and bias on relevant subgroups.</p>
+      <p>MEASURE is where AI risk management most often breaks down in practice. Organisations identify risks (MAP) but do not systematically measure them. They deploy AI systems with performance claims but do not test those claims against the deployment population. They assert fairness but do not measure it across relevant demographic groups.</p>
+      <p>The AI RMF Playbook provides specific guidance on measurement approaches for each risk category. For bias and fairness, it references multiple fairness metrics (demographic parity, equalised odds, counterfactual fairness) and notes that no single metric is appropriate in all contexts — the choice of fairness metric is itself a governance decision.</p>
+
+      <h3 id="manage">MANAGE: Implementing and monitoring controls</h3>
+      <p>The MANAGE function implements risk treatments and monitors their effectiveness over time. MANAGE 2.2 requires documenting risk responses, including the rationale for accepted risks. MANAGE 3.1 requires monitoring risk controls over time and updating them as conditions change. MANAGE 4.1 requires documenting lessons learned from incidents.</p>
+      <p>MANAGE connects the AI RMF to post-deployment operations. It is the function that operationalises continuous monitoring, incident response, and governance updates. An organisation that completes GOVERN, MAP, and MEASURE before deployment but does not implement MANAGE has completed a pre-deployment assessment — not an ongoing risk management programme.</p>
+
+      <h3 id="eu-alignment">How the AI RMF aligns with EU AI Act requirements</h3>
+      <table class="map-table">
+        <thead><tr><th>AI RMF function</th><th>Primary EU AI Act alignment</th></tr></thead>
+        <tbody>
+          <tr><td><strong>GOVERN 1.1–1.2</strong> (policies, roles)</td><td>EU AI Act Article 26 (deployer obligations) + Article 9 (risk management system)</td></tr>
+          <tr><td><strong>MAP 2.1</strong> (context categorisation)</td><td>EU AI Act Articles 6–9 (risk classification, Annex III assessment)</td></tr>
+          <tr><td><strong>MAP 5.1</strong> (third-party components)</td><td>EU AI Act Article 11 (technical documentation) + Article 28 (value chain obligations)</td></tr>
+          <tr><td><strong>MEASURE 2.1</strong> (pre-deployment testing)</td><td>EU AI Act Article 9(8) (testing before market placement)</td></tr>
+          <tr><td><strong>MEASURE 2.5</strong> (fairness and bias)</td><td>EU AI Act Article 10 (training data quality + bias) + Article 15 (robustness)</td></tr>
+          <tr><td><strong>MANAGE 3.1</strong> (ongoing monitoring)</td><td>EU AI Act Article 72 (post-market monitoring)</td></tr>
+          <tr><td><strong>MANAGE 4.1</strong> (incident documentation)</td><td>EU AI Act Article 73 (serious incident reporting)</td></tr>
+        </tbody>
+      </table>
+      <p>The AI RMF does not map one-to-one with the EU AI Act — the frameworks have different structures and different scopes. But organisations implementing both can use the AI RMF as an organisational model for how to structure the work, while using the EU AI Act as the compliance specification for what the work must produce.</p>
+    </div>
+    <section class="art-sources" id="sources">
+      <h2 class="sources-h">Sources and verification</h2>
+      <div class="sources-grid">
+        <div class="source-card"><div class="sc-id">SRC-0067</div><div class="sc-title">NIST AI Risk Management Framework 1.0</div><div class="sc-org">National Institute of Standards and Technology</div><div class="sc-url"><a href="https://airc.nist.gov/RMF" target="_blank" rel="noopener">airc.nist.gov</a></div><div class="sc-note">The AI RMF 1.0 and the AI RMF Playbook are both freely available at airc.nist.gov. The Playbook provides sub-category-level implementation guidance for each function.</div></div>
+        <div class="source-card"><div class="sc-id">SRC-0062</div><div class="sc-title">EU AI Act — Articles 9, 11, 26, 72 and 73</div><div class="sc-org">European Parliament and Council</div><div class="sc-url"><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689" target="_blank" rel="noopener">eur-lex.europa.eu</a></div></div>
+      </div>
+      <div class="src-registry-note">Article ID: AR-000710 · Sources: SRC-0062, SRC-0067 · Published: 2026-09-11 · AGNUS Research</div>
+    </section>
+  </article>
+  <aside class="art-aside">
+    <div class="aside-block"><div class="aside-label">Pillar</div><a href="AGNUS - Research.html" class="aside-pill">Standards</a></div>
+    <div class="aside-block">
+      <div class="aside-label">Related articles</div>
+      <ul class="aside-links">
+        <li><a href="AGNUS - Research Article - Governance Frameworks.html">AI Governance Frameworks: OECD, NIST AI RMF, ISO 42001</a></li>
+        <li><a href="AGNUS - Research Article - ISO 42001.html">ISO/IEC 42001: AI Management Systems</a></li>
+        <li><a href="AGNUS - Research Article - AI Risk Assessment.html">AI Risk Assessment</a></li>
+      </ul>
+    </div>
+    <div class="aside-block">
+      <div class="aside-label">Get it</div>
+      <div class="aside-value">Free download</div>
+      <div class="aside-note">The NIST AI RMF 1.0 and AI RMF Playbook are freely available at airc.nist.gov. No registration required.</div>
+    </div>
+  </aside>
+</main>
+<footer class="footer"><div class="container footer-inner"><div class="footer-copy">© 2026 AGNUS. All rights reserved.</div><div class="footer-links"><a href="AGNUS - Home.html">Home</a><a href="AGNUS - Research.html">Research</a><a href="AGNUS - Academy.html">Academy</a></div></div></footer>
+<script src="agnus-research-data.js"></script>
+<script>(function(){var bar=document.getElementById('progBar');if(!bar)return;window.addEventListener('scroll',function(){var h=document.documentElement;bar.style.width=((h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100)+'%';});})();</script>
+</body>
+</html>

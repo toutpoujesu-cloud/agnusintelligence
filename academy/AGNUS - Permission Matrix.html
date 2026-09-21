@@ -1,0 +1,397 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Academy — Permission Matrix & Governance Test</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#F8F6F2;--surface:#FFFFFF;--surface-2:#F2F0EB;--border:#E0DDD5;--border-2:#CCC9C0;
+  --ink:#14181F;--ink-2:#3C4252;--ink-3:#7A8099;
+  --navy:#0F1E34;--navy-2:#162844;
+  --gold:#9A7020;--gold-bg:rgba(154,112,32,.09);--gold-border:rgba(154,112,32,.22);--gold-light:#C49A2C;
+  --pass:#0F6E3A;--pass-bg:rgba(15,110,58,.09);--pass-border:rgba(15,110,58,.22);
+  --danger:#B03020;--danger-bg:rgba(176,48,32,.09);--danger-border:rgba(176,48,32,.22);
+  --warn:#C4760A;--warn-bg:rgba(196,118,10,.09);--warn-border:rgba(196,118,10,.22);
+  --code:#1A2235;
+  --mono:'DM Mono',monospace;--sans:'DM Sans',sans-serif;--serif:'Newsreader',serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;font-family:var(--sans);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+.rail{background:var(--navy);color:#fff;height:56px;display:flex;align-items:center;padding:0 28px;gap:16px;position:sticky;top:0;z-index:200}
+.rail-brand{font-weight:800;font-size:15px}
+.rail-sep{width:1px;height:22px;background:rgba(255,255,255,.12);flex-shrink:0}
+.rail-crumb{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38)}
+.rail-title{font-size:13px;font-weight:600;color:rgba(255,255,255,.88)}
+.rail-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.rail-stage{font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.5)}
+.rail-btn{font-family:var(--sans);font-size:12px;font-weight:600;padding:6px 14px;border-radius:7px;border:1px solid rgba(255,255,255,.16);color:#fff;background:rgba(255,255,255,.07);cursor:pointer}
+.context-bar{background:var(--navy-2);border-bottom:1px solid rgba(255,255,255,.07);padding:12px 28px;display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+.cb-item{display:flex;flex-direction:column;gap:2px}
+.cb-label{font-family:var(--mono);font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35)}
+.cb-value{font-size:13px;font-weight:600;color:rgba(255,255,255,.88)}
+.cb-sep{width:1px;height:32px;background:rgba(255,255,255,.1);flex-shrink:0}
+.wrap{max-width:960px;margin:0 auto;padding:40px 28px 100px}
+.phase-badge{display:flex;align-items:center;gap:10px;margin-bottom:28px}
+.pb-dot{width:32px;height:32px;border-radius:50%;background:var(--gold-bg);border:2px solid var(--gold-border);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;font-weight:700;color:var(--gold)}
+.pb-stage{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:2px}
+.pb-title{font-size:18px;font-weight:800;letter-spacing:-.02em;color:var(--navy)}
+.callout{border-radius:11px;padding:14px 16px;margin:14px 0;font-size:13px;line-height:1.65;display:flex;gap:10px;align-items:flex-start}
+.callout.info{background:rgba(15,30,52,.06);border:1px solid rgba(15,30,52,.14)}
+.callout.warn{background:var(--warn-bg);border:1px solid var(--warn-border)}
+.callout-icon{flex-shrink:0;margin-top:2px}
+
+/* MATRIX */
+.matrix-wrap{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:24px}
+.matrix-head{padding:16px 20px;background:var(--surface-2);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.mh-title{font-size:14px;font-weight:700;color:var(--navy)}
+.mh-cols{display:flex;gap:8px}
+.mh-col{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);width:80px;text-align:center}
+.matrix-table{width:100%;border-collapse:collapse}
+.mt-row{display:grid;grid-template-columns:1fr 80px 80px 80px;border-bottom:1px solid var(--border);align-items:center}
+.mt-row:last-child{border-bottom:none}
+.mt-row.header-row{background:var(--surface-2)}
+.mt-resource{padding:14px 20px;display:flex;flex-direction:column;gap:3px}
+.mr-name{font-size:13.5px;font-weight:600;color:var(--ink)}
+.mr-desc{font-size:11.5px;color:var(--ink-3)}
+.mr-tag{display:inline-block;font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:3px;padding:1px 6px;margin-top:3px}
+.tag-pii{background:var(--warn-bg);color:var(--warn);border:1px solid var(--warn-border)}
+.tag-financial{background:var(--danger-bg);color:var(--danger);border:1px solid var(--danger-border)}
+.tag-ops{background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold-border)}
+.mt-cell{display:flex;align-items:center;justify-content:center;padding:12px 4px}
+.perm-btn{width:64px;height:36px;border-radius:8px;border:1.5px solid var(--border);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;font-weight:700;transition:all .15s;gap:4px}
+.perm-btn:hover{border-color:var(--border-2);background:var(--surface-2)}
+.perm-btn.allowed{background:var(--pass-bg);border-color:var(--pass-border);color:var(--pass)}
+.perm-btn.denied{background:var(--danger-bg);border-color:var(--danger-border);color:var(--danger)}
+.perm-btn.locked{cursor:not-allowed;opacity:.4}
+
+/* TEST PANEL */
+.test-panel{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:24px}
+.tp-head{padding:16px 20px;background:var(--navy);display:flex;align-items:center;justify-content:space-between}
+.tp-title{font-size:14px;font-weight:700;color:#fff}
+.btn-run{font-family:var(--sans);font-weight:700;font-size:13px;background:var(--gold-light);color:var(--navy);border:none;border-radius:8px;padding:10px 20px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:all .2s}
+.btn-run:hover{background:var(--gold);transform:translateY(-1px)}
+.btn-run:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.tp-body{padding:0}
+.scenario-row{border-bottom:1px solid var(--border);padding:0}
+.scenario-row:last-child{border-bottom:none}
+.sr-header{padding:14px 20px;display:grid;grid-template-columns:32px 1fr auto;gap:12px;align-items:flex-start;cursor:pointer}
+.sr-num{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--ink-3);padding-top:2px}
+.sr-info .sr-title{font-size:13.5px;font-weight:600;color:var(--ink);margin-bottom:3px}
+.sr-info .sr-desc{font-size:12px;color:var(--ink-3);line-height:1.5}
+.sr-status{flex-shrink:0;display:flex;align-items:center}
+.status-pill{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;border-radius:5px;padding:4px 9px;white-space:nowrap}
+.pill-pending{background:var(--surface-2);color:var(--ink-3)}
+.pill-running{background:rgba(15,30,52,.08);color:var(--navy)}
+.pill-pass{background:var(--pass-bg);color:var(--pass);border:1px solid var(--pass-border)}
+.pill-fail{background:var(--danger-bg);color:var(--danger);border:1px solid var(--danger-border)}
+.pill-warn{background:var(--warn-bg);color:var(--warn);border:1px solid var(--warn-border)}
+.sr-trace{display:none;padding:12px 20px 16px 64px;background:var(--surface-2);border-top:1px solid var(--border)}
+.sr-trace.show{display:block}
+.trace-line{font-family:var(--mono);font-size:12px;line-height:1.75;display:flex;gap:8px}
+.tl-action{color:var(--ink-3);flex-shrink:0;min-width:60px}
+.tl-ok{color:var(--pass)}.tl-fail{color:var(--danger)}.tl-warn{color:var(--warn)}.tl-info{color:var(--navy)}
+.trace-verdict{margin-top:8px;padding:9px 12px;border-radius:7px;font-size:13px;font-weight:600;line-height:1.55}
+.tv-pass{background:var(--pass-bg);color:var(--pass)}
+.tv-fail{background:var(--danger-bg);color:var(--danger)}
+.tv-warn{background:var(--warn-bg);color:var(--warn)}
+
+/* CODE BLOCK */
+.code-block{background:var(--code);border-radius:10px;padding:14px 16px;margin:14px 0;font-family:var(--mono);font-size:12px;line-height:1.7;color:rgba(230,226,218,.9)}
+.ck{color:#79D4FF}.cv{color:#C3E88D}.cw{color:#FFD580}
+
+/* SCORE */
+.score-bar{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px 24px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.sb-left{display:flex;flex-direction:column;gap:3px}
+.sb-score{font-family:var(--mono);font-size:40px;font-weight:700;letter-spacing:-.04em;line-height:1}
+.sb-score.high{color:var(--pass)}.sb-score.mid{color:var(--warn)}.sb-score.low{color:var(--danger)}
+.sb-label{font-size:12.5px;color:var(--ink-3)}
+.sb-right{font-family:var(--serif);font-style:italic;font-size:16px;color:var(--ink-2);max-width:32ch;line-height:1.6;text-align:right}
+
+/* SUBMIT ROW */
+.submit-row{display:flex;gap:12px;margin-top:24px}
+.btn-submit{flex:1;padding:14px;border:none;border-radius:12px;font-family:var(--sans);font-weight:700;font-size:15px;cursor:pointer;background:var(--navy);color:#fff;transition:all .2s;display:none}
+.btn-submit.show{display:flex;align-items:center;justify-content:center;gap:8px}
+.btn-submit:hover{background:var(--navy-2);transform:translateY(-1px)}
+</style>
+</head>
+<body>
+
+<header class="rail">
+  <span class="rail-brand">AGNUS Academy</span>
+  <span class="rail-sep"></span>
+  <span class="rail-crumb">Governance Simulator</span>
+  <span class="rail-title">Stage 3 — Permission Matrix & Governance Test</span>
+  <div class="rail-right">
+    <span class="rail-stage">Stage 3 of 7</span>
+    <button class="rail-btn" onclick="alert('Return to dashboard')">← Dashboard</button>
+  </div>
+</header>
+
+<div class="context-bar">
+  <div class="cb-item"><div class="cb-label">Company</div><div class="cb-value">Nordic Finance AS</div></div>
+  <div class="cb-sep"></div>
+  <div class="cb-item"><div class="cb-label">Your role</div><div class="cb-value">AI Governance Officer</div></div>
+  <div class="cb-sep"></div>
+  <div class="cb-item"><div class="cb-label">Agent under governance</div><div class="cb-value">Invoice Processing Agent v1</div></div>
+  <div class="cb-sep"></div>
+  <div class="cb-item"><div class="cb-label">Stage 2 status</div><div class="cb-value" style="color:#6EE7B7">✓ Mission Contract approved</div></div>
+</div>
+
+<div class="wrap">
+  <div class="phase-badge">
+    <div class="pb-dot">3</div>
+    <div>
+      <div class="pb-stage">Stage 3 · Permissions & Boundaries</div>
+      <div class="pb-title">Configure the Permission Matrix</div>
+    </div>
+  </div>
+
+  <div class="callout info">
+    <div class="callout-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M8 7v5M8 5.5v.5"/></svg></div>
+    <div>Configure what the Invoice Processing Agent may read, write, and execute across each system. Apply the principle of least privilege — give only what the agent needs for the task defined in its Mission Contract. When done, click <strong>RUN GOVERNANCE TEST</strong> to see how your configuration performs against five real scenarios.</div>
+  </div>
+
+  <!-- MATRIX -->
+  <div class="matrix-wrap">
+    <div class="matrix-head">
+      <span class="mh-title">Resource Permission Matrix — Invoice Processing Agent v1</span>
+      <div class="mh-cols">
+        <div class="mh-col">Read</div>
+        <div class="mh-col">Write</div>
+        <div class="mh-col">Execute</div>
+      </div>
+    </div>
+    <div id="matrix-body"></div>
+  </div>
+
+  <!-- TEST PANEL -->
+  <div class="test-panel">
+    <div class="tp-head">
+      <span class="tp-title">Governance Test — 5 scenarios</span>
+      <button class="btn-run" id="run-btn" onclick="runTests()">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 2l8 5-8 5V2z"/></svg>
+        RUN GOVERNANCE TEST
+      </button>
+    </div>
+    <div id="scenarios-body"></div>
+  </div>
+
+  <div class="score-bar" id="score-bar" style="display:none">
+    <div class="sb-left">
+      <div class="sb-score" id="score-num">—</div>
+      <div class="sb-label" id="score-label">—</div>
+    </div>
+    <div class="sb-right" id="score-verdict">—</div>
+  </div>
+
+  <div class="submit-row">
+    <button class="btn-submit" id="proceed-btn" onclick="alert('Proceed to Stage 4 — Human Oversight →')">
+      Proceed to Stage 4 — Human Oversight →
+    </button>
+  </div>
+</div>
+
+<script>
+// ── DATA ────────────────────────────────────────────────────────────
+const RESOURCES = [
+  {id:'invoice_db',   name:'Invoice Database',       desc:'Supplier invoices, amounts, dates, PO references',         tag:'ops',       defaultR:null, defaultW:null, defaultE:null},
+  {id:'po_db',        name:'Purchase Order Database', desc:'Approved POs, vendor agreements, variance thresholds',     tag:'ops',       defaultR:null, defaultW:null, defaultE:null},
+  {id:'payment_proc', name:'Payment Processor',       desc:'Submits payments to bank clearing system',                 tag:'financial', defaultR:null, defaultW:null, defaultE:null},
+  {id:'supplier_db',  name:'Supplier Master Data',    desc:'Supplier names, banking details, contact information',     tag:'financial', defaultR:null, defaultW:null, defaultE:null},
+  {id:'banking',      name:'Banking Details',         desc:'Supplier IBAN/account numbers — modification highly sensitive', tag:'financial', defaultR:null, defaultW:null, defaultE:null},
+  {id:'email',        name:'Email System',            desc:'Send emails to internal team and external suppliers',      tag:'ops',       defaultR:null, defaultW:null, defaultE:null},
+  {id:'payroll',      name:'Payroll System',          desc:'Employee salaries, banking details, tax records',          tag:'pii',       defaultR:null, defaultW:null, defaultE:null},
+  {id:'hr_system',    name:'HR System',               desc:'Employee personal data, contracts, performance records',   tag:'pii',       defaultR:null, defaultW:null, defaultE:null},
+  {id:'audit_log',    name:'Audit Log',               desc:'Append-only record of all agent actions',                  tag:'ops',       defaultR:null, defaultW:null, defaultE:null},
+];
+
+const TAG_LABELS = {ops:'Operational', financial:'Financial — high risk', pii:'Personal data — GDPR'};
+const state = {};
+RESOURCES.forEach(r=>{ state[r.id]={r:false,w:false,e:false}; });
+
+// ── RENDER MATRIX ───────────────────────────────────────────────────
+function renderMatrix(){
+  const body = document.getElementById('matrix-body');
+  body.innerHTML = RESOURCES.map(r=>`
+    <div class="mt-row">
+      <div class="mt-resource">
+        <div class="mr-name">${r.name}</div>
+        <div class="mr-desc">${r.desc}</div>
+        <span class="mr-tag tag-${r.tag}">${TAG_LABELS[r.tag]}</span>
+      </div>
+      ${['r','w','e'].map(perm=>`
+        <div class="mt-cell">
+          <button class="perm-btn" id="btn-${r.id}-${perm}" onclick="toggle('${r.id}','${perm}',this)">
+            ${state[r.id][perm]?'<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>':'<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l8 8M10 2L2 10"/></svg>'}
+          </button>
+        </div>`).join('')}
+    </div>`).join('');
+}
+
+function toggle(id, perm, btn){
+  state[id][perm]=!state[id][perm];
+  btn.className='perm-btn '+(state[id][perm]?'allowed':'denied');
+  btn.innerHTML = state[id][perm]
+    ? '<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg>'
+    : '<svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 2l8 8M10 2L2 10"/></svg>';
+}
+
+// ── SCENARIOS ────────────────────────────────────────────────────────
+const SCENARIOS = [
+  {
+    id:'s1', title:'Process a standard invoice',
+    desc:'Agent reads INV-2026-0441, matches to PO, recommends payment for approval.',
+    evaluate(s){
+      const traces=[]; let outcome='pass';
+      if(!s.invoice_db.r){traces.push({t:'Read',m:'invoice_db READ — BLOCKED',cls:'tl-fail'});outcome='fail';}
+      else traces.push({t:'Read',m:'invoice_db READ — OK',cls:'tl-ok'});
+      if(!s.po_db.r){traces.push({t:'Read',m:'po_db READ — BLOCKED',cls:'tl-fail'});outcome='fail';}
+      else traces.push({t:'Read',m:'po_db READ — OK',cls:'tl-ok'});
+      if(s.payment_proc.e){traces.push({t:'Execute',m:'payment_proc EXECUTE — agent can submit payment autonomously (should require human approval)',cls:'tl-warn'});if(outcome==='pass')outcome='warn';}
+      else traces.push({t:'Execute',m:'payment_proc EXECUTE — blocked (correct: requires human approval)',cls:'tl-ok'});
+      const verdicts={pass:'Correct: agent reads invoices and POs, recommends payment but cannot execute it autonomously.',warn:'Partial: agent can read and recommend, but autonomous payment execution bypasses human oversight.',fail:'Agent cannot perform its core task — invoice or PO read access is missing.'};
+      return{outcome,traces,verdict:verdicts[outcome]};
+    }
+  },
+  {
+    id:'s2', title:'Attempt to modify supplier banking details',
+    desc:'Agent tries to update the IBAN for supplier "Lindqvist Logistics" after receiving an email.',
+    evaluate(s){
+      const traces=[]; let outcome='pass';
+      if(s.banking.w||s.banking.e){traces.push({t:'Write',m:'banking WRITE/EXECUTE — ALLOWED: agent can modify banking details',cls:'tl-fail'});outcome='fail';}
+      else{traces.push({t:'Write',m:'banking WRITE — BLOCKED (correct: banking modification is prohibited)',cls:'tl-ok'});}
+      if(s.supplier_db.w){traces.push({t:'Write',m:'supplier_db WRITE — ALLOWED: agent can modify supplier master data',cls:'tl-warn'});if(outcome==='pass')outcome='warn';}
+      else traces.push({t:'Write',m:'supplier_db WRITE — blocked',cls:'tl-ok'});
+      const verdicts={pass:'Correct: agent cannot modify banking details. This prevents business email compromise fraud.',warn:'Warning: supplier master data write access should be restricted — it includes banking references.',fail:'CRITICAL: Agent can modify banking details. This is the primary vector for invoice fraud. Deny WRITE and EXECUTE on Banking immediately.'};
+      return{outcome,traces,verdict:verdicts[outcome]};
+    }
+  },
+  {
+    id:'s3', title:'Access payroll system',
+    desc:'Agent expands scope and queries the payroll system "to cross-reference employee expense claims."',
+    evaluate(s){
+      const traces=[]; let outcome='pass';
+      if(s.payroll.r||s.payroll.w||s.payroll.e){
+        const perms=[s.payroll.r&&'READ',s.payroll.w&&'WRITE',s.payroll.e&&'EXECUTE'].filter(Boolean).join(', ');
+        traces.push({t:'Read',m:`payroll ${perms} — ALLOWED: agent can access payroll (GDPR violation — out of scope)`,cls:'tl-fail'});outcome='fail';
+      } else traces.push({t:'Read',m:'payroll — BLOCKED (correct: payroll is outside agent scope)',cls:'tl-ok'});
+      if(s.hr_system.r||s.hr_system.w){traces.push({t:'Read',m:'hr_system READ/WRITE — ALLOWED: personal data out of scope',cls:'tl-warn'});if(outcome==='pass')outcome='warn';}
+      else traces.push({t:'Read',m:'hr_system — blocked',cls:'tl-ok'});
+      const verdicts={pass:'Correct: agent cannot access payroll or HR. Data minimisation maintained.',warn:'Warning: HR system access granted. Employee personal data is out of scope for an invoice agent.',fail:'CRITICAL: Agent has payroll access. Processing employee salary data without legal basis violates GDPR Article 9.'};
+      return{outcome,traces,verdict:verdicts[outcome]};
+    }
+  },
+  {
+    id:'s4', title:'Send external email to supplier',
+    desc:'Agent sends a payment confirmation email directly to the supplier without human review.',
+    evaluate(s){
+      const traces=[]; let outcome='pass';
+      if(s.email.e){traces.push({t:'Execute',m:'email EXECUTE — agent can send emails autonomously to external parties',cls:'tl-warn'});outcome='warn';}
+      else if(s.email.w){traces.push({t:'Write',m:'email WRITE — agent can draft emails (acceptable if send requires approval)',cls:'tl-ok'});}
+      else traces.push({t:'Write',m:'email — no access (acceptable for this agent)',cls:'tl-ok'});
+      if(!s.audit_log.w){traces.push({t:'Write',m:'audit_log WRITE — BLOCKED: agent cannot write to audit log',cls:'tl-fail'});outcome='fail';}
+      else traces.push({t:'Write',m:'audit_log WRITE — OK: all actions logged',cls:'tl-ok'});
+      const verdicts={pass:'Correct: email is controlled and all actions are logged.',warn:'Warning: autonomous email execution can create external commitments without human oversight. Consider restricting to draft only.',fail:'CRITICAL: Agent cannot write to the audit log. Every agent action must be logged for governance compliance.'};
+      return{outcome,traces,verdict:verdicts[outcome]};
+    }
+  },
+  {
+    id:'s5', title:'Scope creep — attempt to query HR for supplier verification',
+    desc:'Agent reasons that it should check HR records to verify an employee submitted the invoice. It queries HR data.',
+    evaluate(s){
+      const traces=[]; let outcome='pass';
+      if(s.hr_system.r){traces.push({t:'Read',m:'hr_system READ — ALLOWED: scope creep into HR data',cls:'tl-fail'});outcome='fail';}
+      else traces.push({t:'Read',m:'hr_system READ — BLOCKED (correct: scope constraint enforced)',cls:'tl-ok'});
+      if(s.payroll.r){traces.push({t:'Read',m:'payroll READ — ALLOWED: further scope expansion',cls:'tl-fail'});outcome='fail';}
+      else traces.push({t:'Read',m:'payroll READ — BLOCKED',cls:'tl-ok'});
+      if(!s.invoice_db.r){traces.push({t:'Read',m:'invoice_db READ — also missing (agent cannot do its core job)',cls:'tl-fail'});outcome='fail';}
+      const verdicts={pass:'Correct: agent stays within its defined scope. HR and payroll access is blocked regardless of the agent\'s reasoning.',warn:'Partial pass.',fail:'Agent accessed data outside its scope. The Mission Contract\'s scope boundaries are not enforced by the permission matrix.'};
+      return{outcome,traces,verdict:verdicts[outcome]};
+    }
+  }
+];
+
+function renderScenarios(){
+  const body = document.getElementById('scenarios-body');
+  body.innerHTML = SCENARIOS.map((s,i)=>`
+    <div class="scenario-row" id="row-${s.id}">
+      <div class="sr-header">
+        <div class="sr-num">${String(i+1).padStart(2,'0')}</div>
+        <div class="sr-info">
+          <div class="sr-title">${s.title}</div>
+          <div class="sr-desc">${s.desc}</div>
+        </div>
+        <div class="sr-status"><span class="status-pill pill-pending" id="pill-${s.id}">Pending</span></div>
+      </div>
+      <div class="sr-trace" id="trace-${s.id}"></div>
+    </div>`).join('');
+}
+
+// ── RUN TESTS ─────────────────────────────────────────────────────────
+function runTests(){
+  document.getElementById('run-btn').disabled=true;
+  document.getElementById('run-btn').textContent='Running…';
+  let i=0;
+  function next(){
+    if(i>=SCENARIOS.length){showFinalScore();return;}
+    const s=SCENARIOS[i];
+    const pill=document.getElementById(`pill-${s.id}`);
+    pill.className='status-pill pill-running'; pill.textContent='Testing…';
+    setTimeout(()=>{
+      const result=s.evaluate(state);
+      const traceEl=document.getElementById(`trace-${s.id}`);
+      traceEl.innerHTML=result.traces.map(t=>`<div class="trace-line"><span class="tl-action">${t.t}</span><span class="${t.cls}">${t.m}</span></div>`).join('');
+      const vClass={pass:'tv-pass',warn:'tv-warn',fail:'tv-fail'}[result.outcome];
+      traceEl.innerHTML+=`<div class="trace-verdict ${vClass}">${result.verdict}</div>`;
+      traceEl.className='sr-trace show';
+      const pillMap={pass:'pill-pass ✓ Pass',warn:'pill-warn △ Warning',fail:'pill-fail ✗ Failed'};
+      const [cls,txt]=pillMap[result.outcome].split(' ').reduce((a,v,idx)=>idx===0?[v,a[1]]:[[a[0]],[a[1]+' '+v]],['',['']],'');
+      pill.className=`status-pill pill-${result.outcome}`;
+      pill.textContent={pass:'✓ Pass',warn:'△ Warning',fail:'✗ Failed'}[result.outcome];
+      i++; setTimeout(next,350);
+    },700+i*100);
+  }
+  next();
+}
+
+function showFinalScore(){
+  const results=SCENARIOS.map(s=>s.evaluate(state));
+  const passes=results.filter(r=>r.outcome==='pass').length;
+  const warns=results.filter(r=>r.outcome==='warn').length;
+  const fails=results.filter(r=>r.outcome==='fail').length;
+  const score=Math.round((passes*100+warns*50)/SCENARIOS.length);
+  const bar=document.getElementById('score-bar');
+  bar.style.display='flex';
+  const num=document.getElementById('score-num');
+  num.textContent=score+'%';
+  num.className='sb-score '+(score>=80?'high':score>=50?'mid':'low');
+  document.getElementById('score-label').textContent=`${passes} pass · ${warns} warning · ${fails} failed`;
+  document.getElementById('score-verdict').textContent=score>=80
+    ?'Good configuration. Proceed to Stage 4 — Human Oversight to set approval thresholds.'
+    :score>=50?'Configuration has gaps. Review the warnings above before proceeding.'
+    :'Critical governance failures detected. Deny banking write access, payroll read access, and ensure audit logging is enabled before proceeding.';
+  const btn=document.getElementById('proceed-btn');
+  if(score>=80) btn.className='btn-submit show';
+  const runBtn=document.getElementById('run-btn');
+  runBtn.disabled=false;
+  runBtn.innerHTML='<svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 2l8 5-8 5V2z"/></svg> RE-RUN TESTS';
+  window.scrollTo({top:bar.offsetTop-80,behavior:'smooth'});
+}
+
+// INIT
+renderMatrix();
+renderScenarios();
+</script>
+</body>
+</html>

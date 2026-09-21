@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AGNUS SDK Roadmap — Python &amp; TypeScript</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #0B0F18; color: #E2E8F0; font-family: Manrope, sans-serif; -webkit-font-smoothing: antialiased; line-height: 1.6; font-size: 14px; }
+
+.topbar { background: #0F1A28; border-bottom: 1px solid #1E2D42; padding: 0 32px; height: 52px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 50; }
+.topbar-left { display: flex; align-items: center; gap: 16px; }
+.wordmark { font-weight: 800; font-size: 14px; letter-spacing: -.01em; }
+.tl-sep { color: #1E2D42; font-size: 18px; }
+.doc-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: #4A6080; }
+.doc-id { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: #B59048; }
+
+.wrap { max-width: 960px; margin: 0 auto; padding: 56px 24px 96px; }
+
+.doc-header { margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid #1E2D42; }
+.eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: #4A6080; margin-bottom: 16px; }
+.doc-header h1 { font-size: 34px; font-weight: 800; letter-spacing: -.03em; line-height: 1.15; margin-bottom: 14px; }
+.doc-header .lede { font-size: 14.5px; color: #6B82A4; line-height: 1.65; max-width: 640px; }
+.doc-meta { display: flex; gap: 32px; margin-top: 24px; flex-wrap: wrap; }
+.doc-meta .dm { display: grid; gap: 3px; }
+.doc-meta .dm-k { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: #4A6080; }
+.doc-meta .dm-v { font-size: 12.5px; font-weight: 600; color: #B59048; }
+
+/* SDK columns */
+.sdk-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 48px; }
+@media (max-width: 760px) { .sdk-cols { grid-template-columns: 1fr; } }
+
+.sdk-card { border: 1px solid #1E2D42; border-radius: 14px; overflow: hidden; }
+.sdk-head { padding: 20px 22px; border-bottom: 1px solid #1E2D42; }
+.sdk-py .sdk-head { background: linear-gradient(135deg, rgba(62,207,134,.06) 0%, transparent 70%); border-left: 3px solid #3ECF86; }
+.sdk-ts .sdk-head { background: linear-gradient(135deg, rgba(77,158,255,.06) 0%, transparent 70%); border-left: 3px solid #4D9EFF; }
+.sdk-head .sh-top { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.lang-badge { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600; padding: 3px 11px; border-radius: 6px; }
+.sdk-py .lang-badge { background: rgba(62,207,134,.12); color: #3ECF86; border: 1px solid rgba(62,207,134,.22); }
+.sdk-ts .lang-badge { background: rgba(77,158,255,.12); color: #4D9EFF; border: 1px solid rgba(77,158,255,.22); }
+.sdk-head h2 { font-size: 16px; font-weight: 700; letter-spacing: -.02em; }
+.sdk-head .sh-sub { font-size: 12.5px; color: #4A6080; line-height: 1.55; }
+
+/* version track */
+.version-track { padding: 6px 0; }
+.version { border-bottom: 1px solid #111D2C; padding: 16px 22px; }
+.version:last-child { border-bottom: none; }
+.ver-head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.ver-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 6px; border: 1px solid; }
+.ver-title { font-size: 13px; font-weight: 700; }
+.ver-status { margin-left: auto; font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; }
+
+/* status colours */
+.s-planned { color: #3A4F68; }
+.v-planned { color: #3A4F68; border-color: #1E2D42; background: #0B1018; }
+.s-next    { color: #E0B354; }
+.v-next    { color: #E0B354; border-color: rgba(224,179,84,.24); background: rgba(224,179,84,.06); }
+
+.sdk-py .v-planned { color: #3ECF86; }
+.sdk-ts .v-planned { color: #4D9EFF; }
+
+.ver-items { display: grid; gap: 5px; }
+.ver-item { display: flex; align-items: flex-start; gap: 8px; font-size: 12.5px; color: #6B82A4; }
+.ver-item::before { content: '·'; color: #2A3A50; flex-shrink: 0; margin-top: 1px; }
+
+/* code snippet */
+.code-block { background: #0A1420; border: 1px solid #1A2535; border-radius: 10px; padding: 18px 20px; margin-bottom: 36px; }
+.cb-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: #4A6080; margin-bottom: 12px; }
+.cb-tabs { display: flex; gap: 4px; margin-bottom: 14px; border-bottom: 1px solid #1E2D42; }
+.cb-tab { font-family: 'IBM Plex Mono', monospace; font-size: 10px; padding: 6px 14px; cursor: pointer; border-bottom: 2px solid transparent; color: #3A4F68; }
+.cb-tab.py { border-bottom-color: #3ECF86; color: #3ECF86; }
+.cb-tab.ts { border-bottom-color: #4D9EFF; color: #4D9EFF; }
+pre { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #8BA3C4; line-height: 1.7; overflow-x: auto; }
+.kw  { color: #F0776A; }   /* keyword */
+.fn  { color: #4D9EFF; }   /* function/method */
+.str { color: #3ECF86; }   /* string */
+.cm  { color: #2A3A50; font-style: italic; } /* comment */
+.tp  { color: #E0B354; }   /* type */
+.cl  { color: #B59048; }   /* class name */
+
+/* milestones */
+.milestones { display: grid; gap: 10px; margin-bottom: 40px; }
+.ms { background: #0F161F; border: 1px solid #1A2535; border-radius: 10px; padding: 16px 20px; display: grid; grid-template-columns: 120px 1fr; gap: 16px; align-items: start; }
+.ms-date { font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #B59048; padding-top: 2px; }
+.ms-body h4 { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+.ms-body p  { font-size: 12.5px; color: #6B82A4; line-height: 1.55; }
+
+/* success criteria */
+.criteria { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+.criterion { background: #0F161F; border: 1px solid #1A2535; border-left: 3px solid #B59048; border-radius: 9px; padding: 13px 16px; }
+.criterion .ck { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: #4A6080; margin-bottom: 6px; }
+.criterion .cv { font-size: 13px; font-weight: 600; color: #C8D8EA; }
+
+/* section heading */
+.section-head { display: flex; align-items: center; gap: 12px; margin: 44px 0 18px; padding-bottom: 12px; border-bottom: 1px solid #1E2D42; }
+.section-head h2 { font-size: 15px; font-weight: 700; letter-spacing: -.01em; }
+
+.doc-footer { margin-top: 64px; padding-top: 24px; border-top: 1px solid #1E2D42; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.doc-footer .df-l { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #2A3A50; }
+.doc-footer .df-r { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #4A6080; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <span class="wordmark">AGNUS</span>
+    <span class="tl-sep">/</span>
+    <span class="doc-label">Developer Platform</span>
+    <span class="doc-id">G11</span>
+  </div>
+  <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#4A6080;">SDK Roadmap · Python &amp; TypeScript · Phase C</div>
+</div>
+
+<div class="wrap">
+
+  <div class="doc-header">
+    <div class="eyebrow">G11 · SDK Roadmap · Phase C — Developer Platform</div>
+    <h1>Python &amp; TypeScript SDKs</h1>
+    <p class="lede">Official client libraries for the AGNUS Control Plane API. Python targets compliance engineers, data teams, and automation workflows. TypeScript targets frontend and full-stack teams building compliance tooling on top of AGNUS. Both ship in parallel from v0.1.</p>
+    <div class="doc-meta">
+      <div class="dm"><div class="dm-k">Phase</div><div class="dm-v">C — not yet started</div></div>
+      <div class="dm"><div class="dm-k">Prerequisite</div><div class="dm-v">Control Plane API v1 (G10)</div></div>
+      <div class="dm"><div class="dm-k">Target v1.0</div><div class="dm-v">Q2 2027</div></div>
+      <div class="dm"><div class="dm-k">Registry</div><div class="dm-v">PyPI · npm</div></div>
+    </div>
+  </div>
+
+  <!-- VERSION TRACKS -->
+  <div class="sdk-cols">
+
+    <!-- PYTHON SDK -->
+    <div class="sdk-card sdk-py">
+      <div class="sdk-head">
+        <div class="sh-top">
+          <span class="lang-badge">Python</span>
+          <code style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#4A6080;">pip install agnus</code>
+        </div>
+        <h2>agnus-python</h2>
+        <p class="sh-sub">Typed client with Pydantic models, async/await support, and a CLI helper. Targets Python 3.11+.</p>
+      </div>
+      <div class="version-track">
+
+        <div class="version">
+          <div class="ver-head">
+            <span class="ver-tag v-next">v0.1</span>
+            <span class="ver-title">Foundation</span>
+            <span class="ver-status s-next">First release</span>
+          </div>
+          <div class="ver-items">
+            <div class="ver-item">Authentication — API key via env var <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">AGNUS_API_KEY</code> or constructor</div>
+            <div class="ver-item">Base HTTP client with retry logic (exponential backoff, max 3 retries)</div>
+            <div class="ver-item">Rate limit handling — 429 auto-retry with <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">Retry-After</code> header</div>
+            <div class="ver-item"><code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">articles.list()</code> and <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">articles.get(article_id)</code></div>
+            <div class="ver-item">Pydantic model: <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">Article</code> with all fields typed</div>
+            <div class="ver-item">Pagination helper: <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">articles.iter()</code> auto-pages</div>
+          </div>
+        </div>
+
+        <div class="version">
+          <div class="ver-head">
+            <span class="ver-tag v-planned">v0.2</span>
+            <span class="ver-title">Intelligence + Sources</span>
+            <span class="ver-status s-planned">Planned</span>
+          </div>
+          <div class="ver-items">
+            <div class="ver-item"><code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">intelligence.list()</code> with date filtering</div>
+            <div class="ver-item"><code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">sources.list()</code> and <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">sources.register()</code></div>
+            <div class="ver-item">Pydantic models: <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">IntelligenceRecord</code>, <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">Source</code></div>
+            <div class="ver-item">Async client: <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">AsyncAgnus</code> for use in async contexts</div>
+          </div>
+        </div>
+
+        <div class="version">
+          <div class="ver-head">
+            <span class="ver-tag v-planned">v0.3</span>
+            <span class="ver-title">Write Operations</span>
+            <span class="ver-status s-planned">Planned</span>
+          </div>
+          <div class="ver-items">
+            <div class="ver-item"><code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">articles.create()</code> and <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">articles.publish(article_id)</code></div>
+            <div class="ver-item"><code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">intelligence.submit()</code></div>
+            <div class="ver-item">Input validation before request dispatch (fail fast on bad data)</div>
+            <div class="ver-item">Write scope enforcement — raises <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">InsufficientScopeError</code> if key lacks write access</div>
+          </div>
+        </div>
+
+        <div class="version">
+          <div class="ver-head">
+            <span class="ver-tag v-planned">v0.4</span>
+            <span class="ver-title">Pipeline + CLI</span>
+            <span class="ver-status s-planned">Planned</span>
+          </div>
+          <div class="ver-items">
+            <div class="ver-item"><code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">pipeline.trigger(article_ids)</code> and <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">pipeline.wait(job_id)</code></div>
+            <div class="ver-item">CLI: <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">agnus articles list</code>, <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">agnus pipeline trigger AR-000597</code></div>
+            <div class="ver-item">Progress bar in CLI for long-running pipeline jobs</div>
+            <div class="ver-item">Export: <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">agnus articles export --format json|csv</code></div>
+          </div>
+        </div>
+
+        <div class="version">
+          <div class="ver-head">
+            <span class="ver-tag v-planned">v1.0</span>
+            <span class="ver-title">Production</span>
+            <span class="ver-status s-planned">Target: Q2 2027</span>
+          </div>
+          <div class="ver-items">
+            <div class="ver-item">Full endpoint coverage — all 10 Control Plane endpoints</div>
+            <div class="ver-item">Streaming support for large article exports</div>
+            <div class="ver-item">Webhook listener helper: <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">agnus.listen()</code></div>
+            <div class="ver-item">100% typed — passes <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">mypy --strict</code></div>
+            <div class="ver-item">Docs: ReadTheDocs + API reference auto-generated from Pydantic models</div>
+            <div class="ver-item">Test coverage ≥ 90%. Published to PyPI as <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">agnus</code></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TYPESCRIPT SDK -->
+    <div class="sdk-card sdk-ts">
+      <div class="sdk-head">
+        <div class="sh-top">
+          <span class="lang-badge">TypeScript</span>
+          <code style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:#4A6080;">npm install @agnus/sdk</code>
+        </div>
+        <h2>@agnus/sdk</h2>
+        <p class="sh-sub">Type-safe client with React hooks and Next.js integration. ESM + CJS builds. Targets TypeScript 5.0+ / Node 18+.</p>
+      </div>
+      <div class="version-track">
+
+        <div class="version">
+          <div class="ver-head">
+            <span class="ver-tag v-next">v0.1</span>
+            <span class="ver-title">Foundation</span>
+            <span class="ver-status s-next">First release</span>
+          </div>
+          <div class="ver-items">
+            <div class="ver-item">Authentication — API key via constructor or <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">AGNUS_API_KEY</code> env var</div>
+            <div class="ver-item">Base fetch client with error normalisation and TypeScript error types</div>
+            <div class="ver-item"><code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">articles.list(params?)</code> and <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">articles.get(articleId)</code></div>
+            <div class="ver-item">Full TypeScript interfaces: <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">Article</code>, <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">ArticleListParams</code>, <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">ArticleList</code></div>
+            <div class="ver-item">ESM + CJS dual build. Tree-shakeable. Zero runtime dependencies.</div>
+          </div>
+        </div>
+
+        <div class="version">
+          <div class="ver-head">
+            <span class="ver-tag v-planned">v0.2</span>
+            <span class="ver-title">Intelligence + Sources</span>
+            <span class="ver-status s-planned">Planned</span>
+          </div>
+          <div class="ver-items">
+            <div class="ver-item"><code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">intelligence.list()</code> and <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">sources.list()</code></div>
+            <div class="ver-item">Interfaces: <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">IntelligenceRecord</code>, <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">Source</code></div>
+            <div class="ver-item">Pagination cursor utility: <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">paginate(fn, params)</code> async generator</div>
+            <div class="ver-item">Node.js + Edge Runtime compatible (no Node-only APIs)</div>
+          </div>
+        </div>
+
+        <div class="version">
+          <div class="ver-head">
+            <span class="ver-tag v-planned">v0.3</span>
+            <span class="ver-title">Write Operations</span>
+            <span class="ver-status s-planned">Planned</span>
+          </div>
+          <div class="ver-items">
+            <div class="ver-item"><code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">articles.create(body)</code> and <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">articles.publish(articleId)</code></div>
+            <div class="ver-item"><code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">intelligence.submit(body)</code> and <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">sources.register(body)</code></div>
+            <div class="ver-item">Typed request bodies with required/optional distinction</div>
+            <div class="ver-item">Error classes: <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">AgnusError</code>, <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">AgnusValidationError</code>, <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">Agnus401Error</code></div>
+          </div>
+        </div>
+
+        <div class="version">
+          <div class="ver-head">
+            <span class="ver-tag v-planned">v0.4</span>
+            <span class="ver-title">React Hooks</span>
+            <span class="ver-status s-planned">Planned</span>
+          </div>
+          <div class="ver-items">
+            <div class="ver-item"><code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">useArticles(params?)</code> hook — list with loading/error state</div>
+            <div class="ver-item"><code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">useArticle(id)</code> hook — single article</div>
+            <div class="ver-item"><code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">useIntelligence(params?)</code> hook — feed with auto-refresh</div>
+            <div class="ver-item">Exported from <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">@agnus/sdk/react</code> subpath (tree-shakes React from server builds)</div>
+            <div class="ver-item">Next.js Server Components compatible wrapper (<code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">@agnus/sdk/next</code>)</div>
+          </div>
+        </div>
+
+        <div class="version">
+          <div class="ver-head">
+            <span class="ver-tag v-planned">v1.0</span>
+            <span class="ver-title">Production</span>
+            <span class="ver-status s-planned">Target: Q2 2027</span>
+          </div>
+          <div class="ver-items">
+            <div class="ver-item">Full endpoint coverage — all 10 Control Plane endpoints</div>
+            <div class="ver-item">Pipeline resource: <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">pipeline.trigger()</code>, <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">pipeline.status(jobId)</code></div>
+            <div class="ver-item">Webhook signature verification utility</div>
+            <div class="ver-item">Bundle size ≤ 12 kB minified + gzipped (core, no React)</div>
+            <div class="ver-item">Auto-generated type docs. Published to npm as <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">@agnus/sdk</code></div>
+            <div class="ver-item">Test coverage ≥ 90%. Vitest + MSW for request mocking.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /sdk-cols -->
+
+  <!-- CODE EXAMPLES -->
+  <div class="section-head">
+    <h2>Usage examples</h2>
+  </div>
+
+  <div class="code-block" style="margin-bottom:16px;">
+    <div class="cb-label">Python — list EU AI Act articles and export standfirsts</div>
+    <pre><span class="kw">from</span> agnus <span class="kw">import</span> Agnus
+
+client = <span class="cl">Agnus</span>()  <span class="cm"># reads AGNUS_API_KEY from environment</span>
+
+<span class="cm"># Paginate through all EU AI Act articles</span>
+<span class="kw">for</span> article <span class="kw">in</span> client.articles.<span class="fn">iter</span>(pillar=<span class="str">"EU AI Act"</span>):
+    <span class="fn">print</span>(<span class="str">f"</span>{article.article_id}<span class="str"> · </span>{article.title}<span class="str">"</span>)
+    <span class="fn">print</span>(<span class="str">f"  </span>{article.standfirst[:120]}<span class="str">..."</span>)
+
+<span class="cm"># Submit an intelligence record</span>
+record = client.intelligence.<span class="fn">submit</span>(
+    title=<span class="str">"EDPB publishes guidance on AI data minimisation"</span>,
+    summary=<span class="str">"The European Data Protection Board has published..."</span>,
+    jurisdiction=<span class="str">"European Union"</span>,
+    category=<span class="str">"guidance"</span>,
+    significance=<span class="str">"high"</span>,
+    source_url=<span class="str">"https://edpb.europa.eu/..."</span>
+)
+<span class="fn">print</span>(record.record_id)  <span class="cm"># IR-000124</span></pre>
+  </div>
+
+  <div class="code-block" style="margin-bottom:16px;">
+    <div class="cb-label">TypeScript — React hook usage in a compliance dashboard</div>
+    <pre><span class="kw">import</span> { useArticles, useIntelligence } <span class="kw">from</span> <span class="str">'@agnus/sdk/react'</span>;
+
+<span class="kw">export function</span> <span class="fn">ComplianceDashboard</span>() {
+  <span class="kw">const</span> { data: articles, isLoading } = <span class="fn">useArticles</span>({
+    pillar: <span class="str">'EU AI Act'</span>,
+    jurisdiction: <span class="str">'European Union'</span>,
+    limit: 10,
+  });
+
+  <span class="kw">const</span> { data: feed } = <span class="fn">useIntelligence</span>({
+    since: <span class="str">'2026-09-01'</span>,
+    significance: <span class="str">'high'</span>,
+  });
+
+  <span class="kw">if</span> (isLoading) <span class="kw">return</span> &lt;<span class="tp">div</span>&gt;Loading...&lt;/<span class="tp">div</span>&gt;;
+
+  <span class="kw">return</span> (
+    &lt;<span class="tp">main</span>&gt;
+      &lt;<span class="tp">section</span>&gt;
+        {articles?.items.<span class="fn">map</span>(a =&gt; (
+          &lt;<span class="tp">ArticleCard</span> key={a.article_id} article={a} /&gt;
+        ))}
+      &lt;/<span class="tp">section</span>&gt;
+      &lt;<span class="tp">aside</span>&gt;
+        {feed?.items.<span class="fn">map</span>(r =&gt; &lt;<span class="tp">IntelligenceItem</span> key={r.record_id} record={r} /&gt;)}
+      &lt;/<span class="tp">aside</span>&gt;
+    &lt;/<span class="tp">main</span>&gt;
+  );
+}</pre>
+  </div>
+
+  <div class="code-block">
+    <div class="cb-label">TypeScript — Next.js Server Component (no hook needed)</div>
+    <pre><span class="kw">import</span> { Agnus } <span class="kw">from</span> <span class="str">'@agnus/sdk/next'</span>;
+
+<span class="kw">const</span> agnus = <span class="kw">new</span> <span class="cl">Agnus</span>();
+
+<span class="kw">export default async function</span> <span class="fn">ResearchPage</span>() {
+  <span class="kw">const</span> { items } = <span class="kw">await</span> agnus.articles.<span class="fn">list</span>({ pillar: <span class="str">'AI Governance'</span>, limit: 20 });
+
+  <span class="kw">return</span> (
+    &lt;<span class="tp">ul</span>&gt;
+      {items.<span class="fn">map</span>(a =&gt; &lt;<span class="tp">li</span> key={a.article_id}&gt;{a.title}&lt;/<span class="tp">li</span>&gt;)}
+    &lt;/<span class="tp">ul</span>&gt;
+  );
+}</pre>
+  </div>
+
+  <!-- TIMELINE -->
+  <div class="section-head">
+    <h2>Delivery milestones</h2>
+  </div>
+
+  <div class="milestones">
+    <div class="ms">
+      <div class="ms-date">Control Plane API live (G10)</div>
+      <div class="ms-body"><h4>Prerequisite gate</h4><p>SDK development begins only once the Control Plane API is in production (Phase C). Both SDKs start at v0.1 simultaneously.</p></div>
+    </div>
+    <div class="ms">
+      <div class="ms-date">v0.1 — both SDKs</div>
+      <div class="ms-body"><h4>First external release</h4><p>Python on PyPI as <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">agnus</code>, TypeScript on npm as <code style="font-family:'IBM Plex Mono',monospace;color:#8BA3C4;font-size:11px;">@agnus/sdk</code>. Read access to articles only. Unlocks first beta API partners.</p></div>
+    </div>
+    <div class="ms">
+      <div class="ms-date">v0.3 — both SDKs</div>
+      <div class="ms-body"><h4>Write operations</h4><p>Partners can ingest articles, submit intelligence records, and register sources programmatically. Enables automated compliance workflows.</p></div>
+    </div>
+    <div class="ms">
+      <div class="ms-date">v0.4 — TypeScript</div>
+      <div class="ms-body"><h4>React hooks</h4><p>Frontend teams can build compliance dashboards on AGNUS data with minimal boilerplate. Target: 3 partner integrations live before v1.0.</p></div>
+    </div>
+    <div class="ms">
+      <div class="ms-date">v1.0 — both SDKs · Q2 2027</div>
+      <div class="ms-body"><h4>Production release</h4><p>Full endpoint coverage, docs, test coverage ≥ 90%. Marks the AGNUS developer platform as generally available.</p></div>
+    </div>
+  </div>
+
+  <!-- SUCCESS CRITERIA -->
+  <div class="section-head">
+    <h2>v1.0 success criteria</h2>
+  </div>
+
+  <div class="criteria">
+    <div class="criterion"><div class="ck">Python — PyPI</div><div class="cv">Published as <code style="font-family:'IBM Plex Mono',monospace;font-size:12px;">agnus</code></div></div>
+    <div class="criterion"><div class="ck">TypeScript — npm</div><div class="cv">Published as <code style="font-family:'IBM Plex Mono',monospace;font-size:12px;">@agnus/sdk</code></div></div>
+    <div class="criterion"><div class="ck">Type safety</div><div class="cv">mypy --strict passes (Python) · tsc --noEmit clean (TS)</div></div>
+    <div class="criterion"><div class="ck">Test coverage</div><div class="cv">≥ 90% both SDKs</div></div>
+    <div class="criterion"><div class="ck">Bundle size</div><div class="cv">TS core ≤ 12 kB min+gz</div></div>
+    <div class="criterion"><div class="ck">Docs</div><div class="cv">ReadTheDocs (Python) · TypeDoc (TS)</div></div>
+    <div class="criterion"><div class="ck">Partners using SDK</div><div class="cv">≥ 3 active integrations before GA</div></div>
+    <div class="criterion"><div class="ck">Zero runtime deps</div><div class="cv">TS core ships no dependencies</div></div>
+  </div>
+
+  <div class="doc-footer">
+    <span class="df-l">G11 · SDK Roadmap · Python &amp; TypeScript · AGNUS Intelligence</span>
+    <span class="df-r">19 September 2026 · Phase C — prerequisite: G10 live</span>
+  </div>
+
+</div>
+</body>
+</html>

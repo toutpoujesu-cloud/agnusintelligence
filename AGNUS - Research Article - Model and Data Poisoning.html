@@ -1,0 +1,125 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Model Poisoning and Data Poisoning: Supply Chain Attacks on AI Systems — AGNUS Research</title>
+<meta name="description" content="Poisoning attacks target the training process rather than the deployed model. By corrupting training data or the model weights themselves, attackers can embed behaviours that persist through deployment and are extremely difficult to detect after the fact." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>a,a:visited{color:inherit}
+.prose h3{font-family:var(--font-sans);font-weight:700;font-size:19px;letter-spacing:-.018em;margin:32px 0 14px}
+.pillar-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:#F0F4FF;color:#2B4BBE;border:1px solid #C5D0F8;border-radius:4px;padding:3px 8px;margin-bottom:16px}
+.poison-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0}
+@media(max-width:700px){.poison-grid{grid-template-columns:1fr}}
+.poison-card{border-radius:8px;padding:20px;border:1px solid var(--line)}
+.poison-card.data{background:#FFF8F8;border-color:#F0CECE}
+.poison-card.model{background:#FFF0F5;border-color:#F0C8D8}
+.poison-card .pc-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+.poison-card.data .pc-label{color:#A33}
+.poison-card.model .pc-label{color:#7A1A4A}
+.poison-card .pc-title{font-weight:800;font-size:16px;color:var(--ink);margin-bottom:8px;line-height:1.3}
+.poison-card .pc-body{font-size:13px;color:var(--ink-mute);line-height:1.6}
+.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
+.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
+.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s}
+.rsub a:hover{color:var(--ink);background:var(--line-soft,rgba(0,0,0,.04))}
+</style>
+</head>
+<body>
+<div class="art-progress"><i id="progBar"></i></div>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Marketplace.html">Marketplace</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+      <a href="AGNUS - Business.html">Business</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+      <button class="hamburger" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="rsub"><div class="rsub-inner">
+  <a href="AGNUS - Research.html">Research Home</a>
+  <a href="AGNUS - Research Topic.html">AI Security</a>
+</div></div>
+
+<header class="art-head">
+  <div class="container">
+    <div class="pillar-tag">AI Security</div>
+    <h1>Model Poisoning and Data Poisoning: Supply Chain Attacks on AI Systems</h1>
+    <p class="art-abstract">Poisoning attacks target the training process rather than the deployed model. By corrupting training data or manipulating model weights, attackers can embed persistent behaviours — backdoors, performance degradation, bias amplification — that survive through deployment and are extremely difficult to detect after the fact. This article maps the attack types, their supply chain implications, and the controls that reduce exposure.</p>
+    <div data-rc="articleMeta" data-rc-arg="AR-000522"></div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="art-shell">
+    <aside class="art-toc"><div class="toc-h">Contents</div><ol id="tocList"></ol></aside>
+    <article class="prose" id="prose">
+
+      <h2 id="s-distinction">Data poisoning versus model poisoning</h2>
+      <div class="poison-grid">
+        <div class="poison-card data"><div class="pc-label">Data poisoning</div><div class="pc-title">Attacking the training dataset</div><div class="pc-body">Data poisoning corrupts the training data before the model is trained. The attacker introduces malicious samples — mislabelled examples, adversarial inputs, or backdoor-triggering patterns — into the training corpus. The model then learns the poisoned patterns and exhibits the attacker's intended behaviour when exposed to specific trigger inputs in deployment.</div></div>
+        <div class="poison-card model"><div class="pc-label">Model poisoning</div><div class="pc-title">Attacking the model weights directly</div><div class="pc-body">Model poisoning targets the model weights rather than the training data. The attacker modifies a pre-trained model — for example, an open-source foundation model — to embed a backdoor before it is fine-tuned or deployed by the victim organisation. The attack persists through fine-tuning in many cases, depending on the fine-tuning scope and the sophistication of the backdoor.</div></div>
+      </div>
+
+      <h2 id="s-backdoors">Backdoor attacks</h2>
+      <p>The most studied form of poisoning attack is the backdoor attack. In a backdoor attack, the adversary introduces a trigger — a specific pattern, phrase, or image property — during training. The model behaves normally on clean inputs but produces the attacker's intended output (misclassification, harmful content, bypassed safety check) when the trigger is present in the input.</p>
+      <p>Backdoor attacks are particularly difficult to detect because the model performs well on standard benchmarks. Evaluation against a clean test set does not reveal the backdoor. The attack is only observable when inputs containing the trigger are tested — and in most evaluation protocols, the evaluator does not know the trigger exists or what it looks like.</p>
+
+      <h3>Supply chain implications</h3>
+      <p>The open-source AI model ecosystem — Hugging Face, GitHub, and similar platforms — creates a significant attack surface for model poisoning. An attacker who uploads a compromised pre-trained model to a public repository, or who contributes a poisoned fine-tuning dataset, can affect every organisation that uses those resources downstream. The UK DSIT study on open-source AI cybersecurity (published September 2026) identified upstream governance — including supply chain integrity — as the most significant evidence gap in the current security literature.</p>
+      <p>For organisations that use open-source foundation models as the starting point for fine-tuning, the risk is that the poisoned behaviour in the base model survives the fine-tuning process and becomes part of the deployed system. The severity of this risk depends on: the sophistication of the original backdoor; the scope of the fine-tuning (narrow fine-tuning on a small dataset is less likely to remove a backdoor than full retraining); and the detection measures in place before deployment.</p>
+
+      <h2 id="s-detection">Detection and defence</h2>
+
+      <h3>Dataset auditing</h3>
+      <p>Before training on any externally sourced dataset, organisations should audit the dataset for anomalies: class imbalances, unexpected patterns in minority classes, duplicate samples with conflicting labels, and statistical outliers that might represent adversarial samples. Automated dataset auditing tools — including cleanse and filtering approaches — can reduce but not eliminate data poisoning risk.</p>
+
+      <h3>Model integrity verification</h3>
+      <p>For models sourced from external repositories, organisations should verify model integrity through cryptographic hashing of the weights before and after download, comparison against published checksums, and provenance verification against the original release record. Organisations should also conduct behavioural testing with randomly generated trigger-like inputs to screen for obvious backdoors before deployment.</p>
+
+      <h3>Differential privacy in training</h3>
+      <p>Differential privacy training techniques add controlled noise to the training process in a way that limits the influence any individual training sample can have on the final model. This reduces the effectiveness of data poisoning attacks by preventing adversarial samples from having outsized influence on model behaviour. The trade-off is some reduction in model accuracy, particularly on minority classes.</p>
+
+      <h3>Post-deployment monitoring</h3>
+      <p>Poisoning attacks embedded through training may only become apparent in deployment, when real-world inputs trigger the backdoor. Monitoring deployed model outputs for anomalous patterns — response distributions that differ from baseline, unexpected spikes in specific output classes, user-reported unusual model behaviour — can detect poisoning attacks that pre-deployment evaluation missed.</p>
+
+      <h2 id="s-regulation">Regulatory treatment</h2>
+      <p>The EU AI Act's data governance requirements (Article 10) require that training datasets for high-risk AI systems be subject to data governance practices covering examination for biases and other errors — which includes the possibility of adversarial data poisoning. The supply chain obligation in Article 25 (obligations of importers and distributors) creates accountability for organisations that integrate third-party AI components, including pre-trained models, into their own systems.</p>
+
+      <div id="sources" class="art-sources">
+        <h2>Sources</h2>
+        <ul>
+          <li>Chen et al. — "BadNets: Identifying Vulnerabilities in the Machine Learning Model Supply Chain," 2017</li>
+          <li>UK DSIT — "Cybersecurity of AI and Open Source AI" (commissioned research), 2026</li>
+          <li>EU AI Act — Article 10 (Data governance), Article 25 (Supply chain obligations)</li>
+          <li>OWASP Top 10 for LLM Applications — LLM03: Training Data Poisoning</li>
+          <li>AGNUS Research — AI Security · AR-000522</li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</div>
+<script src="agnus.js"></script>
+</body>
+</html>

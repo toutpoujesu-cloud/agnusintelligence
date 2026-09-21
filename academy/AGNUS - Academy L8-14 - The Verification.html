@@ -1,0 +1,356 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Academy — L8-14 The Verification</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#F8F6F2;--panel:#FFFFFF;--panel-2:#F2F0EB;--line:#E5E2D9;--line-2:#D1CEC4;--ink:#18202A;--ink-2:#4A5261;--ink-3:#8E96A2;--navy:#17263C;--navy-2:#0F1A28;--gold:#9A7633;--gold-light:#B59048;--pass:#1A7E4A;--pass-dim:rgba(26,126,74,.1);--danger:#B4432E;--danger-dim:#FEF0ED;--warn:#8C5E00;--warn-dim:#FFF6E5;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:Manrope,sans-serif;-webkit-font-smoothing:antialiased}
+.top-rail{background:var(--navy-2);color:#fff;display:flex;align-items:center;height:48px;padding:0 20px;gap:18px}
+.tr-brand{font-weight:800;font-size:13.5px}
+.tr-crumb{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.tr-title{font-size:13px;font-weight:700}
+.tr-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.prog-dots{display:flex;gap:5px}
+.prog-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.2)}
+.prog-dot.done{background:var(--gold-light)}
+.prog-dot.active{background:#fff}
+.tr-btn{font-family:Manrope,sans-serif;font-size:12px;font-weight:700;padding:7px 14px;border-radius:7px;border:1px solid rgba(255,255,255,.18);color:#fff;background:rgba(255,255,255,.07);cursor:pointer}
+.wrap{max-width:880px;margin:0 auto;padding:44px 24px 100px}
+.step-banner{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:28px}
+.sb-step{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.sb-count{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-3)}
+.hero{background:var(--navy);border-radius:16px;padding:32px 34px;display:grid;gap:16px;margin-bottom:24px}
+.hero h1{font-weight:800;font-size:26px;letter-spacing:-.026em;color:#fff;line-height:1.15}
+.hero p{font-family:Newsreader,serif;font-style:italic;font-size:16px;line-height:1.7;color:rgba(245,244,241,.78)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px 26px;margin-bottom:20px}
+.card h3{font-size:15px;font-weight:700;margin-bottom:10px}
+.card h4{font-size:13px;font-weight:700;margin:18px 0 10px;color:var(--navy)}
+.card p{font-size:14.5px;line-height:1.68;color:var(--ink-2)}
+.quote-block{border-left:3px solid var(--gold);background:var(--panel-2);border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0;font-family:Newsreader,serif;font-style:italic;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.data-table{width:100%;border-collapse:collapse;margin:12px 0 18px;font-size:12.5px}
+.data-table th{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);text-align:left;padding:9px 10px;border-bottom:1.5px solid var(--line-2)}
+.data-table td{padding:10px 10px;border-bottom:1px solid var(--panel-2);color:var(--ink-2);vertical-align:top}
+.data-table td:first-child{font-weight:700;color:var(--ink);white-space:nowrap}
+.prompt-box{background:#0D1420;border-radius:10px;padding:18px 20px;margin:14px 0;font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.75;color:#E8ECF1;white-space:pre-wrap}
+.lines-flow{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
+.line-card{flex:1;min-width:180px;border:1.5px solid var(--line-2);border-radius:10px;padding:16px 18px}
+.line-card .lc-n{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:8px}
+.line-card b{font-size:13.5px;display:block;margin-bottom:4px}
+.line-card p{font-size:12px;color:var(--ink-2);margin:0}
+.scenario-card{border:1.5px solid var(--line-2);border-radius:10px;padding:16px 18px;margin:10px 0}
+.scenario-card .sc-id{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;color:var(--gold);margin-bottom:6px}
+.scenario-card p{font-size:12.5px;color:var(--ink-2);margin:3px 0}
+.result-strip{display:flex;gap:10px;margin:14px 0;flex-wrap:wrap}
+.rs-stat{flex:1;min-width:110px;background:var(--panel-2);border-radius:8px;padding:12px 14px;text-align:center}
+.rs-stat .rn{font-family:'IBM Plex Mono',monospace;font-size:20px;font-weight:800;color:var(--navy)}
+.rs-stat .rn.fail{color:var(--danger)}
+.rs-stat .rl{font-size:10px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em}
+.issue-card{border-left:3px solid var(--danger);background:var(--danger-dim);border-radius:0 10px 10px 0;padding:14px 16px;margin:10px 0}
+.issue-card .ic-id{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;color:var(--danger);margin-bottom:6px}
+.issue-card p{font-size:12.5px;color:var(--ink);margin:3px 0}
+.golden-rule{background:var(--navy);color:#fff;border-radius:14px;padding:24px 28px;text-align:center;margin:16px 0}
+.golden-rule p{font-family:Newsreader,serif;font-style:italic;font-size:19px;color:#fff;margin:0}
+.checklist-final{display:grid;gap:8px;margin:14px 0}
+.cf-item{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--ink-2)}
+.cf-item .ck{width:18px;height:18px;border-radius:5px;background:var(--pass);color:#fff;display:grid;place-items:center;font-size:11px;flex:none}
+.opt-list{display:grid;gap:10px;margin:16px 0}
+.opt{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border:1.5px solid var(--line-2);border-radius:10px;cursor:pointer}
+.opt:hover{border-color:var(--navy);background:#F9F8F5}
+.opt.correct{border-color:var(--pass);background:var(--pass-dim)}
+.opt.wrong{border-color:var(--danger);background:var(--danger-dim)}
+.opt .letter{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;color:var(--ink-3);flex:none;width:20px}
+.opt .text{font-size:14px;line-height:1.5}
+.feedback{display:none;margin-top:14px;padding:16px 18px;border-radius:10px;font-size:13.5px;line-height:1.6}
+.feedback.pass{display:block;background:var(--pass-dim);border-left:3px solid var(--pass);color:var(--ink)}
+.feedback.fail{display:block;background:var(--danger-dim);border-left:3px solid var(--danger);color:var(--ink)}
+.cta-row{display:flex;justify-content:flex-end;margin-top:24px}
+.btn{font-family:Manrope,sans-serif;font-weight:700;font-size:14px;padding:13px 26px;border-radius:10px;border:none;background:var(--navy);color:#fff;cursor:pointer}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn-back{background:none;color:var(--navy);border:1.5px solid var(--line-2);margin-right:auto}
+.pass-screen{display:none;text-align:center;padding:44px 30px;background:var(--navy);border-radius:16px;color:#fff}
+.pass-screen h2{font-size:22px;font-weight:800;margin-bottom:10px}
+.pass-screen p{font-size:13.5px;color:rgba(255,255,255,.7);margin-bottom:20px}
+.step{display:none}
+.step.active{display:block}
+</style>
+</head>
+<body>
+
+<header class="top-rail">
+  <span class="tr-brand">AGNUS Academy</span>
+  <span class="tr-crumb">Level 8 · Build an Application</span>
+  <span class="tr-title">L8-14 — The Verification</span>
+  <div class="tr-right">
+    <div class="prog-dots" id="progDots"></div>
+    <button class="tr-btn" onclick="alert('Dashboard link')">← Dashboard</button>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- STEP 0 -->
+  <section class="step active" data-step="0">
+    <div class="step-banner"><span class="sb-step">Step 1 of 9 — Understand</span><span class="sb-count">4 min</span></div>
+    <div class="hero">
+      <h1>"If you can't prove it works, it doesn't work."</h1>
+      <p>The application is built. Now it has to earn the right to launch — through three separate layers of verification, the last one performed by a completely different AI system than the one that built it.</p>
+    </div>
+    <div class="card">
+      <h3>Three lines of defense, not one</h3>
+      <div class="quote-block">"There are three lines of defense. The first line is local testing and continuous integration. The second is internal validation environments. The third is external audits. Organizations that rely on one line of defense have significant gaps in their production readiness."</div>
+      <div class="lines-flow">
+        <div class="line-card"><div class="lc-n">Line 1</div><b>Scenario generation & testing</b><p>Performed by Claude Code</p></div>
+        <div class="line-card"><div class="lc-n">Line 2</div><b>Protocol compliance verification</b><p>Performed by Claude Code</p></div>
+        <div class="line-card"><div class="lc-n">Line 3</div><b>Independent external audit</b><p>Performed by Codex — a different system entirely</p></div>
+      </div>
+      <p>Line 3 matters because Codex cannot be influenced by Claude Code's own assumptions — it's a genuinely separate check, not the same system reviewing its own work twice.</p>
+    </div>
+    <div class="cta-row"><button class="btn" onclick="goStep(1)">See the scenario list get built →</button></div>
+  </section>
+
+  <!-- STEP 1: scenario generation -->
+  <section class="step" data-step="1">
+    <div class="step-banner"><span class="sb-step">Step 2 of 9 — Generating Every Scenario</span><span class="sb-count">6 min</span></div>
+    <div class="card">
+      <h3>Before anything is tested, everything that could happen gets listed</h3>
+      <div class="prompt-box">Based on the blueprint in The Protocol/Blueprint.md and the architecture in The Protocol/Architecture Diagram.md, create a comprehensive list of all possible scenarios related to this application. Cover: happy path scenarios, edge cases, error scenarios, boundary conditions, security scenarios, and performance scenarios. For each scenario include: Scenario ID, description, prerequisites, steps to execute, expected outcome, and success criteria. Save this as The Protocol/Scenarios.md.</div>
+      <h4>What a real scenario entry looks like</h4>
+      <div class="scenario-card">
+        <div class="sc-id">S02 — Edge Case: Vague Request</div>
+        <p><b>Description:</b> User submits a ticket with ambiguous language.</p>
+        <p><b>Steps:</b> User types "Can you help me with my order?" → system processes → system asks a clarifying question.</p>
+        <p><b>Success Criteria:</b> System prompts the user for more information instead of guessing.</p>
+      </div>
+      <div class="quote-block">"Large language model agents are fundamentally nondeterministic: the same prompt can produce a valid response, a hallucination, or a refusal on consecutive attempts." The scenario list exists precisely to force every possibility into the open before that unpredictability meets a real user.</div>
+      <h4>Your job here is to find the holes</h4>
+      <div class="prompt-box">I see you've listed S01–S42. I notice you're missing scenarios for when the database connection fails. Add that. Also, we need scenarios for when the user has no order history. Add those too.</div>
+    </div>
+    <div class="cta-row"><button class="btn btn-back" onclick="goStep(0)">← Back</button><button class="btn" onclick="goStep(2)">See Claude Code test every scenario →</button></div>
+  </section>
+
+  <!-- STEP 2: testing -->
+  <section class="step" data-step="2">
+    <div class="step-banner"><span class="sb-step">Step 3 of 9 — Testing Every Scenario</span><span class="sb-count">6 min</span></div>
+    <div class="card">
+      <h3>The Four-Gate Rule you learned in Governance, applied to every single scenario</h3>
+      <div class="prompt-box">Now that we have The Protocol/Scenarios.md complete, perform end-to-end testing according to The Protocol. For each scenario, follow the Four-Gate Rule: Gate 1 Implementation (run the scenario), Gate 2 Spec Review (compare outcome to expected), Gate 3 End-to-End Test (verify the entire flow), Gate 4 Evidence (capture proof). If any scenario fails, record the failure. Compile results into The Protocol/TestResults.md.</div>
+      <h4>What comes back — real failures, named honestly</h4>
+      <div class="result-strip">
+        <div class="rs-stat"><div class="rn">42</div><div class="rl">Total</div></div>
+        <div class="rs-stat"><div class="rn">38</div><div class="rl">Passed</div></div>
+        <div class="rs-stat"><div class="rn fail">4</div><div class="rl">Failed</div></div>
+        <div class="rs-stat"><div class="rn">90.5%</div><div class="rl">Complete</div></div>
+      </div>
+      <div class="issue-card">
+        <div class="ic-id">S05 — Database Connection Timeout</div>
+        <p><b>Expected:</b> Graceful degradation with a user-friendly error message.</p>
+        <p><b>Actual:</b> System crashed with a 500 Internal Server Error.</p>
+        <p><b>Severity:</b> High</p>
+      </div>
+      <p>A test suite that reports 100% on the first pass, before you've ever seen a single documented failure, is a reason to look closer — not a reason to celebrate.</p>
+    </div>
+    <div class="cta-row"><button class="btn btn-back" onclick="goStep(1)">← Back</button><button class="btn" onclick="goStep(3)">See the gaps actually get fixed →</button></div>
+  </section>
+
+  <!-- STEP 3: fixes -->
+  <section class="step" data-step="3">
+    <div class="step-banner"><span class="sb-step">Step 4 of 9 — Fixing What Failed</span><span class="sb-count">5 min</span></div>
+    <div class="card">
+      <h3>Every fix gets its own paper trail</h3>
+      <div class="prompt-box">Based on The Protocol/TestResults.md, fix all identified gaps and errors. For each failed scenario: diagnose the root cause, implement a fix according to The Protocol, rerun the scenario, verify it passes, and update TestResults.md with the fix and new status. Document every fix in The Protocol/Fixes.md. Follow the Four-Gate Rule for each fix.</div>
+      <h4>What you specifically supervise here</h4>
+      <table class="data-table">
+        <thead><tr><th>Question you ask</th><th>What it protects against</th></tr></thead>
+        <tbody>
+          <tr><td>Does the root cause make sense?</td><td>A fix aimed at the wrong problem</td></tr>
+          <tr><td>Is the fix appropriate?</td><td>A band-aid that papers over the symptom instead of the cause</td></tr>
+          <tr><td>Did the scenario actually pass on rerun?</td><td>A "fixed" label with no re-verification behind it</td></tr>
+          <tr><td>Is there evidence?</td><td>A claim of success with nothing to check it against</td></tr>
+        </tbody>
+      </table>
+      <p>Example root cause, stated honestly rather than vaguely: "No retry logic in database connection handler" — fixed by adding a retry decorator with exponential backoff, then re-running S05 to confirm.</p>
+    </div>
+    <div class="cta-row"><button class="btn btn-back" onclick="goStep(2)">← Back</button><button class="btn" onclick="goStep(4)">See the first Green confirmation →</button></div>
+  </section>
+
+  <!-- STEP 4: green confirmation -->
+  <section class="step" data-step="4">
+    <div class="step-banner"><span class="sb-step">Step 5 of 9 — All Green, First Pass</span><span class="sb-count">4 min</span></div>
+    <div class="card">
+      <h3>Rerun everything — not just the four that failed</h3>
+      <div class="prompt-box">Now that all fixes are implemented, rerun the entire test suite. Ensure all scenarios pass. If everything passes, update the status in Scenarios.md and TestResults.md. Then confirm that the application is ready for launch.</div>
+      <div class="result-strip">
+        <div class="rs-stat"><div class="rn">42</div><div class="rl">Total</div></div>
+        <div class="rs-stat"><div class="rn">42</div><div class="rl">Passed</div></div>
+        <div class="rs-stat"><div class="rn">0</div><div class="rl">Failed</div></div>
+        <div class="rs-stat"><div class="rn">100%</div><div class="rl">Complete</div></div>
+      </div>
+      <p>This is Claude Code's own confirmation — not yet the external check. There's still one more line of defense to go.</p>
+    </div>
+    <div class="cta-row"><button class="btn btn-back" onclick="goStep(3)">← Back</button><button class="btn" onclick="goStep(5)">See why a second AI checks the first one's work →</button></div>
+  </section>
+
+  <!-- STEP 5: codex audit setup -->
+  <section class="step" data-step="5">
+    <div class="step-banner"><span class="sb-step">Step 6 of 9 — Bringing In Codex</span><span class="sb-count">6 min</span></div>
+    <div class="card">
+      <h3>A different system, reading the same Protocol</h3>
+      <p>Codex is not a second opinion from the same voice — it's a genuinely different AI system, which means it isn't carrying forward any of Claude Code's blind spots or assumptions. It reads The Protocol exactly like Claude Code did at the start of Governance.</p>
+      <div class="prompt-box">Codex, read the entire Protocol folder. This contains the governance documents Claude Code followed to build this application: the blueprint, the architecture, the skills, the roadmap, the scenarios, the test results, the fixes, and the update history. Once you've read everything, audit the application.</div>
+      <div class="prompt-box">Codex, now that you've read The Protocol, perform a comprehensive audit. Review the code against the blueprint, the architecture, the skills, the scenarios, and the fixes. Review for security vulnerabilities, performance issues, maintainability issues, edge cases not covered, and any deviations from The Protocol. If you find gaps or errors, create The Protocol/AuditReport.md and list every issue found.</div>
+    </div>
+    <div class="cta-row"><button class="btn btn-back" onclick="goStep(4)">← Back</button><button class="btn" onclick="goStep(6)">See what Codex actually found →</button></div>
+  </section>
+
+  <!-- STEP 6: audit findings -->
+  <section class="step" data-step="6">
+    <div class="step-banner"><span class="sb-step">Step 7 of 9 — What the External Audit Caught</span><span class="sb-count">6 min</span></div>
+    <div class="card">
+      <h3>Real gaps a "100% passing" test suite had completely missed</h3>
+      <div class="issue-card">
+        <div class="ic-id">A01 — Missing Database Migration Script</div>
+        <p><b>Impact:</b> Deploying to production will fail because the database schema won't exist.</p>
+        <p><b>Severity:</b> High</p>
+      </div>
+      <div class="issue-card">
+        <div class="ic-id">A02 — Environment Variables Not Validated</div>
+        <p><b>Impact:</b> If a required variable is missing, the application crashes with an unhelpful error instead of failing clearly at startup.</p>
+        <p><b>Severity:</b> High</p>
+      </div>
+      <div class="issue-card">
+        <div class="ic-id">A03 — Missing Input Validation on User Messages</div>
+        <p><b>Impact:</b> User messages pass directly to the classifier without sanitization — a potential injection vector.</p>
+        <p><b>Severity:</b> Medium</p>
+      </div>
+      <p>Seven issues total, three of them high severity. The verdict on this first audit pass: <b>not launch-ready</b> — despite every scenario in Scenarios.md having already passed. Passing every test you wrote is not the same as passing a test you didn't think to write.</p>
+    </div>
+    <div class="cta-row"><button class="btn btn-back" onclick="goStep(5)">← Back</button><button class="btn" onclick="goStep(7)">See the final all-clear →</button></div>
+  </section>
+
+  <!-- STEP 7: fix + final test -->
+  <section class="step" data-step="7">
+    <div class="step-banner"><span class="sb-step">Step 8 of 9 — Closing the Loop</span><span class="sb-count">6 min</span></div>
+    <div class="card">
+      <h3>Codex fixes its own findings, then re-runs everything from scratch</h3>
+      <div class="prompt-box">Codex, based on your AuditReport.md, fix all identified issues. For each: diagnose the root cause, implement a fix according to The Protocol, re-audit to ensure the issue is resolved, and update AuditReport.md with the fix and status. After all fixes, perform a complete end-to-end test again according to The Protocol.</div>
+      <table class="data-table">
+        <thead><tr><th>Issue</th><th>Severity</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>A01: Missing migration script</td><td>High</td><td>✓ Resolved</td></tr>
+          <tr><td>A02: Environment vars not validated</td><td>High</td><td>✓ Resolved</td></tr>
+          <tr><td>A03: Missing input validation</td><td>Medium</td><td>✓ Resolved</td></tr>
+        </tbody>
+      </table>
+      <div class="result-strip">
+        <div class="rs-stat"><div class="rn">42</div><div class="rl">Total</div></div>
+        <div class="rs-stat"><div class="rn">42</div><div class="rl">Passed</div></div>
+        <div class="rs-stat"><div class="rn">0</div><div class="rl">Failed</div></div>
+        <div class="rs-stat"><div class="rn">100%</div><div class="rl">Complete</div></div>
+      </div>
+      <div class="golden-rule"><p>"If you can't prove it works, it doesn't work."</p></div>
+      <h4>Launch-ready means all five of these are true</h4>
+      <div class="checklist-final">
+        <div class="cf-item"><span class="ck">✓</span>All scenarios pass — confirmed by Claude Code</div>
+        <div class="cf-item"><span class="ck">✓</span>All issues are fixed — confirmed by Claude Code</div>
+        <div class="cf-item"><span class="ck">✓</span>External audit passes — confirmed by Codex</div>
+        <div class="cf-item"><span class="ck">✓</span>All evidence is documented — confirmed by both</div>
+        <div class="cf-item"><span class="ck">✓</span>The Protocol is complete — confirmed by you</div>
+      </div>
+    </div>
+    <div class="cta-row"><button class="btn btn-back" onclick="goStep(6)">← Back</button><button class="btn" onclick="goStep(8)">Try it yourself →</button></div>
+  </section>
+
+  <!-- STEP 8: practice + pass -->
+  <section class="step" data-step="8">
+    <div class="step-banner"><span class="sb-step">Step 9 of 9 — Practice</span><span class="sb-count">7 min</span></div>
+    <div class="card">
+      <h3>Claude Code reports 42/42 scenarios passing with full evidence. Is the application launch-ready?</h3>
+      <div class="opt-list" id="practiceOpts">
+        <div class="opt" data-correct="false" onclick="pickPractice(this)"><span class="letter">A</span><span class="text">Yes — 100% passing with evidence is the definition of launch-ready.</span></div>
+        <div class="opt" data-correct="true" onclick="pickPractice(this)"><span class="letter">B</span><span class="text">Not yet — Line 1 and Line 2 are complete, but Line 3, the independent Codex audit, hasn't happened yet, and audits routinely catch gaps a self-written scenario list missed.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPractice(this)"><span class="letter">C</span><span class="text">Yes, because Claude Code already tested according to The Protocol, which makes external audit redundant.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPractice(this)"><span class="letter">D</span><span class="text">No, because 42 scenarios is not enough — launch requires at least 100.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPractice(this)"><span class="letter">E</span><span class="text">It depends only on how fast the tests ran.</span></div>
+      </div>
+      <div class="feedback" id="practiceFeedback"></div>
+    </div>
+    <div class="card" id="passCard" style="display:none">
+      <h3>New scenario — no hints</h3>
+      <p style="margin-bottom:14px">Codex's audit finds a high-severity issue that isn't in Claude Code's Scenarios.md at all — missing environment-variable validation. What does this actually demonstrate about the three-lines-of-defense model?</p>
+      <div class="opt-list" id="passOpts">
+        <div class="opt" data-correct="true" onclick="pickPass(this)"><span class="letter">A</span><span class="text">It demonstrates exactly why Line 3 exists — an independent system catches categories of gaps that the builder's own scenario list, however thorough, didn't think to include.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">B</span><span class="text">It proves Claude Code made a mistake and should not be trusted with any future project.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">C</span><span class="text">It means Scenarios.md should be deleted and rebuilt from scratch by Codex alone.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">D</span><span class="text">It means the Four-Gate Rule failed and should be abandoned.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">E</span><span class="text">It has no bearing on the verification model — this is just an unrelated bug.</span></div>
+      </div>
+      <div class="feedback" id="passFeedback"></div>
+    </div>
+    <div class="cta-row" id="ctaPractice"><button class="btn btn-back" onclick="goStep(7)">← Back</button><button class="btn" id="practiceNext" onclick="showPassCard()" disabled>Continue →</button></div>
+    <div class="pass-screen" id="passScreen">
+      <h2>Module L8-14 complete — Level 8 finished</h2>
+      <p>You've completed the full 14-module application-build arc, from Understanding to Verification. Ready for the Level 8 Checkpoint.</p>
+      <button class="tr-btn" onclick="alert('Go to Level 8 Checkpoint')">Go to Level 8 Checkpoint →</button>
+    </div>
+  </section>
+
+</div>
+
+<script>
+const TOTAL_STEPS = 9;
+function renderDots(active){
+  document.getElementById('progDots').innerHTML = Array.from({length:TOTAL_STEPS}).map((_,i)=>
+    '<div class="prog-dot '+(i<active?'done':i===active?'active':'')+'"></div>').join('');
+}
+function goStep(i){
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  document.querySelector('.step[data-step="'+i+'"]').classList.add('active');
+  renderDots(i);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+renderDots(0);
+
+function showPassCard(){
+  document.getElementById('passCard').style.display = 'block';
+  document.getElementById('ctaPractice').style.display = 'none';
+  window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
+}
+
+function pickPractice(el){
+  document.querySelectorAll('#practiceOpts .opt').forEach(o=>{o.onclick=null;});
+  const correct = el.dataset.correct === 'true';
+  el.classList.add(correct?'correct':'wrong');
+  const fb = document.getElementById('practiceFeedback');
+  fb.className = 'feedback ' + (correct?'pass':'fail');
+  fb.textContent = correct
+    ? "Correct. Full internal pass with evidence completes Lines 1 and 2, but the model explicitly requires a third, independent line of defense before launch-ready is true. Codex hasn't looked yet."
+    : "Not quite. 100% passing with evidence completes the first two lines of defense, but the model is explicit that a third, independent line — the Codex audit — is required before launch-ready is true.";
+  document.getElementById('practiceNext').disabled = false;
+}
+function pickPass(el){
+  document.querySelectorAll('#passOpts .opt').forEach(o=>{o.onclick=null;});
+  const correct = el.dataset.correct === 'true';
+  el.classList.add(correct?'correct':'wrong');
+  const fb = document.getElementById('passFeedback');
+  fb.className = 'feedback ' + (correct?'pass':'fail');
+  fb.textContent = correct
+    ? "Correct — L8-14 complete, and Level 8 finished. This is the entire point of an independent third line: not to catch dishonesty, but to catch blind spots that are invisible from inside the system that built the scenario list in the first place. Congratulations on completing the full application-build arc."
+    : "Not quite. This isn't a verdict on Claude Code's competence or a reason to discard the Four-Gate Rule — it's the three-lines-of-defense model working exactly as designed: an independent system catching what the builder's own list couldn't see.";
+  if(correct){ setTimeout(()=>{ document.getElementById('passScreen').style.display='block'; renderDots(9); }, 600); }
+}
+</script>
+</body>
+</html>

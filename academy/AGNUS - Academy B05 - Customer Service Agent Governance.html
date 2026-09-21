@@ -1,0 +1,665 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Academy — Customer Service Agent Governance Simulation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#F4F2EE;--surface:#FFFFFF;--surface-2:#EEF0F5;--surface-3:#E6E8EF;
+  --border:#D8DAE2;--border-2:#C8CAD4;
+  --ink:#0F1623;--ink-2:#3D4558;--ink-3:#7A8099;
+  --navy:#0A1628;--navy-2:#112040;
+  --pass:#0F6E3A;--pass-bg:rgba(15,110,58,.09);--pass-border:rgba(15,110,58,.22);
+  --warn:#C4760A;--warn-bg:rgba(196,118,10,.09);--warn-border:rgba(196,118,10,.22);
+  --danger:#B03020;--danger-bg:rgba(176,48,32,.09);--danger-border:rgba(176,48,32,.22);
+  --accent:#5C1E8A;--accent-light:#8B3FC8;--accent-bg:rgba(92,30,138,.09);--accent-border:rgba(92,30,138,.22);
+  --mono:'DM Mono',monospace;--sans:'DM Sans',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;font-family:var(--sans);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+.rail{background:var(--navy);color:#fff;height:56px;display:flex;align-items:center;padding:0 28px;gap:16px;position:sticky;top:0;z-index:200}
+.rail-brand{font-weight:800;font-size:15px}
+.rail-sep{width:1px;height:22px;background:rgba(255,255,255,.12);flex-shrink:0}
+.rail-track{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38)}
+.rail-title{font-size:13.5px;font-weight:600;color:rgba(255,255,255,.88)}
+.rail-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.phase-dots{display:flex;gap:6px}
+.pd{width:28px;height:4px;border-radius:2px;background:rgba(255,255,255,.16);transition:background .4s}
+.pd.done{background:var(--accent-light)}.pd.active{background:#fff}
+.rail-btn{font-family:var(--sans);font-size:12px;font-weight:600;padding:7px 16px;border-radius:8px;border:1px solid rgba(255,255,255,.16);color:#fff;background:rgba(255,255,255,.07);cursor:pointer}
+.phase{display:none}.phase.active{display:block}
+.hero-band{background:linear-gradient(135deg,#1A0832 0%,#2E1060 50%,#3C1A80 100%);padding:52px 0 48px;position:relative;overflow:hidden}
+.hero-inner{max-width:960px;margin:0 auto;padding:0 32px;position:relative;z-index:1}
+.hero-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(180,130,255,.8);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.hero-eyebrow::before{content:'';display:inline-block;width:24px;height:1px;background:rgba(180,130,255,.6)}
+.hero-band h1{font-size:clamp(26px,3.5vw,40px);font-weight:800;letter-spacing:-.03em;color:#fff;line-height:1.15;margin-bottom:14px;max-width:22ch}
+.hero-band .sub{font-size:16px;color:rgba(255,255,255,.65);line-height:1.65;max-width:54ch;margin-bottom:28px}
+.hero-meta{display:flex;gap:20px;flex-wrap:wrap}
+.hm-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:8px 14px;font-size:12.5px;color:rgba(255,255,255,.7)}
+.hm-pill strong{color:#fff}
+.page-body{max-width:960px;margin:0 auto;padding:36px 32px 100px}
+.section{margin-bottom:32px}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid var(--border)}
+.section-head h2{font-size:20px;font-weight:800;letter-spacing:-.02em;color:var(--navy)}
+.sh-sub{font-size:13px;color:var(--ink-3);margin-top:3px}
+.scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+@media(max-width:680px){.scenario-grid{grid-template-columns:1fr}}
+.sc-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px 24px}
+.sc-card .sc-label{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-light);margin-bottom:8px;font-weight:600}
+.sc-card h3{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.sc-card p{font-size:13.5px;color:var(--ink-2);line-height:1.65}
+.rules-table{width:100%;border-collapse:collapse;background:var(--surface);border-radius:14px;overflow:hidden;border:1px solid var(--border)}
+.rules-table th{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);background:var(--surface-2);padding:12px 16px;text-align:left;font-weight:600;border-bottom:1px solid var(--border)}
+.rules-table td{padding:14px 16px;font-size:13.5px;border-bottom:1px solid var(--border);color:var(--ink-2);vertical-align:top}
+.rules-table tr:last-child td{border-bottom:none}
+.rule-badge{display:inline-block;font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;border-radius:5px;padding:2px 7px}
+.rb-auto{background:var(--pass-bg);color:var(--pass);border:1px solid var(--pass-border)}
+.rb-agent{background:var(--accent-bg);color:var(--accent-light);border:1px solid var(--accent-border)}
+.rb-human{background:var(--warn-bg);color:var(--warn);border:1px solid var(--warn-border)}
+.rb-block{background:var(--danger-bg);color:var(--danger);border:1px solid var(--danger-border)}
+.tools-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:20px}
+@media(max-width:700px){.tools-grid{grid-template-columns:1fr 1fr}}
+.tool-chip{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 12px;text-align:center}
+.tool-chip .tc-icon{display:flex;align-items:center;justify-content:center;height:28px;color:var(--ink-2);margin-bottom:7px}
+.tool-chip .tc-name{font-size:11.5px;font-weight:700;color:var(--ink);line-height:1.3}
+.tool-chip .tc-desc{font-size:10px;color:var(--ink-3);margin-top:3px;line-height:1.4}
+.config-intro{background:var(--navy);border-radius:14px;padding:24px 28px;margin-bottom:24px;color:#fff}
+.config-intro h3{font-size:18px;font-weight:800;margin-bottom:8px}
+.config-intro p{font-size:14px;color:rgba(255,255,255,.7);line-height:1.65;max-width:60ch}
+.config-tool{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:14px;transition:box-shadow .2s}
+.ct-head{display:grid;grid-template-columns:52px 1fr;border-bottom:1px solid var(--border)}
+.ct-icon-wrap{display:flex;align-items:center;justify-content:center;color:var(--ink-2);background:var(--surface-2);border-right:1px solid var(--border);padding:20px}
+.ct-info{padding:18px 20px}
+.ct-info h4{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.ct-info .ct-sub{font-size:13px;color:var(--ink-3);line-height:1.5}
+.ct-body{padding:20px 24px}
+.perm-label{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:12px}
+.perm-selector{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px}
+@media(max-width:540px){.perm-selector{grid-template-columns:1fr 1fr}}
+.perm-opt{border:1.5px solid var(--border);border-radius:10px;padding:12px 10px;cursor:pointer;text-align:center;transition:all .15s}
+.perm-opt:hover{border-color:var(--accent-light);background:var(--accent-bg)}
+.perm-opt.selected{border-color:var(--accent-light);background:var(--accent-bg)}
+.perm-opt .po-badge{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px;display:block}
+.perm-opt .po-desc{font-size:11px;color:var(--ink-3);line-height:1.4}
+.perm-opt.selected .po-badge{color:var(--accent-light)}
+.perm-opt.selected .po-desc{color:var(--ink-2)}
+.log-toggle{display:flex;align-items:center;gap:14px;padding:14px 16px;background:var(--surface-2);border-radius:10px}
+.log-toggle label{font-size:13px;font-weight:600;color:var(--ink);flex:1}
+.toggle-sw{position:relative;width:44px;height:24px;cursor:pointer;flex-shrink:0}
+.toggle-sw input{opacity:0;width:0;height:0}
+.toggle-track{position:absolute;inset:0;background:var(--border-2);border-radius:12px;transition:background .25s}
+.toggle-knob{position:absolute;width:18px;height:18px;background:#fff;border-radius:50%;top:3px;left:3px;transition:transform .25s;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.toggle-sw input:checked+.toggle-track{background:var(--pass)}
+.toggle-sw input:checked~.toggle-knob{transform:translateX(20px)}
+.event-card{background:var(--surface);border:1.5px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:16px;transition:border-color .3s}
+.event-card.running{border-color:var(--accent-light)}.event-card.pass{border-color:var(--pass)}.event-card.fail{border-color:var(--danger)}.event-card.warn{border-color:var(--warn)}
+.ec-head{display:grid;grid-template-columns:52px 1fr auto;border-bottom:1px solid var(--border)}
+.ec-num{display:flex;align-items:center;justify-content:center;background:var(--surface-2);border-right:1px solid var(--border);font-family:var(--mono);font-size:13px;font-weight:700;color:var(--ink-3)}
+.ec-desc{padding:16px 18px}
+.ed-label{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px}
+.ed-title{font-size:14.5px;font-weight:700;color:var(--ink)}
+.ed-detail{font-size:12.5px;color:var(--ink-3);margin-top:3px}
+.ec-status{display:flex;align-items:center;padding:16px 18px}
+.status-pill{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:6px;padding:5px 10px}
+.sp-pending{background:var(--surface-2);color:var(--ink-3)}.sp-running{background:var(--accent-bg);color:var(--accent-light)}
+.sp-pass{background:var(--pass-bg);color:var(--pass);border:1px solid var(--pass-border)}.sp-fail{background:var(--danger-bg);color:var(--danger);border:1px solid var(--danger-border)}.sp-warn{background:var(--warn-bg);color:var(--warn);border:1px solid var(--warn-border)}
+.ec-body{padding:18px 20px;background:var(--surface-2);display:none;border-top:1px solid var(--border)}
+.event-card.running .ec-body,.event-card.pass .ec-body,.event-card.fail .ec-body,.event-card.warn .ec-body{display:block}
+.ec-trace{font-family:var(--mono);font-size:12px;line-height:1.8;color:var(--ink-2)}
+.tr-line{display:flex;gap:10px;align-items:baseline}
+.tr-time{color:var(--ink-3);flex-shrink:0;width:60px}
+.tr-ok{color:var(--pass)}.tr-err{color:var(--danger)}.tr-warn{color:var(--warn)}.tr-info{color:var(--accent-light)}
+.score-hero{background:linear-gradient(135deg,#1A0832,#3C1A80);border-radius:20px;padding:40px;margin-bottom:28px;color:#fff;text-align:center}
+.sh-number{font-family:var(--mono);font-size:80px;font-weight:700;line-height:1;letter-spacing:-.04em;margin-bottom:10px}
+.sh-number.perfect{color:#C4B5FD}.sh-number.good{color:#FBD66B}.sh-number.fail{color:#FCA5A5}
+.sh-label{font-size:15px;color:rgba(255,255,255,.65);margin-bottom:4px}.sh-verdict{font-size:20px;font-weight:800;color:#fff}
+.score-breakdown{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:24px}
+@media(max-width:600px){.score-breakdown{grid-template-columns:1fr}}
+.sb-card{background:var(--surface);border-radius:14px;padding:20px;border:1.5px solid var(--border)}
+.sb-card.pass-card{border-color:var(--pass-border);background:var(--pass-bg)}.sb-card.fail-card{border-color:var(--danger-border);background:var(--danger-bg)}.sb-card.warn-card{border-color:var(--warn-border);background:var(--warn-bg)}
+.sbc-label{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px}
+.sbc-event{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.sbc-verdict{font-size:13px;line-height:1.6;font-weight:600}
+.sbc-explain{font-size:12.5px;color:var(--ink-2);margin-top:8px;line-height:1.6}
+.sb-card.pass-card .sbc-verdict{color:var(--pass)}.sb-card.fail-card .sbc-verdict{color:var(--danger)}.sb-card.warn-card .sbc-verdict{color:var(--warn)}
+.cert{background:var(--surface);border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-bottom:28px}
+.cert-top{background:linear-gradient(135deg,#1A0832,#3C1A80);padding:48px;text-align:center;position:relative}
+.cert-top::before{content:'';position:absolute;top:16px;left:16px;right:16px;bottom:16px;border:1px solid rgba(255,255,255,.1);border-radius:12px;pointer-events:none}
+.cert-badge{width:64px;height:64px;background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.cert-top h2{font-size:13px;font-family:var(--mono);letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:12px}
+.cert-top h3{font-size:clamp(22px,3vw,32px);font-weight:800;color:#fff;letter-spacing:-.025em;margin-bottom:8px}
+.cert-top .cert-sub{font-size:15px;color:rgba(255,255,255,.6)}
+.cert-body{padding:32px 48px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px;border-top:1px solid var(--border)}
+@media(max-width:600px){.cert-body{grid-template-columns:1fr;padding:24px}}
+.ci-label{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:5px}
+.ci-value{font-size:14px;font-weight:700;color:var(--ink)}
+.progress-shell{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px 24px;margin-bottom:24px}
+.ps-bar{height:8px;background:var(--surface-3);border-radius:4px;overflow:hidden}
+.ps-fill{height:8px;background:var(--accent-light);border-radius:4px;transition:width .6s ease}
+.cta-row{display:flex;justify-content:space-between;align-items:center;margin-top:32px;padding-top:24px;border-top:1px solid var(--border)}
+.cta-hint{font-size:13px;color:var(--ink-3)}
+.btn{font-family:var(--sans);font-weight:700;font-size:14.5px;padding:14px 32px;border-radius:12px;border:none;cursor:pointer;transition:all .2s}
+.btn-primary{background:var(--accent);color:#fff}.btn-primary:hover{background:var(--accent-light);transform:translateY(-1px);box-shadow:0 6px 20px rgba(92,30,138,.3)}.btn-primary:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.btn-ghost{background:transparent;color:var(--ink-2);border:1px solid var(--border-2)}.btn-ghost:hover{background:var(--surface-2)}
+.callout{border-radius:12px;padding:16px 20px;margin:16px 0;font-size:13.5px;line-height:1.68;display:flex;gap:12px;align-items:flex-start}
+.callout.info{background:var(--accent-bg);border:1px solid var(--accent-border)}.callout.warn{background:var(--warn-bg);border:1px solid var(--warn-border)}.callout.danger{background:var(--danger-bg);border:1px solid var(--danger-border)}
+.callout-icon{flex-shrink:0;margin-top:1px}
+.run-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:16px;border-radius:12px;border:none;font-family:var(--sans);font-weight:700;font-size:15px;cursor:pointer;background:var(--navy);color:#fff;margin-bottom:24px;transition:all .2s}
+.run-btn:hover{background:var(--navy-2);transform:translateY(-1px)}
+.rb-dot{width:8px;height:8px;border-radius:50%;background:#C4B5FD;animation:pulse 1.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.85)}}
+.diff-table{width:100%;border-collapse:collapse;background:var(--surface);border-radius:14px;overflow:hidden;border:1px solid var(--border);margin-bottom:20px}
+.diff-table th{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);background:var(--surface-2);padding:12px 16px;text-align:left;border-bottom:1px solid var(--border)}
+.diff-table td{padding:13px 16px;font-size:13px;border-bottom:1px solid var(--border);vertical-align:top}
+.diff-table tr:last-child td{border-bottom:none}
+.tone-sel{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px}
+.tone-opt{border:1.5px solid var(--border);border-radius:8px;padding:10px 12px;cursor:pointer;transition:all .15s}
+.tone-opt:hover,.tone-opt.selected{border-color:var(--accent-light);background:var(--accent-bg)}
+.tone-opt .to-badge{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:3px}
+.tone-opt.selected .to-badge{color:var(--accent-light)}
+.tone-opt .to-desc{font-size:11px;color:var(--ink-3)}
+</style>
+</head>
+<body>
+
+<header class="rail">
+  <span class="rail-brand">AGNUS Academy</span>
+  <span class="rail-sep"></span>
+  <span class="rail-track">Track B · Organisational Deployment</span>
+  <span class="rail-title">Customer Service Agent Governance</span>
+  <div class="rail-right">
+    <div class="phase-dots" id="phaseDots"></div>
+    <button class="rail-btn" onclick="location.href='AGNUS - Academy App.html'">← Dashboard</button>
+  </div>
+</header>
+
+<!-- PHASE 0 — BRIEF -->
+<div class="phase active" data-phase="0">
+  <div class="hero-band">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Programme 5 of 5 · Customer Service</div>
+      <h1>Customer Service Agent Governance</h1>
+      <p class="sub">You are the AI deployment lead at Nordkapp Commerce. You are deploying a customer service agent that handles thousands of customer interactions per day. The risks here are different: reputational damage, consumer law violations, and tone — at scale.</p>
+      <div class="hero-meta">
+        <span class="hm-pill"><strong>Simulation</strong> — Interactive</span>
+        <span class="hm-pill"><strong>Duration</strong> — 20–30 min</span>
+        <span class="hm-pill"><strong>On completion</strong> — Full Track B certificate</span>
+        <span class="hm-pill"><strong>Prerequisite</strong> — B01–B04</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-body">
+    <div class="section">
+      <div class="section-head"><div><h2>The scenario</h2><div class="sh-sub">Customer service agents operate at volume. A single misconfiguration affects every customer — not one invoice, one patient, or one contract.</div></div></div>
+      <div class="scenario-grid">
+        <div class="sc-card">
+          <div class="sc-label">The organisation</div>
+          <h3>Nordkapp Commerce</h3>
+          <p>A Norwegian e-commerce company, 180,000 active customers, 2,400 orders per day. Customer service team of 22 agents. They receive approximately 800 customer contacts per day across email, chat, and their portal. The customer service director has approved a CS agent to handle routine queries autonomously and route complex ones to human agents.</p>
+        </div>
+        <div class="sc-card">
+          <div class="sc-label">The agent</div>
+          <h3>CS Agent v1</h3>
+          <p>A customer service agent that reads customer queries, accesses the order management and returns system, responds to routine queries, initiates standard returns, and escalates complaints and sensitive interactions to human agents. It represents Nordkapp's brand in every interaction.</p>
+        </div>
+        <div class="sc-card">
+          <div class="sc-label">The key risk</div>
+          <h3>Brand, law, and scale</h3>
+          <p>A poorly configured customer service agent can admit liability it has no authority to admit, offer refunds outside company policy, send tone-deaf responses to distressed customers, and do so at 800 contacts a day. One wrong template times 800 interactions is a reputational and legal crisis — not a single incident.</p>
+        </div>
+        <div class="sc-card">
+          <div class="sc-label">The regulatory context</div>
+          <h3>Consumer law + GDPR</h3>
+          <p>Norwegian consumer law (forbrukerkjøpsloven) gives customers a 14-day right of withdrawal. The agent must apply this correctly and never deny a right that exists. GDPR applies to all customer data the agent accesses — order data is personal data. The agent must not access more than it needs for the specific query.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><div><h2>Business rules</h2></div></div>
+      <table class="rules-table">
+        <thead><tr><th>Query type</th><th>Condition</th><th>Required action</th><th>Who handles</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Order status</strong></td><td>Customer asks where their order is.</td><td>Read order data. Provide status and estimated delivery. No modification.</td><td><span class="rule-badge rb-auto">Agent — read only</span></td></tr>
+          <tr><td><strong>Standard return request</strong></td><td>Item within 14-day withdrawal period. No defect claim. Item unused.</td><td>Initiate return. Send return label. Confirm to customer. Log.</td><td><span class="rule-badge rb-agent">Agent — autonomous</span></td></tr>
+          <tr><td><strong>Late return request</strong></td><td>Item outside 14-day withdrawal period but within 2-year statutory defect warranty.</td><td>Do not refuse. Check for defect claim. Route to human agent for assessment. Do not auto-approve or auto-reject.</td><td><span class="rule-badge rb-human">Human agent</span></td></tr>
+          <tr><td><strong>Complaint — defective product</strong></td><td>Customer claims product is defective.</td><td>Acknowledge receipt. Do not admit liability. Route to human agent with full context. Do not offer compensation autonomously.</td><td><span class="rule-badge rb-human">Human agent</span></td></tr>
+          <tr><td><strong>Distressed or angry customer</strong></td><td>Customer uses angry or distressed language. Threat to post publicly, mentions lawyer.</td><td>Acknowledge empathetically. Do not argue. Route to human agent immediately. Do not respond substantively to the complaint content.</td><td><span class="rule-badge rb-human">Human agent — immediate</span></td></tr>
+          <tr><td><strong>Any response</strong></td><td>All customer communications.</td><td>Tone must be professional, empathetic, and consistent with Nordkapp brand guidelines. Never defensive, dismissive, or argumentative.</td><td><span class="rule-badge rb-auto">Always</span></td></tr>
+        </tbody>
+      </table>
+      <div class="callout warn">
+        <span class="callout-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8 2L1 14h14L8 2z"/><path d="M8 7v3M8 12v.5"/></svg></span>
+        <div><strong>The agent never admits liability and never offers compensation autonomously.</strong> Both create binding commercial and legal commitments that only a human agent with authority can make. A customer service agent that admits fault or offers a goodwill payment has exceeded its authority — at scale.</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-head"><div><h2>The five tools</h2></div></div>
+      <div class="tools-grid">
+        <div class="tool-chip">
+          <div class="tc-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="12.01"/></svg></div>
+          <div class="tc-name">Order Reader</div>
+          <div class="tc-desc">Reads order and delivery data from the OMS. Read-only — cannot modify orders.</div>
+        </div>
+        <div class="tool-chip">
+          <div class="tc-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+          <div class="tc-name">Returns Processor</div>
+          <div class="tc-desc">Initiates approved returns in the returns system and generates return labels. Binding action — initiates a process that triggers logistics and refund.</div>
+        </div>
+        <div class="tool-chip">
+          <div class="tc-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+          <div class="tc-name">Response Composer</div>
+          <div class="tc-desc">Composes and sends customer responses via email and chat. All outbound communications must follow Nordkapp brand tone guidelines.</div>
+        </div>
+        <div class="tool-chip">
+          <div class="tc-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M5 11l6-6 6 6M5 17l6-6 6 6"/></svg></div>
+          <div class="tc-name">Escalation Router</div>
+          <div class="tc-desc">Routes tickets to human agents with full context. Used for complaints, distressed customers, late returns, and any situation outside the agent's authority.</div>
+        </div>
+        <div class="tool-chip">
+          <div class="tc-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="4" y="4" width="14" height="15" rx="2"/><path d="M8 2v4M14 2v4M8 11h6M8 14h4"/><rect x="8" y="2" width="6" height="3" rx="1"/></svg></div>
+          <div class="tc-name">Interaction Logger</div>
+          <div class="tc-desc">Logs all customer interactions and agent actions to the CRM. Required for GDPR data subject access requests and quality management.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <span class="cta-hint">This is Programme 5 — the final simulation. You have the experience of B01–B04. Apply it.</span>
+      <button class="btn btn-primary" onclick="goPhase(1)">Enter Configuration Lab →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 1 — CONFIG -->
+<div class="phase" data-phase="1">
+  <div class="hero-band" style="padding:36px 0 32px">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Phase 2 of 5 · Configuration Lab</div>
+      <h1 style="font-size:clamp(22px,3vw,30px);margin-bottom:8px">Configure the customer service agent</h1>
+      <p class="sub" style="font-size:14px;margin-bottom:0">Set tool permissions and tone policy. Your configuration will be tested against five real customer scenarios.</p>
+    </div>
+  </div>
+
+  <div class="page-body">
+    <div class="progress-shell">
+      <div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:10px">Configuration progress</div>
+      <div class="ps-bar"><div class="ps-fill" id="configProgress" style="width:0%"></div></div>
+    </div>
+
+    <div class="config-intro">
+      <h3>Customer service: authority and tone</h3>
+      <p>Two things matter most in customer service agent configuration: authority limits (what the agent can commit to on behalf of the company) and tone policy (how it represents the brand). An agent with unlimited authority can admit liability. An agent with the wrong tone damages the brand at 800 interactions a day.</p>
+    </div>
+
+    <div class="config-tool">
+      <div class="ct-head">
+        <div class="ct-icon-wrap"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="12.01"/></svg></div>
+        <div class="ct-info"><h4>Order Reader</h4><div class="ct-sub">Reads order and delivery data. GDPR data minimisation applies — the agent should read only what it needs for the specific query type.</div></div>
+      </div>
+      <div class="ct-body">
+        <div class="perm-label">Permission level</div>
+        <div class="perm-selector" id="perm-reader">
+          <div class="perm-opt" data-val="none" onclick="setPerm('reader','none',this)"><span class="po-badge" style="color:var(--ink-3)">None</span><div class="po-desc">Disabled</div></div>
+          <div class="perm-opt" data-val="read" onclick="setPerm('reader','read',this)"><span class="po-badge">Read</span><div class="po-desc">Reads order data for the querying customer only</div></div>
+          <div class="perm-opt" data-val="suggest" onclick="setPerm('reader','suggest',this)"><span class="po-badge">Suggest</span><div class="po-desc">Reads and suggests response</div></div>
+          <div class="perm-opt" data-val="act" onclick="setPerm('reader','act',this)"><span class="po-badge">Act</span><div class="po-desc">Reads and proceeds autonomously</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="config-tool">
+      <div class="ct-head">
+        <div class="ct-icon-wrap"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <div class="ct-info"><h4>Returns Processor</h4><div class="ct-sub">Initiates returns in the returns system. <strong style="color:var(--danger)">Binding action</strong> — once initiated, it triggers logistics and a refund process. Configure authority limits carefully.</div></div>
+      </div>
+      <div class="ct-body">
+        <div class="perm-label">Permission level</div>
+        <div class="perm-selector" id="perm-returns">
+          <div class="perm-opt" data-val="none" onclick="setPerm('returns','none',this)"><span class="po-badge" style="color:var(--ink-3)">None</span><div class="po-desc">Disabled — no returns possible</div></div>
+          <div class="perm-opt" data-val="read" onclick="setPerm('returns','read',this)"><span class="po-badge">Read</span><div class="po-desc">View returns history only</div></div>
+          <div class="perm-opt" data-val="suggest" onclick="setPerm('returns','suggest',this)"><span class="po-badge">Suggest</span><div class="po-desc">Proposes return for human approval</div></div>
+          <div class="perm-opt" data-val="act" onclick="setPerm('returns','act',this)"><span class="po-badge">Act</span><div class="po-desc">Initiates returns autonomously</div></div>
+        </div>
+        <div style="margin-top:12px">
+          <div class="perm-label">Returns authority scope — what the agent may process autonomously</div>
+          <div class="tone-sel" id="ret-scope">
+            <div class="tone-opt" data-val="standard" onclick="setScope(this,'standard')"><span class="to-badge">Standard only</span><div class="to-desc">14-day withdrawal, unused items — no defect claims</div></div>
+            <div class="tone-opt" data-val="all" onclick="setScope(this,'all')"><span class="to-badge">All returns including defects</span><div class="to-desc">Including defect warranty claims</div></div>
+            <div class="tone-opt" data-val="compensation" onclick="setScope(this,'compensation')"><span class="to-badge">Returns + compensation</span><div class="to-desc">Including autonomous goodwill offers</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="config-tool">
+      <div class="ct-head">
+        <div class="ct-icon-wrap"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+        <div class="ct-info"><h4>Response Composer</h4><div class="ct-sub">Composes and sends customer responses. Every response represents Nordkapp's brand. Tone policy applies to all outbound communications.</div></div>
+      </div>
+      <div class="ct-body">
+        <div class="perm-label">Permission level</div>
+        <div class="perm-selector" id="perm-composer">
+          <div class="perm-opt" data-val="none" onclick="setPerm('composer','none',this)"><span class="po-badge" style="color:var(--ink-3)">None</span><div class="po-desc">Disabled</div></div>
+          <div class="perm-opt" data-val="read" onclick="setPerm('composer','read',this)"><span class="po-badge">Read</span><div class="po-desc">Read communication history</div></div>
+          <div class="perm-opt" data-val="suggest" onclick="setPerm('composer','suggest',this)"><span class="po-badge">Suggest</span><div class="po-desc">Drafts responses for human review</div></div>
+          <div class="perm-opt" data-val="act" onclick="setPerm('composer','act',this)"><span class="po-badge">Act</span><div class="po-desc">Sends responses autonomously</div></div>
+        </div>
+        <div style="margin-top:12px">
+          <div class="perm-label">Tone policy — select the correct tone constraint for all agent responses</div>
+          <div class="tone-sel" id="tone-sel">
+            <div class="tone-opt" data-val="professional" onclick="setTone(this,'professional')"><span class="to-badge">Professional + empathetic</span><div class="to-desc">Warm, helpful, brand-consistent. Never defensive or argumentative.</div></div>
+            <div class="tone-opt" data-val="assertive" onclick="setTone(this,'assertive')"><span class="to-badge">Assertive + policy-focused</span><div class="to-desc">Clear, direct, policy-led. May be perceived as defensive.</div></div>
+            <div class="tone-opt" data-val="apologetic" onclick="setTone(this,'apologetic')"><span class="to-badge">Apologetic + compensatory</span><div class="to-desc">Over-apologetic. May imply fault or create liability expectations.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="config-tool">
+      <div class="ct-head">
+        <div class="ct-icon-wrap"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M5 11l6-6 6 6M5 17l6-6 6 6"/></svg></div>
+        <div class="ct-info"><h4>Escalation Router</h4><div class="ct-sub">Routes tickets to human agents. Must be able to act immediately for distressed customers and complaints — delay in these situations damages trust and may escalate publicly.</div></div>
+      </div>
+      <div class="ct-body">
+        <div class="perm-label">Permission level</div>
+        <div class="perm-selector" id="perm-escalate">
+          <div class="perm-opt" data-val="none" onclick="setPerm('escalate','none',this)"><span class="po-badge" style="color:var(--ink-3)">None</span><div class="po-desc">Disabled</div></div>
+          <div class="perm-opt" data-val="read" onclick="setPerm('escalate','read',this)"><span class="po-badge">Read</span><div class="po-desc">View escalation history</div></div>
+          <div class="perm-opt" data-val="suggest" onclick="setPerm('escalate','suggest',this)"><span class="po-badge">Suggest</span><div class="po-desc">Proposes escalation for review</div></div>
+          <div class="perm-opt" data-val="act" onclick="setPerm('escalate','act',this)"><span class="po-badge">Act</span><div class="po-desc">Escalates autonomously</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="config-tool">
+      <div class="ct-head">
+        <div class="ct-icon-wrap"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="4" y="4" width="14" height="15" rx="2"/><path d="M8 2v4M14 2v4M8 11h6M8 14h4"/><rect x="8" y="2" width="6" height="3" rx="1"/></svg></div>
+        <div class="ct-info"><h4>Interaction Logger</h4><div class="ct-sub">Logs all customer interactions. Required under GDPR for data subject access requests and under consumer law for dispute evidence.</div></div>
+      </div>
+      <div class="ct-body">
+        <div class="perm-label">Interaction logging</div>
+        <div class="log-toggle">
+          <label>Enable logging for all customer interactions and agent actions</label>
+          <label class="toggle-sw">
+            <input type="checkbox" id="logging-enabled" onchange="updateProgress()" checked/>
+            <span class="toggle-track"></span>
+            <span class="toggle-knob"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <span class="cta-hint" id="configHint">Complete all configurations to proceed.</span>
+      <div style="display:flex;gap:10px">
+        <button class="btn btn-ghost" onclick="goPhase(0)">← Review brief</button>
+        <button class="btn btn-primary" id="runSimBtn" onclick="goPhase(2)" disabled>Run Simulation →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 2 — SIMULATION -->
+<div class="phase" data-phase="2">
+  <div class="hero-band" style="padding:36px 0 32px">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Phase 3 of 5 · Incident Simulation</div>
+      <h1 style="font-size:clamp(22px,3vw,30px);margin-bottom:8px">Five customer contacts arriving</h1>
+      <p class="sub" style="font-size:14px;margin-bottom:0">Your agent is live. Five customer contacts have arrived. One is a distressed customer threatening to post publicly.</p>
+    </div>
+  </div>
+  <div class="page-body">
+    <button class="run-btn" id="runBtn" onclick="runSimulation()"><span class="rb-dot"></span>Start simulation — process 5 customer contacts</button>
+    <div id="events-container">
+      <div class="event-card" id="ev-1">
+        <div class="ec-head"><div class="ec-num">01</div><div class="ec-desc"><div class="ed-label">Customer: Ingrid H. · Order #NK-228844</div><div class="ed-title">"Where is my order? It was supposed to arrive Tuesday."</div><div class="ed-detail">Order status: In transit — delayed by 1 day at carrier. No defect claim.</div></div><div class="ec-status"><span class="status-pill sp-pending" id="ev1-status">Pending</span></div></div>
+        <div class="ec-body" id="ev1-trace"></div>
+      </div>
+      <div class="event-card" id="ev-2">
+        <div class="ec-head"><div class="ec-num">02</div><div class="ec-desc"><div class="ed-label">Customer: Lars B. · Order #NK-229012 · Ordered 6 days ago</div><div class="ed-title">"I want to return the jacket I ordered. Changed my mind."</div><div class="ed-detail">Order date: 6 days ago — within 14-day withdrawal period. Item reported unused.</div></div><div class="ec-status"><span class="status-pill sp-pending" id="ev2-status">Pending</span></div></div>
+        <div class="ec-body" id="ev2-trace"></div>
+      </div>
+      <div class="event-card" id="ev-3">
+        <div class="ec-head"><div class="ec-num">03</div><div class="ec-desc"><div class="ed-label">Customer: Maja K. · Order #NK-214877 · Ordered 19 days ago</div><div class="ed-title">"The zipper on the jacket broke after one use. I want a replacement or refund."</div><div class="ed-detail" style="color:var(--warn);font-weight:600">⚠ Defective product claim · Outside 14-day withdrawal period — statutory 2-year warranty applies</div></div><div class="ec-status"><span class="status-pill sp-pending" id="ev3-status">Pending</span></div></div>
+        <div class="ec-body" id="ev3-trace"></div>
+      </div>
+      <div class="event-card" id="ev-4">
+        <div class="ec-head"><div class="ec-num">04</div><div class="ec-desc"><div class="ed-label">Customer: Tor N. · Order #NK-230441</div><div class="ed-title">"This is absolutely ridiculous. My order arrived broken and nobody has helped me. I am posting about this. Get me your manager NOW."</div><div class="ed-detail" style="color:var(--danger);font-weight:600">⚠ Distressed customer — public threat. Defect claim. Requires immediate human escalation.</div></div><div class="ec-status"><span class="status-pill sp-pending" id="ev4-status">Pending</span></div></div>
+        <div class="ec-body" id="ev4-trace"></div>
+      </div>
+      <div class="event-card" id="ev-5">
+        <div class="ec-head"><div class="ec-num">05</div><div class="ec-desc"><div class="ed-label">Customer: Silje A. · Order #NK-229888</div><div class="ed-title">"Can I change the delivery address for my order? It's still being prepared."</div><div class="ed-detail">Order status: In preparation — modification still possible in OMS.</div></div><div class="ec-status"><span class="status-pill sp-pending" id="ev5-status">Pending</span></div></div>
+        <div class="ec-body" id="ev5-trace"></div>
+      </div>
+    </div>
+    <div class="cta-row" id="sim-cta" style="display:none">
+      <span class="cta-hint">Simulation complete.</span>
+      <button class="btn btn-primary" onclick="goPhase(3)">See your score →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 3 — SCORE -->
+<div class="phase" data-phase="3">
+  <div class="page-body" style="padding-top:48px">
+    <div id="score-hero-block"></div>
+    <div class="section"><div class="section-head"><div><h2>Event breakdown</h2></div></div><div class="score-breakdown" id="score-breakdown"></div></div>
+    <div id="config-diff-section" style="display:none"><div class="section"><div class="section-head"><div><h2>Configuration gaps</h2></div></div><table class="diff-table" id="diff-table"><thead><tr><th>Setting</th><th>Your configuration</th><th>Correct</th><th>Risk</th></tr></thead><tbody id="diff-tbody"></tbody></table></div></div>
+    <div class="cta-row"><span class="cta-hint" id="score-hint"></span><div style="display:flex;gap:10px"><button class="btn btn-ghost" onclick="goPhase(1)">Reconfigure and retry</button><button class="btn btn-primary" id="certBtn" style="display:none" onclick="goPhase(4)">Claim competency record →</button></div></div>
+  </div>
+</div>
+
+<!-- PHASE 4 — CERTIFICATE -->
+<div class="phase" data-phase="4">
+  <div class="page-body" style="padding-top:48px">
+    <div class="cert">
+      <div class="cert-top">
+        <div class="cert-badge"><svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round"><path d="M14 3l2.5 7.5H24l-6 4.5 2.5 7.5L14 18l-6.5 4.5 2.5-7.5-6-4.5h7.5L14 3z"/></svg></div>
+        <h2>Certificate of Competency</h2>
+        <h3>Customer Service Agent Governance</h3>
+        <div class="cert-sub">Organisational AI Deployment · Track B · Programme 5 — Final</div>
+      </div>
+      <div class="cert-body">
+        <div class="cert-item"><div class="ci-label">Competency</div><div class="ci-value">Customer Service Agent Governance — Configured &amp; Verified</div></div>
+        <div class="cert-item"><div class="ci-label">Issued</div><div class="ci-value" id="cert-date"></div></div>
+        <div class="cert-item"><div class="ci-label">Score</div><div class="ci-value" id="cert-score"></div></div>
+        <div class="cert-item"><div class="ci-label">Track B Status</div><div class="ci-value" id="cert-track-status"></div></div>
+        <div class="cert-item"><div class="ci-label">Issuer</div><div class="ci-value">AGNUS Academy</div></div>
+        <div class="cert-item"><div class="ci-label">Credential ID</div><div class="ci-value" id="cert-id"></div></div>
+      </div>
+    </div>
+    <div class="callout info">
+      <span class="callout-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M8 7v5M8 5.5v.5"/></svg></span>
+      <div><strong>Track B complete.</strong> You have now configured AI agents across five domains: Finance (payment authority, approval thresholds), HR (GDPR data minimisation, special-category routing), Legal (privilege protection, routing hierarchy), Healthcare (human oversight for high-risk AI, emergency override), and Customer Service (authority limits, tone policy, consumer law). These are the governance skills organisations deploying AI agents at scale require most.</div>
+    </div>
+    <div style="display:flex;justify-content:center;gap:14px;margin-top:32px">
+      <button class="btn btn-ghost" onclick="window.print()">Print certificate</button>
+      <button class="btn btn-primary" onclick="location.href='AGNUS - Academy App.html'">Return to Academy →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const state={perms:{reader:null,returns:null,composer:null,escalate:null,audit:'act'},retScope:null,tone:null,logging:true,results:[],score:0};
+const PHASE_COUNT=5;
+function renderDots(a){document.getElementById('phaseDots').innerHTML=Array.from({length:PHASE_COUNT},(_,i)=>`<div class="pd ${i<a?'done':i===a?'active':''}"></div>`).join('');}
+function goPhase(n){document.querySelectorAll('.phase').forEach(p=>p.classList.remove('active'));document.querySelector(`.phase[data-phase="${n}"]`).classList.add('active');renderDots(n);window.scrollTo({top:0,behavior:'smooth'});if(n===3)buildScore();if(n===4)buildCert();}
+renderDots(0);
+function setPerm(tool,val,el){state.perms[tool]=val;document.querySelectorAll(`#perm-${tool} .perm-opt`).forEach(o=>o.classList.remove('selected'));el.classList.add('selected');updateProgress();}
+function setScope(el,val){state.retScope=val;document.querySelectorAll('#ret-scope .tone-opt').forEach(o=>o.classList.remove('selected'));el.classList.add('selected');updateProgress();}
+function setTone(el,val){state.tone=val;document.querySelectorAll('#tone-sel .tone-opt').forEach(o=>o.classList.remove('selected'));el.classList.add('selected');updateProgress();}
+function updateProgress(){
+  state.logging=document.getElementById('logging-enabled').checked;
+  const tools=['reader','returns','composer','escalate'];
+  const configured=tools.filter(k=>state.perms[k]!==null).length+(state.retScope?1:0)+(state.tone?1:0);
+  document.getElementById('configProgress').style.width=Math.round(configured/6*100)+'%';
+  const allSet=tools.every(k=>state.perms[k]!==null)&&state.retScope&&state.tone;
+  document.getElementById('runSimBtn').disabled=!allSet;
+  document.getElementById('configHint').textContent=allSet?'All configurations complete. Ready to run the simulation.':`${6-configured} setting${6-configured===1?'':'s'} still needed.`;
+}
+const EVENTS=[
+  {id:1,type:'order_status',desc:'Order status query — delayed by 1 day'},
+  {id:2,type:'standard_return',desc:'Standard return request — within 14-day period, unused'},
+  {id:3,type:'defect_return',desc:'Defective product claim — outside withdrawal period, warranty applies'},
+  {id:4,type:'distressed',desc:'Distressed customer — public threat, defect claim, requests manager'},
+  {id:5,type:'address_change',desc:'Delivery address change — order still in preparation'},
+];
+function t(o,ev,a,r,cls){return{t:'10:'+String(10+ev.id*3+o).toString().padStart(2,'0'),a,r,cls};}
+function evaluateEvent(ev){
+  const p=state.perms;const rs=state.retScope;const tone=state.tone;const log=state.logging;
+  let trace=[];let outcome='pass';let verdict='';let explanation='';
+
+  if(!p.reader||p.reader==='none'){
+    trace.push(t(0,ev,'Order Reader','BLOCKED — tool disabled','tr-err'));
+    return{outcome:'fail',trace,verdict:'Agent cannot read any order data.',explanation:'Order Reader disabled. No customer query can be handled.'};
+  }
+
+  if(ev.type==='order_status'){
+    trace.push(t(0,ev,'Order Reader → Read order','Order #NK-228844: In transit — delayed 1 day at carrier','tr-ok'));
+    if(!p.composer||p.composer==='none'){
+      trace.push(t(1,ev,'Response Composer','BLOCKED — cannot respond to customer','tr-err'));
+      return{outcome:'fail',trace,verdict:'Agent read the order but cannot respond to the customer.',explanation:'Response Composer was disabled. The customer receives no response.'};
+    }
+    if(p.composer==='act'){
+      const toneOk=tone==='professional';
+      trace.push(t(1,ev,'Response Composer → Customer','Response sent: order in transit, expected delivery tomorrow'+(toneOk?' (professional tone)':(tone==='apologetic'?' (over-apologetic tone — implies fault for carrier delay)':' (assertive/policy tone)')),toneOk?'tr-ok':tone==='apologetic'?'tr-warn':'tr-warn'));
+      if(!toneOk){outcome='warn';verdict=tone==='apologetic'?'Order status communicated — but apologetic tone may imply Nordkapp is at fault for a carrier delay.':'Order status communicated — but assertive tone is perceived as defensive for a routine delay query.';explanation=tone==='apologetic'?'An apologetic tone for a 1-day carrier delay implies Nordkapp failed the customer. The correct tone is empathetic but factual — the delay is with the carrier, not Nordkapp. Over-apologising sets incorrect expectations.':'An assertive policy-focused tone for a routine status query feels unhelpful and cold. Customers asking where their order is need reassurance, not policy statements.';}
+      else{if(log){trace.push(t(2,ev,'Interaction Logger','Interaction logged ✓','tr-ok'));verdict='Correct: order status provided with professional tone.';explanation='Order data read, accurate status communicated in professional empathetic tone, interaction logged.';}else{trace.push(t(2,ev,'Interaction Logger','LOGGING DISABLED','tr-err'));outcome='warn';verdict='Order status correct — logging disabled.';explanation='Response was correct. GDPR logging not written.';}}}
+    else{trace.push(t(1,ev,'Response Composer','Suggest mode — response drafted for human review','tr-warn'));outcome='warn';verdict='Routine order status queued for human review unnecessarily.';explanation='A standard order status query does not require human review of every response. Suggest mode creates queue volume for routine queries.';}
+    return{outcome,trace,verdict,explanation};
+  }
+
+  if(ev.type==='standard_return'){
+    trace.push(t(0,ev,'Order Reader → Read order','Order #NK-229012: 6 days old — within 14-day withdrawal period','tr-ok'));
+    if(!p.returns||p.returns==='none'){
+      trace.push(t(1,ev,'Returns Processor','BLOCKED — cannot initiate return','tr-err'));
+      return{outcome:'fail',trace,verdict:'Agent cannot process a valid consumer right of return.',explanation:'Returns Processor was disabled. The customer has a legal right of withdrawal under Norwegian consumer law — the agent must be able to process it.'};
+    }
+    if(p.returns==='act'&&(rs==='standard'||rs==='all'||rs==='compensation')){
+      trace.push(t(1,ev,'Returns Processor → Initiate return','Return #RET-220012 initiated. Return label generated.','tr-ok'));
+      if(p.composer&&p.composer==='act'){trace.push(t(2,ev,'Response Composer → Customer','Return confirmed: label sent, refund within 5–7 days (professional tone)','tr-ok'));}
+      if(log){trace.push(t(3,ev,'Interaction Logger','Return + communication logged ✓','tr-ok'));verdict='Correct: standard return initiated and confirmed to customer.';explanation='14-day withdrawal right correctly applied. Return initiated, label sent, customer confirmed. Logged.';} else{trace.push(t(3,ev,'Interaction Logger','LOGGING DISABLED','tr-err'));outcome='warn';verdict='Return correct — logging disabled.';explanation='Return handling correct. GDPR log not written.';}
+    } else{trace.push(t(1,ev,'Returns Processor','Suggest/blocked — return not processed automatically','tr-warn'));outcome='warn';verdict='Valid return not processed autonomously — unnecessary delay for a standard consumer right.';explanation='Standard returns within the 14-day period are a confirmed legal right. Queuing them for human approval creates unnecessary delay.';}
+    return{outcome,trace,verdict,explanation};
+  }
+
+  if(ev.type==='defect_return'){
+    trace.push(t(0,ev,'Order Reader → Read order','Order #NK-214877: 19 days old — outside 14-day withdrawal. Defect claim noted.','tr-warn'));
+    if(p.returns==='act'&&rs==='all'){
+      trace.push(t(1,ev,'Returns Processor','AUTO-INITIATED return for defect claim — outside scope','tr-err'));
+      return{outcome:'fail',trace,verdict:'Agent autonomously processed a defect warranty claim — outside its authority.',explanation:'Defect warranty claims (2-year statutory warranty) require human assessment — the agent must not auto-approve them. The returns processor scope was set to "all returns including defects," giving the agent authority over warranty claims it has no competence to assess.'};
+    }
+    if(p.returns==='act'&&rs==='compensation'){
+      trace.push(t(1,ev,'Returns Processor','AUTO-INITIATED return + autonomous compensation offer','tr-err'));
+      return{outcome:'fail',trace,verdict:'Agent offered compensation for an unassessed defect claim — liability admission risk.',explanation:'Autonomous compensation for defect claims is a liability admission without legal authority. The agent exceeded its authority significantly.'};
+    }
+    if(!p.escalate||p.escalate==='none'||p.escalate==='read'){
+      trace.push(t(1,ev,'Escalation Router','Cannot escalate — tool not set to Act','tr-err'));
+      return{outcome:'fail',trace,verdict:'Defect claim could not be routed to human agent.',explanation:'Defect claims must be routed to a human agent. The escalation router was not configured to Act.'};
+    }
+    trace.push(t(1,ev,'Escalation Router → Human agent','Defect claim routed with order context and customer report','tr-ok'));
+    if(p.composer&&p.composer==='act'){
+      const toneOk=tone==='professional';
+      trace.push(t(2,ev,'Response Composer → Customer','Acknowledgement sent: claim received, specialist team will assess'+(toneOk?'':' (tone issue)'),toneOk?'tr-ok':'tr-warn'));
+      if(!toneOk&&tone==='apologetic'){outcome='warn';verdict='Defect claim correctly escalated — acknowledgement tone admits fault.';explanation='The escalation was correct. However, an apologetic tone in the acknowledgement implies the defect is confirmed and Nordkapp is at fault — before any assessment. This can create liability expectations.';}
+    }
+    if(outcome==='pass'){if(log){trace.push(t(3,ev,'Interaction Logger','Defect claim + escalation logged ✓','tr-ok'));verdict='Correct: defect claim acknowledged and routed to human agent. No liability admitted.';explanation='Defect warranty claim correctly handled: acknowledged without admitting fault, routed to human agent for assessment. Logged.';}else{trace.push(t(3,ev,'Interaction Logger','LOGGING DISABLED','tr-err'));outcome='warn';verdict='Defect claim correctly escalated — logging disabled.';explanation='Escalation correct. Interaction log not written.';}}
+    return{outcome,trace,verdict,explanation};
+  }
+
+  if(ev.type==='distressed'){
+    trace.push(t(0,ev,'Distressed customer detection','Angry tone + public threat + defect claim detected — immediate escalation required','tr-warn'));
+    if(!p.escalate||p.escalate==='none'||p.escalate==='read'||p.escalate==='suggest'){
+      trace.push(t(1,ev,'Escalation Router','Cannot escalate immediately — tool not set to Act','tr-err'));
+      return{outcome:'fail',trace,verdict:'Distressed customer with public threat could not be escalated immediately.',explanation:'Escalation router was not set to Act. A distressed customer threatening to post publicly needs immediate human response — delay escalates the risk of public reputational damage.'};
+    }
+    trace.push(t(1,ev,'Escalation Router → Human agent (priority)','Immediate escalation: distressed customer, public threat, defect claim','tr-ok'));
+    if(p.composer&&p.composer==='act'){
+      if(tone==='professional'){trace.push(t(2,ev,'Response Composer → Customer','Empathetic acknowledgement sent: team alerted, manager contact within 30 min','tr-ok'));}
+      else if(tone==='assertive'){trace.push(t(2,ev,'Response Composer → Customer','Policy-focused response sent — tone likely to inflame distressed customer','tr-err'));outcome='fail';verdict='Escalated correctly — but assertive tone response to an angry customer risks inflaming the situation further.';explanation='An assertive policy-focused response to a distressed, publicly-threatening customer is the wrong tone. The agent needed to de-escalate with empathy and confirm human follow-up was coming — not recite policy.';}
+      else if(tone==='apologetic'){trace.push(t(2,ev,'Response Composer → Customer','Over-apologetic response implying liability for defect before investigation','tr-warn'));outcome='warn';verdict='Escalated correctly — but over-apologetic tone implies liability admission.';explanation='An apologetic tone to a customer claiming a defect implies the defect is confirmed and Nordkapp is responsible before any investigation. This creates a liability expectation.';}
+    }
+    if(outcome==='pass'){if(log){trace.push(t(3,ev,'Interaction Logger','Distressed interaction + escalation logged ✓','tr-ok'));verdict='Correct: distressed customer immediately escalated, professional empathetic acknowledgement sent.';explanation='Correct handling: immediate escalation triggered, professional empathetic acknowledgement sent, interaction logged. Human agent will follow up directly.'}else{trace.push(t(3,ev,'Interaction Logger','LOGGING DISABLED','tr-err'));outcome='warn';verdict='Escalation correct — logging disabled.';explanation:'Correct but no interaction log written.';}}
+    return{outcome,trace,verdict,explanation};
+  }
+
+  if(ev.type==='address_change'){
+    trace.push(t(0,ev,'Order Reader → Read order','Order #NK-229888: In preparation — modification possible in OMS','tr-ok'));
+    // Address change requires OMS write — the agent only has a reader. It should acknowledge and route.
+    if(!p.escalate||p.escalate==='none'||p.escalate==='read'){
+      trace.push(t(1,ev,'Escalation Router','Cannot route address change to OMS team','tr-err'));
+      return{outcome:'fail',trace,verdict:'Address change request cannot be processed or routed.',explanation:'The agent read the order and confirmed modification is possible, but cannot route the change request to the OMS team.'};
+    }
+    trace.push(t(1,ev,'Escalation Router → OMS team','Address change request routed — order still in preparation','tr-ok'));
+    if(p.composer&&p.composer==='act'){trace.push(t(2,ev,'Response Composer → Customer','Change request received — OMS team will update within 1 hour while order in preparation','tr-ok'));}
+    if(log){trace.push(t(3,ev,'Interaction Logger','Address change request logged ✓','tr-ok'));verdict='Correct: address change request acknowledged and routed to OMS team.';explanation='Agent correctly identified it cannot modify the order directly, routed to OMS team while order is still in preparation, confirmed to customer. Logged.';}
+    else{trace.push(t(3,ev,'Interaction Logger','LOGGING DISABLED','tr-err'));outcome='warn';verdict='Address change correctly routed — logging disabled.';explanation='Routing correct. Log not written.';}
+    return{outcome,trace,verdict,explanation};
+  }
+  return{outcome,trace,verdict,explanation};
+}
+
+let simIndex=0;let simResults=[];
+function runSimulation(){
+  const btn=document.getElementById('runBtn');btn.disabled=true;btn.innerHTML='<span class="rb-dot"></span> Processing customer contacts…';
+  simResults=[];simIndex=0;processNext();
+}
+function processNext(){
+  if(simIndex>=EVENTS.length){document.getElementById('sim-cta').style.display='flex';document.getElementById('runBtn').style.display='none';state.results=simResults;state.score=Math.round(simResults.filter(r=>r.outcome==='pass').length/EVENTS.length*100);return;}
+  const ev=EVENTS[simIndex];const card=document.getElementById('ev-'+ev.id);
+  card.classList.add('running');
+  document.getElementById('ev'+ev.id+'-status').outerHTML=`<span class="status-pill sp-running" id="ev${ev.id}-status"><span style="width:6px;height:6px;border-radius:50%;background:var(--accent-light);display:inline-block"></span>Processing…</span>`;
+  setTimeout(()=>{
+    const result=evaluateEvent(ev);simResults.push({...result,ev});
+    const traceHtml=result.trace.map(t=>`<div class="tr-line"><span class="tr-time">${t.t}</span><span class="tr-action ${t.cls}">${t.a} — ${t.r}</span></div>`).join('');
+    document.getElementById('ev'+ev.id+'-trace').innerHTML=`<div class="ec-trace">${traceHtml}</div><div style="margin-top:12px;padding:12px 14px;border-radius:8px;background:${result.outcome==='pass'?'var(--pass-bg)':result.outcome==='fail'?'var(--danger-bg)':'var(--warn-bg)'};border:1px solid ${result.outcome==='pass'?'var(--pass-border)':result.outcome==='fail'?'var(--danger-border)':'var(--warn-border)'};font-size:13px;color:${result.outcome==='pass'?'var(--pass)':result.outcome==='fail'?'var(--danger)':'var(--warn)'};font-weight:600;">${result.verdict}</div>`;
+    card.classList.remove('running');card.classList.add(result.outcome);
+    document.getElementById('ev'+ev.id+'-status').outerHTML=`<span class="status-pill sp-${result.outcome}" id="ev${ev.id}-status">${result.outcome==='pass'?'✓ Correct':result.outcome==='fail'?'✗ Failed':'△ Partial'}</span>`;
+    simIndex++;setTimeout(processNext,400);
+  },900+simIndex*200);
+}
+function buildScore(){
+  if(!state.results.length)return;
+  const results=state.results;const passing=results.filter(r=>r.outcome==='pass').length;const score=Math.round(passing/results.length*100);state.score=score;const perfect=score===100;const good=score>=60;
+  document.getElementById('score-hero-block').innerHTML=`<div class="score-hero"><div class="sh-number ${perfect?'perfect':good?'good':'fail'}">${score}%</div><div class="sh-label">${passing} of ${results.length} contacts handled correctly</div><div class="sh-verdict">${perfect?'Perfect — all five customers handled correctly':good?'Partial pass — review authority limits and tone policy':'Critical misconfiguration — authority or tone failures at scale'}</div></div>`;
+  document.getElementById('score-breakdown').innerHTML=results.map((r,i)=>`<div class="sb-card ${r.outcome}-card"><div class="sbc-label">Event ${i+1} · ${r.outcome.toUpperCase()}</div><div class="sbc-event">${r.ev.desc}</div><div class="sbc-verdict">${r.verdict}</div><div class="sbc-explain">${r.explanation}</div></div>`).join('');
+  const failures=results.filter(r=>r.outcome!=='pass');
+  if(failures.length){
+    document.getElementById('config-diff-section').style.display='block';
+    const p=state.perms;const diffs=[];
+    if(state.tone!=='professional') diffs.push(['Response tone',state.tone==='assertive'?'Assertive + policy-focused':'Apologetic + compensatory','Professional + empathetic','At 800 contacts/day, wrong tone affects every interaction. Assertive tone creates negative brand experience; apologetic tone implies liability.']);
+    if(state.retScope==='all'||state.retScope==='compensation') diffs.push(['Returns authority scope',state.retScope==='all'?'All returns including defects':'Returns + compensation','Standard only (14-day withdrawal, unused items)','Agent can autonomously process defect warranty claims or offer compensation — actions requiring human assessment or authority.']);
+    if(!p.escalate||p.escalate!=='act') diffs.push(['Escalation Router',p.escalate||'disabled','Act','Cannot immediately escalate distressed customers or defect claims.']);
+    if(!state.logging) diffs.push(['Interaction Logger','Disabled','Enabled','GDPR data subject access requests cannot be fulfilled without interaction records.']);
+    document.getElementById('diff-tbody').innerHTML=diffs.map(d=>`<tr><td style="font-weight:600">${d[0]}</td><td style="color:var(--danger);font-family:var(--mono);font-size:12px">${d[1]}</td><td style="color:var(--pass);font-family:var(--mono);font-size:12px">${d[2]}</td><td style="font-size:12.5px;color:var(--ink-2)">${d[3]}</td></tr>`).join('');
+  }
+  const certBtn=document.getElementById('certBtn');const hint=document.getElementById('score-hint');
+  if(perfect){certBtn.style.display='inline-block';hint.textContent='Perfect score — claim your Track B competency record.';}
+  else if(good){hint.textContent='Fix the tone policy or authority scope and retry.';}
+  else{hint.textContent='Critical failures found. Review tone policy, returns authority scope, and escalation settings.';}
+  state.score=score;
+}
+function buildCert(){
+  const d=new Date();
+  document.getElementById('cert-date').textContent=d.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+  document.getElementById('cert-score').textContent=state.score+'% — all five scenarios passed';
+  document.getElementById('cert-track-status').textContent='Track B complete — all 5 programmes passed';
+  document.getElementById('cert-id').textContent='AGNUS-B05-'+Date.now().toString(36).toUpperCase();
+}
+</script>
+</body>
+</html>

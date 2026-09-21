@@ -1,0 +1,234 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Academy — M42 What Makes a Verification Test Suite Valid</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#F8F6F2;--surface:#FFFFFF;--surface-2:#F2F0EB;--border:#E0DDD5;--border-2:#CCC9C0;
+  --ink:#14181F;--ink-2:#3C4252;--ink-3:#7A8099;
+  --navy:#0F1E34;--navy-2:#162844;--navy-3:#1E3560;
+  --gold:#9A7020;--gold-bg:rgba(154,112,32,.09);--gold-border:rgba(154,112,32,.22);--gold-light:#C49A2C;
+  --pass:#0F6E3A;--pass-bg:rgba(15,110,58,.09);--pass-border:rgba(15,110,58,.22);
+  --danger:#B03020;--danger-bg:rgba(176,48,32,.09);--danger-border:rgba(176,48,32,.22);
+  --mono:'DM Mono',monospace;--sans:'DM Sans',sans-serif;--serif:'Newsreader',Georgia,serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;font-family:var(--sans);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+.rail{background:var(--navy);color:#fff;height:54px;display:flex;align-items:center;padding:0 26px;gap:16px;position:sticky;top:0;z-index:200}
+.rail-brand{font-weight:800;font-size:14.5px}
+.rail-sep{width:1px;height:20px;background:rgba(255,255,255,.12);flex-shrink:0}
+.rail-crumb{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38)}
+.rail-title{font-size:13px;font-weight:600;color:rgba(255,255,255,.88)}
+.rail-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.phase-track{display:flex;gap:5px}
+.ph{width:26px;height:3px;border-radius:2px;background:rgba(255,255,255,.16);transition:background .4s}
+.ph.done{background:var(--gold-light)}.ph.active{background:#fff}
+.rail-btn{font-family:var(--sans);font-weight:700;font-size:12px;padding:6px 14px;border-radius:7px;border:1px solid rgba(255,255,255,.18);color:#fff;background:rgba(255,255,255,.07);cursor:pointer}
+.phase{display:none}.phase.active{display:block}
+.hero-band{background:linear-gradient(138deg,var(--navy) 0%,var(--navy-3) 60%,#1A3A70 100%);padding:52px 0 48px}
+.wrap{max-width:820px;margin:0 auto;padding:0 32px}
+.hero-kicker{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(200,170,80,.85);margin-bottom:16px;display:flex;align-items:center;gap:9px}
+.hero-kicker::before{content:'';width:20px;height:1px;background:rgba(200,170,80,.6);display:inline-block}
+.hero-band h1{font-size:clamp(24px,3.5vw,38px);font-weight:800;letter-spacing:-.03em;color:#fff;line-height:1.18;margin-bottom:16px}
+.hero-serif{font-family:var(--serif);font-style:italic;font-size:17px;line-height:1.72;color:rgba(245,242,236,.72);max-width:50ch;margin-bottom:28px}
+.hero-pills{display:flex;gap:14px;flex-wrap:wrap}
+.hp{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:7px;padding:7px 13px;font-size:12px;color:rgba(255,255,255,.68)}
+.hp strong{color:#fff}
+.body{max-width:820px;margin:0 auto;padding:44px 32px 120px}
+.section-head{display:flex;align-items:center;gap:12px;margin-bottom:18px;padding-bottom:12px;border-bottom:1.5px solid var(--border)}
+.sh-badge{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold-border);border-radius:99px;padding:3px 10px;font-weight:600}
+.sh-title{font-size:16px;font-weight:800;letter-spacing:-.015em;color:var(--navy)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px 24px;margin-bottom:16px}
+.card p{font-size:14.5px;line-height:1.74;color:var(--ink-2)}
+.card p+p{margin-top:10px}
+.callout{border-radius:12px;padding:16px 20px;margin:14px 0;font-size:13.5px;line-height:1.68;display:flex;gap:12px;align-items:flex-start}
+.callout.gold{background:var(--gold-bg);border:1px solid var(--gold-border)}
+.callout-icon{flex-shrink:0;margin-top:2px}
+.test-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+@media(max-width:580px){.test-grid{grid-template-columns:1fr}}
+.tg-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 20px}
+.tg-card h4{font-size:14px;font-weight:800;color:var(--navy);margin-bottom:8px}
+.tg-card p{font-size:13px;color:var(--ink-2);line-height:1.6}
+.criteria-list{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin:16px 0}
+.cl-item{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;gap:12px;align-items:flex-start;font-size:13.5px}
+.cl-item:last-child{border-bottom:none}
+.cl-num{font-family:var(--mono);font-size:10px;font-weight:700;color:var(--gold);flex-shrink:0;margin-top:2px;width:18px}
+.cl-title{font-weight:700;color:var(--ink);margin-bottom:3px}
+.cl-body{color:var(--ink-2);line-height:1.6}
+.opt-list{display:grid;gap:10px;margin:14px 0}
+.opt{display:grid;grid-template-columns:36px 1fr;border:1.5px solid var(--border-2);border-radius:12px;cursor:pointer;overflow:hidden;transition:border-color .15s}
+.opt:hover{border-color:var(--navy)}
+.opt.correct{border-color:var(--pass)}.opt.wrong{border-color:var(--danger)}
+.opt-letter{display:flex;align-items:center;justify-content:center;background:var(--surface-2);font-family:var(--mono);font-size:11px;font-weight:700;color:var(--ink-3)}
+.opt.correct .opt-letter{background:var(--pass-bg);color:var(--pass)}.opt.wrong .opt-letter{background:var(--danger-bg);color:var(--danger)}
+.opt-text{padding:14px 16px;font-size:13.5px;line-height:1.5;color:var(--ink);background:var(--surface)}
+.opt.correct .opt-text{background:var(--pass-bg)}.opt.wrong .opt-text{background:var(--danger-bg)}
+.feedback{display:none;margin-top:12px;padding:14px 16px;border-radius:10px;font-size:14px;line-height:1.65}
+.feedback.pass{display:block;background:var(--pass-bg);border-left:3px solid var(--pass)}
+.feedback.fail{display:block;background:var(--danger-bg);border-left:3px solid var(--danger)}
+.q-context{font-size:13.5px;color:var(--ink-2);line-height:1.65;margin-bottom:18px;padding:14px 16px;background:var(--surface-2);border-radius:10px;border-left:3px solid var(--gold)}
+.q-title{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px}
+.cta-row{display:flex;justify-content:space-between;align-items:center;margin-top:28px;padding-top:18px;border-top:1px solid var(--border)}
+.cta-hint{font-size:13px;color:var(--ink-3)}
+.btn{font-family:var(--sans);font-weight:700;font-size:14px;padding:12px 26px;border-radius:11px;border:none;cursor:pointer;transition:all .2s}
+.btn-navy{background:var(--navy);color:#fff}.btn-navy:hover{background:var(--navy-2);transform:translateY(-1px)}
+.btn-navy:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.btn-ghost{background:transparent;color:var(--ink-2);border:1px solid var(--border-2)}.btn-ghost:hover{background:var(--surface-2)}
+.complete-card{background:linear-gradient(138deg,var(--navy),var(--navy-3));border-radius:18px;padding:40px;margin-top:20px;color:#fff;text-align:center;display:none}
+.cc-glyph{font-size:36px;margin-bottom:14px;color:var(--gold-light)}
+.cc-title{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+.cc-sub{font-size:14px;color:rgba(255,255,255,.6);line-height:1.6;max-width:38ch;margin:0 auto 22px}
+.cc-next{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#fff;border:none;font-family:var(--sans);font-weight:700;font-size:14px;padding:12px 22px;border-radius:10px;cursor:pointer}
+</style>
+</head>
+<body>
+<header class="rail">
+  <span class="rail-brand">AGNUS Academy</span>
+  <span class="rail-sep"></span>
+  <span class="rail-crumb">Level 6 · Build</span>
+  <span class="rail-title">M42 — What Makes a Verification Test Suite Valid</span>
+  <div class="rail-right">
+    <div class="phase-track" id="phaseTrack"></div>
+    <button class="rail-btn" onclick="location.href='AGNUS - Academy App.html'">← Dashboard</button>
+  </div>
+</header>
+
+<!-- PHASE 0 -->
+<div class="phase active" data-phase="0">
+  <div class="hero-band">
+    <div class="wrap">
+      <div class="hero-kicker">Module 42 of 49 · Level 6 · Build</div>
+      <h1>What Makes a Verification Test Suite Valid</h1>
+      <p class="hero-serif">A test suite that only tests what the agent usually does correctly is not a verification tool — it is a performance report. Verification requires deliberate adversarial design: the test suite must probe the boundaries, not confirm the average.</p>
+      <div class="hero-pills"><span class="hp"><strong>5 steps</strong></span><span class="hp"><strong>~10 min</strong></span><span class="hp"><strong>Prerequisite:</strong> M41</span></div>
+    </div>
+  </div>
+  <div class="body">
+    <div class="section-head"><span class="sh-badge">Step 1 of 5</span><span class="sh-title">The verification problem</span></div>
+    <div class="card">
+      <p>Building a test suite for an AI system is not the same as building a test suite for traditional software. In software, a test either passes or fails — the function either returns the expected value or it does not. In AI verification, the problem is different: a model can pass a test on average while failing the specific cases that matter most, because average performance and worst-case performance are very different things for probabilistic systems.</p>
+      <p>A valid AI verification test suite must be designed to find failures, not confirm successes. This requires deliberately constructing test cases at the edges of the system's defined behaviour — the cases where failure is most likely and most consequential — not the cases where the system is known to perform well.</p>
+    </div>
+    <div class="callout gold">
+      <div class="callout-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M8 7v4M8 5.5v.5"/></svg></div>
+      <div><strong>The test suite purpose:</strong> A verification test suite is not evidence that the system works. It is evidence that the system fails in predictable, known ways — and that those failure modes have been assessed against the risk of the deployment context. A system that passes a well-designed test suite is a system whose failure modes are understood. That is different from a system with no failure modes.</div>
+    </div>
+    <div class="cta-row"><span class="cta-hint">Next: four validity criteria</span><button class="btn btn-navy" onclick="goPhase(1)">Continue →</button></div>
+  </div>
+</div>
+
+<!-- PHASE 1 -->
+<div class="phase" data-phase="1">
+  <div class="body" style="padding-top:44px">
+    <div class="section-head"><span class="sh-badge">Step 2 of 5</span><span class="sh-title">Four validity criteria</span></div>
+    <div class="criteria-list">
+      <div class="cl-item"><span class="cl-num">1</span><div><div class="cl-title">Adversarial coverage</div><div class="cl-body">The test suite must include cases designed to elicit failure — edge cases, boundary conditions, adversarial inputs, and the specific scenarios most likely to produce harmful outputs in the deployment context. A test suite composed only of representative average cases is not adversarially valid.</div></div></div>
+      <div class="cl-item"><span class="cl-num">2</span><div><div class="cl-title">Risk-weighted distribution</div><div class="cl-body">Test case density should be proportional to consequence, not to frequency. The scenarios that occur rarely but cause the most harm should be over-represented in the test suite relative to their expected occurrence rate. Testing for the common case is necessary but not sufficient.</div></div></div>
+      <div class="cl-item"><span class="cl-num">3</span><div><div class="cl-title">Independence from training distribution</div><div class="cl-body">Test cases should not be drawn from or closely resemble the training data. A model evaluated against its own training distribution is being evaluated on memorisation, not generalisation. Valid verification uses held-out data or deliberately constructed novel cases.</div></div></div>
+      <div class="cl-item"><span class="cl-num">4</span><div><div class="cl-title">Defined acceptance criteria</div><div class="cl-body">Every test case must have a defined correct output — or a defined set of acceptable outputs — against which the system's response is evaluated. A test case without an acceptance criterion is an observation, not a test. The acceptance criteria must be defined before the test is run, not inferred from the output.</div></div></div>
+    </div>
+    <div class="cta-row"><button class="btn btn-ghost" onclick="goPhase(0)">← Back</button><button class="btn btn-navy" onclick="goPhase(2)">Continue →</button></div>
+  </div>
+</div>
+
+<!-- PHASE 2 -->
+<div class="phase" data-phase="2">
+  <div class="body" style="padding-top:44px">
+    <div class="section-head"><span class="sh-badge">Step 3 of 5</span><span class="sh-title">Two test case types every suite needs</span></div>
+    <div class="test-grid">
+      <div class="tg-card">
+        <h4>Positive test cases</h4>
+        <p>Inputs for which the system should produce a defined correct output. Tests that the system does what it is supposed to do in expected conditions. Necessary, but not sufficient for verification — a system can pass all positive tests while failing catastrophically on negative cases.</p>
+      </div>
+      <div class="tg-card">
+        <h4>Negative test cases</h4>
+        <p>Inputs for which the system should refuse, escalate, or produce a defined safe output — not the output it might be tempted to produce by the input framing. Tests that the system does not do what it should not do. These are the most important cases for safety-critical deployment contexts.</p>
+      </div>
+      <div class="tg-card">
+        <h4>Boundary cases</h4>
+        <p>Inputs at the exact boundary of the system's defined operating conditions — at the edge of its authority threshold, at the limit of its scope, or at the transition point between two defined behaviours. These reveal whether the system's boundaries hold under pressure.</p>
+      </div>
+      <div class="tg-card">
+        <h4>Adversarial cases</h4>
+        <p>Inputs crafted to exploit known weaknesses — prompt injection attempts, misleading framing, contradictory instructions, or social engineering approaches. For agentic systems, adversarial cases must include multi-turn attacks, not just single-prompt attacks.</p>
+      </div>
+    </div>
+    <div class="cta-row"><button class="btn btn-ghost" onclick="goPhase(1)">← Back</button><button class="btn btn-navy" onclick="goPhase(3)">Practice →</button></div>
+  </div>
+</div>
+
+<!-- PHASE 3 — PRACTICE -->
+<div class="phase" data-phase="3">
+  <div class="body" style="padding-top:44px">
+    <div class="section-head"><span class="sh-badge">Step 4 of 5</span><span class="sh-title">Practice</span></div>
+    <div class="card">
+      <p class="q-context">A team has built a test suite for a customer service agent. It contains 200 test cases: 150 drawn from historical customer service conversations (to represent the range of typical queries), 30 edge cases based on unusual phrasing, and 20 cases where the correct response is to escalate to a human agent. The team claims the test suite provides valid verification for deployment.</p>
+      <div class="q-title">Is this test suite valid for deployment verification? What is the main gap?</div>
+      <div class="opt-list" id="practiceOpts">
+        <div class="opt" data-correct="false" onclick="pickQ('practice',this)"><div class="opt-letter">A</div><div class="opt-text">Yes — 200 cases is a sufficient sample size, and the mix of typical, edge, and escalation cases covers the range of expected inputs well.</div></div>
+        <div class="opt" data-correct="true" onclick="pickQ('practice',this)"><div class="opt-letter">B</div><div class="opt-text">No — the 150 historical cases are drawn from the training distribution, which means they test memorisation rather than generalisation. More critically, there are no adversarial test cases — inputs designed to elicit harmful or policy-violating outputs. The escalation cases are positive tests (inputs that should escalate), but there are no negative tests for adversarial attempts to bypass escalation triggers.</div></div>
+        <div class="opt" data-correct="false" onclick="pickQ('practice',this)"><div class="opt-letter">C</div><div class="opt-text">No — 20 escalation cases is too few. The ratio of escalation cases to general cases should be at least 1:3, not 1:10.</div></div>
+      </div>
+      <div class="feedback" id="practiceFeedback"></div>
+    </div>
+    <div class="cta-row"><button class="btn btn-ghost" onclick="goPhase(2)">← Back</button><button class="btn btn-navy" id="practiceNext" onclick="goPhase(4)" disabled>Continue →</button></div>
+  </div>
+</div>
+
+<!-- PHASE 4 — PASS -->
+<div class="phase" data-phase="4">
+  <div class="body" style="padding-top:44px">
+    <div class="section-head"><span class="sh-badge">Step 5 of 5</span><span class="sh-title">Pass</span></div>
+    <div class="card">
+      <p class="q-context">A governance team reviews the verification test suite for a high-risk AI system before sign-off. They find: 500 test cases, all with defined acceptance criteria; 40% are adversarial; 30% are boundary cases; 30% are positive tests. The suite was built by the same team that built the system. The team claims this is a valid third-party-ready test suite.</p>
+      <div class="q-title">What is the validity problem the governance team should flag?</div>
+      <div class="opt-list" id="passOpts">
+        <div class="opt" data-correct="false" onclick="pickQ('pass',this)"><div class="opt-letter">A</div><div class="opt-text">The distribution is wrong — adversarial cases should be a smaller proportion, because they represent rare real-world conditions.</div></div>
+        <div class="opt" data-correct="true" onclick="pickQ('pass',this)"><div class="opt-letter">B</div><div class="opt-text">The test suite was built by the same team that built the system. This creates a conflict of interest: the team may unconsciously avoid test cases that expose their system's weaknesses, or may define acceptance criteria that their system can meet rather than criteria that reflect deployment safety requirements. For high-risk AI systems, the test suite design should be independent from the development team — either through an internal independent function or a third party.</div></div>
+        <div class="opt" data-correct="false" onclick="pickQ('pass',this)"><div class="opt-letter">C</div><div class="opt-text">500 test cases is too small for a high-risk AI system. The minimum should be 2,000 cases.</div></div>
+      </div>
+      <div class="feedback" id="passFeedback"></div>
+    </div>
+    <div class="complete-card" id="completeCard">
+      <div class="cc-glyph">✦</div>
+      <div class="cc-title">Module 42 complete</div>
+      <p class="cc-sub">You understand what makes a test suite valid — adversarial coverage, risk-weighted distribution, independence from training data, defined acceptance criteria, and independence of design. M42b puts this into practice.</p>
+      <button class="cc-next" onclick="location.href=`AGNUS - Academy M42b - Build Your Own Verification Test Suite.html`">M42b — Build Your Test Suite →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const TOTAL=5;
+function renderTrack(a){document.getElementById('phaseTrack').innerHTML=Array.from({length:TOTAL},(_,i)=>`<div class="ph ${i<a?'done':i===a?'active':''}"></div>`).join('');}
+function goPhase(n){document.querySelectorAll('.phase').forEach(p=>p.classList.remove('active'));document.querySelector(`[data-phase="${n}"]`).classList.add('active');renderTrack(n);window.scrollTo({top:0,behavior:'smooth'});}
+renderTrack(0);
+function pickQ(which,el){
+  document.querySelectorAll(`#${which}Opts .opt`).forEach(o=>{o.onclick=null;o.style.cursor='default';});
+  const correct=el.dataset.correct==='true';
+  el.classList.add(correct?'correct':'wrong');
+  const fb=document.getElementById(`${which}Feedback`);
+  fb.className='feedback '+(correct?'pass':'fail');
+  if(which==='practice'){
+    fb.innerHTML=correct?'<strong>Correct.</strong> Historical conversation data is drawn from the training distribution — evaluating against it tests memorisation, not generalisation. More critically, there are no adversarial test cases. The 20 escalation cases test that the system escalates when it should — but there are no tests for whether adversarial inputs can bypass the escalation trigger. That is the most important gap for a customer service agent.':'<strong>Not quite.</strong> Sample size and ratio are not the primary validity criteria. The issue is that 150 cases from historical conversations test the training distribution, not generalisation — and there are no adversarial cases at all. These two gaps together make the suite insufficient for deployment verification.';
+    document.getElementById('practiceNext').disabled=false;
+  } else {
+    fb.innerHTML=correct?'<strong>Correct — M42 complete.</strong> Independence is a validity criterion as important as coverage. A test suite designed by the team that built the system is subject to systematic bias — not necessarily malicious, but structural. The team knows where their system is strong, and test case design naturally gravitates toward cases the system can handle. For high-risk AI systems, independent test suite design is a governance requirement, not a best practice.':'<strong>Not quite.</strong> Neither the distribution ratio nor the sample size is the issue here. The validity problem is the conflict of interest in having the development team design the test suite. Independent test suite design is the missing control.';
+    if(correct){setTimeout(()=>{document.getElementById('completeCard').style.display='block';renderTrack(TOTAL);},600);}
+  }
+}
+</script>
+</body>
+</html>

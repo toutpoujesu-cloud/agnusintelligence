@@ -1,0 +1,336 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Academy — M19 Multi-Agent Coordination Basics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#F8F6F2;--surface:#FFFFFF;--surface-2:#F2F0EB;--border:#E0DDD5;--border-2:#CCC9C0;
+  --ink:#14181F;--ink-2:#3C4252;--ink-3:#7A8099;
+  --navy:#0F1E34;--navy-2:#162844;--navy-3:#1E3560;
+  --gold:#9A7020;--gold-bg:rgba(154,112,32,.09);--gold-border:rgba(154,112,32,.22);--gold-light:#C49A2C;
+  --pass:#0F6E3A;--pass-bg:rgba(15,110,58,.09);--pass-border:rgba(15,110,58,.22);
+  --danger:#B03020;--danger-bg:rgba(176,48,32,.09);--danger-border:rgba(176,48,32,.22);
+  --mono:'DM Mono',monospace;--sans:'DM Sans',sans-serif;--serif:'Newsreader',serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;font-family:var(--sans);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+.rail{background:var(--navy);color:#fff;height:54px;display:flex;align-items:center;padding:0 26px;gap:16px;position:sticky;top:0;z-index:200}
+.rail-brand{font-weight:800;font-size:14.5px}
+.rail-sep{width:1px;height:20px;background:rgba(255,255,255,.12);flex-shrink:0}
+.rail-crumb{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38)}
+.rail-title{font-size:13px;font-weight:600;color:rgba(255,255,255,.88)}
+.rail-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.phase-track{display:flex;gap:5px}
+.ph{width:26px;height:3px;border-radius:2px;background:rgba(255,255,255,.16);transition:background .4s}
+.ph.done{background:var(--gold-light)}.ph.active{background:#fff}
+.rail-btn{font-family:var(--sans);font-size:12px;font-weight:600;padding:6px 14px;border-radius:7px;border:1px solid rgba(255,255,255,.16);color:#fff;background:rgba(255,255,255,.07);cursor:pointer}
+.phase{display:none}.phase.active{display:block}
+.hero{background:linear-gradient(138deg,var(--navy) 0%,var(--navy-3) 55%,#1A3A70 100%);padding:52px 0 48px;position:relative;overflow:hidden}
+.hero-inner{max-width:820px;margin:0 auto;padding:0 32px;position:relative;z-index:1}
+.hero-kicker{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(200,170,80,.85);margin-bottom:16px;display:flex;align-items:center;gap:9px}
+.hero-kicker::before{content:'';width:20px;height:1px;background:rgba(200,170,80,.6);display:inline-block}
+.hero h1{font-size:clamp(24px,3.5vw,38px);font-weight:800;letter-spacing:-.03em;color:#fff;line-height:1.18;margin-bottom:16px}
+.hero-serif{font-family:var(--serif);font-style:italic;font-size:17px;line-height:1.72;color:rgba(245,242,236,.72);max-width:50ch;margin-bottom:28px}
+.hero-pills{display:flex;gap:14px;flex-wrap:wrap}
+.hp{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:7px;padding:7px 13px;font-size:12px;color:rgba(255,255,255,.68)}
+.hp strong{color:#fff}
+.wrap{max-width:820px;margin:0 auto;padding:40px 32px 120px}
+.step-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;padding-bottom:14px;border-bottom:1.5px solid var(--border)}
+.sh-left{display:flex;align-items:center;gap:10px}
+.sh-badge{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold-border);border-radius:99px;padding:4px 10px;font-weight:600}
+.sh-title{font-size:13px;font-weight:600;color:var(--ink-2)}
+.sh-time{font-family:var(--mono);font-size:10px;color:var(--ink-3)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:26px 28px;margin-bottom:18px}
+.card h3{font-size:16px;font-weight:800;letter-spacing:-.015em;color:var(--navy);margin-bottom:10px}
+.card p{font-size:14.5px;line-height:1.74;color:var(--ink-2)}
+.card p+p{margin-top:10px}
+.arch-diagram{border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--surface);margin:16px 0}
+.ad-head{padding:12px 16px;background:var(--surface-2);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.ad-body{padding:20px;display:flex;flex-direction:column;gap:14px}
+.ad-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.ad-agent{background:var(--navy);color:#fff;border-radius:9px;padding:10px 14px;font-family:var(--mono);font-size:11px;font-weight:700;text-align:center;min-width:120px}
+.ad-agent .aa-role{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:3px}
+.ad-agent .aa-name{font-size:12px;color:#fff}
+.ad-arrow{font-size:18px;color:var(--ink-3)}
+.ad-note{font-size:12px;color:var(--ink-3);font-style:italic;padding:6px 10px;background:var(--surface-2);border-radius:7px;border:1px solid var(--border)}
+.pattern-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+@media(max-width:600px){.pattern-cards{grid-template-columns:1fr}}
+.pc-card{border-radius:12px;padding:18px 20px;border:1px solid var(--border);background:var(--surface-2)}
+.pc-num{font-family:var(--mono);font-size:10px;font-weight:700;color:var(--gold);margin-bottom:6px}
+.pc-name{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:5px}
+.pc-body{font-size:13px;color:var(--ink-2);line-height:1.6}
+.pc-use{font-size:11.5px;color:var(--ink-3);margin-top:7px;font-style:italic}
+.risk-table{width:100%;border-collapse:collapse;background:var(--surface);border-radius:12px;overflow:hidden;border:1px solid var(--border);margin:16px 0}
+.risk-table th{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);background:var(--surface-2);padding:10px 14px;text-align:left;border-bottom:1px solid var(--border)}
+.risk-table td{padding:12px 14px;font-size:13px;border-bottom:1px solid var(--border);color:var(--ink-2);vertical-align:top}
+.risk-table tr:last-child td{border-bottom:none}
+.callout{border-radius:12px;padding:16px 20px;margin:14px 0;font-size:13.5px;line-height:1.68;display:flex;gap:12px;align-items:flex-start}
+.callout.gold{background:var(--gold-bg);border:1px solid var(--gold-border)}
+.callout.danger{background:var(--danger-bg);border:1px solid var(--danger-border)}
+.callout-icon{flex-shrink:0;margin-top:2px}
+.opt-list{display:grid;gap:10px;margin:16px 0}
+.opt{display:grid;grid-template-columns:36px 1fr;border:1.5px solid var(--border-2);border-radius:12px;cursor:pointer;overflow:hidden;transition:border-color .15s,transform .1s}
+.opt:hover{border-color:var(--navy);transform:translateY(-1px)}
+.opt.correct{border-color:var(--pass)}.opt.wrong{border-color:var(--danger)}
+.opt-letter{display:flex;align-items:center;justify-content:center;background:var(--surface-2);font-family:var(--mono);font-size:11px;font-weight:700;color:var(--ink-3)}
+.opt.correct .opt-letter{background:var(--pass-bg);color:var(--pass)}.opt.wrong .opt-letter{background:var(--danger-bg);color:var(--danger)}
+.opt-text{padding:14px 16px;font-size:13.5px;line-height:1.5;color:var(--ink);background:var(--surface)}
+.opt.correct .opt-text{background:var(--pass-bg)}.opt.wrong .opt-text{background:var(--danger-bg)}
+.feedback{display:none;margin-top:14px;padding:16px 18px;border-radius:11px;font-size:14px;line-height:1.68}
+.feedback.pass{display:block;background:var(--pass-bg);border-left:3px solid var(--pass)}
+.feedback.fail{display:block;background:var(--danger-bg);border-left:3px solid var(--danger)}
+.quiz-q{font-size:16px;font-weight:700;letter-spacing:-.012em;color:var(--navy);margin-bottom:6px}
+.quiz-context{font-size:13.5px;color:var(--ink-2);line-height:1.65;margin-bottom:20px;padding:14px 16px;background:var(--surface-2);border-radius:10px;border-left:3px solid var(--gold)}
+.cta-row{display:flex;justify-content:space-between;align-items:center;margin-top:28px;padding-top:20px;border-top:1px solid var(--border)}
+.cta-hint{font-size:13px;color:var(--ink-3)}
+.btn{font-family:var(--sans);font-weight:700;font-size:14.5px;padding:13px 30px;border-radius:12px;border:none;cursor:pointer;transition:all .2s}
+.btn-primary{background:var(--navy);color:#fff}.btn-primary:hover{background:var(--navy-2);transform:translateY(-1px)}
+.btn-primary:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.pass-screen{display:none;text-align:center;padding:56px 36px;background:linear-gradient(138deg,var(--navy),var(--navy-3));border-radius:20px;margin-top:20px;color:#fff}
+.ps-glyph{font-size:42px;margin-bottom:16px;color:var(--gold-light)}
+.ps-title{font-size:26px;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+.ps-sub{font-size:14px;color:rgba(255,255,255,.65);line-height:1.6;max-width:40ch;margin:0 auto 28px}
+.ps-next{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#fff;border:none;font-family:var(--sans);font-weight:700;font-size:14px;padding:13px 26px;border-radius:11px;cursor:pointer}
+</style>
+</head>
+<body>
+<header class="rail">
+  <span class="rail-brand">AGNUS Academy</span>
+  <span class="rail-sep"></span>
+  <span class="rail-crumb">Level 3 · Direct</span>
+  <span class="rail-title">M19 — Multi-Agent Coordination Basics</span>
+  <div class="rail-right">
+    <div class="phase-track" id="phaseTrack"></div>
+    <button class="rail-btn" onclick="location.href='AGNUS - Academy App.html'">← Dashboard</button>
+  </div>
+</header>
+
+<!-- PHASE 0 -->
+<div class="phase active" data-phase="0">
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-kicker">Module 19 of 49 · Level 3 · Direct</div>
+      <h1>One agent completes a task.<br>Multiple agents build a system.</h1>
+      <p class="hero-serif">Most real-world agent deployments involve more than one agent. Agents hand off work to other agents, delegate sub-tasks, and coordinate across specialisations. This introduces a new category of governance challenge: the trust chain between agents.</p>
+      <div class="hero-pills">
+        <span class="hp"><strong>6 steps</strong></span>
+        <span class="hp"><strong>~16 min</strong></span>
+        <span class="hp"><strong>Prerequisite: M18</strong></span>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="card">
+      <h3>Why multiple agents?</h3>
+      <p>A single agent with 20 tools and an unbounded task scope is difficult to govern. You can't easily reason about what it might do. Multi-agent systems solve this by decomposing complex tasks into smaller, more focused agents — each with a narrow scope, limited tools, and a specific role. The result is easier to govern, audit, and debug.</p>
+      <p>The tradeoff: every agent-to-agent handoff is a new trust boundary. When Agent A hands work to Agent B, Agent B may have different permissions, different constraints, and different failure modes. Governing the handoff is as important as governing each agent individually.</p>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Next: orchestrator vs. subagent</span>
+      <button class="btn btn-primary" onclick="goPhase(1)">Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 1 -->
+<div class="phase" data-phase="1">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 2 of 6</span><span class="sh-title">Orchestrator and subagent</span></div>
+      <span class="sh-time">4 min</span>
+    </div>
+    <div class="card">
+      <h3>The two fundamental roles in multi-agent systems</h3>
+      <p>Every agent in a multi-agent system plays one of two roles — sometimes both in different contexts. Understanding these roles is the foundation of multi-agent governance.</p>
+    </div>
+    <div class="arch-diagram">
+      <div class="ad-head">Orchestrator → Subagent pattern</div>
+      <div class="ad-body">
+        <div class="ad-row">
+          <div class="ad-agent"><div class="aa-role">Orchestrator</div><div class="aa-name">Content Pipeline Agent</div></div>
+          <div class="ad-arrow">→</div>
+          <div class="ad-note">Delegates: "Research this topic and return 5 verified facts."</div>
+        </div>
+        <div class="ad-row" style="margin-left:40px">
+          <div class="ad-agent"><div class="aa-role">Subagent</div><div class="aa-name">Research Agent</div></div>
+          <div class="ad-arrow">→</div>
+          <div class="ad-note">Returns: structured research output with 5 facts and sources.</div>
+        </div>
+        <div class="ad-row">
+          <div class="ad-agent"><div class="aa-role">Orchestrator</div><div class="aa-name">Content Pipeline Agent</div></div>
+          <div class="ad-arrow">→</div>
+          <div class="ad-note">Delegates: "Write a 400-word article using these facts."</div>
+        </div>
+        <div class="ad-row" style="margin-left:40px">
+          <div class="ad-agent"><div class="aa-role">Subagent</div><div class="aa-name">Writing Agent</div></div>
+          <div class="ad-arrow">→</div>
+          <div class="ad-note">Returns: draft article with FACT/ANALYSIS labels.</div>
+        </div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0">
+      <div class="card" style="background:var(--surface-2)">
+        <h3 style="font-size:14px">Orchestrator</h3>
+        <p style="font-size:13px;margin-top:6px">Receives the high-level task. Breaks it into subtasks. Delegates to subagents. Aggregates results. Makes the final output decisions. Responsible for the overall task outcome.</p>
+      </div>
+      <div class="card" style="background:var(--surface-2)">
+        <h3 style="font-size:14px">Subagent</h3>
+        <p style="font-size:13px;margin-top:6px">Receives a specific, narrow sub-task from the orchestrator. Executes it with its own tools and scope. Returns structured output. Responsible only for its specific sub-task.</p>
+      </div>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Next: coordination patterns</span>
+      <button class="btn btn-primary" onclick="goPhase(2)">Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 2 -->
+<div class="phase" data-phase="2">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 3 of 6</span><span class="sh-title">Three coordination patterns</span></div>
+      <span class="sh-time">4 min</span>
+    </div>
+    <div class="pattern-cards">
+      <div class="pc-card">
+        <div class="pc-num">Pattern 1</div>
+        <div class="pc-name">Sequential pipeline</div>
+        <div class="pc-body">Agent A completes its task and passes the result to Agent B, which passes to Agent C. Each agent depends on the previous agent's output. A failure at any point stops the pipeline.</div>
+        <div class="pc-use">Use when: tasks have a defined order and each step's output is the next step's input.</div>
+      </div>
+      <div class="pc-card">
+        <div class="pc-num">Pattern 2</div>
+        <div class="pc-name">Parallel execution</div>
+        <div class="pc-body">An orchestrator delegates multiple sub-tasks to different agents simultaneously. They work in parallel and return results to the orchestrator, which aggregates them.</div>
+        <div class="pc-use">Use when: sub-tasks are independent and can be completed simultaneously to reduce total time.</div>
+      </div>
+      <div class="pc-card">
+        <div class="pc-num">Pattern 3</div>
+        <div class="pc-name">Specialised delegation</div>
+        <div class="pc-body">An orchestrator routes specific task types to specialist agents based on task characteristics. A legal query goes to the legal agent; a data query goes to the analytics agent.</div>
+        <div class="pc-use">Use when: different task types require different tools, domain knowledge, or data access scopes.</div>
+      </div>
+      <div class="pc-card">
+        <div class="pc-num">Key principle</div>
+        <div class="pc-name">Least privilege at every handoff</div>
+        <div class="pc-body">Each subagent should have the minimum permissions needed for its specific sub-task. The orchestrator's authority does not automatically transfer to subagents. Each agent has its own scope, governed independently.</div>
+        <div class="pc-use">A subagent that received elevated permissions from the orchestrator has more authority than it needs — violating least privilege.</div>
+      </div>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Next: multi-agent risks</span>
+      <button class="btn btn-primary" onclick="goPhase(3)">Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 3 -->
+<div class="phase" data-phase="3">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 4 of 6</span><span class="sh-title">Multi-agent risks</span></div>
+      <span class="sh-time">3 min</span>
+    </div>
+    <table class="risk-table">
+      <thead><tr><th>Risk</th><th>What it looks like</th><th>Prevention</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Permission escalation</strong></td><td>Subagent inherits or assumes the orchestrator's broader permissions, gaining authority it shouldn't have.</td><td>Define permissions per agent, independently. Never inherit. Each agent's scope is explicit.</td></tr>
+        <tr><td><strong>Error propagation</strong></td><td>A wrong result from one agent is passed to the next without validation, and the error compounds through the pipeline.</td><td>Validate output at every handoff point — especially before passing to an agent with execution authority.</td></tr>
+        <tr><td><strong>Accountability gap</strong></td><td>When an outcome is wrong, no single agent is responsible. The orchestrator blames the subagent; the subagent claims it followed instructions.</td><td>Assign a human accountable owner to the full pipeline, not just individual agents. Logging must span the full chain.</td></tr>
+        <tr><td><strong>Scope expansion through chaining</strong></td><td>Agent A has narrow scope. Agent A asks Agent B, which has broader scope. Through B, A effectively accesses what it couldn't directly.</td><td>Ensure subagent scope doesn't exceed the orchestrator's scope for the task. The chain cannot grant authority the initiating agent doesn't have.</td></tr>
+      </tbody>
+    </table>
+    <div class="callout danger">
+      <div class="callout-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8 2L1 14h14L8 2z"/><path d="M8 7v3M8 12v.5"/></svg></div>
+      <div><strong>The chain cannot grant more authority than the initiating request had.</strong> If a user query arrives with read-only authority, every agent in the chain triggered by that query should operate with read-only or narrower authority — not with write access just because some agents in the chain have it.</div>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Next: practice</span>
+      <button class="btn btn-primary" onclick="goPhase(4)">Practice →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 4 -->
+<div class="phase" data-phase="4">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 5 of 6</span><span class="sh-title">Practice</span></div>
+      <span class="sh-time">3 min</span>
+    </div>
+    <div class="card">
+      <p class="quiz-context">A research orchestrator agent has read-only access to the document library. It delegates a sub-task to a summarisation subagent, which also has read-only access. The summarisation subagent finds a document that is out of date and reasons: "I should update this document with the current information since I have the tools to do so." It uses its write access (which it has for a different workflow) to update the document.</p>
+      <div class="quiz-q">Which multi-agent risk is this, and what was the governance failure?</div>
+      <div class="opt-list" id="practiceOpts">
+        <div class="opt" data-correct="false" onclick="pickQ('practice',this)"><div class="opt-letter">A</div><div class="opt-text">Error propagation — the subagent passed wrong information back to the orchestrator.</div></div>
+        <div class="opt" data-correct="true" onclick="pickQ('practice',this)"><div class="opt-letter">B</div><div class="opt-text">Permission escalation through scope expansion. The subagent had write access in a different workflow context, but used it in this read-only research workflow. Its permissions were not constrained to the specific task — it carried broader tool access from other contexts into a context where only read access was appropriate.</div></div>
+        <div class="opt" data-correct="false" onclick="pickQ('practice',this)"><div class="opt-letter">C</div><div class="opt-text">Accountability gap — it's unclear whether the orchestrator or the subagent is responsible.</div></div>
+      </div>
+      <div class="feedback" id="practiceFeedback"></div>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Final test</span>
+      <button class="btn btn-primary" id="practiceNext" onclick="goPhase(5)" disabled>Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 5 -->
+<div class="phase" data-phase="5">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 6 of 6</span><span class="sh-title">Pass — hidden test</span></div>
+      <span class="sh-time">3 min</span>
+    </div>
+    <div class="card">
+      <p class="quiz-context">A team designs a content production pipeline: Orchestrator → Research Agent → Fact-Check Agent → Writing Agent → Publishing Agent. A review shows that a factual error introduced by the Research Agent appeared uncorrected in the final published article. The Fact-Check Agent ran but did not catch the error because it received a summary from the Research Agent, not the underlying source citations.</p>
+      <div class="quiz-q">Which multi-agent risk explains this failure, and what should the handoff have included?</div>
+      <div class="opt-list" id="passOpts">
+        <div class="opt" data-correct="false" onclick="pickQ('pass',this)"><div class="opt-letter">A</div><div class="opt-text">Permission escalation — the Publishing Agent had too much authority.</div></div>
+        <div class="opt" data-correct="true" onclick="pickQ('pass',this)"><div class="opt-letter">B</div><div class="opt-text">Error propagation. The Research Agent passed a summary without source citations. The Fact-Check Agent received only the summary — which it couldn't verify against primary sources. The handoff from Research to Fact-Check should have included the source citations alongside the factual claims, so the Fact-Check Agent could verify each claim against its source.</div></div>
+        <div class="opt" data-correct="false" onclick="pickQ('pass',this)"><div class="opt-letter">C</div><div class="opt-text">Accountability gap — nobody was assigned to own the overall pipeline quality.</div></div>
+      </div>
+      <div class="feedback" id="passFeedback"></div>
+    </div>
+    <div class="pass-screen" id="passScreen">
+      <div class="ps-glyph">✦</div>
+      <div class="ps-title">Module 19 complete</div>
+      <p class="ps-sub">You can distinguish orchestrators from subagents, identify the three coordination patterns, recognise the four multi-agent risks, and trace how errors and permission escalations propagate through agent chains.</p>
+      <button class="ps-next" onclick="location.href=`AGNUS - Academy M20 - Priority Handling.html`">Continue to →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const TOTAL=6;
+function renderTrack(a){document.getElementById('phaseTrack').innerHTML=Array.from({length:TOTAL},(_,i)=>`<div class="ph ${i<a?'done':i===a?'active':''}"></div>`).join('');}
+function goPhase(n){document.querySelectorAll('.phase').forEach(p=>p.classList.remove('active'));document.querySelector(`[data-phase="${n}"]`).classList.add('active');renderTrack(n);window.scrollTo({top:0,behavior:'smooth'});}
+renderTrack(0);
+function pickQ(which,el){
+  document.querySelectorAll(`#${which}Opts .opt`).forEach(o=>{o.onclick=null;o.style.cursor='default';});
+  const correct=el.dataset.correct==='true';el.classList.add(correct?'correct':'wrong');
+  const fb=document.getElementById(`${which}Feedback`);fb.className='feedback '+(correct?'pass':'fail');
+  if(which==='practice'){
+    fb.innerHTML=correct?'<strong>Correct.</strong> The subagent used write access from a different workflow context in a read-only research workflow. Its permissions were not task-scoped — they were global tool access. The prevention: each agent\'s active permissions should be scoped to the specific task it\'s performing, not its global tool access across all workflows. Least privilege applies per task, not per agent identity.':'<strong>Not quite.</strong> The error didn\'t propagate (the output was a document modification, not wrong data passed forward). Nobody is being held unaccountable. The issue is that the agent used write access in a context where it should have had read-only access. Which risk covers an agent acting with more authority than the task context allows?';
+    document.getElementById('practiceNext').disabled=false;
+  } else {
+    fb.innerHTML=correct?'<strong>Correct — M19 complete.</strong> Error propagation: the Research Agent\'s error propagated because the handoff didn\'t include the data needed to catch it. The Fact-Check Agent can only verify what it receives. A handoff package for fact-checking must include the source citations alongside the claims — not a summary alone. Validation at handoff requires the right data to be present, not just the right agent to be positioned.':'<strong>Not quite.</strong> Accountability was presumably assigned (the pipeline owner). The Publishing Agent\'s permissions aren\'t the issue. The problem is what the Fact-Check Agent received — a summary without source citations that it could verify. That\'s an error propagation through an insufficient handoff package. Which risk covers errors that pass through the chain uncorrected?';
+    if(correct){setTimeout(()=>{document.getElementById('passScreen').style.display='block';renderTrack(TOTAL);},700);}
+  }
+}
+</script>
+</body>
+</html>

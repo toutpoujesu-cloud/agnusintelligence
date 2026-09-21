@@ -1,0 +1,196 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Academy — M48 When to Override Your Own Policy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#F8F6F2;--panel:#FFFFFF;--panel-2:#F2F0EB;--line:#E5E2D9;--line-2:#D1CEC4;--ink:#18202A;--ink-2:#4A5261;--ink-3:#8E96A2;--navy:#17263C;--navy-2:#0F1A28;--gold:#9A7633;--gold-light:#B59048;--pass:#1A7E4A;--pass-dim:rgba(26,126,74,.1);--danger:#B4432E;--danger-dim:#FEF0ED;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:Manrope,sans-serif;-webkit-font-smoothing:antialiased}
+.top-rail{background:var(--navy-2);color:#fff;display:flex;align-items:center;height:48px;padding:0 20px;gap:18px}
+.tr-brand{font-weight:800;font-size:13.5px}
+.tr-crumb{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.tr-title{font-size:13px;font-weight:700}
+.tr-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.prog-dots{display:flex;gap:5px}
+.prog-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.2)}
+.prog-dot.done{background:var(--gold-light)}
+.prog-dot.active{background:#fff}
+.tr-btn{font-family:Manrope,sans-serif;font-size:12px;font-weight:700;padding:7px 14px;border-radius:7px;border:1px solid rgba(255,255,255,.18);color:#fff;background:rgba(255,255,255,.07);cursor:pointer}
+.wrap{max-width:820px;margin:0 auto;padding:44px 24px 100px}
+.step-banner{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:28px}
+.sb-step{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.sb-count{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-3)}
+.hero{background:var(--navy);border-radius:16px;padding:32px 34px;display:grid;gap:16px;margin-bottom:24px}
+.hero h1{font-weight:800;font-size:26px;letter-spacing:-.026em;color:#fff;line-height:1.15}
+.hero p{font-family:Newsreader,serif;font-style:italic;font-size:16px;line-height:1.7;color:rgba(245,244,241,.78)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px 26px;margin-bottom:20px}
+.card h3{font-size:15px;font-weight:700;margin-bottom:10px}
+.card h4{font-size:13px;font-weight:700;margin:16px 0 10px;color:var(--navy)}
+.card p{font-size:14.5px;line-height:1.68;color:var(--ink-2)}
+.override-case{background:var(--panel-2);border:1.5px solid var(--line-2);border-radius:10px;padding:16px 18px;margin:14px 0}
+.override-case .oc-label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px}
+.override-case p{font-size:13.5px;color:var(--ink);margin:0;line-height:1.6}
+.criteria-list{display:grid;gap:8px;margin:14px 0}
+.criteria-item{display:flex;gap:10px;align-items:flex-start;background:var(--panel-2);border:1.5px solid var(--line-2);border-radius:10px;padding:12px 14px}
+.criteria-item .cn{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:800;color:var(--gold);flex:none;width:20px}
+.criteria-item .ct{font-size:12.5px;color:var(--ink);line-height:1.5}
+.opt-list{display:grid;gap:10px;margin:16px 0}
+.opt{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border:1.5px solid var(--line-2);border-radius:10px;cursor:pointer}
+.opt:hover{border-color:var(--navy);background:#F9F8F5}
+.opt.correct{border-color:var(--pass);background:var(--pass-dim)}
+.opt.wrong{border-color:var(--danger);background:var(--danger-dim)}
+.opt .letter{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;color:var(--ink-3);flex:none;width:20px}
+.opt .text{font-size:14px;line-height:1.5}
+.feedback{display:none;margin-top:14px;padding:16px 18px;border-radius:10px;font-size:13.5px;line-height:1.6}
+.feedback.pass{display:block;background:var(--pass-dim);border-left:3px solid var(--pass);color:var(--ink)}
+.feedback.fail{display:block;background:var(--danger-dim);border-left:3px solid var(--danger);color:var(--ink)}
+.cta-row{display:flex;justify-content:flex-end;margin-top:24px}
+.btn{font-family:Manrope,sans-serif;font-weight:700;font-size:14px;padding:13px 26px;border-radius:10px;border:none;background:var(--navy);color:#fff;cursor:pointer}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.pass-screen{display:none;text-align:center;padding:44px 30px;background:var(--navy);border-radius:16px;color:#fff}
+.pass-screen h2{font-size:22px;font-weight:800;margin-bottom:10px}
+.pass-screen p{font-size:13.5px;color:rgba(255,255,255,.7);margin-bottom:20px}
+.step{display:none}
+.step.active{display:block}
+</style>
+</head>
+<body>
+
+<header class="top-rail">
+  <span class="tr-brand">AGNUS Academy</span>
+  <span class="tr-crumb">Level 7 · Govern</span>
+  <span class="tr-title">M48 — When to Override Your Own Policy</span>
+  <div class="tr-right">
+    <div class="prog-dots" id="progDots"></div>
+    <button class="tr-btn" onclick="location.href='AGNUS - Academy App.html'">← Dashboard</button>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="step active" data-step="0">
+    <div class="step-banner"><span class="sb-step">Step 1 of 4 — Understand</span><span class="sb-count">4 min</span></div>
+    <div class="hero">
+      <h1>Closing out Level 7: a policy is a tool for judgment, not a replacement for it.</h1>
+      <p>M47 built the case for concrete, checkable policy over vague appeals to "good judgment." This module completes that picture: even the best-written policy will occasionally meet a situation it didn't anticipate, and knowing when a justified exception applies is itself a governance skill.</p>
+    </div>
+    <div class="card">
+      <h3>Why this matters</h3>
+      <p>Treating a policy as absolute in every circumstance, with zero capacity for a reasoned exception, eventually produces its own failures — a rule applied rigidly to a case its authors never considered. The skill isn't "follow policy" or "override policy" as a blanket rule; it's recognizing the narrow, real situations where an exception is genuinely justified, and being able to explain why.</p>
+    </div>
+    <div class="cta-row"><button class="btn" onclick="goStep(1)">See a justified exception →</button></div>
+  </section>
+
+  <section class="step" data-step="1">
+    <div class="step-banner"><span class="sb-step">Step 2 of 4 — See</span><span class="sb-count">4 min</span></div>
+    <div class="card">
+      <h3>A case where the policy's letter and its purpose diverge</h3>
+      <div class="override-case">
+        <div class="oc-label">The policy (from M47's model)</div>
+        <p>"Any AI-generated numeric claim in a customer-facing document must cite a specific, checkable source before publication."</p>
+      </div>
+      <div class="override-case">
+        <div class="oc-label">The situation</div>
+        <p>A support agent needs to tell a customer, during an active service outage, "we expect service to be restored within the hour" — an estimate from the live incident-response team, not from a static source document the policy's citation requirement was designed around.</p>
+      </div>
+      <h4>What makes this a justified exception, not just an excuse</h4>
+      <div class="criteria-list">
+        <div class="criteria-item"><span class="cn">1</span><span class="ct">The information genuinely can't satisfy the policy's literal form — there's no static "source document" for a live incident estimate — without this meaning the underlying claim is unverified.</span></div>
+        <div class="criteria-item"><span class="cn">2</span><span class="ct">The claim still has a real basis (the incident-response team's assessment), even though it doesn't fit the citation format the policy anticipated.</span></div>
+        <div class="criteria-item"><span class="cn">3</span><span class="ct">The exception is documented and explainable after the fact — this isn't "we skipped verification," it's "we verified via a different, equally legitimate method the policy didn't originally name."</span></div>
+      </div>
+      <p>Note what this is not: it's not "the citation requirement is inconvenient right now, so we'll skip it." It's recognizing that the policy's actual purpose — don't state unverified numbers — is still being honored, even though its literal mechanism doesn't fit this case.</p>
+    </div>
+    <div class="cta-row"><button class="btn" onclick="goStep(2)">Try it yourself →</button></div>
+  </section>
+
+  <section class="step" data-step="2">
+    <div class="step-banner"><span class="sb-step">Step 3 of 4 — Practice</span><span class="sb-count">4 min</span></div>
+    <div class="card">
+      <h3>What distinguishes a justified policy exception from simply ignoring the policy?</h3>
+      <div class="opt-list" id="practiceOpts">
+        <div class="opt" data-correct="false" onclick="pickPractice(this)"><span class="letter">A</span><span class="text">Whether the person making the exception is senior enough to not need a reason.</span></div>
+        <div class="opt" data-correct="true" onclick="pickPractice(this)"><span class="letter">B</span><span class="text">Whether the policy's actual underlying purpose is still being honored through a different, legitimate mechanism, and the reasoning is documented and explainable afterward.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPractice(this)"><span class="letter">C</span><span class="text">Whether following the policy would have taken more time than skipping it.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPractice(this)"><span class="letter">D</span><span class="text">Whether anyone would notice the exception was made.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPractice(this)"><span class="letter">E</span><span class="text">Any deviation from written policy counts as equally justified, regardless of reasoning.</span></div>
+      </div>
+      <div class="feedback" id="practiceFeedback"></div>
+    </div>
+    <div class="cta-row"><button class="btn" id="practiceNext" onclick="goStep(3)" disabled>Continue →</button></div>
+  </section>
+
+  <section class="step" data-step="3">
+    <div class="step-banner"><span class="sb-step">Step 4 of 4 — Pass</span><span class="sb-count">Hidden test</span></div>
+    <div class="card">
+      <h3>New scenario — no hints</h3>
+      <p style="margin-bottom:14px">An employee skips the org's required human-approval gate (from M18/M32) for a legal document because "the deadline was tight and I was confident it was fine." Is this a justified exception, using the same criteria from Step 2?</p>
+      <div class="opt-list" id="passOpts">
+        <div class="opt" data-correct="true" onclick="pickPass(this)"><span class="letter">A</span><span class="text">No — this doesn't honor the policy's underlying purpose through an alternative legitimate method; it simply skips the verification the gate exists to provide, based on personal confidence rather than an actual substitute check.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">B</span><span class="text">Yes — time pressure alone always justifies skipping any approval gate.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">C</span><span class="text">Yes — personal confidence is an acceptable substitute for a human review gate in any case.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">D</span><span class="text">This can't be evaluated without knowing whether the document was actually correct.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">E</span><span class="text">Approval gates should never have exceptions under any circumstances, so the question is meaningless.</span></div>
+      </div>
+      <div class="feedback" id="passFeedback"></div>
+    </div>
+    <div class="pass-screen" id="passScreen">
+      <h2>Module 48 complete — Level 7 finished</h2>
+      <p>You're ready for the Level 7 Checkpoint, then the Capstone.</p>
+      <button class="tr-btn" onclick="alert('Go to Level 7 Checkpoint')">Go to Level 7 Checkpoint →</button>
+    </div>
+  </section>
+
+</div>
+
+<script>
+const TOTAL_STEPS = 4;
+function renderDots(active){
+  document.getElementById('progDots').innerHTML = Array.from({length:TOTAL_STEPS}).map((_,i)=>
+    '<div class="prog-dot '+(i<active?'done':i===active?'active':'')+'"></div>').join('');
+}
+function goStep(i){
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  document.querySelector('.step[data-step="'+i+'"]').classList.add('active');
+  renderDots(i);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+renderDots(0);
+
+function pickPractice(el){
+  document.querySelectorAll('#practiceOpts .opt').forEach(o=>{o.onclick=null;});
+  const correct = el.dataset.correct === 'true';
+  el.classList.add(correct?'correct':'wrong');
+  const fb = document.getElementById('practiceFeedback');
+  fb.className = 'feedback ' + (correct?'pass':'fail');
+  fb.textContent = correct
+    ? "Correct. Seniority, convenience, and whether anyone notices are all irrelevant to whether an exception is actually justified — the real test is whether the policy's purpose is still honored through some legitimate alternative, with the reasoning documented."
+    : "Not quite. None of these — seniority, time saved, or being unnoticed — are what makes an exception legitimate. The real test is whether the underlying purpose of the policy is still honored some other way, and whether that reasoning is documented.";
+  document.getElementById('practiceNext').disabled = false;
+}
+function pickPass(el){
+  document.querySelectorAll('#passOpts .opt').forEach(o=>{o.onclick=null;});
+  const correct = el.dataset.correct === 'true';
+  el.classList.add(correct?'correct':'wrong');
+  const fb = document.getElementById('passFeedback');
+  fb.className = 'feedback ' + (correct?'pass':'fail');
+  fb.textContent = correct
+    ? "Correct — M48 complete, and Level 7 finished. Personal confidence is exactly what a human-approval gate exists to check independently — substituting it for the gate isn't an alternative verification method, it's the absence of one. This fails the Step 2 test cleanly: no legitimate substitute mechanism, no honoring of the policy's actual purpose. You're ready for the Level 7 Checkpoint, then the Capstone."
+    : "Not quite. Whether the document happened to be correct, whether gates should ever flex, and blanket time-pressure justifications all avoid the real test — did a legitimate alternative verification actually happen here, or was the check simply skipped?";
+  if(correct){ setTimeout(()=>{ document.getElementById('passScreen').style.display='block'; renderDots(4); }, 600); }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Data Minimisation in AI Systems: Why Using Less Data Is Better Governance — AGNUS Research</title>
+<meta name="description" content="Data minimisation — collecting and using only the data necessary for a defined purpose — is a GDPR principle with direct implications for AI system design. This article examines how data minimisation applies to AI training, inference, and monitoring, and why designing for minimum data is both a regulatory requirement and a security advantage." />
+<link rel="canonical" href="https://agnus.example/research/ai-data-governance/data-minimisation/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Data Minimisation in AI Systems: Why Using Less Data Is Better Governance" />
+<meta property="article:published_time" content="2026-09-11" />
+<meta property="article:author" content="Jean-Daniel Alexis" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>
+a,a:visited{color:inherit}
+.prose h3{font-family:var(--font-sans);font-weight:700;font-size:19px;letter-spacing:-.018em;margin:32px 0 14px}
+.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
+.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
+.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s}
+.rsub a:hover{color:var(--ink);background:var(--line-soft,rgba(0,0,0,.04))}
+.rsub a.on{color:var(--gold-deep);font-weight:600}
+.pillar-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:var(--gold-pale,#FEF9ED);color:var(--gold-deep,#8B6914);border:1px solid var(--gold-line,#E8D9A0);border-radius:4px;padding:3px 8px;margin-bottom:16px}
+.dm-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:13px}
+.dm-table th{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);font-weight:600;text-align:left;padding:10px 14px;border-bottom:2px solid var(--line);background:var(--paper-warm,#F7F5F0)}
+.dm-table td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+.dm-table tr:last-child td{border-bottom:none}
+</style>
+</head>
+<body>
+<div class="art-progress"><i id="progBar"></i></div>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+    </div>
+  </div>
+</nav>
+<div class="rsub">
+  <div class="rsub-inner">
+    <a href="#principle">The principle</a>
+    <a href="#ai-stages">At each AI stage</a>
+    <a href="#tensions">Tensions with model performance</a>
+    <a href="#techniques">Techniques</a>
+    <a href="#sources">Sources</a>
+  </div>
+</div>
+<main class="art-layout">
+  <article class="art-main">
+    <header class="art-header">
+      <span class="pillar-tag">AI Data Governance</span>
+      <h1 class="art-h1">Data Minimisation in AI Systems: Why Using Less Data Is Better Governance</h1>
+      <p class="art-lede">GDPR Article 5(1)(c) requires personal data to be "adequate, relevant and limited to what is necessary." For AI systems, this principle applies at training, fine-tuning, inference, and monitoring — each stage at which personal data may be collected and used. This article maps how data minimisation works at each stage, how it interacts with model performance requirements, and what techniques enable AI systems to achieve both.</p>
+      <div class="art-meta">
+        <span>Jean-Daniel Alexis</span><span class="meta-sep">·</span>
+        <span>11 September 2026</span><span class="meta-sep">·</span>
+        <span>AI Data Governance pillar</span><span class="meta-sep">·</span>
+        <span>AR-000670</span>
+      </div>
+    </header>
+    <div class="prose">
+      <h3 id="principle">The data minimisation principle</h3>
+      <p>Data minimisation is not a suggestion to use less data for its own sake. It is a requirement that the data used is adequate (sufficient for its purpose), relevant (connected to the purpose), and limited (not more than necessary). All three elements must be satisfied simultaneously.</p>
+      <p>For AI systems, "adequate" means the training dataset must be large and representative enough for the model to perform its intended task reliably. "Relevant" means the features used for training and inference must have a genuine causal or statistical relationship to the outcome being predicted. "Limited" means personal data should not be included in the training set or inference pipeline unless it contributes materially to performance on the intended task.</p>
+      <p>The last element is where AI systems most commonly fail data minimisation. The historical practice of "more data is better" in machine learning led to datasets that include personal attributes — age, gender, location, purchasing history — that improve model performance marginally but create significant data governance obligations. The governance question is whether that marginal improvement justifies the data governance cost and risk.</p>
+
+      <h3 id="ai-stages">Data minimisation at each AI development stage</h3>
+      <table class="dm-table">
+        <thead><tr><th>Stage</th><th>Data minimisation requirement</th><th>Common violation</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Training data collection</strong></td><td>Include only personal data attributes that are materially predictive of the target outcome. Evaluate each attribute: does removing it materially degrade performance? If not, remove it.</td><td>Retaining demographic attributes (age, gender, postcode) in training data because they improve accuracy on a protected characteristic that cannot legally be used in the decision.</td></tr>
+          <tr><td><strong>Training data storage</strong></td><td>Retain training data for only as long as necessary for the purpose. Establish a retention period. Apply deletion schedules.</td><td>Training datasets retained indefinitely because "we might need to retrain." GDPR Article 5(1)(e) purpose limitation and storage limitation apply to training data.</td></tr>
+          <tr><td><strong>Inference inputs</strong></td><td>The inference pipeline should request only the data necessary to generate a specific prediction. API inputs should not accept data that is not used in the model.</td><td>Input validation accepts any data the user submits and passes it to the model. The model may not use it, but it is processed and potentially logged.</td></tr>
+          <tr><td><strong>Inference logging</strong></td><td>Audit logs of inference requests should not retain the full input data unless it is necessary for the specific monitoring or audit purpose. Consider logging input hashes rather than input values.</td><td>Complete inference inputs — including personal data — are retained in logs for indefinite periods "for monitoring purposes."</td></tr>
+          <tr><td><strong>Monitoring and feedback</strong></td><td>Performance monitoring and feedback collection should not require retaining identified personal data. Aggregate statistics and pseudonymised records are usually sufficient for monitoring purposes.</td><td>User feedback collected with full personal context and retained to "improve the model" without a defined purpose or retention limit.</td></tr>
+        </tbody>
+      </table>
+
+      <h3 id="tensions">The tension between minimisation and performance</h3>
+      <p>There is a genuine tension between data minimisation and model performance. More data generally means better performance. More granular personal data often means better predictions. The tension cannot be dissolved by regulation or governance — it must be navigated with judgment.</p>
+      <p>The key governance question is: what is the marginal performance benefit of each additional personal data attribute, and does that benefit justify the data governance cost? This is not a purely technical question — it is a product and governance decision that should be documented in the risk assessment.</p>
+      <p>For models subject to EU AI Act high-risk classification, the EU AI Act Article 10(3) provides a specific exception: training data may include special categories of personal data (health, biometric, etc.) where "strictly necessary" and subject to appropriate safeguards. The burden of justification for using special category data is high — "it improves performance" is not sufficient. The data controller must demonstrate that the specific sensitive attributes are strictly necessary for the system to achieve its intended purpose, and that no alternative approach would achieve the same purpose without using that data.</p>
+
+      <h3 id="techniques">Privacy-preserving techniques that enable minimisation</h3>
+      <p><strong>Differential privacy</strong> adds calibrated noise to training data or model outputs, providing mathematical guarantees that individual records cannot be extracted from the model. It allows training on sensitive datasets while limiting the information any individual's data contributes to the model. Google, Apple, and the US Census Bureau have deployed differential privacy in production systems.</p>
+      <p><strong>Federated learning</strong> trains models across distributed devices without centralising the raw data. Each device trains locally and sends model updates (not data) to a central aggregator. The raw personal data never leaves the device. Apple uses federated learning for next-word prediction on iOS keyboards.</p>
+      <p><strong>Synthetic data generation</strong> creates artificial datasets that have similar statistical properties to real personal data without containing real individuals' information. When synthetic data is sufficiently high-quality, it can substitute for personal data in training pipelines — enabling training without processing personal data at all.</p>
+      <p><strong>Feature selection and ablation</strong> systematically removes features from training data and measures the performance impact. Features that do not materially affect performance should be removed regardless of privacy status. Features that improve performance on protected characteristics should be evaluated for legal compatibility before inclusion.</p>
+    </div>
+    <section class="art-sources" id="sources">
+      <h2 class="sources-h">Sources and verification</h2>
+      <div class="sources-grid">
+        <div class="source-card"><div class="sc-id">SRC-0001</div><div class="sc-title">GDPR — Articles 5(1)(c) and 5(1)(e)</div><div class="sc-org">European Parliament and Council</div><div class="sc-url"><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679" target="_blank" rel="noopener">eur-lex.europa.eu</a></div><div class="sc-note">Article 5(1)(c): data minimisation principle. Article 5(1)(e): storage limitation principle. Both apply to personal data used in AI training and inference.</div></div>
+        <div class="source-card"><div class="sc-id">SRC-0062</div><div class="sc-title">EU AI Act — Article 10(3)</div><div class="sc-org">European Parliament and Council</div><div class="sc-url"><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689" target="_blank" rel="noopener">eur-lex.europa.eu</a></div><div class="sc-note">Article 10(3) permits use of special categories of personal data in training where strictly necessary. High justification burden.</div></div>
+      </div>
+      <div class="src-registry-note">Article ID: AR-000670 · Sources: SRC-0001, SRC-0062 · Published: 2026-09-11 · AGNUS Research</div>
+    </section>
+  </article>
+  <aside class="art-aside">
+    <div class="aside-block"><div class="aside-label">Pillar</div><a href="AGNUS - Research.html" class="aside-pill">AI Data Governance</a></div>
+    <div class="aside-block">
+      <div class="aside-label">Related articles</div>
+      <ul class="aside-links">
+        <li><a href="AGNUS - Research Article - GDPR and AI.html">GDPR and AI: Where They Intersect</a></li>
+        <li><a href="AGNUS - Research Article - Data Poisoning.html">Data Poisoning</a></li>
+        <li><a href="AGNUS - Research Article - Logging.html">Logging Requirements</a></li>
+      </ul>
+    </div>
+  </aside>
+</main>
+<footer class="footer"><div class="container footer-inner"><div class="footer-copy">© 2026 AGNUS. All rights reserved.</div><div class="footer-links"><a href="AGNUS - Home.html">Home</a><a href="AGNUS - Research.html">Research</a><a href="AGNUS - Academy.html">Academy</a></div></div></footer>
+<script src="agnus-research-data.js"></script>
+<script>(function(){var bar=document.getElementById('progBar');if(!bar)return;window.addEventListener('scroll',function(){var h=document.documentElement;bar.style.width=((h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100)+'%';});})();</script>
+</body>
+</html>

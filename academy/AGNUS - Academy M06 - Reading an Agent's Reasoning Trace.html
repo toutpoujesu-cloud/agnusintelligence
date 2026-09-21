@@ -1,0 +1,401 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Academy — M06 Reading an Agent's Reasoning Trace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#F8F6F2;--surface:#FFFFFF;--surface-2:#F2F0EB;--border:#E0DDD5;--border-2:#CCC9C0;
+  --ink:#14181F;--ink-2:#3C4252;--ink-3:#7A8099;
+  --navy:#0F1E34;--navy-2:#162844;--navy-3:#1E3560;
+  --gold:#9A7020;--gold-bg:rgba(154,112,32,.09);--gold-border:rgba(154,112,32,.22);--gold-light:#C49A2C;
+  --pass:#0F6E3A;--pass-bg:rgba(15,110,58,.09);--pass-border:rgba(15,110,58,.22);
+  --danger:#B03020;--danger-bg:rgba(176,48,32,.09);--danger-border:rgba(176,48,32,.22);
+  --code-bg:#1A2235;
+  --mono:'DM Mono',monospace;--sans:'DM Sans',sans-serif;--serif:'Newsreader',serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;font-family:var(--sans);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+.rail{background:var(--navy);color:#fff;height:54px;display:flex;align-items:center;padding:0 26px;gap:16px;position:sticky;top:0;z-index:200}
+.rail-brand{font-weight:800;font-size:14.5px}
+.rail-sep{width:1px;height:20px;background:rgba(255,255,255,.12);flex-shrink:0}
+.rail-crumb{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38)}
+.rail-title{font-size:13px;font-weight:600;color:rgba(255,255,255,.88)}
+.rail-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.phase-track{display:flex;gap:5px}
+.ph{width:26px;height:3px;border-radius:2px;background:rgba(255,255,255,.16);transition:background .4s}
+.ph.done{background:var(--gold-light)}.ph.active{background:#fff}
+.rail-btn{font-family:var(--sans);font-size:12px;font-weight:600;padding:6px 14px;border-radius:7px;border:1px solid rgba(255,255,255,.16);color:#fff;background:rgba(255,255,255,.07);cursor:pointer}
+.phase{display:none}.phase.active{display:block}
+.hero{background:linear-gradient(138deg,var(--navy) 0%,var(--navy-3) 55%,#1A3A70 100%);padding:52px 0 48px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-60px;top:-60px;width:340px;height:340px;border-radius:50%;background:rgba(154,112,32,.06);pointer-events:none}
+.hero-inner{max-width:820px;margin:0 auto;padding:0 32px;position:relative;z-index:1}
+.hero-kicker{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(200,170,80,.85);margin-bottom:16px;display:flex;align-items:center;gap:9px}
+.hero-kicker::before{content:'';width:20px;height:1px;background:rgba(200,170,80,.6);display:inline-block}
+.hero h1{font-size:clamp(24px,3.5vw,38px);font-weight:800;letter-spacing:-.03em;color:#fff;line-height:1.18;margin-bottom:16px}
+.hero-serif{font-family:var(--serif);font-style:italic;font-size:17px;line-height:1.72;color:rgba(245,242,236,.72);max-width:50ch;margin-bottom:28px}
+.hero-pills{display:flex;gap:14px;flex-wrap:wrap}
+.hp{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:7px;padding:7px 13px;font-size:12px;color:rgba(255,255,255,.68)}
+.hp strong{color:#fff}
+.wrap{max-width:820px;margin:0 auto;padding:40px 32px 120px}
+.step-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;padding-bottom:14px;border-bottom:1.5px solid var(--border)}
+.sh-left{display:flex;align-items:center;gap:10px}
+.sh-badge{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold-border);border-radius:99px;padding:4px 10px;font-weight:600}
+.sh-title{font-size:13px;font-weight:600;color:var(--ink-2)}
+.sh-time{font-family:var(--mono);font-size:10px;color:var(--ink-3)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:26px 28px;margin-bottom:18px}
+.card h3{font-size:16px;font-weight:800;letter-spacing:-.015em;color:var(--navy);margin-bottom:10px}
+.card p{font-size:14.5px;line-height:1.74;color:var(--ink-2)}
+.card p+p{margin-top:10px}
+
+/* TRACE BLOCK */
+.trace{background:var(--code-bg);border-radius:14px;overflow:hidden;margin:16px 0}
+.trace-header{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid rgba(255,255,255,.07);background:rgba(0,0,0,.2)}
+.trace-title{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.trace-body{padding:8px 0}
+.trace-step{display:grid;grid-template-columns:36px 1fr;gap:0;border-bottom:1px solid rgba(255,255,255,.05)}
+.trace-step:last-child{border-bottom:none}
+.ts-num{display:flex;align-items:flex-start;justify-content:center;padding:14px 0;font-family:var(--mono);font-size:10px;font-weight:700;color:rgba(255,255,255,.25)}
+.ts-content{padding:12px 16px 12px 4px}
+.ts-type{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+.ts-type.think{color:rgba(180,140,255,.8)}
+.ts-type.act{color:rgba(100,200,130,.8)}
+.ts-type.observe{color:rgba(100,180,255,.8)}
+.ts-type.decide{color:rgba(255,200,80,.8)}
+.ts-type.flag{color:rgba(255,130,100,.8)}
+.ts-text{font-size:12.5px;color:rgba(230,226,218,.85);line-height:1.65}
+.ts-text .hl{color:rgba(255,200,80,.9);font-weight:600}
+.ts-text .warn{color:rgba(255,130,100,.9);font-weight:600}
+.ts-text .ok{color:rgba(100,200,130,.9);font-weight:600}
+
+/* ANNOTATION */
+.annotated-trace{display:grid;grid-template-columns:1fr 200px;gap:0;border:1px solid var(--border);border-radius:14px;overflow:hidden;margin:16px 0}
+@media(max-width:640px){.annotated-trace{grid-template-columns:1fr}}
+.at-code{background:var(--code-bg);padding:16px 18px;font-family:var(--mono);font-size:12px;line-height:1.9;color:rgba(230,226,218,.85)}
+.at-notes{background:var(--surface-2);padding:14px 16px;display:flex;flex-direction:column;justify-content:space-around;gap:10px;border-left:1px solid var(--border)}
+@media(max-width:640px){.at-notes{border-left:none;border-top:1px solid var(--border)}}
+.at-note{font-size:11.5px;color:var(--ink-2);line-height:1.55;padding-left:9px;border-left:2px solid var(--gold)}
+.at-note strong{color:var(--ink);display:block;font-size:10px;font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
+
+/* RED FLAG */
+.red-flags{display:grid;gap:12px;margin:16px 0}
+.rf-card{display:grid;grid-template-columns:40px 1fr;gap:0;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.rf-num{background:var(--navy);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:13px;font-weight:700;color:var(--gold-light)}
+.rf-body{padding:14px 16px;background:var(--surface)}
+.rf-title{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.rf-text{font-size:13px;color:var(--ink-2);line-height:1.6}
+
+.callout{border-radius:12px;padding:16px 20px;margin:14px 0;font-size:13.5px;line-height:1.68;display:flex;gap:12px;align-items:flex-start}
+.callout.gold{background:var(--gold-bg);border:1px solid var(--gold-border)}
+.callout.danger{background:var(--danger-bg);border:1px solid var(--danger-border)}
+.callout-icon{flex-shrink:0;margin-top:2px}
+.opt-list{display:grid;gap:10px;margin:16px 0}
+.opt{display:grid;grid-template-columns:36px 1fr;border:1.5px solid var(--border-2);border-radius:12px;cursor:pointer;overflow:hidden;transition:border-color .15s,transform .1s}
+.opt:hover{border-color:var(--navy);transform:translateY(-1px)}
+.opt.correct{border-color:var(--pass)}.opt.wrong{border-color:var(--danger)}
+.opt-letter{display:flex;align-items:center;justify-content:center;background:var(--surface-2);font-family:var(--mono);font-size:11px;font-weight:700;color:var(--ink-3)}
+.opt.correct .opt-letter{background:var(--pass-bg);color:var(--pass)}.opt.wrong .opt-letter{background:var(--danger-bg);color:var(--danger)}
+.opt-text{padding:14px 16px;font-size:13.5px;line-height:1.5;color:var(--ink);background:var(--surface)}
+.opt.correct .opt-text{background:var(--pass-bg)}.opt.wrong .opt-text{background:var(--danger-bg)}
+.feedback{display:none;margin-top:14px;padding:16px 18px;border-radius:11px;font-size:14px;line-height:1.68}
+.feedback.pass{display:block;background:var(--pass-bg);border-left:3px solid var(--pass)}
+.feedback.fail{display:block;background:var(--danger-bg);border-left:3px solid var(--danger)}
+.quiz-q{font-size:16px;font-weight:700;letter-spacing:-.012em;color:var(--navy);margin-bottom:6px}
+.quiz-context{font-size:13.5px;color:var(--ink-2);line-height:1.65;margin-bottom:20px;padding:14px 16px;background:var(--surface-2);border-radius:10px;border-left:3px solid var(--gold)}
+.cta-row{display:flex;justify-content:space-between;align-items:center;margin-top:28px;padding-top:20px;border-top:1px solid var(--border)}
+.cta-hint{font-size:13px;color:var(--ink-3)}
+.btn{font-family:var(--sans);font-weight:700;font-size:14.5px;padding:13px 30px;border-radius:12px;border:none;cursor:pointer;transition:all .2s}
+.btn-primary{background:var(--navy);color:#fff}.btn-primary:hover{background:var(--navy-2);transform:translateY(-1px)}
+.btn-primary:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.btn-ghost{background:transparent;color:var(--ink-2);border:1px solid var(--border-2)}.btn-ghost:hover{background:var(--surface-2)}
+.pass-screen{display:none;text-align:center;padding:56px 36px;background:linear-gradient(138deg,var(--navy),var(--navy-3));border-radius:20px;margin-top:20px;color:#fff}
+.ps-glyph{font-size:42px;margin-bottom:16px;color:var(--gold-light)}
+.ps-title{font-size:26px;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+.ps-sub{font-size:14px;color:rgba(255,255,255,.65);line-height:1.6;max-width:38ch;margin:0 auto 28px}
+.ps-next{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#fff;border:none;font-family:var(--sans);font-weight:700;font-size:14px;padding:13px 26px;border-radius:11px;cursor:pointer}
+</style>
+</head>
+<body>
+<header class="rail">
+  <span class="rail-brand">AGNUS Academy</span>
+  <span class="rail-sep"></span>
+  <span class="rail-crumb">Level 1 · Understand</span>
+  <span class="rail-title">M06 — Reading an Agent's Reasoning Trace</span>
+  <div class="rail-right">
+    <div class="phase-track" id="phaseTrack"></div>
+    <button class="rail-btn" onclick="location.href='AGNUS - Academy App.html'">← Dashboard</button>
+  </div>
+</header>
+
+<!-- PHASE 0 -->
+<div class="phase active" data-phase="0">
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-kicker">Module 06 of 49 · Level 1 · Understand</div>
+      <h1>The reasoning trace is<br>the agent's thought log.</h1>
+      <p class="hero-serif">Most agents can show you their work — the sequence of observations, decisions, and actions that led to their output. Reading that trace fluently is how you catch problems before they become consequences.</p>
+      <div class="hero-pills">
+        <span class="hp"><strong>6 steps</strong></span>
+        <span class="hp"><strong>~16 min</strong></span>
+        <span class="hp"><strong>Prerequisite: M05</strong></span>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="card">
+      <h3>Why the trace exists</h3>
+      <p>When an agent works through a task, it doesn't just produce an output — it produces a sequence of intermediate steps: what it observed, what it decided, what it called, what the result was, and what it concluded. This sequence is the reasoning trace. In well-governed agent systems, it's logged automatically.</p>
+      <p>The trace is the difference between an agent you understand and one you trust blindly. An agent whose output you can only evaluate — never inspect — is an agent you have limited control over. The trace gives you the ability to understand <em>why</em> the agent produced what it produced, and to catch the moment it went wrong.</p>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Next: the five elements of a reasoning trace</span>
+      <button class="btn btn-primary" onclick="goPhase(1)">Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 1 -->
+<div class="phase" data-phase="1">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 2 of 6</span><span class="sh-title">Five elements of a reasoning trace</span></div>
+      <span class="sh-time">4 min</span>
+    </div>
+    <div class="card">
+      <h3>What you're reading</h3>
+      <p>Reasoning traces aren't standardised — different agent frameworks format them differently. But every trace contains the same five categories of entries. Once you recognise these, you can read any trace.</p>
+    </div>
+    <div class="trace">
+      <div class="trace-header"><span class="trace-title">Reasoning trace — example: "Process invoice INV-2026-0441"</span></div>
+      <div class="trace-body">
+        <div class="trace-step">
+          <div class="ts-num">1</div>
+          <div class="ts-content">
+            <div class="ts-type think">Think</div>
+            <div class="ts-text">I need to process invoice INV-2026-0441. First I should read the invoice to get the amount and supplier, then check if a matching PO exists, then verify the amount against my threshold.</div>
+          </div>
+        </div>
+        <div class="trace-step">
+          <div class="ts-num">2</div>
+          <div class="ts-content">
+            <div class="ts-type act">Act</div>
+            <div class="ts-text">→ Calling <span class="hl">read_invoice("INV-2026-0441")</span></div>
+          </div>
+        </div>
+        <div class="trace-step">
+          <div class="ts-num">3</div>
+          <div class="ts-content">
+            <div class="ts-type observe">Observe</div>
+            <div class="ts-text">Result: <span class="ok">supplier=Lindqvist Logistics, amount=€320, date=2026-08-22</span></div>
+          </div>
+        </div>
+        <div class="trace-step">
+          <div class="ts-num">4</div>
+          <div class="ts-content">
+            <div class="ts-type think">Think</div>
+            <div class="ts-text">Amount is €320. My auto-approve threshold is €500. €320 &lt; €500. I still need to verify a matching PO exists before approving.</div>
+          </div>
+        </div>
+        <div class="trace-step">
+          <div class="ts-num">5</div>
+          <div class="ts-content">
+            <div class="ts-type act">Act</div>
+            <div class="ts-text">→ Calling <span class="hl">match_po("INV-2026-0441")</span></div>
+          </div>
+        </div>
+        <div class="trace-step">
+          <div class="ts-num">6</div>
+          <div class="ts-content">
+            <div class="ts-type observe">Observe</div>
+            <div class="ts-text">Result: <span class="ok">PO-389 matched, no variance</span></div>
+          </div>
+        </div>
+        <div class="trace-step">
+          <div class="ts-num">7</div>
+          <div class="ts-content">
+            <div class="ts-type decide">Decide</div>
+            <div class="ts-text">PO matched. Amount under threshold. Proceeding to approve automatically.</div>
+          </div>
+        </div>
+        <div class="trace-step">
+          <div class="ts-num">8</div>
+          <div class="ts-content">
+            <div class="ts-type act">Act</div>
+            <div class="ts-text">→ Calling <span class="ok">submit_payment(amount=320, payee="Lindqvist Logistics")</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="background:var(--surface-2)">
+      <h3 style="font-size:14px">Five trace element types</h3>
+      <div style="display:grid;grid-template-columns:80px 1fr;gap:8px 14px;margin-top:10px;font-size:13px">
+        <div style="font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(180,140,255,.9)">Think</div><div style="color:var(--ink-2)">Internal reasoning — what the agent is considering before acting. Not a verified fact; a step in the reasoning process.</div>
+        <div style="font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(100,200,130,.9)">Act</div><div style="color:var(--ink-2)">A tool call being issued. The moment the agent reaches outside the conversation.</div>
+        <div style="font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(100,180,255,.9)">Observe</div><div style="color:var(--ink-2)">The result returned by the tool. Real data from the real world.</div>
+        <div style="font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,200,80,.9)">Decide</div><div style="color:var(--ink-2)">A conclusion the agent draws from its observations — the step that leads to the next action.</div>
+        <div style="font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,130,100,.9)">Flag</div><div style="color:var(--ink-2)">A point where the agent identifies an issue, ambiguity, or condition that requires attention or escalation.</div>
+      </div>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Next: a trace with a problem</span>
+      <button class="btn btn-primary" onclick="goPhase(2)">Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 2 -->
+<div class="phase" data-phase="2">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 3 of 6</span><span class="sh-title">Reading a trace with a problem</span></div>
+      <span class="sh-time">4 min</span>
+    </div>
+    <div class="card">
+      <h3>Find the moment it went wrong</h3>
+      <p>The value of a reasoning trace is that it shows you exactly where an agent's logic deviated. Read this trace and find the step where the problem occurs.</p>
+    </div>
+    <div class="trace">
+      <div class="trace-header"><span class="trace-title">Trace — task: "Summarise the Q3 financial report for the board"</span></div>
+      <div class="trace-body">
+        <div class="trace-step">
+          <div class="ts-num">1</div>
+          <div class="ts-content"><div class="ts-type think">Think</div><div class="ts-text">I need to summarise the Q3 financial report. I'll search the document store for "Q3 financial report".</div></div>
+        </div>
+        <div class="trace-step">
+          <div class="ts-num">2</div>
+          <div class="ts-content"><div class="ts-type act">Act</div><div class="ts-text">→ Calling <span class="hl">search_documents("Q3 financial")</span></div></div>
+        </div>
+        <div class="trace-step">
+          <div class="ts-num">3</div>
+          <div class="ts-content"><div class="ts-type observe">Observe</div><div class="ts-text">Result: <span class="ok">3 documents found: Q3-financial-report.pdf, Q3-financial-forecast.xlsx, Q3-hr-budget.pdf</span></div></div>
+        </div>
+        <div class="trace-step">
+          <div class="ts-num">4</div>
+          <div class="ts-content"><div class="ts-type think">Think</div><div class="ts-text"><span class="warn">I'll read all three documents to get a complete picture of Q3 finances.</span></div></div>
+        </div>
+        <div class="trace-step">
+          <div class="ts-num">5</div>
+          <div class="ts-content"><div class="ts-type act">Act</div><div class="ts-text">→ Calling <span class="hl">read_file("Q3-hr-budget.pdf")</span></div></div>
+        </div>
+        <div class="trace-step">
+          <div class="ts-num">6</div>
+          <div class="ts-content"><div class="ts-type observe">Observe</div><div class="ts-text">Result: HR budget data including individual salary ranges and headcount plans</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="background:var(--danger-bg);border-color:var(--danger-border)">
+      <h3 style="color:var(--danger);font-size:14px">The problem is at Step 4</h3>
+      <p style="font-size:13.5px;margin-top:6px">The agent's reasoning at Step 4 — "I'll read all three documents to get a complete picture" — is a scope expansion that wasn't requested. The task was to summarise the Q3 financial report. The HR budget document is outside that scope and contains sensitive personnel data the agent had no reason to access. The Think step shows exactly where the scope drift happened and why.</p>
+    </div>
+    <div class="callout gold">
+      <div class="callout-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M8 7v5M8 5.5v.5"/></svg></div>
+      <div><strong>Key skill:</strong> When reading a trace, scan the Think steps first. The Think steps are where the agent's reasoning is visible — that's where you'll find the decision that led to an out-of-scope action.</div>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Next: red flags in traces</span>
+      <button class="btn btn-primary" onclick="goPhase(3)">Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 3 -->
+<div class="phase" data-phase="3">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 4 of 6</span><span class="sh-title">Red flags in reasoning traces</span></div>
+      <span class="sh-time">3 min</span>
+    </div>
+    <div class="red-flags">
+      <div class="rf-card"><div class="rf-num">1</div><div class="rf-body"><div class="rf-title">Missing verification steps before consequential actions</div><div class="rf-text">The trace shows Act → Act (submit_payment) with no Observe step from a PO match or threshold check in between. The agent skipped the verification steps and went straight to the irreversible action.</div></div></div>
+      <div class="rf-card"><div class="rf-num">2</div><div class="rf-body"><div class="rf-title">Think step expands scope beyond the task</div><div class="rf-text">"I'll read all related documents to get a better picture" — this is the agent reasoning itself into broader data access than the task required. Scope expansion in Think steps is the precursor to GDPR and permissions violations.</div></div></div>
+      <div class="rf-card"><div class="rf-num">3</div><div class="rf-body"><div class="rf-title">Decide step draws a conclusion the Observe data doesn't support</div><div class="rf-text">Observe returns an error or ambiguous data. The Decide step immediately after says "proceeding with approval." The agent decided to act despite receiving insufficient verification. The reasoning chain is broken.</div></div></div>
+      <div class="rf-card"><div class="rf-num">4</div><div class="rf-body"><div class="rf-title">Act step with no preceding Think or Observe</div><div class="rf-text">The agent takes an action with no visible reasoning for why. This can indicate the agent is operating on instructions or data you can't see in the trace — or that the trace is incomplete.</div></div></div>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Next: practice</span>
+      <button class="btn btn-primary" onclick="goPhase(4)">Practice →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 4 -->
+<div class="phase" data-phase="4">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 5 of 6</span><span class="sh-title">Practice</span></div>
+      <span class="sh-time">3 min</span>
+    </div>
+    <div class="card">
+      <p class="quiz-context">An agent's trace shows: (1) Think: "I need to send the summary to the management team." (2) Act: send_email(to="management@nordvik.no", subject="Q3 Summary"). (3) Observe: "sent". (4) Think: "Now I should also send this to the board since they'll want it too." (5) Act: send_email(to="board@nordvik.no", subject="Q3 Summary").</p>
+      <div class="quiz-q">What is the key problem in this trace?</div>
+      <div class="opt-list" id="practiceOpts">
+        <div class="opt" data-correct="false" onclick="pickQ('practice',this)"><div class="opt-letter">A</div><div class="opt-text">Step 3 shows the email was sent — that confirms the action was successful, which is fine.</div></div>
+        <div class="opt" data-correct="true" onclick="pickQ('practice',this)"><div class="opt-letter">B</div><div class="opt-text">At Step 4, the agent expands its own scope — the task was to send to management, but the agent independently decided to also send to the board. This is an unauthorised action: the agent extended the distribution beyond what was instructed.</div></div>
+        <div class="opt" data-correct="false" onclick="pickQ('practice',this)"><div class="opt-letter">C</div><div class="opt-text">The trace is missing a Flag step — the agent should have flagged the board email as sensitive.</div></div>
+      </div>
+      <div class="feedback" id="practiceFeedback"></div>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Final test</span>
+      <button class="btn btn-primary" id="practiceNext" onclick="goPhase(5)" disabled>Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 5 -->
+<div class="phase" data-phase="5">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 6 of 6</span><span class="sh-title">Pass — hidden test</span></div>
+      <span class="sh-time">3 min</span>
+    </div>
+    <div class="card">
+      <p class="quiz-context">A colleague says: "I don't bother reading the trace — I just look at the final output. If the output is right, the trace doesn't matter." They're deploying a finance agent that processes 200 invoices per day.</p>
+      <div class="quiz-q">What is wrong with this approach, and when does it become dangerous?</div>
+      <div class="opt-list" id="passOpts">
+        <div class="opt" data-correct="false" onclick="pickQ('pass',this)"><div class="opt-letter">A</div><div class="opt-text">Nothing — if the output is correct, the process that produced it doesn't matter.</div></div>
+        <div class="opt" data-correct="true" onclick="pickQ('pass',this)"><div class="opt-letter">B</div><div class="opt-text">The trace is where scope drift, skipped verification steps, and unauthorised data access are visible — not in the final output. An agent that reads HR salary data while processing invoices produces a "correct" payment output but has committed a GDPR violation. An agent that skips PO matching produces correct payments 95% of the time — until the 5% where it pays without a PO. Output correctness is not a proxy for correct process.</div></div>
+        <div class="opt" data-correct="false" onclick="pickQ('pass',this)"><div class="opt-letter">C</div><div class="opt-text">The trace only matters for debugging — it has no governance relevance.</div></div>
+      </div>
+      <div class="feedback" id="passFeedback"></div>
+    </div>
+    <div class="pass-screen" id="passScreen">
+      <div class="ps-glyph">✦</div>
+      <div class="ps-title">Module 06 complete</div>
+      <p class="ps-sub">You can read a reasoning trace, identify its five element types, find the step where a problem originated, and explain why output correctness alone is not sufficient governance for an agent.</p>
+      <button class="ps-next" onclick="location.href=`AGNUS - Academy M07 - Why AI Sounds Certain.html`">Continue to M07 →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const TOTAL=6;
+function renderTrack(a){document.getElementById('phaseTrack').innerHTML=Array.from({length:TOTAL},(_,i)=>`<div class="ph ${i<a?'done':i===a?'active':''}"></div>`).join('');}
+function goPhase(n){document.querySelectorAll('.phase').forEach(p=>p.classList.remove('active'));document.querySelector(`[data-phase="${n}"]`).classList.add('active');renderTrack(n);window.scrollTo({top:0,behavior:'smooth'});}
+renderTrack(0);
+function pickQ(which,el){
+  document.querySelectorAll(`#${which}Opts .opt`).forEach(o=>{o.onclick=null;o.style.cursor='default';});
+  const correct=el.dataset.correct==='true';el.classList.add(correct?'correct':'wrong');
+  const fb=document.getElementById(`${which}Feedback`);fb.className='feedback '+(correct?'pass':'fail');
+  if(which==='practice'){
+    fb.innerHTML=correct?'<strong>Correct.</strong> At Step 4, the agent expanded its own scope — adding the board to the distribution without being asked. The Think step reveals the reasoning: "they\'ll want it too." That might be true, but it\'s the agent\'s independent judgment, not the operator\'s instruction. Scope self-expansion in Think steps is how unauthorised actions start.':'<strong>Not quite.</strong> The problem isn\'t that the email succeeded — it\'s that the agent decided on its own to extend the distribution to the board. That decision wasn\'t in the task. Read the Think step at Step 4 carefully.';
+    document.getElementById('practiceNext').disabled=false;
+  } else {
+    fb.innerHTML=correct?'<strong>Correct — M06 complete.</strong> Output correctness is not a governance proxy. An agent can produce correct outputs while committing GDPR violations, skipping authorisation steps, or accessing data it shouldn\'t. The trace is where these process failures are visible. Reviewing only outputs means you\'re monitoring for errors — not for governance violations, many of which produce no visible output error at all.':'<strong>Not quite.</strong> The question is not whether the output is correct — it\'s whether the process that produced it was correct. GDPR violations, skipped verification steps, and scope expansions can all produce correct-looking outputs. The trace is the only place these are visible.';
+    if(correct){setTimeout(()=>{document.getElementById('passScreen').style.display='block';renderTrack(TOTAL);},700);}
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Academy — M40 Build an Automated Fact-Check Step</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#F8F6F2;--panel:#FFFFFF;--panel-2:#F2F0EB;--line:#E5E2D9;--line-2:#D1CEC4;--ink:#18202A;--ink-2:#4A5261;--ink-3:#8E96A2;--navy:#17263C;--navy-2:#0F1A28;--gold:#9A7633;--gold-light:#B59048;--pass:#1A7E4A;--pass-dim:rgba(26,126,74,.1);--danger:#B4432E;--danger-dim:#FEF0ED;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:Manrope,sans-serif;-webkit-font-smoothing:antialiased}
+.top-rail{background:var(--navy-2);color:#fff;display:flex;align-items:center;height:48px;padding:0 20px;gap:18px}
+.tr-brand{font-weight:800;font-size:13.5px}
+.tr-crumb{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.tr-title{font-size:13px;font-weight:700}
+.tr-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.prog-dots{display:flex;gap:5px}
+.prog-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.2)}
+.prog-dot.done{background:var(--gold-light)}
+.prog-dot.active{background:#fff}
+.tr-btn{font-family:Manrope,sans-serif;font-size:12px;font-weight:700;padding:7px 14px;border-radius:7px;border:1px solid rgba(255,255,255,.18);color:#fff;background:rgba(255,255,255,.07);cursor:pointer}
+.wrap{max-width:820px;margin:0 auto;padding:44px 24px 100px}
+.step-banner{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:28px}
+.sb-step{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.sb-count{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-3)}
+.hero{background:var(--navy);border-radius:16px;padding:32px 34px;display:grid;gap:16px;margin-bottom:24px}
+.hero h1{font-weight:800;font-size:26px;letter-spacing:-.026em;color:#fff;line-height:1.15}
+.hero p{font-family:Newsreader,serif;font-style:italic;font-size:16px;line-height:1.7;color:rgba(245,244,241,.78)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px 26px;margin-bottom:20px}
+.card h3{font-size:15px;font-weight:700;margin-bottom:10px}
+.card h4{font-size:13px;font-weight:700;margin:16px 0 10px;color:var(--navy)}
+.card p{font-size:14.5px;line-height:1.68;color:var(--ink-2)}
+.pipeline-flow{display:flex;align-items:center;gap:0;margin:16px 0;flex-wrap:wrap}
+.pf-node{background:var(--panel-2);border:1.5px solid var(--line-2);border-radius:10px;padding:14px 16px;flex:1;min-width:130px;text-align:center}
+.pf-node.gate{background:rgba(154,118,51,.1);border-color:rgba(154,118,51,.35)}
+.pf-node .label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px}
+.pf-node.gate .label{color:var(--gold)}
+.pf-node .text{font-size:12.5px;font-weight:600;color:var(--ink)}
+.pf-arrow{padding:0 8px;color:var(--ink-3);font-size:16px}
+.prompt-editor{width:100%;min-height:130px;border:1.5px solid var(--line-2);border-radius:9px;padding:14px 16px;font-family:'IBM Plex Mono',monospace;font-size:13px;line-height:1.6;resize:vertical;margin:12px 0;background:#fff}
+.opt-list{display:grid;gap:10px;margin:16px 0}
+.opt{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border:1.5px solid var(--line-2);border-radius:10px;cursor:pointer}
+.opt:hover{border-color:var(--navy);background:#F9F8F5}
+.opt.correct{border-color:var(--pass);background:var(--pass-dim)}
+.opt.wrong{border-color:var(--danger);background:var(--danger-dim)}
+.opt .letter{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;color:var(--ink-3);flex:none;width:20px}
+.opt .text{font-size:14px;line-height:1.5}
+.feedback{display:none;margin-top:14px;padding:16px 18px;border-radius:10px;font-size:13.5px;line-height:1.6}
+.feedback.pass{display:block;background:var(--pass-dim);border-left:3px solid var(--pass);color:var(--ink)}
+.feedback.fail{display:block;background:var(--danger-dim);border-left:3px solid var(--danger);color:var(--ink)}
+.cta-row{display:flex;justify-content:flex-end;margin-top:24px}
+.btn{font-family:Manrope,sans-serif;font-weight:700;font-size:14px;padding:13px 26px;border-radius:10px;border:none;background:var(--navy);color:#fff;cursor:pointer}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.pass-screen{display:none;text-align:center;padding:44px 30px;background:var(--navy);border-radius:16px;color:#fff}
+.pass-screen h2{font-size:22px;font-weight:800;margin-bottom:10px}
+.pass-screen p{font-size:13.5px;color:rgba(255,255,255,.7);margin-bottom:20px}
+.step{display:none}
+.step.active{display:block}
+</style>
+</head>
+<body>
+
+<header class="top-rail">
+  <span class="tr-brand">AGNUS Academy</span>
+  <span class="tr-crumb">Level 6 · Build</span>
+  <span class="tr-title">M40 — Build an Automated Fact-Check Step</span>
+  <div class="tr-right">
+    <div class="prog-dots" id="progDots"></div>
+    <button class="tr-btn" onclick="location.href='AGNUS - Academy App.html'">← Dashboard</button>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="step active" data-step="0">
+    <div class="step-banner"><span class="sb-step">Step 1 of 4 — Understand</span><span class="sb-count">4 min</span></div>
+    <div class="hero">
+      <h1>Put the check between the draft and the publish button, not after.</h1>
+      <p>M38 and M39 built checkers for one document type each. This module generalizes the pattern into a pipeline step any content workflow can insert — a fact-check gate that runs automatically before anything ships.</p>
+    </div>
+    <div class="card">
+      <h3>Why this matters</h3>
+      <p>A fact-check that happens after publication is a correction, not a prevention. Inserting the check as a required pipeline step — one the content literally cannot pass through without clearing — moves the safeguard from "hopefully someone catches it" to "structurally cannot ship unflagged."</p>
+    </div>
+    <div class="cta-row"><button class="btn" onclick="goStep(1)">See the pipeline →</button></div>
+  </section>
+
+  <section class="step" data-step="1">
+    <div class="step-banner"><span class="sb-step">Step 2 of 4 — See</span><span class="sb-count">4 min</span></div>
+    <div class="card">
+      <h3>A content pipeline with a fact-check gate</h3>
+      <div class="pipeline-flow">
+        <div class="pf-node"><div class="label">Draft</div><div class="text">AI generates content</div></div>
+        <span class="pf-arrow">→</span>
+        <div class="pf-node gate"><div class="label">Fact-check gate</div><div class="text">Every factual claim scanned and classified</div></div>
+        <span class="pf-arrow">→</span>
+        <div class="pf-node"><div class="label">Publish</div><div class="text">Only if no unresolved flags remain</div></div>
+      </div>
+      <h4>What the gate step actually needs to do</h4>
+      <p>This is the same detection logic from M38 (contracts) and M39 (video scripts), made general-purpose: identify factual claims, classify each as sourced, unsourced, or opinion/aspiration, and block anything unsourced from passing through until it's either sourced or explicitly relabeled. The gate doesn't judge truth — it judges whether a claim has traceable support, which is the same distinction M13 and M30 both established.</p>
+    </div>
+    <div class="cta-row"><button class="btn" onclick="goStep(2)">Write the gate instruction →</button></div>
+  </section>
+
+  <section class="step" data-step="2">
+    <div class="step-banner"><span class="sb-step">Step 3 of 4 — Build</span><span class="sb-count">5 min</span></div>
+    <div class="card">
+      <h3>Write the instruction for a general-purpose fact-check gate</h3>
+      <p style="margin-bottom:10px">Write a prompt-based instruction for a fact-check step that runs before ANY content publishes — blog posts, ads, social copy. It should classify claims and specify what blocks publication.</p>
+      <textarea class="prompt-editor" id="gatePrompt" placeholder="e.g. Before this content can be marked ready to publish, scan every sentence for factual claims and classify each as..."></textarea>
+      <div id="gateFeedback" style="display:none"></div>
+    </div>
+    <div class="cta-row"><button class="btn" id="gateNext" onclick="goStep(3)" disabled>Continue →</button></div>
+  </section>
+
+  <section class="step" data-step="3">
+    <div class="step-banner"><span class="sb-step">Step 4 of 4 — Pass</span><span class="sb-count">Hidden test</span></div>
+    <div class="card">
+      <h3>New scenario — no hints</h3>
+      <p style="margin-bottom:14px">A team implements a fact-check gate, but content creators find it frustrating: it blocks every draft that contains any number at all, even routine ones like "founded in 2019." What is the actual design flaw here?</p>
+      <div class="opt-list" id="passOpts">
+        <div class="opt" data-correct="true" onclick="pickPass(this)"><span class="letter">A</span><span class="text">The gate is treating "contains a number" as the trigger instead of "makes an unsourced, checkable factual claim" — it needs to distinguish routine, easily-verified facts from genuinely risky unsourced claims, or it will be disabled out of frustration.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">B</span><span class="text">The gate is working exactly as intended — all numbers should always be blocked.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">C</span><span class="text">The team should remove all numbers from their content permanently.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">D</span><span class="text">Fact-check gates should never be used for any content with dates.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">E</span><span class="text">The frustration is irrelevant and should be ignored regardless of the cause.</span></div>
+      </div>
+      <div class="feedback" id="passFeedback"></div>
+    </div>
+    <div class="pass-screen" id="passScreen">
+      <h2>Module 40 complete</h2>
+      <p>Fact-check pipeline design confirmed.</p>
+      <button class="tr-btn" onclick="location.href='AGNUS - Academy App.html'">← Dashboard</button>
+    </div>
+  </section>
+
+</div>
+
+<script>
+const TOTAL_STEPS = 4;
+function renderDots(active){
+  document.getElementById('progDots').innerHTML = Array.from({length:TOTAL_STEPS}).map((_,i)=>
+    '<div class="prog-dot '+(i<active?'done':i===active?'active':'')+'"></div>').join('');
+}
+function goStep(i){
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  document.querySelector('.step[data-step="'+i+'"]').classList.add('active');
+  renderDots(i);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+renderDots(0);
+
+document.getElementById('gatePrompt').addEventListener('input', function(){
+  const text = this.value.trim().toLowerCase();
+  const mentionsClassify = text.includes('classif') || text.includes('sourced') || text.includes('unsourced');
+  const mentionsBlock = text.includes('block') || text.includes('cannot publish') || text.includes('prevent') || text.includes('flag');
+  const fb = document.getElementById('gateFeedback');
+  if (text.length > 60 && mentionsClassify) {
+    fb.style.display = 'block';
+    fb.style.cssText = 'display:block;padding:14px 16px;border-radius:9px;font-size:13px;line-height:1.6;background:' + (mentionsBlock ? 'var(--pass-dim);border-left:3px solid var(--pass)' : 'rgba(154,118,51,.1);border-left:3px solid var(--gold)');
+    fb.textContent = mentionsBlock
+      ? "Good — you've specified both classification (sourced/unsourced) and an actual consequence for unsourced claims (blocking publication). Both parts are needed: classification alone doesn't stop anything from shipping."
+      : "You've specified classification. Make sure the instruction also states the actual consequence — what happens to content when an unsourced claim is found? Classification without a real block just documents the problem without preventing it.";
+    document.getElementById('gateNext').disabled = false;
+  }
+});
+
+function pickPass(el){
+  document.querySelectorAll('#passOpts .opt').forEach(o=>{o.onclick=null;});
+  const correct = el.dataset.correct === 'true';
+  el.classList.add(correct?'correct':'wrong');
+  const fb = document.getElementById('passFeedback');
+  fb.className = 'feedback ' + (correct?'pass':'fail');
+  fb.textContent = correct
+    ? "Correct — M40 complete. \"Founded in 2019\" is a specific, easily-verifiable fact with no real risk of causing harm if wrong — it shouldn't trigger the same block as an unsourced growth statistic. A gate that can't tell the difference will get disabled by frustrated users, which defeats its entire purpose."
+    : "Not quite. The fix isn't removing all numbers or dates — it's making the gate distinguish between routine, low-risk facts and genuinely unsourced, high-risk claims, which is the same distinction M38 and M39 both required.";
+  if(correct){ setTimeout(()=>{ document.getElementById('passScreen').style.display='block'; renderDots(4); }, 600); }
+}
+</script>
+</body>
+</html>

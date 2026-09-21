@@ -1,0 +1,450 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Academy — Evidence Package Builder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#F8F6F2;--surface:#FFFFFF;--surface-2:#F2F0EB;--border:#E0DDD5;--border-2:#CCC9C0;
+  --ink:#14181F;--ink-2:#3C4252;--ink-3:#7A8099;
+  --navy:#0F1E34;--navy-2:#162844;
+  --gold:#9A7020;--gold-bg:rgba(154,112,32,.09);--gold-border:rgba(154,112,32,.22);--gold-light:#C49A2C;
+  --pass:#0F6E3A;--pass-bg:rgba(15,110,58,.09);--pass-border:rgba(15,110,58,.22);
+  --danger:#B03020;--danger-bg:rgba(176,48,32,.09);--danger-border:rgba(176,48,32,.22);
+  --warn:#C4760A;--warn-bg:rgba(196,118,10,.09);--warn-border:rgba(196,118,10,.22);
+  --blue:#1A4E8A;--blue-bg:rgba(26,78,138,.09);--blue-border:rgba(26,78,138,.22);
+  --mono:'DM Mono',monospace;--sans:'DM Sans',sans-serif;--serif:'Newsreader',serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;font-family:var(--sans);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+.rail{background:var(--navy);color:#fff;height:56px;display:flex;align-items:center;padding:0 28px;gap:16px;position:sticky;top:0;z-index:200}
+.rail-brand{font-weight:800;font-size:15px}
+.rail-sep{width:1px;height:22px;background:rgba(255,255,255,.12);flex-shrink:0}
+.rail-crumb{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38)}
+.rail-title{font-size:13px;font-weight:600;color:rgba(255,255,255,.88)}
+.rail-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.rail-btn{font-family:var(--sans);font-size:12px;font-weight:600;padding:6px 14px;border-radius:7px;border:1px solid rgba(255,255,255,.16);color:#fff;background:rgba(255,255,255,.07);cursor:pointer}
+.context-bar{background:var(--navy-2);border-bottom:1px solid rgba(255,255,255,.07);padding:12px 28px;display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+.cb-item{display:flex;flex-direction:column;gap:2px}
+.cb-label{font-family:var(--mono);font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35)}
+.cb-value{font-size:13px;font-weight:600;color:rgba(255,255,255,.88)}
+.cb-sep{width:1px;height:32px;background:rgba(255,255,255,.1);flex-shrink:0}
+.phase{display:none}.phase.active{display:block}
+.wrap{max-width:960px;margin:0 auto;padding:40px 28px 100px}
+.phase-badge{display:flex;align-items:center;gap:10px;margin-bottom:28px}
+.pb-dot{width:32px;height:32px;border-radius:50%;background:var(--blue-bg);border:2px solid var(--blue-border);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;font-weight:700;color:var(--blue)}
+.pb-stage{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:2px}
+.pb-title{font-size:22px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+.pb-sub{font-size:14px;color:var(--ink-3);line-height:1.6;margin-top:6px;max-width:60ch}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px 26px;margin-bottom:16px}
+.card h3{font-size:17px;font-weight:800;color:var(--navy);margin-bottom:10px;letter-spacing:-.015em}
+.card p{font-size:14px;line-height:1.72;color:var(--ink-2)}
+.card p+p{margin-top:8px}
+.section-label{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:14px;display:block}
+/* EVIDENCE CHECKLIST */
+.ev-section{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:16px}
+.ev-section-head{background:var(--surface-2);border-bottom:1px solid var(--border);padding:14px 18px;display:flex;align-items:center;justify-content:space-between}
+.ev-section-head h4{font-size:14.5px;font-weight:800;color:var(--navy)}
+.ev-progress{font-family:var(--mono);font-size:10px;color:var(--ink-3)}
+.ev-item{display:flex;align-items:flex-start;gap:14px;padding:14px 18px;border-bottom:1px solid var(--border);cursor:pointer;transition:background .12s}
+.ev-item:hover{background:var(--surface-2)}
+.ev-item:last-child{border-bottom:none}
+.ev-item.checked{background:var(--pass-bg)}
+.ev-check{width:20px;height:20px;border-radius:5px;border:2px solid var(--border-2);background:var(--surface);flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:all .15s;cursor:pointer}
+.ev-item.checked .ev-check{background:var(--pass);border-color:var(--pass)}
+.ev-check-icon{display:none;color:#fff;font-size:12px;font-weight:700}
+.ev-item.checked .ev-check-icon{display:block}
+.ev-body{}
+.ev-title{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:3px}
+.ev-item.checked .ev-title{color:var(--pass)}
+.ev-desc{font-size:12.5px;color:var(--ink-3);line-height:1.55}
+.ev-ref{font-family:var(--mono);font-size:10px;color:var(--blue);margin-top:4px}
+/* INPUT FIELDS */
+.form-row{margin-bottom:16px}
+.form-label{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px;display:block}
+.form-input{width:100%;font-family:var(--sans);font-size:13.5px;border:1.5px solid var(--border-2);border-radius:9px;padding:10px 14px;color:var(--ink);background:var(--surface);outline:none;transition:border-color .15s}
+.form-input:focus{border-color:var(--blue)}
+.form-textarea{width:100%;font-family:var(--sans);font-size:13.5px;border:1.5px solid var(--border-2);border-radius:9px;padding:10px 14px;color:var(--ink);background:var(--surface);outline:none;resize:vertical;min-height:80px;transition:border-color .15s}
+.form-textarea:focus{border-color:var(--blue)}
+/* PACKAGE PREVIEW */
+.package-preview{background:var(--navy);border-radius:16px;padding:28px 30px;margin-top:20px;color:#fff}
+.pp-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.1)}
+.pp-title{font-size:18px;font-weight:800;color:#fff}
+.pp-sub{font-size:12.5px;color:rgba(255,255,255,.5);margin-top:3px}
+.pp-id{font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.4)}
+.pp-sections{display:flex;flex-direction:column;gap:10px}
+.pp-section{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:14px 16px}
+.pp-section-label{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:8px}
+.pp-item{display:flex;align-items:center;gap:8px;font-size:12.5px;color:rgba(255,255,255,.7);padding:4px 0}
+.pp-item.complete{color:rgba(255,255,255,.88)}
+.pp-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.pp-dot.complete{background:#10B981}
+.pp-dot.missing{background:rgba(255,255,255,.2)}
+.pp-hash{font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.25);margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.08)}
+/* SCORE / COMPLETENESS */
+.completeness-bar{height:8px;background:rgba(255,255,255,.12);border-radius:4px;overflow:hidden;margin:12px 0}
+.cb-fill{height:8px;background:linear-gradient(90deg,#10B981,#34D399);border-radius:4px;transition:width .5s ease}
+/* BUTTONS */
+.btn{font-family:var(--sans);font-weight:700;font-size:14px;padding:12px 24px;border-radius:11px;border:none;cursor:pointer;transition:all .18s}
+.btn-navy{background:var(--navy);color:#fff}.btn-navy:hover{background:var(--navy-2);transform:translateY(-1px)}
+.btn-pass{background:var(--pass);color:#fff}.btn-pass:hover{opacity:.9;transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--ink-2);border:1px solid var(--border-2)}.btn-ghost:hover{background:var(--surface-2)}
+.btn-blue{background:var(--blue);color:#fff}.btn-blue:hover{opacity:.9}
+.cta-row{display:flex;justify-content:space-between;align-items:center;margin-top:28px;padding-top:20px;border-top:1px solid var(--border)}
+.cta-hint{font-size:13px;color:var(--ink-3)}
+.callout{border-radius:12px;padding:16px 20px;margin:14px 0;font-size:13.5px;line-height:1.68;display:flex;gap:12px;align-items:flex-start}
+.callout.info{background:var(--blue-bg);border:1px solid var(--blue-border)}
+.callout.gold{background:var(--gold-bg);border:1px solid var(--gold-border)}
+.callout-icon{flex-shrink:0;margin-top:2px}
+/* SUMMARY */
+.summary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px}
+.summary-stat{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 20px;text-align:center}
+.ss-num{font-family:var(--mono);font-size:28px;font-weight:700;line-height:1;margin-bottom:4px}
+.ss-label{font-size:12px;color:var(--ink-3)}
+</style>
+</head>
+<body>
+
+<header class="rail">
+  <span class="rail-brand">AGNUS Academy</span>
+  <span class="rail-sep"></span>
+  <span class="rail-crumb">Control Training Environment</span>
+  <span class="rail-title">Evidence Package Builder</span>
+  <div class="rail-right">
+    <button class="rail-btn" onclick="alert('Return to dashboard')">← Dashboard</button>
+  </div>
+</header>
+
+<div class="context-bar">
+  <div class="cb-item"><div class="cb-label">System</div><div class="cb-value" id="ctx-system">Not set</div></div>
+  <div class="cb-sep"></div>
+  <div class="cb-item"><div class="cb-label">Risk class</div><div class="cb-value" id="ctx-risk">—</div></div>
+  <div class="cb-sep"></div>
+  <div class="cb-item"><div class="cb-label">Package ID</div><div class="cb-value" id="ctx-pkg">EVP-0000</div></div>
+  <div class="cb-sep"></div>
+  <div class="cb-item"><div class="cb-label">Completeness</div><div class="cb-value" id="ctx-complete">0%</div></div>
+</div>
+
+<!-- PHASE 0: SETUP -->
+<div class="phase active" id="ph0">
+<div class="wrap">
+  <div class="phase-badge"><div class="pb-dot">1</div><div><div class="pb-stage">Step 1 of 4 — Setup</div><div class="pb-title">Evidence Package Builder</div><div class="pb-sub">The EU AI Act requires high-risk AI systems to maintain technical documentation and evidence that demonstrates compliance. This tool guides you through assembling the complete evidence package for an AI system — from risk classification evidence to post-market monitoring records.</div></div></div>
+
+  <div class="callout info">
+    <div class="callout-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="var(--blue)" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M8 7v4M8 5.5v.5"/></svg></div>
+    <div><strong style="color:var(--blue)">What this builds:</strong> A structured evidence package containing all documentation required for EU AI Act conformity assessment of a high-risk AI system — technical documentation, data governance records, human oversight evidence, testing results, and incident records.</div>
+  </div>
+
+  <div class="card">
+    <h3>Step 1: Identify your AI system</h3>
+    <div class="form-row"><label class="form-label">AI system name</label><input class="form-input" id="sys-name" type="text" placeholder="e.g. Customer Creditworthiness Assessment Model" oninput="updateCtx()"/></div>
+    <div class="form-row"><label class="form-label">System description</label><textarea class="form-textarea" id="sys-desc" placeholder="What does the system do? What decisions does it support or automate?"></textarea></div>
+    <div class="form-row"><label class="form-label">Risk classification</label>
+      <select class="form-input" id="sys-risk" onchange="updateCtx()">
+        <option value="">— Select risk class —</option>
+        <option value="High-risk (Annex III)">High-risk — Annex III use case</option>
+        <option value="High-risk (Annex I)">High-risk — Annex I regulated product</option>
+        <option value="GPAI">General-purpose AI model</option>
+        <option value="Limited risk">Limited risk — transparency obligation</option>
+        <option value="Minimal risk">Minimal risk — no specific obligations</option>
+      </select>
+    </div>
+    <div class="form-row"><label class="form-label">Provider / deployer</label><input class="form-input" id="sys-org" type="text" placeholder="Organisation name" oninput="updateCtx()"/></div>
+  </div>
+
+  <div class="cta-row"><span class="cta-hint">Complete the system details to continue</span><button class="btn btn-navy" onclick="goPhase(1)" id="ph0Next">Next: Assemble evidence →</button></div>
+</div>
+</div>
+
+<!-- PHASE 1: EVIDENCE CHECKLIST -->
+<div class="phase" id="ph1">
+<div class="wrap">
+  <div class="phase-badge"><div class="pb-dot">2</div><div><div class="pb-stage">Step 2 of 4 — Evidence Assembly</div><div class="pb-title">Assemble the evidence package</div><div class="pb-sub">Check each item as you confirm the evidence exists and is accessible. Items marked with an article reference are mandatory for high-risk AI under the EU AI Act.</div></div></div>
+
+  <div id="completenessWrap" style="margin-bottom:20px">
+    <div style="display:flex;justify-content:space-between;font-size:13px;color:var(--ink-3);margin-bottom:5px"><span>Package completeness</span><span id="completenessLabel">0 / 24 items</span></div>
+    <div class="completeness-bar"><div class="cb-fill" id="completenessBar" style="width:0%"></div></div>
+  </div>
+
+  <!-- SECTION 1: RISK CLASSIFICATION -->
+  <div class="ev-section" id="sec-risk">
+    <div class="ev-section-head"><h4>1 — Risk Classification Evidence</h4><span class="ev-progress" id="prog-risk">0/4</span></div>
+    ${evItem('rc1','Risk classification decision document','Formal document recording the risk classification decision, the criteria applied, and the rationale — including which Annex III category applies (or why the system is not high-risk).','EU AI Act Art. 6, Annex III')}
+    ${evItem('rc2','Use case description against Annex III','Detailed mapping of the system\'s actual use against each relevant Annex III category, confirming which applies and why.','EU AI Act Annex III')}
+    ${evItem('rc3','Article 6(3) derogation assessment (if applicable)','If the provider assessed whether the Article 6(3) derogation applies, the assessment and its outcome must be documented.','EU AI Act Art. 6(3)')}
+    ${evItem('rc4','Risk classification register entry','Entry in the organisation\'s AI risk register recording this system\'s classification, date, and reviewer.','EU AI Act Art. 9')}
+  </div>
+
+  <!-- SECTION 2: TECHNICAL DOCUMENTATION -->
+  <div class="ev-section" id="sec-tech">
+    <div class="ev-section-head"><h4>2 — Technical Documentation (Annex IV)</h4><span class="ev-progress" id="prog-tech">0/5</span></div>
+    ${evItem('td1','General system description','Description of the AI system including its intended purpose, the logic and assumptions of the algorithm, and the AI techniques used.','EU AI Act Annex IV §1')}
+    ${evItem('td2','Development process documentation','Description of the design choices, key design specifications, hardware/software requirements, and system architecture.','EU AI Act Annex IV §2')}
+    ${evItem('td3','Training data documentation','Description of training, validation, and test datasets — including data sources, intended purpose, collection methods, and known limitations.','EU AI Act Annex IV §2(d), Art. 10')}
+    ${evItem('td4','Performance metrics and validation results','The metrics used to measure accuracy, robustness, and non-discrimination — with the actual results achieved.','EU AI Act Annex IV §3')}
+    ${evItem('td5','Known limitations and foreseeable misuse','Documentation of the system\'s known technical limitations, risks of foreseeable misuse, and the mitigation measures in place.','EU AI Act Annex IV §1(f)')}
+  </div>
+
+  <!-- SECTION 3: RISK MANAGEMENT -->
+  <div class="ev-section" id="sec-rm">
+    <div class="ev-section-head"><h4>3 — Risk Management System</h4><span class="ev-progress" id="prog-rm">0/4</span></div>
+    ${evItem('rm1','Risk management plan','Document setting out the risk management process — identification, estimation, evaluation, and control of risks throughout the system lifecycle.','EU AI Act Art. 9(2)')}
+    ${evItem('rm2','Risk register for this system','System-specific risk register identifying the residual risks after control measures, with assessment of acceptability.','EU AI Act Art. 9(2)(c)')}
+    ${evItem('rm3','Testing for foreseeable conditions','Evidence that the system has been tested against reasonably foreseeable conditions of misuse and against relevant risks identified in the risk register.','EU AI Act Art. 9(7)')}
+    ${evItem('rm4','Risk management review records','Records of periodic reviews of the risk management system, including any updates in response to new information or incidents.','EU AI Act Art. 9(4)')}
+  </div>
+
+  <!-- SECTION 4: HUMAN OVERSIGHT -->
+  <div class="ev-section" id="sec-ho">
+    <div class="ev-section-head"><h4>4 — Human Oversight Evidence</h4><span class="ev-progress" id="prog-ho">0/4</span></div>
+    ${evItem('ho1','Human oversight design documentation','Description of the human oversight measures built into the system — who can intervene, how, and under what circumstances.','EU AI Act Art. 14')}
+    ${evItem('ho2','Operator instructions','Instructions for operators covering how to interpret outputs, when to override the system, and how to use the human oversight interface.','EU AI Act Art. 13, 26')}
+    ${evItem('ho3','Oversight training records','Evidence that natural persons assigned to oversee the system have received appropriate training.','EU AI Act Art. 26(4)')}
+    ${evItem('ho4','Override and intervention logs','Logs of instances where human operators intervened, overrode system outputs, or stopped the system — as evidence that oversight mechanisms are in active use.','EU AI Act Art. 12, 14')}
+  </div>
+
+  <!-- SECTION 5: TESTING + CONFORMITY -->
+  <div class="ev-section" id="sec-tc">
+    <div class="ev-section-head"><h4>5 — Testing and Conformity</h4><span class="ev-progress" id="prog-tc">0/4</span></div>
+    ${evItem('tc1','Test suite and acceptance criteria','Description of the test cases used, the acceptance criteria for each, and the rationale for the test design — including adversarial test cases.','EU AI Act Art. 9(7), Annex IV §3')}
+    ${evItem('tc2','Test results and pass/fail evidence','Documented results of all testing — confirming which tests passed, which failed, and how failures were addressed before deployment.','EU AI Act Annex IV §3')}
+    ${evItem('tc3','Conformity assessment record','For Annex I Category 1 systems: the notified body assessment report. For all other high-risk systems: the internal conformity assessment.','EU AI Act Art. 43')}
+    ${evItem('tc4','EU Declaration of Conformity','The signed EU DoC as required by Article 47, confirming the system meets the requirements of the AI Act.','EU AI Act Art. 47')}
+  </div>
+
+  <!-- SECTION 6: POST-MARKET -->
+  <div class="ev-section" id="sec-pm">
+    <div class="ev-section-head"><h4>6 — Post-Market Monitoring</h4><span class="ev-progress" id="prog-pm">0/3</span></div>
+    ${evItem('pm1','Post-market monitoring plan','The plan establishing how the system will be monitored after deployment — what data is collected, how frequently it is analysed, and who is responsible.','EU AI Act Art. 72')}
+    ${evItem('pm2','Monitoring data and analysis','Evidence that post-market monitoring is being conducted — data collected, analysis performed, and any issues identified.','EU AI Act Art. 72')}
+    ${evItem('pm3','Serious incident register','Record of any serious incidents involving the system, with evidence of reporting to the relevant market surveillance authority where required.','EU AI Act Art. 73')}
+  </div>
+
+  <div class="cta-row"><button class="btn btn-ghost" onclick="goPhase(0)">← Back</button><button class="btn btn-navy" onclick="goPhase(2)">Review package →</button></div>
+</div>
+</div>
+
+<!-- PHASE 2: PACKAGE PREVIEW -->
+<div class="phase" id="ph2">
+<div class="wrap">
+  <div class="phase-badge"><div class="pb-dot">3</div><div><div class="pb-stage">Step 3 of 4 — Review</div><div class="pb-title">Review the evidence package</div><div class="pb-sub">Review the completeness of the package before finalising. Every missing item is a gap in the conformity evidence. Address all gaps before submitting to a notified body or market surveillance authority.</div></div></div>
+
+  <div class="summary-grid">
+    <div class="summary-stat"><div class="ss-num" id="sum-complete" style="color:var(--pass)">0</div><div class="ss-label">Items confirmed</div></div>
+    <div class="summary-stat"><div class="ss-num" id="sum-missing" style="color:var(--danger)">24</div><div class="ss-label">Items missing</div></div>
+    <div class="summary-stat"><div class="ss-num" id="sum-pct" style="color:var(--ink)">0%</div><div class="ss-label">Complete</div></div>
+  </div>
+
+  <div class="package-preview" id="pkgPreview">
+    <div class="pp-header">
+      <div><div class="pp-title" id="pp-sysname">Evidence Package</div><div class="pp-sub" id="pp-sysrisk">Risk classification not set</div></div>
+      <div class="pp-id" id="pp-pkgid">EVP-0000</div>
+    </div>
+    <div class="pp-sections" id="ppSections"></div>
+    <div class="pp-hash" id="pp-hash">sha256: package not yet finalised</div>
+  </div>
+
+  <div id="gapWarning" class="callout gold" style="display:none;margin-top:16px">
+    <div class="callout-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round"><path d="M8 2L1 14h14L8 2z"/><path d="M8 7v3M8 12v.5"/></svg></div>
+    <div id="gapWarningText"></div>
+  </div>
+
+  <div class="cta-row"><button class="btn btn-ghost" onclick="goPhase(1)">← Back to checklist</button><button class="btn btn-pass" onclick="finalise()">Finalise package →</button></div>
+</div>
+</div>
+
+<!-- PHASE 3: FINALISED -->
+<div class="phase" id="ph3">
+<div class="wrap">
+  <div class="phase-badge"><div class="pb-dot" style="background:var(--pass-bg);border-color:var(--pass-border);color:var(--pass)">✓</div><div><div class="pb-stage" style="color:var(--pass)">Package Finalised</div><div class="pb-title">Evidence Package Complete</div><div class="pb-sub">The evidence package has been finalised. Each section is recorded with its completeness status and evidence hash. This package can now be presented to a notified body, submitted to a market surveillance authority, or retained for internal audit purposes.</div></div></div>
+
+  <div class="package-preview" id="finalPreview" style="border:2px solid rgba(15,110,58,.4)">
+    <div class="pp-header">
+      <div><div class="pp-title" id="fp-sysname">Evidence Package</div><div class="pp-sub" id="fp-status" style="color:#10B981">Finalised — <span id="fp-date"></span></div></div>
+      <div class="pp-id" id="fp-pkgid">EVP-0000</div>
+    </div>
+    <div class="pp-sections" id="fpSections"></div>
+    <div class="pp-hash" id="fp-hash">sha256: —</div>
+  </div>
+
+  <div style="display:flex;gap:12px;margin-top:20px">
+    <button class="btn btn-ghost" onclick="window.print()">Print package</button>
+    <button class="btn btn-navy" onclick="alert('Package exported. In production, this would generate a structured PDF evidence package.')">Export PDF</button>
+    <button class="btn btn-ghost" onclick="goPhase(1)">Edit evidence</button>
+  </div>
+</div>
+</div>
+
+<script>
+var checked = {};
+var TOTAL_ITEMS = 24;
+var SECTIONS = [
+  {id:'risk',label:'Risk Classification',items:['rc1','rc2','rc3','rc4']},
+  {id:'tech',label:'Technical Documentation (Annex IV)',items:['td1','td2','td3','td4','td5']},
+  {id:'rm',label:'Risk Management System',items:['rm1','rm2','rm3','rm4']},
+  {id:'ho',label:'Human Oversight Evidence',items:['ho1','ho2','ho3','ho4']},
+  {id:'tc',label:'Testing and Conformity',items:['tc1','tc2','tc3','tc4']},
+  {id:'pm',label:'Post-Market Monitoring',items:['pm1','pm2','pm3']},
+];
+
+function toggleItem(id) {
+  var el = document.getElementById('item-'+id);
+  checked[id] = !checked[id];
+  if (checked[id]) el.classList.add('checked'); else el.classList.remove('checked');
+  updateProgress();
+}
+
+function countChecked(items) {
+  return items.filter(function(id){return checked[id];}).length;
+}
+
+function updateProgress() {
+  var total = Object.keys(checked).filter(function(k){return checked[k];}).length;
+  var pct = Math.round(total / TOTAL_ITEMS * 100);
+  document.getElementById('completenessLabel').textContent = total + ' / ' + TOTAL_ITEMS + ' items';
+  document.getElementById('completenessBar').style.width = pct + '%';
+  document.getElementById('ctx-complete').textContent = pct + '%';
+  SECTIONS.forEach(function(s){
+    var c = countChecked(s.items);
+    var el = document.getElementById('prog-'+s.id);
+    if(el) el.textContent = c + '/' + s.items.length;
+  });
+  // update summary
+  document.getElementById('sum-complete').textContent = total;
+  document.getElementById('sum-missing').textContent = TOTAL_ITEMS - total;
+  document.getElementById('sum-pct').textContent = pct + '%';
+}
+
+function updateCtx() {
+  var name = document.getElementById('sys-name').value || 'Not set';
+  var risk = document.getElementById('sys-risk').value || '—';
+  document.getElementById('ctx-system').textContent = name;
+  document.getElementById('ctx-risk').textContent = risk;
+  var pkg = 'EVP-' + Math.abs(name.split('').reduce(function(a,c){return ((a<<5)-a)+c.charCodeAt(0);},0) % 9000 + 1000);
+  document.getElementById('ctx-pkg').textContent = pkg;
+  document.getElementById('pp-sysname').textContent = name + ' — Evidence Package';
+  document.getElementById('pp-sysrisk').textContent = risk || 'Risk classification not set';
+  document.getElementById('pp-pkgid').textContent = pkg;
+}
+
+function buildSectionHTML(targetId) {
+  var html = '';
+  SECTIONS.forEach(function(s){
+    var c = countChecked(s.items);
+    var items = s.items.map(function(id){
+      var complete = checked[id];
+      return '<div class="pp-item '+(complete?'complete':'')+'">'
+        +'<div class="pp-dot '+(complete?'complete':'missing')+'"></div>'
+        +'<span>'+(complete?'✓ ':'○ ')+document.querySelector('#item-'+id+' .ev-title').textContent+'</span>'
+        +'</div>';
+    }).join('');
+    html += '<div class="pp-section"><div class="pp-section-label">'+s.label+' · '+c+'/'+s.items.length+'</div>'+items+'</div>';
+  });
+  document.getElementById(targetId).innerHTML = html;
+}
+
+function goPhase(n) {
+  document.querySelectorAll('.phase').forEach(function(p){p.classList.remove('active');});
+  document.getElementById('ph'+n).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(n===2) {
+    buildSectionHTML('ppSections');
+    var missing = TOTAL_ITEMS - Object.keys(checked).filter(function(k){return checked[k];}).length;
+    var gw = document.getElementById('gapWarning');
+    if(missing > 0) {
+      gw.style.display='flex';
+      document.getElementById('gapWarningText').innerHTML = '<strong>'+missing+' item'+(missing>1?'s':'')+' missing.</strong> A high-risk AI system presented for conformity assessment with an incomplete evidence package will not achieve conformity. Address all gaps before presenting to a notified body or market surveillance authority.';
+    } else {
+      gw.style.display='none';
+    }
+  }
+}
+
+function finalise() {
+  document.getElementById('ph2').classList.remove('active');
+  document.getElementById('ph3').classList.add('active');
+  var name = document.getElementById('sys-name').value || 'AI System';
+  var pkg = document.getElementById('ctx-pkg').textContent;
+  document.getElementById('fp-sysname').textContent = name + ' — Evidence Package';
+  document.getElementById('fp-pkgid').textContent = pkg;
+  document.getElementById('fp-date').textContent = new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+  buildSectionHTML('fpSections');
+  var hash = 'sha256:evp_'+pkg.toLowerCase()+'_'+Date.now().toString(36);
+  document.getElementById('fp-hash').textContent = hash;
+  document.getElementById('pp-hash').textContent = hash;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function evItem(id, title, desc, ref) {
+  return '<div class="ev-item" id="item-'+id+'" onclick="toggleItem(\''+id+'\')">'
+    +'<div class="ev-check"><span class="ev-check-icon">✓</span></div>'
+    +'<div class="ev-body"><div class="ev-title">'+title+'</div><div class="ev-desc">'+desc+'</div><div class="ev-ref">'+ref+'</div></div>'
+    +'</div>';
+}
+// Inline the evItem calls since they were server-rendered as template literals
+// Re-render the ev-items now that evItem function exists
+(function(){
+  var ITEMS = [
+    ['rc1','Risk classification decision document','Formal document recording the risk classification decision, the criteria applied, and the rationale — including which Annex III category applies (or why the system is not high-risk).','EU AI Act Art. 6, Annex III','sec-risk'],
+    ['rc2','Use case description against Annex III','Detailed mapping of the system\'s actual use against each relevant Annex III category, confirming which applies and why.','EU AI Act Annex III','sec-risk'],
+    ['rc3','Article 6(3) derogation assessment (if applicable)','If the provider assessed whether the Article 6(3) derogation applies, the assessment and its outcome must be documented.','EU AI Act Art. 6(3)','sec-risk'],
+    ['rc4','Risk classification register entry','Entry in the organisation\'s AI risk register recording this system\'s classification, date, and reviewer.','EU AI Act Art. 9','sec-risk'],
+    ['td1','General system description','Description of the AI system including its intended purpose, the logic and assumptions of the algorithm, and the AI techniques used.','EU AI Act Annex IV §1','sec-tech'],
+    ['td2','Development process documentation','Description of the design choices, key design specifications, hardware/software requirements, and system architecture.','EU AI Act Annex IV §2','sec-tech'],
+    ['td3','Training data documentation','Description of training, validation, and test datasets — including data sources, intended purpose, collection methods, and known limitations.','EU AI Act Annex IV §2(d), Art. 10','sec-tech'],
+    ['td4','Performance metrics and validation results','The metrics used to measure accuracy, robustness, and non-discrimination — with the actual results achieved.','EU AI Act Annex IV §3','sec-tech'],
+    ['td5','Known limitations and foreseeable misuse','Documentation of the system\'s known technical limitations, risks of foreseeable misuse, and the mitigation measures in place.','EU AI Act Annex IV §1(f)','sec-tech'],
+    ['rm1','Risk management plan','Document setting out the risk management process — identification, estimation, evaluation, and control of risks throughout the system lifecycle.','EU AI Act Art. 9(2)','sec-rm'],
+    ['rm2','Risk register for this system','System-specific risk register identifying the residual risks after control measures, with assessment of acceptability.','EU AI Act Art. 9(2)(c)','sec-rm'],
+    ['rm3','Testing for foreseeable conditions','Evidence that the system has been tested against reasonably foreseeable conditions of misuse and against relevant risks identified in the risk register.','EU AI Act Art. 9(7)','sec-rm'],
+    ['rm4','Risk management review records','Records of periodic reviews of the risk management system, including any updates in response to new information or incidents.','EU AI Act Art. 9(4)','sec-rm'],
+    ['ho1','Human oversight design documentation','Description of the human oversight measures built into the system — who can intervene, how, and under what circumstances.','EU AI Act Art. 14','sec-ho'],
+    ['ho2','Operator instructions','Instructions for operators covering how to interpret outputs, when to override the system, and how to use the human oversight interface.','EU AI Act Art. 13, 26','sec-ho'],
+    ['ho3','Oversight training records','Evidence that natural persons assigned to oversee the system have received appropriate training.','EU AI Act Art. 26(4)','sec-ho'],
+    ['ho4','Override and intervention logs','Logs of instances where human operators intervened, overrode system outputs, or stopped the system — as evidence that oversight mechanisms are in active use.','EU AI Act Art. 12, 14','sec-ho'],
+    ['tc1','Test suite and acceptance criteria','Description of the test cases used, the acceptance criteria for each, and the rationale for the test design — including adversarial test cases.','EU AI Act Art. 9(7), Annex IV §3','sec-tc'],
+    ['tc2','Test results and pass/fail evidence','Documented results of all testing — confirming which tests passed, which failed, and how failures were addressed before deployment.','EU AI Act Annex IV §3','sec-tc'],
+    ['tc3','Conformity assessment record','For Annex I Category 1 systems: the notified body assessment report. For all other high-risk systems: the internal conformity assessment.','EU AI Act Art. 43','sec-tc'],
+    ['tc4','EU Declaration of Conformity','The signed EU DoC as required by Article 47, confirming the system meets the requirements of the AI Act.','EU AI Act Art. 47','sec-tc'],
+    ['pm1','Post-market monitoring plan','The plan establishing how the system will be monitored after deployment — what data is collected, how frequently it is analysed, and who is responsible.','EU AI Act Art. 72','sec-pm'],
+    ['pm2','Monitoring data and analysis','Evidence that post-market monitoring is being conducted — data collected, analysis performed, and any issues identified.','EU AI Act Art. 72','sec-pm'],
+    ['pm3','Serious incident register','Record of any serious incidents involving the system, with evidence of reporting to the relevant market surveillance authority where required.','EU AI Act Art. 73','sec-pm'],
+  ];
+  // Clear and rebuild all ev-section bodies
+  var sections = {};
+  SECTIONS.forEach(function(s){sections[s.id]=[];});
+  ITEMS.forEach(function(item){
+    var secId = item[4];
+    var secKey = secId.replace('sec-','');
+    if(sections[secKey]) sections[secKey].push(item);
+  });
+  SECTIONS.forEach(function(s){
+    var sec = document.getElementById('sec-'+s.id);
+    if(!sec)return;
+    var head = sec.querySelector('.ev-section-head');
+    sec.innerHTML = '';
+    sec.appendChild(head);
+    sections[s.id].forEach(function(item){
+      var div = document.createElement('div');
+      div.className='ev-item';
+      div.id='item-'+item[0];
+      div.innerHTML='<div class="ev-check"><span class="ev-check-icon">✓</span></div><div class="ev-body"><div class="ev-title">'+item[1]+'</div><div class="ev-desc">'+item[2]+'</div><div class="ev-ref">'+item[3]+'</div></div>';
+      div.onclick=function(){toggleItem(item[0]);};
+      sec.appendChild(div);
+    });
+  });
+})();
+</script>
+</body>
+</html>

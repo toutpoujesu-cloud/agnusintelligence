@@ -1,0 +1,280 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Academy — M49 Capstone: Design Your Company's AI Governance Framework</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#F8F6F2;--panel:#FFFFFF;--panel-2:#F2F0EB;--line:#E5E2D9;--line-2:#D1CEC4;--ink:#18202A;--ink-2:#4A5261;--ink-3:#8E96A2;--navy:#17263C;--navy-2:#0F1A28;--gold:#9A7633;--gold-light:#B59048;--pass:#1A7E4A;--pass-dim:rgba(26,126,74,.1);--danger:#B4432E;--danger-dim:rgba(180,67,46,.08);--warn:#8C5E00;--warn-dim:rgba(140,94,0,.1);}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:Manrope,sans-serif;-webkit-font-smoothing:antialiased}
+.top-rail{background:var(--navy-2);color:#fff;display:flex;align-items:center;height:48px;padding:0 20px;gap:18px}
+.tr-brand{font-weight:800;font-size:13.5px}
+.tr-crumb{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.tr-title{font-size:13px;font-weight:700}
+.tr-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.tr-btn{font-family:Manrope,sans-serif;font-size:12px;font-weight:700;padding:7px 14px;border-radius:7px;border:1px solid rgba(255,255,255,.18);color:#fff;background:rgba(255,255,255,.07);cursor:pointer}
+.wrap{max-width:900px;margin:0 auto;padding:36px 24px 100px}
+.hero{background:var(--navy);border-radius:16px;padding:32px 34px;margin-bottom:24px}
+.hero h1{color:#fff;font-weight:800;font-size:25px;letter-spacing:-.026em;margin-bottom:10px;line-height:1.2}
+.hero p{color:rgba(245,244,241,.75);font-size:14.5px;line-height:1.65}
+.scenario{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:22px}
+.scenario h4{font-size:13px;font-weight:700;margin-bottom:8px}
+.scenario p{font-size:13.5px;line-height:1.6;color:var(--ink-2)}
+.section-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px 26px;margin-bottom:18px}
+.section-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;flex-wrap:wrap;gap:8px}
+.section-head h3{font-size:16px;font-weight:800}
+.mod-refs{display:flex;gap:6px}
+.mod-ref{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;color:var(--gold);border:1px solid var(--gold-light);border-radius:6px;padding:3px 8px;cursor:pointer}
+.mod-ref:hover{background:var(--gold);color:#fff}
+.section-prompt{font-size:13px;color:var(--ink-3);margin-bottom:14px;font-style:italic}
+textarea.section-input{width:100%;min-height:110px;border:1.5px solid var(--line-2);border-radius:9px;padding:14px 16px;font-family:Manrope,sans-serif;font-size:14px;line-height:1.6;resize:vertical}
+textarea.section-input:focus{outline:none;border-color:var(--navy)}
+.section-status{display:flex;align-items:center;gap:6px;margin-top:10px;font-size:12px;font-family:'IBM Plex Mono',monospace}
+.section-status.empty{color:var(--ink-3)}
+.section-status.thin{color:var(--warn)}
+.section-status.good{color:var(--pass)}
+.gapcheck-row{display:flex;justify-content:center;margin:28px 0}
+.btn{font-family:Manrope,sans-serif;font-weight:700;font-size:14px;padding:13px 28px;border-radius:10px;border:none;background:var(--gold);color:#fff;cursor:pointer}
+.btn.dark{background:var(--navy)}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.gap-report{display:none;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:22px}
+.gap-report.show{display:block}
+.gap-report h4{font-size:14px;font-weight:800;margin-bottom:14px}
+.gap-row{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid var(--panel-2);font-size:13.5px}
+.gap-row:last-child{border-bottom:none}
+.gap-row.pass{color:var(--pass)}
+.gap-row.fail{color:var(--danger)}
+.export-block{display:none;text-align:center;background:var(--navy);border-radius:16px;padding:36px 30px;margin-top:10px}
+.export-block.show{display:block}
+.export-block h2{color:#fff;font-size:22px;font-weight:800;margin-bottom:10px}
+.export-block p{color:rgba(245,244,241,.7);font-size:13.5px;margin-bottom:22px}
+.cert-box{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:20px 22px;text-align:left;margin-bottom:22px}
+.cert-box h5{color:var(--gold-light);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
+.cert-box ul{padding-left:18px;color:rgba(245,244,241,.85);font-size:13.5px;line-height:1.8}
+.export-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<header class="top-rail">
+  <span class="tr-brand">AGNUS Academy</span>
+  <span class="tr-crumb">Level 7 · Govern</span>
+  <span class="tr-title">M49 — Capstone: Design Your Company's AI Governance Framework</span>
+  <div class="tr-right">
+    <button class="tr-btn" onclick="location.href='AGNUS - Academy App.html'">← Dashboard</button>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="hero">
+    <h1>Bring everything together — write it, don't just recognize it.</h1>
+    <p>Across 48 modules you've learned to spot deviations, design instructions, build guardrails, and govern at scale. This capstone asks for something different: write the actual governance framework a real company could use, section by section.</p>
+  </div>
+
+  <div class="scenario">
+    <h4>The company: Meridian Health Analytics</h4>
+    <p>A mid-size healthcare analytics company deploying three AI agents: one summarizing patient intake forms, one drafting insurance claim appeals, and one answering internal staff questions about company policy. You are writing their AI governance framework from scratch.</p>
+  </div>
+
+  <div class="section-card" data-section="verification">
+    <div class="section-head">
+      <h3>1. Verification Requirements</h3>
+      <div class="mod-refs"><span class="mod-ref" onclick="alert('Open M05')">M05</span><span class="mod-ref" onclick="alert('Open M26')">M26</span><span class="mod-ref" onclick="alert('Open M34')">M34</span></div>
+    </div>
+    <div class="section-prompt">What must be independently verified before an AI-generated claim or document leaves this company — and against what kind of evidence?</div>
+    <textarea class="section-input" placeholder="Write your verification requirements here..."></textarea>
+    <div class="section-status empty">○ Not yet written</div>
+  </div>
+
+  <div class="section-card" data-section="approval">
+    <div class="section-head">
+      <h3>2. Approval Boundaries</h3>
+      <div class="mod-refs"><span class="mod-ref" onclick="alert('Open M18')">M18</span><span class="mod-ref" onclick="alert('Open M32')">M32</span></div>
+    </div>
+    <div class="section-prompt">For each of the three agents, where does a human have to approve before anything ships — and who specifically?</div>
+    <textarea class="section-input" placeholder="Write your approval boundaries here..."></textarea>
+    <div class="section-status empty">○ Not yet written</div>
+  </div>
+
+  <div class="section-card" data-section="escalation">
+    <div class="section-head">
+      <h3>3. Escalation Paths</h3>
+      <div class="mod-refs"><span class="mod-ref" onclick="alert('Open M21')">M21</span><span class="mod-ref" onclick="alert('Open M35')">M35</span></div>
+    </div>
+    <div class="section-prompt">What exact condition triggers an agent stopping and asking a human, for each of the three agents?</div>
+    <textarea class="section-input" placeholder="Write your escalation paths here..."></textarea>
+    <div class="section-status empty">○ Not yet written</div>
+  </div>
+
+  <div class="section-card" data-section="intervention">
+    <div class="section-head">
+      <h3>4. Intervention Controls</h3>
+      <div class="mod-refs"><span class="mod-ref" onclick="alert('Open M25')">M25</span><span class="mod-ref" onclick="alert('Open M43')">M43</span></div>
+    </div>
+    <div class="section-prompt">If one of these agents is caught making an error in production, what specific controls (flag, pause, revoke, rollback) apply, and who can invoke them?</div>
+    <textarea class="section-input" placeholder="Write your intervention controls here..."></textarea>
+    <div class="section-status empty">○ Not yet written</div>
+  </div>
+
+  <div class="section-card" data-section="audit">
+    <div class="section-head">
+      <h3>5. Audit Logging</h3>
+      <div class="mod-refs"><span class="mod-ref" onclick="alert('Open M06')">M06</span><span class="mod-ref" onclick="alert('Open M22')">M22</span></div>
+    </div>
+    <div class="section-prompt">What must be logged for every action these agents take, and for how long must it be retrievable?</div>
+    <textarea class="section-input" placeholder="Write your audit logging requirements here..."></textarea>
+    <div class="section-status empty">○ Not yet written</div>
+  </div>
+
+  <div class="gapcheck-row">
+    <button class="btn dark" onclick="runGapCheck()">Review my framework →</button>
+  </div>
+
+  <div class="gap-report" id="gapReport">
+    <h4>Gap check results</h4>
+    <div id="gapRows"></div>
+  </div>
+
+  <div class="export-block" id="exportBlock">
+    <h2>Capstone complete — Master Practitioner</h2>
+    <p>You've written a real governance framework, section by section, drawing on the full arc of this Academy.</p>
+    <div class="cert-box">
+      <h5>Competencies demonstrated</h5>
+      <ul>
+        <li>Verification requirement design (M05, M26, M34)</li>
+        <li>Human approval boundary design (M18, M32)</li>
+        <li>Escalation trigger design (M21, M35)</li>
+        <li>Intervention control assignment (M25, M43)</li>
+        <li>Audit logging specification (M06, M22)</li>
+      </ul>
+    </div>
+    <div class="export-actions">
+      <button class="btn" onclick="alert('Download PDF')">Download framework as PDF</button>
+      <button class="btn dark" onclick="alert('Download certificate')">Download certificate</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const REQUIRED_CONCEPTS = {
+  verification: ['evidence','source','verify','check','confirm','independent'],
+  approval: ['who','approve','sign','before','role'],
+  escalation: ['when','trigger','condition','stop','ask'],
+  intervention: ['pause','revoke','rollback','flag','who','can'],
+  audit: ['log','retain','how long','record','store']
+};
+const STORAGE_KEY = 'agnus_m49_capstone_draft';
+
+const sections = document.querySelectorAll('.section-card');
+
+function saveDraft(){
+  const data = {};
+  sections.forEach(sec => { data[sec.dataset.section] = sec.querySelector('textarea').value; });
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+function loadDraft(){
+  try {
+    const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    sections.forEach(sec => {
+      const v = data[sec.dataset.section];
+      if (v) { sec.querySelector('textarea').value = v; updateStatus(sec); }
+    });
+  } catch(e){}
+}
+
+function updateStatus(sec){
+  const ta = sec.querySelector('textarea');
+  const status = sec.querySelector('.section-status');
+  const counter = sec.querySelector('.char-counter');
+  const len = ta.value.trim().length;
+  if (counter) counter.textContent = len + ' characters (aim for 60+, with specifics)';
+  if (len === 0) { status.className = 'section-status empty'; status.textContent = '○ Not yet written'; }
+  else if (len < 60) { status.className = 'section-status thin'; status.textContent = '◐ Thin — add more detail'; }
+  else { status.className = 'section-status good'; status.textContent = '● Substantive'; }
+}
+
+sections.forEach(sec => {
+  const ta = sec.querySelector('textarea');
+  const counterEl = document.createElement('div');
+  counterEl.className = 'char-counter';
+  counterEl.style.cssText = 'font-family:\'IBM Plex Mono\',monospace;font-size:10.5px;color:var(--ink-3);margin-top:6px';
+  ta.insertAdjacentElement('afterend', counterEl);
+  ta.addEventListener('input', () => { updateStatus(sec); saveDraft(); });
+  updateStatus(sec);
+});
+loadDraft();
+
+const HINTS = {
+  verification: 'Think about the intake-summary agent specifically: what if it summarized a lab result incorrectly? What evidence would a human need to see before trusting that summary?',
+  approval: 'Think about the insurance claim appeal agent: an appeal goes out under the company\'s name. Who, by role (not by name), signs off before it\'s sent?',
+  escalation: 'Think about the internal policy-question agent: is there a topic where it should never answer directly and must hand off to HR or Legal instead?',
+  intervention: 'If the claims-appeal agent is later found to have cited a policy that no longer exists, what happens to appeals it already sent, and who has the authority to pause it?',
+  audit: 'If a patient later disputes what the intake agent recorded, what would you need saved to reconstruct exactly what happened?'
+};
+
+sections.forEach(sec => {
+  const key = sec.dataset.section;
+  const hintBtn = document.createElement('button');
+  hintBtn.textContent = 'Need help? →';
+  hintBtn.style.cssText = 'background:none;border:none;font-family:Manrope,sans-serif;font-size:12px;font-weight:700;color:var(--gold);cursor:pointer;padding:0;margin-top:8px;display:block';
+  const hintText = document.createElement('div');
+  hintText.style.cssText = 'display:none;font-size:12.5px;line-height:1.6;color:var(--ink-2);background:var(--panel-2);border-radius:8px;padding:10px 12px;margin-top:8px';
+  hintText.textContent = HINTS[key] || '';
+  hintBtn.addEventListener('click', () => {
+    const showing = hintText.style.display === 'block';
+    hintText.style.display = showing ? 'none' : 'block';
+    hintBtn.textContent = showing ? 'Need help? →' : 'Hide hint';
+  });
+  const prompt = sec.querySelector('.section-prompt');
+  prompt.insertAdjacentElement('afterend', hintBtn);
+  hintBtn.insertAdjacentElement('afterend', hintText);
+});
+
+function conceptScore(text, concepts){
+  const lower = text.toLowerCase();
+  const hits = concepts.filter(c => lower.includes(c));
+  return hits.length;
+}
+
+function runGapCheck(){
+  const rows = [];
+  let allGood = true;
+  sections.forEach(sec => {
+    const name = sec.querySelector('h3').textContent;
+    const key = sec.dataset.section;
+    const ta = sec.querySelector('textarea');
+    const text = ta.value.trim();
+    const len = text.length;
+    const hits = conceptScore(text, REQUIRED_CONCEPTS[key] || []);
+    if (len === 0) { rows.push({name, ok:false, msg:'Missing — this section is required for a real framework.'}); allGood = false; }
+    else if (len < 60) { rows.push({name, ok:false, msg:'Too thin — a reviewer would ask for specifics here.'}); allGood = false; }
+    else if (hits < 2) { rows.push({name, ok:false, msg:'Long enough, but missing the key specifics this section needs — name who, when, and how, not just the general idea. Use the "Need help?" hint if you\'re stuck.'}); allGood = false; }
+    else { rows.push({name, ok:true, msg:'Substantive and specific.'}); }
+  });
+  document.getElementById('gapReport').classList.add('show');
+  document.getElementById('gapRows').innerHTML = rows.map(r =>
+    '<div class="gap-row ' + (r.ok?'pass':'fail') + '">' + (r.ok?'✓':'✕') + ' <span><b>' + r.name + '</b> — ' + r.msg + '</span></div>'
+  ).join('');
+  if (allGood) {
+    document.getElementById('exportBlock').classList.add('show');
+    document.getElementById('exportBlock').scrollIntoView({behavior:'smooth'});
+    localStorage.removeItem(STORAGE_KEY);
+  }
+}
+</script>
+</body>
+</html>

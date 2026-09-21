@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AGNUS — Phase A→B→C</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #0B0F18; color: #E2E8F0; font-family: Manrope, sans-serif; -webkit-font-smoothing: antialiased; line-height: 1.6; font-size: 14px; }
+a { color: #B59048; text-decoration: none; }
+
+.topbar { background: #0F1A28; border-bottom: 1px solid #1E2D42; padding: 0 32px; height: 52px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 50; }
+.topbar-left { display: flex; align-items: center; gap: 16px; }
+.wordmark { font-weight: 800; font-size: 14px; letter-spacing: -.01em; }
+.doc-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: #4A6080; }
+.doc-id { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: #B59048; }
+
+.wrap { max-width: 900px; margin: 0 auto; padding: 56px 24px 96px; }
+
+.doc-header { margin-bottom: 52px; padding-bottom: 32px; border-bottom: 1px solid #1E2D42; }
+.doc-header .eyebrow { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: #4A6080; margin-bottom: 16px; }
+.doc-header h1 { font-size: 38px; font-weight: 800; letter-spacing: -.03em; line-height: 1.1; margin-bottom: 18px; }
+.doc-header h1 em { color: #B59048; font-style: normal; }
+.doc-header .lede { font-size: 15.5px; color: #6B82A4; line-height: 1.65; max-width: 640px; }
+.doc-meta { display: flex; gap: 32px; margin-top: 24px; }
+.doc-meta .dm { display: grid; gap: 3px; }
+.doc-meta .dm-k { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: #4A6080; }
+.doc-meta .dm-v { font-size: 12.5px; font-weight: 600; color: #B59048; }
+
+/* phase layout */
+.phases { display: grid; gap: 2px; }
+.phase { border: 1px solid #1E2D42; border-radius: 14px; overflow: hidden; }
+.phase-head { padding: 22px 26px; display: flex; align-items: center; gap: 16px; cursor: default; }
+.phase-a .phase-head { background: linear-gradient(90deg, rgba(62,207,134,.06) 0%, transparent 60%); border-left: 3px solid #3ECF86; }
+.phase-b .phase-head { background: linear-gradient(90deg, rgba(77,158,255,.06) 0%, transparent 60%); border-left: 3px solid #4D9EFF; }
+.phase-c .phase-head { background: linear-gradient(90deg, rgba(181,144,72,.06) 0%, transparent 60%); border-left: 3px solid #B59048; }
+.phase-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; padding: 4px 12px; border-radius: 99px; }
+.phase-a .phase-tag { background: rgba(62,207,134,.12); color: #3ECF86; border: 1px solid rgba(62,207,134,.24); }
+.phase-b .phase-tag { background: rgba(77,158,255,.12); color: #4D9EFF; border: 1px solid rgba(77,158,255,.24); }
+.phase-c .phase-tag { background: rgba(181,144,72,.12); color: #B59048; border: 1px solid rgba(181,144,72,.24); }
+.phase-head h2 { font-size: 17px; font-weight: 700; letter-spacing: -.02em; }
+.phase-status { margin-left: auto; font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; }
+.phase-a .phase-status { color: #3ECF86; }
+.phase-b .phase-status { color: #4D9EFF; }
+.phase-c .phase-status { color: #4A6080; }
+
+.phase-body { padding: 24px 26px 28px; background: #0D1420; display: grid; gap: 24px; }
+.phase-body .summary { font-size: 14.5px; color: #8BA3C4; line-height: 1.65; max-width: 700px; }
+
+.feat-section h3 { font-family: 'IBM Plex Mono', monospace; font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; color: #4A6080; margin-bottom: 12px; }
+.feat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 8px; }
+.feat { background: #111D2C; border: 1px solid #1E2D42; border-radius: 9px; padding: 12px 14px; display: grid; gap: 4px; }
+.feat .fk { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: #4A6080; }
+.feat .fv { font-size: 12.5px; font-weight: 600; color: #C8D8EA; }
+
+.milestone { background: #0F161F; border: 1px solid #1A2535; border-radius: 10px; padding: 14px 18px; display: flex; gap: 14px; align-items: flex-start; }
+.phase-a .milestone { border-left: 3px solid #3ECF86; }
+.phase-b .milestone { border-left: 3px solid #4D9EFF; }
+.phase-c .milestone { border-left: 3px solid #B59048; }
+.ms-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.ms-body .ms-k { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: #4A6080; margin-bottom: 4px; }
+.ms-body .ms-v { font-size: 13px; line-height: 1.5; color: #C8D8EA; }
+
+/* transition arrows */
+.transition { display: flex; align-items: center; gap: 14px; padding: 18px 0; color: #2A3A50; }
+.transition::before, .transition::after { content: ''; flex: 1; height: 1px; background: #1E2D42; }
+.transition-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .14em; text-transform: uppercase; white-space: nowrap; }
+
+/* metrics */
+.metrics { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 8px; }
+.metric { background: #111D2C; border: 1px solid #1E2D42; border-radius: 9px; padding: 14px 16px; }
+.metric .mk { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: #4A6080; margin-bottom: 6px; }
+.metric .mv { font-size: 22px; font-weight: 800; letter-spacing: -.03em; color: #B59048; }
+.metric .md { font-size: 11px; color: #4A6080; margin-top: 2px; }
+
+/* footer */
+.doc-footer { margin-top: 64px; padding-top: 24px; border-top: 1px solid #1E2D42; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.doc-footer .df-l { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #2A3A50; }
+.doc-footer .df-r { font-family: 'IBM Plex Mono', monospace; font-size: 10px; color: #4A6080; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-left">
+    <span class="wordmark">AGNUS</span>
+    <span class="doc-label">Governance</span>
+    <span class="doc-id">G09</span>
+  </div>
+  <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#4A6080;">Platform Phase Articulation · 19 September 2026</div>
+</div>
+
+<div class="wrap">
+
+  <div class="doc-header">
+    <div class="eyebrow">G09 · Platform Architecture · For Board &amp; Investors</div>
+    <h1>AGNUS in Three Phases:<br><em>A → B → C</em></h1>
+    <p class="lede">AGNUS is built in three sequential phases. Each phase is self-contained and revenue-relevant before the next begins. Phase A ships first; it is the foundation. Everything in Phase B and C stands on it.</p>
+    <div class="doc-meta">
+      <div class="dm"><div class="dm-k">Current phase</div><div class="dm-v">A — Intelligence Publishing</div></div>
+      <div class="dm"><div class="dm-k">v1 scope</div><div class="dm-v">Research-only launch</div></div>
+      <div class="dm"><div class="dm-k">Prepared</div><div class="dm-v">19 September 2026</div></div>
+      <div class="dm"><div class="dm-k">Author</div><div class="dm-v">Jean-Daniel Alexis</div></div>
+    </div>
+  </div>
+
+  <!-- METRICS SUMMARY -->
+  <div class="metrics" style="margin-bottom:40px;">
+    <div class="metric"><div class="mk">Verified articles</div><div class="mv">85</div><div class="md">28 EU AI Act + 57 cross-pillar</div></div>
+    <div class="metric"><div class="mk">Research pillars</div><div class="mv">8</div><div class="md">EU AI Act, Governance, Agents, Security, Audit, Data, Standards, Countries</div></div>
+    <div class="metric"><div class="mk">Academy modules</div><div class="mv">49</div><div class="md">7 levels + L8 technical track</div></div>
+    <div class="metric"><div class="mk">Platform sections</div><div class="mv">10</div><div class="md">Research, Intelligence, Reviews, Agents, Academy, Business, Marketplace + editorial tools</div></div>
+  </div>
+
+  <div class="phases">
+
+    <!-- ── PHASE A ── -->
+    <div class="phase phase-a">
+      <div class="phase-head">
+        <span class="phase-tag">Phase A</span>
+        <h2>Intelligence Publishing</h2>
+        <span class="phase-status">● Live — shipping v1</span>
+      </div>
+      <div class="phase-body">
+        <p class="summary">AGNUS is first and foremost a publisher of verified AI governance intelligence. Phase A delivers the complete content platform: research articles, regulatory intelligence, product reviews, agent listings, a 49-module Academy, and business intelligence across 10 industries — all behind a proprietary editorial layer.</p>
+
+        <div class="feat-section">
+          <h3>What ships in Phase A</h3>
+          <div class="feat-grid">
+            <div class="feat"><div class="fk">Research</div><div class="fv">85 verified articles across 8 pillars. EU AI Act cornerstone + cross-pillar coverage.</div></div>
+            <div class="feat"><div class="fk">Intelligence</div><div class="fv">Daily regulatory intelligence feed. Monitoring coverage across EU, UK, US, APAC.</div></div>
+            <div class="feat"><div class="fk">Reviews</div><div class="fv">7-dimension AI product review methodology. Scored evaluations of commercial AI tools.</div></div>
+            <div class="feat"><div class="fk">Agents</div><div class="fv">Registry of commercial AI agents with governance anatomy: risk tier, autonomy level, data access.</div></div>
+            <div class="feat"><div class="fk">Academy</div><div class="fv">49 modules across 8 levels. L8 technical track. Assessment engine. Certificate of completion.</div></div>
+            <div class="feat"><div class="fk">Business</div><div class="fv">10-industry intelligence hubs. Sector-specific AI regulation mapping and risk landscape.</div></div>
+            <div class="feat"><div class="fk">Marketplace</div><div class="fv">Tools, prompts, frameworks, playbooks. Curated by the AGNUS editorial team.</div></div>
+            <div class="feat"><div class="fk">Editorial tooling</div><div class="fv">Dashboard, Brain, Story Builder, Research Editor, Knowledge Sources, Article Pipeline — proprietary layer, not public-facing.</div></div>
+          </div>
+        </div>
+
+        <div class="feat-section">
+          <h3>Revenue model in Phase A</h3>
+          <div class="feat-grid">
+            <div class="feat"><div class="fk">Free tier</div><div class="fv">Article previews, intelligence headlines, basic Academy access (L1–L2 free).</div></div>
+            <div class="feat"><div class="fk">Premium — Individual</div><div class="fv">Full article access, complete Academy, reviews, agents registry. Monthly / annual subscription.</div></div>
+            <div class="feat"><div class="fk">Premium — Team</div><div class="fv">Shared seats, team progress tracking, priority research requests. Per-seat pricing.</div></div>
+            <div class="feat"><div class="fk">Institutional</div><div class="fv">Law firms, consulting groups, national regulators. Custom licensing with white-glove onboarding.</div></div>
+          </div>
+        </div>
+
+        <div class="milestone">
+          <div class="ms-icon">🎯</div>
+          <div class="ms-body">
+            <div class="ms-k">Phase A milestone</div>
+            <div class="ms-v">v1 Research launch — all 85 articles publicly accessible, responsive layouts complete, first 500 registered users, first institutional licence signed.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="transition"><span class="transition-label">Phase A complete → activate Phase B</span></div>
+
+    <!-- ── PHASE B ── -->
+    <div class="phase phase-b">
+      <div class="phase-head">
+        <span class="phase-tag">Phase B</span>
+        <h2>Connected Intelligence</h2>
+        <span class="phase-status">○ Not started</span>
+      </div>
+      <div class="phase-body">
+        <p class="summary">Phase B activates the live intelligence layer. The platform moves from static publishing to dynamic, connected intelligence: the AGNUS Monitoring Agent runs autonomously every day, the Knowledge Graph becomes queryable, the Article Pipeline is backed by a real database, and the editorial AI workflow is fully operational. Intelligence, Reviews, and Agents sections populate with real-time data.</p>
+
+        <div class="feat-section">
+          <h3>What Phase B adds</h3>
+          <div class="feat-grid">
+            <div class="feat"><div class="fk">Intelligence Monitoring Agent</div><div class="fv">Daily autonomous run. Scans regulatory filings, court decisions, enforcement actions. Output lands in the Intelligence feed automatically.</div></div>
+            <div class="feat"><div class="fk">Live Knowledge Graph</div><div class="fv">Articles, sources, obligations, actors and jurisdictions connected in a queryable graph. Powers cross-pillar discovery.</div></div>
+            <div class="feat"><div class="fk">Article Pipeline (live)</div><div class="fv">Real database-backed pipeline. AI Writer + Human Review workflow. Ingest → Draft → Review → Publish cycle operational.</div></div>
+            <div class="feat"><div class="fk">Knowledge Sources connectors</div><div class="fv">Live connectors to EUR-Lex, EDPB, ICO, FTC, CNIL and other primary sources. Feeds the Pipeline automatically.</div></div>
+            <div class="feat"><div class="fk">Reviews — live data</div><div class="fv">Scored evaluations of 20+ commercial AI products. 7-dimension methodology applied at scale. Quarterly refresh cycle.</div></div>
+            <div class="feat"><div class="fk">Agents registry — live data</div><div class="fv">50+ commercial AI agents mapped with governance anatomy. Risk tiers, data access scope, autonomy level.</div></div>
+            <div class="feat"><div class="fk">Academy — enrolled users</div><div class="fv">User progress tracked in database. Completion certificates issued. Team dashboards for enterprise accounts.</div></div>
+            <div class="feat"><div class="fk">AGNUS Brain — operational</div><div class="fv">Strategic Advisor active. Answers governance questions grounded in the AGNUS knowledge base. Available to Premium subscribers.</div></div>
+          </div>
+        </div>
+
+        <div class="feat-section">
+          <h3>What Phase B unlocks commercially</h3>
+          <div class="feat-grid">
+            <div class="feat"><div class="fk">Daily intelligence briefing</div><div class="fv">Automated email / webhook delivery of the daily intelligence feed to institutional subscribers.</div></div>
+            <div class="feat"><div class="fk">API — read access (beta)</div><div class="fv">Beta read-only API for institutional partners. Feeds internal compliance dashboards. Precursor to Phase C.</div></div>
+            <div class="feat"><div class="fk">Enterprise search</div><div class="fv">Full-text + semantic search across the AGNUS knowledge base. Powered by the live Knowledge Graph.</div></div>
+          </div>
+        </div>
+
+        <div class="milestone">
+          <div class="ms-icon">🎯</div>
+          <div class="ms-body">
+            <div class="ms-k">Phase B milestone</div>
+            <div class="ms-v">Intelligence Monitoring Agent running autonomously for 30 consecutive days without human intervention. 20+ scored reviews live. First API beta partner signed.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="transition"><span class="transition-label">Phase B stable → activate Phase C</span></div>
+
+    <!-- ── PHASE C ── -->
+    <div class="phase phase-c">
+      <div class="phase-head">
+        <span class="phase-tag">Phase C</span>
+        <h2>Programmable Intelligence</h2>
+        <span class="phase-status">○ Not started</span>
+      </div>
+      <div class="phase-body">
+        <p class="summary">Phase C turns AGNUS into a programmable intelligence platform. The Control Plane API goes live — 10 endpoints covering articles, intelligence, reviews, agents, sources and pipeline management. Python and TypeScript SDKs are published. Third parties build compliance tooling on top of AGNUS data. An enterprise partner programme opens. White-label licensing becomes available.</p>
+
+        <div class="feat-section">
+          <h3>What Phase C adds</h3>
+          <div class="feat-grid">
+            <div class="feat"><div class="fk">Control Plane API v1</div><div class="fv">10 production endpoints. Articles, intelligence, reviews, agents, sources and pipeline operations. See G10.</div></div>
+            <div class="feat"><div class="fk">Python SDK</div><div class="fv">Typed client for the Control Plane API. Pydantic models, async support, CLI helper. See G11.</div></div>
+            <div class="feat"><div class="fk">TypeScript SDK</div><div class="fv">Type-safe client with React hooks and Next.js integration. ESM + CJS builds. See G11.</div></div>
+            <div class="feat"><div class="fk">Enterprise tier</div><div class="fv">Dedicated account management, SLA, on-premise data export, custom research briefs, priority pipeline access.</div></div>
+            <div class="feat"><div class="fk">Partner programme</div><div class="fv">Compliance tool vendors, law firms, consulting groups build on the AGNUS API. Revenue share on referred subscriptions.</div></div>
+            <div class="feat"><div class="fk">White-label licensing</div><div class="fv">Institutional regulators and large enterprises licence the AGNUS research layer under their own brand.</div></div>
+            <div class="feat"><div class="fk">Agent submissions</div><div class="fv">Third parties submit AI agents to the AGNUS registry. Paid featured listings. Governance audit reports.</div></div>
+            <div class="feat"><div class="fk">Webhook &amp; streaming</div><div class="fv">Push delivery of intelligence events to partner systems. Real-time compliance alert infrastructure.</div></div>
+          </div>
+        </div>
+
+        <div class="milestone">
+          <div class="ms-icon">🎯</div>
+          <div class="ms-body">
+            <div class="ms-k">Phase C milestone</div>
+            <div class="ms-v">Control Plane API v1 in production. 5 active API partners. Python SDK published on PyPI and TypeScript SDK on npm. First white-label agreement signed.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /phases -->
+
+  <!-- WHY THIS SEQUENCE -->
+  <div style="margin-top:48px; background:#0F161F; border:1px solid #1A2535; border-radius:14px; padding:28px 28px 32px;">
+    <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:#4A6080; margin-bottom:16px;">Why this sequence</div>
+    <div style="display:grid; gap:14px; max-width:700px;">
+      <div style="font-size:14px; line-height:1.65; color:#8BA3C4;">
+        <strong style="color:#E2E8F0;">Phase A first</strong> — because no API is worth building without data worth accessing. AGNUS publishes first, builds the audience, and generates the proprietary intelligence that makes the API valuable in Phase C.
+      </div>
+      <div style="font-size:14px; line-height:1.65; color:#8BA3C4;">
+        <strong style="color:#E2E8F0;">Phase B before C</strong> — because Phase C customers are buying access to a live, updating intelligence layer, not a static archive. The Monitoring Agent and live Pipeline must be proven before the API is sold.
+      </div>
+      <div style="font-size:14px; line-height:1.65; color:#8BA3C4;">
+        <strong style="color:#E2E8F0;">Each phase is independently viable</strong> — Phase A generates subscription revenue from day one. Phase B unlocks enterprise contracts. Phase C opens the platform economy. No phase requires the next to justify its existence.
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">
+    <span class="df-l">G09 · Confidential — Board &amp; Investors Only · AGNUS Intelligence</span>
+    <span class="df-r">19 September 2026 · v1.0</span>
+  </div>
+
+</div>
+</body>
+</html>

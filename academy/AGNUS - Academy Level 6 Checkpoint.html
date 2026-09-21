@@ -1,0 +1,245 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Academy — Level 6 Checkpoint</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#F8F6F2;--panel:#FFFFFF;--panel-2:#F2F0EB;--line:#E5E2D9;--line-2:#D1CEC4;--ink:#18202A;--ink-2:#4A5261;--ink-3:#8E96A2;--navy:#17263C;--navy-2:#0F1A28;--gold:#9A7633;--gold-light:#B59048;--pass:#1A7E4A;--pass-dim:rgba(26,126,74,.1);--danger:#B4432E;--danger-dim:rgba(180,67,46,.08);--warn:#8C5E00;--warn-dim:rgba(140,94,0,.1);}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:Manrope,sans-serif;-webkit-font-smoothing:antialiased}
+.top-rail{background:var(--navy-2);color:#fff;display:flex;align-items:center;height:48px;padding:0 20px;gap:18px}
+.tr-brand{font-weight:800;font-size:13.5px}
+.tr-crumb{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.tr-title{font-size:13px;font-weight:700}
+.tr-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.qcount{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:rgba(255,255,255,.5)}
+.tr-btn{font-family:Manrope,sans-serif;font-size:12px;font-weight:700;padding:7px 14px;border-radius:7px;border:1px solid rgba(255,255,255,.18);color:#fff;background:rgba(255,255,255,.07);cursor:pointer}
+.wrap{max-width:720px;margin:0 auto;padding:40px 24px 100px}
+.gate-badge{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.hero{background:var(--navy);border-radius:16px;padding:30px 32px;margin-bottom:26px}
+.hero h1{color:#fff;font-weight:800;font-size:24px;letter-spacing:-.024em;margin-bottom:10px}
+.hero p{color:rgba(245,244,241,.75);font-size:14px;line-height:1.65}
+.qcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px 26px;margin-bottom:18px;display:none}
+.qcard.active{display:block}
+.q-src{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px}
+.q-text{font-size:16px;font-weight:700;line-height:1.4;margin-bottom:18px}
+.opt-list{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border:1.5px solid var(--line-2);border-radius:10px;cursor:pointer}
+.opt:hover{border-color:var(--navy);background:#F9F8F5}
+.opt.correct{border-color:var(--pass);background:var(--pass-dim)}
+.opt.wrong{border-color:var(--danger);background:var(--danger-dim)}
+.opt .text{font-size:14px;line-height:1.5}
+.feedback{display:none;margin-top:14px;padding:14px 16px;border-radius:9px;font-size:13px;line-height:1.6}
+.feedback.pass{display:block;background:var(--pass-dim);border-left:3px solid var(--pass)}
+.feedback.fail{display:block;background:var(--danger-dim);border-left:3px solid var(--danger)}
+.nav-row{display:flex;justify-content:flex-end;margin-top:20px}
+.btn{font-family:Manrope,sans-serif;font-weight:700;font-size:13.5px;padding:12px 24px;border-radius:10px;border:none;background:var(--navy);color:#fff;cursor:pointer}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.progress-bar{height:6px;background:var(--panel-2);border-radius:99px;overflow:hidden;margin-bottom:26px}
+.progress-fill{height:100%;background:var(--gold);border-radius:99px;transition:width .3s}
+.result-screen{display:none;text-align:center}
+.result-screen.show{display:block}
+.result-icon{width:70px;height:70px;border-radius:50%;display:grid;place-items:center;margin:0 auto 18px;color:#fff}
+.result-icon.pass{background:var(--pass)}
+.result-icon.fail{background:var(--warn)}
+.result-screen h2{font-size:24px;font-weight:800;margin-bottom:8px}
+.result-screen .score{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--ink-2);margin-bottom:22px}
+.review-list{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px 22px;text-align:left;margin-bottom:22px}
+.review-list h4{font-size:13px;font-weight:700;margin-bottom:12px}
+.review-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--panel-2);font-size:13.5px}
+.review-item:last-child{border-bottom:none}
+.review-item a{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--gold);font-weight:700}
+</style>
+</head>
+<body>
+
+<header class="top-rail">
+  <span class="tr-brand">AGNUS Academy</span>
+  <span class="tr-crumb">Level 6 · Build</span>
+  <span class="tr-title">Level Checkpoint</span>
+  <div class="tr-right">
+    <span class="qcount" id="qcount">Question 1 of 7</span>
+    <button class="tr-btn" onclick="location.href='AGNUS - Academy App.html'">← Dashboard</button>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div id="quizFlow">
+    <div class="gate-badge">◆ Level Checkpoint — required to unlock Level 7</div>
+    <div class="hero">
+      <h1>Confirm what you've learned across Level 6.</h1>
+      <p>Seven questions pulling from the architecture, build, guardrail, testing, and deployment modules. Score 70% or higher to unlock Level 7 — Govern.</p>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progFill" style="width:0%"></div></div>
+
+    <div class="qcard active" data-q="0">
+      <div class="q-src">From M36a — How an Application Is Actually Structured</div>
+      <div class="q-text">What is the basic role of a backend in a typical web application?</div>
+      <div class="opt-list">
+        <div class="opt" data-c="false" data-m="M36a"><span class="text">It only controls colors and layout.</span></div>
+        <div class="opt" data-c="true" data-m="M36a"><span class="text">It handles logic, data storage, and requests the frontend can't handle on its own.</span></div>
+        <div class="opt" data-c="false" data-m="M36a"><span class="text">It's optional for any application that has a database.</span></div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="qcard" data-q="1">
+      <div class="q-src">From M36e — Build a Small Working Application</div>
+      <div class="q-text">Why must a build instruction explicitly name persistence (e.g. local storage), rather than leaving it implied?</div>
+      <div class="opt-list">
+        <div class="opt" data-c="true" data-m="M36e"><span class="text">An agent will happily skip a requirement that's never stated, even if it seems obvious to a human.</span></div>
+        <div class="opt" data-c="false" data-m="M36e"><span class="text">Persistence is automatically included in every application by default.</span></div>
+        <div class="opt" data-c="false" data-m="M36e"><span class="text">It's a stylistic preference, not a functional requirement.</span></div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="qcard" data-q="2">
+      <div class="q-src">From M36f — Test Before You Trust It</div>
+      <div class="q-text">Why should the agent list test scenarios as a document before writing any test code?</div>
+      <div class="opt-list">
+        <div class="opt" data-c="true" data-m="M36f"><span class="text">Writing test code first tempts the agent to only test what's convenient, missing real gaps.</span></div>
+        <div class="opt" data-c="false" data-m="M36f"><span class="text">Documents are required by convention, with no practical benefit.</span></div>
+        <div class="opt" data-c="false" data-m="M36f"><span class="text">Test code cannot be written without a prior document.</span></div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="qcard" data-q="3">
+      <div class="q-src">From M36f — End-to-End Scenarios</div>
+      <div class="q-text">What kind of scenario would an account-based app need that a simple to-do app wouldn't?</div>
+      <div class="opt-list">
+        <div class="opt" data-c="true" data-m="M36f"><span class="text">Sign up, log in, password reset, and related failure cases like repeated wrong-password attempts.</span></div>
+        <div class="opt" data-c="false" data-m="M36f"><span class="text">No difference — every app needs the exact same test scenarios.</span></div>
+        <div class="opt" data-c="false" data-m="M36f"><span class="text">Only visual/design scenarios, never functional ones.</span></div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="qcard" data-q="4">
+      <div class="q-src">From M36g — From Tested to Live</div>
+      <div class="q-text">Why should the scenario list be re-run against the live URL, not just locally?</div>
+      <div class="opt-list">
+        <div class="opt" data-c="true" data-m="M36g"><span class="text">A missing environment variable or host misconfiguration can silently break something that passed locally.</span></div>
+        <div class="opt" data-c="false" data-m="M36g"><span class="text">It's a formality with no real risk of new failures.</span></div>
+        <div class="opt" data-c="false" data-m="M36g"><span class="text">Local and live environments are always identical.</span></div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="qcard" data-q="5">
+      <div class="q-src">From M36g — Backup Discipline</div>
+      <div class="q-text">What is the recommended backup practice after every working milestone?</div>
+      <div class="opt-list">
+        <div class="opt" data-c="true" data-m="M36g"><span class="text">Update both a local backup and a GitHub backup — not just one.</span></div>
+        <div class="opt" data-c="false" data-m="M36g"><span class="text">Wait until the entire project is finished before backing up.</span></div>
+        <div class="opt" data-c="false" data-m="M36g"><span class="text">A single local backup is always sufficient.</span></div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="qcard" data-q="6">
+      <div class="q-src">From M37 — Build Your First Guardrail</div>
+      <div class="q-text">What is the purpose of a code-based guardrail, in the same sense used throughout this Academy?</div>
+      <div class="opt-list">
+        <div class="opt" data-c="true" data-m="M37"><span class="text">To programmatically enforce a verification requirement, rather than relying on hoping the agent remembers it.</span></div>
+        <div class="opt" data-c="false" data-m="M37"><span class="text">To make code run faster.</span></div>
+        <div class="opt" data-c="false" data-m="M37"><span class="text">To replace the need for any human review.</span></div>
+      </div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="nav-row"><button class="btn" id="nextBtn" onclick="nextQ()" disabled>Next question →</button></div>
+  </div>
+
+  <div class="result-screen" id="resultScreen">
+    <div class="result-icon" id="resultIcon"></div>
+    <h2 id="resultTitle"></h2>
+    <div class="score" id="resultScore"></div>
+    <div class="review-list" id="reviewList" style="display:none">
+      <h4>Review these modules before trying again</h4>
+      <div id="reviewItems"></div>
+    </div>
+    <button class="btn" id="resultBtn" onclick="location.href='AGNUS - Academy M43 - The Quarterly Agent Audit.html'"></button>
+  </div>
+
+</div>
+
+<script>
+const TOTAL = 7;
+let current = 0;
+let score = 0;
+const missed = [];
+
+function selectOpt(el, qcard){
+  qcard.querySelectorAll('.opt').forEach(o => o.onclick = null);
+  const correct = el.dataset.c === 'true';
+  el.classList.add(correct ? 'correct' : 'wrong');
+  qcard.querySelectorAll('.opt').forEach(o => { if(o.dataset.c === 'true') o.classList.add('correct'); });
+  const fb = qcard.querySelector('.feedback');
+  fb.className = 'feedback ' + (correct ? 'pass' : 'fail');
+  fb.textContent = correct ? 'Correct.' : 'Not quite — this traces back to ' + el.dataset.m + '.';
+  fb.style.display = 'block';
+  if (correct) score++;
+  else missed.push(el.dataset.m);
+  document.getElementById('nextBtn').disabled = false;
+}
+
+document.querySelectorAll('.qcard').forEach(qcard => {
+  qcard.querySelectorAll('.opt').forEach(opt => {
+    opt.addEventListener('click', () => selectOpt(opt, qcard));
+  });
+});
+
+function nextQ(){
+  document.querySelector('.qcard[data-q="'+current+'"]').classList.remove('active');
+  current++;
+  document.getElementById('progFill').style.width = (current/TOTAL*100) + '%';
+  if (current >= TOTAL) { showResult(); return; }
+  document.getElementById('qcount').textContent = 'Question ' + (current+1) + ' of ' + TOTAL;
+  document.querySelector('.qcard[data-q="'+current+'"]').classList.add('active');
+  document.getElementById('nextBtn').disabled = true;
+  document.getElementById('nextBtn').textContent = current === TOTAL-1 ? 'Finish checkpoint →' : 'Next question →';
+}
+
+function showResult(){
+  document.getElementById('quizFlow').style.display = 'none';
+  const rs = document.getElementById('resultScreen');
+  rs.classList.add('show');
+  const pct = Math.round(score/TOTAL*100);
+  const passed = pct >= 70;
+  document.getElementById('resultIcon').className = 'result-icon ' + (passed?'pass':'fail');
+  document.getElementById('resultIcon').innerHTML = passed
+    ? '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 12l6 6L20 6"/></svg>'
+    : '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 9v4M12 17h.01M10.3 3.9L2.7 18a1.8 1.8 0 001.6 2.7h15.4a1.8 1.8 0 001.6-2.7L13.7 3.9a1.8 1.8 0 00-3.4 0z"/></svg>';
+  document.getElementById('resultTitle').textContent = passed ? 'Level 6 Checkpoint passed' : 'Not quite there yet';
+  document.getElementById('resultScore').textContent = score + ' of ' + TOTAL + ' correct (' + pct + '%)';
+  if (passed) {
+    document.getElementById('resultBtn').textContent = 'Unlock Level 7 → Govern';
+  } else {
+    document.getElementById('resultBtn').textContent = 'Review modules, then retry';
+    const uniqueMissed = [...new Set(missed)].sort();
+    document.getElementById('reviewList').style.display = 'block';
+    document.getElementById('reviewItems').innerHTML = uniqueMissed.map(m =>
+      '<div class="review-item"><span>' + m + '</span><a href="#" data-module="' + m + '">Review →</a></div>'
+    ).join('');
+    document.querySelectorAll('#reviewItems a[data-module]').forEach(a => {
+      a.addEventListener('click', e => { e.preventDefault(); const f = MODULE_FILES[a.dataset.module]; if(f) location.href = f; });
+    });
+  }
+}
+</script>
+</body>
+</html>

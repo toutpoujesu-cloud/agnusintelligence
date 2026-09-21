@@ -1,0 +1,400 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Academy — Final Governance Assessment</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#F8F6F2;--surface:#FFFFFF;--surface-2:#F2F0EB;--border:#E0DDD5;
+  --ink:#14181F;--ink-2:#3C4252;--ink-3:#7A8099;
+  --navy:#0F1E34;--navy-2:#162844;
+  --gold:#9A7020;--gold-bg:rgba(154,112,32,.09);--gold-border:rgba(154,112,32,.22);--gold-light:#C49A2C;
+  --pass:#0F6E3A;--pass-bg:rgba(15,110,58,.09);--pass-border:rgba(15,110,58,.22);
+  --danger:#B03020;--danger-bg:rgba(176,48,32,.09);--danger-border:rgba(176,48,32,.22);
+  --warn:#C4760A;--warn-bg:rgba(196,118,10,.09);--warn-border:rgba(196,118,10,.22);
+  --mono:'DM Mono',monospace;--sans:'DM Sans',sans-serif;--serif:'Newsreader',serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;font-family:var(--sans);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+
+/* RAIL */
+.rail{background:var(--navy);color:#fff;height:56px;display:flex;align-items:center;padding:0 28px;gap:16px;position:sticky;top:0;z-index:300}
+.rail-brand{font-weight:800;font-size:15px}
+.rail-sep{width:1px;height:22px;background:rgba(255,255,255,.12);flex-shrink:0}
+.rail-crumb{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38)}
+.rail-title{font-size:13px;font-weight:600;color:rgba(255,255,255,.88)}
+.rail-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.timer-display{font-family:var(--mono);font-size:14px;font-weight:700;color:var(--gold-light);background:rgba(196,154,44,.1);border:1px solid rgba(196,154,44,.2);padding:5px 12px;border-radius:6px;min-width:80px;text-align:center}
+.timer-display.warn{color:#FFD580;background:rgba(255,213,128,.12)}
+.timer-display.danger{color:#FF8070;background:rgba(255,128,112,.12);animation:blink 1s step-end infinite}
+@keyframes blink{50%{opacity:.5}}
+.rail-btn{font-family:var(--sans);font-size:12px;font-weight:600;padding:6px 14px;border-radius:7px;border:1px solid rgba(255,255,255,.16);color:#fff;background:rgba(255,255,255,.07);cursor:pointer}
+
+/* PHASES */
+.phase{display:none}.phase.active{display:block}
+
+/* HERO */
+.hero{background:linear-gradient(138deg,var(--navy) 0%,#162844 60%,#1E3560 100%);padding:64px 0 60px;position:relative;overflow:hidden}
+.hero-inner{max-width:820px;margin:0 auto;padding:0 32px}
+.hero-kicker{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-light);margin-bottom:20px;display:flex;align-items:center;gap:10px;opacity:.85}
+.hero-kicker::before{content:'';width:24px;height:1px;background:var(--gold-light);display:inline-block;opacity:.6}
+.hero h1{font-size:clamp(28px,4vw,46px);font-weight:800;letter-spacing:-.035em;color:#fff;line-height:1.1;margin-bottom:16px}
+.hero-serif{font-family:var(--serif);font-style:italic;font-size:18px;color:rgba(255,255,255,.62);line-height:1.72;max-width:50ch;margin-bottom:32px}
+.hero-pills{display:flex;gap:14px;flex-wrap:wrap}
+.hp{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:7px;padding:7px 13px;font-size:12px;color:rgba(255,255,255,.68)}
+.hp strong{color:#fff}
+
+/* LAYOUT */
+.wrap{max-width:820px;margin:0 auto;padding:40px 32px 100px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:26px 28px;margin-bottom:18px}
+.card h3{font-size:16px;font-weight:800;letter-spacing:-.015em;color:var(--navy);margin-bottom:10px}
+.card p{font-size:14px;line-height:1.72;color:var(--ink-2)}.card p+p{margin-top:8px}
+.callout{border-radius:11px;padding:14px 16px;margin:14px 0;font-size:13px;line-height:1.65;display:flex;gap:10px;align-items:flex-start}
+.callout.danger{background:var(--danger-bg);border:1px solid var(--danger-border)}
+.callout.warn{background:var(--warn-bg);border:1px solid var(--warn-border)}
+.callout.info{background:rgba(15,30,52,.06);border:1px solid rgba(15,30,52,.14)}
+.callout.pass{background:var(--pass-bg);border:1px solid var(--pass-border)}
+.callout-icon{flex-shrink:0;margin-top:2px}
+
+/* COMPANY BRIEF */
+.company-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+@media(max-width:580px){.company-grid{grid-template-columns:1fr}}
+.cg-card{background:var(--surface-2);border:1px solid var(--border);border-radius:11px;padding:14px 16px}
+.cgc-label{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:5px}
+.cgc-value{font-size:13.5px;font-weight:600;color:var(--ink);line-height:1.5}
+.cgc-sub{font-size:12px;color:var(--ink-3);margin-top:3px}
+
+/* AGENT TABLE */
+.agent-table{width:100%;border-collapse:collapse;background:var(--surface);border-radius:12px;overflow:hidden;border:1px solid var(--border);margin:16px 0}
+.agent-table th{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);background:var(--surface-2);padding:10px 14px;text-align:left;border-bottom:1px solid var(--border)}
+.agent-table td{padding:12px 14px;font-size:13px;border-bottom:1px solid var(--border);color:var(--ink-2);vertical-align:top}
+.agent-table tr:last-child td{border-bottom:none}
+.issue-pill{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;border-radius:3px;padding:2px 7px}
+.ip-critical{background:var(--danger-bg);color:var(--danger);border:1px solid var(--danger-border)}
+.ip-warn{background:var(--warn-bg);color:var(--warn);border:1px solid var(--warn-border)}
+.ip-ok{background:var(--pass-bg);color:var(--pass);border:1px solid var(--pass-border)}
+.ip-none{background:var(--surface-2);color:var(--ink-3);border:1px solid var(--border)}
+
+/* TASK LIST */
+.task-list{display:flex;flex-direction:column;gap:8px;margin:16px 0}
+.task-item{display:grid;grid-template-columns:36px 1fr auto;border:1.5px solid var(--border);border-radius:11px;overflow:hidden;cursor:pointer;transition:border-color .15s;align-items:center}
+.task-item:hover{border-color:var(--navy)}
+.task-item.done{border-color:var(--pass)}
+.task-item.blocked{border-color:var(--danger);opacity:.6;cursor:not-allowed}
+.ti-num{display:flex;align-items:center;justify-content:center;background:var(--surface-2);font-family:var(--mono);font-size:11px;font-weight:700;color:var(--ink-3);align-self:stretch}
+.task-item.done .ti-num{background:var(--pass-bg);color:var(--pass)}
+.ti-body{padding:12px 14px}
+.tib-title{font-size:13.5px;font-weight:600;color:var(--ink);margin-bottom:2px}
+.tib-desc{font-size:12px;color:var(--ink-3);line-height:1.5}
+.ti-status{padding:0 14px;font-size:16px;color:var(--ink-3)}
+.task-item.done .ti-status{color:var(--pass)}
+
+/* PROGRESS */
+.progress-shell{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 22px;margin-bottom:24px}
+.ps-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.ps-label{font-size:13px;font-weight:600;color:var(--navy)}
+.ps-pct{font-family:var(--mono);font-size:18px;font-weight:700;color:var(--navy)}
+.ps-bar{background:var(--surface-2);border-radius:4px;height:8px;overflow:hidden}
+.ps-fill{height:8px;border-radius:4px;background:var(--pass);transition:width .5s ease}
+
+/* SCORE */
+.score-card{background:linear-gradient(138deg,var(--navy),#162844);border-radius:20px;padding:44px;margin-bottom:28px;color:#fff}
+.sc-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-bottom:32px}
+@media(max-width:600px){.sc-grid{grid-template-columns:1fr}}
+.sc-dim{text-align:center;padding:20px;background:rgba(255,255,255,.05);border-radius:12px;border:1px solid rgba(255,255,255,.08)}
+.sc-pct{font-family:var(--mono);font-size:32px;font-weight:700;letter-spacing:-.03em;margin-bottom:4px}
+.sc-pct.high{color:#6EE7B7}.sc-pct.mid{color:#FFD580}.sc-pct.low{color:#FF8070}
+.sc-dim-name{font-size:12px;color:rgba(255,255,255,.5)}
+.sc-total{text-align:center}
+.sc-big{font-family:var(--mono);font-size:80px;font-weight:700;letter-spacing:-.04em;line-height:1;margin-bottom:8px}
+.sc-big.pass{color:#6EE7B7}.sc-big.fail{color:#FF8070}
+.sc-verdict{font-family:var(--serif);font-style:italic;font-size:20px;color:rgba(255,255,255,.8);margin-bottom:6px}
+.sc-sub{font-size:13px;color:rgba(255,255,255,.5)}
+
+/* CERT */
+.cert{background:var(--surface);border:1px solid var(--border);border-radius:20px;overflow:hidden;margin-bottom:28px}
+.cert-top{background:linear-gradient(138deg,var(--navy),#162844);padding:52px;text-align:center;position:relative}
+.cert-top::before{content:'';position:absolute;top:16px;left:16px;right:16px;bottom:16px;border:1px solid rgba(255,255,255,.08);border-radius:12px;pointer-events:none}
+.cert-emblem{width:60px;height:60px;background:rgba(196,154,44,.12);border:2px solid rgba(196,154,44,.28);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.cert-pre{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(196,154,44,.75);margin-bottom:12px}
+.cert-title{font-family:var(--serif);font-style:italic;font-size:clamp(22px,3vw,32px);font-weight:300;color:#fff;margin-bottom:8px}
+.cert-sub{font-size:13px;color:rgba(255,255,255,.5)}
+.cert-body{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;padding:32px 40px;border-top:1px solid var(--border)}
+@media(max-width:600px){.cert-body{grid-template-columns:1fr;padding:24px}}
+.ci-label{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:5px}
+.ci-value{font-size:14px;font-weight:700;color:var(--ink)}
+
+/* CTA */
+.cta-row{display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid var(--border);margin-top:28px}
+.btn-primary{padding:13px 28px;border:none;border-radius:11px;font-family:var(--sans);font-weight:700;font-size:14px;cursor:pointer;background:var(--navy);color:#fff;transition:all .2s}
+.btn-primary:hover{background:var(--navy-2);transform:translateY(-1px)}
+.btn-ghost{padding:12px 20px;border:1.5px solid var(--border);border-radius:10px;font-family:var(--sans);font-weight:600;font-size:13px;cursor:pointer;background:transparent;color:var(--ink-3)}
+</style>
+</head>
+<body>
+
+<header class="rail">
+  <span class="rail-brand">AGNUS Academy</span>
+  <span class="rail-sep"></span>
+  <span class="rail-crumb">Final Assessment</span>
+  <span class="rail-title">AI Governance Lead — Live Environment</span>
+  <div class="rail-right">
+    <div class="timer-display" id="timer">90:00</div>
+    <button class="rail-btn" onclick="alert('Cannot leave during assessment')">— Locked</button>
+  </div>
+</header>
+
+<!-- ── PHASE 0 BRIEF ── -->
+<div class="phase active" data-phase="0">
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-kicker">Final Assessment · AGNUS Academy</div>
+      <h1>You are the AI Governance Lead.<br>You have 90 minutes.</h1>
+      <p class="hero-serif">Vestfjord Group has deployed 12 AI agents across 4 departments. Several are ungoverned. One is actively misbehaving. You have been brought in to bring the environment under control. This is not a test of knowledge — it is a test of governance.</p>
+      <div class="hero-pills">
+        <span class="hp"><strong>90 minutes</strong></span>
+        <span class="hp"><strong>12 agents</strong></span>
+        <span class="hp"><strong>4 departments</strong></span>
+        <span class="hp"><strong>Embedded failures</strong></span>
+        <span class="hp"><strong>Credential on pass</strong></span>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="card">
+      <h3>The company</h3>
+      <div class="company-grid">
+        <div class="cg-card"><div class="cgc-label">Company</div><div class="cgc-value">Vestfjord Group AS</div><div class="cgc-sub">Insurance &amp; financial services · Bergen, Norway</div></div>
+        <div class="cg-card"><div class="cgc-label">Employees</div><div class="cgc-value">640</div><div class="cgc-sub">4 departments · 3 external AI vendors</div></div>
+        <div class="cg-card"><div class="cgc-label">AI agents deployed</div><div class="cgc-value">12 agents</div><div class="cgc-sub">Only 3 have complete governance records</div></div>
+        <div class="cg-card"><div class="cgc-label">Your authority</div><div class="cgc-value">Full governance authority</div><div class="cgc-sub">Reporting directly to CEO</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Known problems — reported before your arrival</h3>
+      <div class="callout danger"><div class="callout-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M7 2L1 12h12L7 2z"/><path d="M7 6v3M7 11v.5"/></svg></div><div><strong>Claims Processing Agent — active misbehaviour.</strong> The claims processing agent has been approving insurance claims above its authorised threshold. Nobody knows who owns it. The vendor is external.</div></div>
+      <div class="callout warn"><div class="callout-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M7 2L1 12h12L7 2z"/><path d="M7 6v3M7 11v.5"/></svg></div><div><strong>HR Screening Agent — untrained supervisor.</strong> The HR director has been signing off as Human Sponsor but has not completed Track B governance training.</div></div>
+      <div class="callout warn"><div class="callout-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M7 2L1 12h12L7 2z"/><path d="M7 6v3M7 11v.5"/></svg></div><div><strong>Customer Comms Agent — excessive permissions.</strong> The customer communications agent has execute access to the email system and read access to customer financial profiles — far beyond what it needs to send appointment reminders.</div></div>
+      <div class="callout info"><div class="callout-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="7" cy="7" r="5"/><path d="M7 6v4M7 4.5v.5"/></svg></div><div><strong>Audit request from board.</strong> The board has requested a governance evidence package for the Claims Processing Agent by end of week.</div></div>
+    </div>
+    <div class="cta-row">
+      <span style="font-size:13px;color:var(--ink-3)">Timer starts when you click Begin</span>
+      <button class="btn-primary" onclick="startAssessment()">Begin Assessment →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── PHASE 1 MAIN ── -->
+<div class="phase" data-phase="1">
+  <div class="wrap" style="padding-top:32px">
+
+    <div class="progress-shell">
+      <div class="ps-header"><span class="ps-label">Assessment progress</span><span class="ps-pct" id="main-pct">0%</span></div>
+      <div class="ps-bar"><div class="ps-fill" id="main-fill" style="width:0%"></div></div>
+    </div>
+
+    <!-- AGENT INVENTORY -->
+    <div class="card">
+      <h3>Agent Inventory — Vestfjord Group</h3>
+      <p style="margin-bottom:14px">All 12 deployed agents. Review each and identify governance gaps before acting.</p>
+      <table class="agent-table">
+        <thead><tr><th>Agent</th><th>Department</th><th>Owner</th><th>Mission Contract</th><th>Issues</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Claims Processing Agent</strong></td><td>Insurance</td><td><span style="color:var(--danger)">NONE</span></td><td><span style="color:var(--danger)">Missing</span></td><td><span class="issue-pill ip-critical">Active misbehaviour</span></td></tr>
+          <tr><td><strong>HR Screening Agent</strong></td><td>HR</td><td>K. Berg (untrained)</td><td>Draft only</td><td><span class="issue-pill ip-warn">Untrained sponsor</span></td></tr>
+          <tr><td><strong>Customer Comms Agent</strong></td><td>Customer Service</td><td>T. Hansen</td><td>Approved</td><td><span class="issue-pill ip-warn">Excessive permissions</span></td></tr>
+          <tr><td><strong>Policy Lookup Agent</strong></td><td>Insurance</td><td>L. Sørensen</td><td>Approved</td><td><span class="issue-pill ip-ok">Clean</span></td></tr>
+          <tr><td><strong>Invoice Agent</strong></td><td>Finance</td><td>M. Aas</td><td>Approved</td><td><span class="issue-pill ip-ok">Clean</span></td></tr>
+          <tr><td><strong>Fraud Detection Agent</strong></td><td>Finance</td><td><span style="color:var(--danger)">NONE</span></td><td><span style="color:var(--danger)">Missing</span></td><td><span class="issue-pill ip-critical">No governance record</span></td></tr>
+          <tr><td><strong>Appointment Reminder Agent</strong></td><td>Customer Service</td><td>T. Hansen</td><td>Approved</td><td><span class="issue-pill ip-ok">Clean</span></td></tr>
+          <tr><td><strong>Onboarding Chatbot</strong></td><td>HR</td><td>K. Berg</td><td><span style="color:var(--warn)">Expired (6 months)</span></td><td><span class="issue-pill ip-warn">Review required</span></td></tr>
+          <tr><td><strong>Compliance Reporter Agent</strong><br><span style="font-size:11px;color:var(--ink-3)">External — Vendor: RegTech AS</span></td><td>Compliance</td><td>H. Dahl</td><td>Approved</td><td><span class="issue-pill ip-ok">Clean</span></td></tr>
+          <tr><td><strong>Document Summariser</strong></td><td>Legal</td><td><span style="color:var(--warn)">Vacant role</span></td><td>Draft only</td><td><span class="issue-pill ip-warn">No valid sponsor</span></td></tr>
+          <tr><td><strong>Customer Risk Scorer</strong><br><span style="font-size:11px;color:var(--ink-3)">External — Vendor: NordicAI</span></td><td>Insurance</td><td>L. Sørensen</td><td>Approved</td><td><span class="issue-pill ip-ok">Clean</span></td></tr>
+          <tr><td><strong>Email Drafting Agent</strong></td><td>Customer Service</td><td>T. Hansen</td><td><span style="color:var(--danger)">Missing</span></td><td><span class="issue-pill ip-critical">No governance record</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- TASK LIST -->
+    <div class="card">
+      <h3>Your governance tasks — complete all to pass</h3>
+      <div class="task-list" id="task-list"></div>
+    </div>
+
+    <div id="submit-section" style="display:none">
+      <div class="callout pass">
+        <div class="callout-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 8l4 4 6-6"/></svg></div>
+        <div><strong>All governance tasks complete.</strong> You have brought the Vestfjord Group agent environment under control within the assessment window. Generating your score…</div>
+      </div>
+      <div style="margin-top:16px;text-align:right">
+        <button class="btn-primary" onclick="showScore()">Generate final score →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── PHASE 2 SCORE ── -->
+<div class="phase" data-phase="2">
+  <div class="wrap" style="padding-top:40px">
+    <div class="score-card">
+      <div class="sc-grid">
+        <div class="sc-dim"><div class="sc-pct high" id="sc-discovery">—</div><div class="sc-dim-name">Agent Discovery</div></div>
+        <div class="sc-dim"><div class="sc-pct high" id="sc-mission">—</div><div class="sc-dim-name">Mission Definition</div></div>
+        <div class="sc-dim"><div class="sc-pct mid" id="sc-perms">—</div><div class="sc-dim-name">Permissions</div></div>
+        <div class="sc-dim"><div class="sc-pct high" id="sc-oversight">—</div><div class="sc-dim-name">Human Oversight</div></div>
+        <div class="sc-dim"><div class="sc-pct high" id="sc-incident">—</div><div class="sc-dim-name">Incident Response</div></div>
+        <div class="sc-dim"><div class="sc-pct high" id="sc-evidence">—</div><div class="sc-dim-name">Evidence</div></div>
+      </div>
+      <div class="sc-total">
+        <div class="sc-big" id="sc-overall">—</div>
+        <div class="sc-verdict" id="sc-verdict">Calculating…</div>
+        <div class="sc-sub" id="sc-critical"></div>
+      </div>
+    </div>
+
+    <!-- CERT (if pass) -->
+    <div class="cert" id="cert-block" style="display:none">
+      <div class="cert-top">
+        <div class="cert-emblem"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" stroke="rgba(196,154,44,.9)" stroke-width="1.4" stroke-linecap="round"><path d="M13 2l2.5 7.5H23l-6 4.5 2.5 7.5L13 18l-6.5 4.5 2.5-7.5-6-4.5h7.5L13 2z"/></svg></div>
+        <div class="cert-pre">Certificate of Competency</div>
+        <div class="cert-title">AI Agent Governance &amp; Control</div>
+        <div class="cert-sub">AGNUS Academy · Final Assessment — Passed</div>
+      </div>
+      <div class="cert-body">
+        <div><div class="ci-label">Issued</div><div class="ci-value" id="cert-date">—</div></div>
+        <div><div class="ci-label">Overall score</div><div class="ci-value" id="cert-score">—</div></div>
+        <div><div class="ci-label">Critical failures</div><div class="ci-value" style="color:var(--pass)">0</div></div>
+        <div><div class="ci-label">Assessment time</div><div class="ci-value" id="cert-time">—</div></div>
+        <div><div class="ci-label">Track</div><div class="ci-value">AI Governance Lead</div></div>
+        <div><div class="ci-label">Credential ID</div><div class="ci-value" id="cert-id">—</div></div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:12px;justify-content:center">
+      <button class="btn-primary" onclick="window.print()">Print certificate</button>
+      <button class="btn-ghost" onclick="location.reload()">Retake assessment</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── STATE ──────────────────────────────────────────────────────────
+let timerInterval, secondsLeft=90*60, started=false, tasksCompleted=0;
+const TASKS=[
+  {id:'t1',title:'Suspend the Claims Processing Agent',desc:'It is actively exceeding its authorised threshold. Suspend immediately — investigation later.',critical:true},
+  {id:'t2',title:'Identify the Claims Agent owner',desc:'Find the accountable person. "The insurance department" is not acceptable — name one person.',critical:true},
+  {id:'t3',title:'Register the Fraud Detection Agent',desc:'No governance record exists. Create an identity record and assign a Human Sponsor.',critical:false},
+  {id:'t4',title:'Register the Email Drafting Agent',desc:'No governance record exists. Create an identity record and define its Mission Contract.',critical:false},
+  {id:'t5',title:'Address the HR director training gap',desc:'K. Berg is listed as Human Sponsor but has not completed Track B. Enrol in Track B or reassign sponsorship.',critical:false},
+  {id:'t6',title:'Remediate Customer Comms Agent permissions',desc:'Remove financial profile read access and reduce email to draft-only. Re-run governance test.',critical:false},
+  {id:'t7',title:'Renew the Onboarding Chatbot Mission Contract',desc:'Contract expired 6 months ago. Review and reapprove the Mission Contract.',critical:false},
+  {id:'t8',title:'Assign a sponsor for the Document Summariser',desc:'The previous sponsor\'s role is vacant. A new sponsor must be named and must be Track B trained.',critical:false},
+  {id:'t9',title:'Produce evidence package for board audit',desc:'Board has requested governance evidence for the Claims Processing Agent by end of week.',critical:false},
+  {id:'t10',title:'Confirm all 12 agents have governance records',desc:'Verify the 3 agents confirmed clean. Confirm external vendor agents (Compliance Reporter, Customer Risk Scorer) have current contracts.',critical:false},
+];
+
+function renderTasks(){
+  const list=document.getElementById('task-list');
+  list.innerHTML=TASKS.map((t,i)=>`
+    <div class="task-item" id="ti-${t.id}" onclick="completeTask('${t.id}',this)">
+      <div class="ti-num">${String(i+1).padStart(2,'0')}</div>
+      <div class="ti-body">
+        <div class="tib-title">${t.title}${t.critical?'<span style="margin-left:8px;font-family:var(--mono);font-size:9px;color:var(--danger);background:var(--danger-bg);border:1px solid var(--danger-border);border-radius:3px;padding:1px 6px">CRITICAL</span>':''}</div>
+        <div class="tib-desc">${t.desc}</div>
+      </div>
+      <div class="ti-status">○</div>
+    </div>`).join('');
+}
+
+function completeTask(id, el){
+  if(el.classList.contains('done'))return;
+  el.classList.add('done');
+  el.querySelector('.ti-status').textContent='✓';
+  tasksCompleted++;
+  const pct=Math.round(tasksCompleted/TASKS.length*100);
+  document.getElementById('main-fill').style.width=pct+'%';
+  document.getElementById('main-pct').textContent=pct+'%';
+  if(tasksCompleted===TASKS.length) document.getElementById('submit-section').style.display='block';
+}
+
+// ── TIMER ──────────────────────────────────────────────────────────
+function startTimer(){
+  timerInterval=setInterval(()=>{
+    secondsLeft--;
+    const m=Math.floor(secondsLeft/60);
+    const s=secondsLeft%60;
+    const el=document.getElementById('timer');
+    el.textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    if(secondsLeft<=300)el.className='timer-display warn';
+    if(secondsLeft<=60)el.className='timer-display danger';
+    if(secondsLeft<=0){clearInterval(timerInterval);el.textContent='00:00';showScore();}
+  },1000);
+}
+
+function startAssessment(){
+  goPhase(1);
+  renderTasks();
+  startTimer();
+  started=true;
+}
+
+// ── SCORE ──────────────────────────────────────────────────────────
+function showScore(){
+  clearInterval(timerInterval);
+  const elapsed=90*60-secondsLeft;
+  const mm=Math.floor(elapsed/60);const ss=elapsed%60;
+  const timeStr=`${mm}m ${ss}s`;
+  goPhase(2);
+  // Scores based on tasks completed
+  const pct=tasksCompleted/TASKS.length;
+  const critDone=document.getElementById('ti-t1')?.classList.contains('done')&&document.getElementById('ti-t2')?.classList.contains('done');
+  const scores={
+    discovery: critDone?100:60,
+    mission: Math.round(60+pct*30),
+    perms: document.getElementById('ti-t6')?.classList.contains('done')?88:54,
+    oversight: document.getElementById('ti-t5')?.classList.contains('done')?96:68,
+    incident: critDone?92:40,
+    evidence: document.getElementById('ti-t9')?.classList.contains('done')?94:35
+  };
+  Object.entries(scores).forEach(([k,v])=>{
+    const el=document.getElementById(`sc-${k}`);
+    if(el){el.textContent=v+'%';el.className='sc-pct '+(v>=80?'high':v>=60?'mid':'low');}
+  });
+  const overall=Math.round(Object.values(scores).reduce((a,b)=>a+b)/6);
+  const pass=overall>=75&&critDone;
+  document.getElementById('sc-overall').textContent=overall+'%';
+  document.getElementById('sc-overall').className='sc-big '+(pass?'pass':'fail');
+  document.getElementById('sc-verdict').textContent=pass?'Assessment passed — credential issued':'Assessment failed — critical tasks incomplete';
+  document.getElementById('sc-critical').textContent=!critDone?'Critical failure: Claims Processing Agent was not suspended.':'0 critical failures';
+  if(pass){
+    const cert=document.getElementById('cert-block');
+    cert.style.display='block';
+    const d=new Date();
+    document.getElementById('cert-date').textContent=d.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+    document.getElementById('cert-score').textContent=overall+'% — all stages complete';
+    document.getElementById('cert-time').textContent=timeStr;
+    document.getElementById('cert-id').textContent='AGNUS-FA-'+Date.now().toString(36).toUpperCase();
+  }
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function goPhase(n){
+  document.querySelectorAll('.phase').forEach(p=>p.classList.remove('active'));
+  document.querySelector(`[data-phase="${n}"]`).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>

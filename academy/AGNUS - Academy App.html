@@ -1,0 +1,1128 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AGNUS Academy — The Learning Experience</title>
+<meta name="description" content="The AGNUS Academy product — Apple meets Duolingo meets Codecademy. Choose who you want to become, follow a calm journey map, and learn AI by doing." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --char:#1C1B19; --char-2:#272522; --char-3:#2A2825; --char-4:#3A3A35;
+  --bg:#F8F7F4; --paper:#FCFBF8; --paper-warm:#F3F1EC; --paper-2:#ECE9E1;
+  --ink:#1D1D1F; --ink-soft:#6E6B66; --ink-mute:#908D86; --ink-faint:#B8B4AB;
+  --on-dark:#F5F4F1; --on-dark-soft:rgba(245,244,241,0.64); --on-dark-mute:rgba(245,244,241,0.42); --on-dark-faint:rgba(245,244,241,0.16);
+  --gold:#B28A42; --gold-deep:#8F6E32; --gold-mid:#C9A96A; --gold-light:#E7D6AE; --gold-soft:#FFF8EA;
+  --gold-grad:linear-gradient(100deg,#8F6E32 0%,#E7D6AE 42%,#B28A42 70%,#E7D6AE 100%);
+  --line:#E7E2D8; --line-soft:#F0ECE3; --line-dark:#393530;
+  --pass:#2E8B57;
+  --font-sans:"Manrope",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --font-serif:"Newsreader",Georgia,serif;
+}
+* { box-sizing:border-box; }
+html,body { margin:0; padding:0; }
+body { font-family:var(--font-sans); color:var(--ink); background:var(--char); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; font-size:16px; line-height:1.5; letter-spacing:-0.005em; overflow-x:hidden; }
+a { text-decoration:none; color:inherit; }
+button { font-family:inherit; cursor:pointer; border:none; background:none; color:inherit; }
+::selection { background:var(--gold-soft); color:var(--char); }
+.gold-text { background:var(--gold-grad); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:var(--gold-deep); }
+
+/* ===== APP SHELL — a phone-ish app frame centered in viewport ===== */
+.app-stage { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px; background:
+  radial-gradient(110% 80% at 80% -5%, rgba(176,140,74,0.10), transparent 55%), var(--char); }
+.app {
+  width:100%; max-width:1080px; height:min(860px, calc(100vh - 48px));
+  background:var(--paper-warm); border-radius:30px; overflow:hidden; position:relative;
+  box-shadow:0 50px 120px -40px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.04);
+  display:flex; flex-direction:column;
+}
+
+/* ===== screen system ===== */
+.screen { position:absolute; inset:0; display:flex; flex-direction:column; opacity:0; visibility:hidden; transform:translateY(8px); transition:opacity .5s cubic-bezier(.2,.7,.2,1), transform .5s cubic-bezier(.2,.7,.2,1), visibility .5s; overflow:hidden; }
+.screen.active { opacity:1; visibility:visible; transform:none; }
+.scroll { flex:1; overflow-y:auto; overflow-x:hidden; -webkit-overflow-scrolling:touch; }
+.scroll::-webkit-scrollbar { width:8px; }
+.scroll::-webkit-scrollbar-thumb { background:rgba(0,0,0,0.12); border-radius:99px; }
+.pad { padding:clamp(26px,4.4vw,52px); }
+
+/* ===== top app bar ===== */
+.bar { display:flex; align-items:center; justify-content:space-between; padding:18px clamp(22px,3.5vw,36px); background:rgba(250,249,245,0.86); backdrop-filter:saturate(180%) blur(18px); border-bottom:1px solid var(--line); z-index:10; flex:none; }
+.bar.dark { background:rgba(26,26,23,0.82); border-bottom:1px solid var(--line-dark); }
+.bar .left { display:flex; align-items:center; gap:14px; }
+.wordmark { font-family:var(--font-sans); font-weight:800; font-size:18px; letter-spacing:0.34em; padding-left:0.34em; color:var(--char); }
+.bar.dark .wordmark { color:#fff; }
+.backbtn { display:inline-flex; align-items:center; gap:8px; font-size:13.5px; font-weight:600; color:var(--ink-soft); }
+.bar.dark .backbtn { color:var(--on-dark-soft); }
+.backbtn:hover { color:var(--gold-deep); }
+.bar.dark .backbtn:hover { color:var(--gold-light); }
+.bar .right { display:flex; align-items:center; gap:18px; }
+.streak { font-family:var(--font-mono); font-size:12px; color:var(--ink-soft); display:inline-flex; align-items:center; gap:7px; }
+.streak .fl { color:var(--gold-deep); }
+.avatar { width:34px; height:34px; border-radius:50%; background:var(--char); color:var(--gold-light); display:grid; place-items:center; font-weight:600; font-size:13px; }
+
+/* progress bar in bar */
+.pbar { height:4px; background:var(--line); border-radius:99px; overflow:hidden; flex:1; max-width:340px; }
+.pbar i { display:block; height:100%; background:var(--gold-grad); border-radius:99px; transition:width .6s cubic-bezier(.2,.7,.2,1); }
+
+/* ===== kicker / headings ===== */
+.kicker { display:inline-flex; align-items:center; gap:12px; font-family:var(--font-mono); font-size:11px; font-weight:500; letter-spacing:0.2em; text-transform:uppercase; color:var(--ink-mute); }
+.kicker .ix { color:var(--gold-deep); }
+.kicker.on-dark { color:var(--on-dark-mute); }
+.kicker.on-dark .ix { color:var(--gold-light); }
+.display { font-family:var(--font-sans); font-weight:700; letter-spacing:-0.035em; line-height:1.0; margin:0; }
+.t-xl { font-size:clamp(34px,5vw,56px); }
+.t-lg { font-size:clamp(28px,3.6vw,42px); }
+.t-md { font-size:clamp(22px,2.6vw,30px); }
+.serif { font-family:var(--font-serif); font-weight:300; font-style:italic; }
+.lede { font-family:var(--font-serif); font-weight:300; font-size:clamp(17px,1.9vw,21px); line-height:1.5; color:var(--ink-soft); }
+.lede.on-dark { color:var(--on-dark-soft); }
+
+/* ===== buttons ===== */
+.btn { display:inline-flex; align-items:center; justify-content:center; gap:10px; font-family:var(--font-sans); font-size:15px; font-weight:600; padding:15px 28px; border-radius:999px; letter-spacing:-0.01em; transition:transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease; white-space:nowrap; }
+.btn .arr { transition:transform .2s ease; }
+.btn:hover .arr { transform:translateX(4px); }
+.btn:active { transform:scale(0.98); }
+.btn-dark { background:var(--char); color:#fff; }
+.btn-dark:hover { background:var(--char-3); }
+.btn-gold { background:var(--gold-grad); color:#241B07; box-shadow:0 14px 34px -16px rgba(176,140,74,0.8); }
+.btn-gold:hover { box-shadow:0 18px 40px -16px rgba(176,140,74,0.95); }
+.btn-light { background:#fff; color:var(--char); border:1px solid var(--line); }
+.btn-light:hover { border-color:var(--char); }
+.btn-ghost-d { color:var(--on-dark-soft); border:1px solid var(--on-dark-faint); }
+.btn-ghost-d:hover { color:#fff; border-color:#fff; }
+.btn-block { width:100%; }
+.btn-lg { padding:17px 34px; font-size:16px; }
+
+/* ============================================================= */
+/* SCREEN 1 · BECOME — "What do you want to become?"             */
+/* ============================================================= */
+#s-become { background:var(--char); color:var(--on-dark); }
+#s-become .hero-copy { max-width:680px; margin-bottom:clamp(30px,4vw,46px); }
+#s-become h1 { color:#fff; margin-bottom:18px; }
+#s-become h1 em { font-family:var(--font-serif); font-style:italic; font-weight:300; color:var(--gold-light); }
+.become-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; }
+.become-card { text-align:left; background:var(--char-2); border:1px solid var(--line-dark); border-radius:20px; padding:26px 24px; display:flex; flex-direction:column; gap:12px; min-height:188px; transition:transform .35s cubic-bezier(.2,.7,.2,1), border-color .3s ease, background .3s ease; position:relative; overflow:hidden; }
+.become-card::after { content:""; position:absolute; inset:0; background:radial-gradient(90% 120% at 90% 0%, rgba(220,192,137,0.10), transparent 60%); opacity:0; transition:opacity .35s ease; }
+.become-card:hover { transform:translateY(-6px); border-color:rgba(220,192,137,0.5); background:var(--char-3); }
+.become-card:hover::after { opacity:1; }
+.become-card .gly { font-family:var(--font-serif); font-style:italic; font-size:28px; color:var(--gold-light); }
+.become-card h3 { font-family:var(--font-sans); font-weight:700; font-size:21px; letter-spacing:-0.02em; margin:0; color:#fff; }
+.become-card p { font-size:13.5px; line-height:1.5; color:var(--on-dark-soft); margin:0; }
+.become-card .go { margin-top:auto; font-family:var(--font-mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold-light); display:inline-flex; gap:7px; align-items:center; }
+.become-foot { margin-top:30px; display:flex; align-items:center; gap:18px; flex-wrap:wrap; font-size:13.5px; color:var(--on-dark-mute); }
+.become-foot a { color:var(--on-dark-soft); border-bottom:1px solid var(--line-dark); padding-bottom:1px; }
+.become-foot a:hover { color:var(--gold-light); }
+
+/* ============================================================= */
+/* SCREEN 2 · ONBOARD — sign-in + 3 questions                    */
+/* ============================================================= */
+#s-onboard { background:var(--paper-warm); }
+.ob-wrap { max-width:620px; margin:0 auto; width:100%; }
+.ob-step { display:none; }
+.ob-step.show { display:block; animation:fade .5s cubic-bezier(.2,.7,.2,1); }
+@keyframes fade { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:none; } }
+.ob-dots { display:flex; gap:8px; margin-bottom:30px; }
+.ob-dots i { height:4px; width:34px; border-radius:99px; background:var(--line); transition:background .3s ease; }
+.ob-dots i.on { background:var(--gold-grad); }
+.ob-q { font-family:var(--font-sans); font-weight:700; font-size:clamp(24px,3vw,34px); letter-spacing:-0.03em; margin:0 0 8px; }
+.ob-sub { color:var(--ink-soft); font-size:15.5px; margin:0 0 28px; }
+.opt-list { display:grid; gap:12px; margin-bottom:30px; }
+.opt { text-align:left; display:flex; align-items:center; gap:16px; padding:20px 22px; border:1px solid var(--line); border-radius:16px; background:#fff; transition:border-color .2s ease, transform .2s ease, box-shadow .2s ease; }
+.opt:hover { border-color:var(--ink-faint); transform:translateY(-2px); }
+.opt.sel { border-color:var(--gold); box-shadow:0 0 0 3px var(--gold-soft); }
+.opt .ic { width:44px; height:44px; border-radius:12px; background:var(--paper-2); display:grid; place-items:center; font-family:var(--font-serif); font-style:italic; font-size:20px; color:var(--gold-deep); flex:none; }
+.opt.sel .ic { background:var(--char); color:var(--gold-light); }
+.opt .ot { font-weight:600; font-size:16px; letter-spacing:-0.01em; }
+.opt .od { font-size:13px; color:var(--ink-mute); margin-top:2px; }
+.opt .chk { margin-left:auto; width:22px; height:22px; border-radius:50%; border:1px solid var(--line); display:grid; place-items:center; color:#fff; font-size:12px; transition:background .2s ease, border-color .2s ease; }
+.opt.sel .chk { background:var(--gold-deep); border-color:var(--gold-deep); }
+/* sign in panel */
+.signin { background:#fff; border:1px solid var(--line); border-radius:22px; padding:clamp(28px,4vw,44px); text-align:center; max-width:440px; margin:0 auto; }
+.signin .mk { width:54px; height:54px; border-radius:16px; background:var(--char); color:var(--gold-light); display:grid; place-items:center; font-family:var(--font-serif); font-style:italic; font-size:24px; margin:0 auto 22px; }
+.signin h2 { font-family:var(--font-sans); font-weight:700; font-size:26px; letter-spacing:-0.025em; margin:0 0 8px; }
+.signin p { color:var(--ink-soft); font-size:14.5px; margin:0 0 26px; }
+.sso { display:grid; gap:11px; margin-bottom:18px; }
+.sso button { display:flex; align-items:center; justify-content:center; gap:11px; padding:14px; border-radius:12px; border:1px solid var(--line); background:#fff; font-weight:600; font-size:14.5px; transition:border-color .2s ease, background .2s ease; }
+.sso button:hover { border-color:var(--char); background:var(--paper-warm); }
+.sso .dotg { width:18px; height:18px; border-radius:50%; background:conic-gradient(#E4CD99,#B08C4A,#97763A,#E4CD99); }
+.signin .divider { display:flex; align-items:center; gap:14px; color:var(--ink-faint); font-size:12px; font-family:var(--font-mono); letter-spacing:0.08em; margin:6px 0 18px; }
+.signin .divider::before, .signin .divider::after { content:""; flex:1; height:1px; background:var(--line); }
+.signin input { width:100%; padding:14px 16px; border:1px solid var(--line); border-radius:12px; font-family:var(--font-sans); font-size:15px; outline:none; margin-bottom:11px; }
+.signin input:focus { border-color:var(--char); }
+.signin .fine { font-size:11.5px; color:var(--ink-mute); margin:16px 0 0; line-height:1.5; }
+
+/* ============================================================= */
+/* SCREEN 3 · JOURNEY MAP (dashboard)                            */
+/* ============================================================= */
+#s-journey { background:
+  radial-gradient(80% 60% at 12% 0%, rgba(176,140,74,0.07), transparent 55%), var(--paper-warm); }
+.welcome { display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:30px; }
+.welcome h1 { margin:0 0 6px; }
+.welcome .sub { color:var(--ink-soft); font-size:15.5px; }
+/* current mission — the calm "one thing" */
+.mission { background:var(--char); color:var(--on-dark); border-radius:24px; padding:clamp(28px,4vw,40px); position:relative; overflow:hidden; margin-bottom:24px; }
+.mission::after { content:""; position:absolute; inset:0; background:radial-gradient(60% 130% at 88% 10%, rgba(220,192,137,0.16), transparent 60%); pointer-events:none; }
+.mission > * { position:relative; z-index:1; }
+.mission .mk { font-family:var(--font-mono); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold-light); margin-bottom:16px; display:inline-flex; align-items:center; gap:9px; }
+.mission .mk .pulse { width:8px; height:8px; border-radius:50%; background:var(--gold-light); animation:pulse 2.4s ease-in-out infinite; }
+@keyframes pulse { 0%,100%{ box-shadow:0 0 0 0 rgba(220,192,137,0.5); } 50%{ box-shadow:0 0 0 7px rgba(220,192,137,0); } }
+.mission h2 { color:#fff; font-family:var(--font-sans); font-weight:700; font-size:clamp(24px,3.2vw,36px); letter-spacing:-0.03em; margin:0 0 10px; max-width:18ch; }
+.mission p { color:var(--on-dark-soft); font-size:15px; margin:0 0 24px; max-width:46ch; }
+.mission .mfoot { display:flex; align-items:center; gap:22px; flex-wrap:wrap; }
+.mission .est { font-family:var(--font-mono); font-size:12px; color:var(--on-dark-mute); letter-spacing:0.04em; display:inline-flex; align-items:center; gap:8px; }
+.mission .mini-prog { display:flex; align-items:center; gap:12px; margin-bottom:24px; }
+.mission .mini-prog .pbar2 { height:5px; flex:1; max-width:220px; background:rgba(255,255,255,0.14); border-radius:99px; overflow:hidden; }
+.mission .mini-prog .pbar2 i { display:block; height:100%; width:40%; background:var(--gold-grad); border-radius:99px; }
+.mission .mini-prog span { font-family:var(--font-mono); font-size:12px; color:var(--gold-light); }
+
+/* journey constellation / districts */
+.journey-title { display:flex; align-items:center; justify-content:space-between; margin:34px 0 18px; }
+.journey-title h3 { font-family:var(--font-sans); font-weight:700; font-size:20px; letter-spacing:-0.02em; margin:0; }
+.journey-title .leg { font-family:var(--font-mono); font-size:11px; color:var(--ink-mute); letter-spacing:0.04em; display:flex; gap:16px; }
+.journey-title .leg i { display:inline-flex; align-items:center; gap:6px; }
+.journey-title .leg .d { width:9px; height:9px; border-radius:50%; }
+.leg .d.done { background:var(--gold); } .leg .d.now { background:var(--char); } .leg .d.lock { background:var(--line); border:1px solid var(--ink-faint); }
+
+.map { position:relative; padding:8px 0 6px; }
+.map-track { display:flex; gap:0; overflow-x:auto; padding-bottom:14px; scroll-snap-type:x proximity; }
+.map-track::-webkit-scrollbar { height:7px; }
+.map-track::-webkit-scrollbar-thumb { background:rgba(0,0,0,0.12); border-radius:99px; }
+.district { min-width:230px; flex:1; scroll-snap-align:start; padding:0 16px; position:relative; }
+.district:first-child { padding-left:2px; }
+.district .conn { position:absolute; top:30px; left:50%; right:-50%; height:2px; background:repeating-linear-gradient(90deg, var(--ink-faint) 0 5px, transparent 5px 11px); z-index:0; }
+.district:last-child .conn { display:none; }
+.district.done .conn { background:var(--gold); }
+.node-head { position:relative; z-index:1; display:flex; align-items:center; gap:12px; margin-bottom:16px; }
+.node { width:60px; height:60px; border-radius:20px; display:grid; place-items:center; font-family:var(--font-serif); font-style:italic; font-size:24px; flex:none; border:1px solid var(--line); background:#fff; color:var(--ink-faint); transition:transform .25s ease; }
+.district.done .node { background:var(--gold-grad); color:#241B07; border-color:transparent; box-shadow:0 14px 30px -16px rgba(176,140,74,0.7); }
+.district.now .node { background:var(--char); color:var(--gold-light); border-color:var(--char); box-shadow:0 0 0 4px var(--gold-soft); }
+.card-mini { background:#fff; border:1px solid var(--line); border-radius:16px; padding:18px; transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease; cursor:pointer; }
+.district.now .card-mini { border-color:var(--gold); }
+.district.lock .card-mini { background:var(--paper-2); cursor:default; }
+.card-mini:hover { transform:translateY(-3px); box-shadow:0 18px 40px -28px rgba(26,26,23,0.4); }
+.district.lock .card-mini:hover { transform:none; box-shadow:none; }
+.card-mini .st { font-family:var(--font-mono); font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-mute); margin-bottom:7px; display:flex; align-items:center; gap:7px; }
+.district.done .card-mini .st { color:var(--gold-deep); }
+.card-mini h4 { font-family:var(--font-sans); font-weight:700; font-size:17px; letter-spacing:-0.018em; margin:0 0 4px; }
+.stage-spine { font-family:var(--font-mono); font-size:9.5px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--gold-deep); opacity:.9; margin:0 0 7px; }
+.district.lock .stage-spine { opacity:.4; color:var(--ink-mute); }
+.card-mini p { font-size:12.5px; line-height:1.45; color:var(--ink-soft); margin:0 0 12px; }
+.role-pill { display:inline-flex; align-items:center; font-family:var(--font-mono); font-size:10px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--gold-deep); background:var(--gold-soft); border:1px solid var(--gold-light); border-radius:99px; padding:3px 11px; margin-bottom:14px; }
+.spine-overview { background:#fff; border:1px solid var(--line); border-radius:14px; padding:16px 18px; margin-bottom:28px; }
+.spine-overview-head { font-family:var(--font-mono); font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-mute); margin-bottom:12px; }
+.spine-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:6px; }
+.spine-col { text-align:center; }
+.spine-lv { font-family:var(--font-mono); font-size:10px; font-weight:700; color:var(--char); background:var(--paper-2); border-radius:6px; padding:3px 0; margin-bottom:4px; }
+.spine-st { font-family:var(--font-mono); font-size:8.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-mute); line-height:1.3; }
+.spine-arr { font-size:10px; color:var(--gold-deep); margin:3px 0 2px; }
+.card-mini .lessons { display:flex; gap:5px; }
+.card-mini .lessons i { height:4px; flex:1; border-radius:99px; background:var(--line); }
+.card-mini .lessons i.done { background:var(--gold); }
+.card-mini .lessons i.now { background:var(--char); }
+
+/* skills row */
+.skills { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin-top:8px; }
+.skill { background:#fff; border:1px solid var(--line); border-radius:14px; padding:18px; }
+.skill .sn { font-size:13.5px; font-weight:600; letter-spacing:-0.01em; margin-bottom:10px; display:flex; justify-content:space-between; align-items:center; }
+.skill .stars { color:var(--gold); font-size:13px; letter-spacing:1px; }
+.skill .stars .off { color:var(--line); }
+.skill .sm { font-family:var(--font-mono); font-size:10.5px; color:var(--ink-mute); letter-spacing:0.04em; }
+
+/* destination card */
+.dest { margin-top:24px; background:#fff; border:1px solid var(--line); border-radius:20px; padding:clamp(24px,3vw,32px); display:grid; grid-template-columns:1fr auto; gap:24px; align-items:center; }
+.dest .dk { font-family:var(--font-mono); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold-deep); margin-bottom:12px; }
+.dest h3 { font-family:var(--font-sans); font-weight:700; font-size:23px; letter-spacing:-0.025em; margin:0 0 8px; }
+.dest p { font-size:14px; color:var(--ink-soft); margin:0; max-width:44ch; }
+.dest .ring { width:108px; height:108px; flex:none; display:grid; place-items:center; position:relative; }
+.dest .ring svg { transform:rotate(-90deg); }
+.dest .ring .pct { position:absolute; font-family:var(--font-sans); font-weight:800; font-size:24px; letter-spacing:-0.03em; }
+.dest .ring .pct small { font-size:12px; color:var(--ink-mute); font-weight:600; }
+
+/* ============================================================= */
+/* SCREEN 4 · LESSON PLAYER                                       */
+/* ============================================================= */
+#s-lesson { background:var(--char); color:var(--on-dark); }
+.lesson-stage { flex:1; overflow-y:auto; overflow-x:hidden; }
+.lesson-stage::-webkit-scrollbar { width:8px; }
+.lesson-stage::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.14); border-radius:99px; }
+/* part nav (segments) */
+.segs { display:flex; gap:6px; padding:14px clamp(22px,3.5vw,36px); background:rgba(26,26,23,0.9); border-bottom:1px solid var(--line-dark); position:sticky; top:0; z-index:5; }
+.seg { flex:1; height:4px; border-radius:99px; background:rgba(255,255,255,0.13); overflow:hidden; }
+.seg i { display:block; height:100%; width:0; background:var(--gold-grad); border-radius:99px; transition:width .5s ease; }
+.seg.done i { width:100%; } .seg.cur i { width:55%; }
+
+.part { display:none; padding:clamp(26px,4vw,52px); max-width:780px; margin:0 auto; width:100%; animation:fade .5s cubic-bezier(.2,.7,.2,1); }
+.part.show { display:block; }
+.part-k { font-family:var(--font-mono); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold-light); margin-bottom:18px; display:flex; align-items:center; gap:10px; }
+.part-k .n { color:var(--on-dark-mute); }
+.part h2 { color:#fff; font-family:var(--font-sans); font-weight:700; font-size:clamp(26px,3.4vw,40px); letter-spacing:-0.03em; line-height:1.04; margin:0 0 20px; }
+.part p.body { font-size:16.5px; line-height:1.65; color:var(--on-dark-soft); margin:0 0 18px; }
+.part p.body b { color:#fff; font-weight:600; }
+
+/* intro (netflix-style) */
+.intro-card { border-radius:22px; overflow:hidden; position:relative; aspect-ratio:16/9; background:linear-gradient(160deg,var(--char-3),var(--char)); border:1px solid var(--line-dark); display:grid; place-items:center; margin-bottom:26px; }
+.intro-card::after { content:""; position:absolute; inset:0; background:radial-gradient(70% 90% at 50% 30%, rgba(220,192,137,0.14), transparent 60%); }
+.intro-card .play { position:relative; z-index:1; width:74px; height:74px; border-radius:50%; background:rgba(255,255,255,0.95); display:grid; place-items:center; box-shadow:0 20px 50px rgba(0,0,0,0.4); transition:transform .25s ease; }
+.intro-card:hover .play { transform:scale(1.08); }
+.intro-card .play .tri { width:0; height:0; border-left:22px solid var(--char); border-top:13px solid transparent; border-bottom:13px solid transparent; margin-left:6px; }
+.intro-card .meta { position:absolute; left:20px; bottom:18px; z-index:1; font-family:var(--font-mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#fff; }
+
+/* read part pull style */
+.callout { border-left:2px solid var(--gold); padding:6px 0 6px 22px; margin:24px 0; font-family:var(--font-serif); font-style:italic; font-weight:300; font-size:20px; line-height:1.45; color:#fff; }
+
+/* interactive — choice check */
+.try { background:var(--char-2); border:1px solid var(--line-dark); border-radius:18px; padding:26px; margin:8px 0 24px; }
+.try .tq { font-weight:600; font-size:16px; color:#fff; margin-bottom:18px; }
+.try-opts { display:grid; gap:10px; }
+.try-opt { text-align:left; padding:16px 18px; border-radius:12px; border:1px solid var(--line-dark); background:var(--char-3); color:var(--on-dark); font-size:14.5px; font-weight:500; transition:border-color .2s ease, background .2s ease; display:flex; align-items:center; gap:12px; }
+.try-opt:hover { border-color:var(--on-dark-faint); }
+.try-opt .lt { font-family:var(--font-mono); font-size:12px; color:var(--gold-light); }
+.try-opt.correct { border-color:var(--pass); background:rgba(92,126,99,0.18); }
+.try-opt.wrong { border-color:#9a6b5e; background:rgba(154,107,94,0.16); }
+.try-fb { margin-top:16px; font-size:14px; line-height:1.55; color:var(--on-dark-soft); display:none; }
+.try-fb.show { display:block; animation:fade .4s ease; }
+.try-fb b { color:var(--gold-light); }
+
+/* experiment — prompt editor */
+.editor { background:#15140F; border:1px solid var(--line-dark); border-radius:16px; overflow:hidden; margin:8px 0 18px; }
+.editor .ehead { display:flex; align-items:center; justify-content:space-between; padding:12px 16px; border-bottom:1px solid var(--line-dark); background:rgba(255,255,255,0.03); }
+.editor .ehead .dots { display:flex; gap:7px; }
+.editor .ehead .dots i { width:11px; height:11px; border-radius:50%; }
+.editor .ehead .dots i:nth-child(1){ background:#C98B7E; } .editor .ehead .dots i:nth-child(2){ background:#D9BC83; } .editor .ehead .dots i:nth-child(3){ background:#7FB48A; }
+.editor .ehead .lbl { font-family:var(--font-mono); font-size:11px; color:var(--on-dark-mute); letter-spacing:0.06em; }
+.editor textarea { width:100%; min-height:120px; resize:vertical; background:transparent; border:none; outline:none; color:#EFE9D8; font-family:var(--font-mono); font-size:13.5px; line-height:1.6; padding:18px; }
+.editor .etools { display:flex; gap:10px; padding:0 16px 16px; flex-wrap:wrap; }
+.ebtn { font-family:var(--font-sans); font-size:13px; font-weight:600; padding:10px 18px; border-radius:99px; display:inline-flex; align-items:center; gap:8px; transition:transform .18s ease, background .2s ease; }
+.ebtn:active { transform:scale(0.97); }
+.ebtn.run { background:var(--gold-grad); color:#241B07; }
+.ebtn.improve { border:1px solid var(--on-dark-faint); color:#fff; }
+.ebtn.compare { border:1px solid var(--on-dark-faint); color:var(--on-dark-soft); }
+.eout { margin-top:0; border-top:1px solid var(--line-dark); padding:16px; font-size:13.5px; line-height:1.6; color:var(--on-dark-soft); display:none; }
+.eout.show { display:block; animation:fade .4s ease; }
+.eout .ok { font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--pass); margin-bottom:8px; display:flex; align-items:center; gap:7px; }
+.eout .ok .d { width:6px; height:6px; border-radius:50%; background:var(--pass); }
+
+/* tutor side bubble */
+.tutor { display:flex; gap:14px; align-items:flex-start; background:var(--char-2); border:1px solid var(--line-dark); border-radius:16px; padding:18px 20px; margin:22px 0; }
+.tutor .ava { width:40px; height:40px; border-radius:12px; background:var(--gold-grad); color:#241B07; display:grid; place-items:center; font-family:var(--font-serif); font-style:italic; font-weight:600; font-size:18px; flex:none; }
+.tutor .tx .nm { font-size:12px; font-family:var(--font-mono); letter-spacing:0.08em; text-transform:uppercase; color:var(--gold-light); margin-bottom:6px; }
+.tutor .tx p { font-size:14.5px; line-height:1.55; color:var(--on-dark); margin:0; }
+
+/* business scenario */
+.scenario { background:var(--char-2); border:1px solid var(--line-dark); border-radius:18px; overflow:hidden; margin:8px 0 22px; }
+.scenario .shead { padding:16px 22px; border-bottom:1px solid var(--line-dark); font-family:var(--font-mono); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold-light); display:flex; align-items:center; gap:9px; }
+.scenario .sbody { padding:22px; }
+.scenario .sbody .role { font-size:13px; color:var(--on-dark-mute); margin-bottom:10px; }
+.scenario .sbody h4 { font-family:var(--font-sans); font-weight:700; color:#fff; font-size:19px; letter-spacing:-0.02em; margin:0 0 12px; }
+.scenario .sbody p { font-size:14.5px; line-height:1.6; color:var(--on-dark-soft); margin:0; }
+
+/* reflection */
+.reflect textarea { width:100%; min-height:120px; resize:vertical; background:var(--char-2); border:1px solid var(--line-dark); border-radius:14px; color:#fff; font-family:var(--font-sans); font-size:15px; line-height:1.6; padding:18px; outline:none; }
+.reflect textarea:focus { border-color:var(--gold-deep); }
+.reflect textarea::placeholder { color:var(--on-dark-mute); }
+
+/* mission complete */
+.complete { text-align:center; max-width:560px; margin:0 auto; padding-top:10px; }
+.complete .seal { width:104px; height:104px; border-radius:50%; margin:0 auto 26px; background:var(--gold-grad); display:grid; place-items:center; font-family:var(--font-serif); font-style:italic; font-size:46px; color:#241B07; box-shadow:0 24px 60px -24px rgba(176,140,74,0.9); animation:pop .6s cubic-bezier(.2,1.2,.3,1); }
+@keyframes pop { from { transform:scale(0.5); opacity:0; } to { transform:scale(1); opacity:1; } }
+.complete h2 { color:#fff; font-size:clamp(28px,3.6vw,42px); margin:0 0 12px; }
+.complete .clede { color:var(--on-dark-soft); font-size:17px; margin:0 0 30px; }
+.reward-row { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:30px; }
+.reward { background:var(--char-2); border:1px solid var(--line-dark); border-radius:16px; padding:22px 16px; }
+.reward .rv { font-family:var(--font-sans); font-weight:800; font-size:30px; letter-spacing:-0.03em; color:#fff; }
+.reward .rv.gold-text { -webkit-text-fill-color:transparent; }
+.reward .rl { font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--on-dark-mute); margin-top:6px; }
+/* apply tomorrow */
+.apply { background:#fff; color:var(--ink); border-radius:20px; padding:28px; text-align:left; margin-bottom:26px; }
+.apply .ak { font-family:var(--font-mono); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold-deep); margin-bottom:14px; }
+.apply h3 { font-family:var(--font-sans); font-weight:700; font-size:22px; letter-spacing:-0.025em; margin:0 0 16px; }
+.apply ul { list-style:none; padding:0; margin:0; display:grid; gap:0; }
+.apply li { display:grid; grid-template-columns:26px 1fr; gap:12px; padding:13px 0; border-top:1px solid var(--line-soft); font-size:14.5px; line-height:1.5; }
+.apply li:first-child { border-top:none; }
+.apply li .ix { font-family:var(--font-mono); font-size:12px; color:var(--gold-deep); padding-top:2px; }
+.apply li b { color:var(--ink); font-weight:600; }
+
+/* sticky lesson footer */
+.lesson-foot { flex:none; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px clamp(22px,3.5vw,36px); background:rgba(26,26,23,0.92); backdrop-filter:blur(16px); border-top:1px solid var(--line-dark); }
+.lesson-foot .hint { font-family:var(--font-mono); font-size:11.5px; color:var(--on-dark-mute); letter-spacing:0.04em; }
+.lesson-foot .hint b { color:var(--gold-light); }
+.lf-btns { display:flex; gap:10px; }
+
+/* generic helper */
+.mt-s { margin-top:14px; } .mt-m { margin-top:24px; } .mt-l { margin-top:36px; }
+.row { display:flex; gap:12px; flex-wrap:wrap; }
+.center { text-align:center; }
+.hide { display:none !important; }
+
+@media (max-width:720px) {
+  .app { height:calc(100vh - 24px); border-radius:22px; }
+  .app-stage { padding:12px; }
+  .reward-row { grid-template-columns:1fr; }
+  .dest { grid-template-columns:1fr; }
+  .welcome { align-items:flex-start; }
+}
+</style>
+</head>
+<body>
+<div class="app-stage">
+  <div class="app" id="app">
+
+    <!-- ============================================================ -->
+    <!-- SCREEN 1 · BECOME                                            -->
+    <!-- ============================================================ -->
+    <section class="screen active" id="s-become" data-screen-label="Become">
+      <div class="bar dark">
+        <div class="left"><span class="wordmark">AGNUS</span><span style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.14em;color:var(--gold-light);text-transform:uppercase;">Academy</span></div>
+        <div class="right"><a class="backbtn" href="AGNUS - Academy.html">Exit to site</a></div>
+      </div>
+      <div class="scroll pad">
+        <div class="hero-copy">
+          <div class="kicker on-dark" style="margin-bottom:24px;"><span class="ix">◆</span> Begin</div>
+          <h1 class="display t-xl">What do you want<br />to <em>become?</em></h1>
+          <p class="lede on-dark mt-s">We don't sell courses. We build people. Choose a direction — we'll shape everything around it.</p>
+        </div>
+        <div class="become-grid">
+          <button class="become-card" onclick="goOnboard('Professional')"><span class="gly">❖</span><h3>AI Professional</h3><p>Use AI fluently in everyday knowledge work — faster, sharper, calmer.</p><span class="go">Choose →</span></button>
+          <button class="become-card" onclick="goOnboard('Developer')"><span class="gly">⟁</span><h3>AI Developer</h3><p>Build on the models — APIs, agents, RAG and production patterns.</p><span class="go">Choose →</span></button>
+          <button class="become-card" onclick="goOnboard('Entrepreneur')"><span class="gly">◈</span><h3>AI Entrepreneur</h3><p>Turn AI into products, offers and a business that compounds.</p><span class="go">Choose →</span></button>
+          <button class="become-card" onclick="goOnboard('Executive')"><span class="gly">⬡</span><h3>AI Executive</h3><p>Lead an AI-fluent organisation — strategy, governance, ROI.</p><span class="go">Choose →</span></button>
+          <button class="become-card" onclick="goOnboard('Creative')"><span class="gly">✦</span><h3>AI Creative</h3><p>Design, write and make with AI as a genuine creative partner.</p><span class="go">Choose →</span></button>
+        </div>
+        <div class="become-foot">
+          <span>Already learning with us?</span>
+          <a onclick="showSignin()">Sign in</a>
+          <span style="opacity:0.5">·</span>
+          <span>38,000 people are on a path right now.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SCREEN 2 · ONBOARD (sign-in + 3 questions)                   -->
+    <!-- ============================================================ -->
+    <section class="screen" id="s-onboard" data-screen-label="Onboarding">
+      <div class="bar">
+        <div class="left"><button class="backbtn" onclick="show('s-become')">← Back</button></div>
+        <div class="left"><span class="wordmark">AGNUS</span></div>
+        <div class="right"><span style="font-family:var(--font-mono);font-size:11px;color:var(--ink-mute);letter-spacing:0.08em;" id="ob-goal-tag">Professional path</span></div>
+      </div>
+      <div class="scroll pad">
+        <div class="ob-wrap">
+
+          <!-- sign in -->
+          <div class="ob-step" id="ob-signin">
+            <div class="signin">
+              <div class="mk gold-text" style="-webkit-text-fill-color:var(--gold-light);">A</div>
+              <h2>Save your progress</h2>
+              <p>One tap. No long forms. Pick up exactly where you left off, on any device.</p>
+              <div class="sso">
+                <button onclick="afterSignin()"><span class="dotg"></span> Continue with Google</button>
+                <button onclick="afterSignin()"><span style="font-weight:800;">⌘</span> Continue with Apple</button>
+              </div>
+              <div class="divider">or</div>
+              <input type="email" placeholder="you@work.com" />
+              <button class="btn btn-dark btn-block" onclick="afterSignin()">Continue with email <span class="arr">→</span></button>
+              <p class="fine">By continuing you agree to the AGNUS Terms. We'll never sell your data — truth before hype applies to us too.</p>
+            </div>
+          </div>
+
+          <!-- Q1 -->
+          <div class="ob-step" id="ob-q1">
+            <div class="ob-dots"><i class="on"></i><i></i><i></i><i></i></div>
+            <h2 class="ob-q">How do you like to learn?</h2>
+            <p class="ob-sub">So we lead with the format that actually lands for you.</p>
+            <div class="opt-list">
+              <button class="opt" onclick="pick(this,'q1')"><span class="ic">▷</span><span><span class="ot">Show me visually</span><span class="od">Video and demos first</span></span><span class="chk">✓</span></button>
+              <button class="opt" onclick="pick(this,'q1')"><span class="ic">¶</span><span><span class="ot">Let me read</span><span class="od">Clear writing I can reference</span></span><span class="chk">✓</span></button>
+              <button class="opt" onclick="pick(this,'q1')"><span class="ic">◎</span><span><span class="ot">Let me do it</span><span class="od">Hands-on from minute one</span></span><span class="chk">✓</span></button>
+            </div>
+            <button class="btn btn-gold btn-block btn-lg" onclick="obNext('ob-q1','ob-q2',1)">Continue <span class="arr">→</span></button>
+          </div>
+
+          <!-- Q2 -->
+          <div class="ob-step" id="ob-q2">
+            <div class="ob-dots"><i class="on"></i><i class="on"></i><i></i><i></i></div>
+            <h2 class="ob-q">Where are you starting from?</h2>
+            <p class="ob-sub">No judgement — it just sets your first mission.</p>
+            <div class="opt-list">
+              <button class="opt" onclick="pick(this,'q2')"><span class="ic">○</span><span><span class="ot">Total beginner</span><span class="od">I've barely touched AI</span></span><span class="chk">✓</span></button>
+              <button class="opt" onclick="pick(this,'q2')"><span class="ic">◐</span><span><span class="ot">I dabble</span><span class="od">I use ChatGPT now and then</span></span><span class="chk">✓</span></button>
+              <button class="opt" onclick="pick(this,'q2')"><span class="ic">●</span><span><span class="ot">Pretty confident</span><span class="od">I want depth and edge cases</span></span><span class="chk">✓</span></button>
+            </div>
+            <button class="btn btn-gold btn-block btn-lg" onclick="obNext('ob-q2','ob-q3',2)">Continue <span class="arr">→</span></button>
+          </div>
+
+          <!-- Q3 -->
+          <div class="ob-step" id="ob-q3">
+            <div class="ob-dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div>
+            <h2 class="ob-q">How much time, most days?</h2>
+            <p class="ob-sub">We size every mission to fit your real life.</p>
+            <div class="opt-list">
+              <button class="opt" onclick="pick(this,'q3')"><span class="ic">▴</span><span><span class="ot">10 minutes</span><span class="od">Small and steady</span></span><span class="chk">✓</span></button>
+              <button class="opt" onclick="pick(this,'q3')"><span class="ic">▰</span><span><span class="ot">25 minutes</span><span class="od">A focused session</span></span><span class="chk">✓</span></button>
+              <button class="opt" onclick="pick(this,'q3')"><span class="ic">▮</span><span><span class="ot">An hour</span><span class="od">I'm all in</span></span><span class="chk">✓</span></button>
+            </div>
+            <button class="btn btn-gold btn-block btn-lg" onclick="obNext('ob-q3','ob-q4',3)">Continue <span class="arr">→</span></button>
+          </div>
+
+          <!-- Q4 — Role at Nordic Finance AS -->
+          <div class="ob-step" id="ob-q4">
+            <div class="ob-dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
+            <h2 class="ob-q">Your role at Nordic Finance?</h2>
+            <p class="ob-sub">The Control Training Environment puts you in the seat. Pick your assignment.</p>
+            <div class="opt-list">
+              <button class="opt" onclick="pick(this,'q4')"><span class="ic">G</span><span><span class="ot">AI Governance Manager</span><span class="od">Policy design, oversight architecture, audit readiness</span></span><span class="chk">✓</span></button>
+              <button class="opt" onclick="pick(this,'q4')"><span class="ic">R</span><span><span class="ot">Chief Risk Officer</span><span class="od">Enterprise risk, regulatory exposure, board reporting</span></span><span class="chk">✓</span></button>
+              <button class="opt" onclick="pick(this,'q4')"><span class="ic">L</span><span><span class="ot">Head of Legal</span><span class="od">GDPR compliance, DORA obligations, vendor contracts</span></span><span class="chk">✓</span></button>
+              <button class="opt" onclick="pick(this,'q4')"><span class="ic">F</span><span><span class="ot">CFO</span><span class="od">Financial exposure, agent cost controls, audit sign-off</span></span><span class="chk">✓</span></button>
+            </div>
+            <button class="btn btn-gold btn-block btn-lg" onclick="finishOnboard()">Build my journey <span class="arr">→</span></button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SCREEN 3 · JOURNEY MAP                                        -->
+    <!-- ============================================================ -->
+    <section class="screen" id="s-journey" data-screen-label="Journey Map">
+      <div class="bar">
+        <div class="left"><span class="wordmark">AGNUS</span></div>
+        <div class="right">
+          <span class="streak"><span class="fl">▲</span> 4-day streak</span>
+          <div class="avatar">Yo</div>
+        </div>
+      </div>
+      <div class="scroll pad">
+        <div class="welcome">
+          <div>
+            <div class="kicker" style="margin-bottom:8px;"><span class="ix">◆</span> <span id="jrny-path">Professional path</span></div>
+            <div><span class="role-pill" id="role-pill">Governance Officer</span></div>
+            <h1 class="display t-lg">Welcome back, Yara.</h1>
+            <div class="sub">You're closer than you think. One mission today keeps the momentum.</div>
+          </div>
+          <button class="btn btn-light" onclick="show('s-become')">Change goal</button>
+        </div>
+
+        <!-- current mission -->
+        <div class="mission">
+          <div class="mk"><span class="pulse"></span> Start here</div>
+          <h2>What is an AI Agent?</h2>
+          <p>The foundation of everything. Understand what AI agents actually are, how they work, and why they're different from a chatbot.</p>
+          <div class="mini-prog"><div class="pbar2"><i style="width:0%"></i></div><span>Level 1 · M01 · 7 modules</span></div>
+          <div class="mfoot">
+            <button class="btn btn-gold btn-lg" onclick="location.href='AGNUS - Academy M01 - What is an AI Agent.html'">Begin Level 1 <span class="arr">→</span></button>
+            <span class="est">◷ About 15 minutes</span>
+          </div>
+        </div>
+
+        <!-- journey map — real modules -->
+        <div class="journey-title">
+          <h3>Your journey</h3>
+          <div class="leg">
+            <i><span class="d done"></span> Done</i>
+            <i><span class="d now"></span> Now</i>
+            <i><span class="d lock"></span> Ahead</i>
+          </div>
+        </div>
+
+        <!-- Programme spine — 7-stage overview -->
+        <div class="spine-overview">
+          <div class="spine-overview-head">7-Stage Governance Programme — Track A builds the CTE capstone</div>
+          <div class="spine-grid">
+            <div class="spine-col"><div class="spine-lv">L1</div><div class="spine-arr">↓</div><div class="spine-st">Stage 1<br>Discover &amp;<br>Register</div></div>
+            <div class="spine-col"><div class="spine-lv">L2</div><div class="spine-arr">↓</div><div class="spine-st">Stage 2<br>Mission &amp;<br>Accountability</div></div>
+            <div class="spine-col"><div class="spine-lv">L3</div><div class="spine-arr">↓</div><div class="spine-st">Stage 3<br>Permissions &amp;<br>Boundaries</div></div>
+            <div class="spine-col"><div class="spine-lv">L4</div><div class="spine-arr">↓</div><div class="spine-st">Stage 4<br>Human<br>Oversight</div></div>
+            <div class="spine-col"><div class="spine-lv">L5</div><div class="spine-arr">↓</div><div class="spine-st">Stage 5<br>Test &amp;<br>Assure</div></div>
+            <div class="spine-col"><div class="spine-lv">L6</div><div class="spine-arr">↓</div><div class="spine-st">Stage 6<br>Operate &amp;<br>Defend</div></div>
+            <div class="spine-col"><div class="spine-lv">L7</div><div class="spine-arr">↓</div><div class="spine-st">Stage 7<br>Audit &amp;<br>Evidence</div></div>
+          </div>
+        </div>
+        <div class="map">
+          <div class="map-track">
+
+            <!-- L1 UNDERSTAND -->
+            <div class="district now">
+              <div class="conn"></div>
+              <div class="node-head"><div class="node">L1</div></div>
+              <div class="card-mini" onclick="openLevel(1)">
+                <div class="st">● Current level</div>
+                <h4>Understand</h4>
+                <div class="stage-spine">→ Builds Stage 1 · Discover &amp; Register</div>
+                <p>What AI agents are, how they work, how they fail, and why certainty is not accuracy.</p>
+                <div class="lessons"><i class="now"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              </div>
+            </div>
+
+            <!-- L2 OPERATE -->
+            <div class="district lock">
+              <div class="conn"></div>
+              <div class="node-head"><div class="node">L2</div></div>
+              <div class="card-mini" onclick="openLevel(2)">
+                <div class="st">◌ Unlocks after L1</div>
+                <h4>Operate</h4>
+                <div class="stage-spine">→ Builds Stage 2 · Mission &amp; Accountability</div>
+                <p>Run agents, read their output, diagnose brief failures, hand off work between tools.</p>
+                <div class="lessons"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              </div>
+            </div>
+
+            <!-- L3 DIRECT -->
+            <div class="district lock">
+              <div class="conn"></div>
+              <div class="node-head"><div class="node">L3</div></div>
+              <div class="card-mini" onclick="openLevel(3)">
+                <div class="st">◌ Unlocks after L2</div>
+                <h4>Direct</h4>
+                <div class="stage-spine">→ Builds Stage 3 · Permissions &amp; Boundaries</div>
+                <p>Write instructions that hold. Scope constraints, approval gates, multi-agent coordination.</p>
+                <div class="lessons"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              </div>
+            </div>
+
+            <!-- L4 GOVERN -->
+            <div class="district lock">
+              <div class="conn"></div>
+              <div class="node-head"><div class="node">L4</div></div>
+              <div class="card-mini" onclick="openLevel(4)">
+                <div class="st">◌ Unlocks after L3</div>
+                <h4>Govern</h4>
+                <div class="stage-spine">→ Builds Stage 4 · Human Oversight</div>
+                <p>Authority chains, scope drift, intervention controls, policy architecture. AI that stays in bounds.</p>
+                <div class="lessons"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              </div>
+            </div>
+
+            <!-- L5 VERIFY -->
+            <div class="district lock">
+              <div class="conn"></div>
+              <div class="node-head"><div class="node">L5</div></div>
+              <div class="card-mini" onclick="openLevel(5)">
+                <div class="st">◌ Unlocks after L4</div>
+                <h4>Verify</h4>
+                <div class="stage-spine">→ Builds Stage 5 · Test &amp; Assure</div>
+                <p>Claim verification, source checking, output validation. Finance, legal, marketing, data analysis.</p>
+                <div class="lessons"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              </div>
+            </div>
+
+            <!-- L6 BUILD -->
+            <div class="district lock">
+              <div class="conn"></div>
+              <div class="node-head"><div class="node">L6</div></div>
+              <div class="card-mini" onclick="openLevel(6)">
+                <div class="st">◌ Unlocks after L5</div>
+                <h4>Build</h4>
+                <div class="stage-spine">→ Builds Stage 6 · Operate &amp; Defend</div>
+                <p>Construct working agent workflows, guardrails, and handoffs. Architecture, scaffolding, testing.</p>
+                <div class="lessons"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              </div>
+            </div>
+
+            <!-- L7 CERTIFY -->
+            <div class="district lock">
+              <div class="conn"></div>
+              <div class="node-head"><div class="node">L7</div></div>
+              <div class="card-mini" onclick="openLevel(7)">
+                <div class="st">◌ Unlocks after L6</div>
+                <h4>Certify</h4>
+                <div class="stage-spine">→ Builds Stage 7 · Audit &amp; Evidence</div>
+                <p>Governance policy design, vendor auditing, org-wide verification, capstone framework.</p>
+                <div class="lessons"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              </div>
+            </div>
+
+            <!-- TRACK B -->
+            <div class="district lock">
+              <div class="conn"></div>
+              <div class="node-head"><div class="node" style="font-size:11px;letter-spacing:.04em">B</div></div>
+              <div class="card-mini" onclick="openTrackB()">
+                <div class="st">◌ Requires L1–L4</div>
+                <h4>Organisational Deployment</h4>
+                <p>5 industry simulations: Finance, HR, Legal, Healthcare, Customer Service. Premium track.</p>
+                <div class="lessons"><i></i><i></i><i></i><i></i><i></i></div>
+              </div>
+            </div>
+
+            <!-- CTE CAPSTONE -->
+            <div class="district lock">
+              <div class="conn"></div>
+              <div class="node-head"><div class="node" style="font-family:var(--font-serif);">★</div></div>
+              <div class="card-mini" onclick="openCTE()">
+                <div class="st">◌ Requires all tracks</div>
+                <h4>Control Training Environment</h4>
+                <p>7-stage live governance simulation. Nordic Finance AS. Real decisions. Competency certification.</p>
+                <div class="lessons"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- level detail modal trigger -->
+        <div class="journey-title" style="margin-top:30px;"><h3>Quick access</h3></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px">
+          <button class="btn btn-dark" onclick="openLevel(1)" style="padding:14px 18px;text-align:left;border-radius:14px"><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;opacity:.5;margin-bottom:4px">TRACK A</div><div style="font-size:14px;font-weight:700">Browse all modules →</div></button>
+          <button class="btn btn-dark" onclick="openTrackB()" style="padding:14px 18px;text-align:left;border-radius:14px"><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;opacity:.5;margin-bottom:4px">TRACK B · PREMIUM</div><div style="font-size:14px;font-weight:700">Industry simulations →</div></button>
+        </div>
+
+        <!-- destination -->
+        <div class="dest">
+          <div>
+            <div class="dk">Your destination</div>
+            <h3>AI Governance Professional</h3>
+            <p>Understand, operate, govern, and certify AI agents at work. 7 levels + 5 industry simulations + live governance environment.</p>
+            <button class="btn btn-dark mt-m" onclick="openLevel(1)">Start Level 1 <span class="arr">→</span></button>
+          </div>
+          <div class="ring">
+            <svg width="108" height="108" viewBox="0 0 108 108">
+              <circle cx="54" cy="54" r="48" fill="none" stroke="#E7E4DA" stroke-width="8"/>
+              <circle cx="54" cy="54" r="48" fill="none" stroke="url(#g)" stroke-width="8" stroke-linecap="round" stroke-dasharray="301.6" stroke-dashoffset="301"/>
+              <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#97763A"/><stop offset="1" stop-color="#E4CD99"/></linearGradient></defs>
+            </svg>
+            <div class="pct">0<small>%</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SCREEN 4 · LESSON PLAYER                                      -->
+    <!-- ============================================================ -->
+    <section class="screen" id="s-lesson" data-screen-label="Lesson Player">
+      <div class="bar dark">
+        <div class="left"><button class="backbtn" onclick="show('s-journey')">← Journey</button></div>
+        <div class="pbar" style="background:rgba(255,255,255,0.14);"><i id="lesson-prog" style="width:14%"></i></div>
+        <div class="right"><span style="font-family:var(--font-mono);font-size:11px;color:var(--on-dark-mute);" id="lesson-count">Part 1 / 7</span></div>
+      </div>
+
+      <!-- segments -->
+      <div class="segs" id="segs">
+        <div class="seg cur"><i></i></div><div class="seg"><i></i></div><div class="seg"><i></i></div>
+        <div class="seg"><i></i></div><div class="seg"><i></i></div><div class="seg"><i></i></div><div class="seg"><i></i></div>
+      </div>
+
+      <div class="lesson-stage" id="lesson-stage">
+
+        <!-- PART 1 · WATCH -->
+        <div class="part show" data-part="0">
+          <div class="part-k"><span class="n">01 / 07</span> · Watch</div>
+          <h2>The anatomy of a prompt that works.</h2>
+          <div class="intro-card">
+            <div class="play"><div class="tri"></div></div>
+            <div class="meta">▷ 4 min · Lesson 4 · Prompt Engineering</div>
+          </div>
+          <p class="body">Most people type a request and hope. In the next four minutes you'll see the <b>four parts</b> every reliable prompt shares — role, task, context and format — and why leaving one out is where things go wrong.</p>
+          <div class="tutor">
+            <div class="ava">A</div>
+            <div class="tx"><div class="nm">AGNUS Tutor</div><p>Watch once for the shape of it — don't take notes. We'll practise each part together right after. I'm here the whole way.</p></div>
+          </div>
+        </div>
+
+        <!-- PART 2 · READ -->
+        <div class="part" data-part="1">
+          <div class="part-k"><span class="n">02 / 07</span> · Read</div>
+          <h2>The four parts, in plain language.</h2>
+          <p class="body"><b>Role</b> tells the model who to be. <b>Task</b> says exactly what to do. <b>Context</b> gives it what it needs to know. <b>Format</b> describes the shape of the answer you want back.</p>
+          <div class="callout">"A vague prompt is a vague instruction to a brilliant new hire. Be specific, and it performs."</div>
+          <p class="body">The magic isn't clever wording — it's <b>completeness</b>. When all four parts are present, the model stops guessing and starts delivering. Miss one, and it fills the gap with assumptions.</p>
+          <div class="tutor"><div class="ava">A</div><div class="tx"><div class="nm">AGNUS Tutor</div><p>If you only remember one thing: <b>name the role and the format</b>. That alone fixes most disappointing answers.</p></div></div>
+        </div>
+
+        <!-- PART 3 · INTERACT -->
+        <div class="part" data-part="2">
+          <div class="part-k"><span class="n">03 / 07</span> · Check</div>
+          <h2>Which part is missing?</h2>
+          <p class="body">Here's a prompt: <em>"Write something about our new running shoe for our website."</em> One of the four parts is clearly missing. Which one hurts most here?</p>
+          <div class="try">
+            <div class="tq">Pick the weakest link:</div>
+            <div class="try-opts" id="q-interact">
+              <button class="try-opt" onclick="answer(this,false)"><span class="lt">A</span> Role — who the AI should be</button>
+              <button class="try-opt" onclick="answer(this,true)"><span class="lt">B</span> Format — the shape of the output</button>
+              <button class="try-opt" onclick="answer(this,false)"><span class="lt">C</span> Task — what to actually do</button>
+            </div>
+            <div class="try-fb" id="fb-interact"><b>Exactly.</b> "Something" gives no format — length, tone, structure are all undefined. Add "a 60-word product blurb in a confident, friendly tone" and the output transforms.</div>
+          </div>
+        </div>
+
+        <!-- PART 4 · EXPERIMENT (editor) -->
+        <div class="part" data-part="3">
+          <div class="part-k"><span class="n">04 / 07</span> · Experiment</div>
+          <h2>Now write one yourself.</h2>
+          <p class="body">Rewrite the weak prompt with all four parts. Try it, then let the Tutor improve it — or compare yours with an expert's.</p>
+          <div class="editor">
+            <div class="ehead"><div class="dots"><i></i><i></i><i></i></div><div class="lbl">prompt.txt</div></div>
+            <textarea id="prompt-area">You are a senior copywriter for a premium running brand. Write a 60-word product blurb for our new lightweight running shoe, the Glide X, in a confident and friendly tone. End with a short call to action.</textarea>
+            <div class="etools">
+              <button class="ebtn run" onclick="runPrompt()">▷ Run</button>
+              <button class="ebtn improve" onclick="improvePrompt()">✦ Improve with Tutor</button>
+              <button class="ebtn compare" onclick="comparePrompt()">⇌ Compare with expert</button>
+            </div>
+            <div class="eout" id="prompt-out"></div>
+          </div>
+          <div class="tutor"><div class="ava">A</div><div class="tx"><div class="nm">AGNUS Tutor</div><p>Yours already has all four parts — nice. Notice how naming the product and the CTA removes the model's guesswork.</p></div></div>
+        </div>
+
+        <!-- PART 5 · BUSINESS SCENARIO -->
+        <div class="part" data-part="4">
+          <div class="part-k"><span class="n">05 / 07</span> · Business Scenario</div>
+          <h2>Use it where it counts.</h2>
+          <div class="scenario">
+            <div class="shead">⬡ Real situation</div>
+            <div class="sbody">
+              <div class="role">You're a marketing lead at a 12-person DTC brand.</div>
+              <h4>40 product descriptions are due Friday.</h4>
+              <p>Instead of writing each by hand, you build one complete prompt — role, task, context, format — then feed it your product list. What took two days now takes an afternoon, and the voice stays consistent across all 40.</p>
+            </div>
+          </div>
+          <p class="body">This is the shift: a prompt isn't a question you ask once. It's a <b>reusable instrument</b> you build once and run many times. That's where the hours come back.</p>
+        </div>
+
+        <!-- PART 6 · REFLECTION -->
+        <div class="part" data-part="5">
+          <div class="part-k"><span class="n">06 / 07</span> · Reflection</div>
+          <h2>Make it yours.</h2>
+          <p class="body">Where in <em>your</em> week could one well-built prompt replace a repetitive task? Name it — specificity is what makes this stick.</p>
+          <div class="reflect"><textarea placeholder="This week I'll turn ____ into a reusable prompt, which usually takes me ____ hours…"></textarea></div>
+          <div class="tutor"><div class="ava">A</div><div class="tx"><div class="nm">AGNUS Tutor</div><p>Whatever you wrote — that's your homework, and your first real win. We'll check in on it next session.</p></div></div>
+        </div>
+
+        <!-- PART 7 · MISSION COMPLETE -->
+        <div class="part" data-part="6">
+          <div class="complete">
+            <div class="seal">★</div>
+            <h2 class="display">Mission complete.</h2>
+            <p class="clede">You can now write prompts that get it right the first time. That compounds across everything ahead.</p>
+            <div class="reward-row">
+              <div class="reward"><div class="rv gold-text">+120</div><div class="rl">XP earned</div></div>
+              <div class="reward"><div class="rv">★★★★<span style="color:var(--on-dark-faint)">★</span></div><div class="rl">Prompting · Lv 4</div></div>
+              <div class="reward"><div class="rv">5<span style="color:var(--on-dark-mute);font-size:18px;">/10</span></div><div class="rl">Mission progress</div></div>
+            </div>
+            <div class="apply">
+              <div class="ak">✦ Apply this tomorrow</div>
+              <h3>Your action plan</h3>
+              <ul>
+                <li><span class="ix">01</span><div><b>Pick one repetitive task</b> — the email, the summary, the blurb you write again and again.</div></li>
+                <li><span class="ix">02</span><div><b>Build one complete prompt</b> for it — role, task, context, format.</div></li>
+                <li><span class="ix">03</span><div><b>Save it</b> where you'll find it Monday. Run it instead of starting from scratch.</div></li>
+              </ul>
+            </div>
+            <div class="row center" style="justify-content:center;">
+              <button class="btn btn-gold btn-lg" onclick="show('s-journey')">Back to journey <span class="arr">→</span></button>
+              <button class="btn btn-ghost-d btn-lg" onclick="restartLesson()">Replay lesson</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- sticky footer nav -->
+      <div class="lesson-foot" id="lesson-foot">
+        <span class="hint">Tutor is <b>always one tap away</b></span>
+        <div class="lf-btns">
+          <button class="btn btn-ghost-d" id="lf-prev" onclick="prevPart()">Back</button>
+          <button class="btn btn-gold" id="lf-next" onclick="nextPart()">Continue <span class="arr">→</span></button>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<template id="__bundler_thumbnail">
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#1A1A17"/><text x="50" y="44" font-family="Manrope,sans-serif" font-size="13" font-weight="800" letter-spacing="3" fill="#DCC089" text-anchor="middle">AGNUS</text><text x="50" y="62" font-family="monospace" font-size="6.5" letter-spacing="2" fill="#FAF9F5" text-anchor="middle">ACADEMY</text></svg>
+</template>
+
+<script>
+/* ---------- screen router ---------- */
+function show(id){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('active', s.id===id));
+  const sc = document.querySelector('#'+id+' .scroll, #'+id+' .lesson-stage');
+  document.querySelectorAll('#'+id+' .scroll, #'+id+' .lesson-stage').forEach(el=>el.scrollTop=0);
+}
+
+/* ---------- level + track navigation ---------- */
+var LEVELS = {
+  1: {
+    title:'Level 1 — Understand',
+    desc:'What AI agents are, how they work, and why their certainty is not accuracy.',
+    modules:[
+      {num:'M01',title:'What is an AI Agent',file:'AGNUS - Academy M01 - What is an AI Agent.html'},
+      {num:'M02',title:'The Difference Between a Model and an Agent',file:'AGNUS - Academy M02 - The Difference Between a Model and an Agent.html'},
+      {num:'M03',title:'Reading a Tool Call',file:'AGNUS - Academy M03 - Reading a Tool Call.html'},
+      {num:'M04',title:'What Memory Means for an AI System',file:'AGNUS - Academy M04 - What Memory Means for an AI System.html'},
+      {num:'M05',title:'The First Deviation: When Confidence Isn\'t Evidence',file:'AGNUS - Academy M05 - The First Deviation.html'},
+      {num:'M06',title:'Reading an Agent\'s Reasoning Trace',file:'AGNUS - Academy M06 - Reading an Agent\'s Reasoning Trace.html'},
+      {num:'M07',title:'Why AI Sounds Certain Even When It\'s Wrong',file:'AGNUS - Academy M07 - Why AI Sounds Certain.html'},
+    ]
+  },
+  2: {
+    title:'Level 2 — Operate',
+    desc:'Run agents, read their output, diagnose brief failures, and hand off work between tools.',
+    modules:[
+      {num:'M08',title:'Running Your First Agent Task',file:'AGNUS - Academy M08 - Running Your First Agent Task.html'},
+      {num:'M09',title:'Why the AI Redesigned the Wrong Thing',file:'AGNUS - Academy M09 - Why the AI Redesigned the Wrong Thing.html'},
+      {num:'M10',title:'The Tool Isn\'t Broken, the Brief Is',file:'AGNUS - Academy M10 - The Tool Isn\'t Broken, the Brief Is.html'},
+      {num:'M11',title:'Common Failure Patterns in Tool Calls',file:'AGNUS - Academy M11 - Common Failure Patterns.html'},
+      {num:'M12',title:'Retry Logic',file:'AGNUS - Academy M12 - Retry Logic.html'},
+      {num:'M13',title:'Validating Output Before You Trust It',file:'AGNUS - Academy M13 - Validating Output.html'},
+      {num:'M14',title:'Handing Off Work Between Tools',file:'AGNUS - Academy M14 - Handing Off Work Between Tools.html'},
+    ]
+  },
+  3: {
+    title:'Level 3 — Direct',
+    desc:'Write instructions that hold. Scope constraints, approval gates, multi-agent coordination.',
+    modules:[
+      {num:'M15',title:'Instruction Design 101',file:'AGNUS - Academy M15 - Instruction Design 101.html'},
+      {num:'M16',title:'Write the Prompt That Gets the Right Image',file:'AGNUS - Academy M16 - Write the Prompt That Gets the Right Image.html'},
+      {num:'M17',title:'Scope Constraints',file:'AGNUS - Academy M17 - Scope Constraints.html'},
+      {num:'M18',title:'Approval Gates',file:'AGNUS - Academy M18 - Approval Gates.html'},
+      {num:'M19',title:'Multi-Agent Coordination Basics',file:'AGNUS - Academy M19 - Multi-Agent Coordination Basics.html'},
+      {num:'M20',title:'Priority Handling When Instructions Conflict',file:'AGNUS - Academy M20 - Priority Handling.html'},
+      {num:'M21',title:'Escalation Paths',file:'AGNUS - Academy M21 - Escalation Paths.html'},
+    ]
+  },
+  4: {
+    title:'Level 4 — Govern',
+    desc:'Authority chains, scope drift, intervention controls, policy architecture.',
+    modules:[
+      {num:'M22',title:'Reading Execution Logs',file:'AGNUS - Academy M22 - Reading Execution Logs.html'},
+      {num:'M23',title:'Spotting Scope Drift',file:'AGNUS - Academy M23 - Spotting Scope Drift.html'},
+      {num:'M24',title:'Authority Chain Analysis',file:'AGNUS - Academy M24 - Authority Chain Analysis.html'},
+      {num:'M25',title:'Intervention Controls',file:'AGNUS - Academy M25 - Intervention Controls.html'},
+      {num:'M27',title:'Policy Architecture',file:'AGNUS - Academy M27 - Policy Architecture.html'},
+      {num:'M28',title:'Instruction Workspace',file:'AGNUS - Academy M28 - Instruction Workspace.html'},
+      {num:'M29',title:'Agent Won\'t Budge',file:'AGNUS - Academy M29 - Agent Wont Budge.html'},
+    ]
+  },
+  5: {
+    title:'Level 5 — Verify',
+    desc:'Claim verification, source checking, output validation across domains.',
+    modules:[
+      {num:'M30',title:'Verifying Financial Claims',file:'AGNUS - Academy M30 - Verifying Financial Claims.html'},
+      {num:'M31',title:'The Marketing Claim That Wasn\'t True',file:'AGNUS - Academy M31 - The Marketing Claim That Wasnt True.html'},
+      {num:'M32',title:'Approval Boundaries for Legal Drafts',file:'AGNUS - Academy M32 - Approval Boundaries for Legal Drafts.html'},
+      {num:'M33',title:'When Two Experts Would Disagree',file:'AGNUS - Academy M33 - When Two Experts Would Disagree.html'},
+      {num:'M34',title:'Verifying a Data Analysis Conclusion',file:'AGNUS - Academy M34 - Verifying a Data Analysis Conclusion.html'},
+      {num:'M35',title:'Instructions for Customer-Facing Agents',file:'AGNUS - Academy M35 - Instructions for Customer-Facing Agents.html'},
+    ]
+  },
+  6: {
+    title:'Level 6 — Build',
+    desc:'Construct working agent workflows, guardrails, and handoffs.',
+    modules:[
+      {num:'M36a',title:'How an Application Is Actually Structured',file:'AGNUS - Academy M36a - How an Application Is Actually Structured.html'},
+      {num:'M36b',title:'Choosing the Right Architecture',file:'AGNUS - Academy M36b - Choosing the Right Architecture.html'},
+      {num:'M36c',title:'Directing an AI to Scaffold an Application',file:'AGNUS - Academy M36c - Directing an AI to Scaffold an Application.html'},
+      {num:'M36d',title:'Reviewing AI-Generated Architecture',file:'AGNUS - Academy M36d - Reviewing AI-Generated Architecture.html'},
+      {num:'M36e',title:'Build a Small Working Application',file:'AGNUS - Academy M36e - Build a Small Working Application.html'},
+      {num:'M36f',title:'Test Before You Trust It',file:'AGNUS - Academy M36f - Test Before You Trust It.html'},
+      {num:'M36g',title:'From Tested to Live',file:'AGNUS - Academy M36g - From Tested to Live.html'},
+      {num:'M37',title:'Build Your First Guardrail',file:'AGNUS - Academy M37 - Build Your First Guardrail.html'},
+      {num:'M38',title:'Build a Contract Review Checker',file:'AGNUS - Academy M38 - Build a Contract Review Checker.html'},
+      {num:'M39',title:'Build a Video Brief With Verifiable Claims',file:'AGNUS - Academy M39 - Build a Video Brief With Verifiable Claims.html'},
+      {num:'M40',title:'Build an Automated Fact-Check Step',file:'AGNUS - Academy M40 - Build an Automated Fact-Check Step.html'},
+      {num:'M41',title:'Build a Guardrail for Multi-Agent Handoffs',file:'AGNUS - Academy M41 - Build a Guardrail for Multi-Agent Handoffs.html'},
+      {num:'M42b',title:'Build Your Own Verification Test Suite',file:'AGNUS - Academy M42b - Build Your Own Verification Test Suite.html'},
+    ]
+  },
+  7: {
+    title:'Level 7 — Certify',
+    desc:'Governance policy design, vendor auditing, org-wide verification, capstone.',
+    modules:[
+      {num:'M43',title:'The Quarterly Agent Audit',file:'AGNUS - Academy M43 - The Quarterly Agent Audit.html'},
+      {num:'M44',title:'Governing Agent-to-Agent Handoffs',file:'AGNUS - Academy M44 - Governing Agent-to-Agent Handoffs.html'},
+      {num:'M45',title:'The Ambiguous Governance Call',file:'AGNUS - Academy M45 - The Ambiguous Governance Call.html'},
+      {num:'M46',title:'Auditing a Vendor\'s AI Claims',file:'AGNUS - Academy M46 - Auditing a Vendors AI Claims.html'},
+      {num:'M47',title:'Org-Wide Verification Policy',file:'AGNUS - Academy M47 - Org-Wide Verification Policy.html'},
+      {num:'M48',title:'When to Override Your Own Policy',file:'AGNUS - Academy M48 - When to Override Your Own Policy.html'},
+      {num:'M49',title:'Capstone: Design Your Company\'s AI Governance Framework',file:'AGNUS - Academy M49 - Capstone Design Your Companys AI Governance Framework.html'},
+    ]
+  }
+};
+
+var TRACK_B = [
+  {code:'B01',title:'Finance Agent Deployment',file:'AGNUS - Academy B01 - Finance Agent Deployment.html',sub:'Invoice approval authority, €5k threshold, duplicate detection'},
+  {code:'B02',title:'HR Agent Deployment',file:'AGNUS - Academy B02 - HR Agent Deployment.html',sub:'GDPR Art.9 special-category data, performance routing'},
+  {code:'B03',title:'Legal Agent Deployment',file:'AGNUS - Academy B03 - Legal Agent Deployment.html',sub:'Privilege protection, routing hierarchy, external share blocking'},
+  {code:'B04',title:'Healthcare AI Governance',file:'AGNUS - Academy B04 - Healthcare AI Governance.html',sub:'EU AI Act Art.14 human oversight, emergency override, NTS scoring'},
+  {code:'B05',title:'Customer Service Agent Governance',file:'AGNUS - Academy B05 - Customer Service Agent Governance.html',sub:'Authority limits, tone policy, consumer law, distressed customer escalation'},
+];
+
+function openLevel(n){
+  var lvl = LEVELS[n]; if(!lvl) return;
+  var overlay = document.createElement('div');
+  overlay.style.cssText = 'position:fixed;inset:0;z-index:600;background:rgba(28,27,25,.75);backdrop-filter:blur(6px);overflow-y:auto;padding:32px 20px;display:flex;align-items:flex-start;justify-content:center';
+  overlay.addEventListener('click',function(e){if(e.target===overlay)overlay.remove();});
+  var panel = document.createElement('div');
+  panel.style.cssText = 'background:var(--paper-warm);border-radius:22px;max-width:640px;width:100%;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.5)';
+  var head = document.createElement('div');
+  head.style.cssText = 'background:var(--char);padding:28px 32px;';
+  head.innerHTML = '<div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,244,241,.4);margin-bottom:8px">Track A</div>'
+    +'<div style="font-size:22px;font-weight:800;letter-spacing:-.03em;color:#fff;margin-bottom:5px">'+lvl.title+'</div>'
+    +'<div style="font-family:var(--font-serif);font-style:italic;font-size:14px;color:rgba(245,244,241,.55)">'+lvl.desc+'</div>';
+  var list = document.createElement('div');
+  list.style.cssText = 'padding:8px 0';
+  lvl.modules.forEach(function(m,i){
+    var row = document.createElement('div');
+    row.style.cssText = 'display:flex;align-items:center;gap:14px;padding:14px 32px;border-bottom:1px solid var(--line);cursor:pointer;transition:background .12s';
+    row.addEventListener('mouseenter',function(){row.style.background='var(--paper-warm)';});
+    row.addEventListener('mouseleave',function(){row.style.background='transparent';});
+    row.innerHTML = '<div style="font-family:var(--font-mono);font-size:10px;color:var(--ink-mute);min-width:36px">'+m.num+'</div>'
+      +'<div style="flex:1"><div style="font-size:14px;font-weight:600;color:var(--ink)">'+m.title+'</div></div>'
+      +'<div style="color:var(--gold-deep);font-size:14px">→</div>';
+    row.onclick = function(){location.href=m.file;};
+    list.appendChild(row);
+  });
+  var foot = document.createElement('div');
+  foot.style.cssText = 'padding:18px 32px;background:var(--line-soft);display:flex;justify-content:space-between;align-items:center';
+  foot.innerHTML = '<span style="font-size:13px;color:var(--ink-mute)">'+lvl.modules.length+' modules</span>'
+    +'<button onclick="this.closest(\'[style*=fixed]\').remove()" style="font-family:var(--font-sans);font-size:13px;font-weight:600;padding:8px 18px;border-radius:9px;border:1px solid var(--line);background:transparent;cursor:pointer;color:var(--ink-soft)">Close</button>';
+  panel.appendChild(head);panel.appendChild(list);panel.appendChild(foot);
+  overlay.appendChild(panel);document.body.appendChild(overlay);
+}
+
+function openTrackB(){
+  var overlay = document.createElement('div');
+  overlay.style.cssText = 'position:fixed;inset:0;z-index:600;background:rgba(28,27,25,.75);backdrop-filter:blur(6px);overflow-y:auto;padding:32px 20px;display:flex;align-items:flex-start;justify-content:center';
+  overlay.addEventListener('click',function(e){if(e.target===overlay)overlay.remove();});
+  var panel = document.createElement('div');
+  panel.style.cssText = 'background:var(--paper-warm);border-radius:22px;max-width:640px;width:100%;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.5)';
+  var head = document.createElement('div');
+  head.style.cssText = 'background:var(--char);padding:28px 32px';
+  head.innerHTML = '<div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,244,241,.4);margin-bottom:8px">Track B · Premium</div>'
+    +'<div style="font-size:22px;font-weight:800;letter-spacing:-.03em;color:#fff;margin-bottom:5px">Organisational Deployment</div>'
+    +'<div style="font-family:var(--font-serif);font-style:italic;font-size:14px;color:rgba(245,244,241,.55)">5 industry simulations. Configure real AI agents against real business rules. Competency record on pass.</div>';
+  var list = document.createElement('div');
+  list.style.cssText = 'padding:8px 0';
+  TRACK_B.forEach(function(p){
+    var row = document.createElement('div');
+    row.style.cssText = 'display:flex;align-items:center;gap:14px;padding:14px 32px;border-bottom:1px solid var(--line);cursor:pointer;transition:background .12s';
+    row.addEventListener('mouseenter',function(){row.style.background='var(--paper-warm)';});
+    row.addEventListener('mouseleave',function(){row.style.background='transparent';});
+    row.innerHTML = '<div style="font-family:var(--font-mono);font-size:10px;color:var(--ink-mute);min-width:36px">'+p.code+'</div>'
+      +'<div style="flex:1"><div style="font-size:14px;font-weight:600;color:var(--ink)">'+p.title+'</div><div style="font-size:12px;color:var(--ink-mute);margin-top:2px">'+p.sub+'</div></div>'
+      +'<div style="color:var(--gold-deep);font-size:14px">→</div>';
+    row.onclick = function(){location.href=p.file;};
+    list.appendChild(row);
+  });
+  var foot = document.createElement('div');
+  foot.style.cssText = 'padding:18px 32px;background:var(--line-soft);display:flex;justify-content:space-between;align-items:center';
+  foot.innerHTML = '<span style="font-size:13px;color:var(--ink-mute)">5 programmes · ~25 min each</span>'
+    +'<button onclick="this.closest(\'[style*=fixed]\').remove()" style="font-family:var(--font-sans);font-size:13px;font-weight:600;padding:8px 18px;border-radius:9px;border:1px solid var(--line);background:transparent;cursor:pointer;color:var(--ink-soft)">Close</button>';
+  panel.appendChild(head);panel.appendChild(list);panel.appendChild(foot);
+  overlay.appendChild(panel);document.body.appendChild(overlay);
+}
+
+function openCTE(){
+  location.href='AGNUS - Control Training Environment.html';
+}
+
+/* ---------- become → onboard ---------- */
+let chosenGoal = 'Professional';
+function goOnboard(goal){
+  chosenGoal = goal;
+  localStorage.setItem('agnus_goal', goal);
+  document.getElementById('ob-goal-tag').textContent = goal + ' path';
+  document.getElementById('jrny-path').textContent = goal + ' path';
+  showStep('ob-q1');
+  show('s-onboard');
+}
+function showSignin(){ showStep('ob-signin'); show('s-onboard'); }
+function afterSignin(){ showStep('ob-q1'); }
+function showStep(id){
+  document.querySelectorAll('.ob-step').forEach(s=>s.classList.toggle('show', s.id===id));
+  document.querySelector('#s-onboard .scroll').scrollTop = 0;
+}
+function pick(el, group){
+  el.parentElement.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));
+  el.classList.add('sel');
+}
+function obNext(from,to){ showStep(to); }
+function finishOnboard(){
+  const selRole = document.querySelector('#ob-q4 .opt.sel .ot');
+  if(selRole) localStorage.setItem('agnus_role', selRole.textContent);
+  updateRoleDisplay();
+  show('s-journey');
+  setTimeout(()=>{ const i=document.querySelector('.mission .pbar2 i'); if(i){ i.style.width='40%'; } },300);
+}
+function updateRoleDisplay(){
+  const role = localStorage.getItem('agnus_role') || 'Governance Officer';
+  const goal = localStorage.getItem('agnus_goal') || chosenGoal;
+  const pill = document.getElementById('role-pill');
+  if(pill) pill.textContent = role;
+  const pathEl = document.getElementById('jrny-path');
+  if(pathEl) pathEl.textContent = goal + ' path';
+}
+// restore saved state on load
+updateRoleDisplay();
+
+/* ---------- lesson player ---------- */
+let part = 0;
+const TOTAL = 7;
+function startLesson(){ part=0; renderPart(); show('s-lesson'); }
+function restartLesson(){ part=0; renderPart(); document.getElementById('lesson-stage').scrollTop=0; }
+function renderPart(){
+  document.querySelectorAll('#s-lesson .part').forEach(p=>p.classList.toggle('show', +p.dataset.part===part));
+  // segments
+  document.querySelectorAll('#segs .seg').forEach((s,i)=>{
+    s.classList.toggle('done', i<part);
+    s.classList.toggle('cur', i===part);
+  });
+  // progress + count
+  document.getElementById('lesson-prog').style.width = Math.round(((part+1)/TOTAL)*100)+'%';
+  document.getElementById('lesson-count').textContent = 'Part '+(part+1)+' / '+TOTAL;
+  // footer prev/next state
+  document.getElementById('lf-prev').style.visibility = part===0 ? 'hidden':'visible';
+  const next = document.getElementById('lf-next');
+  const foot = document.getElementById('lesson-foot');
+  if(part===TOTAL-1){ foot.style.display='none'; } else { foot.style.display='flex'; }
+  next.innerHTML = part===TOTAL-2 ? 'Complete mission <span class="arr">→</span>' : 'Continue <span class="arr">→</span>';
+  document.getElementById('lesson-stage').scrollTop=0;
+}
+function nextPart(){ if(part<TOTAL-1){ part++; renderPart(); } }
+function prevPart(){ if(part>0){ part--; renderPart(); } }
+
+/* interact check */
+function answer(el, correct){
+  const wrap = el.closest('.try-opts');
+  wrap.querySelectorAll('.try-opt').forEach(o=>o.style.pointerEvents='none');
+  el.classList.add(correct?'correct':'wrong');
+  if(!correct){ wrap.querySelector('.try-opt:nth-child(2)').classList.add('correct'); }
+  document.getElementById('fb-interact').classList.add('show');
+}
+
+/* prompt editor */
+function runPrompt(){
+  const out = document.getElementById('prompt-out');
+  out.classList.add('show');
+  out.innerHTML = '<div class="ok"><span class="d"></span> Model output</div>Meet the Glide&nbsp;X — feather-light, built for the long run. Every stride feels effortless, every mile a little faster. Premium cushioning, zero drag, pure momentum. Lace up and feel the difference from step one. <b>Your next personal best starts here.</b> <em style="color:var(--on-dark-mute)">(58 words · confident, friendly, with CTA — all four parts satisfied.)</em>';
+  document.getElementById('lesson-stage').scrollTo({top:document.getElementById('lesson-stage').scrollTop+160, behavior:'smooth'});
+}
+function improvePrompt(){
+  const ta = document.getElementById('prompt-area');
+  ta.value = ta.value.trim() + ' Audience: runners aged 25–40 who care about both performance and design. Avoid clichés like "game-changer."';
+  const out = document.getElementById('prompt-out');
+  out.classList.add('show');
+  out.innerHTML = '<div class="ok"><span class="d"></span> Tutor improved your prompt</div>Added an explicit <b>audience</b> and a <b>constraint</b>. More context + clearer guardrails = sharper, on-brand output. Run it again to feel the difference.';
+}
+function comparePrompt(){
+  const out = document.getElementById('prompt-out');
+  out.classList.add('show');
+  out.innerHTML = '<div class="ok"><span class="d"></span> Expert version</div><span style="color:#EFE9D8;font-family:var(--font-mono);font-size:12.5px;">"Act as a senior copywriter for a premium running brand. Write a 55–60 word product blurb for the Glide X, a lightweight performance running shoe. Audience: design-conscious runners. Tone: confident, warm, no clichés. Structure: hook → 2 benefits → CTA."</span><br><br>Notice it pins down <b>word count, audience, tone, and structure</b> — yours is close. That precision is the whole skill.';
+}
+</script>
+</body>
+</html>

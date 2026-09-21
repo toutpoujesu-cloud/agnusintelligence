@@ -1,0 +1,255 @@
+{
+  "_note": "AGNUS Intelligence State — persistent baseline for Agent 1 (Intelligence Monitoring Agent). Updated after each confirmed ingest. Never delete; append only. The agent reads this on each run to determine what changed since the last successful check per source.",
+  "_version": "1.0",
+  "_last_updated": "2026-08-23",
+  "_next_free_ir": "IR-000124",
+  "_next_free_src": "SRC-0077",
+  "_confirmed_output_destination": "JSON folder drops (AGNUS-Daily-YYYY-MM-DD/) uploaded to project by user. Agent outputs to dated folder with subfolders per section. User uploads; editorial (Claude) ingests into agnus-research-data.js.",
+
+  "source_baselines": {
+
+    "EUR-Lex — AI Act consolidated": {
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689",
+      "last_successful_check": "2026-08-23",
+      "last_observed_version": "Consolidated version 2026-07-27 (Digital Omnibus incorporated)",
+      "cadence": "on_oj_change",
+      "check_every_run": true,
+      "status": "live"
+    },
+
+    "EU AI Office — Digital Strategy": {
+      "url": "https://digital-strategy.ec.europa.eu/en",
+      "last_successful_check": "2026-08-23",
+      "last_observed_version": "No monitored publication newer than 2026-07-31 baseline",
+      "cadence": "daily",
+      "check_every_run": true,
+      "status": "live"
+    },
+
+    "AI Act Service Desk": {
+      "url": "https://ai-act-service-desk.ec.europa.eu/en/ai-act",
+      "last_successful_check": "2026-08-23",
+      "last_observed_version": "All 113 article pages current as of 2026-08-23. Digital Omnibus disclaimer present on applicable articles.",
+      "cadence": "daily",
+      "check_every_run": true,
+      "status": "live"
+    },
+
+    "CEN-CENELEC JTC 21": {
+      "url": "https://www.cencenelec.eu/areas-of-work/cen-cenelec-topics/artificial-intelligence/",
+      "last_successful_check": "2026-08-22",
+      "last_observed_version": "Standards work programme current as of 2026-08-22. No new OJ-referenced EN published.",
+      "cadence": "weekly",
+      "check_every_run": false,
+      "status": "live"
+    },
+
+    "EDPB — AI & GDPR guidelines": {
+      "url": "https://www.edpb.europa.eu",
+      "last_successful_check": "2026-08-22",
+      "last_observed_version": "EDPB Guidelines on GDPR/AI Act interplay (June 2025) remains current.",
+      "cadence": "weekly",
+      "check_every_run": false,
+      "status": "live"
+    },
+
+    "Datatilsynet (Norway)": {
+      "url": "https://www.regjeringen.no",
+      "last_successful_check": "2026-08-23",
+      "last_observed_version": "Latest relevant Norwegian AI-law publication dated 2026-08-06.",
+      "cadence": "weekly",
+      "check_every_run": false,
+      "status": "live"
+    },
+
+    "PIPC (South Korea)": {
+      "url": "https://www.pipc.go.kr",
+      "last_successful_check": "2026-08-22",
+      "last_observed_version": "PIPA AI amendment passed National Assembly 2026-08-20 → IR-000122 ingested → AR-000510 built. Promulgation still pending.",
+      "cadence": "daily",
+      "check_every_run": true,
+      "status": "live",
+      "open": "Monitor for promulgation date and subordinate legislation publication."
+    },
+
+    "CAC (China)": {
+      "url": "http://www.cac.gov.cn",
+      "last_successful_check": "2026-08-23",
+      "last_observed_version": "No new monitored generative-AI measure or algorithm-registration rule since 2026-08-22.",
+      "cadence": "daily",
+      "check_every_run": true,
+      "status": "live"
+    },
+
+    "Congress.gov (US federal)": {
+      "url": "https://www.congress.gov",
+      "last_successful_check": null,
+      "last_observed_version": null,
+      "cadence": "daily",
+      "check_every_run": true,
+      "status": "error",
+      "error": "Only a six-month-old snapshot available on 2026-08-23; current baseline could not be verified. Requires manual baseline establishment or Congress.gov API key.",
+      "action_required": "Manual check required. Do not overwrite last_successful_check until a current baseline is confirmed."
+    },
+
+    "California leginfo": {
+      "url": "https://leginfo.legislature.ca.gov",
+      "last_successful_check": "2026-08-23",
+      "last_observed_version": "California legislative index retrieved 2026-08-23. No new monitored AI-bill action since 2026-08-22.",
+      "cadence": "daily",
+      "check_every_run": true,
+      "status": "live"
+    },
+
+    "Colorado legislature": {
+      "url": "https://leg.colorado.gov",
+      "last_successful_check": "2026-08-23",
+      "last_observed_version": "Colorado 2026 regular session adjourned 2026-05-13. No relevant AI legislation active.",
+      "cadence": "daily",
+      "check_every_run": true,
+      "status": "live"
+    },
+
+    "NY Senate bill tracker": {
+      "url": "https://www.nysenate.gov/legislation/bills/2025/S10685",
+      "last_successful_check": "2026-08-23",
+      "last_observed_version": "S10685 (FOCUS Act) introduced and referred to Senate Rules Committee 2026-08-21 → IR-000123 ingested → AR-000530 built.",
+      "cadence": "daily",
+      "check_every_run": true,
+      "status": "live",
+      "open": "Monitor for committee action, amendments, companion Assembly bill, executive position."
+    },
+
+    "ISED Canada — AIDA registry": {
+      "url": "https://ised-isde.canada.ca",
+      "last_successful_check": null,
+      "last_observed_version": null,
+      "cadence": "daily",
+      "check_every_run": true,
+      "status": "error",
+      "error": "Internal retrieval error on 2026-08-23. No successful AIDA baseline established.",
+      "action_required": "Manual review of ISED AIDA pages required. Do not overwrite last_successful_check until a current baseline is confirmed."
+    },
+
+    "UK AI Safety Institute": {
+      "url": "https://www.aisi.gov.uk",
+      "last_successful_check": "2026-08-22",
+      "last_observed_version": "No new monitored AISI publication since 2026-08-22.",
+      "cadence": "weekly",
+      "check_every_run": false,
+      "status": "live"
+    },
+
+    "ICO (UK)": {
+      "url": "https://ico.org.uk",
+      "last_successful_check": "2026-08-22",
+      "last_observed_version": "No new monitored ICO AI guidance since 2026-08-22.",
+      "cadence": "weekly",
+      "check_every_run": false,
+      "status": "live"
+    },
+
+    "Garante (Italy)": {
+      "url": "https://www.garanteprivacy.it",
+      "last_successful_check": "2026-08-22",
+      "last_observed_version": "No new monitored AI enforcement decision since 2026-08-22.",
+      "cadence": "weekly",
+      "check_every_run": false,
+      "status": "live"
+    },
+
+    "ISO/IEC 42001": {
+      "url": "https://www.iso.org/standard/81230.html",
+      "last_successful_check": "2026-08-20",
+      "last_observed_version": "ISO/IEC 42001:2023 first edition. No amendment published.",
+      "cadence": "monthly",
+      "check_every_run": false,
+      "status": "live"
+    },
+
+    "NIST AI RMF": {
+      "url": "https://www.nist.gov/itl/ai-risk-management-framework",
+      "last_successful_check": "2026-08-01",
+      "last_observed_version": "AI RMF 1.0 current. Generative AI Profile published 2024-07-26.",
+      "cadence": "monthly",
+      "check_every_run": false,
+      "status": "live"
+    },
+
+    "OECD AI Policy Observatory": {
+      "url": "https://oecd.ai",
+      "last_successful_check": "2026-08-23",
+      "last_observed_version": "No new monitored policy publication since 2026-08-22.",
+      "cadence": "daily",
+      "check_every_run": true,
+      "status": "live"
+    },
+
+    "ESMA — AI investment services": {
+      "url": "https://www.esma.europa.eu",
+      "last_successful_check": "2026-08-15",
+      "last_observed_version": "ESMA Public Statement on AI and investment services (ESMA35-335435667-5924, 2024-05-30) remains current. → AR-000520 built.",
+      "cadence": "monthly",
+      "check_every_run": false,
+      "status": "live"
+    }
+  },
+
+  "completed_ingests": [
+    {
+      "ir_id": "IR-000117",
+      "ingest_date": "pre-2026-08-22",
+      "article_built": null,
+      "notes": "Demo record from original project."
+    },
+    {
+      "ir_id": "IR-000121",
+      "ingest_date": "pre-2026-08-22",
+      "article_built": null,
+      "notes": "Demo record from original project."
+    },
+    {
+      "ir_id": "IR-000122",
+      "ingest_date": "2026-08-23",
+      "src_id": "SRC-0073",
+      "run": "AGNUS-Daily-2026-08-22",
+      "article_built": "AR-000510",
+      "notes": "South Korea PIPC PIPA amendment passed National Assembly 2026-08-20."
+    },
+    {
+      "ir_id": "IR-000123",
+      "ingest_date": "2026-08-23",
+      "src_id": "SRC-0076",
+      "run": "AGNUS-Daily-2026-08-23",
+      "article_built": "AR-000530",
+      "notes": "NY S10685 FOCUS Act introduced 2026-08-21, referred to Senate Rules Committee."
+    }
+  ],
+
+  "open_flags": [
+    {
+      "flag": "Congress.gov — no current baseline",
+      "date_flagged": "2026-08-23",
+      "action": "Manual baseline establishment required. API key or manual review.",
+      "priority": "medium"
+    },
+    {
+      "flag": "ISED Canada — no successful baseline",
+      "date_flagged": "2026-08-23",
+      "action": "Manual review of ISED AIDA pages required.",
+      "priority": "medium"
+    },
+    {
+      "flag": "South Korea PIPC — promulgation pending",
+      "date_flagged": "2026-08-23",
+      "action": "Monitor PIPC publications for promulgation date and subordinate legislation. Update AR-000510 when confirmed.",
+      "priority": "high"
+    },
+    {
+      "flag": "NY S10685 — committee action pending",
+      "date_flagged": "2026-08-23",
+      "action": "Monitor NY Senate for committee referral, amendments, Assembly companion bill, and executive position. Update AR-000530 on any change.",
+      "priority": "medium"
+    }
+  ]
+}

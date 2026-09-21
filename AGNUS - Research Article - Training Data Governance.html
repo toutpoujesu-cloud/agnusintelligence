@@ -1,0 +1,167 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Training Data Governance: Legal Basis, Consent and Retention for AI Training Datasets — AGNUS Research</title>
+<meta name="description" content="Every AI model trained on personal data requires a lawful basis under GDPR. This article maps the available legal bases for AI training, explains why consent is rarely appropriate, addresses the retention obligations for training data, and covers what happens when training data must be deleted." />
+<link rel="canonical" href="https://agnus.example/research/ai-data-governance/training-data-governance/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Training Data Governance: Legal Basis, Consent and Retention for AI Training Datasets" />
+<meta property="article:published_time" content="2026-09-11" />
+<meta property="article:author" content="Jean-Daniel Alexis" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>
+a,a:visited{color:inherit}
+.prose h3{font-family:var(--font-sans);font-weight:700;font-size:19px;letter-spacing:-.018em;margin:32px 0 14px}
+.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
+.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
+.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s}
+.rsub a:hover{color:var(--ink);background:var(--line-soft,rgba(0,0,0,.04))}
+.rsub a.on{color:var(--gold-deep);font-weight:600}
+.pillar-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:var(--gold-pale,#FEF9ED);color:var(--gold-deep,#8B6914);border:1px solid var(--gold-line,#E8D9A0);border-radius:4px;padding:3px 8px;margin-bottom:16px}
+.lb-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:13px}
+.lb-table th{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);font-weight:600;text-align:left;padding:10px 14px;border-bottom:2px solid var(--line);background:var(--paper-warm,#F7F5F0)}
+.lb-table td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+.lb-table tr:last-child td{border-bottom:none}
+.lb-yes{color:#1A5C1A;font-weight:600}.lb-limited{color:#8B6914;font-weight:600}.lb-no{color:#8B1414;font-weight:600}
+</style>
+</head>
+<body>
+<div class="art-progress"><i id="progBar"></i></div>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+    </div>
+  </div>
+</nav>
+<div class="rsub">
+  <div class="rsub-inner">
+    <a href="#requirement">The requirement</a>
+    <a href="#legal-bases">Legal bases</a>
+    <a href="#why-not-consent">Why not consent</a>
+    <a href="#retention">Retention</a>
+    <a href="#sources">Sources</a>
+  </div>
+</div>
+<main class="art-layout">
+  <article class="art-main">
+    <header class="art-header">
+      <span class="pillar-tag">AI Data Governance</span>
+      <h1 class="art-h1">Training Data Governance: Legal Basis, Consent and Retention for AI Training Datasets</h1>
+      <p class="art-lede">Every use of personal data in AI training requires a lawful basis. The question of which legal basis applies — and whether consent is ever appropriate — has become one of the most contested questions in AI data governance. This article maps the available legal bases, explains the problems with consent for training data, and addresses the retention and deletion obligations that apply to training datasets.</p>
+      <div class="art-meta">
+        <span>Jean-Daniel Alexis</span><span class="meta-sep">·</span>
+        <span>11 September 2026</span><span class="meta-sep">·</span>
+        <span>AI Data Governance pillar</span><span class="meta-sep">·</span>
+        <span>AR-000690</span>
+      </div>
+    </header>
+    <div class="prose">
+      <h3 id="requirement">The legal basis requirement</h3>
+      <p>GDPR Article 6 requires that every processing of personal data has a lawful basis. The article lists six bases, of which four are practically relevant for AI training: consent (Article 6(1)(a)), contract (Article 6(1)(b)), legal obligation (Article 6(1)(c)), and legitimate interests (Article 6(1)(f)). Public task (Article 6(1)(e)) applies to public bodies.</p>
+      <p>The legal basis must be identified and documented before processing begins — not post-hoc. It must be the basis that actually justifies the processing, not the most convenient option. Documenting a legal basis that does not genuinely apply is itself a GDPR violation.</p>
+      <p>For training data, two further rules apply. First, the legal basis for training data must be the same as, or compatible with, the legal basis under which the data was originally collected. A dataset of customer service conversations collected under a service agreement cannot automatically be used to train an AI model — the original purpose was service delivery, not model training, and using the data for a new purpose requires a compatibility assessment or a new legal basis. Second, for special categories of personal data (health, biometric, religious belief, etc.), Article 9 requires an additional legal basis on top of Article 6.</p>
+
+      <h3 id="legal-bases">Legal bases for AI training: comparative analysis</h3>
+      <table class="lb-table">
+        <thead><tr><th>Legal basis</th><th>When applicable for training</th><th>Key requirements</th><th>Practical use</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Consent (Art. 6(1)(a))</strong></td>
+            <td>Where individuals explicitly consent to their data being used for AI training — rare in practice</td>
+            <td>Must be freely given, specific, informed, and unambiguous. Must be as easy to withdraw as to give. Withdrawal must be effective.</td>
+            <td><span class="lb-limited">Limited</span> — see "Why not consent" section below</td>
+          </tr>
+          <tr>
+            <td><strong>Contract (Art. 6(1)(b))</strong></td>
+            <td>Where AI training is strictly necessary to perform a contract with the data subject</td>
+            <td>Training must be necessary for the contract — not just useful. The data subject must be party to the contract.</td>
+            <td><span class="lb-limited">Narrow</span> — applies where the AI is being built specifically for an individual's use. Rare for general-purpose models.</td>
+          </tr>
+          <tr>
+            <td><strong>Legitimate interests (Art. 6(1)(f))</strong></td>
+            <td>Where the controller's or a third party's legitimate interests in training the model override the interests of the data subjects</td>
+            <td>Requires a Legitimate Interest Assessment (LIA) documenting the balance of interests. Data subjects must be able to object.</td>
+            <td><span class="lb-yes">Most commonly used</span> — for commercial AI training on data legitimately collected in a business context</td>
+          </tr>
+          <tr>
+            <td><strong>Legal obligation (Art. 6(1)(c))</strong></td>
+            <td>Where a law requires the use of personal data for AI training</td>
+            <td>The specific legal obligation must be identifiable. Rare for commercial AI.</td>
+            <td><span class="lb-limited">Very limited</span> — applies to specific regulatory requirements (e.g., fraud detection models required by financial regulation)</td>
+          </tr>
+          <tr>
+            <td><strong>Public task (Art. 6(1)(e))</strong></td>
+            <td>For public bodies using personal data for AI in the exercise of official authority</td>
+            <td>The task must be based in law. Must be necessary for the task.</td>
+            <td><span class="lb-limited">Public sector only</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="why-not-consent">Why consent is rarely appropriate for AI training</h3>
+      <p>The intuitive response to AI training data governance is: "get consent." This approach has four significant problems that make it impractical for most AI training contexts.</p>
+      <p><strong>Problem 1: Consent must be specific.</strong> GDPR requires that consent is specific to a defined purpose. "For AI training purposes" is not specific enough — it does not tell the individual what the AI will be used for, what features of their data will be used, or what decisions the AI will inform. A consent formulation specific enough to be valid is likely to deter most individuals from consenting.</p>
+      <p><strong>Problem 2: Consent can be withdrawn.</strong> When consent is the legal basis and an individual withdraws consent, their data must be erased and — on the most demanding interpretation — the model must be retrained without their data. For large-scale training datasets, this creates a technical and operational obligation that most organisations cannot fulfil.</p>
+      <p><strong>Problem 3: Power imbalance.</strong> GDPR Article 7 states that consent is not freely given if there is a significant imbalance between the controller and the data subject. In an employment context, asking employees for consent to use their work for AI training is likely invalid because of the power imbalance.</p>
+      <p><strong>Problem 4: Future use specification.</strong> Consent must be for a specified purpose. Consenting to data being used for "AI training" without specifying the model, the use case, or the deployment context is unlikely to satisfy the specificity requirement.</p>
+      <p>Legitimate interests is the more appropriate legal basis for most commercial AI training — provided the Legitimate Interest Assessment genuinely balances the controller's interests against those of the data subjects and does not override interests that should take precedence.</p>
+
+      <h3 id="retention">Retention and deletion obligations</h3>
+      <p>Training datasets are subject to GDPR's storage limitation principle (Article 5(1)(e)): personal data must not be kept longer than necessary for the purpose for which it was processed. For training data, the purpose is training the model — once training is complete, retaining the raw training data requires a separate justification (retraining, audit, compliance).</p>
+      <p>Most organisations document a separate retention justification for training datasets: the ability to retrain the model with the same data (for consistency and audit trail purposes), or the ability to investigate the model's behaviour in the event of an incident. These are legitimate retention purposes, but they must be documented and time-bounded. "We keep training data indefinitely because we might need it" is not a compliant retention policy.</p>
+      <p>The deletion obligation applies to the raw training data, not to the trained model. The model's weights are not personal data under current European DPA guidance — they are the output of a statistical process applied to personal data. The personal data (the training records) must be subject to retention limits; the model (the weights) is a separate artefact. This distinction is not settled law, but it represents the current mainstream regulatory position.</p>
+    </div>
+    <section class="art-sources" id="sources">
+      <h2 class="sources-h">Sources and verification</h2>
+      <div class="sources-grid">
+        <div class="source-card"><div class="sc-id">SRC-0001</div><div class="sc-title">GDPR — Articles 5, 6, 7 and 9</div><div class="sc-org">European Parliament and Council</div><div class="sc-url"><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679" target="_blank" rel="noopener">eur-lex.europa.eu</a></div><div class="sc-note">Article 5 (principles); Article 6 (lawful basis); Article 7 (conditions for consent); Article 9 (special categories).</div></div>
+        <div class="source-card"><div class="sc-id">SRC-0062</div><div class="sc-title">EU AI Act — Article 10</div><div class="sc-org">European Parliament and Council</div><div class="sc-url"><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689" target="_blank" rel="noopener">eur-lex.europa.eu</a></div><div class="sc-note">Article 10 data governance requirements apply to training data for high-risk AI — including data governance practices and known biases.</div></div>
+      </div>
+      <div class="src-registry-note">Article ID: AR-000690 · Sources: SRC-0001, SRC-0062 · Published: 2026-09-11 · AGNUS Research</div>
+    </section>
+  </article>
+  <aside class="art-aside">
+    <div class="aside-block"><div class="aside-label">Pillar</div><a href="AGNUS - Research.html" class="aside-pill">AI Data Governance</a></div>
+    <div class="aside-block">
+      <div class="aside-label">Related articles</div>
+      <ul class="aside-links">
+        <li><a href="AGNUS - Research Article - GDPR and AI.html">GDPR and AI: Where They Intersect</a></li>
+        <li><a href="AGNUS - Research Article - Data Minimisation in AI.html">Data Minimisation in AI Systems</a></li>
+        <li><a href="AGNUS - Research Article - Data Poisoning.html">Data Poisoning</a></li>
+      </ul>
+    </div>
+    <div class="aside-block">
+      <div class="aside-label">Key rule</div>
+      <div class="aside-value">No post-hoc basis</div>
+      <div class="aside-note">The legal basis for training data must be identified and documented before processing begins. Selecting a legal basis after the fact to justify processing already completed is itself a GDPR violation.</div>
+    </div>
+  </aside>
+</main>
+<footer class="footer"><div class="container footer-inner"><div class="footer-copy">© 2026 AGNUS. All rights reserved.</div><div class="footer-links"><a href="AGNUS - Home.html">Home</a><a href="AGNUS - Research.html">Research</a><a href="AGNUS - Academy.html">Academy</a></div></div></footer>
+<script src="agnus-research-data.js"></script>
+<script>(function(){var bar=document.getElementById('progBar');if(!bar)return;window.addEventListener('scroll',function(){var h=document.documentElement;bar.style.width=((h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100)+'%';});})();</script>
+</body>
+</html>

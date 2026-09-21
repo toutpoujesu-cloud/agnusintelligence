@@ -1,0 +1,354 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GDPR and AI: How Data Protection Law Applies to AI Systems — AGNUS Research</title>
+<meta name="description" content="GDPR applies to AI systems that process personal data at every stage: training, development, inference, and output. The EU AI Act and GDPR both apply — compliance with one does not imply compliance with the other. This article covers legal basis, purpose limitation, Article 22 automated decisions, and DPIA alignment." />
+<link rel="canonical" href="https://agnus.example/research/ai-data-governance/gdpr-ai-intersection/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="GDPR and AI: How Data Protection Law Applies to AI Systems" />
+<meta property="article:published_time" content="2026-08-22" />
+<meta property="article:modified_time" content="2026-08-22" />
+<meta property="article:author" content="Jean-Daniel Alexis" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>a,a:visited{color:inherit}
+.prose h3{font-family:var(--font-sans);font-weight:700;font-size:19px;letter-spacing:-.018em;margin:32px 0 14px}
+.tension-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0}
+@media(max-width:700px){.tension-grid{grid-template-columns:1fr}}
+.tension-card{background:var(--paper-warm,#F7F5F0);border:1px solid var(--line);border-radius:8px;padding:22px}
+.tension-card .tc-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:6px}
+.tension-card .tc-title{font-family:var(--font-sans);font-weight:800;font-size:16px;color:var(--ink);margin-bottom:8px;line-height:1.25}
+.tension-card .tc-body{font-size:13px;color:var(--ink-mute);line-height:1.6}
+.basis-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:13px}
+.basis-table th{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);font-weight:600;text-align:left;padding:10px 14px;border-bottom:2px solid var(--line);background:var(--paper-warm,#F7F5F0)}
+.basis-table td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+.basis-table tr:last-child td{border-bottom:none}
+.basis-table .td-basis{font-weight:600;color:var(--ink)}
+.basis-table .td-limit{font-style:italic;color:var(--ink-mute)}
+.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
+.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
+.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s}
+.rsub a:hover{color:var(--ink);background:var(--line-soft,rgba(0,0,0,.04))}
+.rsub a.on{color:var(--gold-deep);font-weight:600}
+.pillar-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:var(--gold-pale,#FEF9ED);color:var(--gold-deep,#8B6914);border:1px solid var(--gold-line,#E8D9A0);border-radius:4px;padding:3px 8px;margin-bottom:16px}
+</style>
+</head>
+<body>
+
+<div class="art-progress"><i id="progBar"></i></div>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Marketplace.html">Marketplace</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+      <a href="AGNUS - Business.html">Business</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+      <button class="hamburger" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="m-drawer">
+    <a href="AGNUS - Explore.html">Explore</a><a href="AGNUS - Intelligence.html">Intelligence</a><a href="AGNUS - Research.html" class="active">Research</a><a href="AGNUS - Review.html">Reviews</a><a href="AGNUS - Academy.html">Academy</a><a href="AGNUS - Business.html">Business</a>
+  </div>
+</nav>
+<div class="rsub"><div class="rsub-inner">
+<a href="AGNUS - Research.html">Research Home</a>
+<a href="AGNUS - Research.html#taxonomy">Topics</a>
+<a href="AGNUS - Research Topic.html">Data Governance</a>
+<a href="AGNUS - Research Country.html">Countries</a>
+<a href="AGNUS - Research Sources.html">Sources</a>
+<a href="AGNUS - Research Calendar.html">Calendar</a>
+<a href="AGNUS - Research Methodology.html">Methodology</a>
+<a href="AGNUS - Research Author.html">Authors</a>
+</div></div>
+
+<header class="art-head">
+  <div class="container">
+    <div class="pillar-tag">Data Governance</div>
+    <div data-rc="classification" data-rc-arg="AR-000480"></div>
+    <h1>GDPR and AI: How Data Protection Law Applies to AI Systems</h1>
+    <p class="art-abstract">GDPR applies to AI systems that process personal data at every stage: training data collection, model development, inference, and output generation. The EU AI Act and GDPR are both in force and both apply &mdash; compliance with one does not imply compliance with the other. The EDPB&rsquo;s June&nbsp;2025 guidelines clarify the interplay. Key friction points: legal basis for training data, purpose limitation, Article&nbsp;22 automated decision-making, and DPIA&nbsp;/&nbsp;AI&nbsp;Act risk assessment alignment.</p>
+    <div data-rc="articleMeta" data-rc-arg="AR-000480"></div>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:20px">
+      <span data-rc="trackButton" data-rc-arg="Data Governance"></span>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div style="margin:28px 0;background:var(--paper-warm,#F7F5F0);border:1px solid var(--line-strong,#D8D5CE);border-left:3px solid var(--gold-deep,#92600A);border-radius:0 14px 14px 0;padding:20px 24px">
+    <div style="font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep,#92600A);margin-bottom:8px">Key context</div>
+    <div style="font-size:15px;line-height:1.65;color:var(--ink,#1A1612);font-family:'Newsreader',Georgia,serif;font-style:italic;margin-bottom:8px">"GDPR and the AI Act are not alternatives. They apply simultaneously. An AI system that processes personal data in high-risk contexts must comply with both frameworks — and where they conflict, the more restrictive provision applies."</div>
+    <div style="font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:11px;color:var(--ink-mute,#888)">AGNUS Research · GDPR Article 22 · EU AI Act Article 10</div>
+  </div>
+  <div class="art-hero-cap"><span class="d"></span>The GDPR is technology-neutral. It applies to AI systems not because they are AI, but because they process personal data. Every AI system that touches personal data at any stage is a GDPR subject.</div>
+</div>
+
+<div class="container">
+  <div class="art-shell">
+
+    <aside class="art-toc">
+      <div class="toc-h">Contents</div>
+      <ol id="tocList"></ol>
+      <div class="toc-foot">
+        <button onclick="window.print()">Print / PDF</button>
+        <button onclick="document.getElementById('cite').scrollIntoView({behavior:'smooth'})">Cite this research</button>
+        <button onclick="document.getElementById('sources').scrollIntoView({behavior:'smooth'})">Jump to sources</button>
+      </div>
+    </aside>
+
+    <article class="prose" id="prose">
+
+      <p style="font-size:13px;color:var(--ink-mute);font-style:italic;margin:-6px 0 26px;padding-bottom:20px;border-bottom:1px solid var(--line)">Builds on <a href="AGNUS - Research Article - AI Act Explained.html" style="color:var(--gold-deep);font-style:normal">AR-000200 (AI Act Explained)</a> and <a href="AGNUS - Research Article - Deployer Obligations.html" style="color:var(--gold-deep);font-style:normal">AR-000250 (Deployer Obligations)</a>. GDPR and the EU AI Act run in parallel for AI systems that process personal data. This article maps where they overlap, where they conflict, and which takes precedence. The primary source is the EDPB Guidelines on the GDPR/AI Act interplay (June 2025).</p>
+
+      <div data-rc="atAGlance" data-rc-arg="AR-000480"></div>
+
+      <h2 id="s-scope">Where GDPR applies to AI</h2>
+      <div data-rc="analysis" data-rc-arg='{"text":"GDPR applies wherever an AI system processes personal data. Personal data is any information relating to an identified or identifiable natural person. For AI systems, this covers: (1) training data that contains personal data (text, images, structured records about individuals); (2) input data at inference time (a query containing personal details, a document about a named person, a voice recording); (3) output data that reveals personal information (a generated profile, an inferred attribute, a decision about an individual); and (4) intermediate data (logs, embeddings, cached responses that contain or encode personal information). An AI system that uses only synthetic data with no connection to real individuals at any stage falls outside GDPR. In practice, most commercially deployed AI systems process personal data at at least one stage."}'></div>
+
+      <div data-rc="takeaways" data-rc-arg='["GDPR applies to AI systems that process personal data at any stage: training, inference, output, or intermediate storage. Compliance with the EU AI Act does not establish GDPR compliance.","The two regulations have different scopes: the EU AI Act is risk-based and applies to AI system providers and deployers regardless of whether personal data is processed; GDPR applies to all personal data processing regardless of whether AI is involved. When both apply, both must be satisfied.","Legal basis under Article 6 GDPR must be established for every stage of personal data processing in the AI lifecycle: training data collection, model development, inference, output storage, and audit logging.","Purpose limitation (Article 5(1)(b) GDPR) is the primary friction point for AI training: data collected for one purpose cannot be used to train an AI model for a different purpose without a fresh legal basis or a compatibility assessment.","Article 22 GDPR restricts automated individual decision-making that produces legal or similarly significant effects. It applies to AI systems that make such decisions. Deployers must implement one of the three permitted conditions and inform affected individuals.","A DPIA is required under Article 35 GDPR for high-risk processing \u2014 which includes systematic profiling and large-scale biometric or sensitive data processing. The EDPB guidelines clarify that the EU AI Act\u2019s FRIA (Article 27) and the GDPR DPIA are separate obligations with overlapping purposes; neither substitutes for the other.","The EDPB\u2019s June 2025 guidelines are the primary interpretive authority on the GDPR/AI Act interplay. National DPAs may take different positions; always verify the DPA view in your operating jurisdiction."]'></div>
+
+      <h2 id="s-dual">Two regulations, one AI system</h2>
+      <div data-rc="analysis" data-rc-arg='{"text":"The EU AI Act and GDPR are both in force and both apply to AI systems that process personal data in the EU. They are not alternatives. They address different things: GDPR governs the lawfulness of personal data processing; the EU AI Act governs the risk management, transparency, and accountability of AI systems. An organisation can be compliant with the EU AI Act (risk management, conformity assessment, registration done) and simultaneously non-compliant with GDPR (no legal basis for training data, no DPIA conducted). The inverse is also true. The EDPB\u2019s June 2025 guidelines make this explicit: the two regulations are \u2018complementary and cumulative\u2019."}'></div>
+      <div data-rc="analysis" data-rc-arg='{"text":"Where the regulations conflict \u2014 where following one would require violating the other \u2014 the EDPB guidelines indicate that GDPR provisions on personal data protection take precedence as a matter of the EU Charter of Fundamental Rights (Article 8). This has practical consequences: if an EU AI Act technical requirement (e.g. training data transparency under Article 10) would require disclosing personal data in a way that violates GDPR, the GDPR limitation governs."}'></div>
+
+      <h2 id="s-legal-basis">Legal basis for AI processing</h2>
+
+      <table class="basis-table">
+        <thead>
+          <tr>
+            <th>Legal basis (Article 6 GDPR)</th>
+            <th>AI use case where it may apply</th>
+            <th>Key limitations</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td-basis">Consent (Article 6(1)(a))</td>
+            <td>Training data collection where individuals voluntarily provide data with explicit consent to AI training use.</td>
+            <td class="td-limit">Consent must be specific to the AI training purpose. Generic terms-of-service consent for AI training has been found insufficient by multiple DPAs. Consent can be withdrawn; withdrawal removes the legal basis for future processing but may not require model deletion (open question).</td>
+          </tr>
+          <tr>
+            <td class="td-basis">Contract (Article 6(1)(b))</td>
+            <td>Processing user inputs and generating outputs where the AI service is the contracted service.</td>
+            <td class="td-limit">Covers processing necessary to perform the contract. Cannot extend to training data collection or model improvement beyond the contract scope without additional legal basis.</td>
+          </tr>
+          <tr>
+            <td class="td-basis">Legitimate interests (Article 6(1)(f))</td>
+            <td>Internal AI model development using employee or customer data where the organisation has a genuine interest and the data subject&rsquo;s rights do not override.</td>
+            <td class="td-limit">Requires a balancing test (legitimate interests assessment). The interest must be real, the processing necessary, and the data subject&rsquo;s interests not overriding. DPAs have been skeptical of legitimate interests as a catch-all for AI training. Cannot be used by public authorities in the exercise of their tasks.</td>
+          </tr>
+          <tr>
+            <td class="td-basis">Legal obligation (Article 6(1)(c))</td>
+            <td>Processing required by law, e.g. compliance monitoring AI where the monitoring obligation is statutory.</td>
+            <td class="td-limit">The obligation must be in Union or Member State law and must specify the processing. Cannot be used to justify AI training as a general compliance activity.</td>
+          </tr>
+          <tr>
+            <td class="td-basis">Public task (Article 6(1)(e))</td>
+            <td>Public authority AI deployment for tasks carried out in the public interest or in the exercise of official authority.</td>
+            <td class="td-limit">Must be in Union or Member State law. The specific AI deployment must be covered by the task definition. Legitimate interests cannot be used instead.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="s-purpose">Purpose limitation and AI training</h2>
+      <div data-rc="analysis" data-rc-arg='{"text":"Purpose limitation (GDPR Article 5(1)(b)) is the most significant friction point between GDPR and AI development. Data collected for one purpose (e.g. customer service interactions collected to resolve a customer&rsquo;s query) cannot be repurposed for AI model training without either: (a) a fresh legal basis that covers the training purpose; or (b) a compatibility assessment demonstrating that training is compatible with the original purpose (considering the link between purposes, context, nature of data, consequences, and safeguards)."}'></div>
+      <div data-rc="analysis" data-rc-arg='{"text":"The EDPB guidelines confirm that the \u2018scientific research\u2019 exception in Article 89 GDPR (which allows further processing for scientific research purposes as compatible with the original purpose) does not broadly apply to commercial AI model development. Using Article 89 to justify repurposing customer data for commercial model training requires that the processing genuinely qualifies as scientific research under EU law \u2014 which commercial model development typically does not. Organisations that have collected large datasets for operational purposes and wish to use them for AI training must conduct a purpose limitation assessment and, where the assessment shows incompatibility, establish a fresh legal basis."}'></div>
+
+      <h2 id="s-art22">Article 22: Automated decision-making</h2>
+      <div data-rc="analysis" data-rc-arg='{"text":"Article 22 GDPR gives individuals the right not to be subject to a decision based solely on automated processing, including profiling, that produces legal effects concerning them or similarly significantly affects them. For AI systems that make consequential individual decisions (credit assessments, job screening, insurance pricing, benefit determinations, risk scoring for law enforcement), Article 22 is directly relevant. Three conditions permit such automated decision-making: (1) necessary for a contract with the data subject; (2) authorised by Union or Member State law; or (3) based on the data subject\u2019s explicit consent. In all cases, the data controller must implement suitable safeguards, including the right to human review, the right to contest the decision, and the right to an explanation."}'></div>
+      <div data-rc="analysis" data-rc-arg='{"text":"The Article 22 right to human review overlaps significantly with the EU AI Act\u2019s Article 14 human oversight requirement for high-risk AI systems. The EDPB guidelines confirm that the two provisions are independent obligations \u2014 satisfying Article 14 of the EU AI Act does not discharge the Article 22 GDPR obligation, and vice versa. An AI system used for consequential individual decisions must satisfy both. In practice, a well-designed human oversight mechanism that satisfies Article 14 will often also satisfy the Article 22 human review right \u2014 but the legal basis for the processing, the information provided to data subjects, and the right to contest the decision are Article 22 requirements that Article 14 does not address."}'></div>
+
+      <h2 id="s-dpia">DPIAs and the AI Act risk assessment</h2>
+      <div data-rc="analysis" data-rc-arg='{"text":"Article 35 GDPR requires a Data Protection Impact Assessment (DPIA) before processing that is likely to result in a high risk to natural persons. Mandatory DPIA triggers include: systematic profiling with significant effects; large-scale processing of sensitive (special category) data; and systematic monitoring of a publicly accessible area. Most high-risk AI systems under the EU AI Act will also trigger mandatory DPIA requirements under GDPR. The EU AI Act\u2019s Article 27 Fundamental Rights Impact Assessment (FRIA) \u2014 required for deployers who are public bodies or private entities providing essential services \u2014 has overlapping purposes but is a separate obligation."}'></div>
+      <div data-rc="analysis" data-rc-arg='{"text":"The EDPB guidelines clarify the relationship: the DPIA and the FRIA are distinct instruments with different legal bases, different scope, and different outputs. A DPIA under GDPR assesses risks to data subjects from personal data processing and identifies measures to mitigate those risks. A FRIA under the EU AI Act assesses impacts on fundamental rights more broadly (beyond personal data). Neither substitutes for the other. Organisations deploying high-risk AI systems that process personal data must complete both a DPIA and, where Article 27 applies, a FRIA. They can be conducted jointly (the EDPB guidelines encourage this for efficiency) but both outputs must be documented separately."}'></div>
+
+      <h2 id="s-tensions">Key friction points</h2>
+
+      <div class="tension-grid">
+        <div class="tension-card">
+          <div class="tc-label">Friction point 1</div>
+          <div class="tc-title">Training data and purpose limitation</div>
+          <div class="tc-body">Data collected for operational purposes cannot automatically be repurposed for AI training. A fresh legal basis or compatibility assessment is required. Most commercial AI training does not qualify for the scientific research exception.</div>
+        </div>
+        <div class="tension-card">
+          <div class="tc-label">Friction point 2</div>
+          <div class="tc-title">Erasure rights and trained models</div>
+          <div class="tc-body">If a data subject withdraws consent or requests erasure under Article 17, and their personal data was used to train the model, the legal consequences for the trained model are unresolved. Machine unlearning is technically immature. The EDPB guidelines acknowledge this as an open question.</div>
+        </div>
+        <div class="tension-card">
+          <div class="tc-label">Friction point 3</div>
+          <div class="tc-title">Transparency about AI use</div>
+          <div class="tc-body">GDPR Article 13/14 requires informing individuals about automated processing of their data. The EU AI Act Article 50 requires informing individuals when they interact with AI in certain contexts. Both apply; information must cover both the personal data processing and the AI system use.</div>
+        </div>
+        <div class="tension-card">
+          <div class="tc-label">Friction point 4</div>
+          <div class="tc-title">Special category data in AI systems</div>
+          <div class="tc-body">Processing special category data (health, biometric, racial/ethnic origin, political opinions, religion, trade union membership, sexual orientation) requires an Article 9 exception in addition to an Article 6 legal basis. AI systems that infer special category attributes from non-special-category inputs (e.g. inferring health status from spending patterns) may trigger Article 9 requirements without an obvious exception.</div>
+        </div>
+      </div>
+
+      <h2 id="s-do">What organizations must do</h2>
+      <ul class="checklist" id="doList">
+        <li><span class="cb"></span>Map every stage of personal data processing in your AI system lifecycle: training data collection, model development, inference inputs, inference outputs, audit logs, and intermediate caches. Establish a legal basis for each stage separately.</li>
+        <li><span class="cb"></span>Conduct a purpose limitation assessment before using any existing dataset for AI training. Document whether the training purpose is compatible with the original collection purpose, and if not, identify the fresh legal basis.</li>
+        <li><span class="cb"></span>For AI systems that make consequential individual decisions (credit, employment, benefits, risk scoring): assess whether Article 22 applies. If it does, implement one of the three permitted conditions, document suitable safeguards (human review, contestation right, explanation), and update privacy notices.</li>
+        <li><span class="cb"></span>Conduct a DPIA before deploying any AI system that is likely to result in high risk to natural persons. For public-sector or essential-services deployers, also conduct a FRIA under Article 27 EU AI Act. Both can be conducted jointly but must be separately documented.</li>
+        <li><span class="cb"></span>Update privacy notices to inform individuals about AI use: what processing occurs, the legal basis, the logic involved in automated decisions, and the rights available (including the right to human review under Article 22 where applicable).</li>
+        <li><span class="cb"></span>Design AI audit trail logs to pseudonymise personal data at collection: retain the audit record but minimise personal data retention. Establish a documented retention period for personal data in logs, consistent with GDPR data minimisation and the audit trail purpose.</li>
+        <li><span class="cb"></span>Verify the DPA position in each Member State where you operate: national DPAs have taken different positions on AI/GDPR issues (particularly on legitimate interests for AI training and the scientific research exception). The EDPB guidelines are the baseline; national guidance may be more restrictive.</li>
+      </ul>
+
+      <h2 id="s-mistakes">Common mistakes</h2>
+      <p>Treating EU AI Act conformity assessment as a GDPR compliance exercise is the most common mistake. They are different instruments addressing different risks. A conformity assessment that finds the AI system technically compliant with Articles 9&ndash;15 of the EU AI Act says nothing about whether the personal data processing in that system is lawful under GDPR.</p>
+      <p>Using legitimate interests as a catch-all legal basis for AI training data is a second mistake. DPAs have been consistently skeptical of this approach. Legitimate interests requires a genuine balancing test; it is not a default fallback when consent is impractical and no other basis applies. The EDPB guidelines do not endorse it as a general basis for commercial AI training.</p>
+      <p>Assuming that informing users about AI (under Article 50 EU AI Act) discharges the GDPR transparency obligation is a third mistake. Article 50 requires informing individuals that they are interacting with an AI system. GDPR Articles 13/14 require informing individuals about the personal data processing that AI system performs &mdash; legal basis, purposes, retention, rights. Both are required; neither covers the other.</p>
+      <p>Treating the FRIA as a substitute for a DPIA is a fourth mistake. A FRIA under Article 27 EU AI Act addresses fundamental rights impacts broadly. A DPIA under Article 35 GDPR addresses data protection risks specifically. Both are required for high-risk AI systems that process personal data; they should be coordinated but not conflated.</p>
+
+      <h2 id="s-open">Open questions</h2>
+      <ul>
+        <li><strong>What GDPR obligations arise when a data subject requests erasure of personal data used to train a model</strong> &mdash; machine unlearning is technically immature; the EDPB guidelines acknowledge this as unresolved. Different DPAs may take different positions pending further guidance.</li>
+        <li><strong>Whether legitimate interests is an available legal basis for commercial AI training on publicly available data</strong> &mdash; the EDPB guidelines do not confirm this position; several DPAs (including the Irish DPA in its Meta/LinkedIn enforcement) have taken restrictive positions.</li>
+        <li><strong>How Article 22 applies to AI systems used as decision-support tools where a human nominally takes the decision</strong> &mdash; if the human decision is substantially shaped by the AI output and has no meaningful independent basis, it may still qualify as &lsquo;solely automated&rsquo; processing for Article 22 purposes. The EDPB guidelines note this is context-dependent.</li>
+        <li><strong>Whether the Digital Omnibus amended any EU AI Act provisions that interact with GDPR (Articles 10, 27, 50)</strong> &mdash; not confirmed on this research pass; verify against the current consolidated text.</li>
+      </ul>
+
+      <h2 id="s-faq">Frequently asked</h2>
+      <div class="definition"><div class="df-k">FAQ</div>
+        <dt>Does GDPR apply to AI models that are trained on publicly available data?</dt>
+        <dd>GDPR applies if the publicly available data contains personal data relating to identifiable individuals. The fact that data is publicly available does not remove it from GDPR scope &mdash; it may affect the legal basis analysis (particularly legitimate interests) but does not create a blanket exemption. Web-scraped text containing names, email addresses, or other identifiable information is personal data regardless of its public availability.</dd>
+      </div>
+      <div class="definition"><div class="df-k">FAQ</div>
+        <dt>Does Article 22 GDPR apply to all AI decision-making?</dt>
+        <dd>No. Article 22 applies to decisions based solely on automated processing that produce legal effects or similarly significant effects on individuals. An AI system used to personalise a news feed does not trigger Article 22. An AI system used to determine credit eligibility, screen job applications, or set insurance premiums does. The key threshold is whether the decision produces a legal effect (e.g. contract approval/rejection) or a similarly significant effect (e.g. material impact on the individual&rsquo;s opportunities, behaviour, or status).</dd>
+      </div>
+      <div class="definition"><div class="df-k">FAQ</div>
+        <dt>Is a DPIA required for every AI system?</dt>
+        <dd>No. A DPIA is required for processing that is likely to result in a high risk to natural persons. The GDPR Article 35(3) list of mandatory DPIA scenarios (systematic profiling, large-scale sensitive data, systematic monitoring of public areas) covers many but not all AI deployments. The national DPA&rsquo;s list of processing types that always require a DPIA (published under Article 35(4)) is the authoritative reference for each Member State. For high-risk AI systems under the EU AI Act that process personal data, the overlap between mandatory DPIA triggers and high-risk AI classifications is large but not complete.</dd>
+      </div>
+
+      <div data-rc="evidence" data-rc-arg="AR-000480"></div>
+      <div data-rc="history" data-rc-arg="AR-000480"></div>
+      <div data-rc="citation" data-rc-arg="AR-000480"></div>
+      <div data-rc="languageBar" data-rc-arg="AR-000480"></div>
+
+    </article>
+
+    <aside class="art-rail">
+      <div class="trustpanel">
+        <div class="tp-h"><h4>About this research</h4><span data-rc="statusPill" data-rc-arg="current"></span></div>
+        <div class="tp-rows">
+          <div class="tp-row"><span class="k">Research object</span><span class="v">AR-000480</span></div>
+          <div class="tp-row"><span class="k">Pillar</span><span class="v">Data Governance</span></div>
+          <div class="tp-row"><span class="k">Author</span><span class="v">Jean-Daniel Alexis</span></div>
+          <div class="tp-row"><span class="k">Reviewer</span><span class="v soft">Jean-Daniel Alexis</span></div>
+          <div class="tp-row"><span class="k">Review cycle</span><span class="v soft">Quarterly</span></div>
+          <div class="tp-row"><span class="k">Sources</span><span class="v" id="railSources">&mdash;</span></div>
+          <div class="tp-row"><span class="k">Revisions</span><span class="v" id="railRevisions">&mdash;</span></div>
+        </div>
+        <div class="tp-disclaim">AGNUS Research is an independent publication. It is not a law firm and this is not legal advice.</div>
+      </div>
+
+      <div style="margin-top:-4px"><span data-rc="trackButton" data-rc-arg="Data Governance" data-rc-mode="block"></span></div>
+
+      <div class="railbox">
+        <h5>Related</h5>
+        <div class="rb-list">
+          <a href="AGNUS - Research Article - AI Act Explained.html">EU AI Act Explained &rarr; AR-000200</a>
+          <a href="AGNUS - Research Article - Deployer Obligations.html">Deployer Obligations (Art. 26) &rarr; AR-000250</a>
+          <a href="AGNUS - Research Article - Audit Trails.html">AI Audit Trails &rarr; AR-000470</a>
+        </div>
+      </div>
+
+      <div class="railbox">
+        <h5>Institutional</h5>
+        <div class="rb-list">
+          <a href="AGNUS - Research Methodology.html">Methodology</a>
+          <a href="AGNUS - Research Sources.html">Source Library</a>
+          <a href="AGNUS - Research Calendar.html">Regulatory Calendar</a>
+          <a href="AGNUS - Research Author.html">About the author</a>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <div data-rc="related" data-rc-arg="AR-000480"></div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="foot-top" style="grid-template-columns:1.35fr 1fr 1fr 1fr 1fr">
+      <div class="foot-brand">
+        <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+        <p>Intelligence for the future of work. The trusted source for what&rsquo;s happening, which tools matter, and where AI is heading.</p>
+        <form class="fsearch" onsubmit="return false;">
+          <input type="email" placeholder="Your email for the Research Brief" aria-label="Email" />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+      <div class="foot-col"><h5>Research</h5><ul><li><a href="AGNUS - Research Topic.html">AI Governance</a></li><li><a href="AGNUS - Research Topic.html">EU AI Act</a></li><li><a href="AGNUS - Research Topic.html">AI Agents</a></li><li><a href="AGNUS - Research Topic.html">AI Security</a></li><li><a href="AGNUS - Research Topic.html">Data Governance</a></li><li><a href="AGNUS - Research Topic.html">Standards</a></li><li><a href="AGNUS - Research Country.html">Countries</a></li></ul></div>
+      <div class="foot-col"><h5>Evidence</h5><ul><li><a href="AGNUS - Research Sources.html">Source Library</a></li><li><a href="AGNUS - Research Calendar.html">Regulatory Calendar</a></li><li><a href="AGNUS - Research Methodology.html">Methodology</a></li></ul></div>
+      <div class="foot-col"><h5>Discover</h5><ul><li><a href="AGNUS - Review.html">AI Reviews</a></li><li><a href="AGNUS - Compare.html">Comparisons</a></li><li><a href="AGNUS - Marketplace.html">Marketplace</a></li></ul></div>
+      <div class="foot-col"><h5>Learn &amp; Build</h5><ul><li><a href="AGNUS - Academy.html">Academy</a></li><li><a href="AGNUS - Prompts.html">Prompt Library</a></li><li><a href="AGNUS - Agents.html">Agents</a></li><li><a href="AGNUS - Business.html">Business Automation</a></li></ul></div>
+    </div>
+    <div class="foot-bottom">
+      <span>&#169; 2026 AGNUS &middot; Truth before hype. &middot; AGNUS Research is an independent publication, not a law firm.</span>
+      <div class="fb-links"><a href="#">About</a><a href="AGNUS - Research Methodology.html">Methodology</a><a href="#">Privacy</a><a href="#">Terms</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="image-slot.js"></script>
+<script src="agnus-research-data.js"></script>
+<script src="agnus-research-components.js"></script>
+<script src="agnus-research-components2.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var toc = document.getElementById('tocList');
+  document.querySelectorAll('#prose h2[id]').forEach(function (h) {
+    var li = document.createElement('li');
+    li.innerHTML = '<a href="#' + h.id + '">' + h.textContent + '</a>';
+    toc.appendChild(li);
+  });
+  var links = toc.querySelectorAll('a');
+  new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      links.forEach(function (l) { l.classList.toggle('on', l.getAttribute('href') === '#' + e.target.id); });
+    });
+  }, { rootMargin: '-100px 0px -70% 0px' }).observe && document.querySelectorAll('#prose h2[id]').forEach(function (h) {
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (!e.isIntersecting) return; links.forEach(function (l) { l.classList.toggle('on', l.getAttribute('href') === '#' + e.target.id); }); });
+    }, { rootMargin: '-100px 0px -70% 0px' }).observe(h);
+  });
+  var bar = document.getElementById('progBar'), prose = document.getElementById('prose');
+  function prog() { var r = prose.getBoundingClientRect(), total = r.height - window.innerHeight, done = Math.min(Math.max(-r.top, 0), Math.max(total, 1)); bar.style.width = (total > 0 ? done / total * 100 : 0) + '%'; }
+  document.addEventListener('scroll', prog, { passive: true }); prog();
+  document.querySelectorAll('#doList li').forEach(function (li) { li.addEventListener('click', function () { li.classList.toggle('on'); }); });
+  var a = AR.byArticleId('AR-000480');
+  document.getElementById('railSources').textContent = a.sources.length + ' cited';
+  document.getElementById('railRevisions').textContent = (a.history || []).length + ' recorded';
+});
+</script>
+</body>
+</html>

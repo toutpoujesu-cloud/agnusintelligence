@@ -1,0 +1,1254 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#F8F6F2;--canvas:#FDFCFA;--panel:#FFFFFF;--panel-2:#F2F0EB;
+  --line:#E5E2D9;--line-2:#D1CEC4;
+  --ink:#18202A;--ink-2:#4A5261;--ink-3:#8E96A2;
+  --navy:#17263C;--navy-2:#0F1A28;
+  --gold:#9A7633;--gold-light:#B59048;--gold-soft:#F6F0E3;--gold-dim:rgba(154,118,51,.13);
+  --pass:#1A7E4A;--pass-dim:rgba(26,126,74,.1);
+  --warn:#8C5E00;--warn-dim:rgba(140,94,0,.1);
+  --danger:#A03228;--danger-dim:rgba(160,50,40,.1);
+  --info:#1E4A8A;--info-dim:rgba(30,74,138,.1);
+  --infer:#6A3F8A;--infer-dim:rgba(106,63,138,.1);
+  --sh1:0 1px 4px rgba(24,32,42,.08);
+  --sh2:0 6px 20px rgba(24,32,42,.1);
+  --sh3:0 20px 56px rgba(24,32,42,.15);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden}
+body{background:var(--bg);color:var(--ink);font-family:Manrope,sans-serif;-webkit-font-smoothing:antialiased;display:grid;grid-template-rows:48px 1fr;grid-template-columns:1fr}
+
+/* ─── TOP RAIL ─── */
+.top-rail{background:var(--navy-2);color:#fff;display:flex;align-items:center;gap:0;padding:0;border-bottom:1px solid rgba(255,255,255,.06)}
+.tr-brand{display:flex;align-items:center;gap:0;padding:0 20px;height:100%;border-right:1px solid rgba(255,255,255,.1);gap:8px}
+.tr-brand .wordmark{font-weight:800;font-size:13.5px;letter-spacing:.01em}
+.tr-brand .sep{width:1px;height:13px;background:rgba(255,255,255,.2)}
+.tr-brand .tab{font-size:12.5px;font-weight:600;color:rgba(255,255,255,.68)}
+.tr-crumb{display:flex;align-items:center;gap:0;padding:0 18px;border-right:1px solid rgba(255,255,255,.1);height:100%}
+.tr-crumb .lvl{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-right:12px}
+.tr-crumb .mission-name{font-size:13px;font-weight:700;color:#fff}
+.tr-right{margin-left:auto;display:flex;align-items:center;gap:14px;padding:0 18px}
+.tr-progress{display:flex;align-items:center;gap:10px}
+.prog-dots{display:flex;gap:5px}
+.prog-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.2)}
+.prog-dot.done{background:var(--gold-light)}
+.prog-dot.active{background:#fff}
+.prog-label{font-family:'IBM Plex Mono',monospace;font-size:10px;color:rgba(255,255,255,.5)}
+.tr-btn{display:inline-flex;align-items:center;gap:6px;font-family:Manrope,sans-serif;font-size:12px;font-weight:700;padding:7px 14px;border-radius:7px;border:1px solid rgba(255,255,255,.18);color:#fff;background:rgba(255,255,255,.07);cursor:pointer}
+.tr-btn:hover{background:rgba(255,255,255,.12)}
+.tr-btn.primary{background:var(--gold);border-color:var(--gold);color:#fff}
+.tr-btn.primary:hover{background:var(--gold-light)}
+
+/* ─── LAYOUT ─── */
+.body-grid{display:grid;grid-template-columns:1fr;height:100%;overflow:hidden}
+
+/* ─── DASHBOARD ─── */
+.dash-view{padding:40px 52px;overflow-y:auto;background:var(--canvas)}
+.dash-greeting{font-size:28px;font-weight:800;letter-spacing:-.03em;margin-bottom:4px}
+.dash-sub{font-size:15px;color:var(--ink-3);margin-bottom:36px}
+.dash-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;margin-bottom:32px}
+
+/* Capability ladder */
+.cap-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.cap-head{padding:20px 22px 16px;border-bottom:1px solid var(--line);display:flex;align-items:baseline;justify-content:space-between}
+.cap-head h3{font-size:14.5px;font-weight:800;letter-spacing:-.015em}
+.cap-head span{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-3)}
+.cap-levels{padding:10px 8px}
+.cap-level{display:flex;align-items:center;gap:12px;padding:9px 12px;border-radius:9px;cursor:pointer}
+.cap-level:hover{background:var(--panel-2)}
+.cap-level.active{background:var(--navy);color:#fff}
+.cl-n{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;width:18px;color:var(--ink-3);flex:none}
+.cap-level.active .cl-n{color:rgba(255,255,255,.5)}
+.cl-name{font-size:13px;font-weight:700;flex:1}
+.cl-prog{display:flex;gap:3px}
+.cl-dot{width:7px;height:7px;border-radius:50%;background:var(--line-2)}
+.cl-dot.done{background:var(--pass)}
+.cl-dot.active{background:var(--gold)}
+.cap-level.locked{opacity:.4;cursor:default}
+
+/* Mission card */
+.mission-card{background:var(--navy);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.mc-body{padding:26px 24px;flex:1}
+.mc-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:12px}
+.mc-title{font-size:20px;font-weight:800;letter-spacing:-.025em;color:#fff;margin-bottom:10px;line-height:1.2}
+.mc-desc{font-family:Newsreader,serif;font-size:14.5px;line-height:1.62;color:rgba(255,255,255,.72);margin-bottom:20px}
+.mc-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.mc-tag{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.15);border-radius:4px;padding:4px 9px}
+.mc-steps{display:flex;gap:0;margin-bottom:24px}
+.mc-step{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;position:relative}
+.mc-step::after{content:'';position:absolute;top:9px;left:50%;width:100%;height:1px;background:rgba(255,255,255,.15)}
+.mc-step:last-child::after{display:none}
+.ms-dot{width:18px;height:18px;border-radius:50%;border:1.5px solid rgba(255,255,255,.25);background:transparent;position:relative;z-index:1}
+.mc-step.done .ms-dot{background:var(--pass);border-color:var(--pass)}
+.mc-step.active .ms-dot{background:#fff;border-color:#fff}
+.ms-label{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.4);text-align:center}
+.mc-step.active .ms-label{color:rgba(255,255,255,.8);font-weight:600}
+.mc-foot{padding:0 24px 24px}
+.mc-cta{display:flex;width:100%;align-items:center;justify-content:center;gap:8px;background:#fff;border:none;border-radius:10px;font-family:Manrope,sans-serif;font-size:14px;font-weight:800;color:var(--navy);padding:14px;cursor:pointer;letter-spacing:-.01em}
+.mc-cta:hover{background:var(--gold-soft)}
+
+/* Stats row */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:0}
+.stat-card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px}
+.stat-label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px}
+.stat-val{font-size:24px;font-weight:800;letter-spacing:-.025em}
+.stat-sub{font-size:12px;color:var(--ink-3);margin-top:3px}
+
+/* ─── MISSION SIDEBAR ─── */
+.mission-sidebar{background:var(--panel);border-right:1px solid var(--line);display:flex;flex-direction:column;overflow:hidden}
+.ms-head{padding:20px 20px 14px;border-bottom:1px solid var(--line);flex:none}
+.ms-step-label{font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.ms-title{font-size:14px;font-weight:800;letter-spacing:-.015em;line-height:1.26}
+.ms-body{flex:1;overflow-y:auto;padding:16px 20px;display:flex;flex-direction:column;gap:16px}
+.brief-block{background:var(--gold-soft);border:1px solid var(--gold-dim);border-radius:10px;padding:14px 16px}
+.brief-label{font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
+.brief-text{font-family:Newsreader,serif;font-size:13.5px;line-height:1.62;color:var(--ink-2)}
+.concept-text{font-family:Newsreader,serif;font-size:13.5px;line-height:1.65;color:var(--ink-2)}
+.concept-text b{font-family:Manrope,sans-serif;font-weight:700;color:var(--ink)}
+.rules-list{list-style:none;display:grid;gap:8px}
+.rules-list li{display:flex;gap:9px;font-size:12.5px;color:var(--ink-2);line-height:1.45}
+.rules-list li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--ink-3);flex:none;margin-top:5px}
+.pass-box{background:var(--pass-dim);border:1px solid rgba(26,126,74,.22);border-radius:9px;padding:12px 14px;font-size:12.5px;color:var(--pass);line-height:1.5;display:flex;gap:9px;align-items:flex-start}
+.pass-box svg{flex:none;margin-top:1px}
+.ms-steps{margin-top:4px}
+.step-track{display:flex;flex-direction:column;gap:0}
+.st-item{display:flex;gap:12px;align-items:flex-start}
+.st-line{display:flex;flex-direction:column;align-items:center;flex:none;width:20px}
+.st-dot{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--line-2);background:#fff;display:grid;place-items:center;flex:none;font-size:9px;color:var(--ink-3);font-family:'IBM Plex Mono',monospace;font-weight:600}
+.st-item.done .st-dot{background:var(--pass);border-color:var(--pass);color:#fff}
+.st-item.active .st-dot{background:var(--navy);border-color:var(--navy);color:#fff}
+.st-connector{width:1.5px;height:22px;background:var(--line);flex:none;margin:0 auto}
+.st-text{font-size:12.5px;color:var(--ink-3);line-height:1.4;padding-top:1px;padding-bottom:22px}
+.st-item.done .st-text{color:var(--ink-3);text-decoration:line-through}
+.st-item.active .st-text{color:var(--ink);font-weight:700}
+
+/* ─── WORKSPACE ─── */
+.workspace{background:var(--canvas);display:flex;flex-direction:column;overflow:hidden;min-height:0;min-width:0}
+.ws-head{background:var(--panel);border-bottom:1px solid var(--line);padding:12px 24px;display:flex;align-items:center;gap:16px;flex:none}
+.ws-mode-tabs{display:flex;gap:4px}
+.ws-tab{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:7px 14px;border-radius:6px;border:1px solid var(--line);background:transparent;color:var(--ink-3);cursor:pointer}
+.ws-tab.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+.ws-tab:hover:not(.active){background:var(--panel-2);color:var(--ink)}
+.ws-actions{margin-left:auto;display:flex;gap:8px}
+.ws-btn{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;padding:7px 14px;border-radius:7px;border:1px solid var(--line-2);background:var(--panel);color:var(--ink-2);cursor:pointer}
+.ws-btn:hover{border-color:var(--ink-2);color:var(--ink)}
+.ws-btn.primary{background:var(--navy);color:#fff;border-color:var(--navy)}
+.ws-btn.primary:hover{background:var(--navy-2)}
+.ws-btn:disabled{opacity:.4;cursor:default}
+
+/* Workspace content area */
+.ws-body{flex:1;overflow-y:auto;display:flex;flex-direction:column}
+
+/* SOURCE VIEW tab */
+.source-view{padding:28px 32px;display:flex;flex-direction:column;gap:20px}
+.source-card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:24px 26px}
+.sc-label{font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:12px}
+.sc-title{font-size:14px;font-weight:800;letter-spacing:-.015em;margin-bottom:4px}
+.sc-meta{font-size:12px;color:var(--ink-3);margin-bottom:16px;font-family:'IBM Plex Mono',monospace}
+.sc-text{font-family:Newsreader,serif;font-size:14.5px;line-height:1.72;color:var(--ink-2)}
+.sc-text .highlight{background:rgba(154,118,51,.15);border-radius:3px;padding:1px 3px;cursor:pointer}
+.sc-text .highlight.flagged{background:var(--danger-dim);border-bottom:2px solid var(--danger);border-radius:3px 3px 0 0}
+
+/* ANSWER tab */
+.answer-view{padding:28px 32px;display:flex;flex-direction:column;gap:0;height:100%}
+.answer-prompt{background:var(--navy);border-radius:12px;padding:20px 22px;margin-bottom:20px}
+.ap-label{font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:9px}
+.ap-text{font-size:14px;line-height:1.58;color:rgba(255,255,255,.9)}
+.classify-grid{display:grid;gap:10px;flex:1}
+.classify-row{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;display:flex;align-items:center;gap:16px}
+.cr-text{flex:1;font-size:13.5px;color:var(--ink-2);line-height:1.45}
+.cr-text .src-ref{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:var(--gold)}
+.cr-buttons{display:flex;gap:6px;flex:none}
+.verdict-btn{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.05em;text-transform:uppercase;padding:8px 13px;border-radius:7px;border:1.5px solid var(--line-2);background:#fff;color:var(--ink-2);cursor:pointer;transition:all .15s}
+.verdict-btn:hover{border-color:var(--ink-2);color:var(--ink)}
+.verdict-btn.v-supported,.verdict-btn.v-unsupported,.verdict-btn.v-ambiguous{background:var(--navy,#1C2434);border-color:var(--navy,#1C2434);color:#fff;font-weight:600}
+.submit-area{padding:20px 32px 24px;background:var(--canvas);border-top:1px solid var(--line);display:flex;align-items:center;gap:16px;flex:none}
+.sa-count{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-3)}
+.sa-count span{color:var(--ink);font-weight:600}
+.submit-btn{display:flex;align-items:center;gap:8px;background:var(--navy);color:#fff;border:none;border-radius:10px;font-family:Manrope,sans-serif;font-weight:700;font-size:14px;padding:13px 28px;cursor:pointer;letter-spacing:-.01em}
+.submit-btn:disabled{opacity:.4;cursor:default}
+.submit-btn:hover:not(:disabled){background:var(--navy-2)}
+
+/* SUPERVISION tab */
+.sup-view{padding:24px 28px;display:flex;flex-direction:column;gap:0;position:relative}
+.sup-intro{background:var(--gold-soft);border:1px solid var(--gold-dim);border-radius:12px;padding:16px 18px;margin-bottom:20px;font-size:13px;line-height:1.55;color:var(--ink-2)}
+.sup-intro b{color:var(--ink);font-family:Manrope,sans-serif}
+.authority-feed{display:flex;flex-direction:column;gap:0}
+.af-item{display:grid;grid-template-columns:148px 1fr;gap:0;position:relative}
+.af-connector{display:flex;flex-direction:column;align-items:flex-end;padding-top:3px;padding-right:14px;flex:none}
+.af-badge-wrap{display:flex;align-items:center;justify-content:flex-end;width:100%;margin-bottom:4px}
+.af-badge{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.1em;font-weight:600;text-transform:uppercase;padding:4px 8px;border-radius:99px;white-space:nowrap;text-align:right}
+.af-badge.human{background:var(--info-dim);color:var(--info)}
+.af-badge.interp{background:var(--gold-dim);color:var(--gold)}
+.af-badge.infer{background:var(--infer-dim);color:var(--infer)}
+.af-badge.action{background:var(--danger-dim);color:var(--danger)}
+.af-badge.deviation{background:var(--danger);color:#fff}
+.af-line{width:1.5px;flex:1;background:var(--line);min-height:20px}
+.af-item:last-child .af-line{display:none}
+.af-content{padding:4px 0 22px 0}
+.afc-text{font-size:13.5px;line-height:1.58;color:var(--ink-2);margin-bottom:4px}
+.afc-meta{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-3)}
+.deviation-flag{background:var(--danger-dim);border:1px solid rgba(160,50,40,.25);border-left:3px solid var(--danger);border-radius:0 8px 8px 0;padding:10px 14px;margin-top:6px;font-size:12.5px;color:var(--danger);line-height:1.5}
+.tool-feed{display:flex;flex-direction:column;gap:8px;margin-top:0}
+.tf-item{background:var(--panel);border:1px solid var(--line);border-radius:9px;overflow:hidden}
+.tf-head{display:flex;align-items:center;gap:10px;padding:9px 14px;border-bottom:1px solid var(--line);background:var(--panel-2)}
+.tf-name{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;color:var(--ink);flex:1}
+.tf-status{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:4px}
+.tf-status.ok{background:var(--pass-dim);color:var(--pass)}
+.tf-status.blocked{background:var(--danger-dim);color:var(--danger)}
+.tf-body{padding:9px 14px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--ink-3);line-height:1.55}
+.int-strip{display:flex;gap:8px;flex-wrap:wrap;padding:18px 0 0}
+.int-btn{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:8px 14px;border-radius:7px;border:1px solid var(--line-2);background:#fff;color:var(--ink-2);cursor:pointer}
+.int-btn:hover{border-color:var(--ink);color:var(--ink)}
+.int-btn.warn{color:var(--warn);border-color:rgba(140,94,0,.3)}
+.int-btn.danger{color:var(--danger);border-color:rgba(160,50,40,.3)}
+/* Intervention modal */
+.int-overlay{position:fixed;inset:0;background:rgba(24,32,42,.52);backdrop-filter:blur(3px);display:none;align-items:flex-end;justify-content:center;z-index:200;padding:24px}
+.int-overlay.open{display:flex}
+.int-modal{background:var(--panel);border-radius:16px;width:100%;max-width:680px;max-height:78vh;overflow-y:auto;box-shadow:0 24px 60px rgba(24,32,42,.22)}
+.im-head{padding:18px 22px 14px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:14px;flex:none}
+.im-head h3{font-size:14.5px;font-weight:800;letter-spacing:-.018em}
+.im-close{font-size:20px;color:var(--ink-3);background:none;border:none;cursor:pointer;line-height:1;padding:2px 6px}
+.im-body{padding:20px 22px}
+.im-question{font-family:Newsreader,serif;font-size:14.5px;line-height:1.62;color:var(--ink-2);margin-bottom:18px}
+.im-options{display:grid;gap:9px;margin-bottom:6px}
+.im-opt{display:flex;gap:12px;padding:13px 15px;border:1.5px solid var(--line);border-radius:10px;cursor:pointer;text-align:left;background:#fff;font-size:13.5px;color:var(--ink-2);line-height:1.45;width:100%;transition:border-color .15s}
+.im-opt:hover{border-color:var(--navy);color:var(--ink)}
+.im-opt.selected-right{border-color:var(--pass);background:var(--pass-dim);color:var(--pass)}
+.im-opt.selected-wrong{border-color:var(--danger);background:var(--danger-dim);color:var(--danger)}
+.im-opt .oi{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--line-2);flex:none;display:grid;place-items:center;font-size:10px}
+.im-feedback{border-radius:10px;padding:16px 18px;font-size:13.5px;line-height:1.62;margin-top:12px;display:none}
+.im-feedback.pass{background:var(--pass-dim);border:1px solid rgba(26,126,74,.25)}
+.im-feedback.fail{background:var(--danger-dim);border:1px solid rgba(160,50,40,.25)}
+.im-feedback h4{font-size:13.5px;font-weight:800;margin-bottom:7px;color:var(--ink)}
+.im-feedback p{color:var(--ink-2);margin:0}
+.im-takeaway{background:var(--navy);color:#fff;border-radius:9px;padding:14px 16px;font-size:13px;line-height:1.55;margin-top:12px;display:none}
+.im-takeaway b{color:var(--gold-light)}
+.im-btn-row{display:flex;gap:10px;margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
+.tool-check{display:flex;gap:10px;align-items:center;padding:10px 13px;border:1.5px solid var(--line);border-radius:8px;cursor:pointer;transition:all .15s;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-2);background:#fff}
+.tool-check:hover{border-color:var(--navy)}
+.tool-check.selected-revoke{border-color:var(--danger);background:var(--danger-dim);color:var(--danger)}
+.tc-check{width:17px;height:17px;border-radius:4px;border:1.5px solid var(--line-2);flex:none;display:grid;place-items:center;font-size:10px}
+.tool-check.selected-revoke .tc-check{background:var(--danger);border-color:var(--danger);color:#fff}
+.export-event{display:flex;gap:10px;padding:12px 14px;border:1.5px solid var(--line);border-radius:8px;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-2);background:#fff;transition:all .15s}
+.export-event:hover{border-color:var(--navy)}
+.export-event.checked{border-color:var(--pass);background:var(--pass-dim);color:var(--pass)}
+.exp-box{width:16px;height:16px;border-radius:4px;border:1.5px solid var(--line-2);flex:none;display:grid;place-items:center;font-size:9px}
+.export-event.checked .exp-box{background:var(--pass);border-color:var(--pass);color:#fff}
+
+/* RESULT state */
+.result-view{padding:32px;display:flex;flex-direction:column;gap:16px}
+.result-card{border-radius:14px;padding:28px 30px;display:flex;gap:20px;align-items:flex-start}
+.result-card.pass{background:var(--pass-dim);border:1.5px solid rgba(26,126,74,.3)}
+.result-card.fail{background:var(--danger-dim);border:1.5px solid rgba(160,50,40,.25)}
+.rc-icon{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;flex:none}
+.result-card.pass .rc-icon{background:var(--pass);color:#fff}
+.result-card.fail .rc-icon{background:var(--danger);color:#fff}
+.rc-body h3{font-size:17px;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+.rc-body p{font-size:14px;line-height:1.62;color:var(--ink-2)}
+.nc-btn{font-family:Manrope,sans-serif;font-weight:700;font-size:13px;padding:12px 22px;border-radius:8px;border:none;background:#fff;color:var(--navy);cursor:pointer;white-space:nowrap;flex:none}
+.next-card{background:var(--navy);border-radius:14px;padding:24px 26px;display:none;align-items:center;justify-content:space-between;gap:20px;cursor:pointer;width:100%;margin-top:16px}
+.next-card:hover{background:var(--navy-2)}
+.nc-label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:8px}
+.nc-title{font-size:16px;font-weight:800;color:#fff;letter-spacing:-.02em}
+.nc-sub{font-size:13px;color:rgba(255,255,255,.68);margin-top:4px}
+.nc-btn{flex:none;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:9px;padding:12px 20px;font-size:13px;font-weight:700;color:#fff}
+
+/* ─── FIX 1: See step diagram ─── */
+.see-view{padding:28px 32px;display:flex;flex-direction:column;gap:20px}
+.see-diagram{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:28px}
+.sd-label{font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:18px}
+.sd-flow{display:grid;grid-template-columns:1fr 28px 1fr 28px 1fr;gap:0;align-items:stretch;margin-bottom:22px}
+.sd-node{background:var(--panel-2);border:1px solid var(--line);border-radius:10px;padding:13px 12px;text-align:center;transition:background .2s}
+.sd-node.human{background:var(--info-dim);border-color:rgba(30,74,138,.25)}
+.sd-node.interp{background:var(--gold-soft);border-color:var(--gold-dim)}
+.sd-node.infer{background:var(--infer-dim);border-color:rgba(106,63,138,.25)}
+.sd-node.action{background:var(--panel-2);border-color:var(--line)}
+.sd-node.deviation{background:var(--danger-dim);border-color:rgba(160,50,40,.35);animation:pulse-node 2s infinite}
+@keyframes pulse-node{0%,100%{box-shadow:0 0 0 0 rgba(160,50,40,.15)}50%{box-shadow:0 0 0 6px rgba(160,50,40,0)}}
+.sdn-badge{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
+.sdn-badge.human{color:var(--info)}
+.sdn-badge.interp{color:var(--gold)}
+.sdn-badge.infer{color:var(--infer)}
+.sdn-badge.action{color:var(--ink-3)}
+.sdn-badge.deviation{color:var(--danger)}
+.sdn-text{font-size:11.5px;font-weight:700;color:var(--ink);line-height:1.3}
+.sd-arrow{text-align:center;font-size:16px;color:var(--line-2);display:flex;align-items:center;justify-content:center}
+.sd-deviation-note{background:var(--danger-dim);border:1px solid rgba(160,50,40,.25);border-left:3px solid var(--danger);border-radius:0 9px 9px 0;padding:12px 16px;font-size:13px;line-height:1.55;color:var(--danger)}
+.sd-deviation-note b{color:var(--ink)}
+.see-cta{display:flex;align-items:center;justify-content:space-between;gap:16px;background:var(--navy);border-radius:12px;padding:20px 24px}
+.see-cta p{font-size:13.5px;color:rgba(255,255,255,.8);line-height:1.5}
+.see-cta button{flex:none;background:#fff;color:var(--navy);border:none;border-radius:9px;font-family:Manrope,sans-serif;font-weight:700;font-size:13px;padding:12px 22px;cursor:pointer;white-space:nowrap}
+.see-cta button:hover{background:var(--gold-soft)}
+/* ─── FIX 2: Source gate nudge ─── */
+.source-gate{background:var(--gold-soft);border:1px solid var(--gold-dim);border-radius:10px;padding:14px 18px;margin-bottom:16px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:opacity .2s}
+.source-gate:hover{opacity:.85}
+.sg-icon{width:32px;height:32px;border-radius:8px;background:var(--gold-dim);color:var(--gold);display:grid;place-items:center;flex:none}
+.sg-text{font-size:13px;color:var(--ink-2);line-height:1.4}
+.sg-text b{color:var(--gold);font-family:Manrope,sans-serif}
+.sg-cta{margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);font-weight:600;white-space:nowrap}
+/* ─── FIX 3: Post-pass competency ─── */
+.competency-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.cc-head{background:var(--pass-dim);padding:16px 20px;border-bottom:1px solid rgba(26,126,74,.2);display:flex;align-items:center;gap:12px}
+.cc-head svg{color:var(--pass);flex:none}
+.cc-head h4{font-size:13.5px;font-weight:800;color:var(--pass)}
+.cc-body{padding:18px 20px;display:grid;gap:14px}
+.cc-competency{font-size:14px;font-weight:700;letter-spacing:-.015em;color:var(--ink)}
+.cc-competency-sub{font-size:13px;color:var(--ink-2);line-height:1.5;margin-top:3px}
+.cc-artifact{display:flex;align-items:center;gap:12px;background:var(--panel-2);border-radius:8px;padding:12px 14px}
+.ca-icon{width:28px;height:28px;border-radius:7px;background:var(--navy);color:#fff;display:grid;place-items:center;flex:none}
+.ca-text{font-size:12.5px;color:var(--ink-2)}
+.ca-text b{color:var(--ink)}
+.progress-strip{display:flex;gap:0}
+.ps-level{display:flex;align-items:center;gap:6px;padding:10px 14px;background:var(--panel-2);border:1px solid var(--line);flex:1;font-size:12.5px;font-weight:700}
+.ps-level:first-child{border-radius:7px 0 0 7px}
+.ps-level:last-child{border-radius:0 7px 7px 0;border-left:none}
+.ps-level.current{background:var(--navy);color:#fff;border-color:var(--navy)}
+.ps-modules{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-3);margin-left:auto}
+.ps-level.current .ps-modules{color:rgba(255,255,255,.6)}
+.ws-section-head h4{font-size:13px;font-weight:700;letter-spacing:-.01em}
+.ws-section-head .divider{flex:1;height:1px;background:var(--line)}
+
+/* ─── LEARNING PATH BAR ─── */
+.lp-bar{display:flex;align-items:center;gap:6px;padding:10px 14px;background:var(--panel-2);border-bottom:1px solid var(--line);font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);flex:none}
+.lp-bar .lp-prog{flex:1;height:4px;background:var(--line);border-radius:2px;overflow:hidden;margin:0 8px}
+.lp-bar .lp-fill{height:100%;background:var(--gold);border-radius:2px;transition:width .4s ease}
+.lp-bar .lp-pct{white-space:nowrap;color:var(--gold)}
+/* ─── CONTINUE GATE ─── */
+.continue-gate{margin-top:24px;border-top:1px solid var(--line);padding-top:20px}
+.gate-progress{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.gp-item{display:flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.06em;color:var(--ink-3)}
+.gp-item .gp-dot{width:10px;height:10px;border-radius:50%;border:1.5px solid var(--line-2);flex:none}
+.gp-item.done .gp-dot{background:var(--pass);border-color:var(--pass)}
+.gp-item.aided .gp-dot{background:var(--warn,#C7821A);border-color:var(--warn,#C7821A)}
+.continue-btn{width:100%;padding:20px 24px;border:none;border-radius:12px;background:var(--navy);color:#fff;font-family:Manrope,sans-serif;font-weight:800;font-size:15px;letter-spacing:-.01em;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;opacity:.35;pointer-events:none;transition:opacity .3s,background .2s}
+.continue-btn.unlocked{opacity:1;pointer-events:auto;background:var(--navy)}
+.continue-btn.unlocked:hover{background:#2A3445}
+.cb-label{display:grid;text-align:left;gap:2px}
+.cb-sub{font-size:11px;font-weight:500;color:rgba(255,255,255,.55);margin-top:0}
+/* ─── STUDY NUDGE ─── */
+.study-nudge{background:#FFF8EA;border:1px solid rgba(140,94,0,.25);border-left:3px solid var(--warn,#C7821A);border-radius:0 9px 9px 0;padding:14px 16px;margin-top:10px}
+.sn-k{font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--warn,#C7821A);margin-bottom:8px;font-weight:600}
+.study-nudge ul{margin:0;padding-left:16px;font-size:13px;line-height:1.62;color:var(--ink-2)}
+.study-nudge ul li{margin-bottom:5px}
+
+.im-why{background:var(--gold-soft,#FBF5E6);border-left:2px solid var(--gold,#B2893F);border-radius:0 8px 8px 0;padding:13px 16px;margin:12px 0 16px}
+.why-k{font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold,#B2893F);margin-bottom:7px}
+.im-why p{font-size:13px;line-height:1.6;color:var(--ink-2,#5B6270);margin:0}
+.im-q{font-family:Manrope,sans-serif;font-weight:700;font-size:14px;letter-spacing:-.015em;color:var(--ink);margin-bottom:12px}
+.im-submit{font-family:Manrope,sans-serif;font-weight:700;font-size:13px;padding:12px 22px;border-radius:9px;border:none;background:var(--navy);color:#fff;cursor:pointer;margin-top:8px;width:100%}
+.gp-dot{display:inline-block;width:12px;height:12px;border-radius:50%;border:1.5px solid var(--line-2);background:#fff;margin-right:6px;transition:background .2s,border-color .2s}
+.gp-dot.done{background:var(--pass,#1A7E4A);border-color:var(--pass,#1A7E4A)}
+
+.step-banner{display:flex;align-items:center;gap:20px;padding:18px 32px;border-bottom:1px solid var(--line);background:var(--panel-2,#F2F1EC);position:sticky;top:0;z-index:10}
+.sb-number{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);white-space:nowrap}
+.sb-step{font-family:Manrope,sans-serif;font-weight:800;font-size:18px;letter-spacing:-.022em;color:var(--ink)}
+.sb-why{font-size:13px;color:var(--ink-2);line-height:1.45;flex:1}
+.sb-dots{display:flex;gap:7px;align-items:center;flex:none}
+.sb-dot{width:10px;height:10px;border-radius:50%;border:1.5px solid var(--line-2);background:#fff;transition:background .25s,border-color .25s}
+.sb-dot.done{background:var(--pass);border-color:var(--pass)}
+.sb-dot.current{background:var(--navy);border-color:var(--navy);box-shadow:0 0 0 3px rgba(28,36,52,.15)}
+</style>
+</head>
+<body>
+
+<!-- TOP RAIL -->
+<header class="top-rail">
+  <div class="tr-brand">
+    <span class="wordmark">AGNUS</span>
+    <span class="sep"></span>
+    <span class="tab">Academy</span>
+  </div>  <div class="tr-crumb">
+    <span class="lvl">Level 4 · Supervise</span>
+    <span class="mission-name" id="topMissionName">Dashboard</span>
+  </div>
+  <div class="tr-right">
+    <div class="tr-progress">
+      <div class="prog-dots">
+        <div class="prog-dot done"></div><div class="prog-dot done"></div><div class="prog-dot done"></div>
+        <div class="prog-dot active"></div><div class="prog-dot"></div><div class="prog-dot"></div>
+      </div>
+      <span class="prog-label">Step 3 of 6</span>
+    </div>
+    <button class="tr-btn" onclick="showDash()">← Dashboard</button>
+    <button class="tr-btn primary" id="topCta" onclick="switchTab('see')">Start mission →</button>
+  </div>
+</header>
+
+<!-- BODY -->
+<div class="body-grid layout-dash" id="bodyGrid" style="height:100%;overflow:hidden">
+
+<!-- ─── DASHBOARD ─── -->
+<div id="view-dash" style="display:grid;grid-template-columns:1.1fr 1fr;grid-template-rows:auto 1fr;gap:24px;padding:36px 48px;overflow-y:auto;background:var(--canvas)">
+  <!-- Greeting -->
+  <div style="grid-column:1/-1">
+    <div class="dash-greeting">Good morning, Sarah.</div>
+    <div class="dash-sub">You're on Level 4 — Supervise. One mission between you and Level 5.</div>
+  </div>
+
+  <!-- Mission card -->
+  <div style="grid-row:2;display:flex;flex-direction:column;gap:16px">
+    <div class="mission-card" style="flex:1">
+      <div class="mc-body">
+        <div class="mc-eyebrow">Module 26 · Level 4 — Supervise · Active</div>
+        <div class="mc-title">Find the First Deviation</div>
+        <div class="mc-desc">A 30-step research execution where later errors trace to one quiet, unauthorized expansion. Locate it before the compounding damage becomes irreversible.</div>
+        <div class="mc-tags">
+          <span class="mc-tag">Claim Analysis</span>
+          <span class="mc-tag">Source Grounding</span>
+          <span class="mc-tag">Deviation Detection</span>
+        </div>
+        <div class="mc-steps">
+          <div class="mc-step done"><div class="ms-dot"></div><div class="ms-label">Understand</div></div>
+          <div class="mc-step done"><div class="ms-dot"></div><div class="ms-label">See</div></div>
+          <div class="mc-step active"><div class="ms-dot"></div><div class="ms-label">Do</div></div>
+          <div class="mc-step"><div class="ms-dot"></div><div class="ms-label">Observe</div></div>
+          <div class="mc-step"><div class="ms-dot"></div><div class="ms-label">Diagnose</div></div>
+          <div class="mc-step"><div class="ms-dot"></div><div class="ms-label">Pass</div></div>
+        </div>
+      </div>
+      <div class="mc-foot">
+        <button class="mc-cta" onclick="showMission('understand')">Continue mission →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right column -->
+  <div style="grid-row:2;display:flex;flex-direction:column;gap:16px">
+    <!-- Capability ladder -->
+    <div class="cap-card" style="flex:1">
+      <div class="cap-head"><h3>Capability Map</h3><span>49 modules · 7 levels</span></div>
+      <div class="cap-levels">
+        <div class="cap-level" style="opacity:.85;cursor:pointer" onclick="toggleLevel('L1','Understand')"><span class="cl-n">L1</span><span class="cl-name">Understand</span><div class="cl-prog"><div class="cl-dot done"></div>
+          <div class="cap-expand" id="exp-L1" style="display:none;padding:4px 8px 8px">
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;background:rgba(31,157,107,.1);margin:2px 0"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#1a7e4a;width:14px;flex:none">✓</span><span style="font-size:12.5px;font-weight:600;color:#1a7e4a">M01 What is an AI agent?</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;background:rgba(31,157,107,.1);margin:2px 0"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#1a7e4a;width:14px;flex:none">✓</span><span style="font-size:12.5px;font-weight:600;color:#1a7e4a">M02 How agents plan</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;background:rgba(31,157,107,.1);margin:2px 0"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#1a7e4a;width:14px;flex:none">✓</span><span style="font-size:12.5px;font-weight:600;color:#1a7e4a">M03 Tool use basics</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;background:rgba(31,157,107,.1);margin:2px 0"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#1a7e4a;width:14px;flex:none">✓</span><span style="font-size:12.5px;font-weight:600;color:#1a7e4a">M04 Memory patterns</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;background:rgba(31,157,107,.1);margin:2px 0"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#1a7e4a;width:14px;flex:none">✓</span><span style="font-size:12.5px;font-weight:600;color:#1a7e4a">M05 Agent architectures</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;background:rgba(31,157,107,.1);margin:2px 0"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#1a7e4a;width:14px;flex:none">✓</span><span style="font-size:12.5px;font-weight:600;color:#1a7e4a">M06 Reading a trace</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;background:rgba(31,157,107,.1);margin:2px 0"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#1a7e4a;width:14px;flex:none">✓</span><span style="font-size:12.5px;font-weight:600;color:#1a7e4a">M07 The deviation concept</span></div>
+          </div><div class="cl-dot done"></div><div class="cl-dot done"></div><div class="cl-dot done"></div><div class="cl-dot done"></div><div class="cl-dot done"></div><div class="cl-dot done"></div></div></div>
+        <div class="cap-level" style="opacity:.85;cursor:pointer" onclick="toggleLevel('L2','Operate')"><span class="cl-n">L2</span><span class="cl-name">Operate</span><div class="cl-prog"><div class="cl-dot done"></div>
+          <div class="cap-expand" id="exp-L2" style="display:none;padding:4px 8px 8px">
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;background:rgba(31,157,107,.1);margin:2px 0"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#1a7e4a;width:14px;flex:none">✓</span><span style="font-size:12.5px;font-weight:600;color:#1a7e4a">M08 Running an agent</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;background:rgba(31,157,107,.1);margin:2px 0"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#1a7e4a;width:14px;flex:none">✓</span><span style="font-size:12.5px;font-weight:600;color:#1a7e4a">M09 Prompt structure</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;background:rgba(31,157,107,.1);margin:2px 0"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#1a7e4a;width:14px;flex:none">✓</span><span style="font-size:12.5px;font-weight:600;color:#1a7e4a">M10 Tool selection</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;background:rgba(31,157,107,.1);margin:2px 0"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#1a7e4a;width:14px;flex:none">✓</span><span style="font-size:12.5px;font-weight:600;color:#1a7e4a">M11 Error patterns</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;background:rgba(31,157,107,.1);margin:2px 0"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#1a7e4a;width:14px;flex:none">✓</span><span style="font-size:12.5px;font-weight:600;color:#1a7e4a">M12 Retry logic</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;background:rgba(31,157,107,.1);margin:2px 0"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#1a7e4a;width:14px;flex:none">✓</span><span style="font-size:12.5px;font-weight:600;color:#1a7e4a">M13 Output validation</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;background:rgba(31,157,107,.1);margin:2px 0"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#1a7e4a;width:14px;flex:none">✓</span><span style="font-size:12.5px;font-weight:600;color:#1a7e4a">M14 Handoff protocols</span></div>
+          </div><div class="cl-dot done"></div><div class="cl-dot done"></div><div class="cl-dot done"></div><div class="cl-dot done"></div><div class="cl-dot done"></div><div class="cl-dot done"></div></div></div>
+        <div class="cap-level" style="opacity:.85;cursor:pointer" onclick="toggleLevel('L3','Direct')"><span class="cl-n">L3</span><span class="cl-name">Direct</span><div class="cl-prog"><div class="cl-dot done"></div>
+          <div class="cap-expand" id="exp-L3" style="display:none;padding:4px 8px 8px">
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;background:rgba(31,157,107,.1);margin:2px 0"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#1a7e4a;width:14px;flex:none">✓</span><span style="font-size:12.5px;font-weight:600;color:#1a7e4a">M15 Instruction design</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;background:rgba(31,157,107,.1);margin:2px 0"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#1a7e4a;width:14px;flex:none">✓</span><span style="font-size:12.5px;font-weight:600;color:#1a7e4a">M16 Scope constraints</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;background:rgba(31,157,107,.1);margin:2px 0"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#1a7e4a;width:14px;flex:none">✓</span><span style="font-size:12.5px;font-weight:600;color:#1a7e4a">M17 Approval gates</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;background:rgba(31,157,107,.1);margin:2px 0"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#1a7e4a;width:14px;flex:none">✓</span><span style="font-size:12.5px;font-weight:600;color:#1a7e4a">M18 Multi-agent coordination</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;background:rgba(31,157,107,.1);margin:2px 0"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#1a7e4a;width:14px;flex:none">✓</span><span style="font-size:12.5px;font-weight:600;color:#1a7e4a">M19 Priority handling</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;background:rgba(31,157,107,.1);margin:2px 0"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#1a7e4a;width:14px;flex:none">✓</span><span style="font-size:12.5px;font-weight:600;color:#1a7e4a">M20 Escalation paths</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;background:rgba(31,157,107,.1);margin:2px 0"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#1a7e4a;width:14px;flex:none">✓</span><span style="font-size:12.5px;font-weight:600;color:#1a7e4a">M21 Directive review</span></div>
+          </div><div class="cl-dot done"></div><div class="cl-dot done"></div><div class="cl-dot done"></div><div class="cl-dot done"></div><div class="cl-dot done"></div><div class="cl-dot done"></div></div></div>
+        <div class="cap-level active" style="cursor:pointer" onclick="toggleLevel('L4','Supervise')"><span class="cl-n">L4</span><span class="cl-name">Supervise</span><div class="cl-prog"><div class="cl-dot done"></div>
+          <div class="cap-expand" id="exp-L4" style="display:none;padding:4px 8px 8px">
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;background:rgba(31,157,107,.1);margin:2px 0"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#1a7e4a;width:14px;flex:none">✓</span><span style="font-size:12.5px;font-weight:600;color:#1a7e4a">M22 Reading execution logs</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;background:rgba(31,157,107,.1);margin:2px 0"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#1a7e4a;width:14px;flex:none">✓</span><span style="font-size:12.5px;font-weight:600;color:#1a7e4a">M23 Spotting scope drift</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;background:rgba(31,157,107,.1);margin:2px 0"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#1a7e4a;width:14px;flex:none">✓</span><span style="font-size:12.5px;font-weight:600;color:#1a7e4a">M24 Authority chain analysis</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;background:rgba(31,157,107,.1);margin:2px 0"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#1a7e4a;width:14px;flex:none">✓</span><span style="font-size:12.5px;font-weight:600;color:#1a7e4a">M25 Intervention controls</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;background:rgba(31,157,107,.1);margin:2px 0"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#1a7e4a;width:14px;flex:none">✓</span><span style="font-size:12.5px;font-weight:600;color:#1a7e4a">M26 Find the First Deviation ✓</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;background:#1C2434;margin:2px 0"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.4);width:14px;flex:none">→</span><span style="font-size:12.5px;font-weight:600;color:#fff">M27 Policy Architecture — active</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;background:#F5F4F1;margin:2px 0"><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:#b0b8c4;width:14px;flex:none">07</span><span style="font-size:12.5px;font-weight:600;color:#8E96A2">M28 Hidden test</span></div>
+          </div><div class="cl-dot done"></div><div class="cl-dot done"></div><div class="cl-dot done"></div><div class="cl-dot active"></div><div class="cl-dot"></div><div class="cl-dot"></div></div></div>
+        <div class="cap-level locked"><span class="cl-n">L5</span><span class="cl-name">Design</span><div class="cl-prog"><div class="cl-dot"></div><div class="cl-dot"></div><div class="cl-dot"></div><div class="cl-dot"></div><div class="cl-dot"></div><div class="cl-dot"></div><div class="cl-dot"></div></div></div>
+        <div class="cap-level locked"><span class="cl-n">L6</span><span class="cl-name">Build</span><div class="cl-prog"><div class="cl-dot"></div><div class="cl-dot"></div><div class="cl-dot"></div><div class="cl-dot"></div><div class="cl-dot"></div><div class="cl-dot"></div><div class="cl-dot"></div></div></div>
+        <div class="cap-level locked"><span class="cl-n">L7</span><span class="cl-name">Govern</span><div class="cl-prog"><div class="cl-dot"></div><div class="cl-dot"></div><div class="cl-dot"></div><div class="cl-dot"></div><div class="cl-dot"></div><div class="cl-dot"></div><div class="cl-dot"></div></div></div>
+      </div>
+    </div>
+    <!-- Stats -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div class="stat-card" style="cursor:pointer" onclick="showModuleList()" title="View all modules"><div class="stat-label">Completed</div><div class="stat-val">25</div><div class="stat-sub" style="color:var(--gold)">View all modules →</div></div>
+      <div class="stat-card" style="cursor:pointer" onclick="showPortfolio()" title="View portfolio"><div class="stat-label">Portfolio</div><div class="stat-val">14</div><div class="stat-sub" style="color:var(--gold)">View portfolio →</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── MISSION ─── -->
+<div id="view-mission" style="display:none;width:100%;height:100%;overflow:hidden;grid-template-columns:300px 1fr">
+
+  <!-- SIDEBAR -->
+  <div class="mission-sidebar">
+    <div class="ms-head">
+      <div class="ms-step-label">Module 26 · Level 4 — Supervise</div>
+      <div class="ms-title">Find the First Deviation</div>
+    </div>
+    <div class="ms-body">
+      <div class="brief-block">
+        <div class="brief-label">What you will demonstrate</div>
+        <div class="brief-text">You can identify when an AI system generates a specific, credible-looking claim and presents it as sourced — when in fact it was never retrieved from any document.</div>
+      </div>
+      <div class="brief-block" style="background:var(--panel-2);border:1px solid var(--line)">
+        <div class="brief-label">Mission brief</div>
+        <div class="brief-text">A research agent produced a literature summary. One claim it presents as sourced was never retrieved — it was generated from inference. Find it.</div>
+      </div>
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px">Concept</div>
+        <div class="concept-text">Deviation is not always visible in the final output. An AI system can produce <b>superficially correct results</b> by substituting inference for retrieval — and that substitution is the deviation, not the result.</div>
+      </div>
+      <ul class="rules-list">
+        <li>You may not ask the AI to regenerate</li>
+        <li>Classify every highlighted claim</li>
+        <li>Sources: three cited papers only</li>
+      </ul>
+      <div class="pass-box">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 7.5l3.5 3.5 7.5-7"/></svg>
+        Correctly classify all 4 claims AND identify the one unsupported claim.
+      </div>
+      <div class="ms-steps">
+        <div class="step-track">
+          <div class="st-item done"><div class="st-line"><div class="st-dot">✓</div><div class="st-connector"></div></div><div class="st-text">Understand the concept</div></div>
+          <div class="st-item done"><div class="st-line"><div class="st-dot">✓</div><div class="st-connector"></div></div><div class="st-text">Inspect the supervision trace</div></div>
+          <div class="st-item active"><div class="st-line"><div class="st-dot">3</div><div class="st-connector"></div></div><div class="st-text">Classify each highlighted claim</div></div>
+          <div class="st-item"><div class="st-line"><div class="st-dot">4</div><div class="st-connector"></div></div><div class="st-text">Observe which was wrong</div></div>
+          <div class="st-item"><div class="st-line"><div class="st-dot">5</div><div class="st-connector"></div></div><div class="st-text">Diagnose the root cause</div></div>
+          <div class="st-item"><div class="st-line"><div class="st-dot">6</div></div><div class="st-text">Pass — hidden test</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WORKSPACE -->
+  <div class="workspace">
+    <div class="ws-head" id="wsTabBar">
+      <div class="ws-mode-tabs">
+        <button class="ws-tab" id="tab-source" onclick="switchTab('source')">Source documents</button>
+        <button class="ws-tab" id="tab-answer" onclick="switchTab('answer')" disabled style="opacity:.45;cursor:default">Classify claims</button>
+        <button class="ws-tab" id="tab-sup" onclick="switchTab('sup')">Supervision trace</button>
+      </div>
+      <div class="ws-actions">
+        <button class="ws-btn" onclick="switchTab('sup')">
+          <svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="7" r="5.5"/><path d="M7 4.5v3l2 1.5"/></svg>
+          View trace
+        </button>
+      </div>
+    </div>
+
+    <!-- UNDERSTAND step (Fix: new dedicated view) -->
+    <div class="ws-body" 
+      id="ws-understand" data-step="0" style="display:flex;flex-direction:column;overflow-y:auto">
+<div class="step-banner"><div class="sb-number">Step 1 of 6</div><div style="flex:1"><div class="sb-step">Understand the concept</div><div class="sb-why">Before you can govern AI, you need to know what you're looking for. This step shows you what source-grounding failure looks like — so you can recognise it when you see it.</div></div><div class="sb-dots"><span class="sb-dot current"></span><span class="sb-dot"></span><span class="sb-dot"></span><span class="sb-dot"></span><span class="sb-dot"></span><span class="sb-dot"></span></div></div>
+
+      
+      <div class="see-view">
+        <!-- HERO: bold, impossible to miss -->
+        <div style="background:var(--navy);border-radius:16px;padding:32px 34px;display:grid;gap:18px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-light,#C9A96A)">Step 1 of 6 · Understand · Module 26 · Level 4 — Supervise</div>
+          <div style="font-family:Manrope,sans-serif;font-weight:800;font-size:28px;letter-spacing:-.028em;color:#fff;line-height:1.1">Detecting when AI substitutes inference for retrieval</div>
+          <div style="font-family:Newsreader,serif;font-style:italic;font-size:16.5px;line-height:1.7;color:rgba(245,244,241,.75);max-width:72ch">A supervised AI system can produce output that looks fully sourced and credible — citing real papers, using accurate language — while containing a claim that was <em>never in any of the cited documents</em>. The agent generated it from plausibility, not from retrieval. This is a source grounding failure, and it is the most common deviation type at Level 4.</div>
+        </div>
+
+        <!-- KEY DISTINCTION -->
+        <div style="background:var(--gold-soft,#FFFBF0);border:1px solid rgba(178,138,66,.25);border-radius:12px;padding:22px 24px;display:grid;gap:12px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold,#B28A42)">The key distinction</div>
+          <div style="font-family:Newsreader,serif;font-size:15.5px;line-height:1.65;color:var(--ink,#1D1D1F)"><strong style="font-family:Manrope,sans-serif;font-weight:700">Retrieval</strong> — the AI fetched the claim verbatim or by close paraphrase from a specific document.</div>
+          <div style="font-family:Newsreader,serif;font-size:15.5px;line-height:1.65;color:var(--ink,#1D1D1F)"><strong style="font-family:Manrope,sans-serif;font-weight:700">Inference</strong> — the AI generated the claim from statistical patterns or contextual plausibility, without it existing in the cited source. The citation is real. The claim is not.</div>
+        </div>
+
+        <!-- WHY THIS MATTERS -->
+        <div style="background:var(--panel-2,#F3F2EF);border:1px solid var(--line,#E7E2D8);border-radius:12px;padding:18px 22px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3,#8B8680);margin-bottom:9px">Why this matters for you</div>
+          <div style="font-size:14px;line-height:1.62;color:var(--ink-2,#6E6B66)">A supervisor who accepts output without checking what the cited source actually says is not performing oversight — they are rubber-stamping. This exercise trains you to treat every citation as a <em>claim to verify</em>, not as proof.</div>
+        </div>
+
+        <div class="see-cta">
+          <p>After this step you will see the deviation pattern visually, then practice detecting it in a real agent output.</p>
+          <button onclick="switchTab('see')">See the pattern →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEE STEP -->
+    <div class="ws-body" 
+      id="ws-see" data-step="1" style="display:flex;flex-direction:column;overflow-y:auto">
+<div class="step-banner"><div class="sb-number">Step 2 of 6</div><div style="flex:1"><div class="sb-step">See the pattern</div><div class="sb-why">You're seeing the exact moment the deviation entered — before you have to find it yourself. Recognising the pattern first makes the exercise meaningful, not guesswork.</div></div><div class="sb-dots"><span class="sb-dot done"></span><span class="sb-dot current"></span><span class="sb-dot"></span><span class="sb-dot"></span><span class="sb-dot"></span><span class="sb-dot"></span></div></div>
+
+      
+      <div class="see-view">
+        <div class="ws-section-head"><h4>The pattern you're looking for</h4><div class="divider"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--ink-3)">Step 2 of 6 — See</span></div>
+        <div class="see-diagram">
+          <div class="sd-label">How a deviation happens — the authority chain</div>
+          <div class="sd-flow">
+            <div class="sd-node human"><div class="sdn-badge human">Human instruction</div><div class="sdn-text">Summarize three papers</div></div>
+            <div class="sd-arrow">→</div>
+            <div class="sd-node interp"><div class="sdn-badge interp">AI Interpretation</div><div class="sdn-text">Synthesize coastal adaptation findings</div></div>
+            <div class="sd-arrow">→</div>
+            <div class="sd-node deviation"><div class="sdn-badge deviation">⚑ Deviation</div><div class="sdn-text">Budget figure generated — not retrieved</div></div>
+          </div>
+          <div class="sd-deviation-note"><b>The deviation:</b> the AI inferred a specific percentage (2.3%) that sounds credible and appears grounded — but it was never in any of the cited papers. The retrieval step was skipped. The output looks correct; the process was not.</div>
+        </div>
+        <div class="see-cta">
+          <p>Read the three source documents in the next tab, then classify each claim in the agent's output. You're looking for the claim where retrieval was silently replaced by inference.</p>
+          <button onclick="unlockClassify()">Start classifying →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SOURCE DOCUMENTS tab -->
+    <div class="ws-body" id="ws-source" style="display:none">
+      <div class="source-view">
+        <!-- TASK INSTRUCTION -->
+        <div style="background:var(--navy);border-radius:12px;padding:20px 24px;display:flex;align-items:flex-start;gap:16px">
+          <div style="width:34px;height:34px;border-radius:50%;background:var(--gold,#B28A42);color:#fff;display:grid;place-items:center;flex:none;font-family:Manrope,sans-serif;font-weight:800;font-size:14px">1</div>
+          <div>
+            <div style="font-family:Manrope,sans-serif;font-weight:800;font-size:14.5px;color:#fff;margin-bottom:5px">Read the three source documents below</div>
+            <div style="font-size:13px;line-height:1.6;color:rgba(245,244,241,.72)">The agent's summary cited all three. One claim in the summary presents a specific figure from Source A — but that figure is <em style="color:var(--gold-light,#C9A96A)">not in Source A</em>. Read carefully, then classify.</div>
+            <button onclick="unlockClassify()" style="margin-top:12px;background:var(--gold,#B28A42);color:#fff;border:none;border-radius:8px;font-family:Manrope,sans-serif;font-weight:700;font-size:13px;padding:10px 18px;cursor:pointer">Go to Classify Claims →</button>
+          </div>
+        </div>
+        <div class="ws-section-head"><h4>Source A — Zhu et al. 2022</h4><div class="divider"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--ink-3)">Urban Adaptation Finance in Coastal Regions</span></div>
+        <div class="source-card">
+          <div class="sc-meta">Zhu, W., Park, J., & Müller, R. (2022). Journal of Urban Climate Adaptation, 14(3), 122–138.</div>
+          <div class="sc-text">Municipal governments in coastal regions have adopted a range of strategies to address climate-related infrastructure risks. Our analysis of 47 cities across 12 countries finds that spending priorities vary considerably based on exposure type, institutional capacity, and availability of national financing mechanisms. <span class="highlight">Hard infrastructure spending (seawalls, elevated roads, stormwater systems) accounts for the largest share of adaptation budgets in low-elevation zones</span>, though the proportion varies from under 30% to over 70% depending on existing infrastructure stock. Nature-based approaches — particularly mangrove restoration and beach nourishment — are increasingly documented as complementary to structural measures. <span class="highlight">In tropical coastal cities, mangrove restoration has been assessed as cost-effective relative to hard structures for storm surge attenuation</span> where ecological conditions support establishment.</div>
+        </div>
+        <div class="ws-section-head"><h4>Source B — IPCC AR6 WG2 Chapter 13</h4><div class="divider"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--ink-3)">Europe and the wider adaptation finance literature</span></div>
+        <div class="source-card">
+          <div class="sc-meta">IPCC (2022). Climate Change 2022: Impacts, Adaptation and Vulnerability. Ch.13.</div>
+          <div class="sc-text"><span class="highlight">There is high confidence that current levels of adaptation finance are insufficient to reduce risks to levels consistent with the 1.5°C and 2°C scenarios described in Chapter 3. The finance gap is particularly pronounced in low- and middle-income countries and in small island developing states.</span> Local governments often lack direct access to international climate finance mechanisms, creating structural barriers to implementation even where adaptation plans exist.</div>
+        </div>
+        <div class="ws-section-head"><h4>Source C — Hino et al. 2017</h4><div class="divider"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--ink-3)">Managed retreat as climate adaptation</span></div>
+        <div class="source-card">
+          <div class="sc-meta">Hino, M., Field, C., & Burke, K. (2017). Nature Climate Change, 7, 364–370.</div>
+          <div class="sc-text">Managed retreat — the planned relocation of people and assets away from hazard zones — is increasingly considered as part of a portfolio of coastal adaptation responses. <span class="highlight">Experience in the United States and globally suggests that voluntary, incentive-based managed retreat programs have achieved greater success than compulsory relocation schemes, which have faced significant legal challenges, political opposition, and community resistance.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CLASSIFY CLAIMS tab -->
+    <div class="ws-body" 
+      id="ws-answer" data-step="2" style="display:flex;flex-direction:column">
+<div class="step-banner"><div class="sb-number">Step 3 of 6</div><div style="flex:1"><div class="sb-step">Classify the claims — Do</div><div class="sb-why">Now you apply the concept: read the agent's output, check the sources, and identify which claim was not retrieved. This is the active supervision skill — not reading about it, doing it.</div></div><div class="sb-dots"><span class="sb-dot done"></span><span class="sb-dot done"></span><span class="sb-dot current"></span><span class="sb-dot"></span><span class="sb-dot"></span><span class="sb-dot"></span></div></div>
+
+      
+      <div class="answer-view" style="flex:1;overflow-y:auto">
+        <div id="sourceGate" class="source-gate" onclick="switchTab('source')">
+          <div class="sg-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M2 3.5h10M2 7h10M2 10.5h6"/></svg></div>
+          <div class="sg-text">Read the source documents before classifying. <b>Claim 1 cites Source A</b> — the answer is in there.</div>
+          <span class="sg-cta">Open sources →</span>
+        </div>
+        <div class="answer-prompt">
+          <div class="ap-label">Your task — Step 3 of 6</div>
+          <div class="ap-text">The research agent produced the summary below using Sources A, B and C. Each highlighted claim cites one of those sources. Classify each claim: is it genuinely supported by the cited source, unsupported by it, or ambiguous? <b style="color:#fff">Read the sources before you classify.</b></div>
+        </div>
+
+        <!-- Agent output for reference -->
+        <div style="background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:20px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px">Agent output — Climate Adaptation Policy in Coastal Cities</div>
+          <div style="font-family:Newsreader,serif;font-size:14px;line-height:1.72;color:var(--ink-2)">Rising sea levels are accelerating urban adaptation challenges globally. <mark style="background:rgba(154,118,51,.15);border-radius:2px;padding:1px 3px">[A] Municipal governments in low-elevation coastal zones are now spending an average of <b>2.3% of annual budgets</b> on hard infrastructure adaptation measures.</mark> Meanwhile, softer policy tools are gaining traction. <mark style="background:rgba(154,118,51,.15);border-radius:2px;padding:1px 3px">[B] The IPCC projects with high confidence that current coastal adaptation finance is insufficient to meet projected mid-century risk levels.</mark> Managed retreat remains politically contentious. <mark style="background:rgba(154,118,51,.15);border-radius:2px;padding:1px 3px">[C] Managed retreat programs in the United States have succeeded primarily in voluntary contexts, with compulsory relocation facing significant legal and political barriers.</mark> Despite financing gaps, there is emerging consensus around nature-based solutions. <mark style="background:rgba(154,118,51,.15);border-radius:2px;padding:1px 3px">[A] Mangrove restoration has been documented as cost-effective relative to hard infrastructure for storm surge protection in tropical coastal cities.</mark></div>
+        </div>
+
+        <div class="classify-grid" id="claimGrid">
+          <div class="classify-row">
+            <div class="cr-text"><span class="cr-ref">[A]</span> Municipal governments in low-elevation coastal zones are spending an average of <b>2.3%</b> of annual budgets on hard infrastructure adaptation.</div>
+            <div class="cr-buttons">
+              <button class="verdict-btn" data-c="1" data-v="supported" onclick="pickV(this)">Supported</button>
+              <button class="verdict-btn" data-c="1" data-v="unsupported" onclick="pickV(this)">Unsupported</button>
+              <button class="verdict-btn" data-c="1" data-v="ambiguous" onclick="pickV(this)">Ambiguous</button>
+            </div>
+          </div>
+          <div class="classify-row">
+            <div class="cr-text"><span class="cr-ref">[B]</span> The IPCC projects with high confidence that current coastal adaptation finance is insufficient to meet projected mid-century risk levels.</div>
+            <div class="cr-buttons">
+              <button class="verdict-btn" data-c="2" data-v="supported" onclick="pickV(this)">Supported</button>
+              <button class="verdict-btn" data-c="2" data-v="unsupported" onclick="pickV(this)">Unsupported</button>
+              <button class="verdict-btn" data-c="2" data-v="ambiguous" onclick="pickV(this)">Ambiguous</button>
+            </div>
+          </div>
+          <div class="classify-row">
+            <div class="cr-text"><span class="cr-ref">[C]</span> Managed retreat programs in the United States have succeeded primarily in voluntary contexts, with compulsory relocation facing significant legal and political barriers.</div>
+            <div class="cr-buttons">
+              <button class="verdict-btn" data-c="3" data-v="supported" onclick="pickV(this)">Supported</button>
+              <button class="verdict-btn" data-c="3" data-v="unsupported" onclick="pickV(this)">Unsupported</button>
+              <button class="verdict-btn" data-c="3" data-v="ambiguous" onclick="pickV(this)">Ambiguous</button>
+            </div>
+          </div>
+          <div class="classify-row">
+            <div class="cr-text"><span class="cr-ref">[A]</span> Mangrove restoration has been documented as cost-effective relative to hard infrastructure for storm surge protection in tropical coastal cities.</div>
+            <div class="cr-buttons">
+              <button class="verdict-btn" data-c="4" data-v="supported" onclick="pickV(this)">Supported</button>
+              <button class="verdict-btn" data-c="4" data-v="unsupported" onclick="pickV(this)">Unsupported</button>
+              <button class="verdict-btn" data-c="4" data-v="ambiguous" onclick="pickV(this)">Ambiguous</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="submit-area">
+        <div class="sa-count"><span id="answeredCount">0</span> of 4 classified</div>
+        <button class="submit-btn" id="submitBtn" onclick="submitAnswers()" disabled>Submit classifications →</button>
+      </div>
+    </div>
+
+    <!-- OBSERVE step (step 4) -->
+    <div class="ws-body" 
+      id="ws-observe" data-step="3" style="display:none;overflow-y:auto">
+<div class="step-banner"><div class="sb-number">Step 4 of 6</div><div style="flex:1"><div class="sb-step">Observe which was wrong</div><div class="sb-why">Seeing the deviation highlighted tells you whether your reasoning was right and why. Learning from a correct answer is as important as making it.</div></div><div class="sb-dots"><span class="sb-dot done"></span><span class="sb-dot done"></span><span class="sb-dot done"></span><span class="sb-dot current"></span><span class="sb-dot"></span><span class="sb-dot"></span></div></div>
+
+      
+      <div class="source-view">
+        <div class="source-card">
+          <div class="sc-label">Agent output — with the deviation highlighted</div>
+          <div class="sc-body">
+            <div class="sc-text">Research in 47 coastal cities confirms adaptation investment is rising (Source A). [A]2 <span class="highlight">The United States and Australia have both launched national adaptation frameworks in 2024 (Source B).</span> [A]3 <span class="highlight">Managed retreat is gaining policy traction, with voluntary programs showing stronger outcomes than compulsory schemes (Source A).</span></div>
+            <div class="sc-text" style="margin-top:14px"><span style="background:#FDECEA;border:1.5px solid #E57373;border-radius:6px;padding:2px 8px;color:#B71C1C;font-weight:700">[A]1 ⚠ Unsupported — generated by inference</span> &nbsp;<span class="highlight" style="text-decoration:line-through;opacity:.6">Municipal adaptation budgets average 2.3% of annual expenditure across the 47-city sample (Source A).</span></div>
+          </div>
+        </div>
+        <div class="evcallout co-analysis" style="margin-top:24px">
+          <div class="evc-h"><span class="evc-k">Why this matters</span></div>
+          <div class="evc-body"><p>The 2.3% figure sounds credible and is framed with a citation — but it appears nowhere in Source A. The agent substituted a plausible inference for a retrieved fact. This is the most common source of AI hallucination in research contexts: not random invention, but <b>statistically plausible inference that bypasses verification</b>.</p></div>
+        </div>
+        <div style="margin-top:20px;display:flex;justify-content:flex-end">
+          <button onclick="showMission('diagnose');document.getElementById('ws-observe').style.display='none';document.getElementById('ws-sup').style.display='block'" style="font-family:Manrope,sans-serif;font-weight:700;font-size:13px;padding:12px 22px;border-radius:8px;border:none;background:var(--navy);color:#fff;cursor:pointer">Continue → Diagnose the root cause</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUPERVISION trace tab -->
+    <div class="ws-body" 
+      id="ws-sup" data-step="4" style="display:none;overflow-y:auto">
+<div class="step-banner"><div class="sb-number">Step 5 of 6</div><div style="flex:1"><div class="sb-step">Diagnose and intervene</div><div class="sb-why">Identifying a deviation is not enough — a supervisor must act. Here you use the five governance controls and understand what each one actually does in the real world.</div></div><div class="sb-dots"><span class="sb-dot done"></span><span class="sb-dot done"></span><span class="sb-dot done"></span><span class="sb-dot done"></span><span class="sb-dot current"></span><span class="sb-dot"></span></div></div>
+
+      
+      <div class="sup-view">
+        <div class="sup-intro">The supervision panel records the <b>authority chain</b> — every step from your instruction to the AI's action, with the inferences it added along the way. Read this before classifying.</div>
+
+        <div class="ws-section-head"><h4>Authority chain</h4><div class="divider"></div><span style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--ink-3)">09:14:02 — 09:14:11</span></div>
+        <div class="authority-feed">
+          <div class="af-item">
+            <div class="af-connector"><div class="af-badge-wrap"><span class="af-badge human">Human instruction</span></div><div class="af-line"></div></div>
+            <div class="af-content"><div class="afc-text">Produce a literature summary on climate adaptation policy in coastal cities. Use only Sources A, B, C.</div><div class="afc-meta">09:14:02</div></div>
+          </div>
+          <div class="af-item">
+            <div class="af-connector"><div class="af-badge-wrap"><span class="af-badge interp">AI Interpretation</span></div><div class="af-line"></div></div>
+            <div class="af-content"><div class="afc-text">Task: synthesize findings from three documents into a structured narrative. Scope: coastal city adaptation. Output format: flowing prose with inline citations.</div><div class="afc-meta">09:14:03</div></div>
+          </div>
+          <div class="af-item">
+            <div class="af-connector"><div class="af-badge-wrap"><span class="af-badge infer">AI Inference</span></div><div class="af-line"></div></div>
+            <div class="af-content">
+              <div class="afc-text">Reader likely expects quantified claims for credibility. Source A discusses budget patterns but does not report a specific average. Generating a plausible percentage from statistical context rather than from a retrieved figure.</div>
+              <div class="afc-meta">09:14:06</div>
+              <div class="deviation-flag">⚑ Deviation point — this inference was added without retrieval evidence and without user authorization. The 2.3% figure does not exist in Source A.</div>
+            </div>
+          </div>
+          <div class="af-item">
+            <div class="af-connector"><div class="af-badge-wrap"><span class="af-badge action">AI Action</span></div></div>
+            <div class="af-content"><div class="afc-text">Generated output with 4 claims. Claims 2, 3, 4 retrieved from sources. Claim 1 generated from inference without source grounding.</div><div class="afc-meta">09:14:11</div></div>
+          </div>
+        </div>
+
+        <div class="ws-section-head" style="margin-top:22px"><h4>Tool calls</h4><div class="divider"></div></div>
+        <div class="tool-feed">
+          <div class="tf-item"><div class="tf-head"><span class="tf-name">retrieve_document(src="A")</span><span class="tf-status ok">OK</span></div><div class="tf-body">Returned 4,200 tokens · Urban Adaptation Finance in Coastal Regions · Zhu et al. 2022</div></div>
+          <div class="tf-item"><div class="tf-head"><span class="tf-name">retrieve_document(src="B")</span><span class="tf-status ok">OK</span></div><div class="tf-body">Returned 3,800 tokens · IPCC AR6 WG2 Ch.13 · Finance gap assessment</div></div>
+          <div class="tf-item"><div class="tf-head"><span class="tf-name">retrieve_document(src="C")</span><span class="tf-status ok">OK</span></div><div class="tf-body">Returned 2,100 tokens · Hino et al. 2017 · Managed retreat policy review</div></div>
+          <div class="tf-item"><div class="tf-head"><span class="tf-name">generate_statistic(context="budget_pct")</span><span class="tf-status blocked">Should have been blocked</span></div><div class="tf-body">No policy prevented statistical generation from ungrounded inference. Gap in instruction architecture — no source-grounding requirement was enforced at tool level.</div></div>
+        </div>
+
+        <div class="ws-section-head" style="margin-top:22px"><h4>Intervention controls</h4><div class="divider"></div></div>
+        <div class="int-strip">
+          <button class="int-btn warn" id="ibtn-flag" onclick="openInt('flag')">⚑ Flag deviation</button>
+          <button class="int-btn warn" id="ibtn-pause" onclick="openInt('pause')">⏸ Pause agent</button>
+          <button class="int-btn danger" id="ibtn-revoke" onclick="openInt('revoke')">⊘ Revoke tool access</button>
+          <button class="int-btn" id="ibtn-rollback" onclick="openInt('rollback')">↩ Roll back output</button>
+          <button class="int-btn" id="ibtn-export" onclick="openInt('export')">📋 Export trace</button>
+        </div>
+
+        <!-- CONTINUE GATE -->
+        <div class="continue-gate" id="continueGate">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px">Exercise all five controls to continue</div>
+          <div class="gate-progress" id="gateProgress">
+            <div class="gp-item" id="gp-flag"><span class="gp-dot" id="gpd-flag"></span><span>Flag</span></div>
+            <div class="gp-item" id="gp-pause"><span class="gp-dot" id="gpd-pause"></span><span>Pause</span></div>
+            <div class="gp-item" id="gp-revoke"><span class="gp-dot" id="gpd-revoke"></span><span>Revoke</span></div>
+            <div class="gp-item" id="gp-rollback"><span class="gp-dot" id="gpd-rollback"></span><span>Roll back</span></div>
+            <div class="gp-item" id="gp-export"><span class="gp-dot" id="gpd-export"></span><span>Export</span></div>
+          </div>
+          <button class="continue-btn" id="continueBtn" onclick="continueToNext()">
+            <div class="cb-label">Continue to Module 27<div class="cb-sub">Governance policy architecture — Level 4</div></div>
+            <span>→</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESULT state -->
+    <div class="ws-body" id="ws-result" style="display:none;overflow-y:auto;flex:1">
+      <div class="result-view">
+        <div class="result-card pass" id="res-pass" style="display:none">
+          <div class="rc-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 10l4 4 8-8"/></svg></div>
+          <div class="rc-body">
+            <h3>Correct — all 4 claims classified.</h3>
+            <p>You identified claim [A]1 as unsupported. Zhu et al. 2022 discusses budget patterns but contains no 2.3% average — the figure appeared nowhere in the source. The agent generated it from statistical plausibility, not from the document. This is the first deviation in the execution chain. The source documents you can read in the <strong>Source documents</strong> tab confirm the other three claims are genuinely grounded.</p>
+          </div>
+        </div>
+        <div class="next-card" id="nextCard">
+          <div>
+            <div class="nc-label">Step 4 of 6 · Next</div>
+            <div class="nc-title">Supervision Trace</div>
+            <div class="nc-sub">Now watch the agent’s execution chain — see exactly where the deviation entered, and use the five intervention controls.</div>
+          </div>
+          <button onclick="showMission('observe');switchTab('sup')" class="nc-btn">Continue →</button>
+        </div>
+        <div id="competency-earned" style="display:none;margin-top:16px;border:1px solid var(--pass);border-radius:14px;background:var(--pass-dim);padding:22px;display:none;gap:12px">
+          <div style="font-family:Manrope,sans-serif;font-weight:800;font-size:14px;color:var(--pass)">Competency demonstrated: Source grounding failure detection</div>
+          <div style="font-size:13px;line-height:1.6;color:var(--ink-2)">You can identify when an AI system substitutes inference for retrieval and produces an unsourced claim that appears grounded. This is the core supervision skill at Level 4.</div>
+        </div>
+        <div class="result-card fail"id="res-fail" style="display:none">
+          <div class="rc-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 5l10 10M15 5L5 15"/></svg></div>
+          <div class="rc-body">
+            <h3>Not quite — review your classifications.</h3>
+            <p>Claim [A]1 is unsupported. Zhu et al. 2022 discusses spending patterns across 47 cities but contains no 2.3% average — check the Source documents tab to confirm. The other three claims are genuinely grounded in their cited sources.</p>
+            <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap">
+              <button onclick="switchTab('source')" style="font-family:Manrope,sans-serif;font-weight:700;font-size:13px;padding:10px 18px;border-radius:8px;border:1.5px solid var(--line-2,#D8D4C8);background:#fff;cursor:pointer">Review Source A →</button>
+              <button onclick="resetClassify()" style="font-family:Manrope,sans-serif;font-weight:700;font-size:13px;padding:10px 18px;border-radius:8px;border:none;background:var(--navy,#1C2434);color:#fff;cursor:pointer">Try again →</button>
+            </div>
+          </div>
+        </div>
+        
+    </div>
+</div>
+
+</div><!-- body-grid -->
+
+<script>
+const verdicts = {};
+let sourceOpened = false;
+let classifyUnlocked = false;
+
+function resetClassify() {
+  document.getElementById('res-fail').style.display = 'none';
+  document.getElementById('res-pass').style.display = 'none';
+  document.getElementById('ws-result').style.display = 'none';
+  document.getElementById('ws-answer').style.display = 'flex';
+  document.querySelectorAll('.verdict-btn').forEach(b => b.classList.remove('v-supported','v-unsupported','v-ambiguous'));
+  Object.keys(verdicts).forEach(k => delete verdicts[k]);
+  switchTab('answer');
+}
+
+function unlockClassify() {
+  classifyUnlocked = true;
+  const btn = document.getElementById('tab-answer');
+  if (btn) { btn.disabled = false; btn.style.opacity = ''; btn.style.cursor = ''; }
+  switchTab('answer');
+}
+
+function showDash() {
+  document.getElementById('view-dash').style.display = 'grid';
+  document.getElementById('view-mission').style.display = 'none';
+  document.getElementById('bodyGrid').className = 'body-grid layout-dash';
+  document.getElementById('topMissionName').textContent = 'Dashboard';
+}
+
+function showMission(tab) {
+  document.getElementById('view-dash').style.display = 'none';
+  const vm = document.getElementById('view-mission');
+  vm.style.display = 'grid';
+  // Hide/show tabs based on step
+  const tabBar = document.getElementById('wsTabBar');
+  if (tabBar) tabBar.style.display = (tab==='understand'||tab==='see') ? 'none' : 'flex';
+  const STEP_ORDER = ['understand','see','do','observe','diagnose','pass'];
+  const stepEls = document.querySelectorAll('.st-item');
+  const idx = STEP_ORDER.indexOf(tab||'understand');
+  stepEls.forEach((el,i) => {
+    el.classList.remove('done','active');
+    if(i < idx){ el.classList.add('done'); const d=el.querySelector('.st-dot'); if(d)d.textContent='\u2713'; }
+    else if(i===idx){ el.classList.add('active'); }
+  });
+  vm.style.display = 'grid';
+  vm.style.width = '100%';
+  vm.style.height = '100%';
+  document.getElementById('bodyGrid').className = 'body-grid layout-mission';
+  document.getElementById('topMissionName').textContent = 'M26 — Find the First Deviation';
+  if (tab) switchTab(tab);
+}
+
+function switchTab(tab) {
+  if (document.getElementById('view-mission').style.display === 'none') showMission();
+  ['understand','source','answer','sup','result','see'].forEach(t => {
+    const el = document.getElementById('ws-'+t);
+    if (el) el.style.display = 'none';
+  });
+  ['source','answer','sup'].forEach(t => {
+    const btn = document.getElementById('tab-'+t);
+    if (btn) btn.classList.toggle('active', t === tab);
+  });
+  if (tab === 'source') sourceOpened = true;
+  if (tab === 'source') {
+    const sg = document.getElementById('sourceGate');
+    if (sg) setTimeout(()=>{ sg.style.opacity='0.3'; sg.style.pointerEvents='none'; }, 8000);
+  }
+  // update top CTA label
+  const cta = document.getElementById('topCta');
+  if (cta) cta.textContent = tab==='understand'?'Next: See the pattern →':tab==='see'?'Start classifying →':tab==='answer'?'Submit answers →':'View trace →';
+  const target = document.getElementById('ws-'+tab);
+  if (target) {
+    if (['answer','see','understand'].includes(tab)) {
+      target.style.display = 'flex'; target.style.flexDirection = 'column';
+    } else {
+      target.style.display = 'block';
+    }
+  }
+}
+
+function pickV(btn) {
+  const c = btn.dataset.c, v = btn.dataset.v;
+  verdicts[c] = v;
+  btn.closest('.cr-buttons').querySelectorAll('.verdict-btn').forEach(b => {
+    b.classList.remove('v-supported','v-unsupported','v-ambiguous');
+  });
+  btn.classList.add('v-'+v);
+  const count = Object.keys(verdicts).length;
+  document.getElementById('answeredCount').textContent = count;
+  document.getElementById('submitBtn').disabled = count < 4;
+}
+
+function submitAnswers() {
+  const correct = verdicts['1']==='unsupported'
+    && verdicts['2']==='supported'
+    && verdicts['3']==='supported'
+    && (verdicts['4']==='supported' || verdicts['4']==='ambiguous');
+
+  ['source','answer','sup'].forEach(t => {
+    const b = document.getElementById('tab-'+t);
+    if (b) b.style.display = 'none';
+  });
+  ['ws-source','ws-answer','ws-sup'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+
+  document.getElementById('ws-answer').style.display = 'none';
+  document.getElementById('ws-result').style.display = 'block';
+  document.getElementById(correct ? 'res-pass' : 'res-fail').style.display = 'flex';
+  if (correct) {
+    const nc = document.getElementById('nextCard');
+    if (nc) {
+    nc.style.cssText = 'display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap';
+      const btn = nc.querySelector('.nc-btn');
+      if (btn) btn.onclick = function(){
+        document.getElementById('ws-result').style.display = 'none';
+        document.getElementById('ws-observe').style.display = 'block';
+        showMission('observe');
+      };
+    }
+    const ce = document.getElementById('competency-earned');
+    if (ce) ce.style.display = 'block';
+  }
+
+  // update step tracker
+  if (correct) {
+    const steps = document.querySelectorAll('.st-item');
+    if (steps[2]) { steps[2].classList.remove('active'); steps[2].classList.add('done'); steps[2].querySelector('.st-dot').textContent = '✓'; }
+    if (steps[3]) steps[3].classList.add('active');
+  }
+}
+
+// ─── INTERVENTION EXERCISES ───
+const intDone = {};
+const intAttempts = {};
+const STUDY_NOTES = {
+  flag: ['A deviation requires classification, not just acknowledgment — the type drives the corrective action.','Inference substitution: the agent generates plausible content not retrieved from a source.','Scope expansion and tool misuse are different failure modes at different execution steps.'],
+  pause: ['A pause is a window, not an action — nothing changes unless you revise the instruction.','Vague instructions do not constrain AI behavior at the system level.','A specific, testable constraint prevents recurrence; a general one does not.'],
+  revoke: ['Minimum necessary revocation: remove only the capability that caused the harm.','Revoking working tools breaks valid outputs and creates new failures.','generate_statistic is the tool that bypassed source grounding — the retrieve_document calls worked correctly.'],
+  rollback: ['Rollback removes the damage. The corrective instruction prevents recurrence.','Vague instructions ("be careful") give the agent no new constraint.','A specific source-traceability requirement is both testable and proportionate.'],
+  export: ['A supervisor report is evidence, not a log dump — signal, not volume.','Include: original instruction, inference deviation, unblocked tool call, unsupported claim.','Exclude: successful tool calls and planning steps that worked correctly.']
+};
+
+function openInt(id) {
+  const overlay = document.getElementById('intOverlay');
+  overlay.classList.add('open');
+  ['flag','pause','revoke','rollback','export'].forEach(m => {
+    document.getElementById('im-'+m).style.display = m===id?'block':'none';
+  });
+}
+function markIntDone(id) {
+  intDone[id] = intDone[id] || 'done';
+  const dot = document.getElementById('gpd-' + id);
+  if (dot) dot.classList.add('done');
+  checkContinueGate();
+}
+function closeInt() {
+  document.getElementById('intOverlay').classList.remove('open');
+}
+document.addEventListener('keydown', e => { if(e.key==='Escape') closeInt(); });
+
+function showFeedback(passId, failId, takeId, isRight) {
+  const p = document.getElementById(passId), f = document.getElementById(failId), t = document.getElementById(takeId);
+  p.style.display = isRight ? 'block' : 'none';
+  f.style.display = isRight ? 'none' : 'block';
+  if (t) { t.style.display = 'block'; }
+}
+
+function pickFlag(btn, verdict) {
+  recordAttempt('flag');
+  document.querySelectorAll('#im-flag .im-opt').forEach(b => b.classList.remove('selected-right','selected-wrong'));
+  btn.classList.add(verdict==='right'?'selected-right':'selected-wrong');
+  btn.querySelector('.oi').textContent = verdict==='right'?'✓':'×';
+  showFeedback('flag-pass','flag-fail','flag-take', verdict==='right');
+  if (verdict==='right') markDone('flag', intAttempts['flag'] > 1);
+}
+
+function pickPause(btn, verdict) {
+  recordAttempt('pause');
+  document.querySelectorAll('#im-pause .im-opt').forEach(b => b.classList.remove('selected-right','selected-wrong'));
+  const cls = verdict==='right'?'selected-right':'selected-wrong';
+  btn.classList.add(cls);
+  btn.querySelector('.oi').textContent = verdict==='right'?'✓':'×';
+  showFeedback('pause-pass','pause-fail','pause-take', verdict==='right');
+  if (verdict==='right') markDone('pause', intAttempts['pause'] > 1);
+}
+
+const revokeState = {};
+function toggleRevoke(el, id, verdict) {
+  el.classList.toggle('selected-revoke');
+  revokeState[id] = el.classList.contains('selected-revoke') ? verdict : null;
+  el.querySelector('.tc-check').textContent = el.classList.contains('selected-revoke') ? '×' : '';
+}
+function checkRevoke() {
+  const statSelected = revokeState['tc-stat'] === 'right';
+  const wrongSelected = ['tc-retrA','tc-retrB','tc-retrC'].some(k => revokeState[k]);
+  const isRight = statSelected && !wrongSelected;
+  showFeedback('revoke-pass','revoke-fail','revoke-take', isRight);
+  markDone('revoke');
+}
+
+function pickRollback(btn, verdict) {
+  document.querySelectorAll('#im-rollback .im-opt').forEach(b => b.classList.remove('selected-right','selected-wrong'));
+  btn.classList.add(verdict==='right'?'selected-right':'selected-wrong');
+  btn.querySelector('.oi').textContent = verdict==='right'?'✓':'×';
+  showFeedback('rollback-pass','rollback-fail','rollback-take', verdict==='right');
+  markDone('rollback');
+}
+
+const exportState = {};
+function toggleExport(el, type) {
+  el.classList.toggle('checked');
+  exportState[el.id] = el.classList.contains('checked') ? type : null;
+  el.querySelector('.exp-box').textContent = el.classList.contains('checked') ? '✓' : '';
+  const anyChecked = Object.values(exportState).some(v => v);
+  document.getElementById('exportSubmit').disabled = !anyChecked;
+}
+function checkExport() {
+  recordAttempt('export');
+  const required = ['exp-1','exp-3','exp-4','exp-6'];
+  const noise = ['exp-2','exp-5','exp-7'];
+  const allRequired = required.every(id => exportState[id] === 'include');
+  const noNoise = noise.every(id => !exportState[id]);
+  const isRight = allRequired && noNoise;
+  showFeedback('export-pass','export-fail','export-take', isRight);
+  if (isRight) markDone('export', intAttempts['export'] > 1);
+}
+
+function recordAttempt(id){
+  intAttempts[id]=(intAttempts[id]||0)+1;
+  if(intAttempts[id]===2){const el=document.getElementById('snudge-'+id);if(el)el.style.display='block';}
+}
+function markDone(id,aided){
+  const btn=document.getElementById('ibtn-'+id);
+  if(btn){btn.style.opacity='0.55';btn.style.textDecoration='line-through';}
+  intDone[id]=aided?'aided':'done';
+  const gp=document.getElementById('gp-'+id);
+  if(gp)gp.classList.add(aided?'aided':'done');
+  checkContinueGate();
+}
+function checkContinueGate(){
+  const all=['flag','pause','revoke','rollback','export'];
+  const done=all.filter(id=>intDone[id]);
+  const gate=document.getElementById('continueGate');
+  const btn=document.getElementById('continueBtn');
+  if(!gate)return;
+  gate.style.display='block';
+  if(done.length===all.length)btn.classList.add('unlocked');
+  const fill=document.getElementById('lpFill');
+  if(fill)fill.style.width=Math.min(100,71+done.length*4)+'%';
+}
+
+function showModuleSummary() {
+  if (document.getElementById('moduleSummary')) return;
+  const aided = Object.values(intDone).filter(v => v==='aided').length;
+  const firstTry = Object.values(intDone).filter(v => v==='done').length;
+  const pct = Math.round(firstTry/5*100);
+  const div = document.createElement('div');
+  div.id = 'moduleSummary';
+  div.style.cssText = 'margin-top:20px;border:1px solid var(--pass);border-radius:14px;background:var(--pass-dim);padding:22px;display:grid;gap:12px';
+  div.innerHTML = '<div style="display:flex;align-items:center;gap:10px"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2.2" style="color:var(--pass)"><path d="M3 11l5 5 10-10"/></svg><span style="font-family:Manrope,sans-serif;font-weight:800;font-size:15px">Module 26 complete</span></div>'
+    + '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">'
+    + '<div style="background:#fff;border-radius:9px;padding:12px;text-align:center"><div style="font-family:IBM Plex Mono,monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:5px">First attempt</div><div style="font-size:22px;font-weight:800;font-family:Manrope,sans-serif;color:var(--pass)">' + firstTry + '/5</div></div>'
+    + '<div style="background:#fff;border-radius:9px;padding:12px;text-align:center"><div style="font-family:IBM Plex Mono,monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:5px">Study nudges</div><div style="font-size:22px;font-weight:800;font-family:Manrope,sans-serif;color:' + (aided>0?'var(--warn)':'var(--pass)') + '">' + aided + '</div></div>'
+    + '<div style="background:#fff;border-radius:9px;padding:12px;text-align:center"><div style="font-family:IBM Plex Mono,monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:5px">Score</div><div style="font-size:22px;font-weight:800;font-family:Manrope,sans-serif;color:var(--pass)">' + pct + '%</div></div>'
+    + '</div>'
+    + '<div style="font-size:13px;line-height:1.6;color:var(--ink-2)"><b>Competency earned:</b> Source grounding failure detection — the core supervision skill at Level 4.</div>'
+    + '<div style="font-size:12px;color:var(--ink-3);font-family:IBM Plex Mono,monospace;letter-spacing:.06em">' + (pct>=80?'✓ This module counts toward your Level 4 Assessor certificate':'⚠ Score below 80% — module will not count toward diploma') + '</div>';
+  document.getElementById('continueGate').appendChild(div);
+}
+
+function continueToNext(){window.location.href='AGNUS - Academy M27 - Policy Architecture.html';}
+
+// Start on Understand step
+showMission('understand');
+
+
+function toggleLevel(id) {
+  var panels = document.querySelectorAll('.cap-expand');
+  panels.forEach(function(p) {
+    if (p.id === 'exp-' + id) {
+      p.style.display = p.style.display === 'none' ? 'block' : 'none';
+    } else {
+      p.style.display = 'none';
+    }
+  });
+}
+function openDashModal(title,bodyHTML){document.getElementById('dashModalTitle').textContent=title;document.getElementById('dashModalBody').innerHTML=bodyHTML;document.getElementById('dashModal').style.display='flex';}
+function showModuleList(){openDashModal('All Modules — 25 of 49 complete',[['L1 Understand',['M01 What is an AI agent?','M02 How agents plan','M03 Tool use basics','M04 Memory patterns','M05 Agent architectures','M06 Reading a trace','M07 The deviation concept'],true],['L2 Operate',['M08 Running an agent','M09 Prompt structure','M10 Tool selection','M11 Error patterns','M12 Retry logic','M13 Output validation','M14 Handoff protocols'],true],['L3 Direct',['M15 Instruction design','M16 Scope constraints','M17 Approval gates','M18 Multi-agent coordination','M19 Priority handling','M20 Escalation paths','M21 Directive review'],true],['L4 Supervise',['M22 Reading execution logs','M23 Spotting scope drift','M24 Authority chain analysis','M25 Intervention controls','M26 Find the First Deviation ✓','M27 Policy Architecture → active','M28 Hidden test'],false]].map(([level,mods,done])=>`<div style="margin-bottom:20px"><div style="font-family:IBM Plex Mono,monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:${done?'var(--pass)':'var(--ink-3)'};margin-bottom:10px">${level}</div><div style="display:grid;gap:6px">${mods.map(m=>`<div style="font-size:13px;padding:9px 14px;border-radius:8px;background:${m.includes('✓')||m.includes('→')?'var(--gold-soft)':'#F2F0EB'};color:var(--ink-2)">${m}</div>`).join('')}</div></div>`).join(''));}
+function showPortfolio(){openDashModal('Portfolio — 14 artifacts saved',[{m:'M26',title:'Claim Analysis — Climate adaptation summary',detail:'4 verdicts · deviation located at inference step 3',score:'100%'},{m:'M25',title:'Intervention log — Supply chain agent',detail:'5 controls exercised · 2 pauses, 1 rollback',score:'80%'},{m:'M24',title:'Authority chain map — Medical triage system',detail:'6-node chain · 2 escalation paths identified',score:'100%'},{m:'M22',title:'Execution trace analysis — Research agent',detail:'30-step trace · 3 anomalies flagged',score:'90%'}].map(a=>`<div style="border:1px solid #E5E2D9;border-radius:12px;padding:16px 18px;margin-bottom:12px"><div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="font-family:IBM Plex Mono,monospace;font-size:10px;color:#9A7633">${a.m}</span><span style="font-family:IBM Plex Mono,monospace;font-size:10px;color:var(--pass)">${a.score}</span></div><div style="font-size:14px;font-weight:700;color:#18202A;margin-bottom:4px">${a.title}</div><div style="font-size:12.5px;color:#4A5261">${a.detail}</div></div>`).join(''));}
+function showLevelDetail(lvl,name){const M={L1:['M01 What is an AI agent?','M02 How agents plan','M03 Tool use basics','M04 Memory patterns','M05 Agent architectures','M06 Reading a trace','M07 The deviation concept'],L2:['M08 Running an agent','M09 Prompt structure','M10 Tool selection','M11 Error patterns','M12 Retry logic','M13 Output validation','M14 Handoff protocols'],L3:['M15 Instruction design','M16 Scope constraints','M17 Approval gates','M18 Multi-agent coordination','M19 Priority handling','M20 Escalation paths','M21 Directive review'],L4:['M22 Reading execution logs','M23 Spotting scope drift','M24 Authority chain analysis','M25 Intervention controls','M26 Find the First Deviation','M27 Policy Architecture','M28 Hidden test']};const active=lvl==='L4';openDashModal(lvl+' — '+name,`<div style="display:grid;gap:8px">${(M[lvl]||[]).map((m,i)=>{const done=!active||i<5;const cur=active&&i===6;return `<div style="display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:10px;background:${cur?'var(--navy)':done?'#EEF7F0':'#F2F0EB'}"><span style="font-family:IBM Plex Mono,monospace;font-size:10px;color:${cur?'rgba(255,255,255,.5)':done?'var(--pass)':'#8E96A2'}">${done&&!cur?'✓':cur?'→':String(i+1).padStart(2,'0')}</span><span style="font-size:13px;font-weight:600;color:${cur?'#fff':done?'var(--ink)':'#8E96A2'}">${m}</span></div>`;}).join('')}</div>`);}
+document.getElementById('dashModal')&&document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('dashModal').style.display='none';});
+</script>
+<!-- INTERVENTION OVERLAY -->
+<div class="int-overlay" id="intOverlay" onclick="if(event.target===this)closeInt()">
+  <div class="int-modal">
+
+    <!-- FLAG DEVIATION -->
+    <div id="im-flag" style="display:none">
+      <div class="im-head"><h3>⚑ Flag Deviation — What type is this?</h3><button class="im-close" onclick="closeInt()">×</button></div>
+      <div class="im-body">
+        <div class="im-question">The agent produced a claim citing Source A that does not exist in Source A. Before flagging, you must classify the deviation type. What kind of failure is this?</div>
+        <div class="im-options">
+          <button class="im-opt" onclick="pickFlag(this,'right')"><span class="oi"></span>Inference substitution — the AI generated a specific figure from statistical plausibility without retrieving it from the cited source</button>
+          <button class="im-opt" onclick="pickFlag(this,'wrong')"><span class="oi"></span>Scope expansion — the AI addressed a topic outside the defined scope of the task</button>
+          <button class="im-opt" onclick="pickFlag(this,'wrong')"><span class="oi"></span>Tool misuse — the AI called a tool it was not authorized to use for this type of task</button>
+          <button class="im-opt" onclick="pickFlag(this,'wrong')"><span class="oi"></span>Context contamination — the AI was influenced by information from outside the provided sources</button>
+        </div>
+        <div class="im-feedback pass" id="flag-pass"><h4>Correct classification.</h4><p>This is an inference substitution: the AI generated a specific numeric claim (2.3%) from statistical plausibility rather than from a retrieved document. In a real system, this flag would: (1) mark claim 1 as unverified in the output, (2) create an incident record with the deviation type and timestamp, (3) route to a policy review for whether statistical generation should be blocked at the tool level.</p></div>
+        <div class="im-feedback fail" id="flag-fail"><h4>Not quite.</h4><p>This is an inference substitution, not a scope or tool deviation. The agent stayed within scope (coastal adaptation) and its tool calls were for the right sources — but at the generation step it added a figure that wasn't in any of them.</p></div>
+        <div class="study-nudge" id="snudge-flag"><div class="sn-k">Study this before trying again</div><ul>
+          <li>Inference substitution: the AI generates content from plausibility rather than from a retrieved source.</li>
+          <li>Scope expansion and tool misuse occur at different execution steps — not at the output generation step.</li>
+          <li>The key question: was the claim in a cited source, or did the AI construct it?</li></ul></div>
+        <div class="im-takeaway" id="flag-take"><b>Key takeaway:</b> Flagging requires classification, not just acknowledgment. A flag without a deviation type cannot drive a corrective action — the policy team needs to know what kind of failure to prevent, not just that one occurred.</div>
+        <div class="im-btn-row"><button class="int-btn" onclick="closeInt();markIntDone('flag')">Confirm →</button></div>
+      </div>
+    </div>
+
+    <!-- PAUSE AGENT -->
+    <div id="im-pause" style="display:none">
+      <div class="im-head"><h3>⏸ Pause Agent — What happens next?</h3><button class="im-close" onclick="closeInt()">×</button></div>
+      <div class="im-body">
+        <div class="im-question">The agent is now paused at 09:14:06 — after the inference step and before the final output was generated. The output does not yet exist. What should you do?</div>
+        <div class="im-options">
+          <button class="im-opt" onclick="pickPause(this,'wrong')"><span class="oi"></span>Resume with the same instructions — the agent will self-correct on the next run</button>
+          <button class="im-opt" onclick="pickPause(this,'right')"><span class="oi"></span>Revise the instructions to add an explicit source-grounding requirement, then resume</button>
+          <button class="im-opt" onclick="pickPause(this,'wrong')"><span class="oi"></span>Terminate the task and start again with a different agent</button>
+          <button class="im-opt" onclick="pickPause(this,'wrong')"><span class="oi"></span>Approve the output as-is — the other three claims are correct</button>
+        </div>
+        <div class="im-feedback pass" id="pause-pass"><h4>Correct.</h4><p>Pausing without revising the instructions achieves nothing — the agent will repeat the same behavior. The right action is to add a specific instruction: "Every claim must be traceable to a verbatim or close-paraphrase passage from the cited source. Do not generate statistics or figures that are not present in the provided documents." Then resume. The pause buys you the moment to make that change.</p></div>
+        <div class="im-feedback fail" id="pause-fail"><h4>Not quite.</h4><p>Resuming unchanged repeats the same failure. Terminating wastes valid work. Approving is not supervision. The correct action: revise the instruction, then resume.</p></div>
+        <div class="study-nudge" id="snudge-pause"><div class="sn-k">Study this before trying again</div><ul>
+          <li>A pause is only useful if you change something before resuming.</li>
+          <li>The revision must be specific and testable, not a general instruction to "be careful".</li>
+          <li>Valid work on claims 2–4 should be preserved — termination is disproportionate.</li></ul></div>
+        <div class="im-takeaway" id="pause-take"><b>Key takeaway:</b> A pause is not an intervention by itself. It is a window. The intervention is the revised instruction you add before you resume. <b>Pause + no change = no intervention.</b></div>
+        <div class="im-btn-row"><button class="int-btn" onclick="closeInt();markIntDone('pause')">Confirm →</button></div>
+      </div>
+    </div>
+
+    <!-- REVOKE TOOL ACCESS -->
+    <div id="im-revoke" style="display:none">
+      <div class="im-head"><h3>⊘ Revoke Tool Access — Which tool?</h3><button class="im-close" onclick="closeInt()">×</button></div>
+      <div class="im-body">
+        <div class="im-question">Select the tool(s) whose access should be revoked. You are aiming for the minimum necessary revocation — remove only what caused the problem.</div>
+        <div class="im-options" style="gap:8px">
+          <div class="tool-check" id="tc-retrA" onclick="toggleRevoke(this,'tc-retrA','wrong')"><span class="tc-check"></span>retrieve_document(src="A") — returned Zhu et al. 2022</div>
+          <div class="tool-check" id="tc-retrB" onclick="toggleRevoke(this,'tc-retrB','wrong')"><span class="tc-check"></span>retrieve_document(src="B") — returned IPCC AR6 WG2 Ch.13</div>
+          <div class="tool-check" id="tc-retrC" onclick="toggleRevoke(this,'tc-retrC','wrong')"><span class="tc-check"></span>retrieve_document(src="C") — returned Hino et al. 2017</div>
+          <div class="tool-check" id="tc-stat" onclick="toggleRevoke(this,'tc-stat','right')"><span class="tc-check"></span>generate_statistic(context="budget_pct") — generated the 2.3% figure</div>
+        </div>
+        <button class="int-btn" style="margin-top:12px" onclick="checkRevoke()">Confirm revocation</button>
+        <div class="im-feedback pass" id="revoke-pass"><h4>Correct — proportionate revocation.</h4><p>Revoking only generate_statistic removes the specific capability that caused the unsupported claim while preserving the three retrieve_document calls that worked correctly. The task can now be rerun and will produce claims 2, 3, 4 unchanged. Claim 1 will either be omitted or flagged as requiring a source the documents do not contain.</p></div>
+        <div class="im-feedback fail" id="revoke-fail"><h4>Disproportionate intervention.</h4><p>Revoking retrieve_document removes what worked. The minimum necessary revocation is generate_statistic only.</p></div>
+        <div class="study-nudge" id="snudge-revoke"><div class="sn-k">Study this before trying again</div><ul>
+          <li>Minimum necessary revocation: remove only the capability that caused the harm.</li>
+          <li>The three retrieve_document calls all returned correct results — they are not the source of the failure.</li>
+          <li>generate_statistic is the tool that bypassed source grounding without a policy check.</li></ul></div>
+        <div class="im-takeaway" id="revoke-take"><b>Key takeaway:</b> <b>Minimum necessary revocation.</b> You remove the specific capability that caused the harm, not all capability. Over-revocation breaks valid work and creates new failures.</div>
+        <div class="im-btn-row"><button class="int-btn" onclick="closeInt();markIntDone('revoke')">Confirm →</button></div>
+      </div>
+    </div>
+
+    <!-- ROLL BACK OUTPUT -->
+    <div id="im-rollback" style="display:none">
+      <div class="im-head"><h3>↩ Roll Back — Now what?</h3><button class="im-close" onclick="closeInt()">×</button></div>
+      <div class="im-body">
+        <div class="im-question">Claim 1 has been removed from the output and marked as unverified. The agent's output now reads: <em style="font-family:Newsreader,serif;font-style:italic;color:var(--ink-2)">"[CLAIM REMOVED — source grounding failed] Meanwhile, softer policy tools are gaining traction…"</em><br/><br/>The rollback is complete. What instruction would prevent this from happening on the next run?</div>
+        <div class="im-options">
+          <button class="im-opt" onclick="pickRollback(this,'wrong')"><span class="oi"></span>"Be more careful with statistics and make sure they are accurate."</button>
+          <button class="im-opt" onclick="pickRollback(this,'wrong')"><span class="oi"></span>"Do not include any statistics in the output."</button>
+          <button class="im-opt" onclick="pickRollback(this,'right')"><span class="oi"></span>"Every claim must be traceable to a verbatim or close-paraphrase passage in a cited source. Do not generate or infer figures that do not appear in the provided documents."</button>
+          <button class="im-opt" onclick="pickRollback(this,'wrong')"><span class="oi"></span>"Check your sources before writing each sentence."</button>
+        </div>
+        <div class="im-feedback pass" id="rollback-pass"><h4>Correct instruction.</h4><p>This instruction gives the agent a specific, testable constraint: every claim must trace back to a passage in the documents. Vague instructions ("be more careful") are not enforceable at the system level. Banning all statistics removes legitimate claims. Requiring source-traceability is both specific and proportionate.</p></div>
+        <div class="im-feedback fail" id="rollback-fail"><h4>This instruction would not prevent recurrence.</h4><p>Vague instructions don't constrain the system. Banning all statistics removes legitimate claims. The correct instruction is specific and testable: require source traceability for every claim.</p></div>
+        <div class="study-nudge" id="snudge-rollback"><div class="sn-k">Study this before trying again</div><ul>
+          <li>A specific, testable instruction changes system behavior. A vague one does not.</li>
+          <li>Banning all statistics removes Source A's mangrove cost-effectiveness claim — disproportionate.</li>
+          <li>The correct constraint: every claim must trace to a passage in a cited source.</li></ul></div>
+        <div class="im-takeaway" id="rollback-take"><b>Key takeaway:</b> Rollback removes the damage. The instruction prevents recurrence. <b>A rollback without a corrective instruction is not governance — it is cleanup.</b></div>
+        <div class="im-btn-row"><button class="int-btn" onclick="closeInt();markIntDone('rollback')">Confirm →</button></div>
+      </div>
+    </div>
+
+    <!-- EXPORT TRACE -->
+    <div id="im-export" style="display:none">
+      <div class="im-head"><h3>📋 Export Trace — What goes in the report?</h3><button class="im-close" onclick="closeInt()">×</button></div>
+      <div class="im-body">
+        <div class="im-question">You are writing a supervisor report about this incident. Select the trace events that belong in the report. Include what a supervisor needs to understand, act on, and prevent recurrence — omit noise.</div>
+        <div class="im-options" style="gap:7px">
+          <div class="export-event" id="exp-1" onclick="toggleExport(this,'include')"><span class="exp-box"></span>09:14:02 — Human instruction: summarize three papers, use only Sources A, B, C</div>
+          <div class="export-event" id="exp-2" onclick="toggleExport(this,'noise')"><span class="exp-box"></span>09:14:03 — AI Interpretation: synthesize findings, flowing prose, inline citations</div>
+          <div class="export-event" id="exp-3" onclick="toggleExport(this,'include')"><span class="exp-box"></span>09:14:06 — AI Inference: generated 2.3% budget figure from statistical plausibility — not retrieved from Source A</div>
+          <div class="export-event" id="exp-4" onclick="toggleExport(this,'include')"><span class="exp-box"></span>generate_statistic() called and not blocked — policy gap identified</div>
+          <div class="export-event" id="exp-5" onclick="toggleExport(this,'noise')"><span class="exp-box"></span>retrieve_document(src="B") — returned IPCC AR6 WG2 Ch.13, 3,800 tokens</div>
+          <div class="export-event" id="exp-6" onclick="toggleExport(this,'include')"><span class="exp-box"></span>Claim 1 in final output cites Source A for a figure not present in Source A</div>
+          <div class="export-event" id="exp-7" onclick="toggleExport(this,'noise')"><span class="exp-box"></span>retrieve_document(src="C") — returned Hino et al. 2017, 2,100 tokens</div>
+        </div>
+        <button class="int-btn" id="exportSubmit" style="margin-top:12px" onclick="checkExport()" disabled>Submit selection</button>
+        <div class="im-feedback pass" id="export-pass"><h4>Good selection.</h4><p>The four essential items are: the original instruction (establishes scope and constraints), the inference step (the root cause), the unblocked tool call (the policy gap), and the unsupported output claim (the harm). The retrieve_document calls for B and C and the AI interpretation step are accurate and unproblematic — including them adds volume without value for the supervisor.</p></div>
+        <div class="im-feedback fail" id="export-fail"><h4>Review your selection.</h4><p>Include: original instruction, inference step (root cause), unblocked generate_statistic call (policy gap), unsupported output claim (the harm). Exclude: successful retrieve_document calls.</p></div>
+        <div class="study-nudge" id="snudge-export"><div class="sn-k">Study this before trying again</div><ul>
+          <li>A supervisor report contains evidence of failure, not a record of everything that happened.</li>
+          <li>Include what a supervisor needs to understand the root cause and prevent recurrence.</li>
+          <li>Successful tool calls are not evidence of failure — they are noise in this report.</li></ul></div>
+        <div class="im-takeaway" id="export-take"><b>Key takeaway:</b> A supervisor report is not a full trace dump. It is a distilled evidence set: what was authorized, where it went wrong, what the system failed to prevent, and what the harm was. <b>Signal, not volume.</b></div>
+        <div class="im-btn-row"><button class="int-btn" onclick="closeInt();markIntDone('export')">Confirm →</button></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="dashModal" style="display:none;position:fixed;inset:0;background:rgba(24,32,42,.55);backdrop-filter:blur(4px);z-index:200;align-items:center;justify-content:center;padding:24px"><div style="background:#fff;border-radius:18px;padding:32px;max-width:560px;width:100%;max-height:80vh;overflow-y:auto;box-shadow:0 30px 80px rgba(24,32,42,.25)"><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:22px"><h3 id="dashModalTitle" style="font-family:Manrope,sans-serif;font-weight:800;font-size:20px;letter-spacing:-.02em"></h3><button onclick="document.getElementById('dashModal').style.display='none'" style="font-size:22px;line-height:1;background:none;border:none;cursor:pointer;color:#8E96A2">×</button></div><div id="dashModalBody"></div></div></div>
+</body>
+</html>

@@ -1,0 +1,201 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Academy — M45 The Ambiguous Governance Call</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#F8F6F2;--panel:#FFFFFF;--panel-2:#F2F0EB;--line:#E5E2D9;--line-2:#D1CEC4;--ink:#18202A;--ink-2:#4A5261;--ink-3:#8E96A2;--navy:#17263C;--navy-2:#0F1A28;--gold:#9A7633;--gold-light:#B59048;--pass:#1A7E4A;--pass-dim:rgba(26,126,74,.1);--danger:#B4432E;--danger-dim:#FEF0ED;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:Manrope,sans-serif;-webkit-font-smoothing:antialiased}
+.top-rail{background:var(--navy-2);color:#fff;display:flex;align-items:center;height:48px;padding:0 20px;gap:18px}
+.tr-brand{font-weight:800;font-size:13.5px}
+.tr-crumb{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.tr-title{font-size:13px;font-weight:700}
+.tr-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.prog-dots{display:flex;gap:5px}
+.prog-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.2)}
+.prog-dot.done{background:var(--gold-light)}
+.prog-dot.active{background:#fff}
+.tr-btn{font-family:Manrope,sans-serif;font-size:12px;font-weight:700;padding:7px 14px;border-radius:7px;border:1px solid rgba(255,255,255,.18);color:#fff;background:rgba(255,255,255,.07);cursor:pointer}
+.wrap{max-width:800px;margin:0 auto;padding:44px 24px 100px}
+.step-banner{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:28px}
+.sb-step{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.sb-count{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-3)}
+.hero{background:var(--navy);border-radius:16px;padding:32px 34px;display:grid;gap:16px;margin-bottom:24px}
+.hero h1{font-weight:800;font-size:26px;letter-spacing:-.026em;color:#fff;line-height:1.15}
+.hero p{font-family:Newsreader,serif;font-style:italic;font-size:16px;line-height:1.7;color:rgba(245,244,241,.78)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px 26px;margin-bottom:20px}
+.card h3{font-size:15px;font-weight:700;margin-bottom:10px}
+.card h4{font-size:13px;font-weight:700;margin:16px 0 10px;color:var(--navy)}
+.card p{font-size:14.5px;line-height:1.68;color:var(--ink-2)}
+.persp-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
+.persp-card{border:1.5px solid var(--line-2);border-radius:10px;padding:16px;background:var(--panel-2)}
+.persp-card .p-label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.persp-card p{font-size:12.5px;color:var(--ink);margin:0;line-height:1.6}
+.ambig-note{border-left:3px solid var(--gold);background:rgba(154,118,51,.08);border-radius:0 10px 10px 0;padding:14px 16px;margin:14px 0}
+.ambig-note .an-label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.ambig-note p{font-size:13px;color:var(--ink);margin:0}
+.reason-textarea{width:100%;min-height:100px;border:1.5px solid var(--line-2);border-radius:9px;padding:14px 16px;font-family:Manrope,sans-serif;font-size:14px;line-height:1.6;resize:vertical;margin:12px 0}
+.opt-list{display:grid;gap:10px;margin:16px 0}
+.opt{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border:1.5px solid var(--line-2);border-radius:10px;cursor:pointer}
+.opt:hover{border-color:var(--navy);background:#F9F8F5}
+.opt.picked{border-color:var(--navy);background:#F0EFEB}
+.opt .letter{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;color:var(--ink-3);flex:none;width:20px}
+.opt .text{font-size:14px;line-height:1.5}
+.feedback{display:none;margin-top:14px;padding:16px 18px;border-radius:10px;font-size:13.5px;line-height:1.6}
+.feedback.pass{display:block;background:var(--pass-dim);border-left:3px solid var(--pass);color:var(--ink)}
+.cta-row{display:flex;justify-content:flex-end;margin-top:24px}
+.btn{font-family:Manrope,sans-serif;font-weight:700;font-size:14px;padding:13px 26px;border-radius:10px;border:none;background:var(--navy);color:#fff;cursor:pointer}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.pass-screen{display:none;text-align:center;padding:44px 30px;background:var(--navy);border-radius:16px;color:#fff}
+.pass-screen h2{font-size:22px;font-weight:800;margin-bottom:10px}
+.pass-screen p{font-size:13.5px;color:rgba(255,255,255,.7);margin-bottom:20px}
+.step{display:none}
+.step.active{display:block}
+</style>
+</head>
+<body>
+
+<header class="top-rail">
+  <span class="tr-brand">AGNUS Academy</span>
+  <span class="tr-crumb">Level 7 · Govern</span>
+  <span class="tr-title">M45 — The Ambiguous Governance Call</span>
+  <div class="tr-right">
+    <div class="prog-dots" id="progDots"></div>
+    <button class="tr-btn" onclick="location.href='AGNUS - Academy App.html'">← Dashboard</button>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="step active" data-step="0">
+    <div class="step-banner"><span class="sb-step">Step 1 of 4 — Understand</span><span class="sb-count">4 min</span></div>
+    <div class="hero">
+      <h1>Back to genuinely ambiguous territory — this time, at organizational scale.</h1>
+      <p>M33 asked you to reason through one contested case. This module asks the same kind of question with an entire organization's risk exposure attached — the stakes are higher, but the skill is identical: name the tradeoff, reason honestly, don't search for a hidden correct answer.</p>
+    </div>
+    <div class="card">
+      <h3>Why this matters</h3>
+      <p>Real governance leadership rarely gets a clean case. It gets a genuine tradeoff between two defensible positions, held by people who are each acting in good faith. The measure of good governance judgment isn't landing on the "right" answer — it's reasoning about the tradeoff clearly enough that others can see how you got there, and could reasonably push back.</p>
+    </div>
+    <div class="cta-row"><button class="btn" onclick="goStep(1)">See the contested case →</button></div>
+  </section>
+
+  <section class="step" data-step="1">
+    <div class="step-banner"><span class="sb-step">Step 2 of 4 — See</span><span class="sb-count">4 min</span></div>
+    <div class="card">
+      <h3>A real, contested governance decision</h3>
+      <p style="margin-bottom:12px">An AI system used for internal HR screening has been operating for a year with a documented, small but real disparity in outcomes across two demographic groups — smaller than legal thresholds require action on, but present and measurable. Some on the governance team want to pause the system immediately pending investigation. Others want to keep it running while investigating, since pausing would halt hiring for weeks and the disparity is legally within bounds.</p>
+      <div class="persp-grid">
+        <div class="persp-card">
+          <div class="p-label">Argument for pausing now</div>
+          <p>Continuing to run a system with a known, measurable disparity — even a legal one — means every day of continued operation adds more affected cases before the investigation concludes.</p>
+        </div>
+        <div class="persp-card">
+          <div class="p-label">Argument for continuing during investigation</div>
+          <p>Pausing hiring entirely for weeks has its own real cost, and the disparity is legally within bounds — a measured, time-boxed investigation while operating may be the more proportionate response.</p>
+        </div>
+      </div>
+      <div class="ambig-note">
+        <div class="an-label">Why this doesn't resolve cleanly</div>
+        <p>Both sides are reasoning in good faith about real costs — one about the compounding cost of inaction, one about the disruption cost of a full stop. What tips the balance in a real organization often depends on specifics this scenario doesn't give you: how quickly the investigation could realistically conclude, and how the disparity's size compares to natural variation.</p>
+      </div>
+    </div>
+    <div class="cta-row"><button class="btn" onclick="goStep(2)">Give your reasoning →</button></div>
+  </section>
+
+  <section class="step" data-step="2">
+    <div class="step-banner"><span class="sb-step">Step 3 of 4 — Practice</span><span class="sb-count">5 min</span></div>
+    <div class="card">
+      <h3>Pick a position, and explain your reasoning</h3>
+      <div class="opt-list" id="posOpts">
+        <div class="opt" onclick="pickPos(this)"><span class="letter">A</span><span class="text">Pause the system now, pending investigation.</span></div>
+        <div class="opt" onclick="pickPos(this)"><span class="letter">B</span><span class="text">Continue operating while investigating, since the disparity is within legal bounds.</span></div>
+        <div class="opt" onclick="pickPos(this)"><span class="letter">C</span><span class="text">A middle path — e.g. continue with additional human review layered on top during the investigation.</span></div>
+      </div>
+      <textarea class="reason-textarea" id="reasonBox" placeholder="Explain why you chose this position — what tradeoff you're weighing, and what evidence would change your mind."></textarea>
+      <div class="feedback pass" id="reasonFeedback" style="display:none">There's no single correct position here — what matters is that your reasoning names the real tradeoff (cost of continued exposure vs. cost of a full pause) rather than picking an answer without weighing it. A well-reasoned case for any of the three positions is a legitimate answer.</div>
+    </div>
+    <div class="cta-row"><button class="btn" id="posNext" onclick="goStep(3)" disabled>Continue →</button></div>
+  </section>
+
+  <section class="step" data-step="3">
+    <div class="step-banner"><span class="sb-step">Step 4 of 4 — Pass</span><span class="sb-count">Hidden test</span></div>
+    <div class="card">
+      <h3>New scenario — no hints</h3>
+      <p style="margin-bottom:14px">This is a genuinely ambiguous case, like the one above. Regardless of which position someone takes, what would make their reasoning weak, even if their final answer happened to match a "reasonable" position?</p>
+      <div class="opt-list" id="passOpts">
+        <div class="opt" data-correct="true" onclick="pickPass(this)"><span class="letter">A</span><span class="text">Picking a position without engaging with the actual competing cost on the other side — a reasonable-sounding answer with no real tradeoff analysis behind it is still weak reasoning.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">B</span><span class="text">Any answer is equally strong as long as it matches what most people would guess.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">C</span><span class="text">Reasoning quality doesn't matter as long as the final decision is legally compliant.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">D</span><span class="text">The strongest reasoning is always whichever position takes the least time to explain.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">E</span><span class="text">Reasoning is irrelevant in governance decisions — only the outcome matters.</span></div>
+      </div>
+      <div class="feedback" id="passFeedback"></div>
+    </div>
+    <div class="pass-screen" id="passScreen">
+      <h2>Module 45 complete</h2>
+      <p>Organizational ambiguous-case reasoning confirmed.</p>
+      <button class="tr-btn" onclick="location.href='AGNUS - Academy App.html'">← Dashboard</button>
+    </div>
+  </section>
+
+</div>
+
+<script>
+const TOTAL_STEPS = 4;
+function renderDots(active){
+  document.getElementById('progDots').innerHTML = Array.from({length:TOTAL_STEPS}).map((_,i)=>
+    '<div class="prog-dot '+(i<active?'done':i===active?'active':'')+'"></div>').join('');
+}
+function goStep(i){
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  document.querySelector('.step[data-step="'+i+'"]').classList.add('active');
+  renderDots(i);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+renderDots(0);
+
+let posPicked = false;
+function pickPos(el){
+  document.querySelectorAll('#posOpts .opt').forEach(o=>o.classList.remove('picked'));
+  el.classList.add('picked');
+  posPicked = true;
+  checkPosReady();
+}
+document.getElementById('reasonBox').addEventListener('input', checkPosReady);
+function checkPosReady(){
+  const text = document.getElementById('reasonBox').value.trim();
+  if (posPicked && text.length > 40) {
+    document.getElementById('reasonFeedback').style.display = 'block';
+    document.getElementById('posNext').disabled = false;
+  }
+}
+
+function pickPass(el){
+  document.querySelectorAll('#passOpts .opt').forEach(o=>{o.onclick=null;});
+  const correct = el.dataset.correct === 'true';
+  el.classList.add(correct?'correct':'wrong');
+  el.style.borderColor = correct ? 'var(--pass)' : 'var(--danger)';
+  el.style.background = correct ? 'var(--pass-dim)' : 'var(--danger-dim)';
+  const fb = document.getElementById('passFeedback');
+  fb.style.cssText = correct ? 'display:block;background:var(--pass-dim);border-left:3px solid var(--pass);color:var(--ink)' : 'display:block;background:var(--danger-dim);border-left:3px solid var(--danger);color:var(--ink)';
+  fb.textContent = correct
+    ? "Correct — M45 complete. A position can happen to be reasonable while still being poorly reasoned, if it doesn't actually engage with the real cost on the other side. The skill being tested across both M33 and this module is honest engagement with the tradeoff, not just landing on an acceptable-sounding conclusion."
+    : "Not quite. Whether an answer matches a guess, sounds fast, or happens to be legally compliant doesn't tell you whether the reasoning behind it actually engaged with the real competing cost — that engagement is what separates strong reasoning from weak.";
+  if(correct){ setTimeout(()=>{ document.getElementById('passScreen').style.display='block'; renderDots(4); }, 600); }
+}
+</script>
+</body>
+</html>

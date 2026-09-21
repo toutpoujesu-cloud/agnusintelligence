@@ -1,0 +1,443 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI Audit Trails: What to Log, How Long to Keep It, and Why It Matters — AGNUS Research</title>
+<meta name="description" content="An AI audit trail is the recorded evidence that an AI system operated within its authorised scope and made the decisions attributed to it. Article 12 of the EU AI Act sets mandatory logging requirements for high-risk AI systems. This article covers what to log, for how long, and how to maintain audit trail integrity." />
+<link rel="canonical" href="https://agnus.example/research/ai-audit/audit-trails/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="AI Audit Trails: What to Log, How Long to Keep It, and Why It Matters" />
+<meta property="article:published_time" content="2026-08-22" />
+<meta property="article:modified_time" content="2026-08-22" />
+<meta property="article:author" content="Jean-Daniel Alexis" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>a,a:visited{color:inherit}
+.prose h3{font-family:var(--font-sans);font-weight:700;font-size:19px;letter-spacing:-.018em;margin:32px 0 14px}
+.log-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:13px}
+.log-table th{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);font-weight:600;text-align:left;padding:10px 14px;border-bottom:2px solid var(--line);background:var(--paper-warm,#F7F5F0)}
+.log-table td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+.log-table tr:last-child td{border-bottom:none}
+.log-table .td-field{font-family:var(--font-mono);font-size:12px;font-weight:600;color:var(--ink);white-space:nowrap}
+.log-table .td-req{font-weight:600}
+.log-table .td-req.mandatory{color:#2A6E2A}
+.log-table .td-req.recommended{color:var(--gold-deep)}
+.retention-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0}
+@media(max-width:700px){.retention-grid{grid-template-columns:1fr}}
+.ret-card{background:var(--paper-warm,#F7F5F0);border:1px solid var(--line);border-radius:8px;padding:20px}
+.ret-card .rc-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:6px}
+.ret-card .rc-period{font-family:var(--font-sans);font-weight:800;font-size:22px;color:var(--ink);margin-bottom:4px;line-height:1.2}
+.ret-card .rc-basis{font-size:12px;color:var(--ink-mute);font-family:var(--font-mono);margin-bottom:8px}
+.ret-card .rc-note{font-size:13px;color:var(--ink-mute);line-height:1.5}
+.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
+.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
+.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s}
+.rsub a:hover{color:var(--ink);background:var(--line-soft,rgba(0,0,0,.04))}
+.rsub a.on{color:var(--gold-deep);font-weight:600}
+.pillar-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:var(--gold-pale,#FEF9ED);color:var(--gold-deep,#8B6914);border:1px solid var(--gold-line,#E8D9A0);border-radius:4px;padding:3px 8px;margin-bottom:16px}
+</style>
+</head>
+<body>
+
+<div class="art-progress"><i id="progBar"></i></div>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Marketplace.html">Marketplace</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+      <a href="AGNUS - Business.html">Business</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+      <button class="hamburger" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="m-drawer">
+    <a href="AGNUS - Explore.html">Explore</a><a href="AGNUS - Intelligence.html">Intelligence</a><a href="AGNUS - Research.html" class="active">Research</a><a href="AGNUS - Review.html">Reviews</a><a href="AGNUS - Academy.html">Academy</a><a href="AGNUS - Business.html">Business</a>
+  </div>
+</nav>
+<div class="rsub"><div class="rsub-inner">
+<a href="AGNUS - Research.html">Research Home</a>
+<a href="AGNUS - Research.html#taxonomy">Topics</a>
+<a href="AGNUS - Research Topic.html">AI Audit</a>
+<a href="AGNUS - Research Country.html">Countries</a>
+<a href="AGNUS - Research Sources.html">Sources</a>
+<a href="AGNUS - Research Calendar.html">Calendar</a>
+<a href="AGNUS - Research Methodology.html">Methodology</a>
+<a href="AGNUS - Research Author.html">Authors</a>
+</div></div>
+
+<header class="art-head">
+  <div class="container">
+    <div class="pillar-tag">AI Audit</div>
+    <div data-rc="classification" data-rc-arg="AR-000470"></div>
+    <h1>AI Audit Trails: What to Log, How Long to Keep It, and Why It Matters</h1>
+    <p class="art-abstract">An AI audit trail is the recorded evidence that an AI system operated within its authorised scope, made the decisions attributed to it, and produced the outputs documented. Without an adequate audit trail, post-incident investigation is impossible, regulatory inspection cannot be answered, and internal governance is unverifiable. Article&nbsp;12 of the EU AI Act sets mandatory logging requirements for high-risk AI systems. This article covers what to log, for how long, and how to maintain audit trail integrity.</p>
+    <div data-rc="articleMeta" data-rc-arg="AR-000470"></div>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:20px">
+      <span data-rc="trackButton" data-rc-arg="AI Audit"></span>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div style="margin:28px 0;background:var(--paper-warm,#F7F5F0);border:1px solid var(--line-strong,#D8D5CE);border-left:3px solid var(--gold-deep,#92600A);border-radius:0 14px 14px 0;padding:20px 24px">
+    <div style="font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep,#92600A);margin-bottom:8px">Key context</div>
+    <div style="font-size:15px;line-height:1.65;color:var(--ink,#1A1612);font-family:'Newsreader',Georgia,serif;font-style:italic;margin-bottom:8px">"An audit trail is only useful if it is complete, immutable, and interpretable. A log that records what the system did but not why it did it fails the purpose of AI accountability."</div>
+    <div style="font-family:var(--font-mono,'IBM Plex Mono',monospace);font-size:11px;color:var(--ink-mute,#888)">AGNUS Research · EU AI Act Articles 12, 72</div>
+  </div>
+  <div class="art-hero-cap"><span class="d"></span>An audit trail is not a nice-to-have. For any AI system that makes consequential decisions, the audit trail is the only post-facto evidence of what actually happened &mdash; as distinct from what the system was designed to do.</div>
+</div>
+
+<div class="container">
+  <div class="art-shell">
+
+    <aside class="art-toc">
+      <div class="toc-h">Contents</div>
+      <ol id="tocList"></ol>
+      <div class="toc-foot">
+        <button onclick="window.print()">Print / PDF</button>
+        <button onclick="document.getElementById('cite').scrollIntoView({behavior:'smooth'})">Cite this research</button>
+        <button onclick="document.getElementById('sources').scrollIntoView({behavior:'smooth'})">Jump to sources</button>
+      </div>
+    </aside>
+
+    <article class="prose" id="prose">
+
+      <p style="font-size:13px;color:var(--ink-mute);font-style:italic;margin:-6px 0 26px;padding-bottom:20px;border-bottom:1px solid var(--line)">Builds on <a href="AGNUS - Research Article - Logging.html" style="color:var(--gold-deep);font-style:normal">AR-000151 (Logging &amp; Record-Keeping, Article 12)</a>, which covers the EU AI Act Article 12 logging obligation in full. This article covers the broader practice of AI audit trail design, applicable across all AI systems regardless of classification. See also <a href="AGNUS - Research Article - Prompt Injection.html" style="color:var(--gold-deep);font-style:normal">AR-000460 (Prompt Injection)</a> for how audit trails support security incident investigation.</p>
+
+      <div data-rc="atAGlance" data-rc-arg="AR-000470"></div>
+
+      <h2 id="s-what">What an AI audit trail is</h2>
+      <div data-rc="analysis" data-rc-arg='{"text":"An AI audit trail is a time-ordered, tamper-evident record of the events in an AI system\u2019s operation: inputs received, decisions made, outputs produced, actions taken, and the context in which each occurred. It is the evidentiary record that allows an auditor, a regulator, or an incident investigator to reconstruct what the system did, when, and why \u2014 and to verify that what it did was within its authorised scope. The audit trail is distinct from system logs (which may capture technical events but are not necessarily structured for evidentiary use), from monitoring dashboards (which aggregate current state but may not retain history), and from documentation (which describes what the system was designed to do). An audit trail captures what the system actually did."}'></div>
+
+      <div data-rc="takeaways" data-rc-arg='["Article 12 of the EU AI Act mandates logging for high-risk AI systems sufficient to enable post-market monitoring and, where relevant, investigation of incidents. Non-compliance is a provider obligation failure.","The minimum viable AI audit trail for any AI system: inputs, outputs, timestamps, decision points, tool calls (for agentic systems), and the model/version that produced each output.","For high-risk AI systems under Article 12: mandatory fields include the period of each use, reference database against which input data was checked (for biometric systems), and input data for which the search led to a match.","Retention periods are determined by applicable law, the intended purpose of the system, and investigative need. Article 12 specifies no single period; the EU AI Act\u2019s preamble references the period determined by the provider as appropriate. GDPR data minimisation applies to personal data in logs.","Audit trail integrity requires: append-only storage, access controls, hash-chaining or equivalent tamper-evidence, and access logs on the audit trail itself.","For agentic AI systems, the audit trail must capture every tool call and every external action, not just model inputs and outputs \u2014 the audit trail follows the agent\u2019s action surface.","The audit trail supports four use cases: internal governance review, regulatory inspection, post-incident investigation, and adversarial/legal proceedings. Design the trail for the most demanding use case you will face."]'></div>
+
+      <h2 id="s-art12">Article 12 requirements for high-risk AI</h2>
+      <div data-rc="fact" data-rc-arg='{"source_id":"SRC-0001","locator":"Article 12(1)","text":"High-risk AI systems shall technically allow for the automatic recording of events (logs) throughout the lifetime of the system. The logging capabilities shall ensure a level of traceability of the AI system\u2019s functioning throughout its lifecycle that is appropriate to the intended purpose of the system."}'></div>
+      <div data-rc="fact" data-rc-arg='{"source_id":"SRC-0001","locator":"Article 12(2)","text":"The logging capabilities shall ensure at least the recording of: (a) the period of each use of the system (start date and time and end date and time of each use); (b) the reference database against which the input data has been checked by the system; (c) the input data for which the search has led to a match; (d) the identification of the natural persons involved in the verification of the results."}'></div>
+      <div data-rc="analysis" data-rc-arg='{"text":"Article 12(2) specifies minimum mandatory fields primarily oriented at biometric and identification systems \u2014 the reference to input data leading to a match and the identification of persons involved in result verification reflects the Act\u2019s concern with high-risk identification use cases. For high-risk AI systems in other Annex III categories (employment, education, essential services, law enforcement, migration, administration of justice), the minimum logging requirement is the period of each use under Article 12(2)(a), supplemented by whatever traceability level is \u2018appropriate to the intended purpose\u2019 under Article 12(1). Providers must determine what that means for their specific system type and document their determination in the technical documentation (Annex IV)."}'></div>
+
+      <h2 id="s-what-to-log">What to log: the complete field set</h2>
+
+      <table class="log-table">
+        <thead>
+          <tr>
+            <th>Field</th>
+            <th>Description</th>
+            <th>Requirement level</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td-field">session_id</td>
+            <td>Unique identifier for each use session. Links all events within a single interaction.</td>
+            <td class="td-req mandatory">Mandatory (Article 12(2)(a))</td>
+          </tr>
+          <tr>
+            <td class="td-field">timestamp_start / timestamp_end</td>
+            <td>Start and end time of each use. ISO 8601 format with timezone. For high-risk AI systems under Article 12(2)(a).</td>
+            <td class="td-req mandatory">Mandatory (Article 12(2)(a))</td>
+          </tr>
+          <tr>
+            <td class="td-field">model_id / model_version</td>
+            <td>The exact model and version that processed the request. Critical for investigation when model updates change behaviour.</td>
+            <td class="td-req mandatory">Mandatory (Article 12(1) traceability)</td>
+          </tr>
+          <tr>
+            <td class="td-field">input_data</td>
+            <td>The input to the model. For personal data: hash or reference only (GDPR minimisation). For biometric systems: per Article 12(2)(c).</td>
+            <td class="td-req mandatory">Mandatory for biometric; recommended for all</td>
+          </tr>
+          <tr>
+            <td class="td-field">output_data</td>
+            <td>The model output, recommendation, or decision produced. For systems that produce scores or classifications: the score/class and confidence level.</td>
+            <td class="td-req mandatory">Mandatory (Article 12(1) traceability)</td>
+          </tr>
+          <tr>
+            <td class="td-field">decision_taken</td>
+            <td>The action taken based on the output (approved/rejected/referred). Captures the human decision where human oversight is required under Article 14.</td>
+            <td class="td-req recommended">Recommended for high-risk systems with human oversight</td>
+          </tr>
+          <tr>
+            <td class="td-field">human_reviewer_id</td>
+            <td>Identifier of the natural person who reviewed/verified results. For biometric systems: mandatory under Article 12(2)(d). For all high-risk systems with human oversight: best practice.</td>
+            <td class="td-req mandatory">Mandatory for biometric (Article 12(2)(d))</td>
+          </tr>
+          <tr>
+            <td class="td-field">tool_calls (agentic)</td>
+            <td>For agentic systems: every tool called, inputs passed, outputs returned. The tool call log is the primary record of what the agent did in the world.</td>
+            <td class="td-req mandatory">Mandatory for agentic systems (governance best practice)</td>
+          </tr>
+          <tr>
+            <td class="td-field">retrieved_content_refs (agentic)</td>
+            <td>References to content retrieved from external sources and used as model context. Required for prompt injection investigation.</td>
+            <td class="td-req recommended">Recommended for RAG and agentic systems</td>
+          </tr>
+          <tr>
+            <td class="td-field">anomaly_flags</td>
+            <td>Automated flags from anomaly detection: out-of-scope actions, confidence below threshold, deviation from baseline behaviour.</td>
+            <td class="td-req recommended">Recommended for all deployed systems</td>
+          </tr>
+          <tr>
+            <td class="td-field">reference_database_id</td>
+            <td>For systems that check inputs against a reference database (biometric, watchlist): the database version and reference used. Article 12(2)(b).</td>
+            <td class="td-req mandatory">Mandatory for biometric / reference-checking systems</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="s-retention">Retention periods</h2>
+
+      <div class="retention-grid">
+        <div class="ret-card">
+          <div class="rc-label">EU AI Act (Article 12)</div>
+          <div class="rc-period">Provider-determined</div>
+          <div class="rc-basis">Appropriate to the intended purpose</div>
+          <div class="rc-note">The Act specifies no single retention period. Providers must determine what is appropriate for their system type and document the determination in Annex IV technical documentation. The preamble references the period appropriate to post-market monitoring and incident investigation needs.</div>
+        </div>
+        <div class="ret-card">
+          <div class="rc-label">GDPR (personal data in logs)</div>
+          <div class="rc-period">Minimum necessary</div>
+          <div class="rc-basis">Data minimisation principle (Article 5(1)(e) GDPR)</div>
+          <div class="rc-note">Personal data in audit logs must be retained only as long as necessary for the specified purpose. Where possible, logs should reference personal data by hash or pseudonymous identifier rather than raw personal data, to allow retention of the audit record without storing personal data indefinitely.</div>
+        </div>
+        <div class="ret-card">
+          <div class="rc-label">Incident investigation</div>
+          <div class="rc-period">3&ndash;7 years</div>
+          <div class="rc-basis">Limitation periods for legal proceedings</div>
+          <div class="rc-note">Logs needed to support legal proceedings or regulatory investigations should be retained for the applicable limitation period in the relevant jurisdiction. In many EU member states, civil limitation periods run 3&ndash;5 years; some regulatory investigation periods run longer. Legal advice is required for the specific use case.</div>
+        </div>
+      </div>
+
+      <div data-rc="analysis" data-rc-arg='{"text":"The tension between audit trail retention (keep logs long enough to investigate future incidents and regulatory inspections) and GDPR data minimisation (retain personal data only as long as necessary) is the primary retention design challenge. The solution is log architecture, not retention period. Design logs so that the audit record (what decision was made, when, by which model version, reviewed by whom) can be retained indefinitely in pseudonymous or anonymised form, while the personal data that populated the input and output fields is deleted or further pseudonymised when no longer needed. The audit record persists; the personal data within it does not need to."}'></div>
+
+      <h2 id="s-integrity">Audit trail integrity</h2>
+      <div data-rc="analysis" data-rc-arg='{"text":"An audit trail that can be altered after the fact provides no evidentiary value. Audit trail integrity requires: (1) append-only storage \u2014 log entries can be added but not modified or deleted; (2) access controls \u2014 only authorised systems can write to the log; no individual user should be able to modify log entries; (3) tamper-evidence \u2014 hash-chaining (each log entry includes the hash of the previous entry) or equivalent mechanism that makes retrospective alteration detectable; and (4) access logging on the audit trail itself \u2014 who accessed the audit trail, when, and what they retrieved. A log that can be queried without trace provides an attacker with the ability to understand what evidence exists without creating a record of that query."}'></div>
+      <div data-rc="analysis" data-rc-arg='{"text":"For regulatory inspection purposes, the audit trail must also be exportable in a format that the inspecting authority can read and verify without requiring access to the organisation\u2019s internal systems. This means: structured formats (JSON Lines, CSV with defined schema), documentation of the schema, and a mechanism for producing chain-of-custody evidence that the exported records are complete and unaltered from the production log. The ISACA AI audit guidance recommends that organisations test their log export and chain-of-custody procedures annually \u2014 not when an inspection is imminent."}'></div>
+
+      <h2 id="s-agentic">Audit trails for agentic systems</h2>
+      <div data-rc="analysis" data-rc-arg='{"text":"Agentic AI systems require an extended audit trail architecture because their action surface extends beyond the model input/output boundary into the external world. A standard model I/O log does not capture what the agent did: which tools it called, what external systems it wrote to, what it retrieved from the environment, and what it decided not to do. The agentic audit trail must capture: every tool call (the tool name, inputs, outputs, and timestamp); every external action (email sent, file written, API called, database record modified); the content that was in the model\u2019s context at each decision point (which retrieved documents, which previous tool outputs informed this decision); and any human interventions or approvals (who approved an action, when, and based on what information)."}'></div>
+      <div data-rc="analysis" data-rc-arg='{"text":"In multi-agent systems, each agent should maintain its own audit log, and there should be a system-level log that records inter-agent handoffs: what task was passed from Agent A to Agent B, when, and with what inputs. The system-level log is the primary record for investigating incidents that span multiple agents \u2014 it allows an investigator to trace the causal chain from the initial user instruction through each agent\u2019s actions to the final outcome that caused harm."}'></div>
+
+      <h2 id="s-uses">The four uses of an AI audit trail</h2>
+
+      <h3>1. Internal governance review</h3>
+      <div data-rc="analysis" data-rc-arg='{"text":"Regular internal review of AI audit trails is the primary mechanism for detecting drift, errors, and scope violations that do not rise to the level of a reportable incident. A system that is making decisions at the boundary of its authorised scope, or whose outputs are trending in unexpected directions, may not trigger an incident threshold but should be caught in governance review. Internal review should be scheduled, documented, and acted upon \u2014 findings should produce documented corrective actions, not just observations."}'></div>
+
+      <h3>2. Regulatory inspection</h3>
+      <div data-rc="analysis" data-rc-arg='{"text":"Under the EU AI Act, national market surveillance authorities have the power to request access to AI system logs as part of their oversight function. Article 74 gives market surveillance authorities broad inspection powers, including the power to require providers to provide technical documentation and logs. The audit trail must be complete, exportable, and readable without requiring access to production systems. Providers should test their inspection-readiness by running mock log-export exercises before a real inspection is requested."}'></div>
+
+      <h3>3. Post-incident investigation</h3>
+      <div data-rc="analysis" data-rc-arg='{"text":"When an AI system produces a harmful outcome \u2014 a wrong decision, a biased output, a security incident, a regulatory violation \u2014 the audit trail is the primary evidence for determining what happened. Without an adequate audit trail, investigation is limited to system design documentation (what the system was designed to do) and witness accounts (what people observed). Neither is sufficient for attributing cause, establishing accountability, or identifying corrective action. The audit trail is the factual record."}'></div>
+
+      <h3>4. Legal and adversarial proceedings</h3>
+      <div data-rc="analysis" data-rc-arg='{"text":"AI system outputs are increasingly cited in legal proceedings \u2014 employment disputes, credit decisions, benefits determinations, criminal justice matters. When an AI system\u2019s decision is challenged in court or regulatory proceedings, the audit trail is the documentary evidence of what decision was made, by which version of the system, based on which inputs, reviewed by whom. Chain-of-custody documentation for the audit trail is required to establish that the records are authentic and have not been altered since the events they record."}'></div>
+
+      <h2 id="s-do">What organizations must do</h2>
+      <ul class="checklist" id="doList">
+        <li><span class="cb"></span>For every high-risk AI system: implement the Article 12 mandatory fields (session period, model version, input data for biometric systems, reviewer identification for biometric systems). Document the retention determination in Annex IV technical documentation.</li>
+        <li><span class="cb"></span>Design log architecture to separate the audit record (pseudonymous, retainable) from the personal data fields (subject to GDPR minimisation). Do not design a log where retaining the audit record requires retaining personal data indefinitely.</li>
+        <li><span class="cb"></span>Implement append-only storage with access controls. No individual user should be able to modify or delete log entries. Implement hash-chaining or equivalent tamper-evidence on the log.</li>
+        <li><span class="cb"></span>Log access to the audit trail itself: who queried the log, when, what they retrieved. This is the chain-of-custody record for the audit trail.</li>
+        <li><span class="cb"></span>For agentic systems: extend the audit trail to every tool call and every external action. The audit trail must follow the agent&rsquo;s action surface, not just the model&rsquo;s I/O boundary.</li>
+        <li><span class="cb"></span>Test inspection readiness annually: run a mock log-export exercise, verify that the exported records are complete and readable, and produce a chain-of-custody document for the export. Do not first test this when an inspection is imminent.</li>
+        <li><span class="cb"></span>Schedule regular internal governance reviews of audit trail data: look for drift, boundary violations, and unexpected output patterns. Document findings and corrective actions.</li>
+      </ul>
+
+      <h2 id="s-mistakes">Common mistakes</h2>
+      <p>Logging only model inputs and outputs for agentic systems is the most common mistake. For an agent that calls tools and takes actions in the world, the model I/O log is a fraction of the audit record needed. Without tool call logs and external action logs, the audit trail cannot support post-incident investigation of what the agent did in the world.</p>
+      <p>Storing personal data indefinitely in logs because "we might need it" is a second mistake. GDPR data minimisation applies to personal data in audit logs. Design the log architecture so that the audit record (pseudonymous) can be retained while the personal data is deleted or further pseudonymised when no longer needed.</p>
+      <p>Treating audit trail integrity as a technical default is a third mistake. Append-only storage, access controls, and tamper-evidence must be explicitly designed and verified. A log stored in a mutable database table with no access controls provides no evidentiary assurance.</p>
+      <p>First testing log export capability when a regulatory inspection arrives is a fourth mistake. Audit trail export is a capability that must be built, tested, and maintained. Organisations that have never exported their logs for inspection have no assurance that the export will be complete, readable, or usable when needed.</p>
+
+      <h2 id="s-open">Open questions</h2>
+      <ul>
+        <li><strong>What the EU AI Office considers adequate for Article 12(1) traceability for non-biometric high-risk AI systems</strong> &mdash; no technical guidance has been published specifying the minimum log fields for employment, essential services, or other Annex III category systems beyond the Article 12(2) minimum.</li>
+        <li><strong>How long Article 12 logs must be retained for specific system types</strong> &mdash; the Act specifies no retention period; provider determination is required. The AI Office may publish guidance.</li>
+        <li><strong>Whether the Digital Omnibus amended Article 12&rsquo;s logging requirements</strong> &mdash; the article is not confirmed as amended; check the current consolidated text.</li>
+        <li><strong>How audit trail requirements interact with GDPR erasure rights (Article 17)</strong> &mdash; if a data subject requests erasure of their personal data and their data appears in an AI audit trail required for regulatory compliance, the interaction between the erasure right and the audit retention obligation is not clearly resolved in either regulation.</li>
+      </ul>
+
+      <h2 id="s-faq">Frequently asked</h2>
+      <div class="definition"><div class="df-k">FAQ</div>
+        <dt>Does a non-high-risk AI system need an audit trail under the EU AI Act?</dt>
+        <dd>Article 12 applies to high-risk AI systems only. Non-high-risk systems have no statutory logging obligation under the EU AI Act. However, audit trails are a governance best practice for any AI system that makes consequential decisions. Organisations that deploy non-high-risk AI systems without audit trails have no post-incident investigation capability and limited ability to respond to complaints or disputes about the system&rsquo;s decisions.</dd>
+      </div>
+      <div class="definition"><div class="df-k">FAQ</div>
+        <dt>Can audit trail logs contain personal data?</dt>
+        <dd>Yes, but GDPR applies. Personal data in audit logs is subject to data minimisation: retain only what is necessary for the logging purpose. Where possible, log pseudonymous references (a session ID that maps to a data subject in a separate, access-controlled mapping table) rather than raw personal data. The mapping table can be deleted when personal data retention is no longer required; the audit record with the pseudonymous reference can be retained longer to support governance, investigation, and regulatory inspection needs.</dd>
+      </div>
+      <div class="definition"><div class="df-k">FAQ</div>
+        <dt>Who is responsible for maintaining AI audit trails &mdash; the provider or the deployer?</dt>
+        <dd>Under the EU AI Act, Article 12 is a provider obligation: providers must build logging capabilities into the system. But Article 26(5) requires deployers to keep the logs generated by the system for a period appropriate to the intended purpose. Both parties have obligations: the provider builds the capability; the deployer retains the logs. In practice, the provider&rsquo;s system design determines what is logged; the deployer&rsquo;s retention and access-control policies determine how long it is kept and who can access it.</dd>
+      </div>
+
+      <div data-rc="evidence" data-rc-arg="AR-000470"></div>
+      <div data-rc="history" data-rc-arg="AR-000470"></div>
+      <div data-rc="citation" data-rc-arg="AR-000470"></div>
+      <div data-rc="languageBar" data-rc-arg="AR-000470"></div>
+
+    </article>
+
+    <aside class="art-rail">
+      <div class="trustpanel">
+        <div class="tp-h"><h4>About this research</h4><span data-rc="statusPill" data-rc-arg="current"></span></div>
+        <div class="tp-rows">
+          <div class="tp-row"><span class="k">Research object</span><span class="v">AR-000470</span></div>
+          <div class="tp-row"><span class="k">Pillar</span><span class="v">AI Audit</span></div>
+          <div class="tp-row"><span class="k">Author</span><span class="v">Jean-Daniel Alexis</span></div>
+          <div class="tp-row"><span class="k">Reviewer</span><span class="v soft">Jean-Daniel Alexis</span></div>
+          <div class="tp-row"><span class="k">Review cycle</span><span class="v soft">Quarterly</span></div>
+          <div class="tp-row"><span class="k">Sources</span><span class="v" id="railSources">&mdash;</span></div>
+          <div class="tp-row"><span class="k">Revisions</span><span class="v" id="railRevisions">&mdash;</span></div>
+        </div>
+        <div class="tp-disclaim">AGNUS Research is an independent publication. It is not a certification body and this is not legal or audit advice.</div>
+      </div>
+
+      <div style="margin-top:-4px"><span data-rc="trackButton" data-rc-arg="AI Audit" data-rc-mode="block"></span></div>
+
+      <div class="railbox">
+        <h5>Related</h5>
+        <div class="rb-list">
+          <a href="AGNUS - Research Article - Logging.html">Logging &amp; Record-Keeping (Art. 12) &rarr; AR-000151</a>
+          <a href="AGNUS - Research Article - Prompt Injection.html">Prompt Injection &rarr; AR-000460</a>
+          <a href="AGNUS - Research Article - Post-Market Monitoring.html">Post-Market Monitoring (Art. 72) &rarr; AR-000370</a>
+        </div>
+      </div>
+
+      <div class="railbox">
+        <h5>Institutional</h5>
+        <div class="rb-list">
+          <a href="AGNUS - Research Methodology.html">Methodology</a>
+          <a href="AGNUS - Research Sources.html">Source Library</a>
+          <a href="AGNUS - Research Calendar.html">Regulatory Calendar</a>
+          <a href="AGNUS - Research Author.html">About the author</a>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <div data-rc="related" data-rc-arg="AR-000470"></div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="foot-top" style="grid-template-columns:1.35fr 1fr 1fr 1fr 1fr">
+      <div class="foot-brand">
+        <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+        <p>Intelligence for the future of work. The trusted source for what&rsquo;s happening, which tools matter, and where AI is heading.</p>
+        <form class="fsearch" onsubmit="return false;">
+          <input type="email" placeholder="Your email for the Research Brief" aria-label="Email" />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+      <div class="foot-col">
+        <h5>Research</h5>
+        <ul>
+          <li><a href="AGNUS - Research Topic.html">AI Governance</a></li>
+          <li><a href="AGNUS - Research Topic.html">EU AI Act</a></li>
+          <li><a href="AGNUS - Research Topic.html">AI Agents</a></li>
+          <li><a href="AGNUS - Research Topic.html">AI Security</a></li>
+          <li><a href="AGNUS - Research Topic.html">AI Audit</a></li>
+          <li><a href="AGNUS - Research Topic.html">Data Governance</a></li>
+          <li><a href="AGNUS - Research Topic.html">Standards</a></li>
+          <li><a href="AGNUS - Research Country.html">Countries</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Evidence</h5>
+        <ul>
+          <li><a href="AGNUS - Research Sources.html">Source Library</a></li>
+          <li><a href="AGNUS - Research Calendar.html">Regulatory Calendar</a></li>
+          <li><a href="AGNUS - Research Methodology.html">Methodology</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Discover</h5>
+        <ul>
+          <li><a href="AGNUS - Review.html">AI Reviews</a></li>
+          <li><a href="AGNUS - Compare.html">Comparisons</a></li>
+          <li><a href="AGNUS - Tools.html">AI Tools</a></li>
+          <li><a href="AGNUS - Marketplace.html">Marketplace</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Learn &amp; Build</h5>
+        <ul>
+          <li><a href="AGNUS - Academy.html">Academy</a></li>
+          <li><a href="AGNUS - Prompts.html">Prompt Library</a></li>
+          <li><a href="AGNUS - Agents.html">Agents</a></li>
+          <li><a href="AGNUS - Business.html">Business Automation</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&#169; 2026 AGNUS &middot; Truth before hype. &middot; AGNUS Research is an independent publication, not a certification body.</span>
+      <div class="fb-links">
+        <a href="#">About</a><a href="AGNUS - Research Methodology.html">Methodology</a><a href="#">Editorial Policy</a><a href="#">Privacy</a><a href="#">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="image-slot.js"></script>
+<script src="agnus-research-data.js"></script>
+<script src="agnus-research-components.js"></script>
+<script src="agnus-research-components2.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var toc = document.getElementById('tocList');
+  var heads = document.querySelectorAll('#prose h2[id]');
+  heads.forEach(function (h) {
+    var li = document.createElement('li');
+    li.innerHTML = '<a href="#' + h.id + '">' + h.textContent + '</a>';
+    toc.appendChild(li);
+  });
+
+  var links = toc.querySelectorAll('a');
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      links.forEach(function (l) { l.classList.toggle('on', l.getAttribute('href') === '#' + e.target.id); });
+    });
+  }, { rootMargin: '-100px 0px -70% 0px' });
+  heads.forEach(function (h) { io.observe(h); });
+
+  var bar = document.getElementById('progBar'), prose = document.getElementById('prose');
+  function prog() {
+    var r = prose.getBoundingClientRect(), total = r.height - window.innerHeight;
+    var done = Math.min(Math.max(-r.top, 0), Math.max(total, 1));
+    bar.style.width = (total > 0 ? done / total * 100 : 0) + '%';
+  }
+  document.addEventListener('scroll', prog, { passive: true }); prog();
+
+  document.querySelectorAll('#doList li').forEach(function (li) {
+    li.addEventListener('click', function () { li.classList.toggle('on'); });
+  });
+
+  var a = AR.byArticleId('AR-000470');
+  document.getElementById('railSources').textContent = a.sources.length + ' cited';
+  document.getElementById('railRevisions').textContent = (a.history || []).length + ' recorded';
+});
+</script>
+</body>
+</html>

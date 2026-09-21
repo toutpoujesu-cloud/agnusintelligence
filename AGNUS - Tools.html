@@ -1,0 +1,266 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Free AI Tools — AGNUS</title>
+<meta name="description" content="A directory of genuinely useful, genuinely free AI tools from AGNUS. Filter by what you need, use it in seconds — no sign-up, no catch." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<style>
+.pg-head { padding: clamp(40px,5vw,64px) 0 0; }
+.pg-head h1 { font-family: var(--font-sans); font-weight: 700; font-size: clamp(40px,6vw,84px); line-height: 0.96; letter-spacing: -0.035em; margin: 0 0 18px; }
+.pg-head h1 em { font-family: var(--font-serif); font-style: italic; font-weight: 300; color: var(--gold-deep); }
+.pg-head .h-lede { max-width: 600px; }
+.sec-head2 { margin-bottom: clamp(28px,3.5vw,42px); }
+.sec-head2 .kicker { margin-bottom: 16px; }
+
+/* featured tool */
+.feat-tool { margin-top: clamp(36px,4vw,52px); background: var(--char); color: var(--on-dark); border-radius: 22px; padding: clamp(32px,4vw,52px); display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(28px,4vw,56px); align-items: center; position: relative; overflow: hidden; }
+.feat-tool::after { content:""; position:absolute; inset:0; background: radial-gradient(70% 120% at 88% 8%, rgba(220,192,137,0.13), transparent 60%); pointer-events:none; }
+.feat-tool > * { position: relative; z-index: 1; }
+.feat-tool .fk { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 16px; display:inline-flex; align-items:center; gap:9px; }
+.feat-tool h2 { color:#fff; font-family: var(--font-sans); font-weight: 700; font-size: clamp(26px,3.4vw,40px); letter-spacing: -0.03em; margin: 0 0 14px; }
+.feat-tool p { color: var(--on-dark-soft); font-size: 16px; line-height: 1.6; margin: 0 0 26px; max-width: 44ch; }
+.feat-demo { background: var(--char-2); border: 1px solid var(--line-dark); border-radius: 16px; padding: 24px; }
+.feat-demo .fd-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--on-dark-mute); margin-bottom: 12px; }
+.feat-demo input, .feat-demo textarea { width:100%; background: var(--char-3); border: 1px solid var(--line-dark); border-radius: 10px; color:#fff; font-family: var(--font-sans); font-size: 14px; padding: 12px 14px; outline:none; }
+.feat-demo .fd-row { display:flex; gap:10px; align-items:center; margin-top: 14px; }
+.feat-demo .fd-out { margin-top: 16px; font-family: var(--font-mono); font-size: 13px; color: var(--gold-light); display:flex; justify-content:space-between; align-items:baseline; padding-top: 16px; border-top: 1px solid var(--line-dark); }
+.feat-demo .fd-out b { font-family: var(--font-sans); font-weight: 800; font-size: 26px; letter-spacing: -0.03em; }
+
+/* filter bar */
+.tool-filter { margin: clamp(40px,5vw,64px) 0 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 20px 0; display:flex; align-items:center; gap: 16px 22px; flex-wrap: wrap; }
+.tool-filter .fl { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-mute); }
+.chips { display:flex; gap: 9px; flex-wrap: wrap; }
+.chip { font-family: var(--font-sans); font-size: 13.5px; font-weight: 500; color: var(--ink-soft); border: 1px solid var(--line); border-radius: 999px; padding: 8px 16px; transition: all .2s ease; }
+.chip:hover { border-color: var(--ink-faint); color: var(--ink); }
+.chip.on { background: var(--char); color:#fff; border-color: var(--char); }
+.tool-count { margin-left: auto; font-family: var(--font-mono); font-size: 12px; color: var(--ink-mute); letter-spacing: 0.04em; }
+.tool-count b { color: var(--ink); }
+
+/* tool grid */
+.tools { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 28px; }
+.tool { background:#fff; border: 1px solid var(--line); border-radius: 18px; padding: 26px; display:flex; flex-direction:column; gap: 12px; transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease, border-color .3s ease; }
+.tool:hover { transform: translateY(-5px); box-shadow: 0 30px 64px -40px rgba(26,26,23,0.42); }
+.tool .ttop { display:flex; align-items:center; justify-content:space-between; gap: 12px; }
+.tool .ic { width: 46px; height: 46px; border-radius: 13px; background: var(--paper-2); border: 1px solid var(--line); display:grid; place-items:center; font-family: var(--font-serif); font-style: italic; font-size: 21px; color: var(--gold-deep); }
+.tool .free { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--pass); border: 1px solid color-mix(in srgb, var(--pass) 35%, transparent); border-radius: 999px; padding: 4px 10px; }
+.tool h3 { font-family: var(--font-sans); font-weight: 700; font-size: 19px; letter-spacing: -0.02em; margin: 2px 0 0; }
+.tool p { font-size: 13.5px; line-height: 1.5; color: var(--ink-soft); margin: 0; }
+.tool .tcat { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mute); }
+.tool .tfoot { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line); display:flex; align-items:center; justify-content:space-between; }
+.tool .use { font-size: 13.5px; font-weight: 600; color: var(--gold-deep); display:inline-flex; gap:7px; align-items:center; }
+.tool:hover .use .arr { transform: translateX(3px); }
+.tool .runs { font-family: var(--font-mono); font-size: 11px; color: var(--ink-faint); }
+.tool.hidden { display:none; }
+
+/* cta band */
+.cta-band { margin-top: clamp(48px,6vw,72px); border: 1px solid var(--line); border-radius: 20px; padding: clamp(28px,3.5vw,44px); display:flex; align-items:center; justify-content:space-between; gap: 24px; flex-wrap: wrap; background: var(--paper-warm); }
+.cta-band .cb-copy h3 { font-family: var(--font-sans); font-weight: 700; font-size: clamp(22px,2.6vw,30px); letter-spacing: -0.025em; margin: 0 0 8px; }
+.cta-band .cb-copy p { color: var(--ink-soft); font-size: 15px; margin: 0; max-width: 50ch; }
+
+@media (max-width: 920px){ .tools { grid-template-columns: 1fr 1fr; } .feat-tool { grid-template-columns: 1fr; gap: 28px; } }
+@media (max-width: 600px){ .tools { grid-template-columns: 1fr; } .tool-count { margin-left: 0; width: 100%; } }
+</style>
+</head>
+<body>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-label">Today's Intelligence</div>
+  <div class="ticker-track">
+    <span><span class="tk">TOOLS</span> 64 free tools · no sign-up required</span><span class="dot"></span>
+    <span><span class="tk">POPULAR</span> Prompt Optimizer used 2.1M times</span><span class="dot"></span>
+    <span><span class="tk">NEW</span> AI Readiness Score just launched</span><span class="dot"></span>
+    <span><span class="tk">ENTERPRISE</span> AI adoption in F500 <span class="up">&nbsp;+38% YoY</span></span><span class="dot"></span>
+    <span><span class="tk">TOOLS</span> 64 free tools · no sign-up required</span><span class="dot"></span>
+    <span><span class="tk">POPULAR</span> Prompt Optimizer used 2.1M times</span><span class="dot"></span>
+    <span><span class="tk">NEW</span> AI Readiness Score just launched</span><span class="dot"></span>
+    <span><span class="tk">ENTERPRISE</span> AI adoption in F500 <span class="up">&nbsp;+38% YoY</span></span><span class="dot"></span>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Marketplace.html">Marketplace</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Practice.html">Practice</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+      <a href="AGNUS - Business.html">Business</a>
+      </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#top" class="nav-search">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="6"/><path d="M14 14l4 4"/></svg>
+        Search tools <kbd>⌘K</kbd>
+      </a>
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+      <button class="hamburger" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="m-drawer">
+    <a href="AGNUS - Explore.html">Explore</a>
+    <a href="AGNUS - Marketplace.html">Marketplace</a>
+    <a href="AGNUS - Intelligence.html">Intelligence</a>
+    <a href="AGNUS - Review.html">Reviews</a>
+    <a href="AGNUS - Compare.html">Compare</a>
+    <a href="AGNUS - Agents.html">Agents</a>
+    <a href="AGNUS - Academy.html">Academy</a>
+    <a href="AGNUS - Business.html">Business</a>
+    <a href="AGNUS - Home.html#premium" style="color: var(--gold-deep);">Premium Membership</a>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<div class="container pg-head">
+  <div class="crumbs"><a href="AGNUS - Home.html">AGNUS</a><span class="sep">/</span><span class="here">Free Tools</span></div>
+  <div class="kicker" style="margin-bottom:22px;"><span class="ix">◆</span> Free AI Tools</div>
+  <h1>Genuinely useful.<br /><em>Genuinely free.</em></h1>
+  <p class="h-lede">No sign-up walls. No "free trial." A set of small, sharp tools you can use in seconds — built to be the most generous front door in AI.</p>
+
+  <!-- featured -->
+  <div class="feat-tool">
+    <div>
+      <div class="fk"><span class="gold-text">★</span> Featured tool</div>
+      <h2>AI Cost Calculator</h2>
+      <p>Estimate token spend across every major model before you commit. Drag your usage, see the monthly cost — instantly, no account.</p>
+      <a href="#all" class="btn btn-gold">Open the calculator <span class="arr">→</span></a>
+    </div>
+    <div class="feat-demo">
+      <div class="fd-label">Monthly requests</div>
+      <input type="range" id="reqRange" min="1000" max="500000" step="1000" value="60000" style="width:100%; accent-color:var(--gold-light);" />
+      <div class="fd-row">
+        <div style="flex:1;"><div class="fd-label" style="margin:0 0 8px;">Avg tokens / request</div><input type="number" id="tok" value="1800" /></div>
+        <div style="flex:1;"><div class="fd-label" style="margin:0 0 8px;">$ / 1M tokens</div><input type="number" id="rate" value="3.0" step="0.5" /></div>
+      </div>
+      <div class="fd-out"><span id="reqLabel">60,000 requests / mo</span><b id="costOut">$324</b></div>
+    </div>
+  </div>
+</div>
+
+<!-- FILTER + GRID -->
+<section id="all" style="padding-top: clamp(40px,5vw,60px);">
+  <div class="container">
+    <div class="sec-head2">
+      <div class="kicker"><span class="ix">01</span> The directory</div>
+      <h2 class="h-section">Pick a category. Start working.</h2>
+    </div>
+
+    <div class="tool-filter">
+      <span class="fl">Filter</span>
+      <div class="chips" id="chips">
+        <button class="chip on" data-k="all">All</button>
+        <button class="chip" data-k="writing">Writing</button>
+        <button class="chip" data-k="coding">Coding</button>
+        <button class="chip" data-k="business">Business</button>
+        <button class="chip" data-k="learning">Learning</button>
+        <button class="chip" data-k="calc">Calculators</button>
+      </div>
+      <span class="tool-count"><b id="count">12</b> tools</span>
+    </div>
+
+    <div class="tools" id="tools">
+      <a href="#" class="tool" data-k="calc"><div class="ttop"><div class="ic">∑</div><span class="free">Free</span></div><span class="tcat">Calculator</span><h3>AI Cost Calculator</h3><p>Estimate token spend across every major model.</p><div class="tfoot"><span class="use">Use it <span class="arr">→</span></span><span class="runs">2.1M uses</span></div></a>
+      <a href="#" class="tool" data-k="writing"><div class="ttop"><div class="ic">✎</div><span class="free">Free</span></div><span class="tcat">Writing</span><h3>Prompt Optimizer</h3><p>Rewrite any prompt for clearer, sharper output.</p><div class="tfoot"><span class="use">Use it <span class="arr">→</span></span><span class="runs">2.1M uses</span></div></a>
+      <a href="#" class="tool" data-k="learning"><div class="ttop"><div class="ic">◎</div><span class="free">Free</span></div><span class="tcat">Learning</span><h3>Model Picker</h3><p>Answer five questions, get the right tool.</p><div class="tfoot"><span class="use">Use it <span class="arr">→</span></span><span class="runs">840k uses</span></div></a>
+      <a href="#" class="tool" data-k="business"><div class="ttop"><div class="ic">▲</div><span class="free">Free</span></div><span class="tcat">Business</span><h3>AI Readiness Score</h3><p>Benchmark your team in three minutes.</p><div class="tfoot"><span class="use">Use it <span class="arr">→</span></span><span class="runs">New</span></div></a>
+      <a href="#" class="tool" data-k="writing"><div class="ttop"><div class="ic">¶</div><span class="free">Free</span></div><span class="tcat">Writing</span><h3>Tone Rewriter</h3><p>Shift any text between formal, friendly and bold.</p><div class="tfoot"><span class="use">Use it <span class="arr">→</span></span><span class="runs">560k uses</span></div></a>
+      <a href="#" class="tool" data-k="coding"><div class="ttop"><div class="ic">⟁</div><span class="free">Free</span></div><span class="tcat">Coding</span><h3>Regex Builder</h3><p>Describe a pattern in words, get the regex.</p><div class="tfoot"><span class="use">Use it <span class="arr">→</span></span><span class="runs">1.3M uses</span></div></a>
+      <a href="#" class="tool" data-k="coding"><div class="ttop"><div class="ic">{ }</div><span class="free">Free</span></div><span class="tcat">Coding</span><h3>Code Explainer</h3><p>Paste a snippet, get a plain-English walkthrough.</p><div class="tfoot"><span class="use">Use it <span class="arr">→</span></span><span class="runs">920k uses</span></div></a>
+      <a href="#" class="tool" data-k="business"><div class="ttop"><div class="ic">◷</div><span class="free">Free</span></div><span class="tcat">Business</span><h3>Meeting Summarizer</h3><p>Turn a transcript into decisions and actions.</p><div class="tfoot"><span class="use">Use it <span class="arr">→</span></span><span class="runs">410k uses</span></div></a>
+      <a href="#" class="tool" data-k="calc"><div class="ttop"><div class="ic">€</div><span class="free">Free</span></div><span class="tcat">Calculator</span><h3>AI ROI Calculator</h3><p>See what automating a task is worth per month.</p><div class="tfoot"><span class="use">Use it <span class="arr">→</span></span><span class="runs">680k uses</span></div></a>
+      <a href="#" class="tool" data-k="learning"><div class="ttop"><div class="ic">?</div><span class="free">Free</span></div><span class="tcat">Learning</span><h3>Jargon Translator</h3><p>Decode any AI term into plain language.</p><div class="tfoot"><span class="use">Use it <span class="arr">→</span></span><span class="runs">300k uses</span></div></a>
+      <a href="#" class="tool" data-k="writing"><div class="ttop"><div class="ic">✦</div><span class="free">Free</span></div><span class="tcat">Writing</span><h3>Headline Tester</h3><p>Score and sharpen any title in seconds.</p><div class="tfoot"><span class="use">Use it <span class="arr">→</span></span><span class="runs">490k uses</span></div></a>
+      <a href="#" class="tool" data-k="business"><div class="ttop"><div class="ic">⬡</div><span class="free">Free</span></div><span class="tcat">Business</span><h3>Workflow Mapper</h3><p>Spot where AI fits in any process you describe.</p><div class="tfoot"><span class="use">Use it <span class="arr">→</span></span><span class="runs">220k uses</span></div></a>
+    </div>
+
+    <div class="cta-band">
+      <div class="cb-copy">
+        <h3>Want the tools that aren't free?</h3>
+        <p>Premium unlocks the deep calculators, saved history and team workspaces — plus everything else AGNUS makes.</p>
+      </div>
+      <a href="AGNUS - Home.html#premium" class="btn btn-dark">Explore Premium <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+        <p>Intelligence for the future of work. The trusted source for what's happening, which tools matter, and where AI is heading.</p>
+        <form class="fsearch" onsubmit="return false;"><input type="email" placeholder="Your email for the daily brief" aria-label="Email" /><button type="submit">Subscribe</button></form>
+      </div>
+      <div class="foot-col"><h5>Discover</h5><ul>
+        <li><a href="AGNUS - Review.html">AI Reviews</a></li>
+        <li><a href="AGNUS - Compare.html">AI Comparisons</a></li>
+        <li><a href="AGNUS - Intelligence.html">AI News</a></li>
+        <li><a href="AGNUS - Agents.html">AI Agents</a></li>
+        <li><a href="AGNUS - Tools.html">Free AI Tools</a></li>
+      </ul></div>
+      <div class="foot-col"><h5>Learn &amp; Build</h5><ul>
+        <li><a href="AGNUS - Academy.html">AI Academy</a></li>
+        <li><a href="AGNUS - Prompts.html">Prompt Library</a></li>
+        <li><a href="AGNUS - Business.html">Business Automation</a></li>
+        <li><a href="AGNUS - Business.html">AI for Business</a></li>
+        <li><a href="AGNUS - Home.html#premium"><span class="gd">Premium Membership</span></a></li>
+      </ul></div>
+      <div class="foot-col"><h5>Company</h5><ul>
+        <li><a href="#">About AGNUS</a></li>
+        <li><a href="#">Our methodology</a></li>
+        <li><a href="AGNUS - Awards.html">The AGNUS Awards</a></li>
+        <li><a href="#">Editorial standards</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="AGNUS - Dashboard.html" class="gd">Editorial Dashboard ↗</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 AGNUS · Truth before hype.</span><div class="fb-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Editorial Policy</a><a href="#">Advertise</a></div></div>
+  </div>
+</footer>
+
+<script src="image-slot.js"></script>
+<script>
+/* featured cost calculator */
+(function(){
+  const req=document.getElementById('reqRange'), tok=document.getElementById('tok'), rate=document.getElementById('rate');
+  const reqLabel=document.getElementById('reqLabel'), out=document.getElementById('costOut');
+  function calc(){
+    const r=+req.value, t=+tok.value, p=+rate.value;
+    const cost=(r*t/1e6)*p;
+    reqLabel.textContent=r.toLocaleString('en-US')+' requests / mo';
+    out.textContent='$'+Math.round(cost).toLocaleString('en-US');
+  }
+  [req,tok,rate].forEach(el=>el.addEventListener('input',calc)); calc();
+})();
+
+/* filter */
+(function(){
+  const chips=document.getElementById('chips'), tools=document.getElementById('tools'), count=document.getElementById('count');
+  const cards=Array.from(tools.children);
+  chips.addEventListener('click',e=>{
+    const c=e.target.closest('.chip'); if(!c) return;
+    chips.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===c));
+    const k=c.dataset.k; let n=0;
+    cards.forEach(card=>{ const show=k==='all'||card.dataset.k===k; card.classList.toggle('hidden',!show); if(show)n++; });
+    count.textContent=n;
+  });
+})();
+document.addEventListener('keydown',e=>{ if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){ e.preventDefault(); window.location.href='AGNUS - Home.html#top'; } });
+</script>
+</body>
+</html>

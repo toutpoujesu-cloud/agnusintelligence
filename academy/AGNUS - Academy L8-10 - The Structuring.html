@@ -1,0 +1,399 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Academy — L8-10 The Structuring</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#F8F6F2;--panel:#FFFFFF;--panel-2:#F2F0EB;--line:#E5E2D9;--line-2:#D1CEC4;--ink:#18202A;--ink-2:#4A5261;--ink-3:#8E96A2;--navy:#17263C;--navy-2:#0F1A28;--gold:#9A7633;--gold-light:#B59048;--pass:#1A7E4A;--pass-dim:rgba(26,126,74,.1);--danger:#B4432E;--danger-dim:#FEF0ED;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:Manrope,sans-serif;-webkit-font-smoothing:antialiased}
+.top-rail{background:var(--navy-2);color:#fff;display:flex;align-items:center;height:48px;padding:0 20px;gap:18px}
+.tr-brand{font-weight:800;font-size:13.5px}
+.tr-crumb{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.tr-title{font-size:13px;font-weight:700}
+.tr-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.prog-dots{display:flex;gap:5px}
+.prog-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.2)}
+.prog-dot.done{background:var(--gold-light)}
+.prog-dot.active{background:#fff}
+.tr-btn{font-family:Manrope,sans-serif;font-size:12px;font-weight:700;padding:7px 14px;border-radius:7px;border:1px solid rgba(255,255,255,.18);color:#fff;background:rgba(255,255,255,.07);cursor:pointer}
+.wrap{max-width:880px;margin:0 auto;padding:44px 24px 100px}
+.step-banner{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:28px}
+.sb-step{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.sb-count{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-3)}
+.hero{background:var(--navy);border-radius:16px;padding:32px 34px;display:grid;gap:16px;margin-bottom:24px}
+.hero h1{font-weight:800;font-size:26px;letter-spacing:-.026em;color:#fff;line-height:1.15}
+.hero p{font-family:Newsreader,serif;font-style:italic;font-size:16px;line-height:1.7;color:rgba(245,244,241,.78)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px 26px;margin-bottom:20px}
+.card h3{font-size:15px;font-weight:700;margin-bottom:10px}
+.card h4{font-size:13px;font-weight:700;margin:18px 0 10px;color:var(--navy)}
+.card p{font-size:14.5px;line-height:1.68;color:var(--ink-2)}
+.quote-block{border-left:3px solid var(--gold);background:var(--panel-2);border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0;font-family:Newsreader,serif;font-style:italic;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.data-table{width:100%;border-collapse:collapse;margin:12px 0 18px;font-size:12.5px}
+.data-table th{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);text-align:left;padding:9px 10px;border-bottom:1.5px solid var(--line-2)}
+.data-table td{padding:10px 10px;border-bottom:1px solid var(--panel-2);color:var(--ink-2);vertical-align:top}
+.data-table td:first-child{font-weight:700;color:var(--ink);white-space:nowrap}
+.prompt-box{background:#0D1420;border-radius:10px;padding:18px 20px;margin:14px 0;font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.75;color:#E8ECF1;white-space:pre-wrap}
+.tree-box{background:#0D1420;border-radius:10px;padding:18px 20px;margin:14px 0;font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.7;color:#E8ECF1;white-space:pre-wrap;overflow-x:auto}
+.tree-box .comment{color:#7A8699}
+.tree-box .highlight{color:#E8C888}
+.dos-donts{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
+.dd-col{border-radius:10px;padding:16px 18px}
+.dd-col.dont{background:var(--danger-dim);border:1px solid rgba(180,67,46,.25)}
+.dd-col.do{background:var(--pass-dim);border:1px solid rgba(26,126,74,.25)}
+.dd-col .dd-label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;margin-bottom:10px}
+.dd-col.dont .dd-label{color:var(--danger)}
+.dd-col.do .dd-label{color:var(--pass)}
+.dd-col ul{padding-left:16px;font-size:12.5px;color:var(--ink-2);line-height:1.7}
+.opt-list{display:grid;gap:10px;margin:16px 0}
+.opt{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border:1.5px solid var(--line-2);border-radius:10px;cursor:pointer}
+.opt:hover{border-color:var(--navy);background:#F9F8F5}
+.opt.correct{border-color:var(--pass);background:var(--pass-dim)}
+.opt.wrong{border-color:var(--danger);background:var(--danger-dim)}
+.opt .letter{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;color:var(--ink-3);flex:none;width:20px}
+.opt .text{font-size:14px;line-height:1.5}
+.feedback{display:none;margin-top:14px;padding:16px 18px;border-radius:10px;font-size:13.5px;line-height:1.6}
+.feedback.pass{display:block;background:var(--pass-dim);border-left:3px solid var(--pass);color:var(--ink)}
+.feedback.fail{display:block;background:var(--danger-dim);border-left:3px solid var(--danger);color:var(--ink)}
+.cta-row{display:flex;justify-content:flex-end;margin-top:24px}
+.btn{font-family:Manrope,sans-serif;font-weight:700;font-size:14px;padding:13px 26px;border-radius:10px;border:none;background:var(--navy);color:#fff;cursor:pointer}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn-back{background:none;color:var(--navy);border:1.5px solid var(--line-2);margin-right:auto}
+.pass-screen{display:none;text-align:center;padding:44px 30px;background:var(--navy);border-radius:16px;color:#fff}
+.pass-screen h2{font-size:22px;font-weight:800;margin-bottom:10px}
+.pass-screen p{font-size:13.5px;color:rgba(255,255,255,.7);margin-bottom:20px}
+.step{display:none}
+.step.active{display:block}
+</style>
+</head>
+<body>
+
+<header class="top-rail">
+  <span class="tr-brand">AGNUS Academy</span>
+  <span class="tr-crumb">Level 8 · Build an Application</span>
+  <span class="tr-title">L8-10 — The Structuring</span>
+  <div class="tr-right">
+    <div class="prog-dots" id="progDots"></div>
+    <button class="tr-btn" onclick="alert('Dashboard link')">← Dashboard</button>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- STEP 0 -->
+  <section class="step active" data-step="0">
+    <div class="step-banner"><span class="sb-step">Step 1 of 7 — Understand</span><span class="sb-count">4 min</span></div>
+    <div class="hero">
+      <h1>The blueprint becomes a physical architecture — a file system a developer, or Claude Code, can actually build from.</h1>
+      <p>Phase 1 gave the vision. Phase 2 gave the behavior and aesthetics. Now the application takes physical form: the diagram, the files and their names, the folders, and the coding languages that will be used.</p>
+    </div>
+    <div class="card">
+      <h3>Why the physical structure matters</h3>
+      <div class="quote-block">"Research shows Claude's performance degrades with added context, and guidelines recommend CLAUDE.md under 300 lines with only project-specific content."</div>
+      <p>The blueprint cannot just be dumped into Claude as context. It must be structured into a file system that Claude can navigate efficiently. The physical structure of the project determines how well Claude can build it.</p>
+    </div>
+    <div class="cta-row"><button class="btn" onclick="goStep(1)">See the recommended structure →</button></div>
+  </section>
+
+  <!-- STEP 1: scaffold structure -->
+  <section class="step" data-step="1">
+    <div class="step-banner"><span class="sb-step">Step 2 of 7 — What a Real Structure Looks Like</span><span class="sb-count">5 min</span></div>
+    <div class="card">
+      <h3>An example — for you to recognize, not to write</h3>
+      <p>You will never type any of this by hand. This is what Claude will hand back to you. Your only job is to look at it and ask: does this actually separate the app's rules from its code? Does it look like it belongs to <em>my</em> project, or could it be for any project?</p>
+      <div class="tree-box">your-project/
+├── CLAUDE.md                      <span class="comment"># Tech stack, dev commands, project conventions (~25 lines)</span>
+├── .claude/
+│   ├── rules/                     <span class="comment"># Project-specific patterns only</span>
+│   │   ├── api-contracts.md       <span class="comment"># Your actual endpoints</span>
+│   │   └── troubleshooting.md     <span class="comment"># Symptom → Diagnosis → Fix</span>
+│   ├── memory/                    <span class="comment"># Persists knowledge across sessions</span>
+│   │   ├── MEMORY.md              <span class="comment"># Index (always loaded by Claude Code)</span>
+│   │   └── *.md                   <span class="comment"># Topic files: debugging, patterns, gotchas</span>
+│   ├── commands/                  <span class="comment"># Slash commands: /review, /test, /lint</span>
+│   └── settings.local.json
+├── docs/
+│   └── decisions/                 <span class="comment"># Architecture Decision Records</span>
+└── scripts/                       <span class="comment"># Smoke tests with PASS/FAIL/WARN output</span></div>
+      <div class="quote-block">"Only include what Claude would get wrong without it." Claude already knows HTTP status codes, REST principles, and how to paginate. What Claude needs is project-specific information — your API base URL, your auth mechanism, your naming conventions, your migration commands, your specific gotchas.</div>
+    </div>
+    <div class="cta-row"><button class="btn btn-back" onclick="goStep(0)">← Back</button><button class="btn" onclick="goStep(2)">Step 1: Generate the diagram →</button></div>
+  </section>
+
+  <!-- STEP 2: Step 1 prompt -->
+  <section class="step" data-step="2">
+    <div class="step-banner"><span class="sb-step">Step 3 of 7 — Step 1: The Diagram</span><span class="sb-count">5 min</span></div>
+    <div class="card">
+      <h3>Ask Claude for the complete file system structure</h3>
+      <div class="prompt-box">Based on the blueprint we've created, I need you to generate the complete file system structure for this application. Provide:
+
+A visual diagram of the file system (tree structure)
+The name of every file and folder
+The purpose of each file and folder
+The coding languages that will be used
+The technology stack decisions
+
+Use standard project structures for the chosen framework. Make this a complete, production-ready architecture that any developer could understand and build from.</div>
+      <h4>Framework auto-detection (claude-structure)</h4>
+      <table class="data-table">
+        <thead><tr><th>Detected framework</th><th>What it adds</th></tr></thead>
+        <tbody>
+          <tr><td>Next.js</td><td>App Router patterns, component conventions, GraphQL (if detected)</td></tr>
+          <tr><td>Python FastAPI</td><td>API contracts, database patterns, pytest smoke</td></tr>
+          <tr><td>TypeScript Node</td><td>API contracts, /typecheck command</td></tr>
+          <tr><td>Fullstack</td><td>Architecture rules, cross-service contracts, 2 smoke tests</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="cta-row"><button class="btn btn-back" onclick="goStep(1)">← Back</button><button class="btn" onclick="goStep(3)">Step 2: File naming & purpose →</button></div>
+  </section>
+
+  <!-- STEP 3: Step 2 - layered examples -->
+  <section class="step" data-step="3">
+    <div class="step-banner"><span class="sb-step">Step 4 of 7 — Recognizing a Good Structure</span><span class="sb-count">6 min</span></div>
+    <div class="card">
+      <h3>Different apps, different shapes — here's how to tell they're both real</h3>
+      <p>You don't need to know what a "JPA Entity" or a "DTO" is. What matters is the pattern: real structures separate concerns into clearly-named folders instead of dumping everything into one file. If Claude gives you one giant file instead of this kind of breakdown, that's a sign to ask again.</p>
+      <div class="tree-box">src/main/java/com/yourproject/
+├── config/             <span class="comment"># Configuration classes (Security, Swagger, caching)</span>
+├── controller/         <span class="comment"># REST Controllers (API layer)</span>
+├── dto/                <span class="comment"># Data Transfer Objects (Request/Response)</span>
+├── entity/             <span class="comment"># JPA Entities (Database Access)</span>
+├── exception/          <span class="comment"># Global exception handling</span>
+├── repository/         <span class="comment"># Data access layer</span>
+├── security/           <span class="comment"># Auth logic</span>
+├── service/            <span class="comment"># Business logic layer</span>
+└── util/               <span class="comment"># Utility classes</span></div>
+      <h4>A different project, a different stack — same recognizable pattern</h4>
+      <div class="tree-box">your_project/
+├── README.md
+├── <span class="highlight">CLAUDE.md</span>                     <span class="comment"># Project rules Claude reads on every session</span>
+├── requirements.txt              <span class="comment"># Python dependencies</span>
+├── .gitignore
+├── <span class="highlight">.claude/</span>                      <span class="comment"># All Claude Code configuration</span>
+│   ├── settings.json             <span class="comment"># Shared permissions, hooks, model config</span>
+│   ├── settings.local.json       <span class="comment"># Your personal machine overrides (gitignored)</span>
+│   ├── skills/                   <span class="comment"># Reusable prompt packs</span>
+│   ├── commands/                 <span class="comment"># Custom slash commands (/deploy, /review)</span>
+│   └── agents/                   <span class="comment"># Sub-agents Claude can spawn</span>
+└── arc/                          <span class="comment"># Application source code</span>
+    ├── posts.py
+    ├── authors.py
+    ├── comments.py
+    ├── post_service.py
+    ├── author_service.py
+    └── comment_service.py</div>
+      <div class="quote-block">The key insight: the <b>.claude/</b> folder is separate from the application code (<b>arc/</b>). Claude's configuration lives alongside the code, not inside it.</div>
+    </div>
+    <div class="cta-row"><button class="btn btn-back" onclick="goStep(2)">← Back</button><button class="btn" onclick="goStep(4)">Step 3: Language & platform →</button></div>
+  </section>
+
+  <!-- STEP 4: Step 3 - language decision -->
+  <section class="step" data-step="4">
+    <div class="step-banner"><span class="sb-step">Step 5 of 7 — Letting Claude Choose the Stack</span><span class="sb-count">6 min</span></div>
+    <div class="card">
+      <h3>You don't pick the language — Claude recommends one, and explains why</h3>
+      <p>You're not expected to know what "FastAPI" or "Kotlin" mean. Ask Claude to recommend a stack based on your blueprint, and to explain its reasoning in plain terms you can actually evaluate — does the reasoning make sense for what your app needs to do?</p>
+      <table class="data-table">
+        <thead><tr><th>Application type</th><th>Recommended stack</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>Web Application</td><td>Python FastAPI + React/Next.js</td><td>Fast development, strong AI support</td></tr>
+          <tr><td>API Backend</td><td>Python FastAPI, Node.js, or Java Spring Boot</td><td>Strong typing, clear contracts</td></tr>
+          <tr><td>Mobile App</td><td>Swift (iOS) or Kotlin (Android)</td><td>Platform-native performance</td></tr>
+          <tr><td>Full Application</td><td>SwiftUI for iOS or Next.js for web</td><td>Rapid development with AI</td></tr>
+        </tbody>
+      </table>
+      <h4>Pre-documented platform "gotchas" (AppForge)</h4>
+      <table class="data-table">
+        <thead><tr><th>Platform</th><th>Pre-documented patterns</th></tr></thead>
+        <tbody>
+          <tr><td>Swift iOS</td><td>Swift 6.2, SwiftUI, CloudKit/CKShare war stories</td></tr>
+          <tr><td>Swift API</td><td>Feature modules, typed errors, env discipline, Docker</td></tr>
+          <tr><td>Nuxt Web</td><td>Nuxt 4: DS modules, i18n tooling, SEO/auth recipes, real tests</td></tr>
+          <tr><td>TypeScript SDK</td><td>Single-flight auth, tagged releases, exports map</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="cta-row"><button class="btn btn-back" onclick="goStep(3)">← Back</button><button class="btn" onclick="goStep(5)">Step 4: The full delivery →</button></div>
+  </section>
+
+  <!-- STEP 5: Step 4 - full project delivery -->
+  <section class="step" data-step="5">
+    <div class="step-banner"><span class="sb-step">Step 6 of 7 — Asking for the Full Document</span><span class="sb-count">6 min</span></div>
+    <div class="card">
+      <h3>The prompt that gets you the complete deliverable — copy this into Claude</h3>
+      <div class="prompt-box">Deliver the complete project structure as a set of files. For each file, provide:
+
+The full path and filename
+The purpose of the file
+A template or skeleton of its content
+Any placeholders that need to be filled in
+
+Also provide:
+The language choices and reasoning
+The framework choices and reasoning
+The database choices and reasoning
+The deployment platform choices and reasoning</div>
+      <h4>Backend and frontend are usually two separate structures — another thing to check for</h4>
+      <div class="tree-box">app/
+├── controllers/
+│   └── application_controller.rb
+├── models/
+│   ├── todo.rb
+│   └── category.rb
+├── serializers/
+│   ├── todo_serializer.rb
+│   └── category_serializer.rb
+├── db/
+│   ├── migrate/
+│   └── schema.rb
+└── config.ru
+
+<span class="comment">-- frontend --</span>
+my-app-frontend/
+├── src/
+│   ├── components/
+│   ├── App.js
+│   └── index.js
+└── package.json</div>
+      <h4>Ask for the reasoning too, in writing — Architecture Decision Records</h4>
+      <div class="tree-box">docs/
+└── decisions/
+    ├── 001-use-fastapi.md
+    ├── 002-use-postgres.md
+    └── 003-use-redis-caching.md</div>
+      <p>ADRs capture significant design decisions, making the reasoning behind the structure explicit and persistent.</p>
+    </div>
+    <div class="cta-row"><button class="btn btn-back" onclick="goStep(4)">← Back</button><button class="btn" onclick="goStep(6)">Step 5: CLAUDE.md discipline →</button></div>
+  </section>
+
+  <!-- STEP 6: Step 5 - CLAUDE.md, practice, pass -->
+  <section class="step" data-step="6">
+    <div class="step-banner"><span class="sb-step">Step 7 of 7 — Judging the Result</span><span class="sb-count">7 min</span></div>
+    <div class="card">
+      <h3>One file matters more than the rest: CLAUDE.md — and you can judge it without knowing code</h3>
+      <p>CLAUDE.md is the note Claude Code will read every single time it works on your project later. You don't need to write it — Claude does. But you need to know what "good" looks like, so you can tell Claude to fix it if it isn't: short (under ~300 lines) and specific to YOUR project, never generic.</p>
+      <table class="data-table">
+        <thead><tr><th>Section</th><th>What it includes</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>Project Overview</td><td>Name, description, purpose</td><td>Context</td></tr>
+          <tr><td>Tech Stack</td><td>Language, frameworks, databases</td><td>What to use</td></tr>
+          <tr><td>Dev Commands</td><td>Install, test, run, lint</td><td>How to work</td></tr>
+          <tr><td>Conventions</td><td>Naming, formatting, patterns</td><td>Consistency</td></tr>
+          <tr><td>Project-Specific Gotchas</td><td>Common pitfalls, fixes</td><td>Efficiency</td></tr>
+        </tbody>
+      </table>
+      <div class="dos-donts">
+        <div class="dd-col dont">
+          <div class="dd-label">Should NOT be in CLAUDE.md</div>
+          <ul><li>HTTP status code tables — Claude knows REST</li><li>Pydantic/Zod examples — Claude knows these libraries</li><li>Generic security advice — Claude knows basics</li><li>Pagination patterns — Claude knows how to paginate</li><li>YAML templates — Claude can write from scratch</li></ul>
+        </div>
+        <div class="dd-col do">
+          <div class="dd-label">SHOULD be in CLAUDE.md</div>
+          <ul><li>Your actual API base URL and auth mechanism</li><li>Your specific migration commands</li><li>Project-specific gotchas (e.g. "Cilium BPF map overflow — symptom → diagnosis → fix")</li><li>Your naming conventions and required labels</li><li>Project-specific conventions Claude can't infer from code</li></ul>
+        </div>
+      </div>
+      <h4>What you walk away from this module holding</h4>
+      <table class="data-table">
+        <thead><tr><th>Section</th><th>What it contains</th></tr></thead>
+        <tbody>
+          <tr><td>File System Diagram</td><td>Complete tree structure</td></tr>
+          <tr><td>File Inventory</td><td>Every file, its path, and its purpose</td></tr>
+          <tr><td>Technology Stack</td><td>Languages, frameworks, databases, platforms with reasoning</td></tr>
+          <tr><td>CLAUDE.md</td><td>Project-specific rules Claude reads every session</td></tr>
+          <tr><td>.claude/ Configuration</td><td>Skills, commands, agents, rules, memory</td></tr>
+          <tr><td>Architecture Decision Records</td><td>Key design decisions with reasoning</td></tr>
+        </tbody>
+      </table>
+      <div class="quote-block">"The hottest new programming language is English." You never wrote a line of code in this module — you wrote (in conversation with Claude) the specification that Claude Code will execute later. The quality of that specification determines the quality of the build.</div>
+    </div>
+
+    <div class="card">
+      <h3>Practice: without knowing any code, which item still clearly belongs in CLAUDE.md?</h3>
+      <div class="opt-list" id="practiceOpts">
+        <div class="opt" data-correct="false" onclick="pickPractice(this)"><span class="letter">A</span><span class="text">A full table of HTTP status codes and their meanings.</span></div>
+        <div class="opt" data-correct="true" onclick="pickPractice(this)"><span class="letter">B</span><span class="text">The project's actual API base URL, auth mechanism, and a specific known gotcha with its fix.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPractice(this)"><span class="letter">C</span><span class="text">A generic explanation of REST principles.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPractice(this)"><span class="letter">D</span><span class="text">A full YAML templating tutorial.</span></div>
+      </div>
+      <div class="feedback" id="practiceFeedback"></div>
+    </div>
+
+    <div class="card" id="passCard" style="display:none">
+      <h3>New scenario — no hints</h3>
+      <p style="margin-bottom:14px">Claude hands you a 900-line CLAUDE.md, full of generic explanations that could apply to any project — but it says nothing about your actual database commands or the one bug your project keeps running into. Without reading a line of it as code, what should you tell Claude?</p>
+      <div class="opt-list" id="passOpts">
+        <div class="opt" data-correct="true" onclick="pickPass(this)"><span class="letter">A</span><span class="text">Ask Claude to cut it to well under 300 lines, remove the generic content, and add the specific commands and gotchas that make this project different from any other.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">B</span><span class="text">Accept it as-is — more detail in CLAUDE.md always helps, regardless of length.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">C</span><span class="text">Ask Claude to shorten it, but leave the generic REST/Zod content exactly as it is.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">D</span><span class="text">Tell Claude to delete the file entirely — CLAUDE.md should never exist.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">E</span><span class="text">Move the file into the .claude/ folder — the content doesn't need to change.</span></div>
+      </div>
+      <div class="feedback" id="passFeedback"></div>
+    </div>
+    <div class="cta-row" id="ctaPractice"><button class="btn btn-back" onclick="goStep(5)">← Back</button><button class="btn" id="practiceNext" onclick="showPassCard()" disabled>Continue →</button></div>
+    <div class="pass-screen" id="passScreen">
+      <h2>Module L8-10 complete</h2>
+      <p>Structuring discipline confirmed.</p>
+      <button class="tr-btn" onclick="alert('Return to dashboard')">Return to dashboard</button>
+    </div>
+  </section>
+
+</div>
+
+<script>
+const TOTAL_STEPS = 7;
+function renderDots(active){
+  document.getElementById('progDots').innerHTML = Array.from({length:TOTAL_STEPS}).map((_,i)=>
+    '<div class="prog-dot '+(i<active?'done':i===active?'active':'')+'"></div>').join('');
+}
+function goStep(i){
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  document.querySelector('.step[data-step="'+i+'"]').classList.add('active');
+  renderDots(i);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+renderDots(0);
+
+function showPassCard(){
+  document.getElementById('passCard').style.display = 'block';
+  document.getElementById('ctaPractice').style.display = 'none';
+  window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
+}
+
+function pickPractice(el){
+  document.querySelectorAll('#practiceOpts .opt').forEach(o=>{o.onclick=null;});
+  const correct = el.dataset.correct === 'true';
+  el.classList.add(correct?'correct':'wrong');
+  const fb = document.getElementById('practiceFeedback');
+  fb.className = 'feedback ' + (correct?'pass':'fail');
+  fb.textContent = correct
+    ? "Correct. The test isn't whether you understand the technical term — it's whether the fact is specific to THIS project. Your project's own URL, auth setup, and a bug you've actually hit are specific. Status codes, common library syntax, and general tutorials are the same for every project, so Claude doesn't need them written down."
+    : "Not quite. Ask yourself: is this fact true of every project, or only true of THIS one? A generic tutorial or list of status codes applies to any project. Your project's real URL, real auth setup, and a bug you've actually run into are specific to yours — that's the difference.";
+  document.getElementById('practiceNext').disabled = false;
+}
+function pickPass(el){
+  document.querySelectorAll('#passOpts .opt').forEach(o=>{o.onclick=null;});
+  const correct = el.dataset.correct === 'true';
+  el.classList.add(correct?'correct':'wrong');
+  const fb = document.getElementById('passFeedback');
+  fb.className = 'feedback ' + (correct?'pass':'fail');
+  fb.textContent = correct
+    ? "Correct — L8-10 complete. You don't need to read the code to catch this problem — you just need to know the rule: cut it down, strip the generic filler, and make Claude add back what's actually unique to your project. Ready for L8-11: The Visual Prototype."
+    : "Not quite. The fix has two parts, not one: shorten it AND swap generic content for project-specific facts. Doing only one half leaves the file still not doing its job.";
+  if(correct){ setTimeout(()=>{ document.getElementById('passScreen').style.display='block'; renderDots(7); }, 600); }
+}
+</script>
+</body>
+</html>

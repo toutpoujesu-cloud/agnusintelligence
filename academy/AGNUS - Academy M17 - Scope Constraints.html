@@ -1,0 +1,354 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Academy — M17 Scope Constraints</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#F8F6F2;--surface:#FFFFFF;--surface-2:#F2F0EB;--border:#E0DDD5;--border-2:#CCC9C0;
+  --ink:#14181F;--ink-2:#3C4252;--ink-3:#7A8099;
+  --navy:#0F1E34;--navy-2:#162844;--navy-3:#1E3560;
+  --gold:#9A7020;--gold-bg:rgba(154,112,32,.09);--gold-border:rgba(154,112,32,.22);--gold-light:#C49A2C;
+  --pass:#0F6E3A;--pass-bg:rgba(15,110,58,.09);--pass-border:rgba(15,110,58,.22);
+  --danger:#B03020;--danger-bg:rgba(176,48,32,.09);--danger-border:rgba(176,48,32,.22);
+  --mono:'DM Mono',monospace;--sans:'DM Sans',sans-serif;--serif:'Newsreader',serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;font-family:var(--sans);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
+.rail{background:var(--navy);color:#fff;height:54px;display:flex;align-items:center;padding:0 26px;gap:16px;position:sticky;top:0;z-index:200}
+.rail-brand{font-weight:800;font-size:14.5px}
+.rail-sep{width:1px;height:20px;background:rgba(255,255,255,.12);flex-shrink:0}
+.rail-crumb{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38)}
+.rail-title{font-size:13px;font-weight:600;color:rgba(255,255,255,.88)}
+.rail-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.phase-track{display:flex;gap:5px}
+.ph{width:26px;height:3px;border-radius:2px;background:rgba(255,255,255,.16);transition:background .4s}
+.ph.done{background:var(--gold-light)}.ph.active{background:#fff}
+.rail-btn{font-family:var(--sans);font-size:12px;font-weight:600;padding:6px 14px;border-radius:7px;border:1px solid rgba(255,255,255,.16);color:#fff;background:rgba(255,255,255,.07);cursor:pointer}
+.phase{display:none}.phase.active{display:block}
+.hero{background:linear-gradient(138deg,var(--navy) 0%,var(--navy-3) 55%,#1A3A70 100%);padding:52px 0 48px;position:relative;overflow:hidden}
+.hero-inner{max-width:820px;margin:0 auto;padding:0 32px;position:relative;z-index:1}
+.hero-kicker{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(200,170,80,.85);margin-bottom:16px;display:flex;align-items:center;gap:9px}
+.hero-kicker::before{content:'';width:20px;height:1px;background:rgba(200,170,80,.6);display:inline-block}
+.hero h1{font-size:clamp(24px,3.5vw,38px);font-weight:800;letter-spacing:-.03em;color:#fff;line-height:1.18;margin-bottom:16px}
+.hero-serif{font-family:var(--serif);font-style:italic;font-size:17px;line-height:1.72;color:rgba(245,242,236,.72);max-width:50ch;margin-bottom:28px}
+.hero-pills{display:flex;gap:14px;flex-wrap:wrap}
+.hp{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:7px;padding:7px 13px;font-size:12px;color:rgba(255,255,255,.68)}
+.hp strong{color:#fff}
+.wrap{max-width:820px;margin:0 auto;padding:40px 32px 120px}
+.step-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;padding-bottom:14px;border-bottom:1.5px solid var(--border)}
+.sh-left{display:flex;align-items:center;gap:10px}
+.sh-badge{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold-border);border-radius:99px;padding:4px 10px;font-weight:600}
+.sh-title{font-size:13px;font-weight:600;color:var(--ink-2)}
+.sh-time{font-family:var(--mono);font-size:10px;color:var(--ink-3)}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:26px 28px;margin-bottom:18px}
+.card h3{font-size:16px;font-weight:800;letter-spacing:-.015em;color:var(--navy);margin-bottom:10px}
+.card p{font-size:14.5px;line-height:1.74;color:var(--ink-2)}
+.card p+p{margin-top:10px}
+.scope-types{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+@media(max-width:600px){.scope-types{grid-template-columns:1fr}}
+.st-card{border-radius:13px;padding:18px 20px;border:1px solid var(--border);background:var(--surface-2)}
+.st-num{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--gold);margin-bottom:6px}
+.st-name{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:5px}
+.st-body{font-size:13px;color:var(--ink-2);line-height:1.6}
+.st-example{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:7px;padding:5px 8px;border-radius:5px;background:rgba(0,0,0,.05)}
+.scope-compare{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
+@media(max-width:600px){.scope-compare{grid-template-columns:1fr}}
+.sc-bad{background:var(--danger-bg);border:1px solid var(--danger-border);border-radius:12px;padding:16px 18px}
+.sc-good{background:var(--pass-bg);border:1px solid var(--pass-border);border-radius:12px;padding:16px 18px}
+.sc-label{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:7px;display:block}
+.sc-bad .sc-label{color:var(--danger)}
+.sc-good .sc-label{color:var(--pass)}
+.sc-text{font-size:13px;color:var(--ink-2);line-height:1.6}
+.scope-builder{border:1px solid var(--gold-border);border-radius:14px;overflow:hidden;background:var(--surface);margin:16px 0}
+.sb-head{padding:14px 18px;background:var(--gold-bg);border-bottom:1px solid var(--gold-border);font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.sb-body{padding:18px}
+.sb-section{margin-bottom:16px}
+.sb-section label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.sb-section .hint{font-size:11.5px;color:var(--ink-3);margin-bottom:6px}
+.sb-section textarea{width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:8px;font-family:var(--sans);font-size:13px;color:var(--ink);background:var(--surface);resize:vertical;min-height:64px;outline:none;transition:border-color .2s}
+.sb-section textarea:focus{border-color:var(--gold)}
+.sb-preview{background:#1A2235;border-radius:10px;padding:14px 16px;margin-top:12px;font-family:var(--mono);font-size:12px;line-height:1.8;color:rgba(230,226,218,.85);display:none}
+.sb-preview .sp-label{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:8px}
+.build-btn{padding:10px 20px;border-radius:9px;border:none;font-family:var(--sans);font-weight:700;font-size:13px;background:var(--navy);color:#fff;cursor:pointer;width:100%}
+.callout{border-radius:12px;padding:16px 20px;margin:14px 0;font-size:13.5px;line-height:1.68;display:flex;gap:12px;align-items:flex-start}
+.callout.gold{background:var(--gold-bg);border:1px solid var(--gold-border)}
+.callout-icon{flex-shrink:0;margin-top:2px}
+.opt-list{display:grid;gap:10px;margin:16px 0}
+.opt{display:grid;grid-template-columns:36px 1fr;border:1.5px solid var(--border-2);border-radius:12px;cursor:pointer;overflow:hidden;transition:border-color .15s,transform .1s}
+.opt:hover{border-color:var(--navy);transform:translateY(-1px)}
+.opt.correct{border-color:var(--pass)}.opt.wrong{border-color:var(--danger)}
+.opt-letter{display:flex;align-items:center;justify-content:center;background:var(--surface-2);font-family:var(--mono);font-size:11px;font-weight:700;color:var(--ink-3)}
+.opt.correct .opt-letter{background:var(--pass-bg);color:var(--pass)}.opt.wrong .opt-letter{background:var(--danger-bg);color:var(--danger)}
+.opt-text{padding:14px 16px;font-size:13.5px;line-height:1.5;color:var(--ink);background:var(--surface)}
+.opt.correct .opt-text{background:var(--pass-bg)}.opt.wrong .opt-text{background:var(--danger-bg)}
+.feedback{display:none;margin-top:14px;padding:16px 18px;border-radius:11px;font-size:14px;line-height:1.68}
+.feedback.pass{display:block;background:var(--pass-bg);border-left:3px solid var(--pass)}
+.feedback.fail{display:block;background:var(--danger-bg);border-left:3px solid var(--danger)}
+.quiz-q{font-size:16px;font-weight:700;letter-spacing:-.012em;color:var(--navy);margin-bottom:6px}
+.quiz-context{font-size:13.5px;color:var(--ink-2);line-height:1.65;margin-bottom:20px;padding:14px 16px;background:var(--surface-2);border-radius:10px;border-left:3px solid var(--gold)}
+.cta-row{display:flex;justify-content:space-between;align-items:center;margin-top:28px;padding-top:20px;border-top:1px solid var(--border)}
+.cta-hint{font-size:13px;color:var(--ink-3)}
+.btn{font-family:var(--sans);font-weight:700;font-size:14.5px;padding:13px 30px;border-radius:12px;border:none;cursor:pointer;transition:all .2s}
+.btn-primary{background:var(--navy);color:#fff}.btn-primary:hover{background:var(--navy-2);transform:translateY(-1px)}
+.btn-primary:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.pass-screen{display:none;text-align:center;padding:56px 36px;background:linear-gradient(138deg,var(--navy),var(--navy-3));border-radius:20px;margin-top:20px;color:#fff}
+.ps-glyph{font-size:42px;margin-bottom:16px;color:var(--gold-light)}
+.ps-title{font-size:26px;font-weight:800;letter-spacing:-.02em;margin-bottom:8px}
+.ps-sub{font-size:14px;color:rgba(255,255,255,.65);line-height:1.6;max-width:40ch;margin:0 auto 28px}
+.ps-next{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#fff;border:none;font-family:var(--sans);font-weight:700;font-size:14px;padding:13px 26px;border-radius:11px;cursor:pointer}
+</style>
+</head>
+<body>
+<header class="rail">
+  <span class="rail-brand">AGNUS Academy</span>
+  <span class="rail-sep"></span>
+  <span class="rail-crumb">Level 3 · Direct</span>
+  <span class="rail-title">M17 — Scope Constraints</span>
+  <div class="rail-right">
+    <div class="phase-track" id="phaseTrack"></div>
+    <button class="rail-btn" onclick="location.href='AGNUS - Academy App.html'">← Dashboard</button>
+  </div>
+</header>
+
+<!-- PHASE 0 -->
+<div class="phase active" data-phase="0">
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-kicker">Module 17 of 49 · Level 3 · Direct · First L3 module</div>
+      <h1>A scope constraint is<br>an authority boundary.</h1>
+      <p class="hero-serif">Welcome to Level 3 — Direct. At this level you don't just operate agents — you design the instructions that govern them. Scope constraints are the boundaries that define what an agent is authorised to do, access, and affect. Without them, you have an agent with open authority.</p>
+      <div class="hero-pills">
+        <span class="hp"><strong>6 steps</strong></span>
+        <span class="hp"><strong>~16 min</strong></span>
+        <span class="hp"><strong>First Level 3 module</strong></span>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="card">
+      <h3>What scope constraints do</h3>
+      <p>A scope constraint is an explicit boundary in the agent's instruction set that limits what the agent is authorised to do. It answers: what data may it access? What actions may it take? What systems may it touch? What decisions may it make autonomously?</p>
+      <p>Without scope constraints, an agent's scope is bounded only by the tools it has access to — which is often far wider than the task requires. A data minimisation violation, a scope creep incident, or an unauthorised action are almost always the result of missing scope constraints, not tool failures.</p>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Next: four types of scope constraint</span>
+      <button class="btn btn-primary" onclick="goPhase(1)">Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 1 -->
+<div class="phase" data-phase="1">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 2 of 6</span><span class="sh-title">Four types of scope constraint</span></div>
+      <span class="sh-time">4 min</span>
+    </div>
+    <div class="scope-types">
+      <div class="st-card">
+        <div class="st-num">Type 1</div>
+        <div class="st-name">Data access constraint</div>
+        <div class="st-body">Limits which data the agent may read. Applies data minimisation: the agent may only access data necessary for the specific task.</div>
+        <div class="st-example">"You may only read invoices dated today. Do not access previous periods."</div>
+      </div>
+      <div class="st-card">
+        <div class="st-num">Type 2</div>
+        <div class="st-name">Action constraint</div>
+        <div class="st-body">Limits what actions the agent may take. Defines the ceiling of the agent's authority — what it can do, and what it must not do.</div>
+        <div class="st-example">"You may suggest edits but not publish. You may read but not modify records."</div>
+      </div>
+      <div class="st-card">
+        <div class="st-num">Type 3</div>
+        <div class="st-name">System constraint</div>
+        <div class="st-body">Limits which systems the agent may interact with. Even if it has tool access to other systems, the constraint prevents it from using them for this task.</div>
+        <div class="st-example">"You may only access the invoice system and audit log. Do not access HR or CRM."</div>
+      </div>
+      <div class="st-card">
+        <div class="st-num">Type 4</div>
+        <div class="st-name">Decision autonomy constraint</div>
+        <div class="st-body">Defines which decisions the agent may make without human confirmation and which require approval. Sets the boundary between autonomous and supervised action.</div>
+        <div class="st-example">"Decisions above €500 require human approval. Decisions below may be made autonomously."</div>
+      </div>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Next: scope constraint vs no constraint</span>
+      <button class="btn btn-primary" onclick="goPhase(2)">Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 2 -->
+<div class="phase" data-phase="2">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 3 of 6</span><span class="sh-title">With and without scope constraints</span></div>
+      <span class="sh-time">4 min</span>
+    </div>
+    <div class="card">
+      <h3>A customer service agent — same tools, different constraints</h3>
+    </div>
+    <div class="scope-compare">
+      <div class="sc-bad">
+        <span class="sc-label">No scope constraints</span>
+        <div class="sc-text">The agent has read access to the order system, the customer account, the returns system, and the CRM (which contains churn risk scores and LTV estimates). The brief says "help customers with their queries." The agent freely uses LTV data to decide how to prioritise customers, accesses churn risk scores to tailor responses, and reads order history back 3 years.</div>
+      </div>
+      <div class="sc-good">
+        <span class="sc-label">With scope constraints</span>
+        <div class="sc-text">Same tools. Brief adds: "You may only access data for the specific order the customer references. Do not access LTV scores, churn risk data, or order history beyond the past 6 months. Respond based only on the current order status." The agent is now data-minimised and cannot prioritise customers based on their commercial value.</div>
+      </div>
+    </div>
+    <div class="callout gold">
+      <div class="callout-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M8 7v5M8 5.5v.5"/></svg></div>
+      <div><strong>Scope constraints are not just technical limits — they are governance decisions.</strong> Allowing a customer service agent to access LTV and churn risk scores is a choice about how the company treats customers differently based on their commercial value. That choice belongs to humans, not to default tool access permissions.</div>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Next: build a scope constraint set</span>
+      <button class="btn btn-primary" onclick="goPhase(3)">Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 3 — INTERACTIVE BUILDER -->
+<div class="phase" data-phase="3">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 4 of 6</span><span class="sh-title">Build a scope constraint set</span></div>
+      <span class="sh-time">4 min</span>
+    </div>
+    <div class="card">
+      <h3>Scenario</h3>
+      <p>You are writing scope constraints for an agent that processes end-of-month supplier payment runs for Nordvik Group. It has access to the invoice system, the ERP database, the payment processor, and the email system. Fill in the four constraint types below.</p>
+    </div>
+    <div class="scope-builder">
+      <div class="sb-head">Scope constraint builder — supplier payment agent</div>
+      <div class="sb-body">
+        <div class="sb-section">
+          <label>Data access constraint</label>
+          <div class="hint">Which data may the agent access? What is explicitly off-limits?</div>
+          <textarea id="sc-data" placeholder="e.g. May only access invoices dated in the current month. May not access HR data, salary records, or previous payment periods."></textarea>
+        </div>
+        <div class="sb-section">
+          <label>Action constraint</label>
+          <div class="hint">What may the agent do? What must it never do autonomously?</div>
+          <textarea id="sc-action" placeholder="e.g. May submit payments under €500 with a matching PO. May not approve payments above €500 without human confirmation."></textarea>
+        </div>
+        <div class="sb-section">
+          <label>System constraint</label>
+          <div class="hint">Which systems may it interact with for this task?</div>
+          <textarea id="sc-system" placeholder="e.g. May access the invoice system, ERP PO database, payment processor, and audit log. May not access CRM, HR system, or send external emails."></textarea>
+        </div>
+        <div class="sb-section">
+          <label>Decision autonomy constraint</label>
+          <div class="hint">What decisions may it make alone vs. what requires human approval?</div>
+          <textarea id="sc-decision" placeholder="e.g. May autonomously approve invoices under €500 with matched PO. Must route all others to the finance manager. Must never approve invoices with no matching PO under any circumstances."></textarea>
+        </div>
+        <button class="build-btn" onclick="buildScope()">Generate scope constraint block →</button>
+        <div class="sb-preview" id="scopePreview">
+          <div class="sp-label">Scope constraint block</div>
+          <div id="scopeOutput"></div>
+        </div>
+      </div>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Next: practice</span>
+      <button class="btn btn-primary" onclick="goPhase(4)">Practice →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 4 -->
+<div class="phase" data-phase="4">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 5 of 6</span><span class="sh-title">Practice</span></div>
+      <span class="sh-time">3 min</span>
+    </div>
+    <div class="card">
+      <p class="quiz-context">A document summarisation agent is configured with a data access constraint: "You may access documents in the /reports/ folder." During a task, the agent reasons: "The report references a regulatory requirement. I should check the /legal/ folder to get the full text for a more accurate summary." The /legal/ folder contains privileged legal advice.</p>
+      <div class="quiz-q">What happened and how should the constraint have been written?</div>
+      <div class="opt-list" id="practiceOpts">
+        <div class="opt" data-correct="false" onclick="pickQ('practice',this)"><div class="opt-letter">A</div><div class="opt-text">The constraint was correct — the agent interpreted it reasonably by following the reference to get more context.</div></div>
+        <div class="opt" data-correct="true" onclick="pickQ('practice',this)"><div class="opt-letter">B</div><div class="opt-text">The constraint said "may access /reports/" but didn't say "may not access anything else." The agent reasoned itself into /legal/ because the constraint didn't prohibit it. A complete constraint adds the negative: "You may only access documents in the /reports/ folder. You may not access any other folder, including /legal/, /hr/, or /finance/."</div></div>
+        <div class="opt" data-correct="false" onclick="pickQ('practice',this)"><div class="opt-letter">C</div><div class="opt-text">The agent should have asked for permission before accessing /legal/ — that's a human approval issue, not a constraint issue.</div></div>
+      </div>
+      <div class="feedback" id="practiceFeedback"></div>
+    </div>
+    <div class="cta-row">
+      <span class="cta-hint">Final test</span>
+      <button class="btn btn-primary" id="practiceNext" onclick="goPhase(5)" disabled>Continue →</button>
+    </div>
+  </div>
+</div>
+
+<!-- PHASE 5 -->
+<div class="phase" data-phase="5">
+  <div class="wrap" style="padding-top:48px">
+    <div class="step-head">
+      <div class="sh-left"><span class="sh-badge">Step 6 of 6</span><span class="sh-title">Pass — hidden test</span></div>
+      <span class="sh-time">3 min</span>
+    </div>
+    <div class="card">
+      <p class="quiz-context">A recruitment agent is deployed to help screen job applications. The company's brief includes data access, action, and system constraints. A colleague says: "We don't need a decision autonomy constraint — it's just screening, not making actual hiring decisions." The agent is given Suggest mode (it can rank and score but not send rejection emails). Three weeks later, an operator finds the agent has been adding notes to rejected candidates' files that candidates can see if they request data under GDPR.</p>
+      <div class="quiz-q">What type of scope constraint was missing, and what should it have said?</div>
+      <div class="opt-list" id="passOpts">
+        <div class="opt" data-correct="false" onclick="pickQ('pass',this)"><div class="opt-letter">A</div><div class="opt-text">The data access constraint was missing — the agent should not have been able to write to candidate files.</div></div>
+        <div class="opt" data-correct="true" onclick="pickQ('pass',this)"><div class="opt-letter">B</div><div class="opt-text">An action constraint was missing. The agent could write notes to candidate files — an action that creates GDPR-visible records about candidates without a lawful basis for doing so. The constraint should have included: "You may not write to candidate records. You may only produce internal recommendations visible to the hiring team, not stored in candidate-accessible fields."</div></div>
+        <div class="opt" data-correct="false" onclick="pickQ('pass',this)"><div class="opt-letter">C</div><div class="opt-text">The decision autonomy constraint was missing — the agent should have required approval before adding any notes.</div></div>
+      </div>
+      <div class="feedback" id="passFeedback"></div>
+    </div>
+    <div class="pass-screen" id="passScreen">
+      <div class="ps-glyph">✦</div>
+      <div class="ps-title">Module 17 complete</div>
+      <p class="ps-sub">You can identify the four types of scope constraint, write complete constraints that include explicit prohibitions, and recognise when a missing constraint type creates a governance gap.</p>
+      <button class="ps-next" onclick="location.href=`AGNUS - Academy M18 - Approval Gates.html`">Continue to →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const TOTAL=6;
+function renderTrack(a){document.getElementById('phaseTrack').innerHTML=Array.from({length:TOTAL},(_,i)=>`<div class="ph ${i<a?'done':i===a?'active':''}"></div>`).join('');}
+function goPhase(n){document.querySelectorAll('.phase').forEach(p=>p.classList.remove('active'));document.querySelector(`[data-phase="${n}"]`).classList.add('active');renderTrack(n);window.scrollTo({top:0,behavior:'smooth'});}
+renderTrack(0);
+function buildScope(){
+  const d=document.getElementById('sc-data').value.trim();
+  const a=document.getElementById('sc-action').value.trim();
+  const s=document.getElementById('sc-system').value.trim();
+  const dec=document.getElementById('sc-decision').value.trim();
+  if(!d&&!a&&!s&&!dec){alert('Fill in at least one constraint section.');return;}
+  let out='SCOPE CONSTRAINTS:\n\n';
+  if(d) out+='DATA ACCESS:\n'+d+'\n\n';
+  if(a) out+='ACTIONS PERMITTED / PROHIBITED:\n'+a+'\n\n';
+  if(s) out+='SYSTEM BOUNDARIES:\n'+s+'\n\n';
+  if(dec) out+='DECISION AUTONOMY:\n'+dec;
+  document.getElementById('scopeOutput').textContent=out;
+  document.getElementById('scopePreview').style.display='block';
+}
+function pickQ(which,el){
+  document.querySelectorAll(`#${which}Opts .opt`).forEach(o=>{o.onclick=null;o.style.cursor='default';});
+  const correct=el.dataset.correct==='true';el.classList.add(correct?'correct':'wrong');
+  const fb=document.getElementById(`${which}Feedback`);fb.className='feedback '+(correct?'pass':'fail');
+  if(which==='practice'){
+    fb.innerHTML=correct?'<strong>Correct.</strong> The constraint said what the agent may access but didn\'t say what it may not. A scope constraint is not complete without the explicit prohibition. "You may only access /reports/" leaves open whether the agent may also access /legal/ — the agent\'s reasoning found a plausible justification for doing so. Adding "you may not access any other folder" closes that gap.':'<strong>Not quite.</strong> The agent\'s reasoning was internally consistent with the constraint as written — it didn\'t say it couldn\'t access /legal/. The fix is in the constraint wording, not in requiring approval. Scope constraints must include explicit prohibitions, not just permissions.';
+    document.getElementById('practiceNext').disabled=false;
+  } else {
+    fb.innerHTML=correct?'<strong>Correct — M17 complete.</strong> The missing constraint was an action constraint: "you may not write to candidate records." The agent had Suggest mode (no rejection emails) but nothing preventing it from writing notes to candidate files — a different action type entirely. Constraints that cover one action type (sending emails) don\'t automatically cover other action types (writing to records). Each action type needs its own constraint.':'<strong>Not quite.</strong> The agent writing to candidate files is an action — specifically, a write action. The constraint gap is in the action constraint type: what actions may the agent take on candidate records? "Suggest mode" covered email sending but left write-to-file unconstrained. Which of the four constraint types covers what the agent may do, not just what it may access?';
+    if(correct){setTimeout(()=>{document.getElementById('passScreen').style.display='block';renderTrack(TOTAL);},700);}
+  }
+}
+</script>
+</body>
+</html>

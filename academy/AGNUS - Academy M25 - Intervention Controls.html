@@ -1,0 +1,169 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Academy — M25 Intervention Controls</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#F8F6F2;--canvas:#FDFCFA;--panel:#FFFFFF;--panel-2:#F2F0EB;--line:#E5E2D9;--line-2:#D1CEC4;--ink:#18202A;--ink-2:#4A5261;--ink-3:#8E96A2;--navy:#17263C;--navy-2:#0F1A28;--gold:#9A7633;--gold-light:#B59048;--gold-soft:#F6F0E3;--gold-dim:rgba(154,118,51,.13);--pass:#1A7E4A;--pass-dim:rgba(26,126,74,.1);}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font-family:Manrope,sans-serif;-webkit-font-smoothing:antialiased}
+.top-rail{background:var(--navy-2);color:#fff;display:flex;align-items:center;height:48px;padding:0 20px;gap:18px}
+.tr-brand{font-weight:800;font-size:13.5px}
+.tr-crumb{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.tr-title{font-size:13px;font-weight:700}
+.tr-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.prog-dots{display:flex;gap:5px}
+.prog-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.2)}
+.prog-dot.done{background:var(--gold-light)}
+.prog-dot.active{background:#fff}
+.tr-btn{font-family:Manrope,sans-serif;font-size:12px;font-weight:700;padding:7px 14px;border-radius:7px;border:1px solid rgba(255,255,255,.18);color:#fff;background:rgba(255,255,255,.07);cursor:pointer}
+.wrap{max-width:760px;margin:0 auto;padding:44px 24px 100px}
+.step-banner{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:28px}
+.sb-step{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.sb-count{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-3)}
+.hero{background:var(--navy);border-radius:16px;padding:32px 34px;display:grid;gap:16px;margin-bottom:24px}
+.hero h1{font-weight:800;font-size:26px;letter-spacing:-.026em;color:#fff;line-height:1.15}
+.hero p{font-family:Newsreader,serif;font-style:italic;font-size:16px;line-height:1.7;color:rgba(245,244,241,.78)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px 26px;margin-bottom:20px}
+.card h3{font-size:15px;font-weight:700;margin-bottom:10px}
+.card p{font-size:14.5px;line-height:1.68;color:var(--ink-2)}
+.three-controls{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0}
+.tc{border:1.5px solid var(--line-2);border-radius:10px;padding:16px}
+.tc .tc-label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.tc .tc-name{font-size:14px;font-weight:700;margin-bottom:6px}
+.tc .tc-body{font-size:13px;color:var(--ink-2);line-height:1.6}
+.opt-list{display:grid;gap:10px;margin:16px 0}
+.opt{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border:1.5px solid var(--line-2);border-radius:10px;cursor:pointer}
+.opt:hover{border-color:var(--navy);background:#F9F8F5}
+.opt.correct{border-color:var(--pass);background:var(--pass-dim)}
+.opt.wrong{border-color:#B4432E;background:#FEF0ED}
+.opt .letter{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;color:var(--ink-3);flex:none;width:20px}
+.opt .text{font-size:14px;line-height:1.5}
+.feedback{display:none;margin-top:14px;padding:16px 18px;border-radius:10px;font-size:13.5px;line-height:1.6}
+.feedback.pass{display:block;background:var(--pass-dim);border-left:3px solid var(--pass);color:var(--ink)}
+.feedback.fail{display:block;background:#FEF0ED;border-left:3px solid #B4432E;color:var(--ink)}
+.cta-row{display:flex;justify-content:flex-end;margin-top:24px}
+.btn{font-family:Manrope,sans-serif;font-weight:700;font-size:14px;padding:13px 26px;border-radius:10px;border:none;background:var(--navy);color:#fff;cursor:pointer}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.pass-screen{display:none;text-align:center;padding:44px 30px;background:var(--navy);border-radius:16px;color:#fff}
+.pass-screen h2{font-size:22px;font-weight:800;margin-bottom:10px}
+.pass-screen p{font-size:13.5px;color:rgba(255,255,255,.7);margin-bottom:20px}
+.step{display:none}
+.step.active{display:block}
+</style>
+</head>
+<body>
+
+<header class="top-rail">
+  <span class="tr-brand">AGNUS Academy</span>
+  <span class="tr-crumb">Level 4 · Govern</span>
+  <span class="tr-title">M25 — Intervention Controls</span>
+  <div class="tr-right">
+    <div class="prog-dots" id="progDots"></div>
+    <button class="tr-btn" onclick="location.href='AGNUS - Academy App.html'">← Dashboard</button>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="step active" data-step="0">
+    <div class="step-banner"><span class="sb-step">Step 1 of 4 — Understand</span><span class="sb-count">3 min</span></div>
+    <div class="hero">
+      <h1>An intervention control is a mechanism that lets a human stop, redirect, or override an agent mid-task — before the consequence lands.</h1>
+      <p>Governance isn't only about what an agent is allowed to do. It's about your ability to change course after the agent has started. That ability is an intervention control, and it must be designed in — it doesn't appear by default.</p>
+    </div>
+    <div class="card">
+      <h3>Why this matters at Level 4</h3>
+      <p>At Levels 1–3 you learned to read agent behaviour and catch drift. At Level 4, you design the governance structures that make catching drift possible at scale — and that give you somewhere to go when you catch it. An intervention control is the mechanism that bridges observation and action.</p>
+    </div>
+    <div class="card">
+      <h3>The three types of intervention control</h3>
+      <div class="three-controls">
+        <div class="tc">
+          <div class="tc-label">Type 1</div>
+          <div class="tc-name">Pause gate</div>
+          <div class="tc-body">A defined point in the task where the agent stops and waits for human confirmation before continuing. Designed in advance. The agent knows it will pause; the human knows to expect a pause. Effective for high-stakes sequential tasks.</div>
+        </div>
+        <div class="tc">
+          <div class="tc-label">Type 2</div>
+          <div class="tc-name">Interrupt signal</div>
+          <div class="tc-body">A mechanism the operator can trigger at any point to halt an agent mid-execution. Effective when the pause gate wasn't triggered but the operator has observed a problem developing. Requires a kill switch or equivalent in the agent's execution layer.</div>
+        </div>
+        <div class="tc">
+          <div class="tc-label">Type 3</div>
+          <div class="tc-name">Override instruction</div>
+          <div class="tc-body">A higher-authority instruction that supersedes the agent's current task brief. The agent continues running but on new parameters. Effective when the task doesn't need to stop — it needs to be redirected. Only works if the agent is designed to accept mid-task overrides.</div>
+        </div>
+      </div>
+    </div>
+    <div class="cta-row"><button class="btn" onclick="goStep(1)">See how they differ →</button></div>
+  </section>
+
+  <section class="step" data-step="1">
+    <div class="step-banner"><span class="sb-step">Step 2 of 4 — See</span><span class="sb-count">3 min</span></div>
+    <div class="card">
+      <h3>Same problem, three different control choices</h3>
+      <p style="margin-bottom:14px"><em>Scenario: A contract-review agent is processing a batch of 200 supplier agreements. Midway through, the legal team realises one of the review criteria is incorrect — contracts are being flagged for a clause that is actually required.</em></p>
+      <p><strong>Pause gate</strong> — if a pause gate was built in after every 50 contracts, the operator can catch the error at the next gate before more incorrect flags accumulate. The agent stops; the operator corrects the criteria; the agent resumes correctly. But the first 50 are already flagged incorrectly.</p>
+      <p style="margin-top:10px"><strong>Interrupt signal</strong> — the operator triggers an interrupt immediately on discovering the error. The agent halts mid-batch. The operator corrects the criteria and re-runs from the point of the error. Zero additional incorrect flags after the interrupt. But the operator needs to have the interrupt mechanism to hand and know how to use it.</p>
+      <p style="margin-top:10px"><strong>Override instruction</strong> — the operator sends a corrected review criteria instruction to the running agent. The agent applies the new criteria from its current position forward, without stopping. No re-run needed. Only works if the agent was designed to accept mid-task instruction updates — many are not.</p>
+    </div>
+    <div class="cta-row"><button class="btn" onclick="goStep(2)">Try it yourself →</button></div>
+  </section>
+
+  <section class="step" data-step="2">
+    <div class="step-banner"><span class="sb-step">Step 3 of 4 — Practice</span><span class="sb-count">3 min</span></div>
+    <div class="card">
+      <h3>A customer-outreach agent has been running for three hours sending personalised emails. You notice it is using an outdated discount figure in every email. You need to stop further incorrect emails immediately without necessarily discarding the rest of the run. Which intervention control is most appropriate?</h3>
+      <div class="opt-list" id="practiceOpts">
+        <div class="opt" data-correct="false" onclick="pickPractice(this)"><span class="letter">A</span><span class="text">A pause gate — stop at the next defined checkpoint and correct the discount figure before resuming.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPractice(this)"><span class="letter">B</span><span class="text">An override instruction — send a corrected discount figure instruction and let the agent continue.</span></div>
+        <div class="opt" data-correct="true" onclick="pickPractice(this)"><span class="letter">C</span><span class="text">An interrupt signal — halt the agent immediately to stop further incorrect emails, then assess whether to resume with corrected parameters or re-run from the point of the error.</span></div>
+      </div>
+      <div class="feedback" id="practiceFeedback"></div>
+    </div>
+    <div class="cta-row"><button class="btn" id="practiceNext" onclick="goStep(3)" disabled>Continue →</button></div>
+  </section>
+
+  <section class="step" data-step="3">
+    <div class="step-banner"><span class="sb-step">Step 4 of 4 — Pass</span><span class="sb-count">Hidden test</span></div>
+    <div class="card">
+      <h3>New scenario — no hints</h3>
+      <p style="margin-bottom:14px">An agent is drafting quarterly performance reviews for a team of 40. You are reviewing the first few outputs and they are exactly right. Halfway through, a policy change means the rating scale must change from 5 points to 4. You want the agent to continue, not restart, using the new scale from its current position. Which control type is most appropriate — and what condition must be met for it to work?</p>
+      <div class="opt-list" id="passOpts">
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">A</span><span class="text">Interrupt signal — halt the agent, update the brief, and re-run the entire batch.</span></div>
+        <div class="opt" data-correct="true" onclick="pickPass(this)"><span class="letter">B</span><span class="text">Override instruction — send the updated rating scale to the running agent so it continues from its current position. This only works if the agent was designed to accept mid-task instruction updates.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">C</span><span class="text">Pause gate — wait for the next defined checkpoint and update the brief there.</span></div>
+      </div>
+      <div class="feedback" id="passFeedback"></div>
+    </div>
+    <div class="pass-screen" id="passScreen">
+      <h2>Module 25 complete</h2>
+      <p>Intervention control selection confirmed. Pause gates, interrupt signals, and override instructions are three distinct tools — the right one depends on the urgency, the task structure, and whether the agent was designed to accept mid-task updates.</p>
+      <button class="tr-btn" onclick="location.href='AGNUS - Academy App.html'">← Dashboard</button>
+    </div>
+  </section>
+
+</div>
+<script>
+const TOTAL_STEPS=4;
+function renderDots(a){document.getElementById('progDots').innerHTML=Array.from({length:TOTAL_STEPS}).map((_,i)=>'<div class="prog-dot '+(i<a?'done':i===a?'active':'')+'"></div>').join('');}
+function goStep(i){document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));document.querySelector('.step[data-step="'+i+'"]').classList.add('active');renderDots(i);window.scrollTo({top:0,behavior:'smooth'});}
+renderDots(0);
+function pickPractice(el){document.querySelectorAll('#practiceOpts .opt').forEach(o=>{o.onclick=null;});const c=el.dataset.correct==='true';el.classList.add(c?'correct':'wrong');const fb=document.getElementById('practiceFeedback');fb.className='feedback '+(c?'pass':'fail');fb.textContent=c?'Correct. The problem is active and time-sensitive — every email the agent sends from this point is incorrect. An interrupt signal halts it immediately. A pause gate only triggers at a pre-set checkpoint, which may be far away. An override works if the agent accepts mid-task updates, but the priority here is to stop the damage first.':'Not quite. A pause gate relies on a pre-set checkpoint that may be many emails away. An override instruction is the right long-term answer if the agent supports it — but it assumes the agent keeps running correctly with the new parameter while you verify. When the damage is live and ongoing, stopping it first is the right call.';document.getElementById('practiceNext').disabled=false;}
+function pickPass(el){document.querySelectorAll('#passOpts .opt').forEach(o=>{o.onclick=null;});const c=el.dataset.correct==='true';el.classList.add(c?'correct':'wrong');const fb=document.getElementById('passFeedback');fb.className='feedback '+(c?'pass':'fail');fb.textContent=c?'Correct — M25 complete. An override instruction lets the agent continue from its current position using new parameters. The critical condition: the agent must have been designed to accept mid-task instruction updates. If it wasn\'t, an interrupt + re-run is the only option. This is why intervention control design matters before the agent runs, not after.':'Not quite. You don\'t need to restart — the first 20 reviews are correct and don\'t need redoing. An interrupt + full re-run wastes completed work. A pause gate only triggers at a pre-set point. When you need the agent to continue with updated parameters and not restart, the override instruction is the right control — if the agent supports it.';if(c){setTimeout(()=>{document.getElementById('passScreen').style.display='block';renderDots(4);},600);}}
+</script>
+</body>
+</html>

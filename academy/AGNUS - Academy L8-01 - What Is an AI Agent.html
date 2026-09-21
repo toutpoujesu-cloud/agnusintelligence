@@ -1,0 +1,251 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Academy — L8-01 What Is an AI Agent?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#F8F6F2;--panel:#FFFFFF;--panel-2:#F2F0EB;--line:#E5E2D9;--line-2:#D1CEC4;--ink:#18202A;--ink-2:#4A5261;--ink-3:#8E96A2;--navy:#17263C;--navy-2:#0F1A28;--gold:#9A7633;--gold-light:#B59048;--pass:#1A7E4A;--pass-dim:rgba(26,126,74,.1);--danger:#B4432E;--danger-dim:#FEF0ED;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:Manrope,sans-serif;-webkit-font-smoothing:antialiased}
+.top-rail{background:var(--navy-2);color:#fff;display:flex;align-items:center;height:48px;padding:0 20px;gap:18px}
+.tr-brand{font-weight:800;font-size:13.5px}
+.tr-crumb{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.tr-title{font-size:13px;font-weight:700}
+.tr-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.prog-dots{display:flex;gap:5px}
+.prog-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.2)}
+.prog-dot.done{background:var(--gold-light)}
+.prog-dot.active{background:#fff}
+.tr-btn{font-family:Manrope,sans-serif;font-size:12px;font-weight:700;padding:7px 14px;border-radius:7px;border:1px solid rgba(255,255,255,.18);color:#fff;background:rgba(255,255,255,.07);cursor:pointer}
+.wrap{max-width:780px;margin:0 auto;padding:44px 24px 100px}
+.step-banner{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:28px}
+.sb-step{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.sb-count{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-3)}
+.hero{background:var(--navy);border-radius:16px;padding:32px 34px;display:grid;gap:16px;margin-bottom:24px}
+.hero h1{font-weight:800;font-size:26px;letter-spacing:-.026em;color:#fff;line-height:1.15}
+.hero p{font-family:Newsreader,serif;font-style:italic;font-size:16px;line-height:1.7;color:rgba(245,244,241,.78)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px 26px;margin-bottom:20px}
+.card h3{font-size:15px;font-weight:700;margin-bottom:10px}
+.card h4{font-size:13px;font-weight:700;margin:16px 0 8px;color:var(--navy)}
+.card p{font-size:14.5px;line-height:1.68;color:var(--ink-2)}
+.loop-diagram{display:flex;align-items:center;gap:0;margin:16px 0;flex-wrap:wrap}
+.loop-node{display:flex;flex-direction:column;gap:6px;background:var(--panel-2);border:1.5px solid var(--line-2);border-radius:10px;padding:14px 16px;flex:1;min-width:130px;text-align:center;transition:all .3s}
+.loop-node.active{background:var(--navy);border-color:var(--navy)}
+.loop-node.active .label{color:var(--gold-light)}
+.loop-node.active .desc{color:rgba(255,255,255,.75)}
+.loop-node .label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold)}
+.loop-node .desc{font-size:12px;color:var(--ink-3)}
+.loop-arrow{padding:0 8px;color:var(--ink-3);font-size:16px;transition:color .3s}
+.loop-arrow.active{color:var(--gold)}
+.loop-controls{display:flex;justify-content:center;gap:10px;margin-top:16px}
+.loop-play{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;padding:8px 16px;border-radius:8px;border:1.5px solid var(--line-2);background:#fff;cursor:pointer}
+.trace-box{background:#0D1420;border-radius:10px;padding:18px 20px;margin:16px 0;font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:2;color:#E8ECF1}
+.trace-box .tstep{opacity:0;transition:opacity .4s}
+.trace-box .tstep.shown{opacity:1}
+.trace-box .tk{color:#B59048}
+.trace-box .tv{color:#7EC7B8}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
+.compare-card{border:1.5px solid var(--line-2);border-radius:10px;padding:16px}
+.compare-card .cc-label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.compare-card ul{padding-left:18px;font-size:13px;color:var(--ink-2);line-height:1.7}
+.opt-list{display:grid;gap:10px;margin:16px 0}
+.opt{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border:1.5px solid var(--line-2);border-radius:10px;cursor:pointer}
+.opt:hover{border-color:var(--navy);background:#F9F8F5}
+.opt.correct{border-color:var(--pass);background:var(--pass-dim)}
+.opt.wrong{border-color:var(--danger);background:var(--danger-dim)}
+.opt .letter{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;color:var(--ink-3);flex:none;width:20px}
+.opt .text{font-size:14px;line-height:1.5}
+.feedback{display:none;margin-top:14px;padding:16px 18px;border-radius:10px;font-size:13.5px;line-height:1.6}
+.feedback.pass{display:block;background:var(--pass-dim);border-left:3px solid var(--pass);color:var(--ink)}
+.feedback.fail{display:block;background:var(--danger-dim);border-left:3px solid var(--danger);color:var(--ink)}
+.cta-row{display:flex;justify-content:flex-end;margin-top:24px}
+.btn{font-family:Manrope,sans-serif;font-weight:700;font-size:14px;padding:13px 26px;border-radius:10px;border:none;background:var(--navy);color:#fff;cursor:pointer}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.pass-screen{display:none;text-align:center;padding:44px 30px;background:var(--navy);border-radius:16px;color:#fff}
+.pass-screen h2{font-size:22px;font-weight:800;margin-bottom:10px}
+.pass-screen p{font-size:13.5px;color:rgba(255,255,255,.7);margin-bottom:20px}
+.step{display:none}
+.step.active{display:block}
+</style>
+</head>
+<body>
+
+<header class="top-rail">
+  <span class="tr-brand">AGNUS Academy</span>
+  <span class="tr-crumb">Level 8 · Foundation</span>
+  <span class="tr-title">L8-01 — What Is an AI Agent?</span>
+  <div class="tr-right">
+    <div class="prog-dots" id="progDots"></div>
+    <button class="tr-btn" onclick="alert('Dashboard link')">← Dashboard</button>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="step active" data-step="0">
+    <div class="step-banner"><span class="sb-step">Step 1 of 4 — Understand</span><span class="sb-count">4 min</span></div>
+    <div class="hero">
+      <h1>An agent is a model wrapped in a loop it can run more than once, on its own.</h1>
+      <p>A single AI reply is open-loop: you ask, it answers, done. An agent is closed-loop: it can observe the result of its own action and decide to act again, without you re-prompting it each time.</p>
+    </div>
+    <div class="card">
+      <h3>Why this matters — the Chef Analogy</h3>
+      <p>A model that just answers is like a chef who can describe a recipe perfectly but never enters the kitchen. An agent is that same chef actually cooking: tasting the sauce, adjusting the seasoning, tasting again — repeating a loop of action and observation until the dish is actually done, not just described.</p>
+      <h4>The two properties that define an agent</h4>
+      <p><b>Autonomy:</b> it can decide its next action based on what it just observed, without a human re-typing the next instruction each time.</p>
+      <p><b>Tool use:</b> it can take real actions in the world — calling a function, querying a database, sending a request — not just producing text about what it would do.</p>
+    </div>
+    <div class="cta-row"><button class="btn" onclick="goStep(1)">See the loop →</button></div>
+  </section>
+
+  <section class="step" data-step="1">
+    <div class="step-banner"><span class="sb-step">Step 2 of 4 — See</span><span class="sb-count">4 min</span></div>
+    <div class="card">
+      <h3>The closed loop, in three parts — watch it run</h3>
+      <div class="loop-diagram" id="loopDiagram">
+        <div class="loop-node" id="nodePlan"><span class="label">Plan</span><span class="desc">Decide the next action given the current goal and what's known so far.</span></div>
+        <span class="loop-arrow" id="arrow1">→</span>
+        <div class="loop-node" id="nodeAct"><span class="label">Act</span><span class="desc">Execute that action — a real tool call, not just a description.</span></div>
+        <span class="loop-arrow" id="arrow2">→</span>
+        <div class="loop-node" id="nodeObserve"><span class="label">Observe</span><span class="desc">Read the actual result and feed it back into the next Plan step.</span></div>
+      </div>
+      <div class="loop-controls"><button class="loop-play" onclick="playLoop()">▶ Run one full cycle</button></div>
+      <p>This loop can repeat many times in a single task with no new input from a human — that's what "closed-loop" means. An open-loop system does one pass (a single model reply) and stops, whether or not the goal was actually reached.</p>
+
+      <h4>A real trace — fixing a failing test, three loop iterations</h4>
+      <div class="trace-box" id="traceBox">
+        <div class="tstep" data-t="1"><span class="tk">[Iteration 1 — Plan]</span> Goal: make test_total() pass. No prior attempt yet.</div>
+        <div class="tstep" data-t="2"><span class="tk">[Iteration 1 — Act]</span> Edited <span class="tv">calc.py</span> line 12, ran test suite.</div>
+        <div class="tstep" data-t="3"><span class="tk">[Iteration 1 — Observe]</span> Result: <span class="tv">FAILED — TypeError: str + int</span></div>
+        <div class="tstep" data-t="4"><span class="tk">[Iteration 2 — Plan]</span> New info: a type mismatch, not a logic error. Decide to add explicit casting.</div>
+        <div class="tstep" data-t="5"><span class="tk">[Iteration 2 — Act]</span> Edited <span class="tv">calc.py</span> line 12 again, ran test suite.</div>
+        <div class="tstep" data-t="6"><span class="tk">[Iteration 2 — Observe]</span> Result: <span class="tv">FAILED — assertion mismatch, off by one</span></div>
+        <div class="tstep" data-t="7"><span class="tk">[Iteration 3 — Plan]</span> New info: type error is gone; now a boundary condition. Adjust the loop range.</div>
+        <div class="tstep" data-t="8"><span class="tk">[Iteration 3 — Act]</span> Edited range bound, ran test suite.</div>
+        <div class="tstep" data-t="9"><span class="tk">[Iteration 3 — Observe]</span> Result: <span class="tv">PASSED</span> — goal reached, loop stops on its own.</div>
+      </div>
+      <p>Notice each Plan step uses the <em>actual error message</em> from the previous Observe — not a generic retry. That's what makes it a real closed loop rather than blind repetition.</p>
+      <h4>Open-loop vs. closed-loop, side by side</h4>
+      <div class="compare-grid">
+        <div class="compare-card">
+          <div class="cc-label">Open-loop</div>
+          <ul>
+            <li>Single request → single response</li>
+            <li>No awareness of whether the response actually worked</li>
+            <li>A human must decide and type the next step</li>
+          </ul>
+        </div>
+        <div class="compare-card">
+          <div class="cc-label">Closed-loop (agent)</div>
+          <ul>
+            <li>Plan → Act → Observe repeats on its own</li>
+            <li>Checks its own result against the goal</li>
+            <li>Decides the next step itself, without a new human prompt</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="cta-row"><button class="btn" style="background:none;color:var(--navy);border:1.5px solid var(--line-2);margin-right:auto" onclick="goStep(0)">← Back</button><button class="btn" onclick="goStep(2)">Try it yourself →</button></div>
+  </section>
+
+  <section class="step" data-step="2">
+    <div class="step-banner"><span class="sb-step">Step 3 of 4 — Practice</span><span class="sb-count">3 min</span></div>
+    <div class="card">
+      <h3>A tool writes one email draft when asked, and stops — even if the draft has an error. Is this an agent?</h3>
+      <div class="opt-list" id="practiceOpts">
+        <div class="opt" data-correct="false" onclick="pickPractice(this)"><span class="letter">A</span><span class="text">Yes — it produced a real output, which is enough to qualify as an agent.</span></div>
+        <div class="opt" data-correct="true" onclick="pickPractice(this)"><span class="letter">B</span><span class="text">No — it never observed its own result or decided to act again; this is open-loop, a single pass.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPractice(this)"><span class="letter">C</span><span class="text">Yes, because writing an email is a real-world action.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPractice(this)"><span class="letter">D</span><span class="text">No, because it made an error — agents are defined by being error-free.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPractice(this)"><span class="letter">E</span><span class="text">This can't be determined without knowing which company made the tool.</span></div>
+      </div>
+      <div class="feedback" id="practiceFeedback"></div>
+    </div>
+    <div class="cta-row"><button class="btn" style="background:none;color:var(--navy);border:1.5px solid var(--line-2);margin-right:auto" onclick="goStep(1)">← Back</button><button class="btn" id="practiceNext" onclick="goStep(3)" disabled>Continue →</button></div>
+  </section>
+
+  <section class="step" data-step="3">
+    <div class="step-banner"><span class="sb-step">Step 4 of 4 — Pass</span><span class="sb-count">Hidden test</span></div>
+    <div class="card">
+      <h3>New scenario — no hints</h3>
+      <p style="margin-bottom:14px">A system is asked to fix a failing test. It edits the code, runs the test suite, sees the test still fails, edits the code again based on the new error message, and re-runs the suite — repeating until the test passes, with no further input from the person who assigned the task. What makes this an agent rather than a single model reply?</p>
+      <div class="opt-list" id="passOpts">
+        <div class="opt" data-correct="true" onclick="pickPass(this)"><span class="letter">A</span><span class="text">It repeatedly closed the loop itself — observing the real test result and deciding to act again, without a human re-prompting each attempt.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">B</span><span class="text">It eventually produced correct code, and correctness alone is what defines an agent.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">C</span><span class="text">It used a programming language, and only coding tools count as agents.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">D</span><span class="text">It took several minutes, and speed of completion is what defines an agent.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">E</span><span class="text">It edited a file, and file editing alone is sufficient to qualify as agentic behavior.</span></div>
+      </div>
+      <div class="feedback" id="passFeedback"></div>
+    </div>
+    <div class="cta-row"><button class="btn" style="background:none;color:var(--navy);border:1.5px solid var(--line-2)" onclick="goStep(2)">← Back</button></div>
+    <div class="pass-screen" id="passScreen">
+      <h2>Module L8-01 complete</h2>
+      <p>Agent definition confirmed.</p>
+      <button class="tr-btn" onclick="alert('Return to dashboard')">Return to dashboard</button>
+    </div>
+  </section>
+
+</div>
+
+<script>
+const TOTAL_STEPS = 4;
+function renderDots(active){
+  document.getElementById('progDots').innerHTML = Array.from({length:TOTAL_STEPS}).map((_,i)=>
+    '<div class="prog-dot '+(i<active?'done':i===active?'active':'')+'"></div>').join('');
+}
+function goStep(i){
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  document.querySelector('.step[data-step="'+i+'"]').classList.add('active');
+  renderDots(i);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+renderDots(0);
+
+function playLoop(){
+  const seq = ['nodePlan','arrow1','nodeAct','arrow2','nodeObserve'];
+  document.querySelectorAll('.loop-node,.loop-arrow').forEach(el=>el.classList.remove('active'));
+  seq.forEach((id,i)=>{
+    setTimeout(()=>{ document.getElementById(id).classList.add('active'); if(i>0) document.getElementById(seq[i-1]).classList.remove('active'); if(i===seq.length-1) setTimeout(()=>document.getElementById(id).classList.remove('active'),700); }, i*550);
+  });
+  document.querySelectorAll('#traceBox .tstep').forEach((el,i)=>{
+    setTimeout(()=>el.classList.add('shown'), 600 + i*280);
+  });
+}
+
+function pickPractice(el){
+  document.querySelectorAll('#practiceOpts .opt').forEach(o=>{o.onclick=null;});
+  const correct = el.dataset.correct === 'true';
+  el.classList.add(correct?'correct':'wrong');
+  const fb = document.getElementById('practiceFeedback');
+  fb.className = 'feedback ' + (correct?'pass':'fail');
+  fb.textContent = correct
+    ? "Correct. Producing an output is not the same as closing the loop. This tool never observed its own draft or decided to revise — a single pass, no matter how real the output, is open-loop, not agentic."
+    : "Not quite. Look at whether the system observed its own result and decided to act again on its own — a single pass, even a real, error-prone one, is open-loop, not an agent.";
+  document.getElementById('practiceNext').disabled = false;
+}
+function pickPass(el){
+  document.querySelectorAll('#passOpts .opt').forEach(o=>{o.onclick=null;});
+  const correct = el.dataset.correct === 'true';
+  el.classList.add(correct?'correct':'wrong');
+  const fb = document.getElementById('passFeedback');
+  fb.className = 'feedback ' + (correct?'pass':'fail');
+  fb.textContent = correct
+    ? "Correct — L8-01 complete. The defining feature is the repeated, self-directed Plan → Act → Observe cycle — not correctness, not the tool used, not speed. Ready for L8-02: Agent Architecture Patterns."
+    : "Not quite. The defining property is the self-directed repetition of the loop — observing a real result and acting again without new human input — not correctness, language, speed, or the type of action taken.";
+  if(correct){ setTimeout(()=>{ document.getElementById('passScreen').style.display='block'; renderDots(4); }, 600); }
+}
+</script>
+</body>
+</html>

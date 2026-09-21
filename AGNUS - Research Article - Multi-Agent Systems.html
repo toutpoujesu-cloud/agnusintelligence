@@ -1,0 +1,294 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Multi-Agent Systems: Coordination, Trust and Governance — AGNUS Research</title>
+<meta name="description" content="When multiple AI agents interact, governance complexity multiplies. This article examines trust models between agents, delegation chains, conflict resolution, and how organisations govern systems where no single agent is responsible for the outcome." />
+<link rel="canonical" href="https://agnus.example/research/ai-agents/multi-agent-governance/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Multi-Agent Systems: Coordination, Trust and Governance" />
+<meta property="article:published_time" content="2026-09-11" />
+<meta property="article:author" content="Jean-Daniel Alexis" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>
+a,a:visited{color:inherit}
+.prose h3{font-family:var(--font-sans);font-weight:700;font-size:19px;letter-spacing:-.018em;margin:32px 0 14px}
+.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
+.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
+.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s}
+.rsub a:hover{color:var(--ink);background:var(--line-soft,rgba(0,0,0,.04))}
+.rsub a.on{color:var(--gold-deep);font-weight:600}
+.pillar-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:var(--gold-pale,#FEF9ED);color:var(--gold-deep,#8B6914);border:1px solid var(--gold-line,#E8D9A0);border-radius:4px;padding:3px 8px;margin-bottom:16px}
+.trust-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:13px}
+.trust-table th{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);font-weight:600;text-align:left;padding:10px 14px;border-bottom:2px solid var(--line);background:var(--paper-warm,#F7F5F0)}
+.trust-table td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+.trust-table tr:last-child td{border-bottom:none}
+.mas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0}
+@media(max-width:700px){.mas-grid{grid-template-columns:1fr}}
+.mas-card{background:var(--paper-warm,#F7F5F0);border:1px solid var(--line);border-radius:8px;padding:20px}
+.mas-card .mc-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:6px}
+.mas-card .mc-title{font-family:var(--font-sans);font-weight:800;font-size:16px;color:var(--ink);margin-bottom:8px;line-height:1.25}
+.mas-card .mc-body{font-size:13px;color:var(--ink-mute);line-height:1.6}
+.chain-box{background:#0F1E34;border-radius:10px;padding:24px 28px;margin:24px 0;color:rgba(255,255,255,.85)}
+.chain-box .cb-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:14px}
+.chain-row{display:flex;align-items:center;gap:0;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.chain-node{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:6px;padding:6px 12px;font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,.8)}
+.chain-arrow{color:rgba(255,255,255,.3);font-size:13px}
+.chain-note{font-size:12px;color:rgba(255,255,255,.45);margin-top:8px}
+</style>
+</head>
+<body>
+<div class="art-progress"><i id="progBar"></i></div>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+    </div>
+  </div>
+</nav>
+
+<div class="rsub">
+  <div class="rsub-inner">
+    <a href="#architecture">Architecture</a>
+    <a href="#trust">Trust models</a>
+    <a href="#delegation">Delegation</a>
+    <a href="#accountability">Accountability gaps</a>
+    <a href="#controls">Controls</a>
+    <a href="#sources">Sources</a>
+  </div>
+</div>
+
+<main class="art-layout">
+  <article class="art-main">
+    <header class="art-header">
+      <span class="pillar-tag">AI Agents</span>
+      <h1 class="art-h1">Multi-Agent Systems: Coordination, Trust and Governance</h1>
+      <p class="art-lede">When multiple AI agents interact — one orchestrating, others executing — accountability does not automatically follow. This article examines how trust models, delegation chains, and conflict resolution work in multi-agent architectures, and what governance controls actually close the accountability gap.</p>
+      <div class="art-meta">
+        <span>Jean-Daniel Alexis</span>
+        <span class="meta-sep">·</span>
+        <span>11 September 2026</span>
+        <span class="meta-sep">·</span>
+        <span>AI Agents pillar</span>
+        <span class="meta-sep">·</span>
+        <span>AR-000510</span>
+      </div>
+    </header>
+
+    <div class="prose">
+
+      <h3 id="architecture">The anatomy of a multi-agent system</h3>
+      <p>A multi-agent system (MAS) consists of at least two AI agents that communicate, share information, or delegate work to each other to accomplish tasks a single agent could not perform alone — or that a system designer chose to distribute for modularity, specialisation, or scale.</p>
+      <p>The most common pattern in commercial deployments today is the orchestrator-worker model: one agent receives a high-level task, decomposes it into sub-tasks, and dispatches those sub-tasks to specialised worker agents. The orchestrator may be an AI model itself, or it may be a deterministic routing system. The workers may operate in parallel or in sequence, each producing outputs that feed back into the orchestrator.</p>
+      <p>A second pattern is the peer-to-peer model: agents communicate with each other as equals, each capable of initiating requests and receiving them. This pattern is common in research and simulation contexts and is emerging in production as agent-to-agent (A2A) protocols standardise.</p>
+      <p>A third, underappreciated pattern is the human-in-the-loop hybrid: the system includes both AI agents and human agents, with the AI agents handling high-volume routine work and routing exceptions to humans. This is the most common pattern in regulated industries, where an AI agent cannot make final decisions on consequential matters.</p>
+
+      <div class="mas-grid">
+        <div class="mas-card">
+          <div class="mc-label">Pattern 1</div>
+          <div class="mc-title">Orchestrator–Worker</div>
+          <div class="mc-body">One agent decomposes a task and delegates sub-tasks to specialised workers. The orchestrator aggregates results. Common in enterprise automation pipelines.</div>
+        </div>
+        <div class="mas-card">
+          <div class="mc-label">Pattern 2</div>
+          <div class="mc-title">Peer-to-Peer</div>
+          <div class="mc-body">Agents communicate as equals, each capable of initiating requests. Emerging in production via A2A protocols. Governance is more complex — there is no single authority.</div>
+        </div>
+        <div class="mas-card">
+          <div class="mc-label">Pattern 3</div>
+          <div class="mc-title">Human-in-the-Loop Hybrid</div>
+          <div class="mc-body">AI agents handle routine volume; humans receive escalations and make final decisions on consequential matters. Required by EU AI Act Article 14 for high-risk AI.</div>
+        </div>
+      </div>
+
+      <h3 id="trust">Trust models between agents</h3>
+      <p>When an agent receives instructions from another agent rather than directly from a human, how much trust should it extend? This question has no consensus answer in current practice, but several trust models have emerged:</p>
+
+      <table class="trust-table">
+        <thead>
+          <tr>
+            <th>Trust model</th>
+            <th>Assumption</th>
+            <th>Risk</th>
+            <th>Used when</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Full trust</strong></td>
+            <td>Instructions from any agent in the system are treated as authoritative as instructions from humans</td>
+            <td>A compromised or manipulated orchestrator can instruct workers to take harmful actions they would otherwise refuse</td>
+            <td>Internal closed systems with no external inputs</td>
+          </tr>
+          <tr>
+            <td><strong>Capability-scoped trust</strong></td>
+            <td>An agent trusts instructions from other agents only within the receiving agent's declared capability scope</td>
+            <td>Capability scope may be defined too broadly; agents may be instructed to do things that are technically within scope but contextually inappropriate</td>
+            <td>Most production systems — the current best practice baseline</td>
+          </tr>
+          <tr>
+            <td><strong>Policy-checked trust</strong></td>
+            <td>Every inter-agent instruction is checked against a policy engine before execution, regardless of source</td>
+            <td>Latency overhead; policy engine becomes a single point of failure</td>
+            <td>High-risk deployments, regulated industries, systems with external inputs</td>
+          </tr>
+          <tr>
+            <td><strong>Zero trust</strong></td>
+            <td>No agent trusts any instruction from any other agent without human confirmation</td>
+            <td>Eliminates the efficiency benefit of multi-agent systems entirely</td>
+            <td>Theoretical baseline; rarely practical in production</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>The key insight is that in multi-agent systems, the attack surface expands with every agent added. Each inter-agent communication channel is a potential vector for prompt injection — an attacker who compromises one agent's context can potentially propagate malicious instructions to other agents in the system. Policy-checked trust is not theoretical caution; it is a practical requirement for systems that process external inputs.</p>
+
+      <h3 id="delegation">Delegation chains and what they mean for accountability</h3>
+      <p>In a typical multi-agent deployment, a human authorises an orchestrating agent to accomplish a goal. The orchestrating agent then delegates sub-tasks to worker agents. Those workers may, in turn, delegate to other workers. The result is a delegation chain of potentially significant depth.</p>
+
+      <div class="chain-box">
+        <div class="cb-label">Example delegation chain — invoice processing</div>
+        <div class="chain-row">
+          <span class="chain-node">Human (Finance Director)</span>
+          <span class="chain-arrow">→</span>
+          <span class="chain-node">Orchestrator (Claude)</span>
+          <span class="chain-arrow">→</span>
+          <span class="chain-node">Validator Agent</span>
+          <span class="chain-arrow">→</span>
+          <span class="chain-node">Payment Agent</span>
+          <span class="chain-arrow">→</span>
+          <span class="chain-node">Notification Agent</span>
+        </div>
+        <div class="chain-note">The Finance Director authorised the orchestrator. Did they authorise the payment agent to execute payments autonomously? What happens if the validator approves a fraudulent invoice?</div>
+      </div>
+
+      <p>The governance question is: at what point in this chain does human authority end, and what happens when a downstream agent takes an action the human would not have sanctioned? Three principles address this:</p>
+      <p><strong>Scope inheritance:</strong> A delegating agent cannot grant a receiving agent more permissions than the delegating agent itself possesses. The payment agent cannot be authorised to make payments above a threshold that the orchestrator itself is not authorised to approve.</p>
+      <p><strong>Accountability assignment:</strong> The human who authorised the orchestrator is accountable for everything the orchestrator delegates, whether or not they directly authorised each sub-task. This is the principal-agent accountability principle applied to AI systems.</p>
+      <p><strong>Delegation depth limits:</strong> Governance frameworks should specify a maximum delegation depth. An action that requires three or more layers of delegation between the human authorisation and the execution is a sign that the system has more autonomy than the human can meaningfully oversee.</p>
+
+      <h3 id="accountability">The distributed accountability problem</h3>
+      <p>The most significant governance challenge in multi-agent systems is not technical — it is structural. When multiple agents collaborate to produce an outcome, it is often impossible to assign causal responsibility for that outcome to any single agent. The orchestrator did not write the bad recommendation; the research agent did, on the orchestrator's instruction, using data retrieved by the retrieval agent, in response to a prompt the user wrote.</p>
+      <p>This distributed causation does not dissolve accountability — it makes it harder to locate. The EU AI Act's approach is to assign accountability to the deployer, which is the organisation that put the system into use. The deployer is responsible for the system's outputs regardless of how complex the internal multi-agent architecture is. This is analogous to a company's vicarious liability for its employees' acts: the structure of internal delegation does not shield the organisation from external accountability.</p>
+      <p>For internal governance purposes, however, distributed accountability does create practical problems. Incident investigation in a multi-agent system requires logs that are attributable to individual agents — not just to the system as a whole. Without per-agent attribution, it is impossible to determine which agent introduced an error, which policy was violated, and where the governance control should have been placed.</p>
+
+      <h3 id="controls">Governance controls for multi-agent systems</h3>
+      <p>Six controls matter most in production multi-agent deployments:</p>
+      <p><strong>1. Per-agent identity and registration.</strong> Every agent in the system must have a distinct identity, a declared capability scope, a designated human sponsor, and a registered mission. An agent without a registered identity cannot be held accountable for its actions because there is no record that it existed as a governed entity.</p>
+      <p><strong>2. Per-agent action logging.</strong> The audit trail must record which agent took which action, not merely which system produced which output. Without per-agent logging, incident investigation is impossible.</p>
+      <p><strong>3. Policy-checked inter-agent communication.</strong> In high-risk deployments, instructions from one agent to another should be evaluated against a policy engine before the receiving agent executes them. This prevents orchestrator compromise from cascading to workers.</p>
+      <p><strong>4. Scope inheritance enforcement.</strong> A technical control should prevent any agent from granting a downstream agent permissions the granting agent does not itself possess. This is not a human policy — it must be enforced by the governance infrastructure.</p>
+      <p><strong>5. Delegation depth monitoring.</strong> The governance layer should alert when a task involves more delegation levels than the policy allows. Deep delegation chains are a governance warning sign.</p>
+      <p><strong>6. Human escalation paths.</strong> Every multi-agent system should have documented escalation paths: conditions under which the system stops and routes to a human, and a designated human who is reachable when escalation occurs. The EU AI Act Article 14 requirement for human oversight applies to the deployed system, not just to individual agents within it.</p>
+
+    </div>
+
+    <section class="art-sources" id="sources">
+      <h2 class="sources-h">Sources and verification</h2>
+      <div class="sources-grid">
+        <div class="source-card">
+          <div class="sc-id">SRC-0062</div>
+          <div class="sc-title">EU AI Act — Article 14: Human oversight</div>
+          <div class="sc-org">European Parliament and Council</div>
+          <div class="sc-url"><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689" target="_blank" rel="noopener">eur-lex.europa.eu</a></div>
+          <div class="sc-note">Mandatory human oversight requirements for high-risk AI systems. Applies to the system, not individual agents within it.</div>
+        </div>
+        <div class="source-card">
+          <div class="sc-id">SRC-0067</div>
+          <div class="sc-title">NIST AI RMF 1.0 — GOVERN and MAP functions</div>
+          <div class="sc-org">National Institute of Standards and Technology</div>
+          <div class="sc-url"><a href="https://airc.nist.gov/RMF" target="_blank" rel="noopener">airc.nist.gov</a></div>
+          <div class="sc-note">Accountability assignment and risk mapping for complex AI deployments.</div>
+        </div>
+        <div class="source-card">
+          <div class="sc-id">SRC-0068</div>
+          <div class="sc-title">OWASP Top 10 for Large Language Model Applications</div>
+          <div class="sc-org">OWASP Foundation</div>
+          <div class="sc-url"><a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" target="_blank" rel="noopener">owasp.org</a></div>
+          <div class="sc-note">LLM06: Excessive Agency and LLM08: Excessive Permissions — directly applicable to multi-agent trust models.</div>
+        </div>
+      </div>
+      <div class="src-registry-note">Article ID: AR-000510 · Sources: SRC-0062, SRC-0067, SRC-0068 · Published: 2026-09-11 · AGNUS Research</div>
+    </section>
+  </article>
+
+  <aside class="art-aside">
+    <div class="aside-block">
+      <div class="aside-label">Pillar</div>
+      <a href="AGNUS - Research.html" class="aside-pill">AI Agents</a>
+    </div>
+    <div class="aside-block">
+      <div class="aside-label">Related articles</div>
+      <ul class="aside-links">
+        <li><a href="AGNUS - Research Article - Agent Governance.html">AI Agent Governance: Oversight, Accountability and Control</a></li>
+        <li><a href="AGNUS - Research Article - Audit Trails.html">Audit Trails for AI Systems</a></li>
+        <li><a href="AGNUS - Research Article - Prompt Injection.html">Prompt Injection: Attack Taxonomy and Defences</a></li>
+        <li><a href="AGNUS - Research Article - High-Risk AI.html">High-Risk AI Classification Under the EU AI Act</a></li>
+      </ul>
+    </div>
+    <div class="aside-block">
+      <div class="aside-label">Key standard</div>
+      <div class="aside-value">EU AI Act Article 14</div>
+      <div class="aside-note">Human oversight is mandatory for high-risk AI systems. It applies to the deployed system as a whole — not to individual agents within it.</div>
+    </div>
+    <div class="aside-block">
+      <div class="aside-cta">
+        <div class="aside-cta-text">Master multi-agent governance in the AGNUS Academy</div>
+        <a href="AGNUS - Academy.html" class="btn btn-gold aside-cta-btn">Explore Academy</a>
+      </div>
+    </div>
+  </aside>
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-copy">© 2026 AGNUS. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="AGNUS - Home.html">Home</a>
+      <a href="AGNUS - Research.html">Research</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+    </div>
+  </div>
+</footer>
+<script src="agnus-research-data.js"></script>
+<script>
+(function(){
+  var bar=document.getElementById('progBar');
+  if(!bar)return;
+  window.addEventListener('scroll',function(){
+    var h=document.documentElement;
+    var pct=(h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
+    bar.style.width=pct+'%';
+  });
+  var links=document.querySelectorAll('.rsub a');
+  var sections=Array.from(links).map(function(a){return document.getElementById(a.getAttribute('href').slice(1));});
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY+120;
+    sections.forEach(function(s,i){if(s&&s.offsetTop<=y)links[i].classList.add('on');else if(links[i])links[i].classList.remove('on');});
+  });
+})();
+</script>
+</body>
+</html>

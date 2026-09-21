@@ -1,0 +1,321 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS — How It Works</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#F4F2EE;--ink:#1A1612;--ink-2:#3D3A35;--ink-3:#7A7670;
+  --gold:#9A7020;--gold-deep:#7A5810;--gold-light:#C49A2C;
+  --navy:#0F1E34;--coral:#FF6B47;
+  --sans:'Manrope',system-ui,sans-serif;--mono:'IBM Plex Mono',monospace;--serif:'Newsreader',Georgia,serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{font-family:var(--sans);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;min-height:100%}
+.page{max-width:1060px;margin:0 auto;padding:52px 32px 100px}
+
+/* HEADER */
+.doc-head{text-align:center;margin-bottom:60px;padding-bottom:40px;border-bottom:1px solid rgba(26,22,18,.12)}
+.doc-wordmark{font-family:var(--sans);font-weight:800;font-size:15px;letter-spacing:.32em;padding-left:.32em;color:var(--ink);margin-bottom:20px}
+.doc-head h1{font-size:clamp(32px,4vw,52px);font-weight:800;letter-spacing:-.03em;color:var(--ink);line-height:1.1;margin-bottom:14px}
+.doc-head h1 em{font-family:var(--serif);font-style:italic;font-weight:300;color:var(--gold-deep)}
+.doc-head p{font-size:16px;color:var(--ink-3);max-width:54ch;margin:0 auto;line-height:1.65}
+
+/* FLOW DIAGRAM */
+.flow{display:grid;grid-template-columns:1fr 40px 1fr 40px 1fr 40px 1fr;gap:0;align-items:start;margin-bottom:64px}
+.flow-node{background:#fff;border:1.5px solid rgba(26,22,18,.12);border-radius:16px;padding:22px 20px;position:relative}
+.fn-label{font-family:var(--mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.fn-label::before{content:'';width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0}
+.fn-title{font-size:16px;font-weight:800;color:var(--ink);margin-bottom:8px;line-height:1.25}
+.fn-body{font-size:13px;color:var(--ink-3);line-height:1.6}
+.fn-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:12px}
+.fn-tag{font-family:var(--mono);font-size:9.5px;background:var(--bg);border:1px solid rgba(26,22,18,.12);border-radius:5px;padding:3px 8px;color:var(--ink-3)}
+.flow-arrow{display:flex;align-items:center;justify-content:center;padding-top:32px;font-size:22px;color:var(--gold);font-weight:300}
+
+/* SECTION LABEL */
+.section-label{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.section-label::after{content:'';flex:1;height:1px;background:rgba(26,22,18,.1)}
+
+/* PRODUCT GRID */
+.products{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:64px}
+.product{border:1.5px solid rgba(26,22,18,.1);border-radius:14px;overflow:hidden}
+.product-head{padding:18px 20px;border-bottom:1px solid rgba(26,22,18,.08)}
+.ph-label{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;font-weight:600}
+.ph-title{font-size:18px;font-weight:800;color:var(--ink)}
+.ph-sub{font-size:13px;color:var(--ink-3);margin-top:3px;line-height:1.5}
+.product-body{padding:16px 20px;background:#fff}
+.pb-row{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:1px solid rgba(26,22,18,.07);font-size:13px}
+.pb-row:last-child{border-bottom:none}
+.pb-label{color:var(--ink-3)}
+.pb-val{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--ink-2)}
+
+/* REVENUE MODEL */
+.revenue{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:64px}
+.rev-card{border:1.5px solid rgba(26,22,18,.1);border-radius:12px;padding:20px;background:#fff}
+.rc-tier{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:6px}
+.rc-price{font-size:28px;font-weight:800;color:var(--ink);letter-spacing:-.02em;margin-bottom:4px}
+.rc-price span{font-size:14px;font-weight:500;color:var(--ink-3)}
+.rc-name{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.rc-desc{font-size:12.5px;color:var(--ink-3);line-height:1.55}
+.rc-items{margin-top:12px}
+.rc-item{font-size:12px;color:var(--ink-2);padding:4px 0;border-bottom:1px solid rgba(26,22,18,.07);display:flex;align-items:center;gap:8px}
+.rc-item:last-child{border-bottom:none}
+.rc-item::before{content:'✓';color:var(--gold);font-size:11px;flex-shrink:0}
+
+/* TECH STACK */
+.tech-stack{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:64px}
+.tech-card{border:1.5px solid rgba(26,22,18,.1);border-radius:12px;padding:16px 16px;background:#fff;text-align:center}
+.tc-icon{font-size:24px;margin-bottom:8px}
+.tc-name{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.tc-role{font-size:11.5px;color:var(--ink-3);line-height:1.45}
+
+/* NAVY BOX */
+.navy-box{background:var(--navy);border-radius:18px;padding:36px 40px;margin-bottom:48px;color:#fff}
+.nb-label{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:16px}
+.nb-heading{font-size:clamp(22px,3vw,32px);font-weight:800;color:#fff;margin-bottom:12px;letter-spacing:-.02em;line-height:1.2}
+.nb-body{font-size:14px;color:rgba(255,255,255,.65);line-height:1.7;max-width:58ch;margin-bottom:24px}
+.nb-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.nb-stat{border-left:2px solid rgba(255,255,255,.15);padding-left:16px}
+.nb-stat-num{font-family:var(--mono);font-size:26px;font-weight:700;color:#fff;margin-bottom:2px}
+.nb-stat-label{font-size:11.5px;color:rgba(255,255,255,.45)}
+
+/* TIMELINE */
+.timeline{display:flex;flex-direction:column;gap:0;margin-bottom:48px}
+.tl-item{display:grid;grid-template-columns:90px 1fr;gap:20px;padding:16px 0;border-bottom:1px solid rgba(26,22,18,.08)}
+.tl-item:last-child{border-bottom:none}
+.tl-date{font-family:var(--mono);font-size:10px;font-weight:600;color:var(--gold);padding-top:3px}
+.tl-content h4{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:3px}
+.tl-content p{font-size:12.5px;color:var(--ink-3);line-height:1.55}
+
+/* FOOTER NOTE */
+.doc-footer{text-align:center;padding-top:40px;border-top:1px solid rgba(26,22,18,.1)}
+.doc-footer p{font-size:12px;color:var(--ink-3);line-height:1.6}
+.doc-footer .seal{font-family:var(--serif);font-style:italic;font-size:14px;color:var(--gold-deep);margin-bottom:6px}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="doc-head">
+    <div class="doc-wordmark">AGNUS</div>
+    <h1>AI Governance,<br/><em>explained and tracked.</em></h1>
+    <p>AGNUS is the intelligence layer for professionals who work with AI — a research platform, a governance education system, and a coding governance environment. This document explains how it works, how it is built, and how it grows.</p>
+  </div>
+
+  <!-- HOW THE EDITORIAL MACHINE WORKS -->
+  <div class="section-label">The editorial machine</div>
+  <div class="flow" style="margin-bottom:48px">
+    <div class="flow-node">
+      <div class="fn-label">01 · Automated</div>
+      <div class="fn-title">Intelligence Agent</div>
+      <div class="fn-body">Runs overnight. Monitors 80+ regulatory sources across 12 jurisdictions. Flags qualifying developments.</div>
+      <div class="fn-tags"><span class="fn-tag">EUR-Lex</span><span class="fn-tag">CAC</span><span class="fn-tag">FTC</span><span class="fn-tag">DSIT</span><span class="fn-tag">PIPC</span><span class="fn-tag">+75 more</span></div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node">
+      <div class="fn-label">02 · Structured</div>
+      <div class="fn-title">Handoff JSON</div>
+      <div class="fn-body">Each finding becomes a structured handoff: verified facts, source URL, research question, materiality rating.</div>
+      <div class="fn-tags"><span class="fn-tag">Verified facts</span><span class="fn-tag">Source URL</span><span class="fn-tag">Research question</span></div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node">
+      <div class="fn-label">03 · AI-built</div>
+      <div class="fn-title">Claude Design</div>
+      <div class="fn-body">Reads handoffs. Builds article HTML. Verifies sources. Registers in data layer. Hands off for review.</div>
+      <div class="fn-tags"><span class="fn-tag">Article HTML</span><span class="fn-tag">Source registry</span><span class="fn-tag">Data wiring</span></div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node">
+      <div class="fn-label">04 · Human</div>
+      <div class="fn-title">Editor Review</div>
+      <div class="fn-body">You read and approve. 10–15 minutes per session. Control over what goes live. Everything else is automated.</div>
+      <div class="fn-tags"><span class="fn-tag">Approve</span><span class="fn-tag">Revise</span><span class="fn-tag">Pipeline board</span></div>
+    </div>
+  </div>
+
+  <!-- WHAT AGNUS PRODUCES -->
+  <div class="section-label">What AGNUS publishes</div>
+  <div class="navy-box">
+    <div class="nb-label">Research output · as of September 2026</div>
+    <div class="nb-heading">72+ articles across 8 pillars<br/>and 10 country profiles.</div>
+    <div class="nb-body">Every article is source-verified, registered in the data layer with a unique AR-ID, and cross-linked to related articles. No AI hallucination — every factual claim references a primary source accessible via URL.</div>
+    <div class="nb-stats">
+      <div class="nb-stat"><div class="nb-stat-num">72+</div><div class="nb-stat-label">Research articles</div></div>
+      <div class="nb-stat"><div class="nb-stat-num">88</div><div class="nb-stat-label">Verified sources</div></div>
+      <div class="nb-stat"><div class="nb-stat-num">8</div><div class="nb-stat-label">Research pillars</div></div>
+      <div class="nb-stat"><div class="nb-stat-num">10</div><div class="nb-stat-label">Country profiles</div></div>
+    </div>
+  </div>
+
+  <!-- TWO PRODUCTS -->
+  <div class="section-label">Two products. One platform.</div>
+  <div class="products">
+    <div class="product">
+      <div class="product-head">
+        <div class="ph-label">Product 1 · Public</div>
+        <div class="ph-title">AGNUS Research</div>
+        <div class="ph-sub">AI governance intelligence for professionals — free access, premium membership for full depth.</div>
+      </div>
+      <div class="product-body">
+        <div class="pb-row"><span class="pb-label">Research articles</span><span class="pb-val">72+ and growing</span></div>
+        <div class="pb-row"><span class="pb-label">Coverage</span><span class="pb-val">EU AI Act · 8 pillars · 10 countries</span></div>
+        <div class="pb-row"><span class="pb-label">Intelligence feed</span><span class="pb-val">Daily · 12 jurisdictions</span></div>
+        <div class="pb-row"><span class="pb-label">Agent reviews</span><span class="pb-val">Marketplace · 50+ tools</span></div>
+        <div class="pb-row"><span class="pb-label">Source registry</span><span class="pb-val">88 verified primary sources</span></div>
+        <div class="pb-row"><span class="pb-label">Update frequency</span><span class="pb-val">Daily intelligence · weekly deep-dives</span></div>
+      </div>
+    </div>
+    <div class="product">
+      <div class="product-head">
+        <div class="ph-label">Product 2 · Paid</div>
+        <div class="ph-title">AGNUS Academy</div>
+        <div class="ph-sub">AI governance education — 52 modules, 5 simulation programmes, a 7-stage hands-on environment.</div>
+      </div>
+      <div class="product-body">
+        <div class="pb-row"><span class="pb-label">Track A modules</span><span class="pb-val">52 (7 levels, M01–M49)</span></div>
+        <div class="pb-row"><span class="pb-label">Track B simulations</span><span class="pb-val">5 programmes (Finance/HR/Legal/Health/CS)</span></div>
+        <div class="pb-row"><span class="pb-label">Control Training Environment</span><span class="pb-val">7 stages + 90-min assessment</span></div>
+        <div class="pb-row"><span class="pb-label">Level 8 — Builder track</span><span class="pb-val">14 modules · Build with AI agents</span></div>
+        <div class="pb-row"><span class="pb-label">Price</span><span class="pb-val">€1,500 per track</span></div>
+        <div class="pb-row"><span class="pb-label">Certificate</span><span class="pb-val">Competency record per programme</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REVENUE MODEL -->
+  <div class="section-label">Revenue model</div>
+  <div class="revenue">
+    <div class="rev-card">
+      <div class="rc-tier">Tier 1 · Free</div>
+      <div class="rc-price">€0 <span>/month</span></div>
+      <div class="rc-name">Research access</div>
+      <div class="rc-desc">Full access to research articles, intelligence summaries, and source references.</div>
+      <div class="rc-items">
+        <div class="rc-item">All research articles</div>
+        <div class="rc-item">Daily intelligence feed</div>
+        <div class="rc-item">Source registry</div>
+      </div>
+    </div>
+    <div class="rev-card" style="border-color:rgba(154,112,32,.35)">
+      <div class="rc-tier" style="color:var(--gold-deep)">Tier 2 · Premium</div>
+      <div class="rc-price" style="color:var(--gold-deep)">€49 <span>/month</span></div>
+      <div class="rc-name">Full intelligence + tools</div>
+      <div class="rc-desc">Deep-dive analysis, sector-specific intelligence, regulatory calendar, comparison tools.</div>
+      <div class="rc-items">
+        <div class="rc-item">Everything in Free</div>
+        <div class="rc-item">Full intelligence depth</div>
+        <div class="rc-item">Regulatory calendar</div>
+        <div class="rc-item">Business sector tools</div>
+      </div>
+    </div>
+    <div class="rev-card" style="border-color:rgba(15,30,52,.3);background:var(--navy);color:#fff">
+      <div class="rc-tier" style="color:rgba(196,154,44,.9)">Tier 3 · Academy</div>
+      <div class="rc-price" style="color:#fff">€1,500 <span style="color:rgba(255,255,255,.45)">/track</span></div>
+      <div class="rc-name" style="color:#fff">Professional certification</div>
+      <div class="rc-desc" style="color:rgba(255,255,255,.55)">Complete Track A, Track B, or Control Training Environment with competency certification.</div>
+      <div class="rc-items" style="border-color:rgba(255,255,255,.08)">
+        <div class="rc-item" style="color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.07)">52 modules or 5 simulations</div>
+        <div class="rc-item" style="color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.07)">Hands-on CTE (7 stages)</div>
+        <div class="rc-item" style="color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.07)">Competency certificate</div>
+        <div class="rc-item" style="color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.07)">Suitable for CPD/CPE credit</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT IS BUILT -->
+  <div class="section-label">How AGNUS is built and deployed</div>
+  <div class="tech-stack">
+    <div class="tech-card">
+      <div class="tc-icon">◈</div>
+      <div class="tc-name">Intelligence Agent</div>
+      <div class="tc-role">Automated monitoring. Produces structured JSON handoffs daily.</div>
+    </div>
+    <div class="tech-card">
+      <div class="tc-icon">✦</div>
+      <div class="tc-name">Claude Design</div>
+      <div class="tc-role">Builds articles, modules, and platform HTML from handoffs and briefs.</div>
+    </div>
+    <div class="tech-card">
+      <div class="tc-icon">⌘</div>
+      <div class="tc-name">Claude Code</div>
+      <div class="tc-role">Deploys to production. Pushes to GitHub. Manages the live server.</div>
+    </div>
+    <div class="tech-card">
+      <div class="tc-icon">◉</div>
+      <div class="tc-name">Human Editor</div>
+      <div class="tc-role">Reviews and approves. Controls what goes live. 15 min/day.</div>
+    </div>
+    <div class="tech-card">
+      <div class="tc-icon">▤</div>
+      <div class="tc-name">Static HTML</div>
+      <div class="tc-role">No CMS, no framework. Pure HTML + CSS + vanilla JS. Fast, auditable, zero dependencies.</div>
+    </div>
+    <div class="tech-card">
+      <div class="tc-icon">◎</div>
+      <div class="tc-name">Data Layer</div>
+      <div class="tc-role">Single JS file (agnus-research-data.js). 158 articles, 88 sources. All pages read from it.</div>
+    </div>
+    <div class="tech-card">
+      <div class="tc-icon">⬡</div>
+      <div class="tc-name">Vercel</div>
+      <div class="tc-role">Hosting. Edge CDN. Instant deploys via GitHub integration.</div>
+    </div>
+    <div class="tech-card">
+      <div class="tc-icon">↯</div>
+      <div class="tc-name">GitHub</div>
+      <div class="tc-role">Version control. Source of truth for all files. Claude Code pushes here.</div>
+    </div>
+  </div>
+
+  <!-- LAUNCH READINESS -->
+  <div class="section-label">Launch status · September 2026</div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-date" style="color:var(--gold-deep)">✓ Built</div>
+      <div class="tl-content"><h4>Research platform</h4><p>72+ articles, 8 pillars, 10 countries, intelligence feed, source registry, all supporting pages.</p></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date" style="color:var(--gold-deep)">✓ Built</div>
+      <div class="tl-content"><h4>Academy — Track A + B + CTE</h4><p>52 modules across 7 levels, 5 Track B simulations, 7-stage Control Training Environment + 90-min assessment, Level 8 Builder track (14 modules).</p></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date" style="color:var(--gold-deep)">✓ Built</div>
+      <div class="tl-content"><h4>Platform sections</h4><p>Home, Research, Intelligence, Explore, Academy, Marketplace, Reviews, Agents, Business, Dashboard, Agent Registry, Awards.</p></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date" style="color:var(--gold-deep)">✓ Built</div>
+      <div class="tl-content"><h4>Editorial pipeline</h4><p>Pipeline kanban board, Claude Code handoff document, editorial flow documented.</p></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date" style="color:var(--ink-3)">→ Next</div>
+      <div class="tl-content"><h4>Deployment via Claude Code</h4><p>Hand off to Claude Code with the Editorial Flow document. Push to Vercel. Go live.</p></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date" style="color:var(--ink-3)">Post-launch</div>
+      <div class="tl-content"><h4>E10–E20 editorial backend</h4><p>AI Writer (E13), Human Review interface (E14), Publishing Calendar (E18). Builds on top of live platform.</p></div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <div class="seal">Sealed under The Covenant of The Blood of Jesus Christ.</div>
+    <p>AGNUS — AI Governance News and Understanding Service<br/>
+    Built by Claude Design · Deployed by Claude Code · Edited by Jean-Daniel Alexis<br/>
+    September 2026</p>
+  </div>
+
+</div>
+</body>
+</html>

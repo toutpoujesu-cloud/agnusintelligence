@@ -1,0 +1,207 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Excessive Agency: When AI Agents Are Given Too Much Permission — AGNUS Research</title>
+<meta name="description" content="Excessive agency is one of the most common and consequential AI security failures in production. Agents with overly broad permissions can cause significant harm through unintended actions — without any attacker involvement. This article maps the problem, its causes, and the least-privilege architecture that prevents it." />
+<link rel="canonical" href="https://agnus.example/research/ai-security/excessive-agency/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Excessive Agency: When AI Agents Are Given Too Much Permission" />
+<meta property="article:published_time" content="2026-09-11" />
+<meta property="article:author" content="Jean-Daniel Alexis" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>
+a,a:visited{color:inherit}
+.prose h3{font-family:var(--font-sans);font-weight:700;font-size:19px;letter-spacing:-.018em;margin:32px 0 14px}
+.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
+.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
+.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s}
+.rsub a:hover{color:var(--ink);background:var(--line-soft,rgba(0,0,0,.04))}
+.rsub a.on{color:var(--gold-deep);font-weight:600}
+.pillar-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:var(--gold-pale,#FEF9ED);color:var(--gold-deep,#8B6914);border:1px solid var(--gold-line,#E8D9A0);border-radius:4px;padding:3px 8px;margin-bottom:16px}
+.ea-causes{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0}
+@media(max-width:700px){.ea-causes{grid-template-columns:1fr}}
+.ea-card{background:var(--paper-warm,#F7F5F0);border:1px solid var(--line);border-radius:8px;padding:18px 20px}
+.ea-card .ec-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:6px}
+.ea-card .ec-title{font-family:var(--font-sans);font-weight:800;font-size:15px;color:var(--ink);margin-bottom:6px}
+.ea-card .ec-body{font-size:13px;color:var(--ink-mute);line-height:1.6}
+.lp-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:13px}
+.lp-table th{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);font-weight:600;text-align:left;padding:10px 14px;border-bottom:2px solid var(--line);background:var(--paper-warm,#F7F5F0)}
+.lp-table td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+.lp-table tr:last-child td{border-bottom:none}
+.lp-no{color:#8B1414}.lp-yes{color:#2D7A2D}
+</style>
+</head>
+<body>
+<div class="art-progress"><i id="progBar"></i></div>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+    </div>
+  </div>
+</nav>
+<div class="rsub">
+  <div class="rsub-inner">
+    <a href="#problem">The problem</a>
+    <a href="#causes">Root causes</a>
+    <a href="#least-privilege">Least privilege</a>
+    <a href="#controls">Controls</a>
+    <a href="#sources">Sources</a>
+  </div>
+</div>
+<main class="art-layout">
+  <article class="art-main">
+    <header class="art-header">
+      <span class="pillar-tag">AI Security</span>
+      <h1 class="art-h1">Excessive Agency: When AI Agents Are Given Too Much Permission</h1>
+      <p class="art-lede">Excessive agency does not require an attacker. It occurs when an AI agent is given more capability, permission, or autonomy than its task requires — and then uses that capability in unintended ways during normal operation. It is one of the most common sources of serious AI incidents in production, and one of the most preventable.</p>
+      <div class="art-meta">
+        <span>Jean-Daniel Alexis</span><span class="meta-sep">·</span>
+        <span>11 September 2026</span><span class="meta-sep">·</span>
+        <span>AI Security pillar</span><span class="meta-sep">·</span>
+        <span>AR-000570</span>
+      </div>
+    </header>
+    <div class="prose">
+      <h3 id="problem">What excessive agency looks like in practice</h3>
+      <p>The OWASP Top 10 for Large Language Model Applications names Excessive Agency (LLM06) as one of the top ten risk categories because it is both common and consequential. The pattern is straightforward: a developer builds an agent to perform task X, gives it access to everything it might conceivably need, and deploys it. The agent then uses that access in ways the developer did not intend — not because of malicious manipulation, but because an LLM does not share the developer's assumption about what the agent is supposed to do.</p>
+      <p>Real production examples include: customer service agents that delete records when asked to "remove" a complaint; email assistants that forward sensitive information to contacts they infer from context; coding agents that commit directly to main branches because they have write access; finance agents that approve transactions above the intended threshold because the approval logic was too permissive.</p>
+      <p>What makes excessive agency particularly dangerous is that it amplifies other vulnerabilities. A prompt injection attack delivered through an email achieves nothing if the email assistant cannot send emails, access external URLs, or modify contacts. Give the agent all three capabilities and the same injection becomes a serious incident.</p>
+
+      <h3 id="causes">The root causes</h3>
+      <div class="ea-causes">
+        <div class="ea-card">
+          <div class="ec-label">Cause 1</div>
+          <div class="ec-title">Overly broad tool access</div>
+          <div class="ec-body">The agent is given access to a full API rather than the specific endpoints its task requires. A customer service agent that needs to read order status is given full database access. A coding agent that needs to write to a feature branch is given repository admin rights.</div>
+        </div>
+        <div class="ea-card">
+          <div class="ec-label">Cause 2</div>
+          <div class="ec-title">Missing action constraints</div>
+          <div class="ec-body">The agent's task is defined by what it should do, not by what it should not do. Without explicit prohibitions, the agent may take actions that seem logical to it but were never intended — deleting data to "clean up," forwarding information to "help," modifying configurations to "optimise."</div>
+        </div>
+        <div class="ea-card">
+          <div class="ec-label">Cause 3</div>
+          <div class="ec-title">Autonomy misconfiguration</div>
+          <div class="ec-body">The agent is given a higher autonomy level than its task requires. A task that should be A2 (human-confirmed for exceptions) is deployed at A3 (human-monitored) or A4 (human-informed). The gap between intended and actual autonomy level is the excessive agency.</div>
+        </div>
+        <div class="ea-card">
+          <div class="ec-label">Cause 4</div>
+          <div class="ec-title">Inherited permissions</div>
+          <div class="ec-body">The agent runs under credentials that have more permissions than the agent needs — because the credentials were created for a human user or a different system, and reused for convenience. The agent inherits permissions it was never intended to have.</div>
+        </div>
+      </div>
+
+      <h3 id="least-privilege">The least-privilege principle applied to AI agents</h3>
+      <p>The least-privilege principle — give any system the minimum permissions required to perform its function, and no more — is a foundational security principle that applies directly to AI agent deployments. Applied to agents, it means:</p>
+      <p><strong>Capability scoping:</strong> An agent's capability set should be derived from its task, not from what is technically available. If the task is to read and classify emails, the agent needs read access to the email inbox. It does not need send access, contact access, or calendar access — even if those capabilities would "make it more helpful."</p>
+      <p><strong>Action-level permissions:</strong> Permissions should be granted at the action level, not the resource level. "Access to the payments system" is not a permission — "read from invoices table" and "write to payments_draft table, rows where status = pending" are permissions.</p>
+      <p><strong>Credential isolation:</strong> Agents should run under credentials created specifically for them, not credentials shared with humans or other systems. This prevents permission inheritance and makes it possible to revoke the agent's access without affecting other systems.</p>
+      <p><strong>Time-bounded permissions:</strong> Permissions should expire. An agent that is deployed for a three-month project should have permissions that expire when the project ends, not permanent credentials that remain active indefinitely.</p>
+
+      <h3 id="controls">Controls for excessive agency</h3>
+      <table class="lp-table">
+        <thead><tr><th>Control</th><th>What it prevents</th><th>Implementation</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Mission Contract with explicit prohibitions</strong></td>
+            <td>Actions outside intended scope</td>
+            <td>Document both allowed capabilities and explicit prohibitions. Prohibitions should be specific action types and resources, not general principles.</td>
+          </tr>
+          <tr>
+            <td><strong>Capability minimisation review</strong></td>
+            <td>Overly broad tool access</td>
+            <td>Before deployment, audit each capability in the agent's tool set. For each capability, ask: "Can the agent complete its task without this?" Remove capabilities that are not essential.</td>
+          </tr>
+          <tr>
+            <td><strong>Agent-specific credentials</strong></td>
+            <td>Permission inheritance</td>
+            <td>Create dedicated credentials for each agent with only the permissions that agent needs. Never reuse human or system credentials for agent deployments.</td>
+          </tr>
+          <tr>
+            <td><strong>Pre-execution policy check</strong></td>
+            <td>Out-of-scope actions at runtime</td>
+            <td>Every consequential action is evaluated against a policy engine before execution. The policy engine enforces the Mission Contract in real time — it does not rely on the agent's judgement about whether an action is within scope.</td>
+          </tr>
+          <tr>
+            <td><strong>Anomaly-based monitoring</strong></td>
+            <td>Unusual action patterns</td>
+            <td>Establish a baseline of normal agent behaviour and alert when the agent accesses resources, takes actions, or achieves throughput outside the baseline. Excessive agency often manifests as volume anomalies before it manifests as harmful outcomes.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <section class="art-sources" id="sources">
+      <h2 class="sources-h">Sources and verification</h2>
+      <div class="sources-grid">
+        <div class="source-card">
+          <div class="sc-id">SRC-0068</div>
+          <div class="sc-title">OWASP Top 10 for LLM Applications — LLM06: Excessive Agency</div>
+          <div class="sc-org">OWASP Foundation</div>
+          <div class="sc-url"><a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" target="_blank" rel="noopener">owasp.org</a></div>
+          <div class="sc-note">LLM06 defines excessive agency as occurring when an LLM-based system is granted too much capability or autonomy, enabling it to take harmful actions in unintended ways.</div>
+        </div>
+        <div class="source-card">
+          <div class="sc-id">SRC-0062</div>
+          <div class="sc-title">EU AI Act — Article 14: Human oversight</div>
+          <div class="sc-org">European Parliament and Council</div>
+          <div class="sc-url"><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689" target="_blank" rel="noopener">eur-lex.europa.eu</a></div>
+        </div>
+      </div>
+      <div class="src-registry-note">Article ID: AR-000570 · Sources: SRC-0062, SRC-0068 · Published: 2026-09-11 · AGNUS Research</div>
+    </section>
+  </article>
+  <aside class="art-aside">
+    <div class="aside-block"><div class="aside-label">Pillar</div><a href="AGNUS - Research.html" class="aside-pill">AI Security</a></div>
+    <div class="aside-block">
+      <div class="aside-label">Related articles</div>
+      <ul class="aside-links">
+        <li><a href="AGNUS - Research Article - Prompt Injection.html">Prompt Injection: Attack Taxonomy and Defences</a></li>
+        <li><a href="AGNUS - Research Article - Mission Contracts.html">Mission Contracts: Defining Agent Scope</a></li>
+        <li><a href="AGNUS - Research Article - Autonomy Levels.html">Agentic AI and Autonomy Levels</a></li>
+        <li><a href="AGNUS - Research Article - Agent Governance.html">AI Agent Governance</a></li>
+      </ul>
+    </div>
+    <div class="aside-block">
+      <div class="aside-label">OWASP category</div>
+      <div class="aside-value">LLM06</div>
+      <div class="aside-note">Excessive Agency — one of the OWASP Top 10 for LLM Applications. The fix is the least-privilege principle applied at the capability, action, and credential level.</div>
+    </div>
+  </aside>
+</main>
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-copy">© 2026 AGNUS. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="AGNUS - Home.html">Home</a>
+      <a href="AGNUS - Research.html">Research</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+    </div>
+  </div>
+</footer>
+<script src="agnus-research-data.js"></script>
+<script>(function(){var bar=document.getElementById('progBar');if(!bar)return;window.addEventListener('scroll',function(){var h=document.documentElement;bar.style.width=((h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100)+'%';});})();</script>
+</body>
+</html>
