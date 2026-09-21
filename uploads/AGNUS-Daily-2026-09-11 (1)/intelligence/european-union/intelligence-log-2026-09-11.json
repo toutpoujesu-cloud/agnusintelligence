@@ -1,0 +1,23 @@
+{
+  "run_date": "2026-09-11",
+  "source_checks": [
+    {
+      "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX%3A02024R1689-20260727",
+      "date_checked": "2026-09-11",
+      "status": "no_change",
+      "last_successful_check": "2026-09-11",
+      "observed_version_or_date": "The current consolidated text of Regulation (EU) 2024/1689 remains dated 2026-07-27; no newer consolidated version was verified.",
+      "open_questions": []
+    },
+    {
+      "source_url": "https://digital-strategy.ec.europa.eu/en",
+      "date_checked": "2026-09-11",
+      "status": "no_change",
+      "last_successful_check": "2026-09-11",
+      "observed_version_or_date": "The Commission Digital Strategy homepage continues to foreground the European Technological Sovereignty Package; no newer material AI-policy item was verified.",
+      "open_questions": []
+    }
+  ],
+  "findings": [],
+  "editorial_alerts": []
+}

@@ -1,0 +1,108 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI and the Right to Erasure: When Individuals Request Deletion from Trained Models — AGNUS Research</title>
+<meta name="description" content="The right to erasure under GDPR Article 17 creates specific and unresolved challenges for AI systems trained on personal data. Deleting data from a database is straightforward. Deleting the influence of training data from a deployed model is technically complex and in many cases impossible." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>a,a:visited{color:inherit}
+.prose h3{font-family:var(--font-sans);font-weight:700;font-size:19px;letter-spacing:-.018em;margin:32px 0 14px}
+.pillar-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:#EFF6FF;color:#1A4E8A;border:1px solid #BDD7FB;border-radius:4px;padding:3px 8px;margin-bottom:16px}
+.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
+.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
+.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s}
+.rsub a:hover{color:var(--ink);background:var(--line-soft,rgba(0,0,0,.04))}
+</style>
+</head>
+<body>
+<div class="art-progress"><i id="progBar"></i></div>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Marketplace.html">Marketplace</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+      <a href="AGNUS - Business.html">Business</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+      <button class="hamburger" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="rsub"><div class="rsub-inner">
+  <a href="AGNUS - Research.html">Research Home</a>
+  <a href="AGNUS - Research Topic.html">AI Data Governance</a>
+</div></div>
+<header class="art-head">
+  <div class="container">
+    <div class="pillar-tag">AI Data Governance</div>
+    <h1>AI and the Right to Erasure: When Individuals Request Deletion from Trained Models</h1>
+    <p class="art-abstract">The right to erasure under GDPR Article 17 — the "right to be forgotten" — creates specific and unresolved challenges for AI systems trained on personal data. Deleting data from a database is technically straightforward. Deleting the influence of training data from a deployed model is technically complex, often impossible without retraining, and raises questions that European data protection authorities are only beginning to address.</p>
+    <div data-rc="articleMeta" data-rc-arg="AR-000543"></div>
+  </div>
+</header>
+<div class="container">
+  <div class="art-shell">
+    <aside class="art-toc"><div class="toc-h">Contents</div><ol id="tocList"></ol></aside>
+    <article class="prose" id="prose">
+
+      <h2 id="s-right">What the right to erasure requires</h2>
+      <p>GDPR Article 17 gives data subjects the right to request erasure of their personal data without undue delay when: the data is no longer necessary for the purpose for which it was collected; the data subject withdraws consent and there is no other legal basis; the data subject objects under Article 21 and there are no overriding legitimate grounds; the data has been unlawfully processed; or erasure is required by law. The controller must comply with the request — except where specific exemptions apply, including where processing is necessary for freedom of expression, compliance with a legal obligation, reasons of public interest in public health, archiving purposes in the public interest, or the establishment, exercise, or defence of legal claims.</p>
+      <p>For traditional data processing — databases, files, structured records — erasure is a defined technical operation. For AI models trained on personal data, the question of what erasure means is significantly more complex.</p>
+
+      <h2 id="s-problem">The technical problem</h2>
+      <p>When a neural network is trained on a dataset that includes an individual's personal data, the influence of that data is distributed across the model's billions of parameters through the training process. There is no discrete record in the model that corresponds to a specific individual's data. The individual's data has influenced the parameter values in a way that is mathematically inseparable from the influence of all other training data.</p>
+      <p>This creates three distinct erasure problems:</p>
+
+      <h3>1. Identification</h3>
+      <p>To erase the influence of a specific individual's data from a model, you first need to identify which training samples belong to that individual. For large-scale models trained on web-scraped or aggregated datasets, this may not be possible without access to training data records that were not maintained in a way that enables individual-level identification. Data governance at training time — including maintaining records that link training samples to identifiable individuals — is a prerequisite for any technically meaningful erasure response.</p>
+
+      <h3>2. Technical unlearning</h3>
+      <p>Once the relevant training samples are identified, removing their influence from the model requires a process called "machine unlearning." Current machine unlearning techniques fall into two categories: exact unlearning (retraining the model from scratch on a dataset that excludes the individual's data — which is computationally expensive and impractical for large models) and approximate unlearning (applying mathematical techniques to reduce the model's reliance on specific training samples without full retraining — which provides statistical guarantees that vary significantly in strength depending on the technique).</p>
+      <p>No currently available machine unlearning technique provides a complete, verified removal of an individual's data influence from a large deployed model in a computationally practical way. This is a recognised open problem in machine learning research.</p>
+
+      <h3>3. Verification</h3>
+      <p>Even if an unlearning technique is applied, how does the data subject — or a supervisory authority — verify that the erasure was effective? Membership inference attacks can, in some cases, detect whether a specific sample was in the training data. But they are probabilistic and imperfect, and a negative result does not guarantee that the data's influence has been removed.</p>
+
+      <h2 id="s-dpa">Regulatory position</h2>
+      <p>The European Data Protection Board (EDPB) has not yet issued comprehensive guidance on erasure requests for AI training data. Individual national supervisory authorities are beginning to address the issue: the Italian DPA (Garante) has raised questions about the compatibility of large-scale AI training with GDPR erasure obligations in the context of its investigations into OpenAI. The UK ICO has published initial guidance acknowledging that the right to erasure creates challenges for AI systems but has not provided a definitive technical standard.</p>
+      <p>The practical regulatory position is uncertain. Controllers who have received erasure requests for AI training data are in a difficult position: full compliance through model retraining is often computationally impractical; approximate unlearning provides uncertain guarantees; and the supervisory authorities have not yet defined what level of technical response constitutes compliance.</p>
+
+      <h2 id="s-practice">Practical governance response</h2>
+      <p>Given this uncertainty, the governance response for organisations training on personal data should focus on prevention rather than cure. Prevention measures include: assessing before training whether the data minimisation principle permits inclusion of identifiable personal data; maintaining training data records in a form that enables individual-level identification if erasure is subsequently requested; using anonymisation and differential privacy techniques to reduce the identifiability of training data and thereby reduce the scope of erasure obligations; and planning for the computational costs of retraining in response to erasure requests, building this cost into AI development planning.</p>
+      <p>Organisations that cannot address the erasure question technically should be cautious about training on personal data without a robust legal basis — because the erasure right follows from the legal basis, and an organisation that cannot fulfil the right cannot lawfully retain the legal basis in many circumstances.</p>
+
+      <div id="sources" class="art-sources">
+        <h2>Sources</h2>
+        <ul>
+          <li>GDPR — Article 17 (Right to erasure)</li>
+          <li>EDPB — Opinion on the use of personal data in AI training (2024)</li>
+          <li>Cao &amp; Yang — "Towards Making Systems Forget with Machine Unlearning," IEEE S&amp;P 2015</li>
+          <li>ICO (UK) — Guidance on AI and data protection, 2023–2024</li>
+          <li>AGNUS Research — AI Data Governance · AR-000543</li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</div>
+<script src="agnus.js"></script>
+</body>
+</html>

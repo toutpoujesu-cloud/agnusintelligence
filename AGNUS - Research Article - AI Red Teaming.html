@@ -1,0 +1,119 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI Red Teaming: Testing AI Systems for Security and Misuse — AGNUS Research</title>
+<meta name="description" content="Red teaming is the practice of systematically attempting to break an AI system — to find failure modes, safety boundaries, and vulnerabilities before adversaries do. For AI security practitioners, red teaming is the highest-fidelity evaluation method available." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>a,a:visited{color:inherit}
+.prose h3{font-family:var(--font-sans);font-weight:700;font-size:19px;letter-spacing:-.018em;margin:32px 0 14px}
+.pillar-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:#F0F4FF;color:#2B4BBE;border:1px solid #C5D0F8;border-radius:4px;padding:3px 8px;margin-bottom:16px}
+.attack-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:13px}
+.attack-table th{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);font-weight:600;text-align:left;padding:10px 14px;border-bottom:2px solid var(--line);background:var(--paper-warm,#F7F5F0)}
+.attack-table td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+.attack-table tr:last-child td{border-bottom:none}
+.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
+.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
+.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s}
+.rsub a:hover{color:var(--ink);background:var(--line-soft,rgba(0,0,0,.04))}
+</style>
+</head>
+<body>
+<div class="art-progress"><i id="progBar"></i></div>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Marketplace.html">Marketplace</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+      <a href="AGNUS - Business.html">Business</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+      <button class="hamburger" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="rsub"><div class="rsub-inner">
+  <a href="AGNUS - Research.html">Research Home</a>
+  <a href="AGNUS - Research Topic.html">AI Security</a>
+</div></div>
+
+<header class="art-head">
+  <div class="container">
+    <div class="pillar-tag">AI Security</div>
+    <h1>AI Red Teaming: Testing AI Systems for Security and Misuse</h1>
+    <p class="art-abstract">Red teaming is the practice of systematically attempting to break an AI system — to find failure modes, safety boundaries, and security vulnerabilities before adversaries do. For AI security practitioners, red teaming is the highest-fidelity evaluation method available. This article covers what AI red teaming tests for, how it differs from traditional software security testing, the methodologies in use, and what regulators expect from red team programmes.</p>
+    <div data-rc="articleMeta" data-rc-arg="AR-000521"></div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="art-shell">
+    <aside class="art-toc"><div class="toc-h">Contents</div><ol id="tocList"></ol></aside>
+    <article class="prose" id="prose">
+
+      <h2 id="s-what">What AI red teaming is — and what it is not</h2>
+      <p>Red teaming originated in military and intelligence practice: a designated team given the adversary's perspective and tasked with finding weaknesses in plans, systems, or defences. In AI security, red teaming means assigning a team — internal or external — to attempt to elicit harmful, unsafe, or unintended behaviour from an AI system through adversarial interaction.</p>
+      <p>AI red teaming is not the same as conventional software penetration testing. Traditional software security testing looks for vulnerabilities in code — buffer overflows, injection flaws, authentication bypasses. These vulnerabilities have discrete, binary characteristics: the exploit either works or it does not. AI red teaming looks for failure modes in model behaviour — outputs that are harmful, misleading, biased, or unsafe — that are probabilistic, context-dependent, and often subtle. You can fix a buffer overflow with a patch. You cannot fix a tendency to produce harmful content with a patch — it requires retraining, fine-tuning, or system-level controls.</p>
+
+      <h2 id="s-targets">What AI red teaming tests for</h2>
+      <table class="attack-table">
+        <thead><tr><th>Category</th><th>What the team attempts</th><th>Regulatory relevance</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Safety boundary testing</strong></td><td>Elicit content or instructions that the model should refuse — dangerous information, harmful advice, illegal assistance. Tests whether safety training holds under adversarial prompting.</td><td>EU AI Act Article 5 (prohibited practices); GPAI systemic risk assessment; NIST AI RMF Measure function</td></tr>
+          <tr><td><strong>Jailbreaking</strong></td><td>Circumvent safety constraints through adversarial prompting techniques — role-playing, hypothetical framing, multi-turn manipulation, encoded instructions. Tests the robustness of safety guardrails.</td><td>GPAI conformity assessment; UK AISI evaluation framework</td></tr>
+          <tr><td><strong>Prompt injection</strong></td><td>Embed adversarial instructions in data the model processes — documents, web pages, user inputs — to hijack the model's behaviour. Most critical for agentic and RAG systems.</td><td>OWASP LLM Top 10 — LLM01; NIST AI RMF</td></tr>
+          <tr><td><strong>Data extraction</strong></td><td>Attempt to extract training data, system prompt contents, or information about other users from the model. Tests information isolation and privacy protections.</td><td>GDPR Article 5 (data minimisation, storage limitation); EU AI Act data governance requirements</td></tr>
+          <tr><td><strong>Bias and discrimination</strong></td><td>Test whether the model produces discriminatory outputs across protected characteristics — race, gender, religion, disability. Tests fairness under adversarial conditions.</td><td>EU AI Act Article 10 (data governance); EU Fundamental Rights Charter; national equality law</td></tr>
+          <tr><td><strong>Agentic misuse</strong></td><td>For agentic systems: attempt to manipulate the agent into taking unauthorised actions, ignoring scope constraints, or being weaponised against the user or third parties.</td><td>EU AI Act Article 14 (human oversight); NIST AI RMF Govern function</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="s-method">Methodologies and approaches</h2>
+      <h3>Manual red teaming</h3>
+      <p>Human red teamers interact with the system, attempting to elicit unsafe or unintended behaviour through creative, adversarial prompting. Manual red teaming is essential for finding novel failure modes that automated testing would not generate. It is resource-intensive and does not scale to large models across many topics without significant investment.</p>
+
+      <h3>Automated red teaming</h3>
+      <p>Automated red teaming uses AI systems to generate adversarial prompts at scale — systematically covering a defined risk taxonomy and generating thousands of test cases that manual testing could not produce. Automated approaches are effective for systematic coverage of known risk categories but are less effective at finding genuinely novel failure modes.</p>
+
+      <h3>Structured scenario testing</h3>
+      <p>Rather than open-ended adversarial interaction, structured scenario testing defines a set of specific scenarios — based on the system's use case — and tests the model's response to each. This is effective for use-case-specific risk assessment (a medical information system needs different scenarios than a customer service agent) and for regulatory conformity assessment, where evidence of structured testing against defined risk categories is required.</p>
+
+      <h2 id="s-regulators">What regulators expect</h2>
+      <p>The EU AI Act requires, for high-risk AI systems, that providers conduct testing "throughout the design and development process" and that testing be "in relation to the specific purpose for which the AI system is intended." For GPAI models with systemic risk, providers must perform adversarial testing — described in the EU AI Act's implementing regulation as including red teaming. The UK AI Security Institute has published frontier AI safety evaluation specifications that describe red teaming as a component of the evaluation framework for frontier models.</p>
+      <p>In practice, regulators expect: a documented red team methodology; evidence that the red team had genuine adversarial intent (not just a compliance exercise); coverage of the risk categories relevant to the system's use case; and remediation of findings identified during the exercise.</p>
+
+      <div id="sources" class="art-sources">
+        <h2>Sources</h2>
+        <ul>
+          <li>EU AI Act (Regulation (EU) 2024/1689) — Articles 9, 10, 14, 55</li>
+          <li>UK AI Security Institute — Frontier AI Safety Evaluation Framework, 2024</li>
+          <li>OWASP Top 10 for LLM Applications, 2023</li>
+          <li>NIST AI RMF — Measure function</li>
+          <li>AGNUS Research — AI Security · AR-000521</li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</div>
+<script src="agnus.js"></script>
+</body>
+</html>

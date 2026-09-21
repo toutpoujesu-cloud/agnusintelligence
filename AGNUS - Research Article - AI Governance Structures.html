@@ -1,0 +1,200 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI Governance Structures: Boards, Committees and Accountable Officers — AGNUS Research</title>
+<meta name="description" content="Who in an organisation is responsible for AI governance — and how should that responsibility be structured? This article maps the governance structures organisations are building: AI boards, ethics committees, Chief AI Officers, and the accountability chains between them and the board." />
+<link rel="canonical" href="https://agnus.example/research/ai-governance/governance-structures/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="AI Governance Structures: Boards, Committees and Accountable Officers" />
+<meta property="article:published_time" content="2026-09-11" />
+<meta property="article:author" content="Jean-Daniel Alexis" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>
+a,a:visited{color:inherit}
+.prose h3{font-family:var(--font-sans);font-weight:700;font-size:19px;letter-spacing:-.018em;margin:32px 0 14px}
+.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
+.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
+.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s}
+.rsub a:hover{color:var(--ink);background:var(--line-soft,rgba(0,0,0,.04))}
+.rsub a.on{color:var(--gold-deep);font-weight:600}
+.pillar-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:var(--gold-pale,#FEF9ED);color:var(--gold-deep,#8B6914);border:1px solid var(--gold-line,#E8D9A0);border-radius:4px;padding:3px 8px;margin-bottom:16px}
+.str-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:13px}
+.str-table th{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);font-weight:600;text-align:left;padding:10px 14px;border-bottom:2px solid var(--line);background:var(--paper-warm,#F7F5F0)}
+.str-table td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+.str-table tr:last-child td{border-bottom:none}
+.model-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:24px 0}
+@media(max-width:700px){.model-grid{grid-template-columns:1fr}}
+.model-card{background:var(--paper-warm,#F7F5F0);border:1px solid var(--line);border-radius:8px;padding:18px 20px}
+.model-card .mc-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:6px}
+.model-card .mc-title{font-family:var(--font-sans);font-weight:800;font-size:15px;color:var(--ink);margin-bottom:6px}
+.model-card .mc-body{font-size:13px;color:var(--ink-mute);line-height:1.6}
+</style>
+</head>
+<body>
+<div class="art-progress"><i id="progBar"></i></div>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+    </div>
+  </div>
+</nav>
+<div class="rsub">
+  <div class="rsub-inner">
+    <a href="#why">Why structure matters</a>
+    <a href="#models">Governance models</a>
+    <a href="#roles">Key roles</a>
+    <a href="#regulation">Regulation</a>
+    <a href="#sources">Sources</a>
+  </div>
+</div>
+<main class="art-layout">
+  <article class="art-main">
+    <header class="art-header">
+      <span class="pillar-tag">AI Governance</span>
+      <h1 class="art-h1">AI Governance Structures: Boards, Committees and Accountable Officers</h1>
+      <p class="art-lede">AI governance without a clear governance structure is a policy document without an owner. This article maps the organisational structures organisations are using to govern AI — from board-level AI committees to Chief AI Officers to operational governance teams — and explains what accountability chain each structure creates.</p>
+      <div class="art-meta">
+        <span>Jean-Daniel Alexis</span><span class="meta-sep">·</span>
+        <span>11 September 2026</span><span class="meta-sep">·</span>
+        <span>AI Governance pillar</span><span class="meta-sep">·</span>
+        <span>AR-000590</span>
+      </div>
+    </header>
+    <div class="prose">
+      <h3 id="why">Why structure matters</h3>
+      <p>The most common failure mode in enterprise AI governance is not bad policy — it is policy that belongs to no one. Organisations write AI principles, publish AI ethics frameworks, and adopt AI risk taxonomies. But when a decision must be made about whether a specific deployment is acceptable, or when an incident occurs, there is no clear owner of the decision, no clear escalation path, and no clear accountability for the outcome.</p>
+      <p>Structure creates accountability. It determines who makes decisions, who is accountable for outcomes, who is informed, and who has the authority to stop a deployment. Without a structure, governance is advisory at best and decorative at worst.</p>
+      <p>The EU AI Act creates external pressure toward formal governance structure. Article 26 (obligations of deployers) and Article 72 (post-market monitoring) both require organisational processes — not just policies — for AI governance. Supervisory authorities will look for evidence that governance is operational, not aspirational.</p>
+
+      <h3 id="models">Three organisational models</h3>
+      <div class="model-grid">
+        <div class="model-card">
+          <div class="mc-label">Model 1</div>
+          <div class="mc-title">Centralised — AI Centre of Excellence</div>
+          <div class="mc-body">A dedicated team owns AI governance across the organisation. Business units request approvals and receive guidance from the central team. Advantage: consistency and expertise. Risk: bottleneck, disconnection from operational context, and a tendency to become a compliance function rather than an enablement function.</div>
+        </div>
+        <div class="model-card">
+          <div class="mc-label">Model 2</div>
+          <div class="mc-title">Federated — AI Champions Model</div>
+          <div class="mc-body">Each business unit has a designated AI governance lead (an "AI Champion") who is responsible for governance in their domain. A central team provides standards, tools, and oversight but not operational authority. Advantage: closer to context. Risk: inconsistency and the "AI Champion" role being underfunded and undertrained.</div>
+        </div>
+        <div class="model-card">
+          <div class="mc-label">Model 3</div>
+          <div class="mc-title">Hybrid — Governance Board with Operational Leads</div>
+          <div class="mc-body">A cross-functional AI Governance Board sets policy and handles escalations. Operational governance is delegated to domain leads. The board meets regularly to review deployments, approve high-risk systems, and handle incidents. Most common in regulated industries. Most consistent with EU AI Act requirements.</div>
+        </div>
+      </div>
+
+      <h3 id="roles">Key roles and their accountabilities</h3>
+      <table class="str-table">
+        <thead><tr><th>Role</th><th>Typical mandate</th><th>Accountability</th><th>Common failure</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Chief AI Officer (CAIO)</strong></td>
+            <td>Executive accountability for AI strategy, governance, and risk. Member of or reports to the board.</td>
+            <td>Accountable for the organisation's AI risk posture overall</td>
+            <td>Role exists in title only — no authority to stop deployments, no budget, no team</td>
+          </tr>
+          <tr>
+            <td><strong>AI Governance Board</strong></td>
+            <td>Reviews and approves high-risk AI deployments. Handles escalated governance decisions. Reviews incident reports.</td>
+            <td>Collectively accountable for governance decisions</td>
+            <td>Meets too infrequently to be operational. Approvals become rubber stamps under time pressure.</td>
+          </tr>
+          <tr>
+            <td><strong>AI Risk Manager</strong></td>
+            <td>Maintains the AI risk register. Conducts risk assessments for new deployments. Monitors deployed systems.</td>
+            <td>Accountable for the completeness and accuracy of the AI risk register</td>
+            <td>Siloed from deployment teams — risk assessments happen after development, not during</td>
+          </tr>
+          <tr>
+            <td><strong>Human Sponsor (per agent)</strong></td>
+            <td>Named individual accountable for a specific AI agent's operation. Reviews and approves Mission Contract. Reachable for escalations.</td>
+            <td>Accountable for the governed agent's behaviour</td>
+            <td>Sponsor is named without being informed. Escalations go unanswered because the sponsor did not know they were responsible.</td>
+          </tr>
+          <tr>
+            <td><strong>Data Protection Officer</strong></td>
+            <td>Advises on GDPR implications of AI deployments. Conducts or oversees DPIAs for AI systems processing personal data.</td>
+            <td>Accountable for GDPR compliance in AI deployments</td>
+            <td>Consulted only at the end of development, when changing the system is expensive</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="regulation">What regulation requires from governance structures</h3>
+      <p>The EU AI Act does not prescribe a specific organisational structure. It prescribes outcomes: that high-risk AI systems are assessed before deployment, monitored during operation, and that incidents are reported. The structure that achieves those outcomes is left to the organisation to design.</p>
+      <p>However, the Act's requirements are operational enough to imply a structure. Article 26 (deployer obligations) requires deployers to monitor operation, take action when risks materialise, and report serious incidents. Article 14 requires that natural persons can oversee and intervene in AI system operation. These obligations require people with defined responsibilities — not just policies.</p>
+      <p>The NIST AI RMF's GOVERN function maps to governance structure most directly. Its GOVERN 1.1 action requires that organisational policies and processes exist for AI risk management — and that they are implemented and documented. The AI RMF Playbook specifies that governance structures should include clear roles, responsibilities, and accountabilities — not just for the AI function, but for the board level and operational level alike.</p>
+      <p>For financial services organisations, EBA and ESMA guidance on AI adds sector-specific requirements. The EBA's guidelines on internal governance require that AI systems used in credit risk assessment are subject to the same senior management accountability as other material risk management systems.</p>
+    </div>
+    <section class="art-sources" id="sources">
+      <h2 class="sources-h">Sources and verification</h2>
+      <div class="sources-grid">
+        <div class="source-card">
+          <div class="sc-id">SRC-0062</div>
+          <div class="sc-title">EU AI Act — Articles 14, 26 and 72</div>
+          <div class="sc-org">European Parliament and Council</div>
+          <div class="sc-url"><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689" target="_blank" rel="noopener">eur-lex.europa.eu</a></div>
+        </div>
+        <div class="source-card">
+          <div class="sc-id">SRC-0067</div>
+          <div class="sc-title">NIST AI RMF 1.0 — GOVERN function</div>
+          <div class="sc-org">National Institute of Standards and Technology</div>
+          <div class="sc-url"><a href="https://airc.nist.gov/RMF" target="_blank" rel="noopener">airc.nist.gov</a></div>
+        </div>
+        <div class="source-card">
+          <div class="sc-id">SRC-0066</div>
+          <div class="sc-title">OECD AI Principles — Value 1.5: Accountability</div>
+          <div class="sc-org">Organisation for Economic Co-operation and Development</div>
+          <div class="sc-url"><a href="https://oecd.ai/en/ai-principles" target="_blank" rel="noopener">oecd.ai</a></div>
+        </div>
+      </div>
+      <div class="src-registry-note">Article ID: AR-000590 · Sources: SRC-0062, SRC-0066, SRC-0067 · Published: 2026-09-11 · AGNUS Research</div>
+    </section>
+  </article>
+  <aside class="art-aside">
+    <div class="aside-block"><div class="aside-label">Pillar</div><a href="AGNUS - Research.html" class="aside-pill">AI Governance</a></div>
+    <div class="aside-block">
+      <div class="aside-label">Related articles</div>
+      <ul class="aside-links">
+        <li><a href="AGNUS - Research Article - Governance Frameworks.html">AI Governance Frameworks: OECD, NIST AI RMF, ISO 42001</a></li>
+        <li><a href="AGNUS - Research Article - Governance Structure.html">EU AI Act: Market Surveillance and Governance Structure</a></li>
+        <li><a href="AGNUS - Research Article - Agent Governance.html">AI Agent Governance</a></li>
+      </ul>
+    </div>
+  </aside>
+</main>
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-copy">© 2026 AGNUS. All rights reserved.</div>
+    <div class="footer-links"><a href="AGNUS - Home.html">Home</a><a href="AGNUS - Research.html">Research</a><a href="AGNUS - Academy.html">Academy</a></div>
+  </div>
+</footer>
+<script src="agnus-research-data.js"></script>
+<script>(function(){var bar=document.getElementById('progBar');if(!bar)return;window.addEventListener('scroll',function(){var h=document.documentElement;bar.style.width=((h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100)+'%';});})();</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "run_date": "2026-08-23",
+  "source_checks": [
+    {
+      "source_url": "https://www.regjeringen.no",
+      "date_checked": "2026-08-23",
+      "status": "no_change",
+      "last_successful_check": "2026-08-23T06:01:17+02:00",
+      "observed_version_or_date": "Latest relevant Norwegian AI-law publication remains dated 2026-08-06.",
+      "open_questions": []
+    }
+  ],
+  "findings": [],
+  "editorial_alerts": []
+}

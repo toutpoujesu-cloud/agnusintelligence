@@ -1,0 +1,31 @@
+{
+  "run_date": "2026-08-15",
+  "source_checks": [
+    {
+      "source_url": "http://www.cac.gov.cn",
+      "date_checked": "2026-08-15",
+      "status": "manual_review",
+      "last_successful_check": "2026-08-15",
+      "observed_version_or_date": "CAC homepage retrieved over redirected HTTPS; baseline established",
+      "open_questions": []
+    },
+    {
+      "source_url": "https://www.miit.gov.cn",
+      "date_checked": "2026-08-15",
+      "status": "manual_review",
+      "last_successful_check": "2026-08-15",
+      "observed_version_or_date": "MIIT homepage retrieved; baseline established",
+      "open_questions": []
+    },
+    {
+      "source_url": "https://www.tc260.org.cn",
+      "date_checked": "2026-08-15",
+      "status": "manual_review",
+      "last_successful_check": "2026-08-15",
+      "observed_version_or_date": "TC260 homepage retrieved; baseline established",
+      "open_questions": []
+    }
+  ],
+  "findings": [],
+  "editorial_alerts": []
+}

@@ -1,0 +1,70 @@
+{
+  "run_date": "2026-08-15",
+  "source_checks": [
+    {
+      "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689",
+      "date_checked": "2026-08-15",
+      "status": "manual_review",
+      "last_successful_check": "2026-08-15",
+      "observed_version_or_date": "Current consolidated version 2026-07-27; act marked changed; baseline established",
+      "open_questions": []
+    },
+    {
+      "source_url": "https://digital-strategy.ec.europa.eu/en/policies/ai-office",
+      "date_checked": "2026-08-15",
+      "status": "manual_review",
+      "last_successful_check": "2026-08-15",
+      "observed_version_or_date": "European AI Office policy page retrieved; baseline established",
+      "open_questions": []
+    },
+    {
+      "source_url": "https://ai-act-service-desk.ec.europa.eu/en/ai-act",
+      "date_checked": "2026-08-15",
+      "status": "unreachable",
+      "last_successful_check": "",
+      "observed_version_or_date": "Registry URL returned an internal retrieval error",
+      "open_questions": [
+        "Official AI Act Explorer was discoverable at https://ai-act-service-desk.ec.europa.eu/en/ai-act-explorer; registry URL needs manual review"
+      ]
+    },
+    {
+      "source_url": "https://digital-strategy.ec.europa.eu/en",
+      "date_checked": "2026-08-15",
+      "status": "manual_review",
+      "last_successful_check": "2026-08-15",
+      "observed_version_or_date": "Shaping Europe’s digital future homepage retrieved; baseline established",
+      "open_questions": []
+    },
+    {
+      "source_url": "https://www.cencenelec.eu/areas-of-work/cen-cenelec-topics/artificial-intelligence/",
+      "date_checked": "2026-08-15",
+      "status": "manual_review",
+      "last_successful_check": "2026-08-15",
+      "observed_version_or_date": "Artificial Intelligence work-area page retrieved; baseline established",
+      "open_questions": []
+    },
+    {
+      "source_url": "https://www.enisa.europa.eu/topics/artificial-intelligence",
+      "date_checked": "2026-08-15",
+      "status": "unreachable",
+      "last_successful_check": "",
+      "observed_version_or_date": "Registry URL returned an internal retrieval error",
+      "open_questions": [
+        "Current official topic appears to be https://www.enisa.europa.eu/topics/artificial-intelligence-and-next-gen-technologies; registry needs manual review"
+      ]
+    },
+    {
+      "source_url": "https://www.edpb.europa.eu",
+      "date_checked": "2026-08-15",
+      "status": "manual_review",
+      "last_successful_check": "2026-08-15",
+      "observed_version_or_date": "EDPB homepage retrieved and redirected to /home_en; baseline established",
+      "open_questions": []
+    }
+  ],
+  "findings": [],
+  "editorial_alerts": [
+    "AI Act Service Desk: Registry URL returned an internal retrieval error",
+    "ENISA: Registry URL returned an internal retrieval error"
+  ]
+}

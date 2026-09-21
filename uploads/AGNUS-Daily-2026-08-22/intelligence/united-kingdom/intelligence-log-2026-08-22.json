@@ -1,0 +1,31 @@
+{
+  "run_date": "2026-08-22",
+  "source_checks": [
+    {
+      "source_url": "https://www.aisi.gov.uk",
+      "date_checked": "2026-08-22",
+      "status": "no_change",
+      "last_successful_check": "2026-08-22",
+      "observed_version_or_date": "AISI work index retrieved; newest listed monitored research remains dated 2026-08-04, before the baseline.",
+      "open_questions": []
+    },
+    {
+      "source_url": "https://www.gov.uk/government/organisations/department-for-science-innovation-and-technology",
+      "date_checked": "2026-08-22",
+      "status": "no_change",
+      "last_successful_check": "2026-08-22",
+      "observed_version_or_date": "DSIT publications retrieved; 2026-08-20 to 2026-08-21 items were outside the monitored AI-regulatory scope.",
+      "open_questions": []
+    },
+    {
+      "source_url": "https://ico.org.uk",
+      "date_checked": "2026-08-22",
+      "status": "no_change",
+      "last_successful_check": "2026-08-22",
+      "observed_version_or_date": "ICO site retrieved; no new monitored AI/data-protection guidance found since 2026-08-15.",
+      "open_questions": []
+    }
+  ],
+  "findings": [],
+  "editorial_alerts": []
+}

@@ -1,0 +1,24 @@
+{
+  "handoff_type": "raw_intelligence_to_research",
+  "created_date": "2026-08-22",
+  "jurisdiction": "South Korea",
+  "intelligence_record_id": "IR-PROVISIONAL-20260822-001",
+  "provisional_source": {
+    "source_id": "SRC-0046",
+    "title": "PIPC press release: Personal Information Protection Act amendment for safe AI development passes National Assembly plenary session",
+    "publisher": "Personal Information Protection Commission, Republic of Korea",
+    "source_url": "https://www.pipc.go.kr/np/cop/bbs/selectBoardArticle.do?bbsId=BS074&mCode=C020010000&nttId=12391",
+    "publication_date": "2026-08-20",
+    "date_checked": "2026-08-22",
+    "authority_level": "Primary",
+    "verification_status": "official_page_verified"
+  },
+  "research_question": "What operational requirements, approval criteria, safeguards, and implementation timetable will apply to South Korea's new personal-data route for AI development after promulgation and subordinate legislation?",
+  "editorial_controls": [
+    "Confirm SRC-0046 and the Intelligence record ID against the live registries before publication.",
+    "Verify promulgation date and calculate the exact effective date when officially published.",
+    "Do not treat National Assembly passage as final promulgation or current effectiveness."
+  ],
+  "article_written": false,
+  "agnus_research_data_modified": false
+}

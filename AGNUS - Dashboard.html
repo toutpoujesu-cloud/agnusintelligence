@@ -1,0 +1,709 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AGNUS · Editorial Dashboard</title>
+<meta name="description" content="The AGNUS engine room — Editorial Dashboard + Control Center. Newsroom, SEO command center and AI research lab in one." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus-dash.css?v=45" />
+</head>
+<body>
+<div class="app">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sb-tex"></div>
+    <div class="sb-brand"><span class="wm">AGNUS</span><span class="badge">Engine Room</span></div>
+    <div class="sb-scroll" id="sbnav"></div>
+    <div class="sb-foot">
+      <a class="sb-user" href="AGNUS - Home.html" title="View public site">
+        <span class="av">JD</span>
+        <div><div class="nm">Jean-Daniel</div><div class="rl">Editor-in-chief</div></div>
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+    <header class="topbar">
+      <div class="tb-title" id="tbTitle">Dashboard<small>Editorial</small></div>
+      <div class="tb-search">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="6"/><path d="M14 14l4 4"/></svg>
+        <input type="text" placeholder="Search articles, keywords, clusters…" aria-label="Search" />
+        <kbd>⌘K</kbd>
+      </div>
+      <button class="tb-icon" title="Notifications"><span class="dot"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 8a6 6 0 1112 0c0 7 3 7 3 9H3c0-2 3-2 3-9z"/><path d="M10 21a2 2 0 004 0"/></svg></button>
+      <button class="tb-icon" title="Hold AI Council" onclick="GO('council')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="8" r="3"/><path d="M5 20a7 7 0 0114 0"/></svg></button>
+    </header>
+    <div class="stage" id="stageScroll"><div class="stage-in" id="stage"></div></div>
+  </div>
+</div>
+
+<!-- ASSISTANT FAB + PANEL -->
+<button class="assistant-fab" id="fab" onclick="toggleAssistant(true)">
+  <span class="orb">✦</span>
+  <span class="at">Chief Editor<small>Ask anything</small></span>
+</button>
+<div class="assistant-panel" id="assistant">
+  <div class="ap-head">
+    <div class="tx"></div>
+    <span class="orb">✦</span>
+    <div class="ht"><h4>Chief Editor</h4><div class="st"><span class="d"></span> Actively managing AGNUS</div></div>
+    <button class="x" onclick="toggleAssistant(false)">×</button>
+  </div>
+  <div class="ap-body" id="apBody"></div>
+  <div class="ap-suggest" id="apSuggest"></div>
+  <div class="ap-input">
+    <input type="text" id="apInput" placeholder="Ask your Chief Editor…" onkeydown="if(event.key==='Enter')askAssistant(this.value)" />
+    <button class="send" onclick="askAssistant(document.getElementById('apInput').value)">→</button>
+  </div>
+</div>
+
+<!-- SOURCE DETAIL DRAWER -->
+<div class="sd-drawer" id="srcDrawer"><div class="sd-body"></div></div>
+
+<!-- COMMAND PALETTE -->
+<div class="cmdk" id="cmdk" onclick="if(event.target===this)closeCmdk()">
+  <div class="cmdk-box">
+    <div class="cmdk-in">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="6"/><path d="M14 14l4 4"/></svg>
+      <input type="text" id="cmdkInput" placeholder="Search or run a command…" oninput="filterCmdk(this.value)" onkeydown="cmdkKey(event)" />
+      <kbd>esc</kbd>
+    </div>
+    <div class="cmdk-list" id="cmdkList"></div>
+  </div>
+</div>
+
+<!-- CREATE ARTICLE MODAL — AI Strategist v2 -->
+<div class="modal-bg" id="createModal">
+  <div class="modal modal-xl">
+    <div class="modal-h"><h3>Create article</h3><button class="x" onclick="closeCreate()">×</button></div>
+    <div class="wiz-steps" id="wizSteps">
+      <div class="wiz-step on" data-s="1"><span class="wn">1</span> Opportunity</div>
+      <div class="wiz-line"></div>
+      <div class="wiz-step" data-s="2"><span class="wn">2</span> Content Strategy</div>
+      <div class="wiz-line"></div>
+      <div class="wiz-step" data-s="3"><span class="wn">3</span> Publishing</div>
+    </div>
+    <div class="modal-b" id="wizBody">
+
+      <!-- ── STEP 1: OPPORTUNITY ── -->
+      <div class="wiz-pane on" data-p="1">
+        <div class="opp-intro">What do you want AGNUS to build?</div>
+        <div class="opp-grid" id="oppGrid">
+          <button class="opp-card on" data-opp="keyword" onclick="pickOpp('keyword',this)"><span class="oc-ic">⌕</span><span class="oc-t">Build from keyword</span><span class="oc-d">Search any keyword — AGNUS returns full intelligence</span></button>
+          <button class="opp-card" data-opp="brain" onclick="pickOpp('brain',this)"><span class="oc-ic">✦</span><span class="oc-t">Build from opportunity</span><span class="oc-d">Pick from the Brain's strategic roadmap</span></button>
+          <button class="opp-card" data-opp="competitor" onclick="pickOpp('competitor',this)"><span class="oc-ic">◎</span><span class="oc-t">Build from competitor</span><span class="oc-d">Enter a URL — AGNUS finds the gaps</span></button>
+          <button class="opp-card" data-opp="entity" onclick="pickOpp('entity',this)"><span class="oc-ic">◈</span><span class="oc-t">Build from entity</span><span class="oc-d">Choose OpenAI, Claude, Gemini… and get angles</span></button>
+          <button class="opp-card" data-opp="cluster" onclick="pickOpp('cluster',this)"><span class="oc-ic">⊕</span><span class="oc-t">Build from Topic Cluster</span><span class="oc-d">See what's missing in a cluster you own</span></button>
+          <button class="opp-card" data-opp="research" onclick="pickOpp('research',this)"><span class="oc-ic">¶</span><span class="oc-t">Build from Research</span><span class="oc-d">Paste a URL or text — AGNUS extracts the angles</span></button>
+        </div>
+        <div id="oppPanel" style="margin-top:18px"></div>
+      </div>
+
+      <!-- ── STEP 2: CONTENT STRATEGY ── -->
+      <div class="wiz-pane" data-p="2">
+        <div class="cs-grid" id="csGrid"></div>
+      </div>
+
+      <!-- ── STEP 3: PUBLISHING ── -->
+      <div class="wiz-pane" data-p="3">
+        <div class="field"><label>Primary cluster</label><div class="field-row" id="clusterOpts"></div></div>
+        <div class="field"><label>Connected assets</label><div class="field-row" id="assetOpts"></div></div>
+        <div class="field"><label>Scheduling</label><div class="field-row" id="pubOpts"></div></div>
+        <div class="gap-alert"><span class="ic">✦</span><div>On <b>Generate Research Brief</b>, AGNUS collects sources, verifies facts, builds the knowledge graph, and generates an outline for your approval — then opens the AI Writer.</div></div>
+      </div>
+
+    </div>
+    <div class="modal-f">
+      <button class="b b-ghost" id="wizBack" onclick="wizGo(-1)" style="display:none">← Back</button>
+      <div class="grow"></div>
+      <button class="b b-ghost" onclick="closeCreate()">Cancel</button>
+      <button class="b b-dark" id="wizNext" onclick="wizGo(1)">Next →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ── NAV DEFINITION ── */
+const NAV=[
+  ['Engine Room', [['home','Dashboard','▣'],['brain','AGNUS Brain','✦']]],
+  ['Content Operations',[
+    ['feed','Intelligence Feed','◎','3'],['keywords','Keyword Discovery','⌕','36'],['research','Research Panel','🔍'],
+    ['clusters','Topic Clusters','⊕','8'],['pipeline','Article Pipeline','▤','12'],['story','Story Builder','✶'],
+    ['writer','AI Writer','✎'],['review','Human Review','✓','2'],['calendar','Publishing Calendar','▦'],['archive','Content Archive','▢']
+  ]],
+  ['Knowledge',[
+    ['know_sources','Knowledge Sources','◎','53'],['know_scoring','Source Scoring','◐'],['know_db','Knowledge Database','▤'],
+    ['know_graph','Knowledge Graph','⊕'],['know_entities','Entity Manager','◈'],['know_memory','AGNUS Memory','◉'],['know_timeline','Intelligence Timeline','↺'],['know_logs','Sync Logs','↻']
+  ]],
+  ['Optimization',[
+    ['linking','Internal Linking','⛓'],['geo','SEO / GEO','◷'],['media','Media','▩'],
+    ['analytics','Performance','📊'],['affiliate','Affiliate','€','4'],['coverage','Coverage Map','▦']
+  ]],
+  ['Intelligence',[['council','AI Council','✦'],['opportunity','Opportunity Center','◆','7'],['reports','Reports','▤']]],
+  ['Library',[['library','Content Library','▤']]],
+  ['System',[['control','Control Center','⚙']]]
+];
+const TITLES={home:['Dashboard','Engine Room'],brain:['AGNUS Brain','Engine Room'],feed:['Intelligence Feed','Content Operations'],keywords:['Keyword Discovery','Content Operations'],research:['Research Panel','Content Operations'],clusters:['Topic Clusters','Content Operations'],pipeline:['Article Pipeline','Content Operations'],story:['Story Builder','Content Operations'],writer:['AI Writer','Content Operations'],review:['Human Review','Content Operations'],calendar:['Publishing Calendar','Content Operations'],archive:['Content Archive','Content Operations'],linking:['Internal Linking','Optimization'],geo:['SEO / GEO','Optimization'],media:['Media','Optimization'],analytics:['Performance Analytics','Optimization'],affiliate:['Affiliate','Optimization'],coverage:['Coverage Map','Optimization'],Quality:['Quality Check','Content Operations'],council:['AI Council','Intelligence'],opportunity:['Opportunity Center','Intelligence'],reports:['Reports','Intelligence'],db_companies:['Company Database','Knowledge Base'],db_products:['Product Database','Knowledge Base'],db_people:['People Database','Knowledge Base'],library:['Content Library','Library'],control:['Control Center','System'],brain:['AGNUS Brain','Engine Room'],know_sources:['Knowledge Sources','Knowledge'],know_scoring:['Source Scoring','Knowledge'],know_db:['Knowledge Database','Knowledge'],know_graph:['Knowledge Graph','Knowledge'],know_entities:['Entity Manager','Knowledge'],know_memory:['AGNUS Memory','Knowledge'],know_timeline:['Intelligence Timeline','Knowledge'],know_logs:['Sync Logs','Knowledge']};
+
+function renderNav(){
+  document.getElementById('sbnav').innerHTML = NAV.map(g=>`
+    ${g[0]?`<div class="sb-gl">${g[0]}</div>`:'<div style="height:6px"></div>'}
+    ${g[1].map(it=>`<button class="sb-item" data-v="${it[0]}" onclick="GO('${it[0]}')"><span class="ic" style="display:grid;place-items:center;font-family:var(--font-mono);font-size:13px">${it[2]}</span><span>${it[1]}</span>${it[3]?`<span class="ct">${it[3]}</span>`:''}</button>`).join('')}
+  `).join('');
+}
+
+/* control-center sub-views all map their sidebar highlight to 'control' */
+function navKeyFor(view){ if(view.startsWith('cc_'))return 'control'; if(view.startsWith('ksrc_'))return 'know_sources'; if(view.startsWith('cluster_'))return 'clusters'; return (view==='Quality'?'pipeline':view); }
+
+let restBundleLoaded=false, restBundleLoading=false;
+const restBundleNeeded=v=>v.startsWith('cc_')||v.startsWith('ksrc_')||v.startsWith('know_')||v.startsWith('cluster_')||v.startsWith('entity_')||['control','story','review','calendar','archive','analytics','affiliate','media','geo','linking','opportunity','reports','council','coverage','library'].includes(v);
+function GO(view){
+  const origView=view;
+  if(view==='keywords'){ view='pipeline'; }
+  if(!restBundleLoaded && restBundleNeeded(view)){
+    if(!restBundleLoading){
+      restBundleLoading=true;
+      const s=document.createElement('script');
+      s.src='dash-rest.js?v=1';
+      s.onload=()=>{ restBundleLoaded=true; restBundleLoading=false; GO(view); };
+      document.body.appendChild(s);
+    }
+    document.getElementById('stage').innerHTML='<div class="fade" style="padding:60px;text-align:center;color:var(--ink-mute);font-family:var(--font-mono);font-size:13px">Loading…</div>';
+    const check=setInterval(()=>{ if(restBundleLoaded){ clearInterval(check); } },50);
+    return;
+  }
+  const fn = window.VIEWS[view];
+  if(!fn){ console.warn('no view',view); return; }
+  const stage=document.getElementById('stage');
+  stage.innerHTML = `<div class="fade">${fn()}</div>`;
+  document.getElementById('stageScroll').scrollTop=0;
+  // dark stage for council? keep light. 
+  const init = window.VIEW_INIT[view]; if(init) init();
+  // sidebar highlight
+  const key=navKeyFor(origView);
+  document.querySelectorAll('.sb-item').forEach(b=>b.classList.toggle('on', b.dataset.v===key));
+  // title
+  let t=TITLES[view]; if(!t && view.startsWith('cc_')) t=['Control Center','System']; if(!t && view.startsWith('ksrc_')) t=['Knowledge Sources','Knowledge']; if(!t && view.startsWith('cluster_')) t=['Topic Cluster','Editorial'];
+  if(t) document.getElementById('tbTitle').innerHTML=`${t[0]}<small>${t[1]}</small>`;
+  location.hash=view;
+}
+window.GO=GO;
+
+/* ── ASSISTANT ── */
+const SUGGEST=["What should I write today?","Where are we losing authority?","What needs updating?","Where is revenue growing?"];
+const ANSWERS={
+  default:`I'm actively managing AGNUS. Ask me what to write, where authority is weak, what needs updating, or where revenue is growing.`,
+  "what should i write today?":{txt:`Based on rising search demand, affiliate value and a gap in your <b>AI Agents</b> cluster, I'd publish:`,rec:['Best AI Agents for Small Businesses','Est. effort: 2.5h','Authority gain: High','Revenue: €300–700/mo']},
+  "where are we losing authority?":{txt:`Two clusters are thin: <b>Restaurants</b> (31%) and <b>RAG</b> (49%). We're also missing internal links between the <b>RAG</b> and <b>Vector Database</b> clusters — adding those strengthens both.`},
+  "what needs updating?":{txt:`<b>Three reviews</b> are outdated because pricing changed yesterday. The <b>ChatGPT review</b> dropped 4 positions and should be refreshed first.`},
+  "where is revenue growing?":{txt:`Affiliate revenue is up <b>+€120 MoM</b>, led by the Lawyers guide. Marketplace bundles are your fastest-growing line — worth a dedicated push.`}
+};
+function toggleAssistant(open){ document.getElementById('assistant').classList.toggle('open',open); document.getElementById('fab').style.display=open?'none':'flex'; if(open&&!document.getElementById('apBody').dataset.init){ initAssistant(); } }
+function initAssistant(){
+  const b=document.getElementById('apBody'); b.dataset.init='1';
+  addMsg('ai',ANSWERS.default);
+  document.getElementById('apSuggest').innerHTML=SUGGEST.map(s=>`<button class="ap-chip" onclick="askAssistant('${s.replace(/'/g,"\\'")}')">${s}</button>`).join('');
+}
+function addMsg(who,txt,rec){
+  const b=document.getElementById('apBody');
+  let html=`<div class="msg ${who}">${txt}`;
+  if(rec){ html+=`<div class="rec-card"><div class="rt">${rec[0]}</div><div class="rm">${rec.slice(1).map(x=>`<span>${x}</span>`).join('')}</div></div>`; }
+  html+=`</div>`;
+  b.insertAdjacentHTML('beforeend',html); b.scrollTop=b.scrollHeight;
+}
+function askAssistant(q){ if(!q||!q.trim())return; addMsg('me',q); document.getElementById('apInput').value='';
+  const key=q.trim().toLowerCase(); const a=ANSWERS[key];
+  setTimeout(()=>{ if(a&&typeof a==='object'){ addMsg('ai',a.txt,a.rec); } else if(a){ addMsg('ai',a); } else { addMsg('ai',`Good question. Pulling that together from the feed, analytics and clusters… Based on current signals, prioritize the <b>AI Agents</b> buying guide and refresh the <b>ChatGPT review</b> — both move authority and revenue this week.`); } },420);
+}
+window.toggleAssistant=toggleAssistant; window.askAssistant=askAssistant;
+
+/* ── CREATE MODAL — AI Strategist v2 ── */
+let wizStep=1;
+let selectedKw='AI agents for restaurants';
+
+function openCreate(kw){
+  document.getElementById('createModal').classList.add('open');
+  const pipe=document.getElementById('wizPipe'); if(pipe)pipe.remove();
+  document.querySelectorAll('.wiz-pane').forEach(p=>{ p.style.display=''; });
+  const f=document.querySelector('.modal-f'); if(f){ f.style.display='flex'; f.innerHTML='<button class="b b-ghost" id="wizBack" onclick="wizGo(-1)" style="display:none">← Back</button><div class="grow"></div><button class="b b-ghost" onclick="closeCreate()">Cancel</button><button class="b b-dark" id="wizNext" onclick="wizGo(1)">Next →</button>'; }
+  wizStep=1; wizShow();
+  setTimeout(()=>{
+    const def=document.querySelector('.opp-card[data-opp="keyword"]');
+    if(kw){ selectedKw=kw; pickOpp('keyword',def); } else { pickOpp('keyword',def); }
+  },80);
+}
+function closeCreate(){ document.getElementById('createModal').classList.remove('open'); }
+function pick(el){ [...el.parentElement.children].forEach(c=>c.classList.remove('on')); el.classList.add('on'); }
+window.openCreate=openCreate; window.closeCreate=closeCreate; window.pick=pick;
+function chipFill(id,arr,sel){ const el=document.getElementById(id); if(el) el.innerHTML=arr.map((t,i)=>`<button class="opt ${i===sel?'on':''}" onclick="pick(this)">${t}</button>`).join(''); }
+chipFill('clusterOpts',['AI Models','AI Agents','Healthcare','Restaurants','Law','Business','RAG','Creators'],3);
+chipFill('assetOpts',['Review','Comparison','Academy lesson','Business guide','Marketplace page','Prompt pack'],0);
+chipFill('pubOpts',['Publish now','Schedule Friday','Add to queue'],1);
+
+/* ── opportunity selector ── */
+window.pickOpp=function(type,el){
+  if(el){ document.querySelectorAll('.opp-card').forEach(c=>c.classList.toggle('on',c===el)); }
+  const panel=document.getElementById('oppPanel'); if(!panel)return;
+  const BRAIN_RECS=[['Best AI Agents for Small Businesses','AI Agents cluster · gap — missing pillar article','€120/mo',94],['Refresh ChatGPT Review','Pricing changed · dropped 4 positions overnight','€160/mo',97],['AI for Dental Clinics','Keyword 8.9 · almost no competition','€140/mo',86]];
+  const ENTITY_ANGLES={OpenAI:['GPT-5 for restaurants — buying guide','OpenAI vs Claude for business','How OpenAI API powers AI receptionists'],Claude:['Claude vs ChatGPT for small business','Claude API for customer service','Best Claude prompts for restaurants'],Gemini:['Gemini 3 vs GPT-5 — 2026 comparison','Gemini for Workspace: review'],Mistral:['Mistral vs GPT-5 — open-source comparison'],Cursor:['Best AI code editor 2026']};
+  const CLUSTER_GAPS={'AI Agents':['How to build an AI agent','Agent security & guardrails','AI agent vs RPA comparison'],Restaurants:['Review reply automation guide','Voice receptionist tools review','Restaurant marketing prompts guide'],Healthcare:['AI for patient reminders','AI medical transcription review'],Law:['Legal prompt pack guide'],RAG:['Building a RAG pipeline — tutorial']};
+  const panels={
+    keyword:`<div class="kip-search"><div class="kip-bar"><input type="text" id="kwInput" placeholder="Search keyword e.g. AI agents for restaurants" value="${selectedKw}" onkeydown="if(event.key==='Enter')kwSearch(this.value)"><button class="b b-dark b-sm" onclick="kwSearch(document.getElementById('kwInput').value)">Search →</button></div></div><div id="kipOut"></div>`,
+    brain:`<div class="opp-pick"><div class="opp-pick-h">✦ Top opportunities from the Brain</div>${BRAIN_RECS.map((r,i)=>`<div class="opp-rec ${i===0?'on':''}" onclick="this.parentElement.querySelectorAll('.opp-rec').forEach(x=>x.classList.toggle('on',x===this))"><div class="or-n">${r[0]}</div><div class="or-ev">${r[1]}</div><div class="or-meta"><span class="pill green">${r[2]}</span><span class="pill gold">Confidence ${r[3]}%</span></div></div>`).join('')}</div>`,
+    competitor:`<div class="opp-pick"><div class="opp-pick-h">◎ Enter a competitor URL</div><div class="kip-bar"><input type="text" placeholder="https://backlinko.com/ai-agents" id="compUrl"><button class="b b-dark b-sm" onclick="compAnalyze()">Analyze →</button></div><div id="compOut"></div></div>`,
+    entity:`<div class="opp-pick"><div class="opp-pick-h">◈ Choose an entity</div><div class="field-row" id="entityPick">${Object.keys(ENTITY_ANGLES).map((e,i)=>`<button class="opt ${i===0?'on':''}" onclick="entityAngles('${e}',this)">${e}</button>`).join('')}</div><div id="entityOut"></div></div>`,
+    cluster:`<div class="opp-pick"><div class="opp-pick-h">⊕ Choose a Topic Cluster</div><div class="field-row" id="clusterPick">${Object.keys(CLUSTER_GAPS).map((c,i)=>`<button class="opt ${i===0?'on':''}" onclick="clusterGaps('${c}',this)">${c}</button>`).join('')}</div><div id="clusterOut"></div></div>`,
+    research:`<div class="opp-pick"><div class="opp-pick-h">¶ Paste a URL or text</div><div class="kip-bar"><input type="text" placeholder="https://openai.com/news/..." id="resInput"><button class="b b-dark b-sm" onclick="resExtract()">Extract angles →</button></div><textarea placeholder="Or paste the text here…" style="width:100%;border:1px solid var(--line);border-radius:9px;padding:10px 12px;font-family:var(--font-sans);font-size:13px;outline:none;margin-top:8px;resize:vertical;min-height:70px;background:var(--paper)"></textarea><div id="resOut"></div></div>`
+  };
+  panel.innerHTML=panels[type]||'';
+  if(type==='keyword'){ setTimeout(()=>kwSearch(selectedKw),60); }
+  if(type==='entity'){ setTimeout(()=>{ const d=document.getElementById('entityOut'); if(d){ const angles=ENTITY_ANGLES.OpenAI; d.innerHTML=`<div class="opp-result fade"><div class="or-h">Article angles · OpenAI</div>${angles.map(a=>`<div class="or-row"><span class="or-t gold">✦</span><span class="or-v">${a}</span></div>`).join('')}</div>`; } },60); }
+  if(type==='cluster'){ setTimeout(()=>{ const d=document.getElementById('clusterOut'); if(d){ const gaps=CLUSTER_GAPS['AI Agents']; d.innerHTML=`<div class="opp-result fade"><div class="or-h">Cluster gaps · AI Agents</div>${gaps.map(a=>`<div class="or-row"><span class="or-t warn">Missing</span><span class="or-v">${a}</span></div>`).join('')}</div>`; } },60); }
+};
+
+/* ── keyword intelligence ── */
+window.kwSearch=function(kw){
+  if(!kw||!kw.trim())return; selectedKw=kw.trim();
+  const out=document.getElementById('kipOut'); if(!out)return;
+  out.innerHTML='<div class="kip-loading"><span class="tiny muted">Querying 9 knowledge sources…</span></div>';
+  setTimeout(()=>{
+    out.innerHTML=`<div class="kip fade">
+      <div class="kip-kw"><span class="kip-label">Keyword</span><span class="kip-val">${kw}</span></div>
+      <div class="kip-stats">
+        ${[['Monthly volume','12,400',''],['Trend','↑ Rising','up'],['Difficulty','31/100','easy'],['Commercial intent','High','high'],['Business value','★★★★★',''],['Voice search','Excellent',''],['AI search visibility','High',''],['Semantic score','96%','']].map(s=>`<div class="ks"><div class="ks-l">${s[0]}</div><div class="ks-v ${s[2]}">${s[1]}</div></div>`).join('')}
+      </div>
+      <div class="kip-two">
+        <div>
+          <div class="kip-row"><span class="kip-k">Parent topic</span><span class="kip-vt">AI Restaurant Software</span></div>
+          <div class="kip-row"><span class="kip-k">Search intent</span><span class="kip-vt">Commercial Investigation</span></div>
+          <div class="kip-row"><span class="kip-k">Cluster match</span><span class="kip-vt"><span class="pill green">Restaurants · 82%</span></span></div>
+          <div class="kip-row"><span class="kip-k">Article types</span><span class="kip-vt"><span class="pill gold">Buying guide</span> <span class="pill ghost">Comparison</span> <span class="pill ghost">Tutorial</span></span></div>
+        </div>
+        <div>
+          <div class="kip-row"><span class="kip-k">Expected traffic</span><span class="kip-vt" style="color:var(--success);font-weight:700">+2,800/mo</span></div>
+          <div class="kip-row"><span class="kip-k">Expected revenue</span><span class="kip-vt" style="color:var(--success);font-weight:700">€180/mo</span></div>
+          <div class="kip-row"><span class="kip-k">Authority gain</span><span class="kip-vt" style="color:var(--success);font-weight:700">+12%</span></div>
+          <div class="kip-row"><span class="kip-k">AGNUS rating</span><span style="color:var(--gold-deep)">★★★★★</span></div>
+        </div>
+      </div>
+      <div class="kip-lists">
+        <div class="kl"><div class="kl-h">People Also Ask</div>${['What AI tools help restaurants?','Can AI reduce restaurant no-shows?','Best AI for restaurant booking?'].map(q=>`<div class="kl-i">${q}</div>`).join('')}</div>
+        <div class="kl"><div class="kl-h">Long-tail opportunities</div>${['AI agents for independent restaurants','AI booking software restaurant 2026','best AI for hospitality management'].map(q=>`<div class="kl-i">${q}</div>`).join('')}</div>
+        <div class="kl"><div class="kl-h">Competitor gaps</div>${['Backlinko — missing booking comparison','HubSpot — no hospitality angle','Zapier — no restaurant use case'].map(q=>`<div class="kl-i">${q}</div>`).join('')}</div>
+        <div class="kl"><div class="kl-h">Related keywords</div>${['AI restaurant booking','AI for hospitality','restaurant automation software'].map(q=>`<div class="kl-i">${q}</div>`).join('')}</div>
+      </div>
+      <div class="kip-foot"><div class="kip-rec"><span class="kip-stars">★★★★★</span><span><b>AGNUS recommends this keyword.</b> High commercial intent, low competition, strong affiliate potential, and a clear cluster match. Write the buying guide first.</span></div><button class="b b-line b-sm" onclick="expandIntel('${kw}')">Expand Intelligence →</button></div>
+    </div>`;
+  },700);
+};
+
+/* ── expand intelligence ── */
+window.expandIntel=function(kw){
+  const out=document.getElementById('kipOut'); if(!out)return;
+  const existing=out.querySelector('.kip-expand'); if(existing){existing.remove();return;}
+  const el=document.createElement('div'); el.className='kip-expand fade';
+  const dims=[['Semantic cluster','Growing · AI Restaurant Software with 9 related keywords, 45k est. impressions'],['Voice search','Excellent — phrased as a question 68% of the time; featured snippet likely'],['AI Overview likelihood','High — Gemini and ChatGPT surface this topic frequently'],['Google Discover potential','Medium — trending in hospitality vertical'],['Featured snippet opp.','Yes — "What AI tools help restaurants?" is unowned'],['Internal linking','6 existing articles ready to link to this piece'],['Cluster coverage','Restaurants cluster at 31% — this article advances it to ~47%'],['Competitor gaps','3 major competitors missing the buying-guide angle entirely'],['Monetization potential','High — 4 affiliate programs, est. €180/mo'],['Seasonal trend','Peak in Q1 and Q3; publish by end of July for Q3 peak'],['Geographic opp.','Strong in EU, AU and US; localize pricing section for UK market'],['Intent change','Commercial intent rising +14% over 12 months; window is now']];
+  el.innerHTML=`<div class="kip-expand-h">◉ Expanded intelligence · 12 dimensions</div>
+    <div class="kip-expand-dims">${dims.map(d=>`<div class="kd"><div class="kd-l">${d[0]}</div><div class="kd-v">${d[1]}</div></div>`).join('')}</div>
+    <div class="kip-summary"><b>Intelligence summary:</b> This keyword belongs to a growing semantic cluster (AI Restaurant Software) with high commercial intent, low competition (31/100), strong AI Overview potential, and supports 6 related articles that together could generate an estimated 45,000 monthly impressions. Seasonal peak in Q3 — publish now. Geographic opportunity in EU and AU. Two competitors are missing the comparison angle entirely.</div>`;
+  out.querySelector('.kip-foot').after(el);
+};
+
+/* ── competitor analysis ── */
+window.compAnalyze=function(){
+  const out=document.getElementById('compOut'); if(!out)return;
+  out.innerHTML='<div class="tiny muted" style="margin-top:10px">Analyzing…</div>';
+  setTimeout(()=>{ out.innerHTML=`<div class="opp-result fade"><div class="or-h">Gap analysis · competitor.com</div>${[['Missing','Booking tool comparison table'],['Missing','AI receptionist section'],['Missing','ROI calculator'],['Thin','Pricing section (1 tool only)'],['Opportunity','4 affiliate products not mentioned']].map(r=>`<div class="or-row"><span class="or-t ${r[0]==='Opportunity'?'gold':r[0]==='Thin'?'warn':'red'}">${r[0]}</span><span class="or-v">${r[1]}</span></div>`).join('')}</div>`; },800);
+};
+
+/* ── entity angles ── */
+const _EA={OpenAI:['GPT-5 for restaurants — buying guide','OpenAI vs Claude for business','How OpenAI API powers AI receptionists'],Claude:['Claude vs ChatGPT for small business','Best Claude prompts for restaurants','Claude API for customer service'],Gemini:['Gemini 3 vs GPT-5 — 2026 comparison','Gemini for Workspace: review'],Mistral:['Mistral vs GPT-5 — open-source comparison'],Cursor:['Best AI code editor 2026']};
+window.entityAngles=function(e,el){
+  if(el) document.querySelectorAll('#entityPick .opt').forEach(x=>x.classList.toggle('on',x===el));
+  const out=document.getElementById('entityOut'); if(!out)return;
+  const list=_EA[e]||_EA.OpenAI;
+  out.innerHTML=`<div class="opp-result fade"><div class="or-h">Article angles · ${e}</div>${list.map(a=>`<div class="or-row"><span class="or-t gold">✦</span><span class="or-v">${a}</span></div>`).join('')}</div>`;
+};
+
+/* ── cluster gaps ── */
+const _CG={'AI Agents':['How to build an AI agent','Agent security & guardrails','AI agent vs RPA comparison'],Restaurants:['Review reply automation guide','Voice receptionist tools review','Restaurant marketing prompts guide'],Healthcare:['AI for patient reminders','AI medical transcription review'],Law:['Legal prompt pack guide'],RAG:['Building a RAG pipeline — tutorial']};
+window.clusterGaps=function(c,el){
+  if(el) document.querySelectorAll('#clusterPick .opt').forEach(x=>x.classList.toggle('on',x===el));
+  const out=document.getElementById('clusterOut'); if(!out)return;
+  const list=_CG[c]||_CG['AI Agents'];
+  out.innerHTML=`<div class="opp-result fade"><div class="or-h">Cluster gaps · ${c}</div>${list.map(a=>`<div class="or-row"><span class="or-t warn">Missing</span><span class="or-v">${a}</span></div>`).join('')}</div>`;
+};
+
+/* ── research extract ── */
+window.resExtract=function(){
+  const out=document.getElementById('resOut'); if(!out)return;
+  out.innerHTML='<div class="tiny muted" style="margin-top:10px">Extracting…</div>';
+  setTimeout(()=>{ out.innerHTML=`<div class="opp-result fade"><div class="or-h">Extracted angles</div>${[['Claim','OpenAI agent framework reduces setup time by 60%'],['Opportunity','No comparison with LangGraph exists'],['Gap','No pricing breakdown in source'],['Angle','Write: "OpenAI Agents vs LangGraph — which is faster to ship?"']].map(r=>`<div class="or-row"><span class="or-t ${r[0]==='Angle'?'gold':'blue'}">${r[0]}</span><span class="or-v">${r[1]}</span></div>`).join('')}</div>`; },700);
+};
+
+/* ── step 2: content strategy ── */
+function initContentStrategy(){
+  const grid=document.getElementById('csGrid'); if(!grid||grid.children.length)return;
+  const cs=[
+    {k:'Target audience',v:'Restaurant owners · SMB'},
+    {k:'Search intent',v:'Commercial Investigation — comparing tools before purchase'},
+    {k:'Recommended structure',v:'Intro → Why restaurants need AI → Best tools (table) → Setup guide → FAQ → Next step'},
+    {k:'Competitors to beat',v:'Backlinko · HubSpot · Zapier · Toast'},
+    {k:'Entities to mention',v:'OpenAI · Claude · Gemini · OpenTable · ElevenLabs'},
+    {k:'Sources',v:'Official docs · G2 reviews · Google Trends · Search Console'},
+    {k:'Questions to answer',v:'"What AI tools help restaurants?" · "Can AI reduce no-shows?" · "Best AI booking software?"'},
+    {k:'Internal links',v:'Best AI Agents (published) · ChatGPT Review · Restaurants cluster pillar'},
+    {k:'Affiliate opportunities',v:'OpenTable AI · ChatGPT Plus · Canva Pro — est. €140/mo'},
+    {k:'Products to feature',v:'OpenTable AI · Voice Receptionist Agent · Review Reply Tool'},
+    {k:'Call-to-action',v:'"Deploy the AI for Restaurants collection →"'},
+    {k:'Schema markup',v:'Article + FAQ + HowTo — auto-generated'},
+    {k:'Tone',v:'Practical · Business-focused · Expert'},
+    {k:'Language',v:'English (EU) · UK variant for pricing section'},
+    {k:'EEAT score',v:'94/100 — verified sources, named experts, original research'},
+    {k:'Est. reading time',v:'8 minutes · 2,400 words'}
+  ];
+  grid.innerHTML=cs.map(c=>`<div class="cs-row"><div class="cs-k">${c.k}</div><div class="cs-v">${c.v} <button class="b b-ghost b-sm" style="padding:3px 8px;font-size:11px;margin-left:6px">Edit</button></div></div>`).join('');
+}
+
+/* ── wizard navigation ── */
+function wizShow(){
+  document.querySelectorAll('.wiz-pane').forEach(p=>p.classList.toggle('on',+p.dataset.p===wizStep));
+  document.querySelectorAll('.wiz-step').forEach(s=>{ const n=+s.dataset.s; s.classList.toggle('on',n===wizStep); s.classList.toggle('done',n<wizStep); });
+  const wb=document.getElementById('wizBack'); if(wb)wb.style.display=wizStep>1?'inline-flex':'none';
+  const wn=document.getElementById('wizNext'); if(wn)wn.textContent=wizStep<3?'Next →':'Generate Research Brief →';
+  if(wizStep===2)initContentStrategy();
+}
+function wizGo(d){ if(wizStep===3&&d>0){ runResearchBrief(); return; } wizStep=Math.max(1,Math.min(3,wizStep+d)); wizShow(); }
+window.wizGo=wizGo;
+
+function runResearchBrief(){
+  const f=document.querySelector('.modal-f');
+  document.querySelector('.wiz-pane.on').classList.remove('on');
+  document.querySelectorAll('.wiz-pane').forEach(p=>p.style.display='none');
+  let host=document.getElementById('wizPipe'); if(!host){ host=document.createElement('div'); host.id='wizPipe'; host.className='wiz-pane on'; document.getElementById('wizBody').appendChild(host); } else { host.style.display='block'; host.classList.add('on'); }
+  const steps=['Collect sources','Verify sources','Build knowledge graph','Generate outline','Wait for approval','Write draft'];
+  host.innerHTML='<div class="pipe">'+steps.map((s,i)=>`<div class="pipe-step" data-i="${i}"><div class="pipe-dot">${i+1}</div><div class="pipe-t">${s}</div><div class="pipe-st">queued</div></div>`).join('')+'</div>';
+  if(f)f.style.display='none';
+  let i=0; const tick=setInterval(()=>{ const rows=host.querySelectorAll('.pipe-step');
+    if(i>0){ rows[i-1].classList.add('done'); rows[i-1].querySelector('.pipe-st').textContent='done'; }
+    if(i<rows.length){ rows[i].classList.add('active'); rows[i].querySelector('.pipe-st').textContent=i===4?'awaiting you':'running…'; }
+    if(i===4){ clearInterval(tick);
+      if(f){ f.style.display='flex'; f.innerHTML='<button class="b b-ghost" onclick="closeCreate()">Cancel</button><div class="grow"></div><button class="b b-gold" onclick="closeCreate();GO(\'writer\')">Approve outline → Write draft →</button>'; }
+    } else i++;
+  },520);
+}
+window.runResearchBrief=runResearchBrief;
+
+/* ── COMMAND PALETTE ── */
+const CMDK=[
+  ['Actions',[
+    ['Create article','＋','openCreate()','C'],
+    ['Build in Story Builder','✶',"GO('story')"],
+    ['Ask the AGNUS Brain','✦',"GO('brain')"],
+    ['Hold an AI Council meeting','◆',"GO('council')"],
+    ['Open Chief Editor','✦','toggleAssistant(true)']
+  ]],
+  ['Go to',[
+    ['Dashboard','▣',"GO('home')"],['Intelligence Feed','◎',"GO('feed')"],['Keyword Discovery','⌕',"GO('keywords')"],
+    ['Article Pipeline','▤',"GO('pipeline')"],['AI Writer','✎',"GO('writer')"],['Topic Clusters','⊕',"GO('clusters')"],
+    ['Coverage Map','▦',"GO('coverage')"],['Opportunity Center','◆',"GO('opportunity')"],['Performance','📊',"GO('analytics')"],
+    ['Content Library','▤',"GO('library')"],['Control Center','⚙',"GO('control')"]
+  ]],
+  ['Knowledge',[
+    ['Knowledge Sources','◎',"GO('know_sources')"],['Source Scoring','◐',"GO('know_scoring')"],['Knowledge Database','▤',"GO('know_db')"],
+    ['Knowledge Graph','⊕',"GO('know_graph')"],['Entity Manager','◈',"GO('know_entities')"],['AGNUS Memory','◉',"GO('know_memory')"],['Intelligence Timeline','↺',"GO('know_timeline')"],['Sync Logs','↻',"GO('know_logs')"]
+  ]],
+  ['Publish & system',[
+    ['Open Publishing Calendar','▦',"GO('calendar')"],['Review queue','✓',"GO('review')"],
+    ['API Connections','⌘',"GO('cc_api')"],['Settings','⚙',"GO('control')"],['View public site ↗','↗',"window.open('AGNUS - Home.html')"]
+  ]]
+];
+let cmdkSel=0, cmdkFlat=[];
+function buildCmdk(){ renderCmdk(CMDK); }
+function renderCmdk(groups){
+  cmdkFlat=[]; let html='';
+  groups.forEach(g=>{ const items=g[1]; if(!items.length) return; html+=`<div class="cmdk-gl">${g[0]}</div>`;
+    items.forEach(it=>{ const idx=cmdkFlat.length; cmdkFlat.push(it[2]);
+      html+=`<button class="cmdk-item ${idx===cmdkSel?'sel':''}" data-i="${idx}" onclick="runCmdk(${idx})"><span class="ci">${it[1]}</span><span>${it[0]}</span>${it[3]?`<span class="ck">${it[3]}</span>`:''}</button>`; }); });
+  if(!cmdkFlat.length) html=`<div class="cmdk-gl">No matches</div>`;
+  document.getElementById('cmdkList').innerHTML=html;
+}
+function filterCmdk(q){ cmdkSel=0; if(!q.trim()){ renderCmdk(CMDK); return; } const t=q.toLowerCase();
+  const f=CMDK.map(g=>[g[0],g[1].filter(it=>it[0].toLowerCase().includes(t))]).filter(g=>g[1].length); renderCmdk(f); }
+function openCmdk(){ document.getElementById('cmdk').classList.add('open'); cmdkSel=0; renderCmdk(CMDK); const i=document.getElementById('cmdkInput'); i.value=''; setTimeout(()=>i.focus(),30); }
+function closeCmdk(){ document.getElementById('cmdk').classList.remove('open'); }
+function runCmdk(i){ const fn=cmdkFlat[i]; closeCmdk(); if(fn) try{ eval(fn); }catch(e){} }
+function cmdkKey(e){ if(e.key==='ArrowDown'){ e.preventDefault(); cmdkSel=Math.min(cmdkSel+1,cmdkFlat.length-1); updCmdkSel(); } else if(e.key==='ArrowUp'){ e.preventDefault(); cmdkSel=Math.max(cmdkSel-1,0); updCmdkSel(); } else if(e.key==='Enter'){ e.preventDefault(); runCmdk(cmdkSel); } }
+function updCmdkSel(){ document.querySelectorAll('.cmdk-item').forEach(b=>b.classList.toggle('sel',+b.dataset.i===cmdkSel)); const s=document.querySelector('.cmdk-item.sel'); if(s)s.scrollIntoView({block:'nearest'}); }
+window.openCmdk=openCmdk; window.closeCmdk=closeCmdk; window.filterCmdk=filterCmdk; window.runCmdk=runCmdk; window.cmdkKey=cmdkKey;
+
+/* ── BOOT ── */
+buildCmdk();
+window.addEventListener('load', function(){
+  renderNav();
+  const start=location.hash.replace('#','')||'home';
+  GO(window.VIEWS&&window.VIEWS[start]?start:'home');
+});
+document.addEventListener('keydown',e=>{ if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){ e.preventDefault(); openCmdk(); } if(e.key==='Escape'){ closeCmdk(); } });
+</script>
+<script src="image-slot.js"></script>
+<script id="bdl" src="dash-core.js?v=12"></script>
+<script src="agnus-data.js?v=2"></script>
+<script src="agnus-pipeline-view.js?v=6"></script>
+<script>
+/* ── ARTICLE PIPELINE VIEW — delegated to agnus-pipeline-view.js ── */
+window.VIEWS = window.VIEWS || {};
+window.VIEW_INIT = window.VIEW_INIT || {};
+window.VIEWS['pipeline'] = window._agnusPipelineView;
+window.VIEWS['story'] = function() {
+  window.open('AGNUS - Story Builder.html', '_blank');
+  return '<div style="padding:60px;text-align:center;color:var(--ink-mute);font-size:13px;">Opening Story Builder in new tab…</div>';
+};
+
+window.VIEW_INIT['pipeline'] = function() {
+  var o = document.querySelector('.mc-overlay');
+  if (o) o.style.display = 'none';
+  window._consoleOpen = false;
+  /* full-height mode */
+  var stage = document.getElementById('stageScroll');
+  if (stage) stage.classList.add('pipeline-mode');
+};
+
+/* strip pipeline-mode when navigating away */
+var _origGO = window.GO;
+window.GO = function(view) {
+  if (view !== 'pipeline') {
+    var stage = document.getElementById('stageScroll');
+    if (stage) stage.classList.remove('pipeline-mode');
+  }
+  return _origGO(view);
+};
+
+window.VIEWS['_pipeline_removed'] = function() {
+  const D = window.AGNUS_DATA;
+  const m = D.mission;
+  const nums = ['❶','❷','❸','❹','❺','❻','❼','❽','❾','❿'];
+  const stepIconMap = {search:'⌕',target:'◎',file:'▤',grid:'▦',star:'✦',sparkle:'✶',shield:'✓',monitor:'▣',upload:'↑',trending:'↗'};
+
+  const stepsHtml = m.steps.map((s,i) => {
+    const isActive = s.status === 'in_progress';
+    const isAI     = s.status === 'ai_working';
+    const isDone   = s.status === 'completed';
+    const border = isActive ? '2px solid #3b82f6' : isAI ? '2px solid #8b5cf6' : isDone ? '1px solid #22c55e' : '1px solid var(--line)';
+    const bg     = isActive ? 'rgba(59,130,246,0.08)' : isAI ? 'rgba(139,92,246,0.08)' : isDone ? 'rgba(34,197,94,0.06)' : 'var(--card)';
+    const ac     = isActive ? '#3b82f6' : isAI ? '#8b5cf6' : isDone ? '#22c55e' : 'var(--ink-mute)';
+    const statusLabel = isDone ? 'Done' : isActive ? 'In Progress' : isAI ? 'AI Working' : 'Not Started';
+    return `<div style="flex:1;border:${border};border-radius:10px;padding:9px 8px;background:${bg};cursor:pointer;min-width:0;" onclick="pipelineStepClick(${i})">
+      <div style="font-size:13px;color:${ac};margin-bottom:3px;">${stepIconMap[s.icon]||'◆'}</div>
+      <div style="font-size:9px;color:${ac};font-family:var(--font-mono);font-weight:700;">${nums[i]}</div>
+      <div style="font-weight:700;font-size:11px;color:var(--ink);margin:2px 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${s.label}</div>
+      <div style="font-size:9px;color:${isActive||isAI||isDone?ac:'var(--ink-mute)'};line-height:1.3;margin-bottom:5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${s.desc}</div>
+      <div style="display:flex;align-items:center;gap:3px;">
+        <div style="width:5px;height:5px;border-radius:50%;background:${isActive||isAI?ac:isDone?'#22c55e':'var(--line)'};flex-shrink:0;${isActive||isAI?'animation:pulse 1.5s infinite;':''}"></div>
+        <span style="font-size:9px;color:${ac};">${statusLabel}</span>
+      </div>
+      ${s.time ? `<div style="font-size:9px;color:var(--ink-mute);margin-top:1px;">${s.time}</div>` : ''}
+    </div>`;
+  }).join('');
+
+  const rowsHtml = D.paaQuestions.map(q => `
+    <div style="display:grid;grid-template-columns:28px 28px 1fr 110px 80px 72px;gap:4px;padding:8px 14px;border-bottom:1px solid var(--line);align-items:center;${q.imported?'background:rgba(59,130,246,0.05);':''}">
+      <input type="checkbox" ${q.imported?'checked':''} style="accent-color:var(--blue);">
+      <span style="font-family:var(--font-mono);color:var(--ink-mute);font-size:10px;">${q.id}</span>
+      <span style="color:var(--ink);font-size:12px;font-weight:${q.imported?'500':'400'};overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${q.question}</span>
+      <span style="font-size:11px;color:${q.intent==='Commercial'?'var(--gold-deep)':'var(--ink-mute)'};">${q.intent}</span>
+      <span style="font-size:11px;color:var(--ink-mute);">${q.source}</span>
+      <div style="display:flex;gap:7px;color:var(--ink-mute);font-size:13px;cursor:pointer;">👁 ↗ ···</div>
+    </div>
+  `).join('');
+
+  const ledgerHtml = D.ledger.map(e => `
+    <div style="flex-shrink:0;width:140px;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:9px;">
+      <div style="font-size:9px;color:var(--ink-mute);font-family:var(--font-mono);margin-bottom:3px;">${e.time}</div>
+      <div style="font-size:11px;font-weight:700;color:var(--ink);margin-bottom:3px;">${e.title}</div>
+      <div style="font-size:10px;color:var(--ink-mute);">${e.detail1}</div>
+      <div style="font-size:10px;color:var(--ink-mute);">${e.detail2}</div>
+    </div>
+  `).join('');
+
+  const connHtml = D.knowledgeSources.map(s => `
+    <div style="display:flex;align-items:center;gap:7px;">
+      <div style="width:7px;height:7px;border-radius:50%;background:var(--success);flex-shrink:0;"></div>
+      <span style="font-size:11px;color:var(--ink);">${s.name}</span>
+    </div>
+  `).join('');
+
+  const donutR = 20;
+  const donutC = 2 * Math.PI * donutR;
+  const doneArc     = donutC * m.overview.completed / 10;
+  const progressArc = donutC * m.overview.inProgress / 10;
+
+  return `
+  <style>@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}</style>
+  <div style="display:flex;flex-direction:column;height:calc(100vh - 52px);overflow:hidden;">
+
+    <!-- Mission metrics bar -->
+    <div style="display:flex;align-items:center;gap:14px;padding:7px 18px;background:var(--bg);border-bottom:1px solid var(--line);flex-shrink:0;">
+      <span style="font-size:11px;color:var(--ink-mute);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Mission: <b style="color:var(--ink);">${m.title}</b></span>
+      <span style="font-size:10px;color:var(--ink-mute);">SEO <b style="color:#f59e0b;">${m.metrics.seo}%</b></span>
+      <span style="font-size:10px;color:var(--ink-mute);">GEO <b style="color:#22c55e;">${m.metrics.geo}%</b></span>
+      <span style="font-size:10px;color:var(--ink-mute);">EEAT <b style="color:#f97316;">${m.metrics.eeat}%</b></span>
+      <span style="font-size:10px;color:var(--ink-mute);">Voice <b style="color:#a78bfa;">${m.metrics.voice}%</b></span>
+      <span style="font-size:10px;color:var(--ink-mute);">AI Search <b style="color:#2dd4bf;">${m.metrics.aiSearch}%</b></span>
+      <div style="width:1px;height:16px;background:var(--line);"></div>
+      <div style="display:flex;align-items:center;gap:5px;"><div style="width:7px;height:7px;border-radius:50%;background:#22c55e;"></div><span style="font-size:11px;color:#22c55e;font-weight:600;">In Progress</span></div>
+      <span style="font-size:10px;color:var(--ink-mute);">⏱ ${m.estRemaining}</span>
+    </div>
+
+    <!-- Step cards row -->
+    <div style="display:flex;gap:5px;padding:8px 10px;background:var(--bg);border-bottom:1px solid var(--line);flex-shrink:0;">${stepsHtml}</div>
+
+    <!-- Body -->
+    <div style="display:flex;flex:1;overflow:hidden;min-height:0;">
+
+      <!-- Main panel -->
+      <div style="flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0;">
+
+        <!-- Research header -->
+        <div style="display:flex;align-items:center;gap:10px;padding:8px 16px;border-bottom:1px solid var(--line);flex-shrink:0;">
+          <span style="font-weight:800;font-size:12px;letter-spacing:1px;color:var(--ink);">RESEARCH</span>
+          <span style="font-size:11px;color:var(--ink-mute);">Powered by ${D.knowledgeSources.length} connected sources</span>
+          <div style="flex:1;"></div>
+          <button class="b b-ghost" style="padding:4px 10px;font-size:11px;">↓ Export CSV</button>
+          <button class="b b-ghost" style="padding:4px 10px;font-size:11px;">↓ Export Excel</button>
+          <button class="b b-ghost" style="padding:4px 10px;font-size:11px;">Save Snapshot</button>
+        </div>
+
+        <!-- Tabs -->
+        <div id="pipelineTabs" style="display:flex;gap:4px;padding:6px 16px;border-bottom:1px solid var(--line);flex-shrink:0;overflow-x:auto;">
+          ${['Keyword Intel','Competitors','PAA','Voice Search','Semantic','Entities','Sources','Images','Videos','Studies'].map((t,i)=>`<button class="b ${i===2?'b-dark':'b-ghost'}" style="padding:4px 10px;font-size:11px;white-space:nowrap;flex-shrink:0;" onclick="pipelineTab(this,'${t}')">${t}</button>`).join('')}
+        </div>
+
+        <!-- Tab content area -->
+        <div id="pipelineTabContent" style="flex:1;display:flex;flex-direction:column;overflow:hidden;min-height:0;padding:10px 16px;gap:8px;">
+          <!-- Toolbar -->
+          <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;flex-wrap:wrap;">
+            <span style="font-weight:700;font-size:14px;color:var(--ink);">People Also Ask</span>
+            <span class="ct" style="font-size:11px;">${D.paaTotal} Questions Found</span>
+            <span style="font-size:10px;color:var(--ink-mute);">from Knowledge Database · Google</span>
+            <div style="flex:1;"></div>
+            <label style="display:flex;align-items:center;gap:4px;color:var(--ink-mute);font-size:11px;cursor:pointer;"><input type="checkbox" style="accent-color:var(--blue);"> Select All</label>
+            <button class="b b-ghost" style="padding:4px 10px;font-size:11px;">↓ Import Selected (${D.paaQuestions.filter(q=>q.imported).length})</button>
+            <button class="b b-ghost" style="padding:4px 10px;font-size:11px;">Add to Brief</button>
+            <button class="b b-ghost" style="padding:4px 10px;font-size:11px;">Ignore Selected</button>
+          </div>
+
+          <!-- Table + Detail drawer -->
+          <div style="flex:1;display:flex;gap:10px;min-height:0;overflow:hidden;">
+
+            <!-- Table -->
+            <div style="flex:1;min-width:0;display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;">
+              <div style="display:grid;grid-template-columns:28px 28px 1fr 110px 80px 72px;gap:4px;padding:8px 14px;background:var(--bg);border-bottom:1px solid var(--line);font-size:9px;font-weight:700;color:var(--ink-mute);letter-spacing:0.5px;text-transform:uppercase;font-family:var(--font-mono);flex-shrink:0;">
+                <div></div><div>#</div><div>Question</div><div>Intent</div><div>Source</div><div>Actions</div>
+              </div>
+              <div style="flex:1;overflow-y:auto;">${rowsHtml}</div>
+              <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 14px;border-top:1px solid var(--line);background:var(--bg);flex-shrink:0;">
+                <span style="font-size:10px;color:var(--ink-mute);">Showing 1–10 of ${D.paaTotal} · synced from Knowledge DB</span>
+                <div style="display:flex;gap:3px;">
+                  ${[1,2,3,4,5].map(n=>`<button class="b b-ghost" style="width:24px;height:24px;padding:0;font-size:10px;font-family:var(--font-mono);${n===1?'border-color:var(--blue);color:var(--blue);':''}">${n}</button>`).join('')}
+                  <button class="b b-ghost" style="width:24px;height:24px;padding:0;font-size:10px;">→</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Detail drawer -->
+            <div style="width:300px;flex-shrink:0;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:10px;overflow-y:auto;">
+              <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+                <h3 style="font-size:13px;font-weight:700;color:var(--ink);line-height:1.4;flex:1;">${D.paaDetail.question}</h3>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:7px;">
+                <div style="display:flex;gap:8px;"><span style="font-size:10px;color:var(--ink-mute);width:80px;flex-shrink:0;">Source</span><span style="font-size:12px;color:var(--ink);font-weight:500;">${D.paaDetail.source}</span></div>
+                <div style="display:flex;gap:8px;"><span style="font-size:10px;color:var(--ink-mute);width:80px;flex-shrink:0;">Intent</span><span class="pill" style="background:rgba(59,130,246,0.15);color:#60a5fa;">${D.paaDetail.intent}</span></div>
+                <div style="display:flex;align-items:flex-start;gap:8px;"><span style="font-size:10px;color:var(--ink-mute);width:80px;flex-shrink:0;padding-top:2px;">Appears On</span>
+                  <div style="display:flex;flex-wrap:wrap;gap:4px;">${D.paaDetail.appearsOn.map(a=>`<span class="pill ghost">${a}</span>`).join('')}<span class="pill" style="color:var(--blue)">+${D.paaDetail.appearsOnMore} more</span></div>
+                </div>
+                <div style="display:flex;align-items:flex-start;gap:8px;"><span style="font-size:10px;color:var(--ink-mute);width:80px;flex-shrink:0;padding-top:2px;">Related KW</span>
+                  <div style="display:flex;flex-wrap:wrap;gap:4px;">${D.paaDetail.relatedKeywords.map(k=>`<span class="pill ghost">${k}</span>`).join('')}</div>
+                </div>
+                <div style="display:flex;align-items:flex-start;gap:8px;"><span style="font-size:10px;color:var(--ink-mute);width:80px;flex-shrink:0;padding-top:2px;">Voice</span>
+                  <div style="display:flex;flex-direction:column;gap:3px;">${D.paaDetail.voiceVariants.map(v=>`<span style="font-size:11px;color:var(--ink-mute);">${v}</span>`).join('')}</div>
+                </div>
+              </div>
+              <div style="border-top:1px solid var(--line);padding-top:10px;display:flex;gap:6px;flex-wrap:wrap;">
+                <button class="b b-dark" style="padding:6px 12px;font-size:11px;">↓ Import</button>
+                <button class="b b-ghost" style="padding:6px 10px;font-size:11px;">Pin to Brief</button>
+                <button class="b b-ghost" style="padding:6px 10px;font-size:11px;">Ignore</button>
+                <button class="b b-ghost" style="padding:6px 10px;font-size:11px;">Open Source ↗</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mission Ledger -->
+          <div style="flex-shrink:0;border:1px solid var(--line);border-radius:10px;padding:10px 14px;background:var(--bg);">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+              <span style="font-weight:800;font-size:11px;letter-spacing:0.8px;color:var(--ink);">MISSION LEDGER / AI ACTIVITY</span>
+              <select class="b b-ghost" style="font-size:10px;padding:2px 8px;"><option>All Events</option></select>
+              <div style="flex:1;"></div>
+              <a href="#" style="font-size:11px;color:var(--blue);text-decoration:none;">View All Logs →</a>
+            </div>
+            <div style="display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;">${ledgerHtml}</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right sidebar -->
+      <div style="width:210px;flex-shrink:0;border-left:1px solid var(--line);overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:14px;">
+        <div>
+          <div class="sb-gl">Mission Overview</div>
+          <div style="font-size:10px;color:var(--ink-mute);margin-bottom:8px;">Overall Progress</div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+            <svg width="56" height="56" viewBox="0 0 56 56">
+              <circle cx="28" cy="28" r="${donutR}" fill="none" stroke="var(--line)" stroke-width="7"/>
+              <circle cx="28" cy="28" r="${donutR}" fill="none" stroke="#22c55e" stroke-width="7" stroke-dasharray="${doneArc} ${donutC}" stroke-dashoffset="0" transform="rotate(-90 28 28)"/>
+              <circle cx="28" cy="28" r="${donutR}" fill="none" stroke="#3b82f6" stroke-width="7" stroke-dasharray="${progressArc} ${donutC}" stroke-dashoffset="${-doneArc}" transform="rotate(-90 28 28)"/>
+              <text x="28" y="33" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="700" font-family="Manrope,sans-serif">${m.progress}%</text>
+            </svg>
+            <div style="display:flex;flex-direction:column;gap:3px;">
+              ${[['#22c55e',`Completed ${m.overview.completed}`],['#3b82f6',`In Progress ${m.overview.inProgress}`],['#6b7280',`Not Started ${m.overview.notStarted}`],['#ef4444',`Blocked ${m.overview.blocked}`],['#f59e0b',`Needs Review ${m.overview.needsReview}`]].map(([c,l])=>`<div style="display:flex;align-items:center;gap:4px;"><div style="width:6px;height:6px;border-radius:50%;background:${c};flex-shrink:0;"></div><span style="font-size:9px;color:var(--ink-mute);">${l}</span></div>`).join('')}
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="sb-gl">AI Agent</div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="display:flex;justify-content:space-between;"><span style="font-size:10px;color:var(--ink-mute);">Agent</span><span style="font-size:10px;color:var(--ink);font-weight:600;text-align:right;max-width:110px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${D.agent.name}</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-size:10px;color:var(--ink-mute);">Mode</span><span class="pill" style="background:rgba(139,92,246,0.2);color:#a78bfa;">${D.agent.mode}</span></div>
+            <div style="display:flex;justify-content:space-between;"><span style="font-size:10px;color:var(--ink-mute);">Temp</span><span style="font-size:10px;color:var(--ink);font-family:var(--font-mono);">${D.agent.temperature}</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-size:10px;color:var(--ink-mute);">Memory</span><span class="pill green">${D.agent.memory}</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="sb-gl">Connected Sources</div>
+          <div style="display:flex;flex-direction:column;gap:6px;">${connHtml}</div>
+        </div>
+        <div>
+          <div class="sb-gl">Quick Actions</div>
+          <div style="display:flex;flex-direction:column;gap:5px;">
+            ${[['Open Brief','▤'],['View Outline','≡'],['See Keywords','⌕'],['Open Story Builder','✶'],['Run New Mission','↺']].map(([l,i])=>`<button class="b b-ghost" style="display:flex;align-items:center;gap:6px;padding:7px 9px;font-size:10px;text-align:left;width:100%;"><span style="font-family:var(--font-mono);font-size:12px;">${i}</span>${l}</button>`).join('')}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>`;
+};
+
+/* pipelineTab and pipelineStepClick are defined in agnus-pipeline-view.js */
+</script>
+</body>
+</html>

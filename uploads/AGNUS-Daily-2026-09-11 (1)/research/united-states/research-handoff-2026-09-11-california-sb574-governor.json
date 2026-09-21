@@ -1,0 +1,27 @@
+{
+  "handoff_type": "raw_intelligence_to_research",
+  "run_date": "2026-09-11",
+  "jurisdiction": "United States — California",
+  "trigger_record_id": "IR-PROVISIONAL-20260911-001",
+  "provisional_source_record": {
+    "source_id": "SRC-0049",
+    "title": "California Senate Bill 574 — official status and history",
+    "publisher": "California Legislative Information",
+    "source_type": "Official enrolled state bill history",
+    "url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB574",
+    "publication_date": "2026-09-09",
+    "date_checked": "2026-09-11",
+    "verification": "Official status page retrieved; Active Bill — Enrolled status, Governor house location, and 2026-09-09 presentation action verified. ID remains provisional."
+  },
+  "research_question": "What executive action occurs on SB 574, and what enactment date, implementation requirements, and compliance consequences follow?",
+  "verified_facts": [
+    "The official history records that SB 574 was presented to the Governor at 2 p.m. on 2026-09-09.",
+    "The official status remains Active Bill — Enrolled and lists the house location as Governor.",
+    "No new amendment or substantive text change was verified in this run."
+  ],
+  "editorial_notes": [
+    "Raw handoff only; no Research article was drafted and no research data file was modified.",
+    "Confirm reuse of SRC-0049 and assign the Intelligence ID before insertion.",
+    "Treat presentation as a procedural milestone; do not describe the bill as enacted unless a later primary source verifies signature or operation of law."
+  ]
+}

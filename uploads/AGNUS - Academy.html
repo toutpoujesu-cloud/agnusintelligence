@@ -1,0 +1,297 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AGNUS Academy — Master AI</title>
+<meta name="description" content="AGNUS Academy: a premium AI education — Harvard Business School meets Apple. Choose your path, follow a beautiful roadmap, and earn verifiable certification." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<style>
+.pg-head { padding: clamp(40px,5vw,64px) 0 0; }
+.pg-head h1 { font-family: var(--font-sans); font-weight: 700; font-size: clamp(40px,6vw,84px); line-height: 0.96; letter-spacing: -0.035em; margin: 0 0 18px; }
+.pg-head h1 em { font-family: var(--font-serif); font-style: italic; font-weight: 300; color: var(--gold-deep); }
+.pg-head .h-lede { max-width: 600px; }
+.sec-head2 { margin-bottom: clamp(32px,4vw,48px); }
+.sec-head2 .kicker { margin-bottom: 16px; }
+
+/* path cards */
+.paths { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.path { border: 1px solid var(--line); border-radius: 18px; padding: 28px 26px; background: #fff; display: flex; flex-direction: column; gap: 10px; transition: transform .3s cubic-bezier(.2,.7,.2,1), border-color .3s ease, box-shadow .3s ease; min-height: 184px; }
+.path:hover { transform: translateY(-5px); border-color: var(--char); box-shadow: 0 28px 60px -42px rgba(26,26,23,0.4); }
+.path .lvl { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-mute); display: flex; align-items: center; gap: 10px; }
+.path .lvl .dots { display: inline-flex; gap: 3px; }
+.path .lvl .dots i { width: 6px; height: 6px; border-radius: 50%; background: var(--ink-faint); }
+.path .lvl .dots i.on { background: var(--gold); }
+.path h3 { font-family: var(--font-sans); font-weight: 700; font-size: 24px; letter-spacing: -0.02em; margin: 6px 0 4px; }
+.path p { font-size: 14px; line-height: 1.5; color: var(--ink-soft); margin: 0; }
+.path .meta { margin-top: auto; padding-top: 16px; font-family: var(--font-mono); font-size: 11.5px; color: var(--ink-mute); letter-spacing: 0.04em; display: flex; justify-content: space-between; align-items: center; }
+.path .meta .go { color: var(--gold-deep); font-weight: 600; }
+
+/* roadmap */
+.roadmap { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0; counter-reset: step; margin-top: 8px; }
+.rstep { position: relative; padding: 0 14px; text-align: center; }
+.rstep .line { position: absolute; top: 22px; left: 50%; right: -50%; height: 2px; background: var(--line); z-index: 0; }
+.rstep:last-child .line { display: none; }
+.rstep .node { position: relative; z-index: 1; width: 46px; height: 46px; margin: 0 auto 16px; border-radius: 50%; background: #fff; border: 1px solid var(--line); display: grid; place-items: center; font-family: var(--font-mono); font-size: 14px; color: var(--ink-soft); counter-increment: step; }
+.rstep .node::before { content: counter(step); }
+.rstep.cert .node { background: var(--char); border-color: var(--gold-deep); color: var(--gold-light); }
+.rstep h4 { font-family: var(--font-sans); font-weight: 600; font-size: 14.5px; letter-spacing: -0.01em; margin: 0; line-height: 1.25; }
+.rstep .rt { font-family: var(--font-mono); font-size: 10.5px; color: var(--ink-mute); margin-top: 6px; letter-spacing: 0.04em; }
+
+/* lesson anatomy */
+.anatomy { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line-dark); border: 1px solid var(--line-dark); border-radius: 16px; overflow: hidden; }
+.an { background: var(--char); padding: 28px 24px; min-height: 140px; display: flex; flex-direction: column; gap: 10px; }
+.an .ai { font-family: var(--font-serif); font-style: italic; font-size: 22px; }
+.an h4 { font-family: var(--font-sans); font-weight: 600; font-size: 16px; letter-spacing: -0.01em; margin: 0; color: #fff; }
+.an p { font-size: 13px; line-height: 1.45; color: var(--on-dark-soft); margin: 0; }
+
+/* example lesson */
+.lesson { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px,4vw,56px); align-items: center; }
+.lesson-fig { position: relative; border-radius: 20px; overflow: hidden; aspect-ratio: 4/3; background: var(--paper-2); box-shadow: 0 34px 80px -50px rgba(26,26,23,0.4); }
+.lesson-fig image-slot { width:100%; height:100%; }
+.lesson-fig .play { position: absolute; inset: 0; display: grid; place-items: center; }
+.lesson-fig .play .circ { width: 64px; height: 64px; border-radius: 50%; background: rgba(255,255,255,0.92); display: grid; place-items: center; box-shadow: 0 12px 40px rgba(0,0,0,0.25); }
+.lesson-fig .play .tri { width: 0; height: 0; border-left: 18px solid var(--char); border-top: 11px solid transparent; border-bottom: 11px solid transparent; margin-left: 5px; }
+.lesson .lk { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-deep); margin-bottom: 14px; }
+.lesson h3 { font-family: var(--font-sans); font-weight: 700; font-size: clamp(26px,3vw,38px); letter-spacing: -0.03em; margin: 0 0 18px; }
+.lesson .incl { list-style: none; padding: 0; margin: 0 0 26px; display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; border-top: 1px solid var(--line); }
+.lesson .incl li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; padding: 12px 0; border-bottom: 1px solid var(--line-soft); font-size: 14.5px; }
+.lesson .incl .mk { color: var(--gold-deep); font-weight: 700; }
+
+/* certificate band */
+.cert-band { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px,4vw,64px); align-items: center; background: var(--char); color: var(--on-dark); border-radius: 22px; padding: clamp(36px,4vw,56px); position: relative; overflow: hidden; }
+.cert-band::after { content:""; position: absolute; inset: 0; background: radial-gradient(70% 110% at 85% 10%, rgba(220,192,137,0.13), transparent 60%); pointer-events: none; }
+.cert-band > * { position: relative; z-index: 1; }
+.cert-band .ck { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 14px; }
+.cert-band h3 { font-family: var(--font-sans); font-weight: 700; font-size: clamp(26px,3.2vw,40px); letter-spacing: -0.03em; line-height: 1.05; margin: 0 0 16px; color: #fff; }
+.cert-band p { font-family: var(--font-serif); font-weight: 300; font-size: 18px; line-height: 1.5; color: var(--on-dark-soft); margin: 0 0 26px; max-width: 42ch; }
+.cert-card { aspect-ratio: 4/3; border-radius: 16px; border: 1px solid var(--gold-deep); background: linear-gradient(160deg, rgba(220,192,137,0.12), rgba(151,118,58,0.04)); padding: 30px; display: flex; flex-direction: column; justify-content: space-between; }
+.cert-card .cc-top { display: flex; justify-content: space-between; align-items: flex-start; }
+.cert-card .wordmark { color:#fff; font-size: 18px; }
+.cert-card .seal { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--gold-deep); display: grid; place-items: center; font-family: var(--font-serif); font-style: italic; }
+.cert-card .cc-body .ct { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--on-dark-mute); margin-bottom: 8px; }
+.cert-card .cc-body h4 { font-family: var(--font-serif); font-weight: 300; font-size: clamp(22px,2.6vw,30px); color: #fff; margin: 0; letter-spacing: -0.01em; }
+.cert-card .cc-foot { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.1em; color: var(--on-dark-mute); display: flex; justify-content: space-between; }
+
+@media (max-width: 920px){ .paths { grid-template-columns: 1fr 1fr; } .roadmap { grid-template-columns: repeat(2, 1fr); gap: 28px 0; } .rstep .line { display: none; } .anatomy { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 720px){ .lesson { grid-template-columns: 1fr; gap: 28px; } .cert-band { grid-template-columns: 1fr; gap: 28px; } .lesson .incl { grid-template-columns: 1fr; } }
+@media (max-width: 560px){ .paths { grid-template-columns: 1fr; } .roadmap { grid-template-columns: 1fr; } .anatomy { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-label">Today's Intelligence</div>
+  <div class="ticker-track">
+    <span><span class="tk">ACADEMY</span> 38,000 learners certified to date</span><span class="dot"></span>
+    <span><span class="tk">NEW</span> AI Agents path now live</span><span class="dot"></span>
+    <span><span class="tk">SKILLS</span> Prompt engineering remains the #1 enrolled path</span><span class="dot"></span>
+    <span><span class="tk">ENTERPRISE</span> Team certification adopted by 200+ companies</span><span class="dot"></span>
+    <span><span class="tk">ACADEMY</span> 38,000 learners certified to date</span><span class="dot"></span>
+    <span><span class="tk">NEW</span> AI Agents path now live</span><span class="dot"></span>
+    <span><span class="tk">SKILLS</span> Prompt engineering remains the #1 enrolled path</span><span class="dot"></span>
+    <span><span class="tk">ENTERPRISE</span> Team certification adopted by 200+ companies</span><span class="dot"></span>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Marketplace.html">Marketplace</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html" class="active">Academy</a>
+      <a href="AGNUS - Business.html">Business</a>
+      </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#top" class="nav-search">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="6"/><path d="M14 14l4 4"/></svg>
+        Search tools <kbd>⌘K</kbd>
+      </a>
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+      <button class="hamburger" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="m-drawer">
+    <a href="AGNUS - Explore.html">Explore</a>
+    <a href="AGNUS - Marketplace.html">Marketplace</a>
+    <a href="AGNUS - Intelligence.html">Intelligence</a>
+    <a href="AGNUS - Review.html">Reviews</a>
+    <a href="AGNUS - Compare.html">Compare</a>
+    <a href="AGNUS - Agents.html">Agents</a>
+    <a href="AGNUS - Academy.html">Academy</a>
+    <a href="AGNUS - Business.html">Business</a>
+    <a href="AGNUS - Home.html#premium" style="color: var(--gold-deep);">Premium Membership</a>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<div class="container pg-head">
+  <div class="crumbs"><a href="AGNUS - Home.html">AGNUS</a><span class="sep">/</span><span class="here">Academy</span></div>
+  <div class="kicker" style="margin-bottom:22px;"><span class="ix">◆</span> AGNUS Academy</div>
+  <h1>Master AI properly.<br /><em>Choose your path.</em></h1>
+  <p class="h-lede">A premium AI education — Harvard Business School meets Apple. Not another video dump. Structured paths, real projects, and certification that means something.</p>
+</div>
+
+<!-- PATHS -->
+<section style="padding-top: clamp(44px,5vw,64px);">
+  <div class="container">
+    <div class="sec-head2">
+      <div class="kicker"><span class="ix">01</span> Choose your path</div>
+      <h2 class="h-section">Six ways in. One destination.</h2>
+    </div>
+    <div class="paths">
+      <a href="AGNUS - Academy App.html" class="path"><div class="lvl"><span class="dots"><i class="on"></i><i></i><i></i></span> Beginner</div><h3>Beginner</h3><p>Start from zero. Understand what AI is and use it with confidence by week one.</p><div class="meta"><span>6 courses · 8h</span><span class="go">Start →</span></div></a>
+      <a href="AGNUS - Academy App.html" class="path"><div class="lvl"><span class="dots"><i class="on"></i><i class="on"></i><i></i></span> Intermediate</div><h3>Intermediate</h3><p>Prompt engineering, automation and the workflows that compound your time.</p><div class="meta"><span>8 courses · 14h</span><span class="go">Start →</span></div></a>
+      <a href="AGNUS - Academy App.html" class="path"><div class="lvl"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i></span> Professional</div><h3>Professional</h3><p>Build and deploy agents, integrate AI into real work, and ship outcomes.</p><div class="meta"><span>10 courses · 22h</span><span class="go">Start →</span></div></a>
+      <a href="AGNUS - Academy App.html" class="path"><div class="lvl"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i></span> Developer</div><h3>Developer</h3><p>APIs, RAG, evals and production patterns for engineers building on AI.</p><div class="meta"><span>12 courses · 28h</span><span class="go">Start →</span></div></a>
+      <a href="AGNUS - Academy App.html" class="path"><div class="lvl"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i></span> Executive</div><h3>Executive</h3><p>Strategy, governance and ROI — lead an AI-fluent organisation with judgment.</p><div class="meta"><span>5 courses · 9h</span><span class="go">Start →</span></div></a>
+      <a href="AGNUS - Academy App.html" class="path"><div class="lvl"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i></span> Enterprise</div><h3>Enterprise</h3><p>Roll out AI across teams with policy, training tracks and team certification.</p><div class="meta"><span>Custom · for teams</span><span class="go">Talk to us →</span></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section id="roadmap" class="warm">
+  <div class="container">
+    <div class="sec-head2">
+      <div class="kicker"><span class="ix">02</span> The roadmap</div>
+      <h2 class="h-section">A clear path, like a game.</h2>
+    </div>
+    <div class="roadmap">
+      <div class="rstep"><div class="line"></div><div class="node"></div><h4>AI Fundamentals</h4><div class="rt">2h</div></div>
+      <div class="rstep"><div class="line"></div><div class="node"></div><h4>Prompt Engineering</h4><div class="rt">3h</div></div>
+      <div class="rstep"><div class="line"></div><div class="node"></div><h4>Automation</h4><div class="rt">4h</div></div>
+      <div class="rstep"><div class="line"></div><div class="node"></div><h4>AI Agents</h4><div class="rt">5h</div></div>
+      <div class="rstep"><div class="line"></div><div class="node"></div><h4>Business AI</h4><div class="rt">4h</div></div>
+      <div class="rstep"><div class="line"></div><div class="node"></div><h4>Enterprise AI</h4><div class="rt">4h</div></div>
+      <div class="rstep cert"><div class="line"></div><div class="node" style="font-family:var(--font-serif);font-style:italic;"><span style="position:absolute;">★</span></div><h4>Certification</h4><div class="rt">Verified</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LESSON ANATOMY -->
+<section class="dark">
+  <div class="container">
+    <div class="sec-head2">
+      <div class="kicker no-rule"><span class="ix gold-text">◆</span> Inside every lesson</div>
+      <h2 class="h-section" style="color:#fff;">Seven ways to actually learn it.</h2>
+    </div>
+    <div class="anatomy">
+      <div class="an"><span class="ai gold-text">▷</span><h4>Video</h4><p>Short, beautifully produced — no fluff.</p></div>
+      <div class="an"><span class="ai gold-text">¶</span><h4>Article</h4><p>The same lesson to read and reference.</p></div>
+      <div class="an"><span class="ai gold-text">◎</span><h4>Interactive</h4><p>Try it live, in the page, as you learn.</p></div>
+      <div class="an"><span class="ai gold-text">↓</span><h4>Downloads</h4><p>Prompts and templates to keep.</p></div>
+      <div class="an"><span class="ai gold-text">?</span><h4>Quiz</h4><p>Check understanding before moving on.</p></div>
+      <div class="an"><span class="ai gold-text">⌘</span><h4>Real projects</h4><p>Build something you'd actually use.</p></div>
+      <div class="an"><span class="ai gold-text">★</span><h4>Certificate</h4><p>Verifiable proof when you finish.</p></div>
+      <div class="an"><span class="ai gold-text">⟳</span><h4>Homework</h4><p>Apply it to your own work.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXAMPLE LESSON -->
+<section>
+  <div class="container">
+    <div class="sec-head2">
+      <div class="kicker"><span class="ix">03</span> Example lesson</div>
+      <h2 class="h-section">See how one lesson works.</h2>
+    </div>
+    <div class="lesson">
+      <figure class="lesson-fig">
+        <image-slot id="lesson-shot" shape="rect" placeholder="Lesson · calm study scene or clean course-player UI. Premium, editorial. 4:3."></image-slot>
+        <div class="play"><div class="circ"><div class="tri"></div></div></div>
+      </figure>
+      <div>
+        <div class="lk">Beginner · Course 02</div>
+        <h3>Learn ChatGPT in 30 minutes.</h3>
+        <ul class="incl">
+          <li><span class="mk">✓</span> Theory</li>
+          <li><span class="mk">✓</span> Practice</li>
+          <li><span class="mk">✓</span> Business examples</li>
+          <li><span class="mk">✓</span> Common mistakes</li>
+          <li><span class="mk">✓</span> Exercises</li>
+          <li><span class="mk">✓</span> Downloadable prompts</li>
+          <li><span class="mk">✓</span> Homework</li>
+          <li><span class="mk">✓</span> Certificate</li>
+        </ul>
+        <a href="AGNUS - Academy App.html" class="btn btn-dark">Start this lesson <span class="arr">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATION -->
+<section class="warm">
+  <div class="container">
+    <div class="cert-band">
+      <div>
+        <div class="ck">Certification</div>
+        <h3>Proof that means something.</h3>
+        <p>Finish a path and earn a verifiable AGNUS certificate — recognised, shareable, and built to satisfy real AI-competence requirements for teams.</p>
+        <a href="AGNUS - Home.html#premium" class="btn btn-gold">Enrol with Premium <span class="arr">→</span></a>
+      </div>
+      <div class="cert-card">
+        <div class="cc-top"><span class="wordmark">AGNUS</span><span class="seal"><span class="gold-text">★</span></span></div>
+        <div class="cc-body"><div class="ct">Certificate of completion</div><h4>Professional AI Practitioner</h4></div>
+        <div class="cc-foot"><span>ID · AG-2026-04417</span><span>Verified ✓</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+        <p>Intelligence for the future of work. The trusted source for what's happening, which tools matter, and where AI is heading.</p>
+        <form class="fsearch" onsubmit="return false;"><input type="email" placeholder="Your email for the daily brief" aria-label="Email" /><button type="submit">Subscribe</button></form>
+      </div>
+      <div class="foot-col"><h5>Discover</h5><ul>
+        <li><a href="AGNUS - Review.html">AI Reviews</a></li>
+        <li><a href="AGNUS - Compare.html">AI Comparisons</a></li>
+        <li><a href="AGNUS - Intelligence.html">AI News</a></li>
+        <li><a href="AGNUS - Agents.html">AI Agents</a></li>
+        <li><a href="AGNUS - Tools.html">Free AI Tools</a></li>
+      </ul></div>
+      <div class="foot-col"><h5>Learn &amp; Build</h5><ul>
+        <li><a href="AGNUS - Academy.html">AI Academy</a></li>
+        <li><a href="AGNUS - Prompts.html">Prompt Library</a></li>
+        <li><a href="AGNUS - Business.html">Business Automation</a></li>
+        <li><a href="AGNUS - Business.html">AI for Business</a></li>
+        <li><a href="AGNUS - Home.html#premium"><span class="gd">Premium Membership</span></a></li>
+      </ul></div>
+      <div class="foot-col"><h5>Company</h5><ul>
+        <li><a href="#">About AGNUS</a></li>
+        <li><a href="#">Our methodology</a></li>
+        <li><a href="AGNUS - Awards.html">The AGNUS Awards</a></li>
+        <li><a href="#">Editorial standards</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="AGNUS - Dashboard.html" class="gd">Editorial Dashboard ↗</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 AGNUS · Truth before hype.</span><div class="fb-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Editorial Policy</a><a href="#">Advertise</a></div></div>
+  </div>
+</footer>
+
+<script src="image-slot.js"></script>
+<script>
+document.addEventListener('keydown', (e) => { if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); window.location.href = 'AGNUS - Home.html#top'; } });
+</script>
+</body>
+</html>

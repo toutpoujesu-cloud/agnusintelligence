@@ -1,0 +1,343 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Reporting Serious Incidents Under the EU AI Act (Article 73) — AGNUS Research</title>
+<meta name="description" content="When a high-risk AI system is involved in a serious incident, providers must report to market surveillance authorities. Three timelines apply: 15 days (general), 2 days (widespread infringement or critical infrastructure), 10 days (death). Article 73 carries no Digital Omnibus disclaimer." />
+<link rel="canonical" href="https://agnus.example/research/eu-ai-act/eu-ai-act-incident-reporting/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Reporting Serious Incidents Under the EU AI Act (Article 73)" />
+<meta property="article:published_time" content="2026-08-22" />
+<meta property="article:modified_time" content="2026-08-22" />
+<meta property="article:author" content="Jean-Daniel Alexis" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>a,a:visited{color:inherit}
+.dependency-note{font-size:13px;color:var(--ink-mute);font-style:italic;margin:-6px 0 26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.dependency-note a{color:var(--gold-deep);font-style:normal}
+.prose h3{font-family:var(--font-sans);font-weight:700;font-size:19px;letter-spacing:-.018em;margin:32px 0 14px}
+.timeline-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0}
+@media(max-width:700px){.timeline-grid{grid-template-columns:1fr}}
+.tl-card{background:var(--paper-warm,#F7F5F0);border:1px solid var(--line);border-radius:8px;padding:20px}
+.tl-card .tc-days{font-family:var(--font-mono);font-size:24px;font-weight:600;color:var(--gold-deep);margin-bottom:4px;line-height:1}
+.tl-card .tc-label{font-family:var(--font-sans);font-weight:700;font-size:14px;margin-bottom:8px;color:var(--ink)}
+.tl-card .tc-trigger{font-size:13px;color:var(--ink-mute);line-height:1.5}
+.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
+.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
+.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s}
+.rsub a:hover{color:var(--ink);background:var(--line-soft,rgba(0,0,0,.04))}
+.rsub a.on{color:var(--gold-deep);font-weight:600}
+</style>
+</head>
+<body>
+
+<div class="art-progress"><i id="progBar"></i></div>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Marketplace.html">Marketplace</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+      <a href="AGNUS - Business.html">Business</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+      <button class="hamburger" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="m-drawer">
+    <a href="AGNUS - Explore.html">Explore</a><a href="AGNUS - Intelligence.html">Intelligence</a><a href="AGNUS - Research.html" class="active">Research</a><a href="AGNUS - Review.html">Reviews</a><a href="AGNUS - Academy.html">Academy</a><a href="AGNUS - Business.html">Business</a>
+  </div>
+</nav>
+<div class="rsub"><div class="rsub-inner">
+<a href="AGNUS - Research.html">Research Home</a>
+<a href="AGNUS - Research.html#taxonomy">Topics</a>
+<a href="AGNUS - Research Topic.html">EU AI Act</a>
+<a href="AGNUS - Research Country.html">Countries</a>
+<a href="AGNUS - Research Sources.html">Sources</a>
+<a href="AGNUS - Research Calendar.html">Calendar</a>
+<a href="AGNUS - Research Methodology.html">Methodology</a>
+<a href="AGNUS - Research Author.html">Authors</a>
+</div></div>
+
+<header class="art-head">
+  <div class="container">
+    <div data-rc="classification" data-rc-arg="AR-000380"></div>
+    <h1>Reporting Serious Incidents Under the EU AI Act</h1>
+    <p class="art-abstract">When a high-risk AI system is involved in a serious incident, providers must report to market surveillance authorities in the Member State where the incident occurred. Three timelines apply depending on severity. Providers must also investigate, conduct a risk assessment, and take corrective action without delay. Article 73 carries no Digital Omnibus disclaimer &mdash; confirmed clean.</p>
+    <div data-rc="articleMeta" data-rc-arg="AR-000380"></div>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:20px">
+      <span data-rc="trackButton" data-rc-arg="EU AI Act"></span>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <figure class="art-hero-fig">
+    <image-slot id="rs-art-hero" shape="rect" fit="cover" placeholder="An urgent notification screen showing a high-severity AI system incident flag, with a clock and regulatory reporting interface, evoking the time-critical reporting obligation a provider faces after a serious incident. Editorial, institutional. 21:9."></image-slot>
+  </figure>
+  <div class="art-hero-cap"><span class="d"></span>The reporting clock starts when the provider or deployer becomes aware of the incident &mdash; not when an investigation concludes. Timeliness is the primary compliance variable.</div>
+</div>
+
+<div class="container">
+  <div class="art-shell">
+
+    <aside class="art-toc">
+      <div class="toc-h">Contents</div>
+      <ol id="tocList"></ol>
+      <div class="toc-foot">
+        <button onclick="window.print()">Print / PDF</button>
+        <button onclick="document.getElementById('cite').scrollIntoView({behavior:'smooth'})">Cite this research</button>
+        <button onclick="document.getElementById('sources').scrollIntoView({behavior:'smooth'})">Jump to sources</button>
+      </div>
+    </aside>
+
+    <article class="prose" id="prose">
+
+      <p class="dependency-note">Builds on <a href="AGNUS - Research Article - Provider Obligations.html">AR-000240 (Provider Obligations)</a> and <a href="AGNUS - Research Article - Post-Market Monitoring.html">AR-000370 (Post-Market Monitoring)</a> &mdash; none of their content is re-derived here. Article 73 is the reporting obligation that activates when post-market monitoring or deployer feedback identifies a serious incident as defined in Article 3(49) (AR-000340).</p>
+
+      <div data-rc="atAGlance" data-rc-arg="AR-000380"></div>
+
+      <h2 id="s-summary">Executive summary</h2>
+      <div data-rc="fact" data-rc-arg='{"source_id":"SRC-0060","locator":"Article 73(1)-(4)","text":"Providers of high-risk AI systems placed on the Union market shall report any serious incident to the market surveillance authorities of the Member States where that incident occurred. The report shall be made immediately after the provider has established a causal link between the AI system and the serious incident or the reasonable likelihood of such a link, and not later than 15 days after the provider or deployer becomes aware of the serious incident. For widespread infringement or critical infrastructure serious incidents (Article 3(49)(b)), the report shall be provided immediately and not later than two days after awareness. For the death of a person, the report shall be provided immediately upon suspecting a causal relationship, and not later than 10 days after awareness."}'></div>
+      <div data-rc="analysis" data-rc-arg='{"text":"The three-tier timeline structure is severity-based, not discretionary. Providers cannot elect a slower timeline because an investigation is still ongoing \u2014 Article 73(5) explicitly allows an initial incomplete report where timeliness requires it, followed by a complete report. The clock also runs to deployers: paragraphs 2, 3, and 4 all reference \u2018the provider or, where applicable, the deployer\u2019 as the awareness point. Article 26(6) separately requires deployers to inform providers of serious incidents, but the Article 73 reporting obligation to authorities runs to the provider, not the deployer."}'></div>
+
+      <div data-rc="takeaways" data-rc-arg='["Three timelines, not one: 15 days (general causal link established), 2 days (widespread infringement or critical infrastructure disruption), 10 days (death suspected).","The clock starts at awareness, not at investigation completion \u2014 Article 73(5) allows an initial incomplete report where timeliness requires it.","Providers must investigate, conduct a risk assessment, and take corrective action without delay after reporting \u2014 and must not alter the AI system in ways that affect the investigation without first informing competent authorities.","Medical device and equivalent-reporting-obligation systems have narrowed incident reporting scope: only Article 3(49)(c) incidents (fundamental rights infringement) must be reported.","Article 73 carries no Digital Omnibus disclaimer on the Service Desk as of this verification pass."]'></div>
+
+      <h2 id="s-timelines">The three reporting timelines</h2>
+
+      <div class="timeline-grid">
+        <div class="tl-card">
+          <div class="tc-days">15 days</div>
+          <div class="tc-label">General serious incident</div>
+          <div class="tc-trigger">After the provider or deployer becomes aware. Clock starts at awareness, not causal confirmation. Severity may allow a shorter period.</div>
+        </div>
+        <div class="tl-card">
+          <div class="tc-days">2 days</div>
+          <div class="tc-label">Widespread infringement or critical infrastructure disruption</div>
+          <div class="tc-trigger">Article 3(49)(b) incident: serious and irreversible disruption of critical infrastructure management/operation. Or a widespread infringement.</div>
+        </div>
+        <div class="tl-card">
+          <div class="tc-days">10 days</div>
+          <div class="tc-label">Death</div>
+          <div class="tc-trigger">After awareness. Report immediately upon suspecting a causal relationship between the AI system and the death &mdash; not after confirming it.</div>
+        </div>
+      </div>
+
+      <h2 id="s-means">What this means</h2>
+      <div data-rc="analysis" data-rc-arg='{"text":"The general 15-day timeline starts when the provider \u2018establishes a causal link... or the reasonable likelihood of such a link.\u2019 This is a low evidentiary threshold \u2014 reasonable likelihood of a causal link, not confirmed causation. A provider who delays reporting while waiting for a definitive investigation conclusion is likely already in breach of the timeline. The Article 73(5) incomplete-report option exists precisely to prevent timeliness-investigation conflicts: providers should report early with what they know, then follow up with a complete report."}'></div>
+      <div data-rc="analysis" data-rc-arg='{"text":"The deployer\u2019s role in Article 73 is primarily as a trigger and a data source, not as a reporting actor. When a deployer becomes aware of a serious incident, Article 26(6) requires them to inform the provider immediately. The provider then runs the Article 73 reporting clock. Where paragraphs 2\u20134 reference \u2018the provider or, where applicable, the deployer\u2019 as the awareness point, this captures situations where the deployer is aware before the provider \u2014 in which case the deployer\u2019s awareness date starts the provider\u2019s clock."}'></div>
+
+      <h2 id="s-applies">Who this applies to</h2>
+      <div data-rc="analysis" data-rc-arg='{"text":"Article 73(1) places the reporting obligation on providers of high-risk AI systems placed on the Union market. Deployers are not direct reporters to market surveillance authorities under Article 73 \u2014 they report to providers under Article 26(6). For systems where Article 25 has reclassified a deployer as a provider (AR-000310), that reclassified actor bears the Article 73 reporting obligation as part of the full Article 16 checklist."}'></div>
+
+      <h2 id="s-context">Regulatory context</h2>
+
+      <h3>The investigation obligation after reporting</h3>
+      <div data-rc="fact" data-rc-arg='{"source_id":"SRC-0060","locator":"Article 73(6)","text":"Following the reporting of a serious incident, the provider shall, without delay, perform the necessary investigations in relation to the serious incident and the AI system concerned, including a risk assessment and corrective action. The provider shall cooperate with competent authorities and, where relevant, the notified body during investigations, and shall not perform any investigation which involves altering the AI system in a way which may affect any subsequent evaluation of the causes of the incident, prior to informing the competent authorities of such action."}'></div>
+      <div data-rc="analysis" data-rc-arg='{"text":"The Article 73(6) prohibition on altering the AI system without first notifying competent authorities is a preservation-of-evidence obligation. A provider who applies a corrective patch immediately after an incident \u2014 without notifying authorities \u2014 may be preventing the market surveillance authority from being able to establish the root cause. The prohibition does not prevent corrective action (Article 20 requires it), but it requires informing authorities before any system change that could affect the investigation."}'></div>
+
+      <h3>The narrowed reporting scope for certain system categories</h3>
+      <div data-rc="fact" data-rc-arg='{"source_id":"SRC-0060","locator":"Article 73(9)-(10)","text":"For Annex III high-risk AI systems subject to Union legislative instruments laying down equivalent reporting obligations, incident reporting is limited to serious incidents under Article 3(49)(c) (fundamental rights infringement). For high-risk AI systems which are safety components of, or are themselves, medical devices or IVDs covered by Regulations (EU) 2017/745 and (EU) 2017/746, incident reporting is similarly limited to Article 3(49)(c) incidents and shall be made to the national competent authority chosen for that purpose by the Member State where the incident occurred."}'></div>
+      <div data-rc="analysis" data-rc-arg='{"text":"The narrowed-scope rule reduces duplication for systems already subject to comparable sectoral reporting requirements. Medical devices and IVDs already have post-market safety reporting under their own Regulations (EU) 2017/745 and 2017/746; requiring full Article 73 reporting on top of those obligations would create overlapping duties for the same events. The carve-out preserves the fundamental-rights infringement reporting category as a supplement to the sectoral regime, not a replacement."}'></div>
+
+      <h3>Commission guidance</h3>
+      <div data-rc="analysis" data-rc-arg='{"text":"Article 73(7) required the Commission to issue guidance on compliance with Article 73(1) by 2 August 2025. That deadline has passed. Whether the guidance was issued on time and what it contains was not confirmed against a primary source on this research pass."}'></div>
+
+      <h2 id="s-requirements">Requirements</h2>
+      <div data-rc="analysis" data-rc-arg='{"text":"Article 73 has four sequential requirements: (1) identify whether the incident meets the Article 3(49) serious incident definition; (2) determine which timeline applies (15/2/10 days) and report within it (incomplete report if necessary); (3) investigate, risk-assess, and take corrective action without delay after reporting; (4) do not alter the system in investigation-affecting ways without first notifying authorities."}'></div>
+
+      <h2 id="s-do">What organizations must do</h2>
+      <ul class="checklist" id="doList">
+        <li><span class="cb"></span>Build an internal serious-incident triage process that can assess Article 3(49) classification and determine the applicable timeline within hours of becoming aware of an incident &mdash; the 2-day timeline for critical infrastructure and widespread infringement incidents leaves little room for deliberation.</li>
+        <li><span class="cb"></span>Report immediately on the applicable timeline even if the investigation is incomplete &mdash; Article 73(5) allows an initial incomplete report followed by a full report.</li>
+        <li><span class="cb"></span>After reporting, begin investigation, risk assessment, and corrective action without delay &mdash; and notify competent authorities before making any system changes that could affect the investigation.</li>
+        <li><span class="cb"></span>Establish a deployer feedback channel that surfaces serious incidents to the provider quickly &mdash; the reporting clock can start at deployer awareness, so deployer-to-provider notification speed affects provider compliance.</li>
+        <li><span class="cb"></span>For medical device / IVD AI systems and systems with equivalent sectoral reporting: confirm which Article 3(49) categories still require Article 73 reporting (only (c)) and confirm the correct national authority to report to.</li>
+      </ul>
+
+      <h2 id="s-mistakes">Common mistakes</h2>
+      <p>Waiting for investigation results before reporting is a common mistake &mdash; the reporting obligation activates at reasonable likelihood of a causal link, not at confirmed causation, and Article 73(5) explicitly accommodates incomplete initial reports.</p>
+      <p>Applying the 15-day timeline to all incidents is a second mistake &mdash; critical infrastructure disruption and widespread infringement incidents have a 2-day timeline; deaths have a 10-day timeline with an immediate reporting obligation on suspicion.</p>
+      <p>Applying corrective patches or system changes before notifying competent authorities is a third mistake &mdash; Article 73(6) prohibits changes affecting investigation evaluation without prior notification, even when Article 20 requires corrective action.</p>
+      <p>Treating deployer incident reports as the sole input to the Article 73 awareness clock is a fourth mistake &mdash; providers should also have independent monitoring through the Article 72 post-market monitoring system, which may identify serious incidents before deployers report them.</p>
+
+      <h2 id="s-open">Open questions</h2>
+      <ul>
+        <li><strong>Whether the Commission issued the Article 73(7) compliance guidance by the 2 August 2025 deadline</strong> &mdash; not confirmed against a primary source on this research pass.</li>
+        <li><strong>How &ldquo;widespread infringement&rdquo; under Article 3(61) is assessed in practice for the 2-day timeline</strong> &mdash; Article 3(61) provides the definition (harm to collective interests in at least two Member States, or same conduct by same operator in at least three Member States), but the evidentiary standard for triggering the accelerated timeline is not elaborated in Article 73.</li>
+        <li><strong>Whether Article 73 has been amended by the Digital Omnibus</strong> &mdash; no disclaimer found on the Service Desk as of this verification pass; treated as clean pre-amendment text, not as confirmed unamended.</li>
+      </ul>
+
+      <h2 id="s-faq">Frequently asked</h2>
+      <div class="definition"><div class="df-k">FAQ</div>
+        <dt>When does the reporting clock start &mdash; when the provider is aware, or when the deployer is aware?</dt>
+        <dd>Article 73(2) references &ldquo;the provider or, where applicable, the deployer.&rdquo; If the deployer becomes aware before the provider, the deployer&rsquo;s awareness date starts the clock for the provider&rsquo;s reporting obligation. This is why Article 26(6) deployer-to-provider notification speed matters for provider compliance.</dd>
+      </div>
+      <div class="definition"><div class="df-k">FAQ</div>
+        <dt>Can a provider apply a software fix to stop an AI system causing further harm before reporting to authorities?</dt>
+        <dd>Article 73(6) prohibits any investigation-affecting system alteration without first informing competent authorities. A corrective fix that changes system behaviour in ways that prevent root-cause determination must be preceded by notification. Providers should contact the market surveillance authority before applying such fixes, not after.</dd>
+      </div>
+      <div class="definition"><div class="df-k">FAQ</div>
+        <dt>Does Article 73 apply to open-source AI systems?</dt>
+        <dd>Open-source AI systems are out of scope under Article 2(12) unless they are high-risk, prohibited, or subject to Article 50 transparency obligations. A high-risk open-source AI system falls within Article 73&rsquo;s scope; a non-high-risk open-source system does not.</dd>
+      </div>
+
+      <div data-rc="evidence" data-rc-arg="AR-000380"></div>
+      <div data-rc="history" data-rc-arg="AR-000380"></div>
+      <div data-rc="citation" data-rc-arg="AR-000380"></div>
+      <div data-rc="languageBar" data-rc-arg="AR-000380"></div>
+
+    </article>
+
+    <aside class="art-rail">
+      <div class="trustpanel">
+        <div class="tp-h"><h4>About this research</h4><span data-rc="statusPill" data-rc-arg="current"></span></div>
+        <div class="tp-rows">
+          <div class="tp-row"><span class="k">Research object</span><span class="v">AR-000380</span></div>
+          <div class="tp-row"><span class="k">Author</span><span class="v">Jean-Daniel Alexis</span></div>
+          <div class="tp-row"><span class="k">Reviewer</span><span class="v soft">Jean-Daniel Alexis</span></div>
+          <div class="tp-row"><span class="k">Review cycle</span><span class="v soft">On regulatory change</span></div>
+          <div class="tp-row"><span class="k">Sources</span><span class="v" id="railSources">&mdash;</span></div>
+          <div class="tp-row"><span class="k">Revisions</span><span class="v" id="railRevisions">&mdash;</span></div>
+        </div>
+        <div class="tp-disclaim">AGNUS Research is an independent publication. It is not an EU institution, regulator or certification body, and this is not legal advice.</div>
+      </div>
+
+      <div style="margin-top:-4px"><span data-rc="trackButton" data-rc-arg="EU AI Act" data-rc-mode="block"></span></div>
+
+      <div class="railbox">
+        <h5>Institutional</h5>
+        <div class="rb-list">
+          <a href="AGNUS - Research Methodology.html">Methodology</a>
+          <a href="AGNUS - Research Sources.html">Source Library</a>
+          <a href="AGNUS - Research Calendar.html">Regulatory Calendar</a>
+          <a href="AGNUS - Research Author.html">About the author</a>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <div data-rc="related" data-rc-arg="AR-000380"></div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="foot-top" style="grid-template-columns:1.35fr 1fr 1fr 1fr 1fr">
+      <div class="foot-brand">
+        <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+        <p>Intelligence for the future of work. The trusted source for what&rsquo;s happening, which tools matter, and where AI is heading.</p>
+        <form class="fsearch" onsubmit="return false;">
+          <input type="email" placeholder="Your email for the Research Brief" aria-label="Email" />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+      <div class="foot-col">
+        <h5>Research</h5>
+        <ul>
+          <li><a href="AGNUS - Research Topic.html">AI Governance</a></li>
+          <li><a href="AGNUS - Research Topic.html">EU AI Act</a></li>
+          <li><a href="AGNUS - Research Topic.html">AI Agents</a></li>
+          <li><a href="AGNUS - Research Topic.html">AI Security</a></li>
+          <li><a href="AGNUS - Research Topic.html">AI Audit</a></li>
+          <li><a href="AGNUS - Research Topic.html">Data Governance</a></li>
+          <li><a href="AGNUS - Research Topic.html">Standards</a></li>
+          <li><a href="AGNUS - Research Country.html">Countries</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Evidence</h5>
+        <ul>
+          <li><a href="AGNUS - Research Sources.html">Source Library</a></li>
+          <li><a href="AGNUS - Research Calendar.html">Regulatory Calendar</a></li>
+          <li><a href="AGNUS - Research Methodology.html">Methodology</a></li>
+          <li><a href="AGNUS - Research Report.html">AGNUS Reports</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Discover</h5>
+        <ul>
+          <li><a href="AGNUS - Review.html">AI Reviews</a></li>
+          <li><a href="AGNUS - Compare.html">Comparisons</a></li>
+          <li><a href="AGNUS - Tools.html">AI Tools</a></li>
+          <li><a href="AGNUS - Marketplace.html">Marketplace</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Learn &amp; Build</h5>
+        <ul>
+          <li><a href="AGNUS - Academy.html">Academy</a></li>
+          <li><a href="AGNUS - Prompts.html">Prompt Library</a></li>
+          <li><a href="AGNUS - Agents.html">Agents</a></li>
+          <li><a href="AGNUS - Business.html">Business Automation</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&#169; 2026 AGNUS &middot; Truth before hype. &middot; AGNUS Research is an independent publication, not a regulator or certification body.</span>
+      <div class="fb-links">
+        <a href="#">About</a><a href="AGNUS - Research Methodology.html">Methodology</a><a href="#">Editorial Policy</a><a href="#">Privacy</a><a href="#">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="image-slot.js"></script>
+<script src="agnus-research-data.js"></script>
+<script src="agnus-research-components2.js"></script>
+<script src="agnus-research-components.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var toc = document.getElementById('tocList');
+  var heads = document.querySelectorAll('#prose h2[id]');
+  heads.forEach(function (h) {
+    var li = document.createElement('li');
+    li.innerHTML = '<a href="#' + h.id + '">' + h.textContent + '</a>';
+    toc.appendChild(li);
+  });
+
+  var links = toc.querySelectorAll('a');
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      links.forEach(function (l) { l.classList.toggle('on', l.getAttribute('href') === '#' + e.target.id); });
+    });
+  }, { rootMargin: '-100px 0px -70% 0px' });
+  heads.forEach(function (h) { io.observe(h); });
+
+  var bar = document.getElementById('progBar'), prose = document.getElementById('prose');
+  function prog() {
+    var r = prose.getBoundingClientRect(), total = r.height - window.innerHeight;
+    var done = Math.min(Math.max(-r.top, 0), Math.max(total, 1));
+    bar.style.width = (total > 0 ? done / total * 100 : 0) + '%';
+  }
+  document.addEventListener('scroll', prog, { passive: true }); prog();
+
+  document.querySelectorAll('#doList li').forEach(function (li) {
+    li.addEventListener('click', function () { li.classList.toggle('on'); });
+  });
+
+  var a = AR.byArticleId('AR-000380');
+  document.getElementById('railSources').textContent = a.sources.length + ' cited';
+  document.getElementById('railRevisions').textContent = a.history.length + ' recorded';
+});
+</script>
+</body>
+</html>

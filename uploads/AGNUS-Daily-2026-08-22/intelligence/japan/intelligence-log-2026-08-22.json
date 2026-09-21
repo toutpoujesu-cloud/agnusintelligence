@@ -1,0 +1,24 @@
+{
+  "run_date": "2026-08-22",
+  "source_checks": [
+    {
+      "source_url": "https://www.meti.go.jp",
+      "date_checked": "2026-08-22",
+      "status": "unreachable",
+      "last_successful_check": "",
+      "observed_version_or_date": "Registry homepage returned HTTP 403/internal retrieval error.",
+      "open_questions": [
+        "Official METI AI-governance pages were indexed, but the registry homepage needs manual review."
+      ]
+    }
+  ],
+  "findings": [],
+  "editorial_alerts": [
+    {
+      "type": "source_unreachable",
+      "source_url": "https://www.meti.go.jp",
+      "message": "Registry homepage returned HTTP 403/internal retrieval error.",
+      "baseline_action": "Prior successful baseline preserved; no fingerprint or last-successful value overwritten."
+    }
+  ]
+}

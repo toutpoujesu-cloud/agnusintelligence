@@ -1,0 +1,100 @@
+{
+  "run_date": "2026-08-23",
+  "source_checks": [
+    {
+      "source_url": "https://www.congress.gov",
+      "date_checked": "2026-08-23",
+      "status": "unreachable",
+      "last_successful_check": "",
+      "observed_version_or_date": "Only a six-month-old Congress.gov snapshot was available; no current baseline could be verified.",
+      "open_questions": [
+        "Use the official Congress.gov API or manual review to establish a current successful baseline."
+      ]
+    },
+    {
+      "source_url": "https://leginfo.legislature.ca.gov",
+      "date_checked": "2026-08-23",
+      "status": "no_change",
+      "last_successful_check": "2026-08-23T06:01:17+02:00",
+      "observed_version_or_date": "California legislative index retrieved; no new monitored AI-bill action was verified since 2026-08-22.",
+      "open_questions": []
+    },
+    {
+      "source_url": "https://leg.colorado.gov",
+      "date_checked": "2026-08-23",
+      "status": "no_change",
+      "last_successful_check": "2026-08-23T06:01:17+02:00",
+      "observed_version_or_date": "Colorado General Assembly site retrieved; the 2026 regular session remains adjourned since 2026-05-13.",
+      "open_questions": []
+    },
+    {
+      "source_url": "https://www.nysenate.gov/legislation/bills/2025/S10685",
+      "date_checked": "2026-08-23",
+      "status": "changed",
+      "last_successful_check": "2026-08-23T06:01:17+02:00",
+      "observed_version_or_date": "New York Senate Bill S10685 was introduced and referred to the Senate Rules Committee on 2026-08-21.",
+      "open_questions": [
+        "SRC-0047 and IR-PROVISIONAL-20260823-001 are provisional until editorial confirmation."
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "record_id": "IR-PROVISIONAL-20260823-001",
+      "source_id": "SRC-0047",
+      "source_type": "Official state legislature bill record",
+      "publication_date": "2026-08-21",
+      "discovery_date": "2026-08-23",
+      "jurisdiction": "United States — New York",
+      "authority_level": "Primary",
+      "topic": "AI in education",
+      "subtopic": "School-device restrictions, educational-technology registration, and student-data use",
+      "regulation": "Proposed Fostering Optimal Classroom Use of Screens (FOCUS) Act, S10685",
+      "article_concerned": "",
+      "industries": [
+        "Education",
+        "Educational technology"
+      ],
+      "ai_system_type": "Generative AI, conversational AI, AI companions, and AI trained on student data",
+      "actors_affected": [
+        "Schools",
+        "Educational technology providers",
+        "Device providers",
+        "AI developers"
+      ],
+      "risk_category": "Children, education, and personal data",
+      "effective_date": "If enacted, the first 1 August after becoming law",
+      "deadline": "",
+      "what_changed": "New York Senate Bill S10685 was introduced and referred to the Senate Rules Committee. The proposal would limit school-issued devices, prohibit generative AI, conversational AI, and AI companions on those devices, require educational-technology providers to register with the Attorney General, and restrict use of student personally identifiable information, including excluding AI training from permitted internal business operations.",
+      "previous_position": "The stored 2026-08-22 New York legislative baseline did not identify this newly introduced proposal.",
+      "new_position": "A pending New York bill now proposes specific AI and data-processing restrictions for schools, school devices, and educational-technology providers. It is not enacted law.",
+      "legal_significance": "If enacted, the bill would create statutory restrictions on AI-enabled school technology, provider registration and certification duties, enforcement exposure, and student-data processing limits.",
+      "business_significance": "Educational-technology and device providers serving New York schools may need product exclusions, registration evidence, independent performance support, change re-registration, contract revisions, and limits preventing student data from being used for AI training.",
+      "technical_significance": "Products may need controls that block prohibited AI services on school-issued devices, prevent unrelated media access, segregate student data from model-training pipelines, and record significant product modifications.",
+      "agnus_guard_relevance": "Policy relevant",
+      "articles_affected": [],
+      "update_required": false,
+      "new_article_required": true,
+      "confidence": "Primary source verified",
+      "reviewer": "",
+      "discovery_mechanism": "Scheduled primary-source monitor",
+      "review_status": "pending_review",
+      "materiality": "Medium",
+      "_demo": false
+    }
+  ],
+  "editorial_alerts": [
+    {
+      "type": "source_unreachable",
+      "source_url": "https://www.congress.gov",
+      "message": "Only a six-month-old Congress.gov snapshot was available; no current baseline could be verified.",
+      "baseline_action": "Prior successful baseline preserved; no last-successful value or fingerprint overwritten."
+    },
+    {
+      "type": "editorial_review_required",
+      "record_id": "IR-PROVISIONAL-20260823-001",
+      "source_id": "SRC-0047",
+      "message": "Review the Medium-materiality S10685 proposal and confirm both provisional IDs before publication."
+    }
+  ]
+}

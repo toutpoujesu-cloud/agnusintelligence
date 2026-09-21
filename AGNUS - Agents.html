@@ -1,0 +1,414 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI Agents — AGNUS Marketplace</title>
+<meta name="description" content="The AGNUS marketplace for AI agents. If you need an AI employee, this is where you find the best one — reviewed, scored, and priced, with real ROI estimates." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<style>
+.pg-head { padding: clamp(40px,5vw,64px) 0 0; }
+.pg-head h1 { font-family: var(--font-sans); font-weight: 700; font-size: clamp(40px,6vw,84px); line-height: 0.96; letter-spacing: -0.035em; margin: 0 0 18px; }
+.pg-head h1 em { font-family: var(--font-serif); font-style: italic; font-weight: 300; color: var(--gold-deep); }
+.pg-head .h-lede { max-width: 600px; }
+.sec-head2 { margin-bottom: clamp(32px,4vw,48px); }
+.sec-head2 .kicker { margin-bottom: 16px; }
+
+/* app-store agent cards */
+.ag-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.agc { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 28px 26px; display: flex; flex-direction: column; gap: 14px; transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease, border-color .35s ease; }
+.agc:hover { transform: translateY(-6px); box-shadow: 0 34px 70px -42px rgba(26,26,23,0.42); }
+.agc.feat { border-color: var(--gold); }
+.agc-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
+.agc .icon { width: 52px; height: 52px; border-radius: 15px; background: var(--char); color: var(--gold-light); display: grid; place-items: center; font-family: var(--font-serif); font-style: italic; font-size: 24px; }
+.agc .feat-tag { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-deep); background: var(--gold-soft); padding: 5px 10px; border-radius: 999px; align-self: flex-start; }
+.agc h3 { font-family: var(--font-sans); font-weight: 700; font-size: 21px; letter-spacing: -0.02em; margin: 0; }
+.agc .by { font-family: var(--font-mono); font-size: 11.5px; color: var(--ink-mute); letter-spacing: 0.04em; }
+.agc .agc-stars { display: flex; align-items: center; gap: 9px; }
+.agc .agc-stars .sc { font-family: var(--font-mono); font-size: 13px; color: var(--ink-soft); }
+.agc .ints { display: flex; flex-wrap: wrap; gap: 6px; }
+.agc .ints span { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; color: var(--ink-soft); border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; }
+.agc .agc-foot { margin-top: auto; padding-top: 18px; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; }
+.agc .price { font-family: var(--font-mono); font-size: 14px; font-weight: 600; }
+.agc .price small { color: var(--ink-mute); font-weight: 400; }
+.agc .view { font-size: 13.5px; font-weight: 600; color: var(--gold-deep); display: inline-flex; gap: 7px; align-items: center; }
+.agc:hover .view .arr { transform: translateX(3px); }
+
+/* agent detail anatomy */
+.detail { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px,4vw,56px); align-items: start; }
+.detail-fig { position: relative; border-radius: 20px; overflow: hidden; aspect-ratio: 4/3; background: var(--paper-2); box-shadow: 0 34px 80px -50px rgba(26,26,23,0.4); }
+.detail-fig image-slot { width:100%; height:100%; }
+.detail-fig .demo { position: absolute; left: 18px; bottom: 18px; z-index: 2; display: inline-flex; align-items: center; gap: 9px; background: rgba(26,26,23,0.86); backdrop-filter: blur(8px); color: #fff; padding: 9px 16px; border-radius: 999px; font-size: 13px; font-weight: 600; }
+.detail-fig .demo .tri { width: 0; height: 0; border-left: 8px solid var(--gold-light); border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
+.detail h3 { font-family: var(--font-sans); font-weight: 700; font-size: clamp(26px,3vw,38px); letter-spacing: -0.03em; margin: 0 0 8px; }
+.detail .d-by { font-family: var(--font-mono); font-size: 12px; color: var(--ink-mute); letter-spacing: 0.06em; margin-bottom: 16px; }
+.detail .d-stars { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+.detail .d-stars .big { font-family: var(--font-mono); font-weight: 600; font-size: 16px; }
+.detail p.lead-p { font-size: 16px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 24px; }
+.spec-list { border-top: 1px solid var(--char); margin-bottom: 24px; }
+.spec-row { display: grid; grid-template-columns: 170px 1fr; gap: 18px; padding: 13px 0; border-bottom: 1px solid var(--line); font-size: 14.5px; }
+.spec-row dt { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-mute); }
+.spec-row dd { margin: 0; font-weight: 600; letter-spacing: -0.01em; display: flex; align-items: center; gap: 8px; }
+.spec-row .yes { color: var(--pass); }
+.diff { display: inline-flex; gap: 3px; }
+.diff i { width: 7px; height: 7px; border-radius: 50%; background: var(--ink-faint); font-style: normal; }
+.diff i.on { background: var(--gold); }
+.detail-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* use cases */
+.uses { display: flex; flex-wrap: wrap; gap: 10px; }
+.uses span { display: inline-flex; align-items: center; gap: 9px; font-size: 15px; font-weight: 500; border: 1px solid var(--line); border-radius: 999px; padding: 11px 18px; background: #fff; }
+.uses span .mk { color: var(--pass); font-weight: 700; }
+
+/* ROI calculator */
+.roi { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px,4vw,64px); align-items: center; background: var(--char); color: var(--on-dark); border-radius: 22px; padding: clamp(36px,4vw,56px); }
+.roi h3 { font-family: var(--font-sans); font-weight: 700; font-size: clamp(24px,3vw,34px); letter-spacing: -0.025em; margin: 0 0 10px; color: #fff; }
+.roi .rk { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 14px; }
+.roi p { font-size: 15px; line-height: 1.55; color: var(--on-dark-soft); margin: 0 0 26px; }
+.roi-field { margin-bottom: 22px; }
+.roi-field label { display: flex; justify-content: space-between; align-items: baseline; font-size: 14px; font-weight: 500; margin-bottom: 12px; }
+.roi-field label b { font-family: var(--font-mono); font-weight: 600; color: var(--gold-light); font-size: 15px; }
+.roi-field input[type=range] { width: 100%; -webkit-appearance: none; appearance: none; height: 4px; border-radius: 999px; background: rgba(255,255,255,0.16); outline: none; }
+.roi-field input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--gold-light); cursor: pointer; border: 3px solid var(--char); box-shadow: 0 0 0 1px var(--gold-deep); }
+.roi-field input[type=range]::-moz-range-thumb { width: 17px; height: 17px; border-radius: 50%; background: var(--gold-light); cursor: pointer; border: 3px solid var(--char); }
+.roi-out { border-top: 1px solid var(--line-dark); }
+.roi-out .ro { display: flex; align-items: baseline; justify-content: space-between; padding: 18px 0; border-bottom: 1px solid var(--line-dark); }
+.roi-out .ro:last-child { border-bottom: none; }
+.roi-out .ro .rl { font-size: 14px; color: var(--on-dark-soft); }
+.roi-out .ro .rv { font-family: var(--font-sans); font-weight: 800; font-size: clamp(26px,3.4vw,40px); letter-spacing: -0.03em; }
+.roi-out .ro.hero .rv { color: var(--gold-light); }
+.roi-note { font-family: var(--font-mono); font-size: 11px; color: var(--on-dark-mute); letter-spacing: 0.04em; margin-top: 16px; }
+
+@media (max-width: 860px) {
+  .ag-grid { grid-template-columns: 1fr; }
+  .detail { grid-template-columns: 1fr; gap: 30px; }
+  .roi { grid-template-columns: 1fr; gap: 28px; }
+}
+</style>
+</head>
+<body>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-label">Today's Intelligence</div>
+  <div class="ticker-track">
+    <span><span class="tk">AGENTS</span> Coding agents reach <span class="up">&nbsp;94% SWE-bench</span></span><span class="dot"></span>
+    <span><span class="tk">MARKETPLACE</span> 1,240 agents listed and scored</span><span class="dot"></span>
+    <span><span class="tk">DEPLOY</span> Median time-to-deploy now under 2 days</span><span class="dot"></span>
+    <span><span class="tk">ENTERPRISE</span> AI adoption in F500 <span class="up">&nbsp;+38% YoY</span></span><span class="dot"></span>
+    <span><span class="tk">AGENTS</span> Coding agents reach <span class="up">&nbsp;94% SWE-bench</span></span><span class="dot"></span>
+    <span><span class="tk">MARKETPLACE</span> 1,240 agents listed and scored</span><span class="dot"></span>
+    <span><span class="tk">DEPLOY</span> Median time-to-deploy now under 2 days</span><span class="dot"></span>
+    <span><span class="tk">ENTERPRISE</span> AI adoption in F500 <span class="up">&nbsp;+38% YoY</span></span><span class="dot"></span>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Marketplace.html">Marketplace</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Practice.html">Practice</a>
+      <a href="AGNUS - Agents.html" class="active">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+      <a href="AGNUS - Business.html">Business</a>
+      </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#top" class="nav-search">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="6"/><path d="M14 14l4 4"/></svg>
+        Search tools <kbd>⌘K</kbd>
+      </a>
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+      <button class="hamburger" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="m-drawer">
+    <a href="AGNUS - Explore.html">Explore</a>
+    <a href="AGNUS - Marketplace.html">Marketplace</a>
+    <a href="AGNUS - Intelligence.html">Intelligence</a>
+    <a href="AGNUS - Review.html">Reviews</a>
+    <a href="AGNUS - Compare.html">Compare</a>
+    <a href="AGNUS - Agents.html">Agents</a>
+    <a href="AGNUS - Academy.html">Academy</a>
+    <a href="AGNUS - Business.html">Business</a>
+    <a href="AGNUS - Home.html#premium" style="color: var(--gold-deep);">Premium Membership</a>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<div class="container pg-head">
+  <div class="crumbs"><a href="AGNUS - Home.html">AGNUS</a><span class="sep">/</span><span class="here">Agents</span></div>
+  <div class="kicker" style="margin-bottom:22px;"><span class="ix">◆</span> The AI Agent Marketplace</div>
+  <h1>If you need an<br /><em>AI employee</em> — start here.</h1>
+  <p class="h-lede">Not a list of chatbots. A research center and marketplace for the agents that actually do the work — reviewed, scored and priced like real hires.</p>
+</div>
+
+<!-- FEATURED AGENTS -->
+<section style="padding-top: clamp(44px,5vw,64px);">
+  <div class="container">
+    <div class="sec-head2">
+      <div class="kicker"><span class="ix">01</span> Featured Agents</div>
+      <h2 class="h-section">Hire the best. Skip the rest.</h2>
+    </div>
+    <div class="ag-grid">
+      <a href="#anatomy" class="agc feat">
+        <div class="agc-top"><div class="icon">S</div><span class="feat-tag">Top rated</span></div>
+        <h3>Customer Support Agent</h3>
+        <div class="by">by OpenAI</div>
+        <div class="agc-stars"><span class="stars">★★★★★</span><span class="sc">9.6</span></div>
+        <div class="ints"><span>Shopify</span><span>Slack</span><span>Zendesk</span></div>
+        <div class="agc-foot"><span class="price">$39<small>/mo</small></span><span class="view">View details <span class="arr">→</span></span></div>
+      </a>
+      <a href="#anatomy" class="agc">
+        <div class="agc-top"><div class="icon">D</div></div>
+        <h3>Coding Agent</h3>
+        <div class="by">by Cognition</div>
+        <div class="agc-stars"><span class="stars">★★★★★</span><span class="sc">9.4</span></div>
+        <div class="ints"><span>GitHub</span><span>Linear</span><span>VS Code</span></div>
+        <div class="agc-foot"><span class="price">$59<small>/mo</small></span><span class="view">View details <span class="arr">→</span></span></div>
+      </a>
+      <a href="#anatomy" class="agc">
+        <div class="agc-top"><div class="icon">R</div></div>
+        <h3>Research Analyst</h3>
+        <div class="by">by Anthropic</div>
+        <div class="agc-stars"><span class="stars">★★★★<span class="off">★</span></span><span class="sc">9.1</span></div>
+        <div class="ints"><span>Notion</span><span>Drive</span><span>Sheets</span></div>
+        <div class="agc-foot"><span class="price">$49<small>/mo</small></span><span class="view">View details <span class="arr">→</span></span></div>
+      </a>
+      <a href="#anatomy" class="agc">
+        <div class="agc-top"><div class="icon">M</div></div>
+        <h3>Marketing Agent</h3>
+        <div class="by">by Jasper</div>
+        <div class="agc-stars"><span class="stars">★★★★<span class="off">★</span></span><span class="sc">8.8</span></div>
+        <div class="ints"><span>HubSpot</span><span>Meta</span><span>Canva</span></div>
+        <div class="agc-foot"><span class="price">$45<small>/mo</small></span><span class="view">View details <span class="arr">→</span></span></div>
+      </a>
+      <a href="#anatomy" class="agc">
+        <div class="agc-top"><div class="icon">B</div></div>
+        <h3>Bookkeeping Agent</h3>
+        <div class="by">by Pilot</div>
+        <div class="agc-stars"><span class="stars">★★★★<span class="off">★</span></span><span class="sc">8.7</span></div>
+        <div class="ints"><span>QuickBooks</span><span>Stripe</span><span>Xero</span></div>
+        <div class="agc-foot"><span class="price">$69<small>/mo</small></span><span class="view">View details <span class="arr">→</span></span></div>
+      </a>
+      <a href="#anatomy" class="agc">
+        <div class="agc-top"><div class="icon">V</div></div>
+        <h3>Voice Receptionist</h3>
+        <div class="by">by Bland</div>
+        <div class="agc-stars"><span class="stars">★★★★<span class="off">★</span></span><span class="sc">8.5</span></div>
+        <div class="ints"><span>Twilio</span><span>Calendly</span><span>CRM</span></div>
+        <div class="agc-foot"><span class="price">$35<small>/mo</small></span><span class="view">View details <span class="arr">→</span></span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- AGENT DETAIL ANATOMY -->
+<section id="anatomy" class="warm">
+  <div class="container">
+    <div class="sec-head2">
+      <div class="kicker"><span class="ix">02</span> Every agent, fully vetted</div>
+      <h2 class="h-section">A review page for each agent.</h2>
+    </div>
+    <div class="detail">
+      <figure class="detail-fig">
+        <div class="demo"><span class="tri"></span> Watch 90s demo</div>
+        <image-slot id="agent-demo" shape="rect" placeholder="Agent demo · screen recording still or clean product UI of a support agent at work. Calm, premium. 4:3."></image-slot>
+      </figure>
+      <div>
+        <h3>Customer Support Agent</h3>
+        <div class="d-by">Built by OpenAI · Updated June 2026</div>
+        <div class="d-stars"><span class="stars">★★★★★</span><span class="big">9.6 <small style="color:var(--ink-mute);font-weight:400;">/ 10</small></span></div>
+        <p class="lead-p">Handles tier-1 support across chat, email and voice — resolves common tickets end-to-end and escalates the rest with full context. Genuinely good enough to put in front of customers.</p>
+        <dl class="spec-list">
+          <div class="spec-row"><dt>Built by</dt><dd>OpenAI</dd></div>
+          <div class="spec-row"><dt>Price</dt><dd>$39 / month</dd></div>
+          <div class="spec-row"><dt>Installation</dt><dd><span class="diff"><i class="on"></i><i></i><i></i></span> Easy</dd></div>
+          <div class="spec-row"><dt>Time to deploy</dt><dd>Under 1 day</dd></div>
+          <div class="spec-row"><dt>Integrations</dt><dd>Shopify · Slack · Zendesk · 40+</dd></div>
+          <div class="spec-row"><dt>Enterprise ready</dt><dd><span class="yes">✓</span> Yes — SSO, audit logs</dd></div>
+          <div class="spec-row"><dt>AGNUS Rating</dt><dd class="gold-text" style="-webkit-text-fill-color:initial;color:var(--gold-deep);">9.6 / 10 · Top rated</dd></div>
+        </dl>
+        <div class="detail-ctas">
+          <a href="#" class="btn btn-dark">Get this agent <span class="arr">→</span></a>
+          <a href="AGNUS - Compare.html" class="btn btn-light">See alternatives</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUSINESS USE CASES -->
+<section>
+  <div class="container">
+    <div class="sec-head2">
+      <div class="kicker"><span class="ix">03</span> Business use cases</div>
+      <h2 class="h-section">Is it relevant to you?</h2>
+    </div>
+    <div class="uses">
+      <span><span class="mk">✓</span> Ecommerce</span>
+      <span><span class="mk">✓</span> SaaS</span>
+      <span><span class="mk">✓</span> Hotels</span>
+      <span><span class="mk">✓</span> Healthcare</span>
+      <span><span class="mk">✓</span> Finance</span>
+      <span><span class="mk">✓</span> Travel</span>
+      <span><span class="mk">✓</span> Education</span>
+    </div>
+  </div>
+</section>
+
+<!-- ROI -->
+<section class="warm">
+  <div class="container">
+    <div class="roi">
+      <div>
+        <div class="rk">Return on investment</div>
+        <h3>People think in money,<br />not features.</h3>
+        <p>Estimate what one Customer Support Agent is worth to your team. Drag to match your business.</p>
+        <div class="roi-field">
+          <label>Team size <b><span id="emp-val">10</span> people</b></label>
+          <input type="range" id="emp" min="1" max="200" value="10" />
+        </div>
+        <div class="roi-field">
+          <label>Hours saved per person / week <b><span id="hrs-val">1.8</span> h</b></label>
+          <input type="range" id="hrs" min="0.5" max="6" step="0.1" value="1.8" />
+        </div>
+        <div class="roi-field">
+          <label>Loaded hourly cost <b>€<span id="rate-val">44</span></b></label>
+          <input type="range" id="rate" min="20" max="120" value="44" />
+        </div>
+      </div>
+      <div class="roi-out">
+        <div class="ro"><span class="rl">Hours reclaimed / week</span><span class="rv" id="out-hrs">18</span></div>
+        <div class="ro hero"><span class="rl">Estimated monthly saving</span><span class="rv" id="out-eur">€3,200</span></div>
+        <div class="ro"><span class="rl">Annual value</span><span class="rv" id="out-yr" style="font-size:clamp(20px,2.4vw,28px);">€38,400</span></div>
+        <div class="roi-note">Estimate only · net of the $39/mo agent subscription</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+        <p>Intelligence for the future of work. The trusted source for what's happening, which tools matter, and where AI is heading.</p>
+        <form class="fsearch" onsubmit="return false;"><input type="email" placeholder="Your email for the daily brief" aria-label="Email" /><button type="submit">Subscribe</button></form>
+      </div>
+      <div class="foot-col"><h5>Discover</h5><ul>
+        <li><a href="AGNUS - Review.html">AI Reviews</a></li>
+        <li><a href="AGNUS - Compare.html">AI Comparisons</a></li>
+        <li><a href="AGNUS - Intelligence.html">AI News</a></li>
+        <li><a href="AGNUS - Agents.html">AI Agents</a></li>
+        <li><a href="AGNUS - Tools.html">Free AI Tools</a></li>
+      </ul></div>
+      <div class="foot-col"><h5>Learn &amp; Build</h5><ul>
+        <li><a href="AGNUS - Academy.html">AI Academy</a></li>
+        <li><a href="AGNUS - Prompts.html">Prompt Library</a></li>
+        <li><a href="AGNUS - Business.html">Business Automation</a></li>
+        <li><a href="AGNUS - Business.html">AI for Business</a></li>
+        <li><a href="AGNUS - Home.html#premium"><span class="gd">Premium Membership</span></a></li>
+      </ul></div>
+      <div class="foot-col"><h5>Company</h5><ul>
+        <li><a href="#">About AGNUS</a></li>
+        <li><a href="#">Our methodology</a></li>
+        <li><a href="AGNUS - Awards.html">The AGNUS Awards</a></li>
+        <li><a href="#">Editorial standards</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="AGNUS - Dashboard.html" class="gd">Editorial Dashboard ↗</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 AGNUS · Truth before hype.</span><div class="fb-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Editorial Policy</a><a href="#">Advertise</a></div></div>
+  </div>
+</footer>
+
+<script src="image-slot.js"></script>
+<script src="agnus-research-data.js"></script>
+<script>
+(function () {
+  if (!window.AR || !window.AR.AGENTS || !window.AR.AGENTS.length) return;
+  var agents = window.AR.AGENTS;
+  var grid = document.querySelector('.ag-grid');
+  if (grid) {
+    grid.innerHTML = agents.map(function (a, i) {
+      var pricing = a.pricing || [];
+      var lowestPaid = null;
+      for (var p = 0; p < pricing.length; p++) { if (pricing[p].price_usd > 0) { lowestPaid = pricing[p]; break; } }
+      var priceStr = lowestPaid
+        ? '$' + lowestPaid.price_usd + '<small>/' + lowestPaid.cadence.replace('per user/month', 'mo') + '</small>'
+        : (pricing.length ? pricing[0].tier : 'Contact');
+      var featured = i === 0 ? ' feat' : '';
+      var featTag = i === 0 ? '<span class="feat-tag">Live data</span>' : '';
+      return '<a href="#anatomy" class="agc' + featured + '">'
+        + '<div class="agc-top"><div class="icon">' + a.name[0] + '</div>' + featTag + '</div>'
+        + '<h3>' + a.name + '</h3>'
+        + '<div class="by">by ' + a.vendor + '</div>'
+        + '<div class="agc-stars"><span class="stars">★★★★</span><span class="sc">' + a.category + '</span></div>'
+        + '<div class="ints"><span>' + a.category + '</span></div>'
+        + '<div class="agc-foot"><span class="price">' + priceStr + '</span><span class="view">View details <span class="arr">→</span></span></div>'
+        + '</a>';
+    }).join('');
+  }
+  var ag = agents[0]; if (!ag) return;
+  var h3 = document.querySelector('.detail h3'); if (h3) h3.textContent = ag.name;
+  var dBy = document.querySelector('.detail .d-by');
+  if (dBy) dBy.textContent = 'Built by ' + ag.vendor + ' · ' + (ag.provenance && ag.provenance.builder ? ag.provenance.builder : 'AGNUS verified');
+  var lead = document.querySelector('.detail p.lead-p');
+  if (lead && ag.permission_scope) {
+    var qs = ag.permission_scope.quoted_source || '';
+    lead.textContent = ag.name + ' runs ' + (ag.permission_scope.unattended_actions || 'agentic tasks') + '. '
+      + (qs ? qs.split(' — ')[0] + '.' : '');
+  }
+  var specList = document.querySelector('.detail .spec-list');
+  if (specList) {
+    var pricing = ag.pricing || [];
+    var lowestPaid = null;
+    for (var p = 0; p < pricing.length; p++) { if (pricing[p].price_usd > 0) { lowestPaid = pricing[p]; break; } }
+    var priceStr = lowestPaid ? '$' + lowestPaid.price_usd + ' / ' + lowestPaid.cadence : (pricing.length ? pricing[0].tier : '—');
+    var owasp = ag.owasp_agentic_top10 || {};
+    var ok = (owasp.addressed || []).length;
+    var tot = ok + (owasp.not_addressed || []).length;
+    specList.innerHTML = ''
+      + '<div class="spec-row"><dt>Built by</dt><dd>' + ag.vendor + '</dd></div>'
+      + '<div class="spec-row"><dt>Category</dt><dd>' + ag.category + '</dd></div>'
+      + '<div class="spec-row"><dt>Pricing</dt><dd style="font-size:13px;font-weight:400;">' + priceStr + '</dd></div>'
+      + '<div class="spec-row"><dt>Requires approval</dt><dd style="font-size:12px;font-weight:400;letter-spacing:0">' + (ag.permission_scope.requires_approval || '—') + '</dd></div>'
+      + (tot ? '<div class="spec-row"><dt>OWASP coverage</dt><dd><span class="yes">✓</span> ' + ok + ' / ' + tot + ' addressed</dd></div>' : '')
+      + '<div class="spec-row"><dt>AGNUS reviewed</dt><dd class="gold-text" style="-webkit-text-fill-color:initial;color:var(--gold-deep);">Profile verified 2026</dd></div>';
+  }
+})();
+(function () {
+  const emp = document.getElementById('emp'), hrs = document.getElementById('hrs'), rate = document.getElementById('rate');
+  const empV = document.getElementById('emp-val'), hrsV = document.getElementById('hrs-val'), rateV = document.getElementById('rate-val');
+  const oH = document.getElementById('out-hrs'), oE = document.getElementById('out-eur'), oY = document.getElementById('out-yr');
+  const fmt = (n) => '€' + Math.round(n).toLocaleString('en-US');
+  function calc() {
+    const e = +emp.value, h = +hrs.value, r = +rate.value;
+    const weekly = e * h;
+    const monthly = weekly * r * 4.33 - 39 * 0.92;
+    empV.textContent = e; hrsV.textContent = h.toFixed(1); rateV.textContent = r;
+    oH.textContent = Math.round(weekly);
+    oE.textContent = fmt(monthly);
+    oY.textContent = fmt(monthly * 12);
+  }
+  [emp, hrs, rate].forEach((el) => el.addEventListener('input', calc));
+  calc();
+})();
+document.addEventListener('keydown', (e) => { if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); window.location.href = 'AGNUS - Home.html#top'; } });
+</script>
+</body>
+</html>

@@ -1,0 +1,590 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ChatGPT vs Claude vs Gemini — AGNUS Comparison</title>
+<meta name="description" content="An honest, beautiful side-by-side comparison of ChatGPT, Claude and Gemini — scored on the same rubric, with recommendations tailored to how you work. Truth before hype." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<style>
+/* ── COMPARE PAGE ────────────────────────────────────────────────── */
+.cmp-head { padding: clamp(44px, 6vw, 72px) 0 0; }
+.cmp-head h1 { font-family: var(--font-sans); font-weight: 700; font-size: clamp(36px, 5.6vw, 72px); line-height: 0.98; letter-spacing: -0.035em; margin: 0 0 20px; }
+.cmp-head h1 .vs { font-family: var(--font-serif); font-style: italic; font-weight: 300; color: var(--ink-faint); }
+.cmp-head .h-lede { max-width: 640px; }
+
+/* product cards */
+.pcards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: clamp(40px, 5vw, 60px); }
+.pcard { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 30px 28px 26px; display: flex; flex-direction: column; gap: 14px; transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease, border-color .35s ease; position: relative; }
+.pcard.top { border-color: var(--gold); box-shadow: 0 24px 60px -40px rgba(176,140,74,0.6); }
+.pcard:hover { transform: translateY(-6px); box-shadow: 0 34px 70px -42px rgba(26,26,23,0.42); }
+.pcard .plogo { width: 52px; height: 52px; border-radius: 14px; background: var(--paper-2); border: 1px solid var(--line); display: grid; place-items: center; font-weight: 700; font-size: 22px; color: var(--ink); }
+.pcard h3 { font-family: var(--font-sans); font-weight: 700; font-size: 27px; letter-spacing: -0.025em; margin: 4px 0 0; }
+.pcard .pstars { display: flex; align-items: center; gap: 10px; }
+.pcard .pscore { font-family: var(--font-mono); font-weight: 600; font-size: 14px; color: var(--ink-soft); }
+.pcard .pbadge { display: inline-flex; align-self: flex-start; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; color: var(--gold-deep); background: var(--gold-soft); padding: 7px 13px; border-radius: 999px; }
+.pcard .psum { font-size: 14.5px; line-height: 1.55; color: var(--ink-soft); margin: 0; }
+.pcard .pprice { font-family: var(--font-mono); font-size: 13px; color: var(--ink-mute); }
+.pcard .pprice b { color: var(--ink); font-weight: 600; }
+.pcard .pcta { margin-top: auto; padding-top: 18px; }
+.pcard .pcta a { font-size: 14px; font-weight: 600; color: var(--gold-deep); display: inline-flex; gap: 7px; align-items: center; }
+.pcard .pcta a:hover .arr { transform: translateX(3px); }
+.crown { position: absolute; top: -11px; left: 28px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: var(--char); background: var(--gold-light); padding: 4px 11px; border-radius: 999px; }
+
+/* filter bar */
+.filterbar { margin-top: clamp(48px, 6vw, 72px); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 22px 0; display: flex; align-items: center; gap: 18px 22px; flex-wrap: wrap; }
+.filterbar .flabel { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-mute); }
+.filterbar .flabel b { color: var(--ink); font-weight: 600; }
+.chips { display: flex; gap: 9px; flex-wrap: wrap; }
+.chip { font-family: var(--font-sans); font-size: 13.5px; font-weight: 500; color: var(--ink-soft); border: 1px solid var(--line); border-radius: 999px; padding: 8px 16px; transition: all .2s ease; }
+.chip:hover { border-color: var(--ink-faint); color: var(--ink); }
+.chip.on { background: var(--char); color: #fff; border-color: var(--char); }
+
+/* comparison table */
+.cmp-table { margin-top: 8px; }
+.ctr { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; align-items: stretch; border-bottom: 1px solid var(--line); }
+.ctr.head { border-bottom: 1px solid var(--char); position: sticky; top: 110px; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); z-index: 20; }
+.ctr.head > div { padding: 16px 18px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-mute); }
+.ctr.head .prod { font-family: var(--font-sans); font-weight: 700; font-size: 16px; letter-spacing: -0.01em; color: var(--ink); text-transform: none; }
+.crow { background: none; text-align: left; width: 100%; display: contents; }
+.crow-btn { display: contents; }
+.cell { padding: 18px; display: flex; align-items: center; font-size: 15px; }
+.cell.cat { font-weight: 600; letter-spacing: -0.01em; gap: 10px; justify-content: space-between; }
+.cell.cat .chev { font-family: var(--font-mono); font-size: 12px; color: var(--ink-mute); transition: transform .25s ease; }
+.crow.open .cell.cat .chev { transform: rotate(90deg); }
+.cell.val { color: var(--ink-soft); font-family: var(--font-mono); font-size: 14px; }
+.cell.lead { background: var(--gold-soft); color: var(--ink); font-weight: 600; position: relative; }
+.cell.lead::after { content: "▲"; position: absolute; top: 8px; right: 10px; font-size: 7px; color: var(--gold-deep); }
+.cell .stars { font-size: 14px; }
+.crow:hover .cell:not(.lead) { background: var(--paper-warm); }
+.cdetail { grid-column: 1 / -1; display: none; padding: 4px 18px 26px; background: var(--paper-warm); border-bottom: 1px solid var(--line); }
+.crow.open + .cdetail { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 18px; }
+.cdetail .d-spacer { }
+.cdetail .d-col h6 { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-deep); margin: 0 0 7px; }
+.cdetail .d-col p { font-size: 13.5px; line-height: 1.5; color: var(--ink-soft); margin: 0; }
+
+/* performance meters */
+.meters { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(28px, 4vw, 56px); }
+.meter-group h4 { font-family: var(--font-sans); font-weight: 700; font-size: 19px; letter-spacing: -0.02em; margin: 0 0 22px; display: flex; align-items: center; gap: 10px; }
+.meter { margin-bottom: 20px; }
+.meter .mtop { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+.meter .mname { font-size: 14px; font-weight: 500; }
+.meter .mpct { font-family: var(--font-mono); font-size: 13px; color: var(--ink-soft); }
+.meter .mtrack { height: 5px; border-radius: 999px; background: var(--paper-2); overflow: hidden; }
+.meter .mfill { height: 100%; border-radius: 999px; width: 0; background: var(--char); transition: width 1.1s cubic-bezier(.2,.7,.2,1); }
+.meter.win .mfill { background: var(--gold-grad); }
+.meter.win .mpct { color: var(--gold-deep); font-weight: 600; }
+
+/* best for / recommendation */
+.bestfor-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.bf { background: #fff; padding: 30px 28px; }
+.bf h4 { font-family: var(--font-sans); font-weight: 700; font-size: 19px; letter-spacing: -0.02em; margin: 0 0 18px; display: flex; align-items: center; gap: 10px; }
+.bf .bf-trophy { font-family: var(--font-serif); font-style: italic; }
+.bf ol { list-style: none; counter-reset: r; padding: 0; margin: 0; }
+.bf ol li { counter-increment: r; display: grid; grid-template-columns: 26px 1fr auto; align-items: center; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line-soft); font-size: 15px; font-weight: 500; }
+.bf ol li:first-child { border-top: none; }
+.bf ol li::before { content: counter(r); font-family: var(--font-mono); font-size: 12px; color: var(--ink-mute); }
+.bf ol li:first-child::before { color: var(--gold-deep); }
+.bf ol li .rk { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); }
+.bf ol li:first-child .rk { color: var(--gold-deep); }
+
+/* recommendation panel (dark) */
+.rec-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--line-dark); border: 1px solid var(--line-dark); border-radius: 16px; overflow: hidden; margin-top: clamp(36px, 4vw, 52px); }
+.rec { background: var(--char); padding: 28px 22px; display: flex; flex-direction: column; gap: 12px; transition: background .25s ease; }
+.rec:hover { background: var(--char-2); }
+.rec .rlabel { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--on-dark-mute); display: flex; align-items: center; gap: 8px; }
+.rec .rwin { font-family: var(--font-sans); font-weight: 700; font-size: 23px; letter-spacing: -0.02em; color: #fff; }
+.rec .rwin.gold-text { } 
+.rec .rwhy { font-size: 13px; line-height: 1.5; color: var(--on-dark-soft); margin: 0; }
+
+/* verdict */
+.verdict-wrap { display: grid; grid-template-columns: 200px 1fr; gap: clamp(28px, 4vw, 56px); }
+.verdict-wrap .vk { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-deep); padding-top: 8px; }
+.verdict-body p { font-family: var(--font-serif); font-weight: 300; font-size: clamp(20px, 2.4vw, 27px); line-height: 1.5; color: var(--ink); margin: 0 0 20px; letter-spacing: -0.01em; }
+.verdict-body p:last-child { margin-bottom: 0; }
+.verdict-body b { font-family: var(--font-sans); font-weight: 600; }
+.verdict-body em { color: var(--gold-deep); font-style: italic; }
+
+.sec-head2 { margin-bottom: clamp(36px, 4vw, 52px); }
+.sec-head2 .kicker { margin-bottom: 18px; }
+.sec-head2 h2 { max-width: 18ch; }
+
+@media (max-width: 920px) {
+  .pcards { grid-template-columns: 1fr; }
+  .pcards { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 16px; margin-left: calc(var(--pad-x) * -1); margin-right: calc(var(--pad-x) * -1); padding: 4px var(--pad-x) 16px; }
+  .pcard { scroll-snap-align: center; min-width: 80%; }
+  .meters { grid-template-columns: 1fr; }
+  .bestfor-grid { grid-template-columns: 1fr; }
+  .rec-grid { grid-template-columns: 1fr 1fr; }
+  .verdict-wrap { grid-template-columns: 1fr; gap: 16px; }
+}
+@media (max-width: 720px) {
+  /* table → horizontal scroll keeping category sticky feel */
+  .cmp-scroll { overflow-x: auto; margin: 0 calc(var(--pad-x) * -1); padding: 0 var(--pad-x); }
+  .cmp-table { min-width: 620px; }
+  .ctr.head { position: static; }
+}
+@media (max-width: 560px) {
+  .rec-grid { grid-template-columns: 1fr; }
+  .pcard { min-width: 88%; }
+}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-label">Today's Intelligence</div>
+  <div class="ticker-track">
+    <span><span class="tk">MODELS</span> Frontier context windows cross 10M tokens</span><span class="dot"></span>
+    <span><span class="tk">AGENTS</span> Autonomous coding agents reach <span class="up">&nbsp;94% SWE-bench</span></span><span class="dot"></span>
+    <span><span class="tk">COMPARE</span> ChatGPT vs Claude re-scored this quarter</span><span class="dot"></span>
+    <span><span class="tk">ENTERPRISE</span> AI adoption in F500 <span class="up">&nbsp;+38% YoY</span></span><span class="dot"></span>
+    <span><span class="tk">MODELS</span> Frontier context windows cross 10M tokens</span><span class="dot"></span>
+    <span><span class="tk">AGENTS</span> Autonomous coding agents reach <span class="up">&nbsp;94% SWE-bench</span></span><span class="dot"></span>
+    <span><span class="tk">COMPARE</span> ChatGPT vs Claude re-scored this quarter</span><span class="dot"></span>
+    <span><span class="tk">ENTERPRISE</span> AI adoption in F500 <span class="up">&nbsp;+38% YoY</span></span><span class="dot"></span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Marketplace.html">Marketplace</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+      <a href="AGNUS - Business.html">Business</a>
+      </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#top" class="nav-search">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="6"/><path d="M14 14l4 4"/></svg>
+        Search tools <kbd>⌘K</kbd>
+      </a>
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+      <button class="hamburger" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="m-drawer">
+    <a href="AGNUS - Explore.html">Explore</a>
+    <a href="AGNUS - Marketplace.html">Marketplace</a>
+    <a href="AGNUS - Intelligence.html">Intelligence</a>
+    <a href="AGNUS - Review.html">Reviews</a>
+    <a href="AGNUS - Compare.html">Compare</a>
+    <a href="AGNUS - Agents.html">Agents</a>
+    <a href="AGNUS - Academy.html">Academy</a>
+    <a href="AGNUS - Business.html">Business</a>
+    <a href="AGNUS - Home.html#premium" style="color: var(--gold-deep);">Premium Membership</a>
+  </div>
+</nav>
+
+<!-- HEADER + PRODUCT CARDS -->
+<div class="container cmp-head">
+  <div class="crumbs">
+    <a href="AGNUS - Home.html">AGNUS</a><span class="sep">/</span>
+    <a href="AGNUS - Compare.html">Compare</a><span class="sep">/</span>
+    <span class="here">Assistants</span>
+  </div>
+  <div class="kicker" style="margin-bottom: 22px;"><span class="ix">★</span> AGNUS Comparison</div>
+  <h1>ChatGPT <span class="vs">vs</span> Claude <span class="vs">vs</span> Gemini</h1>
+  <p class="h-lede">If you had to recommend one assistant to your best friend today — which would it be, and why? We tested all three on the same rubric. <em>Here's the honest answer.</em></p>
+
+  <div class="pcards" id="pcards">
+    <div class="pcard top" data-tool="chatgpt" data-coding="98" data-writing="90" data-research="98" data-price="84" data-privacy="80" data-enterprise="92">
+      <span class="crown">Best Overall</span>
+      <div class="plogo">G</div>
+      <h3>ChatGPT</h3>
+      <div class="pstars"><span class="stars">★★★★★</span><span class="pscore">9.8</span></div>
+      <span class="pbadge">Best Overall</span>
+      <p class="psum">The most versatile assistant — strongest ecosystem, broadest capability, deepest tooling.</p>
+      <div class="pprice">From <b>$20</b>/month</div>
+      <div class="pcta"><a href="AGNUS - Review.html">Read review <span class="arr">→</span></a></div>
+    </div>
+    <div class="pcard" data-tool="claude" data-coding="90" data-writing="98" data-research="96" data-price="84" data-privacy="90" data-enterprise="92">
+      <div class="plogo">C</div>
+      <h3>Claude</h3>
+      <div class="pstars"><span class="stars">★★★★★</span><span class="pscore">9.6</span></div>
+      <span class="pbadge">Best Writing</span>
+      <p class="psum">The reasoning and writing specialist — exceptional on long-form, nuance and large codebases.</p>
+      <div class="pprice">From <b>$20</b>/month</div>
+      <div class="pcta"><a href="AGNUS - Review.html">Read review <span class="arr">→</span></a></div>
+    </div>
+    <div class="pcard" data-tool="gemini" data-coding="85" data-writing="86" data-research="88" data-price="90" data-privacy="78" data-enterprise="88">
+      <div class="plogo">G</div>
+      <h3>Gemini</h3>
+      <div class="pstars"><span class="stars">★★★★<span class="off">★</span></span><span class="pscore">9.2</span></div>
+      <span class="pbadge">Best Google Integration</span>
+      <p class="psum">The smoothest fit if you live in Google Workspace — strong multimodal reach and value.</p>
+      <div class="pprice">From <b>$20</b>/month</div>
+      <div class="pcta"><a href="AGNUS - Review.html">Read review <span class="arr">→</span></a></div>
+    </div>
+  </div>
+
+  <!-- FILTER -->
+  <div class="filterbar">
+    <div class="flabel">I care most about &nbsp;<b>—</b></div>
+    <div class="chips" id="chips">
+      <button class="chip on" data-k="overall">Overall</button>
+      <button class="chip" data-k="coding">Coding</button>
+      <button class="chip" data-k="writing">Writing</button>
+      <button class="chip" data-k="research">Research</button>
+      <button class="chip" data-k="price">Price</button>
+      <button class="chip" data-k="privacy">Privacy</button>
+      <button class="chip" data-k="enterprise">Enterprise</button>
+    </div>
+  </div>
+</div>
+
+<!-- COMPARISON TABLE -->
+<section style="padding-top: clamp(48px,6vw,72px);">
+  <div class="container">
+    <div class="sec-head2">
+      <div class="kicker"><span class="ix">01</span> The full comparison</div>
+      <h2 class="h-section">Scored on one rubric.<br />Click any row to see why.</h2>
+    </div>
+
+    <div class="cmp-scroll">
+      <div class="cmp-table">
+        <div class="ctr head">
+          <div>Category</div>
+          <div class="prod">ChatGPT</div>
+          <div class="prod">Claude</div>
+          <div class="prod">Gemini</div>
+        </div>
+
+        <!-- Overall -->
+        <button class="crow crow-btn" onclick="toggleRow(this)">
+          <div class="cell cat">Overall Score <span class="chev">›</span></div>
+          <div class="cell val lead">9.8</div>
+          <div class="cell val">9.6</div>
+          <div class="cell val">9.2</div>
+        </button>
+        <div class="cdetail">
+          <div class="d-spacer"></div>
+          <div class="d-col"><h6>ChatGPT</h6><p>Highest aggregate across every category we test — the safest single pick.</p></div>
+          <div class="d-col"><h6>Claude</h6><p>A hair behind overall, but it leads where depth and nuance matter most.</p></div>
+          <div class="d-col"><h6>Gemini</h6><p>Strong all-rounder; pulls ahead specifically inside the Google ecosystem.</p></div>
+        </div>
+
+        <!-- Ease of Use -->
+        <button class="crow crow-btn" onclick="toggleRow(this)">
+          <div class="cell cat">Ease of Use <span class="chev">›</span></div>
+          <div class="cell lead"><span class="stars">★★★★★</span></div>
+          <div class="cell"><span class="stars">★★★★★</span></div>
+          <div class="cell"><span class="stars">★★★★<span class="off">★</span></span></div>
+        </button>
+        <div class="cdetail">
+          <div class="d-spacer"></div>
+          <div class="d-col"><h6>ChatGPT</h6><p>The most polished onboarding and the gentlest learning curve for newcomers.</p></div>
+          <div class="d-col"><h6>Claude</h6><p>Clean, calm interface — almost nothing to learn before you're productive.</p></div>
+          <div class="d-col"><h6>Gemini</h6><p>Familiar if you use Google, slightly busier surface elsewhere.</p></div>
+        </div>
+
+        <!-- Writing -->
+        <button class="crow crow-btn" onclick="toggleRow(this)">
+          <div class="cell cat">Writing <span class="chev">›</span></div>
+          <div class="cell"><span class="stars">★★★★<span class="off">★</span></span></div>
+          <div class="cell lead"><span class="stars">★★★★★</span></div>
+          <div class="cell"><span class="stars">★★★★<span class="off">★</span></span></div>
+        </button>
+        <div class="cdetail">
+          <div class="d-spacer"></div>
+          <div class="d-col"><h6>ChatGPT</h6><p>Reliable and fast; occasionally generic on long-form without steering.</p></div>
+          <div class="d-col"><h6>Claude</h6><p>The strongest voice and structure — our pick for serious writing.</p></div>
+          <div class="d-col"><h6>Gemini</h6><p>Competent and concise; rarely the most expressive of the three.</p></div>
+        </div>
+
+        <!-- Coding -->
+        <button class="crow crow-btn" onclick="toggleRow(this)">
+          <div class="cell cat">Coding <span class="chev">›</span></div>
+          <div class="cell lead"><span class="stars">★★★★★</span></div>
+          <div class="cell"><span class="stars">★★★★<span class="off">★</span></span></div>
+          <div class="cell"><span class="stars">★★★★<span class="off">★</span></span></div>
+        </button>
+        <div class="cdetail">
+          <div class="d-spacer"></div>
+          <div class="d-col"><h6>ChatGPT</h6><p>Strong ecosystem, custom GPTs and an excellent coding assistant.</p></div>
+          <div class="d-col"><h6>Claude</h6><p>Excellent at reasoning over large codebases and careful refactors.</p></div>
+          <div class="d-col"><h6>Gemini</h6><p>Solid, with strong integration into Google's developer tooling.</p></div>
+        </div>
+
+        <!-- Research -->
+        <button class="crow crow-btn" onclick="toggleRow(this)">
+          <div class="cell cat">Research <span class="chev">›</span></div>
+          <div class="cell lead"><span class="stars">★★★★★</span></div>
+          <div class="cell"><span class="stars">★★★★★</span></div>
+          <div class="cell"><span class="stars">★★★★<span class="off">★</span></span></div>
+        </button>
+        <div class="cdetail">
+          <div class="d-spacer"></div>
+          <div class="d-col"><h6>ChatGPT</h6><p>Deep tool use and browsing make it a powerful research partner.</p></div>
+          <div class="d-col"><h6>Claude</h6><p>Outstanding synthesis of long, dense source material.</p></div>
+          <div class="d-col"><h6>Gemini</h6><p>Very good, with native reach into Google Scholar and Search.</p></div>
+        </div>
+
+        <!-- Context -->
+        <button class="crow crow-btn" onclick="toggleRow(this)">
+          <div class="cell cat">Context Length <span class="chev">›</span></div>
+          <div class="cell val">Excellent</div>
+          <div class="cell val lead">Outstanding</div>
+          <div class="cell val">Very Good</div>
+        </button>
+        <div class="cdetail">
+          <div class="d-spacer"></div>
+          <div class="d-col"><h6>ChatGPT</h6><p>Large windows that cover almost every everyday task comfortably.</p></div>
+          <div class="d-col"><h6>Claude</h6><p>Class-leading context — whole repositories and books in one pass.</p></div>
+          <div class="d-col"><h6>Gemini</h6><p>Generous, with very strong multimodal context handling.</p></div>
+        </div>
+
+        <!-- simple value rows -->
+        <button class="crow crow-btn" onclick="toggleRow(this)">
+          <div class="cell cat">Image Generation <span class="chev">›</span></div>
+          <div class="cell val lead">Excellent</div>
+          <div class="cell val">—</div>
+          <div class="cell val">Very Good</div>
+        </button>
+        <div class="cdetail"><div class="d-spacer"></div><div class="d-col"><h6>ChatGPT</h6><p>Native, high-quality image generation built in.</p></div><div class="d-col"><h6>Claude</h6><p>No first-party image generation today.</p></div><div class="d-col"><h6>Gemini</h6><p>Strong image generation via Imagen.</p></div></div>
+
+        <button class="crow crow-btn" onclick="toggleRow(this)">
+          <div class="cell cat">Voice Mode <span class="chev">›</span></div>
+          <div class="cell val lead">Yes</div>
+          <div class="cell val">—</div>
+          <div class="cell val">Yes</div>
+        </button>
+        <div class="cdetail"><div class="d-spacer"></div><div class="d-col"><h6>ChatGPT</h6><p>Best-in-class natural voice conversation.</p></div><div class="d-col"><h6>Claude</h6><p>No dedicated voice mode at present.</p></div><div class="d-col"><h6>Gemini</h6><p>Capable voice interaction across devices.</p></div></div>
+
+        <div class="ctr">
+          <div class="cell cat" style="cursor:default;">Mobile App</div>
+          <div class="cell val">Excellent</div>
+          <div class="cell val">Excellent</div>
+          <div class="cell val">Excellent</div>
+        </div>
+        <div class="ctr">
+          <div class="cell cat" style="cursor:default;">API</div>
+          <div class="cell val">Yes</div>
+          <div class="cell val">Yes</div>
+          <div class="cell val">Yes</div>
+        </div>
+        <div class="ctr">
+          <div class="cell cat" style="cursor:default;">Pricing</div>
+          <div class="cell val">$20<span style="color:var(--ink-faint);">/mo</span></div>
+          <div class="cell val">$20<span style="color:var(--ink-faint);">/mo</span></div>
+          <div class="cell val">$20<span style="color:var(--ink-faint);">/mo</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PERFORMANCE METERS -->
+<section class="warm">
+  <div class="container">
+    <div class="sec-head2">
+      <div class="kicker"><span class="ix">02</span> Performance</div>
+      <h2 class="h-section">Where each one pulls ahead.</h2>
+    </div>
+    <div class="meters reveal" id="meters">
+      <div class="meter-group">
+        <h4><span class="plogo" style="width:30px;height:30px;font-size:14px;border-radius:9px;display:grid;place-items:center;background:#fff;border:1px solid var(--line);">G</span> ChatGPT</h4>
+        <div class="meter"><div class="mtop"><span class="mname">Reasoning</span><span class="mpct">95%</span></div><div class="mtrack"><span class="mfill" data-w="95"></span></div></div>
+        <div class="meter win"><div class="mtop"><span class="mname">Coding</span><span class="mpct">98%</span></div><div class="mtrack"><span class="mfill" data-w="98"></span></div></div>
+        <div class="meter"><div class="mtop"><span class="mname">Writing</span><span class="mpct">90%</span></div><div class="mtrack"><span class="mfill" data-w="90"></span></div></div>
+        <div class="meter win"><div class="mtop"><span class="mname">Ecosystem</span><span class="mpct">97%</span></div><div class="mtrack"><span class="mfill" data-w="97"></span></div></div>
+      </div>
+      <div class="meter-group">
+        <h4><span class="plogo" style="width:30px;height:30px;font-size:14px;border-radius:9px;display:grid;place-items:center;background:#fff;border:1px solid var(--line);">C</span> Claude</h4>
+        <div class="meter win"><div class="mtop"><span class="mname">Reasoning</span><span class="mpct">98%</span></div><div class="mtrack"><span class="mfill" data-w="98"></span></div></div>
+        <div class="meter"><div class="mtop"><span class="mname">Coding</span><span class="mpct">92%</span></div><div class="mtrack"><span class="mfill" data-w="92"></span></div></div>
+        <div class="meter win"><div class="mtop"><span class="mname">Writing</span><span class="mpct">98%</span></div><div class="mtrack"><span class="mfill" data-w="98"></span></div></div>
+        <div class="meter"><div class="mtop"><span class="mname">Ecosystem</span><span class="mpct">88%</span></div><div class="mtrack"><span class="mfill" data-w="88"></span></div></div>
+      </div>
+      <div class="meter-group">
+        <h4><span class="plogo" style="width:30px;height:30px;font-size:14px;border-radius:9px;display:grid;place-items:center;background:#fff;border:1px solid var(--line);">G</span> Gemini</h4>
+        <div class="meter"><div class="mtop"><span class="mname">Reasoning</span><span class="mpct">85%</span></div><div class="mtrack"><span class="mfill" data-w="85"></span></div></div>
+        <div class="meter"><div class="mtop"><span class="mname">Coding</span><span class="mpct">85%</span></div><div class="mtrack"><span class="mfill" data-w="85"></span></div></div>
+        <div class="meter"><div class="mtop"><span class="mname">Writing</span><span class="mpct">86%</span></div><div class="mtrack"><span class="mfill" data-w="86"></span></div></div>
+        <div class="meter win"><div class="mtop"><span class="mname">Google reach</span><span class="mpct">99%</span></div><div class="mtrack"><span class="mfill" data-w="99"></span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEST FOR -->
+<section>
+  <div class="container">
+    <div class="sec-head2">
+      <div class="kicker"><span class="ix">03</span> Best for…</div>
+      <h2 class="h-section">Ranked for how you actually work.</h2>
+    </div>
+    <div class="bestfor-grid">
+      <div class="bf">
+        <h4><span class="bf-trophy gold-text">✦</span> Students</h4>
+        <ol>
+          <li><span>ChatGPT</span><span class="rk">Top pick</span></li>
+          <li><span>Gemini</span><span class="rk">Runner-up</span></li>
+          <li><span>Claude</span><span class="rk">Third</span></li>
+        </ol>
+      </div>
+      <div class="bf">
+        <h4><span class="bf-trophy gold-text">✦</span> Coding</h4>
+        <ol>
+          <li><span>ChatGPT</span><span class="rk">Top pick</span></li>
+          <li><span>Claude</span><span class="rk">Runner-up</span></li>
+          <li><span>Gemini</span><span class="rk">Third</span></li>
+        </ol>
+      </div>
+      <div class="bf">
+        <h4><span class="bf-trophy gold-text">✦</span> Writers</h4>
+        <ol>
+          <li><span>Claude</span><span class="rk">Top pick</span></li>
+          <li><span>ChatGPT</span><span class="rk">Runner-up</span></li>
+          <li><span>Gemini</span><span class="rk">Third</span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECOMMENDATION PANEL (dark) -->
+<section class="dark">
+  <div class="container">
+    <div class="sec-head2">
+      <div class="kicker no-rule"><span class="ix gold-text">◆</span> Our Recommendation</div>
+      <h2 class="h-section" style="color:#fff;">Not one winner. The right one <span class="gold-text">for you</span>.</h2>
+    </div>
+    <div class="rec-grid">
+      <div class="rec"><div class="rlabel"><span class="gold-text">✦</span> Best Overall</div><div class="rwin gold-text">ChatGPT</div><p class="rwhy">The most versatile single choice for nearly everyone.</p></div>
+      <div class="rec"><div class="rlabel">Best for Writers</div><div class="rwin">Claude</div><p class="rwhy">Unmatched voice, structure and long-form nuance.</p></div>
+      <div class="rec"><div class="rlabel">Best for Developers</div><div class="rwin">ChatGPT</div><p class="rwhy">Strongest ecosystem and agentic coding tooling.</p></div>
+      <div class="rec"><div class="rlabel">Best for Business</div><div class="rwin">Claude</div><p class="rwhy">Reliable reasoning and careful, auditable output.</p></div>
+      <div class="rec"><div class="rlabel">Best Value</div><div class="rwin">Gemini</div><p class="rwhy">Most you get for the price inside Google Workspace.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- VERDICT -->
+<section class="warm">
+  <div class="container">
+    <div class="verdict-wrap">
+      <div class="vk">The Verdict</div>
+      <div class="verdict-body">
+        <p>If you're looking for the best all-around AI assistant, <b>ChatGPT</b> is the strongest choice — its versatility and ecosystem make it hard to outgrow.</p>
+        <p>If your work is primarily long-form writing and analysis, <b>Claude</b> may suit you better. And if you live inside Google's apps, <b>Gemini</b> offers the smoothest integration of the three.</p>
+        <p><em>There is no universal winner — only the right tool for someone like you.</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+        <p>Intelligence for the future of work. The trusted source for what's happening, which tools matter, and where AI is heading.</p>
+        <form class="fsearch" onsubmit="return false;">
+          <input type="email" placeholder="Your email for the daily brief" aria-label="Email" />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+      <div class="foot-col"><h5>Discover</h5><ul>
+        <li><a href="AGNUS - Review.html">AI Reviews</a></li>
+        <li><a href="AGNUS - Compare.html">AI Comparisons</a></li>
+        <li><a href="AGNUS - Intelligence.html">AI News</a></li>
+        <li><a href="AGNUS - Agents.html">AI Agents</a></li>
+        <li><a href="AGNUS - Tools.html">Free AI Tools</a></li>
+      </ul></div>
+      <div class="foot-col"><h5>Learn &amp; Build</h5><ul>
+        <li><a href="AGNUS - Academy.html">AI Academy</a></li>
+        <li><a href="AGNUS - Academy.html">Prompt Library</a></li>
+        <li><a href="AGNUS - Business.html">Business Automation</a></li>
+        <li><a href="AGNUS - Business.html">AI for Business</a></li>
+        <li><a href="AGNUS - Home.html#premium"><span class="gd">Premium Membership</span></a></li>
+      </ul></div>
+      <div class="foot-col"><h5>Company</h5><ul>
+        <li><a href="#">About AGNUS</a></li>
+        <li><a href="#">Our methodology</a></li>
+        <li><a href="AGNUS - Awards.html">The AGNUS Awards</a></li>
+        <li><a href="#">Editorial standards</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="AGNUS - Dashboard.html" class="gd">Editorial Dashboard ↗</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 AGNUS · Truth before hype.</span>
+      <div class="fb-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Editorial Policy</a><a href="#">Advertise</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="image-slot.js"></script>
+<script>
+/* expandable rows */
+function toggleRow(btn) { btn.classList.toggle('open'); }
+
+/* reveal + meters */
+(function () {
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in');
+      if (e.target.id === 'meters') {
+        e.target.querySelectorAll('.mfill').forEach((f) => { f.style.width = (reduce ? 1 : 1) && f.dataset.w + '%'; });
+      }
+      io.unobserve(e.target);
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -6% 0px' });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+})();
+
+/* filter chips → re-rank product cards by priority */
+(function () {
+  const chips = document.getElementById('chips');
+  const cont = document.getElementById('pcards');
+  if (!chips || !cont) return;
+  const cards = Array.from(cont.children);
+  const labelByKey = {
+    overall: 'Best Overall', coding: 'Best for Coding', writing: 'Best for Writing',
+    research: 'Best for Research', price: 'Best Value', privacy: 'Best for Privacy', enterprise: 'Best for Enterprise'
+  };
+  const overall = { chatgpt: 98, claude: 96, gemini: 92 };
+  function rank(key) {
+    chips.querySelectorAll('.chip').forEach((c) => c.classList.toggle('on', c.dataset.k === key));
+    const score = (card) => key === 'overall' ? overall[card.dataset.tool] : Number(card.dataset[key] || 0);
+    const sorted = cards.slice().sort((a, b) => score(b) - score(a));
+    sorted.forEach((card, i) => {
+      cont.appendChild(card);
+      card.classList.toggle('top', i === 0);
+      const crown = card.querySelector('.crown');
+      const badge = card.querySelector('.pbadge');
+      if (i === 0) {
+        if (crown) crown.textContent = labelByKey[key];
+        else { const c = document.createElement('span'); c.className = 'crown'; c.textContent = labelByKey[key]; card.prepend(c); }
+      } else if (crown) { crown.remove(); }
+    });
+  }
+  chips.addEventListener('click', (e) => { const c = e.target.closest('.chip'); if (c) rank(c.dataset.k); });
+})();
+
+document.addEventListener('keydown', (e) => {
+  if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); window.location.href = 'AGNUS - Home.html#top'; }
+});
+</script>
+</body>
+</html>

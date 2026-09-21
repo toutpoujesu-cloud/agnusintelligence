@@ -1,0 +1,31 @@
+{
+  "run_date": "2026-08-15",
+  "source_checks": [
+    {
+      "source_url": "https://www.datatilsynet.no",
+      "date_checked": "2026-08-15",
+      "status": "manual_review",
+      "last_successful_check": "2026-08-15",
+      "observed_version_or_date": "Datatilsynet homepage retrieved; baseline established",
+      "open_questions": []
+    },
+    {
+      "source_url": "https://www.digdir.no",
+      "date_checked": "2026-08-15",
+      "status": "manual_review",
+      "last_successful_check": "2026-08-15",
+      "observed_version_or_date": "Digdir homepage retrieved; baseline established",
+      "open_questions": []
+    },
+    {
+      "source_url": "https://www.regjeringen.no",
+      "date_checked": "2026-08-15",
+      "status": "manual_review",
+      "last_successful_check": "2026-08-15",
+      "observed_version_or_date": "Government homepage retrieved and redirected to /no/id4/; baseline established",
+      "open_questions": []
+    }
+  ],
+  "findings": [],
+  "editorial_alerts": []
+}

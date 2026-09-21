@@ -1,0 +1,27 @@
+{
+  "run_date": "2026-08-15",
+  "source_checks": [
+    {
+      "source_url": "https://www.msit.go.kr",
+      "date_checked": "2026-08-15",
+      "status": "unreachable",
+      "last_successful_check": "",
+      "observed_version_or_date": "Homepage returned an empty document",
+      "open_questions": [
+        "Official English AI Basic Act pages were discoverable; exact registry URL needs manual review"
+      ]
+    },
+    {
+      "source_url": "https://www.pipc.go.kr",
+      "date_checked": "2026-08-15",
+      "status": "manual_review",
+      "last_successful_check": "2026-08-15",
+      "observed_version_or_date": "PIPC homepage retrieved; latest visible notice dated 2026-08-14; baseline established",
+      "open_questions": []
+    }
+  ],
+  "findings": [],
+  "editorial_alerts": [
+    "Ministry of Science and ICT: Homepage returned an empty document"
+  ]
+}

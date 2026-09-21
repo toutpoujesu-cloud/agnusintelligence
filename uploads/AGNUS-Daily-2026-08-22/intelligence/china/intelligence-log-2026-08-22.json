@@ -1,0 +1,15 @@
+{
+  "run_date": "2026-08-22",
+  "source_checks": [
+    {
+      "source_url": "http://www.cac.gov.cn",
+      "date_checked": "2026-08-22",
+      "status": "no_change",
+      "last_successful_check": "2026-08-22",
+      "observed_version_or_date": "CAC homepage retrieved with CMS publish marker 2026-08-21 21:11:20; no new monitored AI measure or algorithm-registration rule found.",
+      "open_questions": []
+    }
+  ],
+  "findings": [],
+  "editorial_alerts": []
+}

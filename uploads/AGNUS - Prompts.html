@@ -1,0 +1,289 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Prompt Library — AGNUS</title>
+<meta name="description" content="The AGNUS Prompt Library: 2,400+ tested, categorized prompts you can copy and adapt in one click. Curated by practitioners — no filler." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<style>
+.pg-head { padding: clamp(40px,5vw,64px) 0 0; }
+.pg-head h1 { font-family: var(--font-sans); font-weight: 700; font-size: clamp(40px,6vw,84px); line-height: 0.96; letter-spacing: -0.035em; margin: 0 0 18px; }
+.pg-head h1 em { font-family: var(--font-serif); font-style: italic; font-weight: 300; color: var(--gold-deep); }
+.pg-head .h-lede { max-width: 600px; }
+
+/* search */
+.searchbar { margin-top: clamp(32px,4vw,46px); max-width: 640px; display:flex; align-items:center; gap: 8px; border: 1px solid var(--line); border-radius: 999px; padding: 8px 8px 8px 22px; background:#fff; box-shadow: 0 18px 48px -30px rgba(26,26,23,0.3); transition: border-color .2s ease; }
+.searchbar:focus-within { border-color: var(--char); }
+.searchbar svg { width: 20px; height: 20px; color: var(--ink-mute); flex: none; }
+.searchbar input { flex:1; border:none; outline:none; font-family: var(--font-sans); font-size: 16px; color: var(--ink); background: transparent; padding: 12px 4px; }
+.searchbar input::placeholder { color: var(--ink-mute); }
+.search-meta { margin-top: 16px; font-family: var(--font-mono); font-size: 12px; color: var(--ink-mute); letter-spacing: 0.02em; }
+.search-meta b { color: var(--ink); }
+
+/* filter */
+.pf { margin: clamp(36px,4vw,52px) 0 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 20px 0; display:flex; align-items:center; gap: 16px 22px; flex-wrap: wrap; }
+.pf .fl { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-mute); }
+.chips { display:flex; gap: 9px; flex-wrap: wrap; }
+.chip { font-family: var(--font-sans); font-size: 13.5px; font-weight: 500; color: var(--ink-soft); border: 1px solid var(--line); border-radius: 999px; padding: 8px 16px; transition: all .2s ease; }
+.chip:hover { border-color: var(--ink-faint); color: var(--ink); }
+.chip.on { background: var(--char); color:#fff; border-color: var(--char); }
+.pcount { margin-left:auto; font-family: var(--font-mono); font-size: 12px; color: var(--ink-mute); }
+.pcount b { color: var(--ink); }
+
+/* prompt grid */
+.prompts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 28px; }
+.prompt { background:#fff; border: 1px solid var(--line); border-radius: 18px; padding: 26px; display:flex; flex-direction:column; gap: 14px; transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease; }
+.prompt:hover { border-color: var(--ink-faint); box-shadow: 0 24px 56px -42px rgba(26,26,23,0.4); transform: translateY(-3px); }
+.prompt .ptop { display:flex; align-items:center; justify-content:space-between; gap: 12px; }
+.prompt .pcat { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-deep); }
+.prompt .ptag { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mute); border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; }
+.prompt h3 { font-family: var(--font-sans); font-weight: 700; font-size: 19px; letter-spacing: -0.02em; margin: 0; }
+.prompt .pbody { font-family: var(--font-mono); font-size: 13px; line-height: 1.6; color: var(--ink-soft); background: var(--paper-warm); border: 1px solid var(--line-soft); border-radius: 12px; padding: 16px 18px; position: relative; }
+.prompt .pbody .var { color: var(--gold-deep); background: var(--gold-soft); border-radius: 4px; padding: 0 4px; }
+.prompt .pfoot { margin-top: auto; display:flex; align-items:center; justify-content:space-between; gap: 12px; }
+.prompt .meta { font-family: var(--font-mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.04em; }
+.copybtn { display:inline-flex; align-items:center; gap: 8px; font-size: 13.5px; font-weight: 600; color: var(--char); border: 1px solid var(--line); border-radius: 999px; padding: 9px 16px; transition: all .2s ease; }
+.copybtn:hover { border-color: var(--char); background: var(--char); color:#fff; }
+.copybtn.done { border-color: var(--pass); color: var(--pass); background: color-mix(in srgb, var(--pass) 10%, transparent); }
+.copybtn.done:hover { background: color-mix(in srgb, var(--pass) 10%, transparent); color: var(--pass); }
+.prompt.hidden { display:none; }
+.noresult { display:none; padding: 40px 0; text-align:center; color: var(--ink-mute); font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.04em; }
+.noresult.show { display:block; }
+
+/* contribute band */
+.cta-band { margin-top: clamp(48px,6vw,72px); background: var(--char); color: var(--on-dark); border-radius: 20px; padding: clamp(28px,3.5vw,44px); display:flex; align-items:center; justify-content:space-between; gap: 24px; flex-wrap: wrap; position: relative; overflow:hidden; }
+.cta-band::after { content:""; position:absolute; inset:0; background: radial-gradient(70% 120% at 88% 8%, rgba(220,192,137,0.12), transparent 60%); pointer-events:none; }
+.cta-band > * { position: relative; z-index: 1; }
+.cta-band h3 { color:#fff; font-family: var(--font-sans); font-weight: 700; font-size: clamp(22px,2.6vw,30px); letter-spacing: -0.025em; margin: 0 0 8px; }
+.cta-band p { color: var(--on-dark-soft); font-size: 15px; margin: 0; max-width: 50ch; }
+
+.sec-head2 { margin-bottom: clamp(28px,3.5vw,42px); }
+.sec-head2 .kicker { margin-bottom: 16px; }
+
+@media (max-width: 760px){ .prompts { grid-template-columns: 1fr; } .pcount { margin-left:0; width:100%; } }
+</style>
+</head>
+<body>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-label">Today's Intelligence</div>
+  <div class="ticker-track">
+    <span><span class="tk">LIBRARY</span> 2,431 prompts · tested &amp; categorized</span><span class="dot"></span>
+    <span><span class="tk">NEW</span> 48 prompts added this week</span><span class="dot"></span>
+    <span><span class="tk">TOP</span> "Cold email that converts" copied 90k times</span><span class="dot"></span>
+    <span><span class="tk">ENTERPRISE</span> AI adoption in F500 <span class="up">&nbsp;+38% YoY</span></span><span class="dot"></span>
+    <span><span class="tk">LIBRARY</span> 2,431 prompts · tested &amp; categorized</span><span class="dot"></span>
+    <span><span class="tk">NEW</span> 48 prompts added this week</span><span class="dot"></span>
+    <span><span class="tk">TOP</span> "Cold email that converts" copied 90k times</span><span class="dot"></span>
+    <span><span class="tk">ENTERPRISE</span> AI adoption in F500 <span class="up">&nbsp;+38% YoY</span></span><span class="dot"></span>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Marketplace.html">Marketplace</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+      <a href="AGNUS - Business.html">Business</a>
+      </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#top" class="nav-search">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="6"/><path d="M14 14l4 4"/></svg>
+        Search tools <kbd>⌘K</kbd>
+      </a>
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+      <button class="hamburger" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="m-drawer">
+    <a href="AGNUS - Explore.html">Explore</a>
+    <a href="AGNUS - Marketplace.html">Marketplace</a>
+    <a href="AGNUS - Intelligence.html">Intelligence</a>
+    <a href="AGNUS - Review.html">Reviews</a>
+    <a href="AGNUS - Compare.html">Compare</a>
+    <a href="AGNUS - Agents.html">Agents</a>
+    <a href="AGNUS - Academy.html">Academy</a>
+    <a href="AGNUS - Business.html">Business</a>
+    <a href="AGNUS - Home.html#premium" style="color: var(--gold-deep);">Premium Membership</a>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<div class="container pg-head">
+  <div class="crumbs"><a href="AGNUS - Home.html">AGNUS</a><span class="sep">/</span><span class="here">Prompt Library</span></div>
+  <div class="kicker" style="margin-bottom:22px;"><span class="ix">◆</span> Prompt Library</div>
+  <h1>Tested prompts.<br /><em>One click away.</em></h1>
+  <p class="h-lede">Over 2,400 prompts, written and tested by practitioners — categorized, ready to adapt. The variables are marked; copy, swap, run.</p>
+
+  <div class="searchbar">
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="6"/><path d="M14 14l4.5 4.5" stroke-linecap="round"/></svg>
+    <input type="text" id="search" placeholder="Search 2,431 prompts — try 'cold email', 'summarize', 'code review'…" aria-label="Search prompts" />
+  </div>
+  <div class="search-meta">Popular: <b>Marketing</b> · <b>Coding</b> · <b>Email</b> · <b>Research</b></div>
+</div>
+
+<!-- FILTER + GRID -->
+<section style="padding-top: clamp(40px,5vw,60px);">
+  <div class="container">
+    <div class="sec-head2">
+      <div class="kicker"><span class="ix">01</span> Browse the library</div>
+      <h2 class="h-section">Filter by what you're doing.</h2>
+    </div>
+
+    <div class="pf">
+      <span class="fl">Category</span>
+      <div class="chips" id="chips">
+        <button class="chip on" data-k="all">All</button>
+        <button class="chip" data-k="marketing">Marketing</button>
+        <button class="chip" data-k="coding">Coding</button>
+        <button class="chip" data-k="writing">Writing</button>
+        <button class="chip" data-k="business">Business</button>
+        <button class="chip" data-k="research">Research</button>
+      </div>
+      <span class="pcount"><b id="count">8</b> shown</span>
+    </div>
+
+    <div class="prompts" id="prompts">
+      <div class="prompt" data-k="marketing" data-text="cold email sales outreach convert">
+        <div class="ptop"><span class="pcat">Marketing</span><span class="ptag">Sales</span></div>
+        <h3>Cold email that converts</h3>
+        <div class="pbody">Act as a B2B sales copywriter. Write a 90-word cold email to <span class="var">[role]</span> at <span class="var">[company]</span> about <span class="var">[offer]</span>. Lead with their likely pain, one proof point, and a soft CTA. No buzzwords.</div>
+        <div class="pfoot"><span class="meta">Copied 90k times</span><button class="copybtn" onclick="copyPrompt(this)"><span class="ci">⧉</span> Copy</button></div>
+      </div>
+      <div class="prompt" data-k="coding" data-text="code review pull request bug security">
+        <div class="ptop"><span class="pcat">Coding</span><span class="ptag">Review</span></div>
+        <h3>Senior code review</h3>
+        <div class="pbody">Act as a senior engineer. Review this <span class="var">[language]</span> code for bugs, security and readability. List issues by severity, then give a corrected version with brief comments.</div>
+        <div class="pfoot"><span class="meta">Copied 64k times</span><button class="copybtn" onclick="copyPrompt(this)"><span class="ci">⧉</span> Copy</button></div>
+      </div>
+      <div class="prompt" data-k="writing" data-text="summarize document long report tldr">
+        <div class="ptop"><span class="pcat">Writing</span><span class="ptag">Summarize</span></div>
+        <h3>Executive summary</h3>
+        <div class="pbody">Summarize the text below for a busy executive. Give a 3-sentence overview, then 5 bullet takeaways and 1 recommended action. Source: <span class="var">[paste text]</span>.</div>
+        <div class="pfoot"><span class="meta">Copied 120k times</span><button class="copybtn" onclick="copyPrompt(this)"><span class="ci">⧉</span> Copy</button></div>
+      </div>
+      <div class="prompt" data-k="business" data-text="swot analysis strategy decision">
+        <div class="ptop"><span class="pcat">Business</span><span class="ptag">Strategy</span></div>
+        <h3>Decision pressure-test</h3>
+        <div class="pbody">I'm considering <span class="var">[decision]</span>. Argue the strongest case <em>against</em> it, list 3 risks I'm underweighting, and propose one cheaper experiment to de-risk it first.</div>
+        <div class="pfoot"><span class="meta">Copied 38k times</span><button class="copybtn" onclick="copyPrompt(this)"><span class="ci">⧉</span> Copy</button></div>
+      </div>
+      <div class="prompt" data-k="marketing" data-text="social media content calendar posts">
+        <div class="ptop"><span class="pcat">Marketing</span><span class="ptag">Social</span></div>
+        <h3>Two-week content calendar</h3>
+        <div class="pbody">Build a 14-day content calendar for <span class="var">[brand]</span> on <span class="var">[platform]</span>. For each day: hook, format, and a one-line caption. Vary the angles; avoid repetition.</div>
+        <div class="pfoot"><span class="meta">Copied 52k times</span><button class="copybtn" onclick="copyPrompt(this)"><span class="ci">⧉</span> Copy</button></div>
+      </div>
+      <div class="prompt" data-k="research" data-text="literature review compare sources synthesize">
+        <div class="ptop"><span class="pcat">Research</span><span class="ptag">Synthesis</span></div>
+        <h3>Synthesize sources</h3>
+        <div class="pbody">Compare these sources on <span class="var">[topic]</span>. Build a table of where they agree, disagree, and leave gaps. End with the 3 most defensible conclusions.</div>
+        <div class="pfoot"><span class="meta">Copied 29k times</span><button class="copybtn" onclick="copyPrompt(this)"><span class="ci">⧉</span> Copy</button></div>
+      </div>
+      <div class="prompt" data-k="coding" data-text="debug error stack trace fix explain">
+        <div class="ptop"><span class="pcat">Coding</span><span class="ptag">Debug</span></div>
+        <h3>Explain &amp; fix this error</h3>
+        <div class="pbody">Here's an error and the code that caused it: <span class="var">[paste]</span>. Explain the root cause in plain English, give the fix, and note how to prevent it next time.</div>
+        <div class="pfoot"><span class="meta">Copied 71k times</span><button class="copybtn" onclick="copyPrompt(this)"><span class="ci">⧉</span> Copy</button></div>
+      </div>
+      <div class="prompt" data-k="writing" data-text="rewrite tone friendly formal polish">
+        <div class="ptop"><span class="pcat">Writing</span><span class="ptag">Tone</span></div>
+        <h3>Rewrite in a clearer tone</h3>
+        <div class="pbody">Rewrite the text below to be <span class="var">[tone]</span> and easy to scan. Keep the meaning, cut filler, and shorten by about 30%. Text: <span class="var">[paste]</span>.</div>
+        <div class="pfoot"><span class="meta">Copied 45k times</span><button class="copybtn" onclick="copyPrompt(this)"><span class="ci">⧉</span> Copy</button></div>
+      </div>
+    </div>
+
+    <div class="noresult" id="noresult">No prompts match — try a broader term.</div>
+
+    <div class="cta-band">
+      <div>
+        <h3>The full library is in Premium.</h3>
+        <p>All 2,400+ prompts, saved collections, and the ability to build and share your own — categorized the AGNUS way.</p>
+      </div>
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Unlock all prompts <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+        <p>Intelligence for the future of work. The trusted source for what's happening, which tools matter, and where AI is heading.</p>
+        <form class="fsearch" onsubmit="return false;"><input type="email" placeholder="Your email for the daily brief" aria-label="Email" /><button type="submit">Subscribe</button></form>
+      </div>
+      <div class="foot-col"><h5>Discover</h5><ul>
+        <li><a href="AGNUS - Review.html">AI Reviews</a></li>
+        <li><a href="AGNUS - Compare.html">AI Comparisons</a></li>
+        <li><a href="AGNUS - Intelligence.html">AI News</a></li>
+        <li><a href="AGNUS - Agents.html">AI Agents</a></li>
+        <li><a href="AGNUS - Tools.html">Free AI Tools</a></li>
+      </ul></div>
+      <div class="foot-col"><h5>Learn &amp; Build</h5><ul>
+        <li><a href="AGNUS - Academy.html">AI Academy</a></li>
+        <li><a href="AGNUS - Prompts.html">Prompt Library</a></li>
+        <li><a href="AGNUS - Business.html">Business Automation</a></li>
+        <li><a href="AGNUS - Business.html">AI for Business</a></li>
+        <li><a href="AGNUS - Home.html#premium"><span class="gd">Premium Membership</span></a></li>
+      </ul></div>
+      <div class="foot-col"><h5>Company</h5><ul>
+        <li><a href="#">About AGNUS</a></li>
+        <li><a href="#">Our methodology</a></li>
+        <li><a href="AGNUS - Awards.html">The AGNUS Awards</a></li>
+        <li><a href="#">Editorial standards</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="AGNUS - Dashboard.html" class="gd">Editorial Dashboard ↗</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 AGNUS · Truth before hype.</span><div class="fb-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Editorial Policy</a><a href="#">Advertise</a></div></div>
+  </div>
+</footer>
+
+<script src="image-slot.js"></script>
+<script>
+/* copy */
+function copyPrompt(btn){
+  const text = btn.closest('.prompt').querySelector('.pbody').innerText;
+  const done = ()=>{ btn.classList.add('done'); btn.innerHTML='<span class="ci">✓</span> Copied'; setTimeout(()=>{ btn.classList.remove('done'); btn.innerHTML='<span class="ci">⧉</span> Copy'; },1800); };
+  if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(done).catch(done); } else { done(); }
+}
+/* filter + search */
+(function(){
+  const chips=document.getElementById('chips'), grid=document.getElementById('prompts'), count=document.getElementById('count'), search=document.getElementById('search'), noresult=document.getElementById('noresult');
+  const cards=Array.from(grid.children);
+  let cat='all';
+  function apply(){
+    const q=(search.value||'').trim().toLowerCase(); let n=0;
+    cards.forEach(c=>{
+      const okCat = cat==='all'||c.dataset.k===cat;
+      const okQ = !q || (c.dataset.text+' '+c.querySelector('h3').textContent).toLowerCase().includes(q);
+      const show=okCat&&okQ; c.classList.toggle('hidden',!show); if(show)n++;
+    });
+    count.textContent=n; noresult.classList.toggle('show',n===0);
+  }
+  chips.addEventListener('click',e=>{ const c=e.target.closest('.chip'); if(!c)return; chips.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===c)); cat=c.dataset.k; apply(); });
+  search.addEventListener('input',apply);
+})();
+document.addEventListener('keydown',e=>{ if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){ e.preventDefault(); document.getElementById('search').focus(); window.scrollTo({top:0,behavior:'smooth'}); } });
+</script>
+</body>
+</html>

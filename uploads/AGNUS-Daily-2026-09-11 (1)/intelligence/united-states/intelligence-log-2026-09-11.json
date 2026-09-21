@@ -1,0 +1,98 @@
+{
+  "run_date": "2026-09-11",
+  "source_checks": [
+    {
+      "source_url": "https://www.congress.gov",
+      "date_checked": "2026-09-11",
+      "status": "unreachable",
+      "last_successful_check": null,
+      "observed_version_or_date": "Prior baseline preserved; the retrieved page was stale and current federal legislative publication state could not be verified.",
+      "open_questions": [
+        "Manual access review remains required; the prior successful state baseline was preserved."
+      ]
+    },
+    {
+      "source_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB574",
+      "date_checked": "2026-09-11",
+      "status": "changed",
+      "last_successful_check": "2026-09-11",
+      "observed_version_or_date": "SB 574 remains Active Bill — Enrolled, but its official history now records presentation to the Governor at 2 p.m. on 2026-09-09.",
+      "open_questions": []
+    },
+    {
+      "source_url": "https://leg.colorado.gov",
+      "date_checked": "2026-09-11",
+      "status": "no_change",
+      "last_successful_check": "2026-09-11",
+      "observed_version_or_date": "The 2026 session remains adjourned sine die; no new monitored AI legislative action was verified.",
+      "open_questions": []
+    },
+    {
+      "source_url": "https://www.nysenate.gov/legislation/bills/2025/S10685",
+      "date_checked": "2026-09-11",
+      "status": "no_change",
+      "last_successful_check": "2026-09-11",
+      "observed_version_or_date": "S10685 remains active in the Senate Rules Committee with its latest action still the 2026-08-21 referral; no text, status, or action change was verified.",
+      "open_questions": []
+    }
+  ],
+  "findings": [
+    {
+      "record_id": "IR-PROVISIONAL-20260911-001",
+      "source_id": "SRC-0049",
+      "source_type": "Official enrolled state bill history",
+      "publication_date": "2026-09-09",
+      "discovery_date": "2026-09-11",
+      "jurisdiction": "United States — California",
+      "authority_level": "Primary",
+      "topic": "ai-governance",
+      "subtopic": "Generative AI in legal practice and dispute resolution",
+      "regulation": "California Senate Bill 574 (enrolled; pending executive action)",
+      "article_concerned": "Business and Professions Code sections 6068.1 and 6173; Code of Civil Procedure sections 128.7, 180, and 1282.1",
+      "industries": [
+        "Legal services",
+        "Courts",
+        "Alternative dispute resolution"
+      ],
+      "ai_system_type": "Generative artificial intelligence",
+      "actors_affected": [
+        "Attorneys",
+        "Arbitrators",
+        "Judicial Council",
+        "Alternative dispute resolution providers"
+      ],
+      "risk_category": "Professional competence, confidentiality, accuracy, and decision-making integrity",
+      "effective_date": "",
+      "deadline": "Pending Governor action",
+      "what_changed": "California's official bill history now records that enrolled SB 574 was presented to the Governor at 2 p.m. on 2026-09-09.",
+      "previous_position": "SB 574 had passed both chambers and was enrolled on 2026-09-04, but presentation to the Governor had not yet been verified in the monitored baseline.",
+      "new_position": "The bill is formally before the Governor for executive action; the official status remains Active Bill — Enrolled.",
+      "legal_significance": "This is a procedural advancement, not enactment. The proposed generative-AI duties remain pending executive action.",
+      "business_significance": "Legal-service and dispute-resolution organizations should continue preparations for confidential-input controls, output verification, correction, disclosure, and human decision accountability while watching for signature or veto.",
+      "technical_significance": "No substantive bill-text change was verified; the potential workflow controls identified in the enrolled text remain contingent on enactment.",
+      "agnus_guard_relevance": "Relevant to executive-action tracking and readiness evidence for human oversight, confidentiality, output verification, and disclosure controls.",
+      "articles_affected": [],
+      "update_required": true,
+      "new_article_required": false,
+      "confidence": "Primary source verified",
+      "reviewer": "",
+      "discovery_mechanism": "Source monitor",
+      "review_status": "pending_review",
+      "materiality": "Medium",
+      "_demo": false
+    }
+  ],
+  "editorial_alerts": [
+    {
+      "type": "source_access_error",
+      "source_url": "https://www.congress.gov",
+      "message": "Congress.gov returned only a stale cached page (approximately six months old); current publication state could not be verified. Prior successful baseline preserved."
+    },
+    {
+      "type": "materiality_review",
+      "record_id": "IR-PROVISIONAL-20260911-001",
+      "source_id": "SRC-0049",
+      "message": "Review the procedural California executive-stage update; IDs remain provisional pending editorial confirmation."
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "run_date": "2026-08-21",
+  "source_checks": [
+    {
+      "source_url": "https://ised-isde.canada.ca",
+      "date_checked": "2026-08-21",
+      "status": "unreachable",
+      "last_successful_check": "",
+      "observed_version_or_date": "The exact registry homepage returned an internal retrieval error, so no current AIDA comparison baseline could be established.",
+      "open_questions": [
+        "Replace the broad ISED homepage registry entry with a stable official AIDA or successor-policy page."
+      ]
+    }
+  ],
+  "findings": [],
+  "editorial_alerts": [
+    "ISED Canada remained unreachable at the registry URL; no successful AIDA baseline exists."
+  ]
+}

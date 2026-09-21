@@ -1,0 +1,78 @@
+{
+  "permission_scope": {
+    "data_access": "GitHub states that Copilot cloud agent can research a repository. For the cloud agent, outbound network access is restricted by a firewall enabled by default; organization owners can configure allowed external hosts. Checked 2026-08-15.",
+    "unattended_actions": "GitHub states that the cloud agent can plan and make code changes and create pull requests; sessions can also be started automatically on a schedule or event. The work is proposed on a branch/pull request, not silently merged. Checked 2026-08-15.",
+    "requires_approval": "GitHub instructs users to review changes before merging. Where repository rules require approvals, the initiating user's approval of a Copilot pull request does not count and another reviewer must approve. Checked 2026-08-15.",
+    "quoted_source": "\"research a repository, plan and make code changes, and create pull requests for you to review\" — https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent (checked 2026-08-15)"
+  },
+  "provenance": {
+    "builder": "GitHub, Inc. (a Microsoft subsidiary). Product documentation: https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent (checked 2026-08-15).",
+    "governance_model": "Repository and organization policy controls govern availability; Business/Enterprise administrators must enable the agent, repositories can be opted out, a default network firewall restricts outbound access, and changes are surfaced through pull-request review. Sources checked 2026-08-15: https://docs.github.com/en/copilot/concepts/agents/cloud-agent/access-management and https://docs.github.com/en/copilot/responsible-use/agents.",
+    "open_source": false
+  },
+  "incident_record": [
+    {
+      "incident": "CVE-2025-53773: NVD records command injection in GitHub Copilot and Microsoft Visual Studio that could allow an unauthorized attacker to execute code locally; Microsoft supplied CVSS 3.1 score 7.8 High. NVD's affected configuration identifies Visual Studio 2022 17.14 before 17.14.12. This affects a Copilot/Visual Studio agent-mode surface, but the NVD entry does not establish that GitHub's cloud-hosted coding agent itself was affected.",
+      "date": "2025-08-12",
+      "url": "https://nvd.nist.gov/vuln/detail/CVE-2025-53773"
+    },
+    {
+      "incident": "A public GitHub issue reports that Copilot CLI on Windows could hang indefinitely when running a full Vitest suite while the same command completed in a normal terminal. This is user-reported reliability evidence and was open when checked, not a vendor-confirmed incident.",
+      "date": "2026-05-13",
+      "url": "https://github.com/github/copilot-cli/issues/3308"
+    },
+    {
+      "incident": "A public GitHub issue reports that a single Copilot CLI session consumed 80–100 premium requests as tool/thinking turns progressed despite an estimate of one request. The issue was closed when checked; the page does not expose a vendor root-cause statement.",
+      "date": "2026-04-08",
+      "url": "https://github.com/github/copilot-cli/issues/2591"
+    },
+    {
+      "incident": "A public GitHub issue reports that after a June 16 service outage, all Copilot CLI models appeared blocked or disabled and new sessions could not start. The issue was closed when checked; this is user-reported reliability evidence.",
+      "date": "2026-06-17",
+      "url": "https://github.com/github/copilot-cli/issues/3832"
+    }
+  ],
+  "complaint_evidence": [
+    {
+      "platform": "Hacker News",
+      "summary": "Discussion of the GitHub Copilot coding-agent launch questioned the absence of disclosed internal-usage figures and raised concerns about product evidence. This is opinion/complaint evidence, not proof of a technical failure.",
+      "date": "2025-05-19",
+      "url": "https://news.ycombinator.com/item?id=44031432"
+    },
+    {
+      "platform": "GitHub Issues",
+      "summary": "Issue #2591 alleges unexpectedly high premium-request consumption during one session. It is directly observable user-reported complaint evidence but lacks a public vendor root-cause statement on the page.",
+      "date": "2026-04-08",
+      "url": "https://github.com/github/copilot-cli/issues/2591"
+    },
+    {
+      "platform": "GitHub Issues",
+      "summary": "Issue #3308 alleges an indefinite hang for full Vitest suites in the Copilot CLI terminal on Windows, with a file-output workaround.",
+      "date": "2026-05-13",
+      "url": "https://github.com/github/copilot-cli/issues/3308"
+    }
+  ],
+  "owasp_coverage": {
+    "addressed": [
+      "ASI02 Tool Misuse — permission prompts and configurable allowed/denied tools are documented for CLI; pull-request review limits direct deployment of cloud-agent changes. Sources: https://docs.github.com/en/copilot/responsible-use/agents and https://docs.github.com/en/copilot/how-tos/copilot-cli/cli-best-practices (checked 2026-08-15).",
+      "ASI03 Identity & Privilege Abuse — organization policies, repository opt-out controls, and required independent approval under protected-branch rules are documented. Sources: https://docs.github.com/en/copilot/concepts/agents/cloud-agent/access-management and https://docs.github.com/en/copilot/how-tos/copilot-on-github/use-copilot-agents/review-copilot-output (checked 2026-08-15).",
+      "ASI04 Agentic Supply Chain Vulnerabilities — GitHub documents configurable MCP servers and a default outbound firewall/allowlisting boundary, which partially addresses external integrations. Source: https://docs.github.com/en/copilot/responsible-use/agents (checked 2026-08-15).",
+      "ASI05 Unexpected Code Execution — GitHub documents interactive permission prompts for local command execution and a pull-request review boundary for cloud-agent code changes. Source: https://docs.github.com/en/copilot/responsible-use/agents (checked 2026-08-15)."
+    ],
+    "not_addressed": [
+      "ASI01 Agent Goal Hijack — no product-specific, complete mitigation mapping located in the reviewed pages.",
+      "ASI06 Memory & Context Poisoning — no product-specific mitigation mapping located in the reviewed pages.",
+      "ASI07 Insecure Inter-Agent Communication — no product-specific mitigation mapping located in the reviewed pages.",
+      "ASI08 Cascading Failures — no product-specific mitigation mapping located in the reviewed pages.",
+      "ASI09 Human-Agent Trust Exploitation — review is required, but no product-specific mitigation mapping for misleading rationale was located.",
+      "ASI10 Rogue Agents — no product-specific mitigation mapping located in the reviewed pages. OWASP category names verified at https://genai.owasp.org/2025/12/09/owasp-top-10-for-agentic-applications-the-benchmark-for-agentic-security-in-the-age-of-autonomous-ai/ (checked 2026-08-15)."
+    ]
+  },
+  "sourcing_gaps": [
+    "Proposed AGNUS profile ID is AGENT-PROVISIONAL-2026-08-15-01; confirm the canonical profile-ID scheme before insertion.",
+    "The registry requires searches of Reddit, Trustpilot, G2, Hacker News, CVE/NVD, AI Incident Database, OECD AI Incidents Monitor, and regulatory sources. Search-index access produced usable Hacker News and NVD evidence, but no directly verifiable product-specific Trustpilot, G2, AI Incident Database, OECD, or regulatory-enforcement record was located during this pass. Absence of a located record is not evidence of absence.",
+    "GitHub Copilot spans cloud agent, CLI, editor agent mode, and code review. The CVE and CLI issues are retained as relevant ecosystem evidence but are explicitly not represented as proven incidents in the cloud-hosted coding agent.",
+    "The public github/copilot-cli repository supplies CLI issues and code, but the reviewed sources did not establish that GitHub Copilot cloud agent itself is open source.",
+    "OWASP coverage is a documentation cross-check, not a security certification or test result. The OWASP 2026 categories were checked at https://genai.owasp.org/2025/12/09/owasp-top-10-for-agentic-applications-the-benchmark-for-agentic-security-in-the-age-of-autonomous-ai/ on 2026-08-15."
+  ]
+}

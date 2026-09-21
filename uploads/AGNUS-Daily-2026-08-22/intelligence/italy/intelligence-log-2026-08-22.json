@@ -1,0 +1,32 @@
+{
+  "run_date": "2026-08-22",
+  "source_checks": [
+    {
+      "source_url": "https://www.agid.gov.it",
+      "date_checked": "2026-08-22",
+      "status": "unreachable",
+      "last_successful_check": "",
+      "observed_version_or_date": "Registry homepage returned HTTP 403/internal retrieval error.",
+      "open_questions": [
+        "Manual review of the official AgID artificial-intelligence topic page is required."
+      ]
+    },
+    {
+      "source_url": "https://www.garanteprivacy.it",
+      "date_checked": "2026-08-22",
+      "status": "no_change",
+      "last_successful_check": "2026-08-22",
+      "observed_version_or_date": "Latest visible AI-relevant Garante item remains dated 2026-08-07.",
+      "open_questions": []
+    }
+  ],
+  "findings": [],
+  "editorial_alerts": [
+    {
+      "type": "source_unreachable",
+      "source_url": "https://www.agid.gov.it",
+      "message": "Registry homepage returned HTTP 403/internal retrieval error.",
+      "baseline_action": "Prior successful baseline preserved; no fingerprint or last-successful value overwritten."
+    }
+  ]
+}

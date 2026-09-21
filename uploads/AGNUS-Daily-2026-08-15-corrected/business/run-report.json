@@ -1,0 +1,23 @@
+{
+  "agent": "Business Fetch Agent",
+  "run_date": "2026-08-15",
+  "assignment": {
+    "industry": "financial-services",
+    "jurisdiction": "European Union",
+    "existing_obligations_reference": []
+  },
+  "assignment_basis": "Selected from the Business registry's explicit Financial services (EU) source route because no daily assignment queue was supplied.",
+  "status": "completed_with_dependency_gap",
+  "output_file": "financial-services-european-union.json",
+  "sources_checked": [
+    "https://www.esma.europa.eu/press-news/esma-news/esma-provides-guidance-firms-using-artificial-intelligence-investment-services",
+    "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ%3AL%3A2022%3A333%3AFULL",
+    "https://www.eba.europa.eu/sites/default/files/2025-09/146b3558-d026-47bf-a872-f05e93ed30d2/Rising%20application%20of%20AI%20in%20EU%20banking%20and%20payments%20sector.pdf",
+    "https://www.bbva.com/en/innovation/bbva-deploys-the-eight-its-strategy-to-transform-the-financial-experience-with-ai/",
+    "https://www.bbva.com/en/innovation/responsible-innovation-how-bbva-ensures-safe-use-of-artificial-intelligence/"
+  ],
+  "errors": [],
+  "dependency_gaps": [
+    "No internal mapping from existing OBLIGATION/ARTICLE IDs to the selected sector was supplied. The output avoids inventing those references and flags the gap for editorial resolution."
+  ]
+}

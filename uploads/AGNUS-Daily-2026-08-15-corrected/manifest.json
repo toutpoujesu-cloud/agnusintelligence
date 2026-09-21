@@ -1,0 +1,105 @@
+{
+  "run_date": "2026-08-15",
+  "package_status": "completed_with_declared_dependencies",
+  "summary": {
+    "workflows_assigned": 7,
+    "workflows_run": 7,
+    "substantive_outputs": 6,
+    "blocked_outputs": 1,
+    "empty_sections": 0
+  },
+  "sections": {
+    "intelligence": {
+      "status": "completed_baseline",
+      "assignment": "Check the registered primary sources and establish per-source monitoring baselines.",
+      "result": "Eleven jurisdiction folders retained from the baseline run; 23 of 33 unique registry sources were baselined, 10 required manual review, and no change finding was created because this was the initial baseline.",
+      "generated_file_count": 11,
+      "errors": [
+        "Ten registry URLs were unreachable or required manual correction; detailed per-source errors remain in the jurisdiction logs and the original baseline record."
+      ]
+    },
+    "research": {
+      "status": "completed_editorial_review_required",
+      "assignment": "EU regulatory treatment of AI used in retail investment services under MiFID II.",
+      "result": "Created provisional AR-000310 with two provisional primary-source records and FACT/ANALYSIS-tagged working content.",
+      "generated_files": [
+        "research/european-union/sources.json",
+        "research/european-union/article.json",
+        "research/european-union/body-content.md",
+        "research/european-union/README.md"
+      ],
+      "errors": [],
+      "dependencies": [
+        "Editorial must confirm provisional IDs and check the live article bodies for duplication before insertion."
+      ]
+    },
+    "reviews": {
+      "status": "blocked_dependency_report_created",
+      "assignment": "Review OpenAI GPT-5 under the AGNUS LLM review workflow.",
+      "result": "The workflow ran and stopped at the mandatory test-protocol gate. No testing, scoring, or vendor facts were fabricated.",
+      "generated_files": [
+        "reviews/openai-gpt-5-review-blocked.json"
+      ],
+      "errors": [],
+      "dependencies": [
+        "Requester-approved LLM test protocol specifying tasks, prompts, environment, timing, pass/fail rubric, and raw-output retention."
+      ]
+    },
+    "agents": {
+      "status": "completed_editorial_review_required",
+      "assignment": "Profile GitHub Copilot cloud agent.",
+      "result": "Created a structured profile covering permission scope, provenance, incidents, complaints, and OWASP Agentic Top 10 mapping.",
+      "generated_files": [
+        "agents/github-copilot-cloud-agent-profile-2026-08-15.json"
+      ],
+      "errors": [],
+      "dependencies": [
+        "Editorial must replace the provisional Agent profile ID with a canonical AGNUS ID."
+      ]
+    },
+    "business": {
+      "status": "completed_with_dependency_gap",
+      "assignment": "Financial services in the European Union.",
+      "result": "Produced sector obligations, named BBVA case evidence, and EBA adoption data.",
+      "generated_files": [
+        "business/financial-services-european-union.json",
+        "business/run-report.json"
+      ],
+      "errors": [],
+      "dependencies": [
+        "Editorial must supply the internal OBLIGATION/ARTICLE mapping because the sanitized registry contains IDs but not topic mappings."
+      ]
+    },
+    "academy": {
+      "status": "completed_dependency_pending",
+      "assignment": "Course module on AI in EU retail investment services.",
+      "result": "Produced seven checkable learning objectives grounded only in today's provisional Research article AR-000310.",
+      "generated_files": [
+        "academy/ai-in-eu-retail-investment-services-module-2026-08-15.json"
+      ],
+      "errors": [],
+      "dependencies": [
+        "Do not publish the module until provisional AR-000310 is accepted and inserted by editorial."
+      ]
+    },
+    "marketplace": {
+      "status": "completed_editorial_review_required",
+      "assignment": "Create a buyer-facing listing for GitHub Copilot cloud agent.",
+      "result": "Created commercial terms and buyer-filter data using today's underlying Agent profile.",
+      "generated_files": [
+        "marketplace/github-copilot-cloud-agent-listing-2026-08-15.json"
+      ],
+      "errors": [],
+      "dependencies": [
+        "Editorial must confirm the underlying canonical Agent profile ID.",
+        "No Copilot-specific affiliate-program page was verified; the field remains empty."
+      ]
+    }
+  },
+  "editorial_alerts": [
+    "All newly proposed IDs are provisional until checked against the live AGNUS data layer.",
+    "Reviews cannot produce substantive results until an approved LLM test protocol is provided.",
+    "Academy and Marketplace outputs must not be published before their underlying provisional records are editorially accepted."
+  ],
+  "persistent_state_outside_archive": "AGNUS-Intelligence-State.json"
+}

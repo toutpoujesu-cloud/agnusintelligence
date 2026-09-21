@@ -1,0 +1,47 @@
+{
+  "run_date": "2026-09-12",
+  "source_checks": [
+    {
+      "source_url": "https://www.congress.gov",
+      "date_checked": "2026-09-12",
+      "status": "unreachable",
+      "last_successful_check": null,
+      "observed_version_or_date": "Prior successful baseline preserved; current federal legislative publication state could not be retrieved.",
+      "open_questions": [
+        "Manual access review remains required; the prior successful state baseline was preserved."
+      ]
+    },
+    {
+      "source_url": "https://leginfo.legislature.ca.gov/faces/billStatusClient.xhtml?bill_id=202520260SB574",
+      "date_checked": "2026-09-12",
+      "status": "no_change",
+      "last_successful_check": "2026-09-12",
+      "observed_version_or_date": "SB 574 remains Active Bill — Enrolled and before the Governor; the latest official action remains presentation at 2 p.m. on 2026-09-09.",
+      "open_questions": []
+    },
+    {
+      "source_url": "https://leg.colorado.gov",
+      "date_checked": "2026-09-12",
+      "status": "no_change",
+      "last_successful_check": "2026-09-12",
+      "observed_version_or_date": "The 2026 session remains adjourned sine die; no new monitored AI legislative action was verified.",
+      "open_questions": []
+    },
+    {
+      "source_url": "https://www.nysenate.gov/legislation/bills/2025/S10685",
+      "date_checked": "2026-09-12",
+      "status": "no_change",
+      "last_successful_check": "2026-09-12",
+      "observed_version_or_date": "S10685 remains active in the Senate Rules Committee with its latest action still the 2026-08-21 referral; no text, status, or action change was verified.",
+      "open_questions": []
+    }
+  ],
+  "findings": [],
+  "editorial_alerts": [
+    {
+      "type": "source_access_error",
+      "source_url": "https://www.congress.gov",
+      "message": "Congress.gov returned a restricted retrieval error; current publication state could not be verified. Prior successful baseline preserved."
+    }
+  ]
+}

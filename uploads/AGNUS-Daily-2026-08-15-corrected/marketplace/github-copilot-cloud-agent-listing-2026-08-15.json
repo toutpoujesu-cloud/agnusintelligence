@@ -1,0 +1,17 @@
+{
+  "confirmed_underlying_record_id": "AGENT-PROVISIONAL-2026-08-15-01 — provisional ID from today's completed GitHub Copilot cloud agent profile; editorial must confirm the canonical AGNUS profile ID before insertion or publication",
+  "commercial_terms": {
+    "pricing_url": "https://github.com/features/copilot/plans (checked 2026-08-15; the vendor page lists Free at USD 0, Pro at USD 10 per user/month, Pro+ at USD 39 per user/month, and Max at USD 100 per user/month; the page states that Pro includes access to cloud agent and code review)",
+    "affiliate_program_url": ""
+  },
+  "buyer_filter_data": {
+    "permission_scope": "From underlying profile AGENT-PROVISIONAL-2026-08-15-01: the cloud agent can research a repository, plan and make code changes, and create pull requests for review; outbound network access is restricted by a default firewall that organization owners can configure. Sources checked 2026-08-15: https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent and https://docs.github.com/en/copilot/responsible-use/agents.",
+    "incident_history": "From underlying profile AGENT-PROVISIONAL-2026-08-15-01: relevant ecosystem evidence includes CVE-2025-53773 affecting a GitHub Copilot/Microsoft Visual Studio agent-mode surface (https://nvd.nist.gov/vuln/detail/CVE-2025-53773), plus user-reported Copilot CLI reliability/usage issues at https://github.com/github/copilot-cli/issues/3308, https://github.com/github/copilot-cli/issues/2591, and https://github.com/github/copilot-cli/issues/3832. The underlying profile explicitly says these do not establish incidents in the GitHub-hosted cloud agent itself. Checked 2026-08-15.",
+    "pricing_tier": "Vendor-published individual tiers checked 2026-08-15: Free USD 0; Pro USD 10/user/month; Pro+ USD 39/user/month; Max USD 100/user/month. GitHub states that Pro includes cloud-agent access. Source: https://github.com/features/copilot/plans."
+  },
+  "sourcing_gaps": [
+    "The underlying Agent profile ID is provisional because the canonical AGNUS Agent-profile ID allocator/schema was not supplied. Editorial must confirm or replace AGENT-PROVISIONAL-2026-08-15-01 before insertion.",
+    "No GitHub vendor page specifically publishing an affiliate or referral program for GitHub Copilot was located in this pass. GitHub's partner-program page (https://github.com/partners, checked 2026-08-15) describes technology, service/channel, startup, and education partnerships, but it was not represented as a Copilot affiliate program; affiliate_program_url therefore remains empty.",
+    "Buyer-filter data is copied from today's underlying Agent profile and is raw research material, not a security certification, product endorsement, or final marketplace listing."
+  ]
+}

@@ -1,0 +1,159 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI Model Cards and Transparency Documentation: What They Are and Why They Matter — AGNUS Research</title>
+<meta name="description" content="Model cards are structured documentation that describe an AI model's intended use, performance characteristics, limitations, and ethical considerations. This article explains what a model card contains, its relationship to EU AI Act technical documentation requirements, and how transparency documentation supports responsible deployment." />
+<link rel="canonical" href="https://agnus.example/research/ai-audit/model-cards/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="AI Model Cards and Transparency Documentation: What They Are and Why They Matter" />
+<meta property="article:published_time" content="2026-09-11" />
+<meta property="article:author" content="Jean-Daniel Alexis" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>
+a,a:visited{color:inherit}
+.prose h3{font-family:var(--font-sans);font-weight:700;font-size:19px;letter-spacing:-.018em;margin:32px 0 14px}
+.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
+.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
+.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s}
+.rsub a:hover{color:var(--ink);background:var(--line-soft,rgba(0,0,0,.04))}
+.rsub a.on{color:var(--gold-deep);font-weight:600}
+.pillar-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:var(--gold-pale,#FEF9ED);color:var(--gold-deep,#8B6914);border:1px solid var(--gold-line,#E8D9A0);border-radius:4px;padding:3px 8px;margin-bottom:16px}
+.mc-box{background:#0F1E34;border-radius:10px;padding:24px 28px;margin:24px 0;color:rgba(255,255,255,.85);font-size:13px;line-height:1.75}
+.mc-box .mb-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:12px;display:block}
+.mc-section{font-family:var(--font-sans);font-weight:700;font-size:12.5px;color:rgba(255,255,255,.55);margin:14px 0 6px}
+.mc-content{color:rgba(255,255,255,.7)}
+.mc-note{font-size:11px;color:rgba(255,255,255,.3);margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.08)}
+.map-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:13px}
+.map-table th{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);font-weight:600;text-align:left;padding:10px 14px;border-bottom:2px solid var(--line);background:var(--paper-warm,#F7F5F0)}
+.map-table td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+.map-table tr:last-child td{border-bottom:none}
+</style>
+</head>
+<body>
+<div class="art-progress"><i id="progBar"></i></div>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+    </div>
+  </div>
+</nav>
+<div class="rsub">
+  <div class="rsub-inner">
+    <a href="#what">What model cards are</a>
+    <a href="#contents">What they must contain</a>
+    <a href="#example">Example structure</a>
+    <a href="#regulation">EU AI Act mapping</a>
+    <a href="#sources">Sources</a>
+  </div>
+</div>
+<main class="art-layout">
+  <article class="art-main">
+    <header class="art-header">
+      <span class="pillar-tag">AI Audit</span>
+      <h1 class="art-h1">AI Model Cards and Transparency Documentation: What They Are and Why They Matter</h1>
+      <p class="art-lede">A model card is a short document attached to an AI model that describes its intended use, performance on different data distributions, known limitations, and ethical considerations. Originally proposed by researchers at Google in 2019, model cards have become a de facto standard for AI transparency — and their content maps closely to the EU AI Act's technical documentation requirements for high-risk AI.</p>
+      <div class="art-meta">
+        <span>Jean-Daniel Alexis</span><span class="meta-sep">·</span>
+        <span>11 September 2026</span><span class="meta-sep">·</span>
+        <span>AI Audit pillar</span><span class="meta-sep">·</span>
+        <span>AR-000650</span>
+      </div>
+    </header>
+    <div class="prose">
+      <h3 id="what">What model cards are and why they exist</h3>
+      <p>The model card concept was introduced in a 2019 paper by Mitchell et al. (Google) as a solution to a practical problem: AI models were being deployed in contexts their developers had not intended, with performance characteristics their users did not understand. A model trained on data from one demographic might perform poorly on another. A model evaluated on one task might produce harmful outputs on a different task. Without documentation, deployers had no way to know.</p>
+      <p>Model cards solve this by standardising what information is attached to a model at release. They are not a guarantee of safety — they are a transparency tool. A model card that honestly documents known performance disparities across demographic groups allows a deployer to make an informed decision about whether the model is appropriate for a specific use case.</p>
+      <p>The practice has spread significantly since 2019. Major AI providers (Google, Meta, Microsoft, Hugging Face) publish model cards for their foundation models. The EU AI Act's technical documentation requirements make model card-style documentation legally required for high-risk AI — though the Act does not use the term "model card."</p>
+
+      <h3 id="contents">What a model card must contain</h3>
+      <div class="mc-box">
+        <span class="mb-label">Model card structure — eight required sections</span>
+        <div class="mc-section">1. Model details</div>
+        <div class="mc-content">Model name and version. Organisation that developed it. Date of release. Type of model (classifier, generative, recommendation, etc.). Input and output types. Contact information for questions.</div>
+        <div class="mc-section">2. Intended use</div>
+        <div class="mc-content">Primary intended use cases. Intended users. Uses the model is explicitly not designed for (out-of-scope uses). This section sets the boundary within which the model's documented performance claims apply.</div>
+        <div class="mc-section">3. Training data</div>
+        <div class="mc-content">Description of training data sources. Known biases in training data. Data collection methodology. Date range of training data (relevant for knowledge cutoff). Data preprocessing applied.</div>
+        <div class="mc-section">4. Evaluation data</div>
+        <div class="mc-content">Description of the datasets used for evaluation. Their relationship to the intended deployment context. Known gaps between evaluation data and deployment context.</div>
+        <div class="mc-section">5. Performance metrics</div>
+        <div class="mc-content">The metrics used to evaluate performance. Results on the evaluation datasets. Results disaggregated by relevant subgroups (demographic groups, data types, etc.) where applicable.</div>
+        <div class="mc-section">6. Ethical considerations</div>
+        <div class="mc-content">Known risks. Known disparities in performance across groups. Potential for misuse. Recommended use limitations based on ethical considerations.</div>
+        <div class="mc-section">7. Limitations and caveats</div>
+        <div class="mc-content">Technical limitations. Known failure modes. Conditions under which the model performs poorly. What the model should not be used to decide without additional human review.</div>
+        <div class="mc-section">8. Recommendations</div>
+        <div class="mc-content">Specific recommendations for deployers — conditions for appropriate use, monitoring requirements, human oversight mechanisms, and use cases that should be approached with caution.</div>
+        <div class="mc-note">The original Mitchell et al. (2019) model card specification covers sections 1–8. The EU AI Act Annex IV technical documentation requires equivalent information plus operational considerations not covered by a model card alone.</div>
+      </div>
+
+      <h3 id="regulation">Mapping model cards to EU AI Act requirements</h3>
+      <table class="map-table">
+        <thead><tr><th>Model card section</th><th>EU AI Act Annex IV equivalent</th><th>Covered?</th></tr></thead>
+        <tbody>
+          <tr><td>Model details</td><td>Annex IV(1): General description of the AI system</td><td>Partially — Annex IV requires more operational detail</td></tr>
+          <tr><td>Intended use</td><td>Annex IV(1)(a): Intended purpose; out-of-scope uses</td><td>Yes — directly equivalent</td></tr>
+          <tr><td>Training data</td><td>Annex IV(2)(a): Training data description and governance</td><td>Yes — Annex IV requires data governance detail beyond provenance</td></tr>
+          <tr><td>Evaluation data</td><td>Annex IV(2)(b): Validation and testing datasets</td><td>Yes</td></tr>
+          <tr><td>Performance metrics</td><td>Annex IV(2)(c): Performance metrics; disaggregated results</td><td>Yes</td></tr>
+          <tr><td>Ethical considerations</td><td>Annex IV(1)(f): Known risks and limitations</td><td>Partially — Annex IV requires FRIA reference</td></tr>
+          <tr><td>Limitations and caveats</td><td>Annex IV(1)(e): Limitations on applicability</td><td>Yes</td></tr>
+          <tr><td>Not covered by model card</td><td>Annex IV(3): Post-market monitoring plan; Annex IV(4): Logging and incident reporting procedures; Annex IV(7): Human oversight measures</td><td>No — operational documentation required beyond model card</td></tr>
+        </tbody>
+      </table>
+      <p>The practical conclusion is that a model card covers most of the model-level documentation required by EU AI Act Annex IV, but not the operational documentation. A compliant technical documentation package for a high-risk AI system requires a model card plus operational documentation covering post-market monitoring, logging, incident reporting, and human oversight procedures.</p>
+    </div>
+    <section class="art-sources" id="sources">
+      <h2 class="sources-h">Sources and verification</h2>
+      <div class="sources-grid">
+        <div class="source-card"><div class="sc-id">SRC-0062</div><div class="sc-title">EU AI Act — Article 11 and Annex IV</div><div class="sc-org">European Parliament and Council</div><div class="sc-url"><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689" target="_blank" rel="noopener">eur-lex.europa.eu</a></div><div class="sc-note">Article 11 requires technical documentation; Annex IV specifies its contents. Annex IV goes beyond a model card to include operational documentation.</div></div>
+        <div class="source-card"><div class="sc-id">SRC-0067</div><div class="sc-title">NIST AI RMF Playbook — MANAGE 2.2</div><div class="sc-org">National Institute of Standards and Technology</div><div class="sc-url"><a href="https://airc.nist.gov/Docs/2" target="_blank" rel="noopener">airc.nist.gov</a></div></div>
+      </div>
+      <div class="src-registry-note">Article ID: AR-000650 · Sources: SRC-0062, SRC-0067 · Published: 2026-09-11 · AGNUS Research</div>
+    </section>
+  </article>
+  <aside class="art-aside">
+    <div class="aside-block"><div class="aside-label">Pillar</div><a href="AGNUS - Research.html" class="aside-pill">AI Audit</a></div>
+    <div class="aside-block">
+      <div class="aside-label">Related articles</div>
+      <ul class="aside-links">
+        <li><a href="AGNUS - Research Article - Documentation.html">Technical Documentation (EU AI Act Article 11)</a></li>
+        <li><a href="AGNUS - Research Article - AI Audit Methodology.html">How to Conduct an AI Audit</a></li>
+        <li><a href="AGNUS - Research Article - Audit Trails.html">Audit Trails for AI Systems</a></li>
+      </ul>
+    </div>
+    <div class="aside-block">
+      <div class="aside-label">Origin</div>
+      <div class="aside-value">Mitchell et al., 2019</div>
+      <div class="aside-note">Model cards were proposed in a 2019 paper by researchers at Google. The concept has been adopted across the AI industry and influenced EU AI Act Annex IV documentation requirements.</div>
+    </div>
+  </aside>
+</main>
+<footer class="footer"><div class="container footer-inner"><div class="footer-copy">© 2026 AGNUS. All rights reserved.</div><div class="footer-links"><a href="AGNUS - Home.html">Home</a><a href="AGNUS - Research.html">Research</a><a href="AGNUS - Academy.html">Academy</a></div></div></footer>
+<script src="agnus-research-data.js"></script>
+<script>(function(){var bar=document.getElementById('progBar');if(!bar)return;window.addEventListener('scroll',function(){var h=document.documentElement;bar.style.width=((h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100)+'%';});})();</script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+{
+  "run_date": "2026-08-21",
+  "sections": {
+    "intelligence": {
+      "status": "ran",
+      "jurisdictions": [
+        "european-union",
+        "norway",
+        "united-states",
+        "china",
+        "canada"
+      ],
+      "sources_due": 9,
+      "sources_checked": 9,
+      "successful_checks": 6,
+      "unreachable_sources": 3,
+      "findings": 0,
+      "high_materiality_findings": 0,
+      "generated_files": [
+        "intelligence/european-union/intelligence-log-2026-08-21.json",
+        "intelligence/norway/intelligence-log-2026-08-21.json",
+        "intelligence/united-states/intelligence-log-2026-08-21.json",
+        "intelligence/china/intelligence-log-2026-08-21.json",
+        "intelligence/canada/intelligence-log-2026-08-21.json"
+      ]
+    },
+    "research": {
+      "status": "empty",
+      "reason": "No Intelligence finding created a Research handoff."
+    },
+    "reviews": {
+      "status": "skipped",
+      "reason": "Reviews workflow was not part of this Intelligence monitoring run."
+    },
+    "agents": {
+      "status": "skipped",
+      "reason": "Agents workflow was not part of this Intelligence monitoring run."
+    },
+    "business": {
+      "status": "skipped",
+      "reason": "Business workflow was not part of this Intelligence monitoring run."
+    },
+    "academy": {
+      "status": "skipped",
+      "reason": "Academy workflow was not part of this Intelligence monitoring run."
+    },
+    "marketplace": {
+      "status": "skipped",
+      "reason": "Marketplace workflow was not part of this Intelligence monitoring run."
+    }
+  },
+  "generated_files": [
+    "intelligence/european-union/intelligence-log-2026-08-21.json",
+    "intelligence/norway/intelligence-log-2026-08-21.json",
+    "intelligence/united-states/intelligence-log-2026-08-21.json",
+    "intelligence/china/intelligence-log-2026-08-21.json",
+    "intelligence/canada/intelligence-log-2026-08-21.json",
+    "manifest.json"
+  ],
+  "empty_sections": [
+    "research"
+  ],
+  "skipped_sections": [
+    "reviews",
+    "agents",
+    "business",
+    "academy",
+    "marketplace"
+  ],
+  "high_materiality_alerts": [],
+  "errors": [
+    {
+      "jurisdiction": "united-states",
+      "organization": "Congress.gov",
+      "url": "https://www.congress.gov",
+      "error": "Current retrieval unavailable; only a stale snapshot was exposed and current search access was blocked.",
+      "baseline_action": "Preserved the prior unsuccessful baseline and appended the access error."
+    },
+    {
+      "jurisdiction": "united-states",
+      "organization": "New York State Senate",
+      "url": "https://www.nysenate.gov/legislation",
+      "error": "Exact registry index returned an internal retrieval error.",
+      "baseline_action": "Preserved the 2026-08-15 successful baseline and fingerprint."
+    },
+    {
+      "jurisdiction": "canada",
+      "organization": "Innovation, Science and Economic Development Canada",
+      "url": "https://ised-isde.canada.ca",
+      "error": "Exact registry homepage returned an internal retrieval error.",
+      "baseline_action": "Preserved the prior unsuccessful baseline and appended the access error."
+    }
+  ],
+  "state_file_outside_archive": "AGNUS-Intelligence-State.json"
+}

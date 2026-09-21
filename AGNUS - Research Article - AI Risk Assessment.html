@@ -1,0 +1,242 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI Risk Assessment: A Practical Framework for Deployers — AGNUS Research</title>
+<meta name="description" content="Every organisation deploying AI must assess the risks of each deployment before going live. This article maps a practical risk assessment framework for AI deployers: identifying risk categories, scoring likelihood and impact, determining governance controls, and documenting the assessment in a form that satisfies regulatory requirements." />
+<link rel="canonical" href="https://agnus.example/research/ai-governance/risk-assessment/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="AI Risk Assessment: A Practical Framework for Deployers" />
+<meta property="article:published_time" content="2026-09-11" />
+<meta property="article:author" content="Jean-Daniel Alexis" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>
+a,a:visited{color:inherit}
+.prose h3{font-family:var(--font-sans);font-weight:700;font-size:19px;letter-spacing:-.018em;margin:32px 0 14px}
+.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
+.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
+.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s}
+.rsub a:hover{color:var(--ink);background:var(--line-soft,rgba(0,0,0,.04))}
+.rsub a.on{color:var(--gold-deep);font-weight:600}
+.pillar-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:var(--gold-pale,#FEF9ED);color:var(--gold-deep,#8B6914);border:1px solid var(--gold-line,#E8D9A0);border-radius:4px;padding:3px 8px;margin-bottom:16px}
+.risk-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:13px}
+.risk-table th{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);font-weight:600;text-align:left;padding:10px 14px;border-bottom:2px solid var(--line);background:var(--paper-warm,#F7F5F0)}
+.risk-table td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+.risk-table tr:last-child td{border-bottom:none}
+.heat-map{display:grid;grid-template-columns:auto repeat(4,1fr);gap:2px;margin:24px 0;font-size:12px}
+.hm-corner{background:transparent}
+.hm-header{background:var(--paper-warm,#F7F5F0);padding:8px;text-align:center;font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-mute);font-weight:600;border-radius:4px}
+.hm-row-label{background:var(--paper-warm,#F7F5F0);padding:8px;display:flex;align-items:center;font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-mute);font-weight:600;border-radius:4px;writing-mode:horizontal-tb}
+.hm-cell{padding:10px 8px;border-radius:4px;text-align:center;font-weight:700;font-size:12px}
+.hm-low{background:#D6EDD6;color:#1A5C1A}
+.hm-med{background:#FEF3C4;color:#7A5A00}
+.hm-high{background:#FDDEC0;color:#7A3500}
+.hm-crit{background:#FDC0C0;color:#7A0A0A}
+</style>
+</head>
+<body>
+<div class="art-progress"><i id="progBar"></i></div>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+    </div>
+  </div>
+</nav>
+<div class="rsub">
+  <div class="rsub-inner">
+    <a href="#categories">Risk categories</a>
+    <a href="#scoring">Scoring</a>
+    <a href="#heatmap">Risk heatmap</a>
+    <a href="#controls">Controls by level</a>
+    <a href="#documentation">Documentation</a>
+    <a href="#sources">Sources</a>
+  </div>
+</div>
+<main class="art-layout">
+  <article class="art-main">
+    <header class="art-header">
+      <span class="pillar-tag">AI Governance</span>
+      <h1 class="art-h1">AI Risk Assessment: A Practical Framework for Deployers</h1>
+      <p class="art-lede">Risk assessment is the foundation of responsible AI deployment. Without it, governance controls are not calibrated to actual risk — they are either over-engineered for low-risk systems or insufficient for high-risk ones. This article maps a practical risk assessment framework that works for both the NIST AI RMF's MAP function and the EU AI Act's deployer obligations.</p>
+      <div class="art-meta">
+        <span>Jean-Daniel Alexis</span><span class="meta-sep">·</span>
+        <span>11 September 2026</span><span class="meta-sep">·</span>
+        <span>AI Governance pillar</span><span class="meta-sep">·</span>
+        <span>AR-000600</span>
+      </div>
+    </header>
+    <div class="prose">
+      <h3 id="categories">AI risk categories</h3>
+      <p>AI risk is not a single dimension. A comprehensive assessment must consider multiple categories, each of which contributes to the overall risk profile of a deployment.</p>
+      <table class="risk-table">
+        <thead><tr><th>Risk category</th><th>What it covers</th><th>Key questions</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Performance risk</strong></td>
+            <td>The risk that the model produces incorrect, biased, or inconsistent outputs</td>
+            <td>What is the accuracy baseline? What is the error rate in production conditions? What is the distribution of errors across demographic groups?</td>
+          </tr>
+          <tr>
+            <td><strong>Safety risk</strong></td>
+            <td>The risk that the system causes physical, psychological, or financial harm to individuals or groups</td>
+            <td>Who is affected by the system's outputs? What is the worst-case harm scenario? Is the system used in safety-critical contexts?</td>
+          </tr>
+          <tr>
+            <td><strong>Security risk</strong></td>
+            <td>The risk that the system is compromised, manipulated, or misused</td>
+            <td>What are the attack vectors? What is the blast radius of a compromise? Is the system a target for adversarial manipulation?</td>
+          </tr>
+          <tr>
+            <td><strong>Privacy risk</strong></td>
+            <td>The risk of personal data exposure, processing without lawful basis, or inference of sensitive attributes</td>
+            <td>What personal data does the system process? What is the lawful basis? What inferences can it draw about individuals?</td>
+          </tr>
+          <tr>
+            <td><strong>Accountability risk</strong></td>
+            <td>The risk that no one is clearly accountable for decisions or outcomes — especially in multi-agent or third-party deployments</td>
+            <td>Who is accountable for each output? Is accountability clear in multi-agent systems? Who is responsible when third-party components fail?</td>
+          </tr>
+          <tr>
+            <td><strong>Regulatory risk</strong></td>
+            <td>The risk of non-compliance with applicable regulations — EU AI Act, GDPR, sector regulation</td>
+            <td>Is the system in scope for the EU AI Act? Is it high-risk under Annex III? What sector regulations apply?</td>
+          </tr>
+          <tr>
+            <td><strong>Reputational risk</strong></td>
+            <td>The risk that the system's outputs or the circumstances of its use cause reputational damage</td>
+            <td>What is the public perception risk? Could outputs be misrepresented or taken out of context? Is use of AI in this context publicly acceptable?</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="scoring">Scoring likelihood and impact</h3>
+      <p>Each risk category should be scored on two dimensions: likelihood (how probable is the risk materialising) and impact (how severe is the consequence if it does). Both dimensions use a four-point scale in this framework:</p>
+      <p><strong>Likelihood:</strong> 1 — Rare (unlikely given controls); 2 — Possible (could occur under some conditions); 3 — Likely (will occur without specific mitigation); 4 — Near certain (expected to occur without significant controls)</p>
+      <p><strong>Impact:</strong> 1 — Minor (limited consequence, easily remediated); 2 — Moderate (meaningful consequence, manageable); 3 — Significant (serious consequence, difficult to remediate); 4 — Critical (severe consequence, irreversible or catastrophic)</p>
+
+      <h3 id="heatmap">The risk heatmap</h3>
+      <div class="heat-map">
+        <div class="hm-corner"></div>
+        <div class="hm-header">Impact 1 Minor</div>
+        <div class="hm-header">Impact 2 Moderate</div>
+        <div class="hm-header">Impact 3 Significant</div>
+        <div class="hm-header">Impact 4 Critical</div>
+        <div class="hm-row-label">L1 Rare</div>
+        <div class="hm-cell hm-low">Low</div>
+        <div class="hm-cell hm-low">Low</div>
+        <div class="hm-cell hm-med">Medium</div>
+        <div class="hm-cell hm-med">Medium</div>
+        <div class="hm-row-label">L2 Possible</div>
+        <div class="hm-cell hm-low">Low</div>
+        <div class="hm-cell hm-med">Medium</div>
+        <div class="hm-cell hm-med">Medium</div>
+        <div class="hm-cell hm-high">High</div>
+        <div class="hm-row-label">L3 Likely</div>
+        <div class="hm-cell hm-med">Medium</div>
+        <div class="hm-cell hm-med">Medium</div>
+        <div class="hm-cell hm-high">High</div>
+        <div class="hm-cell hm-crit">Critical</div>
+        <div class="hm-row-label">L4 Near certain</div>
+        <div class="hm-cell hm-med">Medium</div>
+        <div class="hm-cell hm-high">High</div>
+        <div class="hm-cell hm-crit">Critical</div>
+        <div class="hm-cell hm-crit">Critical</div>
+      </div>
+
+      <h3 id="controls">Controls by risk level</h3>
+      <table class="risk-table">
+        <thead><tr><th>Risk level</th><th>Required controls</th><th>Governance gate</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong style="color:#1A5C1A">Low</strong></td>
+            <td>Standard monitoring, audit logging, documented Mission Contract</td>
+            <td>Team lead approval</td>
+          </tr>
+          <tr>
+            <td><strong style="color:#7A5A00">Medium</strong></td>
+            <td>+ Formal risk assessment documented, human sponsor designated, approval thresholds set, anomaly detection configured</td>
+            <td>Department head approval</td>
+          </tr>
+          <tr>
+            <td><strong style="color:#7A3500">High</strong></td>
+            <td>+ Security review, DPIA if personal data, red-team testing, incident response procedure, AI Governance Board review</td>
+            <td>AI Governance Board approval</td>
+          </tr>
+          <tr>
+            <td><strong style="color:#7A0A0A">Critical</strong></td>
+            <td>+ Conformity assessment (if EU AI Act high-risk), external audit, board-level accountability, pre-deployment regulatory notification where required</td>
+            <td>C-suite / Board approval</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="documentation">Documenting the assessment</h3>
+      <p>The risk assessment must be documented in a form that can be reviewed by governance stakeholders and, for high-risk AI under the EU AI Act, by supervisory authorities. The documentation should include: the system description (purpose, capabilities, deployment context), the risk category scores with reasoning, the overall risk level determination, the controls implemented to mitigate each risk, and the residual risk level after controls are applied.</p>
+      <p>The NIST AI RMF Playbook's MAP function provides a structured template for this documentation. The EU AI Act's technical documentation requirements in Annex IV go further — they require detailed information about training data, testing procedures, intended purpose, and known limitations. For systems in scope, the risk assessment is incorporated into the broader technical documentation package.</p>
+      <p>Risk assessments are living documents. They should be reviewed when the system's purpose, capabilities, or deployment context changes; when a significant incident occurs; and at least annually for all deployments. A system whose risk level has increased since its original assessment must have its governance controls updated accordingly.</p>
+    </div>
+    <section class="art-sources" id="sources">
+      <h2 class="sources-h">Sources and verification</h2>
+      <div class="sources-grid">
+        <div class="source-card">
+          <div class="sc-id">SRC-0067</div>
+          <div class="sc-title">NIST AI RMF 1.0 — MAP function</div>
+          <div class="sc-org">National Institute of Standards and Technology</div>
+          <div class="sc-url"><a href="https://airc.nist.gov/RMF" target="_blank" rel="noopener">airc.nist.gov</a></div>
+          <div class="sc-note">The MAP function of the NIST AI RMF provides the most detailed practitioner guidance on AI risk categorisation and assessment methodology.</div>
+        </div>
+        <div class="source-card">
+          <div class="sc-id">SRC-0062</div>
+          <div class="sc-title">EU AI Act — Articles 9 and 26; Annex IV</div>
+          <div class="sc-org">European Parliament and Council</div>
+          <div class="sc-url"><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689" target="_blank" rel="noopener">eur-lex.europa.eu</a></div>
+          <div class="sc-note">Article 9 (risk management system) and Article 26 (deployer obligations). Annex IV specifies technical documentation content.</div>
+        </div>
+      </div>
+      <div class="src-registry-note">Article ID: AR-000600 · Sources: SRC-0062, SRC-0067 · Published: 2026-09-11 · AGNUS Research</div>
+    </section>
+  </article>
+  <aside class="art-aside">
+    <div class="aside-block"><div class="aside-label">Pillar</div><a href="AGNUS - Research.html" class="aside-pill">AI Governance</a></div>
+    <div class="aside-block">
+      <div class="aside-label">Related articles</div>
+      <ul class="aside-links">
+        <li><a href="AGNUS - Research Article - Governance Frameworks.html">AI Governance Frameworks</a></li>
+        <li><a href="AGNUS - Research Article - High-Risk AI.html">High-Risk AI Classification</a></li>
+        <li><a href="AGNUS - Research Article - Fundamental Rights Impact Assessment.html">Fundamental Rights Impact Assessment</a></li>
+      </ul>
+    </div>
+  </aside>
+</main>
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-copy">© 2026 AGNUS. All rights reserved.</div>
+    <div class="footer-links"><a href="AGNUS - Home.html">Home</a><a href="AGNUS - Research.html">Research</a><a href="AGNUS - Academy.html">Academy</a></div>
+  </div>
+</footer>
+<script src="agnus-research-data.js"></script>
+<script>(function(){var bar=document.getElementById('progBar');if(!bar)return;window.addEventListener('scroll',function(){var h=document.documentElement;bar.style.width=((h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100)+'%';});})();</script>
+</body>
+</html>

@@ -1,0 +1,725 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Agent Registry — AGNUS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="agnus.css"/>
+<style>
+/* ── Page shell ── */
+.registry-layout{display:grid;grid-template-columns:240px 1fr;min-height:calc(100vh - 60px);gap:0}
+.sidebar{background:#0F1E34;color:#fff;padding:28px 0;position:sticky;top:60px;height:calc(100vh - 60px);overflow-y:auto}
+.sb-section{padding:0 20px;margin-bottom:28px}
+.sb-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:10px;display:block}
+.sb-link{display:flex;align-items:center;gap:9px;padding:9px 12px;border-radius:9px;font-size:13.5px;font-weight:500;color:rgba(255,255,255,.65);cursor:pointer;transition:all .2s;text-decoration:none;margin-bottom:2px}
+.sb-link:hover{background:rgba(255,255,255,.07);color:#fff}
+.sb-link.active{background:rgba(255,255,255,.1);color:#fff}
+.sb-link svg{flex-shrink:0;opacity:.6}
+.sb-link.active svg{opacity:1}
+.sb-count{margin-left:auto;font-family:var(--font-mono);font-size:10px;background:rgba(255,255,255,.12);border-radius:4px;padding:2px 6px;color:rgba(255,255,255,.5)}
+.sb-link.active .sb-count{background:var(--gold-deep);color:#fff;opacity:1}
+.content{padding:32px 36px;background:var(--paper-2,#F7F5F1)}
+/* ── Topbar ── */
+.page-topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
+.page-topbar h1{font-size:24px;font-weight:800;letter-spacing:-.02em}
+.topbar-actions{display:flex;gap:10px}
+/* ── Stats row ── */
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px}
+.stat-card{background:#fff;border:1px solid var(--line,#E5E3DD);border-radius:14px;padding:18px 20px}
+.sc-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute,#7A7A72);margin-bottom:6px}
+.sc-value{font-size:26px;font-weight:800;letter-spacing:-.03em;line-height:1}
+.sc-sub{font-size:12px;color:var(--ink-mute);margin-top:4px}
+.sc-value.pass{color:#0F6E3A}.sc-value.warn{color:#C4760A}.sc-value.danger{color:#B03020}
+/* ── Filter bar ── */
+.filter-bar{display:flex;align-items:center;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+.filter-bar input{flex:1;min-width:220px;padding:9px 14px;border:1.5px solid var(--line,#E5E3DD);border-radius:9px;font-family:var(--font-sans);font-size:13.5px;outline:none;background:#fff}
+.filter-bar input:focus{border-color:#0F1E34}
+.filter-btn{font-family:var(--font-sans);font-size:12.5px;font-weight:600;padding:8px 14px;border-radius:8px;border:1.5px solid var(--line,#E5E3DD);background:#fff;cursor:pointer;transition:all .2s;color:var(--ink-soft,#3C3C38)}
+.filter-btn:hover,.filter-btn.sel{background:#0F1E34;color:#fff;border-color:#0F1E34}
+/* ── Agent table ── */
+.agent-table{background:#fff;border:1px solid var(--line,#E5E3DD);border-radius:16px;overflow:hidden}
+.at-head{display:grid;grid-template-columns:2fr 1fr 1fr 120px 80px 100px;gap:0;background:var(--paper-2,#F7F5F1);border-bottom:1px solid var(--line,#E5E3DD)}
+.at-head th{font-family:var(--font-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-mute,#7A7A72);padding:11px 16px;font-weight:600;text-align:left;border-right:1px solid var(--line,#E5E3DD)}
+.at-head th:last-child{border-right:none;text-align:center}
+.at-row{display:grid;grid-template-columns:2fr 1fr 1fr 120px 80px 100px;border-bottom:1px solid var(--line,#E5E3DD);align-items:center;transition:background .15s;cursor:pointer}
+.at-row:last-child{border-bottom:none}
+.at-row:hover{background:#FAFAF8}
+.at-cell{padding:14px 16px;font-size:13.5px;border-right:1px solid var(--line,#E5E3DD)}
+.at-cell:last-child{border-right:none;text-align:center}
+.agent-name-cell{display:flex;align-items:center;gap:11px}
+.agent-icon{width:36px;height:36px;border-radius:10px;background:#0F1E34;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:13px;font-weight:700;color:#C49A2C;flex-shrink:0}
+.agent-title{font-weight:700;font-size:14px;letter-spacing:-.01em}
+.agent-env{font-size:11px;color:var(--ink-mute);font-family:var(--font-mono);margin-top:1px}
+.status-pill{display:inline-flex;align-items:center;gap:5px;font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:6px;padding:4px 9px}
+.sp-active{background:#DCFCE7;color:#0F6E3A}
+.sp-pending{background:#FEF9C3;color:#A16207}
+.sp-inactive{background:#F1F0EE;color:#7A7A72}
+.sp-warning{background:#FEE2E2;color:#B03020}
+.score-badge{display:inline-block;font-family:var(--font-mono);font-size:12px;font-weight:700;padding:3px 8px;border-radius:6px}
+.score-high{background:#DCFCE7;color:#0F6E3A}
+.score-mid{background:#FEF9C3;color:#A16207}
+.score-low{background:#FEE2E2;color:#B03020}
+.action-dots{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:7px;border:1.5px solid var(--line);background:#fff;cursor:pointer;font-size:16px;color:var(--ink-mute);transition:all .15s}
+.action-dots:hover{border-color:#0F1E34;color:#0F1E34}
+/* ── Modal ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(10,14,20,.55);z-index:1000;display:flex;align-items:flex-start;justify-content:center;padding-top:60px;opacity:0;pointer-events:none;transition:opacity .25s}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{background:#fff;border-radius:20px;width:100%;max-width:600px;max-height:calc(100vh - 100px);overflow-y:auto;box-shadow:0 40px 100px rgba(0,0,0,.22)}
+.modal-head{padding:24px 28px 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:#fff;z-index:2}
+.modal-head h3{font-size:18px;font-weight:800;letter-spacing:-.02em}
+.modal-close{width:32px;height:32px;border-radius:8px;border:1.5px solid var(--line);background:none;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;color:var(--ink-mute);transition:all .15s}
+.modal-close:hover{border-color:#0F1E34;color:#0F1E34}
+.modal-body{padding:24px 28px}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--char,#1A1A17)}
+.form-group .hint{font-size:11.5px;color:var(--ink-mute);margin-top:4px}
+.form-control{width:100%;padding:10px 13px;border:1.5px solid var(--line,#E5E3DD);border-radius:9px;font-family:var(--font-sans);font-size:13.5px;color:var(--char,#1A1A17);background:#fff;outline:none;transition:border-color .2s}
+.form-control:focus{border-color:#0F1E34}
+.form-control.small{padding:8px 12px;font-size:13px}
+.form-select{width:100%;padding:10px 13px;border:1.5px solid var(--line,#E5E3DD);border-radius:9px;font-family:var(--font-sans);font-size:13.5px;color:var(--char,#1A1A17);background:#fff;outline:none;cursor:pointer}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-row{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--paper-2,#F7F5F1);border-radius:9px;border:1px solid var(--line)}
+.form-row label{font-size:13px;color:var(--char);flex:1;font-weight:500}
+.toggle-sw{position:relative;width:40px;height:22px;cursor:pointer;flex-shrink:0}
+.toggle-sw input{opacity:0;width:0;height:0}
+.toggle-track{position:absolute;inset:0;background:var(--line,#E5E3DD);border-radius:11px;transition:background .25s}
+.toggle-knob{position:absolute;width:16px;height:16px;background:#fff;border-radius:50%;top:3px;left:3px;transition:transform .25s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.toggle-sw input:checked+.toggle-track{background:#0F1E34}
+.toggle-sw input:checked~.toggle-knob{transform:translateX(18px)}
+.tool-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}
+.tool-chip{font-family:var(--font-mono);font-size:11px;padding:5px 10px;border-radius:6px;border:1.5px solid var(--line);cursor:pointer;transition:all .15s;color:var(--ink-soft)}
+.tool-chip:hover,.tool-chip.sel{background:#0F1E34;color:#fff;border-color:#0F1E34}
+.modal-footer{padding:16px 28px 24px;display:flex;justify-content:flex-end;gap:10px;border-top:1px solid var(--line);position:sticky;bottom:0;background:#fff}
+.btn-sm{font-family:var(--font-sans);font-size:13.5px;font-weight:700;padding:9px 20px;border-radius:9px;border:none;cursor:pointer;transition:all .2s}
+.btn-primary-sm{background:#0F1E34;color:#fff}.btn-primary-sm:hover{background:#162844}
+.btn-ghost-sm{background:#fff;color:var(--ink-soft);border:1.5px solid var(--line)}.btn-ghost-sm:hover{border-color:#0F1E34;color:#0F1E34}
+/* Configure panel (slide-over) */
+.config-panel{position:fixed;top:0;right:0;bottom:0;width:520px;background:#fff;box-shadow:-4px 0 40px rgba(0,0,0,.15);z-index:900;transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.7,.2,1);overflow-y:auto}
+.config-panel.open{transform:translateX(0)}
+.cp-head{padding:24px 28px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:#fff;z-index:2}
+.cp-head h3{font-size:17px;font-weight:800;letter-spacing:-.015em}
+.cp-close{width:32px;height:32px;border-radius:8px;border:1.5px solid var(--line);background:none;cursor:pointer;font-size:18px;color:var(--ink-mute);transition:all .15s}
+.cp-close:hover{border-color:#0F1E34;color:#0F1E34}
+.cp-body{padding:20px 28px 40px}
+.cp-section{margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.cp-section:last-child{border-bottom:none}
+.cp-section-title{font-size:11px;font-family:var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:12px}
+.tag-badge{display:inline-flex;align-items:center;gap:5px;font-family:var(--font-mono);font-size:10px;font-weight:600;border-radius:5px;padding:3px 8px}
+.tb-active{background:#DCFCE7;color:#0F6E3A}
+.tb-warning{background:#FEE2E2;color:#B03020}
+.config-actions-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+/* ── Tweaks panel ── */
+.tweaks-btn{display:flex;align-items:center;gap:6px;padding:8px 14px;border-radius:8px;border:1.5px solid var(--line,#E5E3DD);background:#fff;font-family:var(--font-sans);font-size:12.5px;font-weight:600;color:var(--ink-soft,#3C3C38);cursor:pointer;transition:all .2s;position:relative}
+.tweaks-btn:hover{border-color:#0F1E34;color:#0F1E34}
+.tweaks-btn.open{border-color:#0F1E34;background:#0F1E34;color:#fff}
+.tweaks-dropdown{position:absolute;top:calc(100% + 8px);right:0;width:280px;background:#fff;border:1.5px solid var(--line,#E5E3DD);border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.1);padding:18px;z-index:1000;display:none}
+.tweaks-dropdown.open{display:block}
+.td-title{font-family:var(--font-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute,#7A7A72);margin-bottom:14px}
+.tweak-row{margin-bottom:14px}
+.tweak-row:last-child{margin-bottom:0}
+.tweak-label{font-size:12.5px;font-weight:600;color:var(--ink-dark,#1C1C1A);margin-bottom:7px;display:flex;align-items:center;justify-content:space-between}
+.tweak-label span{font-size:11px;font-weight:500;color:var(--ink-mute);font-family:var(--font-mono)}
+.tweak-seg{display:flex;gap:4px}
+.ts-opt{flex:1;padding:6px 8px;border-radius:7px;border:1.5px solid var(--line,#E5E3DD);background:#fff;font-family:var(--font-sans);font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;text-align:center;color:var(--ink-soft)}
+.ts-opt.sel{background:#0F1E34;border-color:#0F1E34;color:#fff}
+.tweak-toggle{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;background:var(--paper-2,#F7F5F1);border-radius:9px}
+.tweak-toggle-label{font-size:13px;font-weight:500;color:var(--ink-dark)}
+.toggle-track{width:38px;height:22px;border-radius:11px;background:#D0CEC8;border:none;cursor:pointer;position:relative;transition:background .2s;flex-shrink:0}
+.toggle-track.on{background:#0F1E34}
+.toggle-track::after{content:'';position:absolute;width:16px;height:16px;background:#fff;border-radius:50%;top:3px;left:3px;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.toggle-track.on::after{transform:translateX(16px)}
+.tweak-slider-row{display:flex;align-items:center;gap:10px}
+.tweak-slider{flex:1;-webkit-appearance:none;height:4px;border-radius:2px;background:linear-gradient(to right,#0F1E34 var(--pct,50%),#E5E3DD var(--pct,50%));outline:none;cursor:pointer}
+.tweak-slider::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:#0F1E34;cursor:pointer}
+.tweak-slider-val{font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--ink-mute);width:26px;text-align:right}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Practice.html">Practice</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+      <a href="AGNUS - Dashboard.html">Dashboard</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Agent Registry.html" class="btn btn-gold" style="font-size:13px;padding:8px 16px">+ Register Agent</a>
+    </div>
+  </div>
+</nav>
+
+<div class="registry-layout">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sb-section">
+      <span class="sb-label">Registry</span>
+      <div class="sb-link active" onclick="showView('all')">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="1" width="13" height="13" rx="2"/><path d="M5 5h5M5 8h5M5 11h3"/></svg>
+        All Agents
+        <span class="sb-count" id="cnt-all">8</span>
+      </div>
+      <div class="sb-link" onclick="showView('active')">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7.5" cy="7.5" r="6"/><path d="M5 7.5l2 2 3-3"/></svg>
+        Active
+        <span class="sb-count" id="cnt-active">5</span>
+      </div>
+      <div class="sb-link" onclick="showView('pending')">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7.5" cy="7.5" r="6"/><path d="M7.5 4.5v3l2 1.5"/></svg>
+        Pending Review
+        <span class="sb-count" id="cnt-pending">2</span>
+      </div>
+      <div class="sb-link" onclick="showView('warning')">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7.5 1L14 13H1L7.5 1z"/><path d="M7.5 6v3M7.5 11v.5"/></svg>
+        Needs Attention
+        <span class="sb-count" id="cnt-warning">1</span>
+      </div>
+    </div>
+    <div class="sb-section">
+      <span class="sb-label">By Department</span>
+      <div class="sb-link" onclick="showView('finance')">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="4" width="13" height="9" rx="1.5"/><path d="M5 4V3a2.5 2.5 0 015 0v1M6 9h3"/></svg>
+        Finance
+        <span class="sb-count">3</span>
+      </div>
+      <div class="sb-link" onclick="showView('hr')">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7.5" cy="5" r="3"/><path d="M1.5 13.5a6 6 0 0112 0"/></svg>
+        HR
+        <span class="sb-count">2</span>
+      </div>
+      <div class="sb-link" onclick="showView('legal')">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7.5 1v13M3 4.5l4.5 2 4.5-2M2 13h11"/></svg>
+        Legal
+        <span class="sb-count">1</span>
+      </div>
+      <div class="sb-link" onclick="showView('cs')">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 9.5a5.5 5.5 0 01-5.5 5.5L5 13l-3 1.5V12A5.5 5.5 0 017.5 1 5.5 5.5 0 0113 6.5v3z"/></svg>
+        Customer Service
+        <span class="sb-count">2</span>
+      </div>
+    </div>
+    <div class="sb-section" style="margin-top:auto;padding-top:20px">
+      <button onclick="openRegisterModal()" style="width:100%;padding:10px;background:rgba(196,154,44,.15);border:1.5px solid rgba(196,154,44,.3);border-radius:10px;color:#C49A2C;font-family:var(--font-sans);font-size:13px;font-weight:700;cursor:pointer;transition:all .2s" onmouseover="this.style.background='rgba(196,154,44,.25)'" onmouseout="this.style.background='rgba(196,154,44,.15)'">
+        + Register New Agent
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="content">
+    <div class="page-topbar">
+      <div>
+        <h1>Agent Registry</h1>
+        <p style="font-size:13px;color:var(--ink-mute);margin-top:3px">8 agents registered · Last updated 23 Aug 2026</p>
+      </div>
+      <div class="topbar-actions" style="position:relative">
+        <button class="btn-sm btn-ghost-sm" onclick="exportRegistry()">Export CSV</button>
+        <div style="position:relative">
+          <button class="tweaks-btn" id="tweaksBtn" onclick="toggleTweaks()">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="3" cy="7" r="1.5"/><circle cx="7" cy="3" r="1.5"/><circle cx="11" cy="7" r="1.5"/><path d="M1 7h.5M4.5 7H12M1 3h4M8.5 3H13M1 11h10"/></svg>
+            Tweaks
+          </button>
+          <div class="tweaks-dropdown" id="tweaksPanel">
+            <div class="td-title">Registry Tweaks</div>
+
+            <div class="tweak-row">
+              <div class="tweak-label">Density</div>
+              <div class="tweak-seg">
+                <button class="ts-opt sel" onclick="setDensity('compact',this)">Compact</button>
+                <button class="ts-opt" onclick="setDensity('comfortable',this)">Comfortable</button>
+                <button class="ts-opt" onclick="setDensity('spacious',this)">Spacious</button>
+              </div>
+            </div>
+
+            <div class="tweak-row">
+              <div class="tweak-label">Sort by</div>
+              <div class="tweak-seg">
+                <button class="ts-opt sel" onclick="setSort('name',this)">Name</button>
+                <button class="ts-opt" onclick="setSort('score',this)">Score</button>
+                <button class="ts-opt" onclick="setSort('date',this)">Last Run</button>
+              </div>
+            </div>
+
+            <div class="tweak-row">
+              <div class="tweak-label">Gov. score warning threshold <span id="threshValLabel">70</span></div>
+              <div class="tweak-slider-row">
+                <span style="font-size:11px;color:var(--ink-mute)">50</span>
+                <input type="range" class="tweak-slider" id="threshSlider" min="50" max="90" value="70" oninput="setThreshold(this)" style="--pct:50%" />
+                <span style="font-size:11px;color:var(--ink-mute)">90</span>
+              </div>
+            </div>
+
+            <div class="tweak-row">
+              <div class="tweak-toggle">
+                <span class="tweak-toggle-label">Show stats bar</span>
+                <button class="toggle-track on" id="toggleStats" onclick="toggleStats(this)"></button>
+              </div>
+            </div>
+
+            <div class="tweak-row">
+              <div class="tweak-toggle">
+                <span class="tweak-toggle-label">Show inactive agents</span>
+                <button class="toggle-track" id="toggleInactive" onclick="toggleInactive(this)"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="btn-sm btn-primary-sm" onclick="openRegisterModal()">+ Register Agent</button>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stat-row">
+      <div class="stat-card"><div class="sc-label">Total Registered</div><div class="sc-value">8</div><div class="sc-sub">+2 this month</div></div>
+      <div class="stat-card"><div class="sc-label">Active & Governed</div><div class="sc-value pass">5</div><div class="sc-sub">All compliant</div></div>
+      <div class="stat-card"><div class="sc-label">Pending Review</div><div class="sc-value warn">2</div><div class="sc-sub">Awaiting sign-off</div></div>
+      <div class="stat-card"><div class="sc-label">Needs Attention</div><div class="sc-value danger">1</div><div class="sc-sub">Scope drift detected</div></div>
+    </div>
+
+    <!-- Filter bar -->
+    <div class="filter-bar">
+      <input type="text" id="searchInput" placeholder="Search agents…" oninput="filterAgents()" />
+      <button class="filter-btn sel" id="f-all" onclick="setFilter('all')">All</button>
+      <button class="filter-btn" id="f-active" onclick="setFilter('active')">Active</button>
+      <button class="filter-btn" id="f-pending" onclick="setFilter('pending')">Pending</button>
+      <button class="filter-btn" id="f-warning" onclick="setFilter('warning')">Attention</button>
+    </div>
+
+    <!-- Table -->
+    <div class="agent-table">
+      <div class="at-head">
+        <th>Agent</th>
+        <th>Department</th>
+        <th>Status</th>
+        <th>Gov. Score</th>
+        <th>Last Run</th>
+        <th style="text-align:center">Actions</th>
+      </div>
+      <div id="agentList"></div>
+    </div>
+  </main>
+</div>
+
+<!-- Register Modal -->
+<div class="modal-overlay" id="registerModal">
+  <div class="modal">
+    <div class="modal-head">
+      <h3>Register New Agent</h3>
+      <button class="modal-close" onclick="closeModal()">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label>Agent Name <span style="color:#B03020">*</span></label>
+        <input class="form-control" type="text" id="reg-name" placeholder="e.g. Invoice Processing Agent v2"/>
+      </div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Department <span style="color:#B03020">*</span></label>
+          <select class="form-select" id="reg-dept">
+            <option value="">— select —</option>
+            <option>Finance</option>
+            <option>HR</option>
+            <option>Legal</option>
+            <option>Customer Service</option>
+            <option>Operations</option>
+            <option>IT</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Environment</label>
+          <select class="form-select" id="reg-env">
+            <option>Production</option>
+            <option>Staging</option>
+            <option>Development</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Agent Description</label>
+        <textarea class="form-control" id="reg-desc" rows="3" placeholder="What does this agent do? What task does it perform?"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Human Sponsor <span style="color:#B03020">*</span></label>
+        <input class="form-control" type="text" id="reg-sponsor" placeholder="Full name + role (e.g. Maja Lindqvist, Finance Director)"/>
+        <div class="hint">The named human accountable for this agent's operation.</div>
+      </div>
+      <div class="form-group">
+        <label>Authorised Tools</label>
+        <div class="tool-chips" id="toolChips">
+          <div class="tool-chip" onclick="toggleTool(this)">invoice_reader</div>
+          <div class="tool-chip" onclick="toggleTool(this)">po_matcher</div>
+          <div class="tool-chip" onclick="toggleTool(this)">payment_processor</div>
+          <div class="tool-chip" onclick="toggleTool(this)">audit_logger</div>
+          <div class="tool-chip" onclick="toggleTool(this)">email_sender</div>
+          <div class="tool-chip" onclick="toggleTool(this)">crm_reader</div>
+          <div class="tool-chip" onclick="toggleTool(this)">document_reader</div>
+          <div class="tool-chip" onclick="toggleTool(this)">calendar_tool</div>
+          <div class="tool-chip" onclick="toggleTool(this)">escalation_router</div>
+          <div class="tool-chip" onclick="toggleTool(this)">returns_processor</div>
+        </div>
+        <div class="hint">Select the tools this agent is authorised to call.</div>
+      </div>
+      <div class="form-group">
+        <label>Auto-Approve Threshold</label>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="font-size:14px;color:var(--ink-mute)">€</span>
+          <input class="form-control small" type="number" id="reg-threshold" placeholder="500" style="width:120px"/>
+          <span style="font-size:13px;color:var(--ink-mute)">Above this, human approval required.</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label style="margin-bottom:10px">Governance Settings</label>
+        <div style="display:grid;gap:8px">
+          <div class="form-row">
+            <label>Logging enabled</label>
+            <label class="toggle-sw"><input type="checkbox" checked/><span class="toggle-track"></span><span class="toggle-knob"></span></label>
+          </div>
+          <div class="form-row">
+            <label>Escalation path configured</label>
+            <label class="toggle-sw"><input type="checkbox"/><span class="toggle-track"></span><span class="toggle-knob"></span></label>
+          </div>
+          <div class="form-row">
+            <label>Scope drift monitoring</label>
+            <label class="toggle-sw"><input type="checkbox" checked/><span class="toggle-track"></span><span class="toggle-knob"></span></label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-sm btn-ghost-sm" onclick="closeModal()">Cancel</button>
+      <button class="btn-sm btn-primary-sm" onclick="registerAgent()">Register Agent →</button>
+    </div>
+  </div>
+</div>
+
+<!-- Configure Panel (slide-over) -->
+<div class="config-panel" id="configPanel">
+  <div class="cp-head">
+    <div>
+      <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:4px">Configure Agent</div>
+      <h3 id="cpAgentName">Invoice Processing Agent</h3>
+    </div>
+    <button class="cp-close" onclick="closeConfig()">×</button>
+  </div>
+  <div class="cp-body">
+    <div class="cp-section">
+      <div class="cp-section-title">Identity & Status</div>
+      <div class="form-group" style="margin-bottom:12px">
+        <label style="font-size:12px">Agent Name</label>
+        <input class="form-control small" id="cp-name" type="text"/>
+      </div>
+      <div class="form-grid">
+        <div class="form-group" style="margin-bottom:0">
+          <label style="font-size:12px">Department</label>
+          <select class="form-select" id="cp-dept" style="font-size:13px;padding:8px 12px">
+            <option>Finance</option><option>HR</option><option>Legal</option><option>Customer Service</option><option>Operations</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin-bottom:0">
+          <label style="font-size:12px">Status</label>
+          <select class="form-select" id="cp-status" style="font-size:13px;padding:8px 12px">
+            <option>Active</option><option>Pending Review</option><option>Inactive</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="cp-section">
+      <div class="cp-section-title">Authorised Tools</div>
+      <div class="tool-chips" id="cpToolChips">
+        <div class="tool-chip sel" onclick="toggleTool(this)">invoice_reader</div>
+        <div class="tool-chip sel" onclick="toggleTool(this)">po_matcher</div>
+        <div class="tool-chip sel" onclick="toggleTool(this)">payment_processor</div>
+        <div class="tool-chip sel" onclick="toggleTool(this)">audit_logger</div>
+        <div class="tool-chip" onclick="toggleTool(this)">email_sender</div>
+        <div class="tool-chip" onclick="toggleTool(this)">crm_reader</div>
+        <div class="tool-chip" onclick="toggleTool(this)">document_reader</div>
+        <div class="tool-chip" onclick="toggleTool(this)">escalation_router</div>
+      </div>
+    </div>
+
+    <div class="cp-section">
+      <div class="cp-section-title">Approval & Thresholds</div>
+      <div class="form-group" style="margin-bottom:12px">
+        <label style="font-size:12px">Auto-approve threshold</label>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="color:var(--ink-mute)">€</span>
+          <input class="form-control small" id="cp-threshold" type="number" style="width:110px"/>
+        </div>
+      </div>
+      <div class="form-group" style="margin-bottom:0">
+        <label style="font-size:12px">Escalation target</label>
+        <input class="form-control small" id="cp-escalation" type="email" placeholder="e.g. finance-lead@company.no"/>
+      </div>
+    </div>
+
+    <div class="cp-section">
+      <div class="cp-section-title">Governance Settings</div>
+      <div style="display:grid;gap:7px">
+        <div class="form-row">
+          <label style="font-size:12px">Audit logging</label>
+          <label class="toggle-sw"><input type="checkbox" id="cp-logging" checked/><span class="toggle-track"></span><span class="toggle-knob"></span></label>
+        </div>
+        <div class="form-row">
+          <label style="font-size:12px">Scope drift monitoring</label>
+          <label class="toggle-sw"><input type="checkbox" id="cp-drift" checked/><span class="toggle-track"></span><span class="toggle-knob"></span></label>
+        </div>
+        <div class="form-row">
+          <label style="font-size:12px">Human-in-loop required</label>
+          <label class="toggle-sw"><input type="checkbox" id="cp-hil"/><span class="toggle-track"></span><span class="toggle-knob"></span></label>
+        </div>
+        <div class="form-row">
+          <label style="font-size:12px">Retry limit (max 3)</label>
+          <input class="form-control small" id="cp-retry" type="number" min="1" max="3" value="2" style="width:56px"/>
+        </div>
+      </div>
+    </div>
+
+    <div class="cp-section">
+      <div class="cp-section-title">Human Sponsor</div>
+      <input class="form-control small" id="cp-sponsor" type="text" placeholder="Name + Role"/>
+      <div class="hint" style="font-size:11px;color:var(--ink-mute);margin-top:5px">Named accountable owner. Required for active agents.</div>
+    </div>
+
+    <div class="config-actions-row">
+      <button class="btn-sm btn-primary-sm" onclick="saveConfig()">Save Changes</button>
+      <button class="btn-sm btn-ghost-sm" onclick="viewAuditLog()">View Audit Log</button>
+      <button class="btn-sm" style="background:#FEE2E2;color:#B03020;border:1.5px solid #FECACA;border-radius:9px;font-size:13.5px;font-weight:700;padding:9px 16px;cursor:pointer" onclick="deactivateAgent()">Deactivate</button>
+    </div>
+  </div>
+</div>
+<div id="panelOverlay" style="position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:899;display:none" onclick="closeConfig()"></div>
+
+<script>
+const AGENTS = [
+  {id:1, name:'Invoice Processing Agent', dept:'Finance', env:'Production', status:'active', score:94, lastRun:'Today 14:22', sponsor:'Maja Lindqvist', tools:['invoice_reader','po_matcher','payment_processor','audit_logger'], threshold:500, escalation:'finance-lead@company.no', logging:true, drift:true, hil:false, retry:2},
+  {id:2, name:'Payroll Verification Agent', dept:'Finance', env:'Production', status:'active', score:91, lastRun:'Today 09:15', sponsor:'Tor Andersen', tools:['crm_reader','audit_logger'], threshold:250, escalation:'payroll@company.no', logging:true, drift:true, hil:true, retry:3},
+  {id:3, name:'CV Screening Agent', dept:'HR', env:'Production', status:'warning', score:67, lastRun:'Yesterday', sponsor:'Silje Karlsen', tools:['document_reader','crm_reader'], threshold:0, escalation:'hr-lead@company.no', logging:false, drift:false, hil:false, retry:2},
+  {id:4, name:'Contract Review Agent', dept:'Legal', env:'Staging', status:'pending', score:82, lastRun:'2 days ago', sponsor:'Lars Berg', tools:['document_reader','audit_logger'], threshold:0, escalation:'legal@company.no', logging:true, drift:false, hil:true, retry:2},
+  {id:5, name:'Customer Intake Agent', dept:'Customer Service', env:'Production', status:'active', score:88, lastRun:'Today 16:40', sponsor:'Ingrid H.', tools:['crm_reader','email_sender','escalation_router'], threshold:200, escalation:'cs-lead@company.no', logging:true, drift:true, hil:false, retry:2},
+  {id:6, name:'Returns Processing Agent', dept:'Customer Service', env:'Production', status:'active', score:90, lastRun:'Today 11:05', sponsor:'Ingrid H.', tools:['returns_processor','crm_reader','audit_logger'], threshold:150, escalation:'cs-lead@company.no', logging:true, drift:true, hil:false, retry:2},
+  {id:7, name:'Onboarding Document Agent', dept:'HR', env:'Staging', status:'pending', score:77, lastRun:'3 days ago', sponsor:'Silje Karlsen', tools:['document_reader','email_sender'], threshold:0, escalation:'hr-lead@company.no', logging:true, drift:false, hil:true, retry:1},
+  {id:8, name:'Purchase Order Matcher', dept:'Finance', env:'Production', status:'active', score:96, lastRun:'Today 13:50', sponsor:'Maja Lindqvist', tools:['po_matcher','audit_logger'], threshold:1000, escalation:'finance-lead@company.no', logging:true, drift:true, hil:false, retry:2},
+];
+
+let currentFilter = 'all';
+let currentAgent = null;
+
+function statusPill(s){
+  if(s==='active') return '<span class="status-pill sp-active">● Active</span>';
+  if(s==='pending') return '<span class="status-pill sp-pending">◐ Pending</span>';
+  if(s==='inactive') return '<span class="status-pill sp-inactive">○ Inactive</span>';
+  if(s==='warning') return '<span class="status-pill sp-warning">⚠ Attention</span>';
+  return '';
+}
+function scoreBadge(n){
+  const cls = n>=85?'score-high':n>=70?'score-mid':'score-low';
+  return `<span class="score-badge ${cls}">${n}</span>`;
+}
+function initials(name){return name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();}
+
+function renderAgents(agents){
+  const list = document.getElementById('agentList');
+  if(!agents.length){list.innerHTML='<div style="padding:40px;text-align:center;color:var(--ink-mute);font-size:14px">No agents match this filter.</div>';return;}
+  list.innerHTML = agents.map(a=>`
+    <div class="at-row" onclick="openConfig(${a.id})">
+      <div class="at-cell">
+        <div class="agent-name-cell">
+          <div class="agent-icon">${initials(a.name)}</div>
+          <div><div class="agent-title">${a.name}</div><div class="agent-env">${a.env}</div></div>
+        </div>
+      </div>
+      <div class="at-cell" style="color:var(--ink-soft);font-size:13px">${a.dept}</div>
+      <div class="at-cell">${statusPill(a.status)}</div>
+      <div class="at-cell">${scoreBadge(a.score)}</div>
+      <div class="at-cell" style="font-family:var(--font-mono);font-size:11.5px;color:var(--ink-mute)">${a.lastRun}</div>
+      <div class="at-cell">
+        <button class="action-dots" onclick="event.stopPropagation();openConfig(${a.id})" title="Configure">⚙</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function getFiltered(){
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  return AGENTS.filter(a=>{
+    const matchQ = !q || a.name.toLowerCase().includes(q) || a.dept.toLowerCase().includes(q);
+    const matchF = currentFilter==='all' || a.status===currentFilter ||
+      (currentFilter==='finance'&&a.dept==='Finance') ||
+      (currentFilter==='hr'&&a.dept==='HR') ||
+      (currentFilter==='legal'&&a.dept==='Legal') ||
+      (currentFilter==='cs'&&a.dept==='Customer Service');
+    return matchQ && matchF;
+  });
+}
+
+function filterAgents(){renderAgents(getFiltered());}
+function setFilter(f){
+  currentFilter=f;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('sel'));
+  const btn=document.getElementById('f-'+f);
+  if(btn) btn.classList.add('sel');
+  filterAgents();
+}
+function showView(v){
+  currentFilter=v;
+  document.querySelectorAll('.sb-link').forEach(l=>l.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  filterAgents();
+}
+
+// Modal
+function openRegisterModal(){document.getElementById('registerModal').classList.add('open');}
+function closeModal(){document.getElementById('registerModal').classList.remove('open');}
+function toggleTool(el){el.classList.toggle('sel');}
+function registerAgent(){
+  const name=document.getElementById('reg-name').value.trim();
+  const dept=document.getElementById('reg-dept').value;
+  if(!name||!dept){alert('Please enter a name and department.');return;}
+  const tools=[...document.querySelectorAll('#toolChips .tool-chip.sel')].map(t=>t.textContent);
+  const newAgent={id:AGENTS.length+1,name,dept,env:document.getElementById('reg-env').value,
+    status:'pending',score:0,lastRun:'Not yet run',sponsor:document.getElementById('reg-sponsor').value,
+    tools,threshold:parseInt(document.getElementById('reg-threshold').value)||500,
+    escalation:'',logging:true,drift:true,hil:false,retry:2};
+  AGENTS.push(newAgent);
+  document.getElementById('cnt-all').textContent=AGENTS.length;
+  document.getElementById('cnt-pending').textContent=AGENTS.filter(a=>a.status==='pending').length;
+  closeModal();
+  filterAgents();
+  // reset form
+  document.getElementById('reg-name').value='';
+  document.getElementById('reg-dept').value='';
+  document.querySelectorAll('#toolChips .tool-chip').forEach(t=>t.classList.remove('sel'));
+}
+
+// Config panel
+function openConfig(id){
+  const a=AGENTS.find(x=>x.id===id);
+  if(!a) return;
+  currentAgent=a;
+  document.getElementById('cpAgentName').textContent=a.name;
+  document.getElementById('cp-name').value=a.name;
+  document.getElementById('cp-threshold').value=a.threshold;
+  document.getElementById('cp-escalation').value=a.escalation;
+  document.getElementById('cp-logging').checked=a.logging;
+  document.getElementById('cp-drift').checked=a.drift;
+  document.getElementById('cp-hil').checked=a.hil;
+  document.getElementById('cp-retry').value=a.retry;
+  document.getElementById('cp-sponsor').value=a.sponsor;
+  // set tools
+  document.querySelectorAll('#cpToolChips .tool-chip').forEach(t=>{
+    t.classList.toggle('sel',a.tools.includes(t.textContent.trim()));
+  });
+  document.getElementById('configPanel').classList.add('open');
+  document.getElementById('panelOverlay').style.display='block';
+}
+function closeConfig(){
+  document.getElementById('configPanel').classList.remove('open');
+  document.getElementById('panelOverlay').style.display='none';
+}
+function saveConfig(){
+  if(!currentAgent) return;
+  currentAgent.name=document.getElementById('cp-name').value;
+  currentAgent.threshold=parseInt(document.getElementById('cp-threshold').value)||0;
+  currentAgent.escalation=document.getElementById('cp-escalation').value;
+  currentAgent.logging=document.getElementById('cp-logging').checked;
+  currentAgent.drift=document.getElementById('cp-drift').checked;
+  currentAgent.hil=document.getElementById('cp-hil').checked;
+  currentAgent.retry=parseInt(document.getElementById('cp-retry').value)||2;
+  currentAgent.sponsor=document.getElementById('cp-sponsor').value;
+  currentAgent.tools=[...document.querySelectorAll('#cpToolChips .tool-chip.sel')].map(t=>t.textContent.trim());
+  filterAgents();
+  closeConfig();
+  // brief success flash
+  const toast=document.createElement('div');
+  toast.textContent='Agent configuration saved.';
+  Object.assign(toast.style,{position:'fixed',bottom:'28px',right:'28px',background:'#0F1E34',color:'#fff',padding:'12px 20px',borderRadius:'10px',fontFamily:'var(--font-mono)',fontSize:'13px',zIndex:9999,boxShadow:'0 8px 24px rgba(0,0,0,.2)',transition:'opacity .4s'});
+  document.body.appendChild(toast);
+  setTimeout(()=>{toast.style.opacity='0';setTimeout(()=>toast.remove(),400);},2200);
+}
+function deactivateAgent(){
+  if(!currentAgent) return;
+  if(!confirm(`Deactivate "${currentAgent.name}"?`)) return;
+  currentAgent.status='inactive';
+  filterAgents();
+  closeConfig();
+}
+function viewAuditLog(){alert('Audit log for '+currentAgent?.name+'\n\nThis would open the full audit log for this agent — all tool calls, approval gates, and governance events.');}
+function exportRegistry(){alert('Exporting agent registry as CSV…');}
+
+renderAgents(AGENTS);
+
+// ── Tweaks ──
+function toggleTweaks(){
+  const btn=document.getElementById('tweaksBtn');
+  const panel=document.getElementById('tweaksPanel');
+  const open=panel.classList.toggle('open');
+  btn.classList.toggle('open',open);
+  if(open){
+    const close=e=>{if(!btn.contains(e.target)&&!panel.contains(e.target)){panel.classList.remove('open');btn.classList.remove('open');document.removeEventListener('click',close);}}
+    setTimeout(()=>document.addEventListener('click',close),0);
+  }
+}
+
+function setDensity(val,el){
+  el.closest('.tweak-seg').querySelectorAll('.ts-opt').forEach(b=>b.classList.remove('sel'));
+  el.classList.add('sel');
+  const rows=document.querySelectorAll('.at-row');
+  const pad={compact:'10px 16px',comfortable:'14px 16px',spacious:'20px 16px'}[val];
+  rows.forEach(r=>r.querySelectorAll('td').forEach(td=>{td.style.padding=pad;}));
+}
+
+function setSort(val,el){
+  el.closest('.tweak-seg').querySelectorAll('.ts-opt').forEach(b=>b.classList.remove('sel'));
+  el.classList.add('sel');
+  const sorted=[...AGENTS].sort((a,b)=>{
+    if(val==='name') return a.name.localeCompare(b.name);
+    if(val==='score') return (b.govScore||0)-(a.govScore||0);
+    if(val==='date') return new Date(b.lastRun||0)-new Date(a.lastRun||0);
+    return 0;
+  });
+  renderAgents(sorted);
+}
+
+let govThreshold=70;
+function setThreshold(input){
+  govThreshold=parseInt(input.value);
+  document.getElementById('threshValLabel').textContent=govThreshold;
+  const pct=((govThreshold-50)/40*100).toFixed(0)+'%';
+  input.style.setProperty('--pct',pct);
+  // re-colour gov score badges
+  document.querySelectorAll('.gov-score-cell').forEach(cell=>{
+    const score=parseInt(cell.dataset.score||100);
+    cell.style.color=score<govThreshold?'#B03020':score<govThreshold+10?'#C4760A':'#0F6E3A';
+  });
+}
+
+function toggleStats(btn){
+  btn.classList.toggle('on');
+  const row=document.querySelector('.stat-row');
+  row.style.display=btn.classList.contains('on')?'':'none';
+}
+
+function toggleInactive(btn){
+  btn.classList.toggle('on');
+  const showInactive=btn.classList.contains('on');
+  document.querySelectorAll('.at-row[data-status="inactive"]').forEach(r=>r.style.display=showInactive?'':'none');
+}
+</script>
+</body>
+</html>

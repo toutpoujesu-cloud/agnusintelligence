@@ -1,0 +1,28 @@
+{
+  "underlying_articles": [
+    "AR-000310 (provisional; produced in today's Research pass, status 'review', not yet inserted into the live AGNUS registry)"
+  ],
+  "learning_objectives": [
+    "Given a list of AI uses in an investment firm, classify which uses fall within the article's stated retail-investment-services scope and cite the relevant section of AR-000310.",
+    "Identify the three MiFID II duty areas highlighted in AR-000310—organisational requirements, conduct of business, and acting in the client's best interests—without treating ESMA's statement as a new standalone AI rule.",
+    "From a short AI deployment scenario, identify at least four risks named in AR-000310, choosing from algorithmic bias, data quality, opacity, overreliance, privacy, and security concerns.",
+    "Build an evidence checklist that maps an AI-supported investment-service step to an accountable owner, data/output validation, human escalation, and retained compliance evidence, marking each item as FACT-derived or ANALYSIS-derived from AR-000310.",
+    "Evaluate a vendor-assurance scenario and explain, using AR-000310's Common mistakes section, why a vendor statement does not replace the investment firm's own compliance evidence.",
+    "Distinguish factual regulatory statements from AGNUS analysis by correctly labeling five statements drawn from AR-000310 and tracing each FACT statement to its cited source locator.",
+    "Produce a one-page control-gap assessment for a hypothetical AI-supported suitability workflow and state which conclusions cannot be reached from AR-000310 alone."
+  ],
+  "structural_reference_only": [
+    {
+      "source": "European Securities and Markets Authority — Events and webinar materials",
+      "url": "https://www.esma.europa.eu/press-news/hearings",
+      "note": "structure/pacing reference, not factual source"
+    }
+  ],
+  "sourcing_gaps": [
+    "The hard dependency is only provisionally satisfied: AR-000310 was generated in today's Research pass and remains in editorial-review status. Do not publish or activate this Academy module until editorial confirms that AR-000310 is accepted and inserted without an ID collision.",
+    "The supplied live-ID registry lists existing article IDs but not their titles, topics, or bodies, so this run could not verify whether an earlier live article already covers this exact subject.",
+    "Learning objectives are grounded only in /research/european-union/article.json and body-content.md for provisional AR-000310; no external page is used as a factual authority.",
+    "The ESMA events page was checked on 2026-08-15 only for a regulator-hosted teaching-format reference (recorded webinars, slides, and staged sessions), not for legal or governance claims.",
+    "No assessment rubric, learner level, module duration, accessibility requirements, or delivery format was supplied; editorial/instructional design must define these before course production."
+  ]
+}

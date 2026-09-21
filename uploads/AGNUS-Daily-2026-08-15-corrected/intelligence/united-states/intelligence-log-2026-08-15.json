@@ -1,0 +1,73 @@
+{
+  "run_date": "2026-08-15",
+  "source_checks": [
+    {
+      "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+      "date_checked": "2026-08-15",
+      "status": "manual_review",
+      "last_successful_check": "2026-08-15",
+      "observed_version_or_date": "AI RMF page retrieved; notes AI RMF 1.0 revision and 2026-04-07 critical-infrastructure profile concept note; baseline established",
+      "open_questions": []
+    },
+    {
+      "source_url": "https://www.whitehouse.gov/ostp/",
+      "date_checked": "2026-08-15",
+      "status": "manual_review",
+      "last_successful_check": "2026-08-15",
+      "observed_version_or_date": "OSTP page retrieved; baseline established",
+      "open_questions": []
+    },
+    {
+      "source_url": "https://www.ftc.gov/business-guidance/resources/artificial-intelligence",
+      "date_checked": "2026-08-15",
+      "status": "unreachable",
+      "last_successful_check": "",
+      "observed_version_or_date": "Registry URL could not be opened by the retrieval service",
+      "open_questions": [
+        "Official FTC AI-tagged business guidance was discoverable; exact registry URL needs manual review"
+      ]
+    },
+    {
+      "source_url": "https://www.congress.gov",
+      "date_checked": "2026-08-15",
+      "status": "unreachable",
+      "last_successful_check": "",
+      "observed_version_or_date": "Registry URL blocked by robots/restricted retrieval",
+      "open_questions": [
+        "Manual or alternative official API check required"
+      ]
+    },
+    {
+      "source_url": "https://leginfo.legislature.ca.gov",
+      "date_checked": "2026-08-15",
+      "status": "manual_review",
+      "last_successful_check": "2026-08-15",
+      "observed_version_or_date": "Official legislature homepage retrieved; baseline established",
+      "open_questions": []
+    },
+    {
+      "source_url": "https://leg.colorado.gov",
+      "date_checked": "2026-08-15",
+      "status": "unreachable",
+      "last_successful_check": "",
+      "observed_version_or_date": "Registry homepage returned HTTP 403",
+      "open_questions": [
+        "Official Colorado AI bill pages were discoverable; exact registry URL remains inaccessible"
+      ]
+    },
+    {
+      "source_url": "https://www.nysenate.gov/legislation",
+      "date_checked": "2026-08-15",
+      "status": "manual_review",
+      "last_successful_check": "2026-08-15",
+      "observed_version_or_date": "Bills & Laws page retrieved; baseline established",
+      "open_questions": []
+    }
+  ],
+  "findings": [],
+  "editorial_alerts": [
+    "FTC: Registry URL could not be opened by the retrieval service",
+    "Congress.gov: Registry URL blocked by robots/restricted retrieval",
+    "Colorado General Assembly: Registry homepage returned HTTP 403"
+  ]
+}

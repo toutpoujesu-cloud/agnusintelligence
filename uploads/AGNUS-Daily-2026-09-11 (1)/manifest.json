@@ -1,0 +1,121 @@
+{
+  "run_date": "2026-09-11",
+  "sections": {
+    "intelligence": {
+      "status": "ran",
+      "workflows_ran": [
+        "due-source cadence evaluation",
+        "primary-source retrieval",
+        "baseline comparison",
+        "materiality triage"
+      ],
+      "jurisdictions": [
+        "european-union",
+        "norway",
+        "united-states",
+        "china",
+        "canada"
+      ],
+      "sources_due": 9,
+      "sources_checked": 9,
+      "successful_checks": 8,
+      "changed_sources": 1,
+      "no_change_sources": 7,
+      "unreachable_sources": 1,
+      "findings": 1,
+      "high_materiality_findings": 0,
+      "generated_files": [
+        "intelligence/european-union/intelligence-log-2026-09-11.json",
+        "intelligence/norway/intelligence-log-2026-09-11.json",
+        "intelligence/united-states/intelligence-log-2026-09-11.json",
+        "intelligence/china/intelligence-log-2026-09-11.json",
+        "intelligence/canada/intelligence-log-2026-09-11.json"
+      ]
+    },
+    "research": {
+      "status": "ran",
+      "workflows_ran": [
+        "raw Intelligence-to-Research handoff"
+      ],
+      "jurisdictions": [
+        "united-states"
+      ],
+      "generated_files": [
+        "research/united-states/research-handoff-2026-09-11-california-sb574-governor.json"
+      ],
+      "reason": "One Medium-materiality finding created a raw Research follow-up; no Research article was drafted."
+    },
+    "reviews": {
+      "status": "skipped",
+      "reason": "Reviews workflow was not part of this Intelligence monitoring run."
+    },
+    "agents": {
+      "status": "skipped",
+      "reason": "Agents workflow was not part of this Intelligence monitoring run."
+    },
+    "business": {
+      "status": "skipped",
+      "reason": "Business workflow was not part of this Intelligence monitoring run."
+    },
+    "academy": {
+      "status": "skipped",
+      "reason": "Academy workflow was not part of this Intelligence monitoring run."
+    },
+    "marketplace": {
+      "status": "skipped",
+      "reason": "Marketplace workflow was not part of this Intelligence monitoring run."
+    }
+  },
+  "generated_files": [
+    "intelligence/european-union/intelligence-log-2026-09-11.json",
+    "intelligence/norway/intelligence-log-2026-09-11.json",
+    "intelligence/united-states/intelligence-log-2026-09-11.json",
+    "intelligence/china/intelligence-log-2026-09-11.json",
+    "intelligence/canada/intelligence-log-2026-09-11.json",
+    "research/united-states/research-handoff-2026-09-11-california-sb574-governor.json",
+    "manifest.json"
+  ],
+  "empty_sections": [
+    "reviews",
+    "agents",
+    "business",
+    "academy",
+    "marketplace"
+  ],
+  "skipped_sections": [
+    "reviews",
+    "agents",
+    "business",
+    "academy",
+    "marketplace"
+  ],
+  "source_counts": {
+    "due": 9,
+    "checked": 9,
+    "successful": 8,
+    "unreachable": 1,
+    "changed": 1,
+    "no_change": 7
+  },
+  "finding_counts": {
+    "total": 1,
+    "high": 0,
+    "medium": 1,
+    "low": 0
+  },
+  "high_materiality_alerts": [],
+  "errors": [
+    {
+      "jurisdiction": "united-states",
+      "organization": "Congress.gov",
+      "url": "https://www.congress.gov",
+      "error": "Congress.gov returned only a stale cached page (approximately six months old); current publication state could not be verified.",
+      "baseline_action": "Preserved prior successful state and appended the access error."
+    }
+  ],
+  "editorial_notes": [
+    "SRC-0049 reuse and IR-PROVISIONAL-20260911-001 remain provisional pending editorial confirmation.",
+    "SB 574 is enrolled and before the Governor, not enacted law."
+  ],
+  "state_file_outside_archive": "AGNUS-Intelligence-State.json"
+}

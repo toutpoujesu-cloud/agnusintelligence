@@ -1,0 +1,119 @@
+{
+  "run_date": "2026-09-12",
+  "sections": {
+    "intelligence": {
+      "status": "ran",
+      "workflows_ran": [
+        "due-source cadence evaluation",
+        "primary-source retrieval",
+        "baseline comparison",
+        "materiality triage"
+      ],
+      "jurisdictions": [
+        "european-union",
+        "norway",
+        "united-states",
+        "china",
+        "canada"
+      ],
+      "sources_due": 9,
+      "sources_checked": 9,
+      "successful_checks": 7,
+      "changed_sources": 0,
+      "no_change_sources": 7,
+      "unreachable_sources": 2,
+      "findings": 0,
+      "high_materiality_findings": 0,
+      "generated_files": [
+        "intelligence/european-union/intelligence-log-2026-09-12.json",
+        "intelligence/norway/intelligence-log-2026-09-12.json",
+        "intelligence/united-states/intelligence-log-2026-09-12.json",
+        "intelligence/china/intelligence-log-2026-09-12.json",
+        "intelligence/canada/intelligence-log-2026-09-12.json"
+      ]
+    },
+    "research": {
+      "status": "skipped",
+      "reason": "No material finding created a Research follow-up."
+    },
+    "reviews": {
+      "status": "skipped",
+      "reason": "Reviews workflow was not part of this Intelligence monitoring run."
+    },
+    "agents": {
+      "status": "skipped",
+      "reason": "Agents workflow was not part of this Intelligence monitoring run."
+    },
+    "business": {
+      "status": "skipped",
+      "reason": "Business workflow was not part of this Intelligence monitoring run."
+    },
+    "academy": {
+      "status": "skipped",
+      "reason": "Academy workflow was not part of this Intelligence monitoring run."
+    },
+    "marketplace": {
+      "status": "skipped",
+      "reason": "Marketplace workflow was not part of this Intelligence monitoring run."
+    }
+  },
+  "generated_files": [
+    "intelligence/european-union/intelligence-log-2026-09-12.json",
+    "intelligence/norway/intelligence-log-2026-09-12.json",
+    "intelligence/united-states/intelligence-log-2026-09-12.json",
+    "intelligence/china/intelligence-log-2026-09-12.json",
+    "intelligence/canada/intelligence-log-2026-09-12.json",
+    "manifest.json"
+  ],
+  "empty_sections": [
+    "research",
+    "reviews",
+    "agents",
+    "business",
+    "academy",
+    "marketplace"
+  ],
+  "skipped_sections": [
+    "research",
+    "reviews",
+    "agents",
+    "business",
+    "academy",
+    "marketplace"
+  ],
+  "source_counts": {
+    "due": 9,
+    "checked": 9,
+    "successful": 7,
+    "unreachable": 2,
+    "changed": 0,
+    "no_change": 7
+  },
+  "finding_counts": {
+    "total": 0,
+    "high": 0,
+    "medium": 0,
+    "low": 0
+  },
+  "high_materiality_alerts": [],
+  "errors": [
+    {
+      "jurisdiction": "european-union",
+      "organization": "EUR-Lex",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX%3A02024R1689-20260727",
+      "error": "EUR-Lex required a JavaScript anti-bot verification page; current consolidated text could not be verified.",
+      "baseline_action": "Preserved prior successful state and appended the access error."
+    },
+    {
+      "jurisdiction": "united-states",
+      "organization": "Congress.gov",
+      "url": "https://www.congress.gov",
+      "error": "Congress.gov returned a restricted retrieval error; current publication state could not be verified.",
+      "baseline_action": "Preserved prior successful state and appended the access error."
+    }
+  ],
+  "editorial_notes": [
+    "The new CAC digital-village plan was reviewed as an official primary-source publication but did not establish a material AI-regulatory change from the accessible summary."
+  ],
+  "state_file_outside_archive": "AGNUS-Intelligence-State.json"
+}

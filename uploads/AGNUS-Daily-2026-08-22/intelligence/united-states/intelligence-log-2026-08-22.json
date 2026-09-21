@@ -1,0 +1,80 @@
+{
+  "run_date": "2026-08-22",
+  "source_checks": [
+    {
+      "source_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+      "date_checked": "2026-08-22",
+      "status": "no_change",
+      "last_successful_check": "2026-08-22",
+      "observed_version_or_date": "AI RMF page retrieved; no new monitored framework publication since 2026-08-15.",
+      "open_questions": []
+    },
+    {
+      "source_url": "https://www.whitehouse.gov/ostp/",
+      "date_checked": "2026-08-22",
+      "status": "no_change",
+      "last_successful_check": "2026-08-22",
+      "observed_version_or_date": "OSTP page retrieved; no new monitored federal AI policy publication since 2026-08-15.",
+      "open_questions": []
+    },
+    {
+      "source_url": "https://www.ftc.gov/business-guidance/resources/artificial-intelligence",
+      "date_checked": "2026-08-22",
+      "status": "unreachable",
+      "last_successful_check": "",
+      "observed_version_or_date": "Exact registry URL could not be opened by the retrieval service.",
+      "open_questions": [
+        "The official FTC AI topic page is accessible, but the registry URL needs editorial replacement review."
+      ]
+    },
+    {
+      "source_url": "https://www.congress.gov",
+      "date_checked": "2026-08-22",
+      "status": "unreachable",
+      "last_successful_check": "",
+      "observed_version_or_date": "Current Congress.gov retrieval remained unavailable.",
+      "open_questions": [
+        "Use the official Congress.gov API or manual review to restore a successful baseline."
+      ]
+    },
+    {
+      "source_url": "https://leginfo.legislature.ca.gov",
+      "date_checked": "2026-08-22",
+      "status": "no_change",
+      "last_successful_check": "2026-08-22",
+      "observed_version_or_date": "California legislative index retrieved; no post-2026-08-21 monitored AI-bill action found.",
+      "open_questions": []
+    },
+    {
+      "source_url": "https://leg.colorado.gov",
+      "date_checked": "2026-08-22",
+      "status": "no_change",
+      "last_successful_check": "2026-08-22",
+      "observed_version_or_date": "Colorado General Assembly site retrieved; the 2026 session remains adjourned since 2026-05-13.",
+      "open_questions": []
+    },
+    {
+      "source_url": "https://www.nysenate.gov/legislation",
+      "date_checked": "2026-08-22",
+      "status": "no_change",
+      "last_successful_check": "2026-08-22",
+      "observed_version_or_date": "New York legislation index retrieved; no post-baseline monitored AI-bill action found.",
+      "open_questions": []
+    }
+  ],
+  "findings": [],
+  "editorial_alerts": [
+    {
+      "type": "source_unreachable",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/artificial-intelligence",
+      "message": "Exact registry URL could not be opened by the retrieval service.",
+      "baseline_action": "Prior successful baseline preserved; no fingerprint or last-successful value overwritten."
+    },
+    {
+      "type": "source_unreachable",
+      "source_url": "https://www.congress.gov",
+      "message": "Current Congress.gov retrieval remained unavailable.",
+      "baseline_action": "Prior successful baseline preserved; no fingerprint or last-successful value overwritten."
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "run_date": "2026-08-15",
+  "source_checks": [
+    {
+      "source_url": "https://ised-isde.canada.ca",
+      "date_checked": "2026-08-15",
+      "status": "unreachable",
+      "last_successful_check": "",
+      "observed_version_or_date": "Registry homepage timed out",
+      "open_questions": [
+        "Official ISED AI and AIDA pages were discoverable; exact registry URL needs manual review"
+      ]
+    }
+  ],
+  "findings": [],
+  "editorial_alerts": [
+    "Innovation, Science and Economic Development Canada: Registry homepage timed out"
+  ]
+}

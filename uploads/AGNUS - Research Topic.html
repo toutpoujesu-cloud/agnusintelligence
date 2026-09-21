@@ -1,0 +1,479 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>EU AI Act — AGNUS Research</title>
+<meta name="description" content="Research and regulatory intelligence covering the EU AI Act — requirements, implementation, obligations, deadlines and practical implications." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>a,a:visited{color:inherit}
+.sec-head{display:grid;grid-template-columns:1fr auto;gap:26px;align-items:end;margin-bottom:clamp(26px,3vw,42px)}
+.sec-head .copy .h-section{margin-top:14px}
+.sec-head .sec-cta{justify-self:end}
+.rs-crumb{display:flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute)}
+.rs-crumb a:hover{color:var(--gold-deep)}
+.rs-crumb .sep{color:var(--line-strong)}
+@media (max-width:820px){.sec-head{grid-template-columns:1fr}.sec-head .sec-cta{justify-self:start}}
+
+/* at-a-glance panel */
+.glance{border:1px solid var(--line);border-radius:16px;background:var(--paper);overflow:hidden;margin-top:30px}
+.glance-rows{display:grid;grid-template-columns:1fr 1fr}
+.glance-row{display:grid;grid-template-columns:150px 1fr;gap:14px;padding:14px 24px;border-bottom:1px solid var(--line-soft);align-items:baseline}
+.glance-row:nth-child(odd){border-right:1px solid var(--line-soft)}
+.glance-row:last-child,.glance-row:nth-last-child(2){border-bottom:none}
+.glance-row dt{font-family:var(--font-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-mute)}
+.glance-row dd{margin:0;font-size:13.5px;color:var(--ink)}
+@media (max-width:760px){.glance-rows{grid-template-columns:1fr}.glance-row:nth-child(odd){border-right:none}.glance-row:last-child,.glance-row:nth-last-child(2){border-bottom:1px solid var(--line-soft)}.glance-row:last-child{border-bottom:none}}
+
+/* explore directory — grouped, mobile-safe */
+.explore-groups{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.explore-group{background:var(--paper);padding:22px 24px}
+.explore-group h4{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);margin:0 0 14px}
+.explore-list{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.explore-list a{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 0;font-size:14px;color:var(--ink-soft);border-bottom:1px solid var(--line-soft)}
+.explore-list li:last-child a{border-bottom:none}
+.explore-list a:hover{color:var(--gold-deep)}
+.explore-list .ex-badge{font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);white-space:nowrap}
+@media (max-width:760px){.explore-groups{grid-template-columns:1fr}}
+
+/* actor grid */
+.actor-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.actor-cell{background:var(--paper);padding:22px 18px;display:grid;gap:8px;align-content:start}
+.actor-cell h4{font-family:var(--font-sans);font-weight:700;font-size:15px;letter-spacing:-.02em;margin:0}
+.actor-cell p{font-size:12.5px;line-height:1.5;color:var(--ink-soft);margin:0}
+@media (max-width:980px){.actor-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.actor-grid{grid-template-columns:1fr}}
+
+/* risk framework nav strip */
+.risk-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.risk-card{border:1px solid var(--line);border-radius:12px;background:var(--paper);padding:18px 16px;display:grid;gap:8px;align-content:start;transition:.18s}
+.risk-card:hover{background:#fff;border-color:var(--line-strong);transform:translateY(-2px)}
+.risk-card h4{font-family:var(--font-sans);font-weight:600;font-size:13.5px;line-height:1.3;letter-spacing:-.015em;margin:0}
+.risk-card .rk-m{font-family:var(--font-mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint)}
+@media (max-width:980px){.risk-strip{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.risk-strip{grid-template-columns:1fr}}
+
+/* implementation area cards */
+.impl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.impl-card{border:1px solid var(--line);border-radius:12px;background:var(--paper);padding:20px;display:grid;gap:8px;align-content:start;transition:.18s}
+.impl-card:hover{background:#fff;border-color:var(--line-strong);transform:translateY(-2px)}
+.impl-card h4{font-family:var(--font-sans);font-weight:600;font-size:14.5px;letter-spacing:-.018em;margin:0}
+.impl-card .ik-m{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint)}
+@media (max-width:900px){.impl-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.impl-grid{grid-template-columns:1fr}}
+
+/* regulatory structure */
+.regstruct{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.regstruct .rs-cell{background:var(--paper);padding:22px 22px}
+.regstruct .rs-cell h4{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute);margin:0 0 10px}
+.regstruct .rs-cell p{font-size:13px;line-height:1.55;color:var(--ink-soft);margin:0}
+@media (max-width:900px){.regstruct{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.regstruct{grid-template-columns:1fr}}
+
+/* country implementation strip */
+.ctry-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.ctry-tile{border:1px solid var(--line);border-radius:12px;background:var(--paper);padding:16px 18px;display:flex;align-items:center;justify-content:space-between;gap:10px;transition:.18s}
+.ctry-tile:hover{background:#fff;border-color:var(--line-strong)}
+.ctry-tile h4{font-family:var(--font-sans);font-weight:600;font-size:14px;letter-spacing:-.015em;margin:0}
+.ctry-tile .ct-badge{font-family:var(--font-mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint)}
+@media (max-width:900px){.ctry-strip{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.ctry-strip{grid-template-columns:1fr}}
+
+/* standards strip */
+.std-strip{display:flex;flex-wrap:wrap;gap:10px}
+.std-chip{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;color:var(--ink-soft);border:1px solid var(--line);border-radius:999px;padding:8px 15px;background:var(--paper)}
+
+/* related pillars */
+.related-pillars{display:flex;flex-wrap:wrap;gap:10px}
+.related-pillars a{font-size:13.5px;color:var(--ink-soft);border:1px solid var(--line);border-radius:999px;padding:8px 15px;background:var(--paper);transition:.18s}
+.related-pillars a:hover{border-color:var(--char);color:var(--ink)}
+
+/* trust links */
+.trust-links{display:flex;flex-wrap:wrap;gap:22px;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute)}
+.trust-links a{color:var(--ink-mute)}
+.trust-links a:hover{color:var(--gold-deep)}
+
+.empty-state{font-size:13px;color:var(--ink-faint);font-style:italic}
+
+.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
+.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
+.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s}
+.rsub a:hover{color:var(--ink);background:var(--line-soft,rgba(0,0,0,.04))}
+.rsub a.on{color:var(--gold-deep);font-weight:600}
+.rsub .rsub-sep{width:1px;height:16px;background:var(--line-strong);margin:0 6px;flex:none}
+</style>
+</head>
+<body><nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Marketplace.html">Marketplace</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+      <a href="AGNUS - Business.html">Business</a>
+      </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+      <button class="hamburger" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="m-drawer">
+    <a href="AGNUS - Explore.html">Explore</a><a href="AGNUS - Intelligence.html">Intelligence</a><a href="AGNUS - Research.html" class="active">Research</a><a href="AGNUS - Review.html">Reviews</a><a href="AGNUS - Academy.html">Academy</a><a href="AGNUS - Business.html">Business</a>
+  </div>
+</nav>
+<div class="rsub"><div class="rsub-inner">
+<a href="AGNUS - Research.html">Research Home</a>
+<a href="AGNUS - Research.html#taxonomy" class="on">Topics</a>
+<a href="AGNUS - Research Topic.html">EU AI Act</a>
+<a href="AGNUS - Research Country.html">Countries</a>
+<a href="AGNUS - Research Sources.html">Sources</a>
+<a href="AGNUS - Research Calendar.html">Calendar</a>
+<a href="AGNUS - Research Methodology.html">Methodology</a>
+<a href="AGNUS - Research Author.html">Authors</a>
+</div></div>
+
+
+<div class="container" style="padding-top:26px">
+  <nav class="rs-crumb" aria-label="Breadcrumb"><a href="AGNUS - Research.html" class="active">Research</a><span class="sep">/</span><span>EU AI Act</span></nav>
+</div>
+
+<!-- 2. HERO -->
+<header class="topic-head">
+  <div class="container">
+    <div class="kicker"><span class="ix">◆</span> Research Pillar 02</div>
+    <h1 id="pName">EU AI Act</h1>
+    <p class="th-sub" id="pIntro"></p>
+    <div class="topic-stats" id="pStats"></div>
+  </div>
+</header>
+
+<!-- 3. AT A GLANCE -->
+<section>
+  <div class="container">
+    <div class="sec-head"><div class="copy"><div class="kicker"><span class="ix">03</span> At a Glance</div>
+      <h2 class="h-section">EU AI Act at a glance.</h2></div></div>
+    <div class="glance"><dl class="glance-rows" id="pGlance"></dl></div>
+  </div>
+</section>
+
+<!-- 4. EXPLORE -->
+<section class="warm">
+  <div class="container">
+    <div class="sec-head"><div class="copy"><div class="kicker"><span class="ix">04</span> Explore</div>
+      <h2 class="h-section">Explore the EU AI Act.</h2></div></div>
+    <div class="explore-groups" id="pExplore"></div>
+  </div>
+</section>
+
+<!-- 5. CORNERSTONE -->
+<section>
+  <div class="container">
+    <div class="sec-head"><div class="copy"><div class="kicker"><span class="ix">05</span> Cornerstone</div>
+      <h2 class="h-section">Cornerstone Research.</h2></div></div>
+    <div class="corner-grid" id="pCorner"></div>
+  </div>
+</section>
+
+<!-- 6. LATEST -->
+<section class="warm">
+  <div class="container">
+    <div class="sec-head"><div class="copy"><div class="kicker"><span class="ix">06</span> Latest</div>
+      <h2 class="h-section">Latest EU AI Act research.</h2></div></div>
+    <div class="latest-list" id="pLatest"></div>
+  </div>
+</section>
+
+<!-- 7. REGULATORY STRUCTURE -->
+<section>
+  <div class="container">
+    <div class="sec-head"><div class="copy"><div class="kicker"><span class="ix">07</span> Structure</div>
+      <h2 class="h-section">Regulatory Structure.</h2></div></div>
+    <div class="regstruct">
+      <div class="rs-cell"><h4>Regulation</h4><p>Regulation (EU) 2024/1689 — the single legal instrument this pillar is built around.</p></div>
+      <div class="rs-cell"><h4>Chapters &amp; Articles</h4><p>Organized by obligation, not by chapter number — each article maps to who it affects and what it requires.</p></div>
+      <div class="rs-cell"><h4>Annexes</h4><p>Referenced where relevant, particularly Annex III (high-risk use cases) and Annex IV (technical documentation).</p></div>
+      <div class="rs-cell"><h4>Obligations</h4><p id="rsOblCount"></p></div>
+      <div class="rs-cell"><h4>Actors</h4><p>Provider, deployer, importer, distributor and GPAI provider — obligations attach to role, not to organization type.</p></div>
+      <div class="rs-cell"><h4>AGNUS Research</h4><p id="rsArtCount"></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. WHO IT AFFECTS -->
+<section class="warm">
+  <div class="container">
+    <div class="sec-head"><div class="copy"><div class="kicker"><span class="ix">08</span> Actors</div>
+      <h2 class="h-section">Who the EU AI Act affects.</h2></div></div>
+    <div class="actor-grid" id="pActors"></div>
+  </div>
+</section>
+
+<!-- 9. RISK FRAMEWORK -->
+<section>
+  <div class="container">
+    <div class="sec-head"><div class="copy"><div class="kicker"><span class="ix">09</span> Risk</div>
+      <h2 class="h-section">Risk Framework.</h2></div></div>
+    <div class="risk-strip" id="pRisk"></div>
+  </div>
+</section>
+
+<!-- 10. IMPLEMENTATION AREAS -->
+<section class="warm">
+  <div class="container">
+    <div class="sec-head"><div class="copy"><div class="kicker"><span class="ix">10</span> Implementation</div>
+      <h2 class="h-section">Key Implementation Areas.</h2></div></div>
+    <div class="impl-grid" id="pImpl"></div>
+  </div>
+</section>
+
+<!-- 11. COUNTRY IMPLEMENTATION -->
+<section>
+  <div class="container">
+    <div class="sec-head"><div class="copy"><div class="kicker"><span class="ix">11</span> Jurisdictions</div>
+      <h2 class="h-section">European Implementation.</h2></div>
+      <a href="AGNUS - Research.html#jurisdictions" class="btn btn-light sec-cta">Country Intelligence <span class="arr">→</span></a></div>
+    <p style="font-size:14.5px;line-height:1.62;color:var(--ink-soft);max-width:68ch;margin:0 0 24px">The EU AI Act is an EU-level regulatory framework. Implementation, competent authorities, supervision and related national developments are followed jurisdiction by jurisdiction.</p>
+    <div class="ctry-strip" id="pCountries"></div>
+  </div>
+</section>
+
+<!-- 12. STANDARDS -->
+<section class="warm">
+  <div class="container">
+    <div class="sec-head"><div class="copy"><div class="kicker"><span class="ix">12</span> Standards</div>
+      <h2 class="h-section">Standards &amp; Technical Guidance.</h2></div></div>
+    <div class="std-strip" id="pStdStrip"></div>
+    <p style="font-size:12px;color:var(--ink-mute);margin:18px 0 0;max-width:66ch;line-height:1.6">Standards bodies inform conformity routes; they do not themselves impose legally binding EU AI Act requirements.</p>
+  </div>
+</section>
+
+<!-- 13. PRIMARY SOURCES -->
+<section>
+  <div class="container">
+    <div class="sec-head"><div class="copy"><div class="kicker"><span class="ix">13</span> Evidence</div>
+      <h2 class="h-section">Primary Sources.</h2></div>
+      <a href="AGNUS - Research Sources.html" class="btn btn-light sec-cta">Source Library <span class="arr">→</span></a></div>
+    <div class="srclib" id="pSources"></div>
+  </div>
+</section>
+
+<!-- 14. RELATED PILLARS -->
+<section class="warm">
+  <div class="container">
+    <div class="sec-head"><div class="copy"><div class="kicker"><span class="ix">14</span> Connections</div>
+      <h2 class="h-section">Related Research Pillars.</h2></div></div>
+    <div class="related-pillars" id="pRelated"></div>
+  </div>
+</section>
+
+<!-- 15. TRUST -->
+<section>
+  <div class="container" style="padding-bottom:8px">
+    <div class="trust-links">
+      <a href="AGNUS - Research Methodology.html">Research Methodology</a>
+      <a href="AGNUS - Research Methodology.html">Evidence Policy</a>
+      <a href="AGNUS - Research Methodology.html">Editorial Policy</a>
+      <a href="AGNUS - Research Methodology.html">Corrections Policy</a>
+      <a href="AGNUS - Research Methodology.html">AI Use Policy</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-top" style="grid-template-columns:1.35fr 1fr 1fr 1fr 1fr">
+      <div class="foot-brand">
+        <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+        <p>Intelligence for the future of work. The trusted source for what's happening, which tools matter, and where AI is heading.</p>
+        <form class="fsearch" onsubmit="return false;">
+          <input type="email" placeholder="Your email for the Research Brief" aria-label="Email" />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+      <div class="foot-col">
+        <h5>Research</h5>
+        <ul>
+          <li><a href="AGNUS - Research Topic.html">AI Governance</a></li>
+          <li><a href="AGNUS - Research Topic.html">EU AI Act</a></li>
+          <li><a href="AGNUS - Research Topic.html">AI Agents</a></li>
+          <li><a href="AGNUS - Research Topic.html">AI Security</a></li>
+          <li><a href="AGNUS - Research Topic.html">AI Audit</a></li>
+          <li><a href="AGNUS - Research Topic.html">Data Governance</a></li>
+          <li><a href="AGNUS - Research Topic.html">Standards</a></li>
+          <li><a href="AGNUS - Research Country.html">Countries</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Evidence</h5>
+        <ul>
+          <li><a href="AGNUS - Research Sources.html">Source Library</a></li>
+          <li><a href="AGNUS - Research Calendar.html">Regulatory Calendar</a></li>
+          <li><a href="AGNUS - Research Methodology.html">Methodology</a></li>
+          <li><a href="AGNUS - Research Report.html">AGNUS Reports</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Discover</h5>
+        <ul>
+          <li><a href="AGNUS - Review.html">AI Reviews</a></li>
+          <li><a href="AGNUS - Compare.html">Comparisons</a></li>
+          <li><a href="AGNUS - Tools.html">AI Tools</a></li>
+          <li><a href="AGNUS - Marketplace.html">Marketplace</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Learn &amp; Build</h5>
+        <ul>
+          <li><a href="AGNUS - Academy.html">Academy</a></li>
+          <li><a href="AGNUS - Prompts.html">Prompt Library</a></li>
+          <li><a href="AGNUS - Agents.html">Agents</a></li>
+          <li><a href="AGNUS - Business.html">Business Automation</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 AGNUS · Truth before hype. · AGNUS Research is an independent publication, not a regulator or certification body.</span>
+      <div class="fb-links">
+        <a href="#">About</a><a href="AGNUS - Research Methodology.html">Methodology</a><a href="#">Editorial Policy</a><a href="#">Privacy</a><a href="#">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="image-slot.js"></script>
+<script src="agnus-research-data.js"></script>
+<script src="agnus-research-components2.js"></script>
+<script src="agnus-research-components.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var slug = 'eu-ai-act';
+  var p = AR.byPillar(slug);
+  var arts = AR.articlesByPillar(slug);
+  var corner = AR.cornerstoneByPillar(slug);
+  var lastReviewed = arts.map(function(a){return a.last_reviewed;}).filter(Boolean).sort().pop();
+
+  document.getElementById('pName').textContent = p.name;
+  document.getElementById('pIntro').textContent = p.description;
+
+  /* Hero stats — real counts only */
+  document.getElementById('pStats').innerHTML = [
+    ['Jurisdiction', p.jurisdiction],
+    ['Research status', AR.RESEARCH_STATUS[p.status].label],
+    ['Last reviewed', AR.fmtDate(lastReviewed)],
+    ['Research articles', arts.length]
+  ].map(function(s){ return '<div class="ts"><span class="tsk">'+s[0]+'</span><span class="tsv" style="font-size:18px">'+s[1]+' <span class="dq">demo</span></span></div>'; }).join('');
+
+  /* At a glance */
+  var reg = AR.REGULATIONS[slug];
+  document.getElementById('pGlance').innerHTML = [
+    ['Regulation', reg.citation],
+    ['Jurisdiction', p.jurisdiction],
+    ['Status', 'In force'],
+    ['Primary subject', 'Artificial Intelligence'],
+    ['Applies to', 'Providers · Deployers · Importers · Distributors and other relevant actors'],
+    ['Research coverage', p.implementation_areas.slice(0,7).join(' · ')]
+  ].map(function(r){ return '<div class="glance-row"><dt>'+r[0]+'</dt><dd>'+r[1]+'</dd></div>'; }).join('');
+
+  /* Explore — grouped subtopics, link only where an article exists */
+  function subHref(sub) {
+    var match = arts.find(function(a){ return a.subtopic === sub; });
+    return match ? AR.articleUrl(match.article_id) : null;
+  }
+  document.getElementById('pExplore').innerHTML = p.sub_groups.map(function(g){
+    return '<div class="explore-group"><h4>'+g.h+'</h4><ul class="explore-list">'
+      + g.items.map(function(sub){
+          var href = subHref(sub);
+          return '<li>' + (href
+            ? '<a href="'+href+'">'+sub+'<span class="ex-badge">Research available</span></a>'
+            : '<a href="#" onclick="return false" style="cursor:default;color:var(--ink-faint)">'+sub+'<span class="ex-badge">Research in preparation</span></a>')
+          + '</li>';
+        }).join('')
+      + '</ul></div>';
+  }).join('');
+
+  /* Cornerstone — only from cornerstone:true, no fake entries */
+  document.getElementById('pCorner').innerHTML = corner.length ? corner.map(function(x){
+    return '<a class="corner-card" href="'+AR.articleUrl(x.article_id)+'">'
+      + '<span class="cc-k">'+(x.subtopic||AR.CONTENT_TYPE[x.content_type])+'</span>'
+      + '<h3>'+x.title+'</h3><p>'+(x.standfirst||'')+'</p>'
+      + '<span class="cc-m">'+AR.fmtShort(x.last_updated)+' · '+x.reading_time+' min</span></a>';
+  }).join('') : '<p class="empty-state">No cornerstone research has been designated for this pillar yet.</p>';
+
+  /* Latest */
+  var latest = arts.slice().sort(function(a,b){ return (b.last_updated||'').localeCompare(a.last_updated||''); });
+  document.getElementById('pLatest').innerHTML = latest.length ? latest.map(function(x){
+    return '<a class="latest-row" href="'+AR.articleUrl(x.article_id)+'">'
+      + '<div class="lr-cat">'+(x.subtopic||'').toUpperCase()+'</div>'
+      + '<div><h4>'+x.title+'</h4><p class="lr-abs">'+(x.standfirst||'')+'</p>'
+      + '<div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-mute);margin-top:8px">'+(AR.byAuthor(x.author)||{name:''}).name+'</div></div>'
+      + '<div class="lr-side"><span>'+AR.fmtShort(x.published)+' · '+AR.fmtShort(x.last_updated)+' · '+x.reading_time+' min · '+x.jurisdiction+'</span>'
+      + RC.statusPill(x.status) + '</div></a>';
+  }).join('') : '<p class="empty-state">Research in preparation.</p>';
+
+  /* Regulatory structure counts */
+  var obls = AR.obligationsByRegulation(slug);
+  document.getElementById('rsOblCount').textContent = obls.length + ' obligations mapped to research on this pillar.';
+  document.getElementById('rsArtCount').textContent = arts.length + ' AGNUS Research articles published under this pillar.';
+
+  /* Actors */
+  document.getElementById('pActors').innerHTML = p.actors.map(function(a){
+    return '<div class="actor-cell"><h4>'+a.name+'</h4><p>'+a.desc+'</p></div>';
+  }).join('');
+
+  /* Risk framework */
+  document.getElementById('pRisk').innerHTML = p.risk_categories.map(function(r){
+    var match = arts.find(function(a){ return a.risk_category === r || (a.subtopic||'').indexOf(r) > -1; });
+    return '<a class="risk-card" href="'+(match?AR.articleUrl(match.article_id):'AGNUS - Research.html')+'"><h4>'+r+'</h4><span class="rk-m">'+(match?'Research available':'Research in preparation')+'</span></a>';
+  }).join('');
+
+  /* Implementation areas */
+  document.getElementById('pImpl').innerHTML = p.implementation_areas.map(function(i){
+    var match = arts.find(function(a){ return a.subtopic === i; });
+    return '<a class="impl-card" href="'+(match?AR.articleUrl(match.article_id):'AGNUS - Research.html')+'"><h4>'+i+'</h4><span class="ik-m">'+(match?'Research available':'Research in preparation')+'</span></a>';
+  }).join('');
+
+  /* Country implementation — link to Country Intelligence, no duplicated content */
+  document.getElementById('pCountries').innerHTML = AR.JURISDICTIONS.map(function(j){
+    var built = j.slug === 'european-union'; // only EU country page exists so far
+    return '<a class="ctry-tile" href="'+(built?'AGNUS - Research Country.html':'AGNUS - Research.html#jurisdictions')+'"><h4>'+j.name+'</h4><span class="ct-badge">'+(built?'Country page →':'Coverage planned')+'</span></a>';
+  }).join('');
+
+  /* Standards — only sources actually tagged to this pillar with authority_level standard */
+  var stds = AR.SOURCES.filter(function(s){ return s.topics.indexOf(slug) > -1 && s.authority_level === 'standard'; });
+  document.getElementById('pStdStrip').innerHTML = stds.length ? stds.map(function(s){
+    return '<a class="std-chip" href="AGNUS - Research Source.html?id='+s.source_id+'">'+s.issuing_organization+' — '+s.title.split('—')[0].trim()+'</a>';
+  }).join('') : '<p class="empty-state">No standards records linked to this pillar yet.</p>';
+
+  /* Primary sources for this pillar */
+  var srcs = AR.SOURCES.filter(function(s){ return s.topics.indexOf(slug) > -1; });
+  document.getElementById('pSources').innerHTML = srcs.map(function(s,i){
+    return '<div class="srcrow" style="cursor:pointer" onclick="location.href=\'AGNUS - Research Source.html?id='+s.source_id+'\'">'
+      + '<div class="sr-n">'+String(i+1).padStart(2,'0')+'</div>'
+      + '<div class="sr-main"><h4>'+s.title+'</h4><div class="sr-org">'+s.issuing_organization+'</div>'
+      + '<div class="sr-tags">'+RC.authorityLabel(s.authority_level)+'<span class="sr-tag">'+s.source_type+'</span></div></div>'
+      + '<div class="sr-meta"><span class="sr-year">'+s.publication_date+'</span><span class="sr-ver">Verified '+AR.fmtShort(s.verification_date)+'</span></div></div>';
+  }).join('');
+
+  /* Related pillars */
+  document.getElementById('pRelated').innerHTML = p.related_pillars.map(function(s){
+    var x = AR.byPillar(s); return '<a href="AGNUS - Research Topic.html">'+x.name+'</a>';
+  }).join('');
+});
+</script>
+</body>
+</html>

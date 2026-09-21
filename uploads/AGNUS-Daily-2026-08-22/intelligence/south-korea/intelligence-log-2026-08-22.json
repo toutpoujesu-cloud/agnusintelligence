@@ -1,0 +1,80 @@
+{
+  "run_date": "2026-08-22",
+  "source_checks": [
+    {
+      "source_url": "https://www.msit.go.kr",
+      "date_checked": "2026-08-22",
+      "status": "unreachable",
+      "last_successful_check": "",
+      "observed_version_or_date": "Exact registry homepage returned an empty document.",
+      "open_questions": [
+        "Official MSIT indexed pages were discoverable, but a successful registry baseline could not be established."
+      ]
+    },
+    {
+      "source_url": "https://www.pipc.go.kr/np/cop/bbs/selectBoardArticle.do?bbsId=BS074&mCode=C020010000&nttId=12391",
+      "date_checked": "2026-08-22",
+      "status": "changed",
+      "last_successful_check": "2026-08-22",
+      "observed_version_or_date": "Official PIPC press release dated 2026-08-20 reports National Assembly passage of the Personal Information Protection Act amendment creating a special AI-development data-use route.",
+      "open_questions": [
+        "SRC-0046 is provisional and must be confirmed by an editor before publication."
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "record_id": "IR-PROVISIONAL-20260822-001",
+      "source_id": "SRC-0046",
+      "source_type": "Official regulator press release",
+      "publication_date": "2026-08-20",
+      "discovery_date": "2026-08-22",
+      "jurisdiction": "South Korea",
+      "authority_level": "Primary",
+      "topic": "AI training data and privacy",
+      "subtopic": "Special legal basis for personal-data use in AI development",
+      "regulation": "Personal Information Protection Act amendment",
+      "article_concerned": "",
+      "industries": [],
+      "ai_system_type": "AI systems developed using personal data",
+      "actors_affected": [
+        "AI developers",
+        "Companies",
+        "Public institutions"
+      ],
+      "risk_category": "Personal data and privacy",
+      "effective_date": "Six months after promulgation; exact date pending promulgation",
+      "deadline": "",
+      "what_changed": "South Korea's National Assembly passed an amendment creating a special route to use lawfully collected personal data for AI development when pseudonymous or anonymous data are insufficient, public or social necessity is recognized, strengthened safeguards apply, and PIPC review and resolution are obtained.",
+      "previous_position": "Use of lawfully collected personal data for a different purpose generally required separate consent, another statutory basis, or conversion to pseudonymous or anonymous data; selected AI projects relied on time-limited regulatory sandboxes.",
+      "new_position": "The passed amendment adds a dedicated AI-development pathway, subject to necessity conditions, strengthened safeguards, PIPC approval, risk assessment for higher-impact processing, and transparency through privacy notices and PIPC publication.",
+      "legal_significance": "The amendment would create a new statutory processing route and replaces reliance on case-specific, time-limited sandbox exceptions for qualifying AI development. It still requires Cabinet consideration, promulgation, and a six-month commencement period.",
+      "business_significance": "Qualifying developers may gain a durable route to use higher-quality personal data, but must prepare evidence of necessity, safeguards, PIPC review materials, risk assessment where applicable, and public disclosures.",
+      "technical_significance": "AI-data pipelines should support necessity testing, access controls, strengthened safeguards, risk assessment, traceability, and disclosure of use under the special route.",
+      "agnus_guard_relevance": "Policy relevant",
+      "articles_affected": [],
+      "update_required": false,
+      "new_article_required": true,
+      "confidence": "Primary source verified",
+      "reviewer": "",
+      "discovery_mechanism": "Scheduled primary-source monitor",
+      "review_status": "pending_review",
+      "materiality": "High",
+      "_demo": false
+    }
+  ],
+  "editorial_alerts": [
+    {
+      "type": "source_unreachable",
+      "source_url": "https://www.msit.go.kr",
+      "message": "Exact registry homepage returned an empty document.",
+      "baseline_action": "Prior successful baseline preserved; no fingerprint or last-successful value overwritten."
+    },
+    {
+      "type": "high_materiality_finding",
+      "record_id": "IR-PROVISIONAL-20260822-001",
+      "source_id": "SRC-0046",
+      "message": "Editorial review required for the PIPC amendment finding and both provisional IDs."
+    }
+  ]
+}

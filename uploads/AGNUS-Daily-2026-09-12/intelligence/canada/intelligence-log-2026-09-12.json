@@ -1,0 +1,15 @@
+{
+  "run_date": "2026-09-12",
+  "source_checks": [
+    {
+      "source_url": "https://ised-isde.canada.ca/site/ised/",
+      "date_checked": "2026-09-12",
+      "status": "no_change",
+      "last_successful_check": "2026-09-12",
+      "observed_version_or_date": "The official ISED landing page was retrieved successfully; no new monitored AIDA or AI-law publication was verified.",
+      "open_questions": []
+    }
+  ],
+  "findings": [],
+  "editorial_alerts": []
+}

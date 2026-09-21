@@ -1,0 +1,19 @@
+{
+  "run_date": "2026-08-15",
+  "source_checks": [
+    {
+      "source_url": "https://www.meti.go.jp",
+      "date_checked": "2026-08-15",
+      "status": "unreachable",
+      "last_successful_check": "",
+      "observed_version_or_date": "Registry homepage returned HTTP 403",
+      "open_questions": [
+        "Official METI AI governance page was discoverable at https://www.meti.go.jp/policy/it_policy/ai-governance/index.html"
+      ]
+    }
+  ],
+  "findings": [],
+  "editorial_alerts": [
+    "Ministry of Economy, Trade and Industry: Registry homepage returned HTTP 403"
+  ]
+}

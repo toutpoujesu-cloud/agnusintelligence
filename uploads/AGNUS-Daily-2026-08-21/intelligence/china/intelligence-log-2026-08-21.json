@@ -1,0 +1,15 @@
+{
+  "run_date": "2026-08-21",
+  "source_checks": [
+    {
+      "source_url": "http://www.cac.gov.cn",
+      "date_checked": "2026-08-21",
+      "status": "no_change",
+      "last_successful_check": "2026-08-21",
+      "observed_version_or_date": "Official CAC site retrieved over HTTPS; no post-baseline AI regulatory publication dated after 2026-08-15 was located.",
+      "open_questions": []
+    }
+  ],
+  "findings": [],
+  "editorial_alerts": []
+}

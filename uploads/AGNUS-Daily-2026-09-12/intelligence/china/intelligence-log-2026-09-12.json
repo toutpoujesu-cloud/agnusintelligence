@@ -1,0 +1,15 @@
+{
+  "run_date": "2026-09-12",
+  "source_checks": [
+    {
+      "source_url": "https://www.cac.gov.cn",
+      "date_checked": "2026-09-12",
+      "status": "no_change",
+      "last_successful_check": "2026-09-12",
+      "observed_version_or_date": "CAC published a 2026–2030 digital-village action plan on 2026-09-11, but the verified summary did not establish a material AI-regulatory change; prior monitored AI-policy baselines remain current.",
+      "open_questions": []
+    }
+  ],
+  "findings": [],
+  "editorial_alerts": []
+}

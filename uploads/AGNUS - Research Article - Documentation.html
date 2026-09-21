@@ -1,0 +1,342 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Technical Documentation Requirements Under the EU AI Act (Article 11 + Annex IV) — AGNUS Research</title>
+<meta name="description" content="Article 11 requires technical documentation to be drawn up before market placement and kept up-to-date. Annex IV sets the minimum nine-item content list. This article covers both in full." />
+<link rel="canonical" href="https://agnus.example/research/eu-ai-act/eu-ai-act-technical-documentation/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Technical Documentation Requirements Under the EU AI Act (Article 11 + Annex IV)" />
+<meta property="article:published_time" content="2026-07-03" />
+<meta property="article:modified_time" content="2026-08-22" />
+<meta property="article:author" content="Jean-Daniel Alexis" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>a,a:visited{color:inherit}
+.dependency-note{font-size:13px;color:var(--ink-mute);font-style:italic;margin:-6px 0 26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.dependency-note a{color:var(--gold-deep);font-style:normal}
+.prose h3{font-family:var(--font-sans);font-weight:700;font-size:19px;letter-spacing:-.018em;margin:32px 0 14px}
+.annex-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin:24px 0}
+.annex-card{background:var(--paper-warm,#F7F5F0);border:1px solid var(--line);border-radius:8px;padding:18px 20px}
+.annex-card .ac-num{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:6px}
+.annex-card .ac-title{font-family:var(--font-sans);font-weight:700;font-size:15px;margin-bottom:8px;color:var(--ink)}
+.annex-card .ac-desc{font-size:13px;color:var(--ink-mute);line-height:1.55}
+.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
+.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
+.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s}
+.rsub a:hover{color:var(--ink);background:var(--line-soft,rgba(0,0,0,.04))}
+.rsub a.on{color:var(--gold-deep);font-weight:600}
+</style>
+</head>
+<body>
+
+<div class="art-progress"><i id="progBar"></i></div>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Marketplace.html">Marketplace</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+      <a href="AGNUS - Business.html">Business</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+      <button class="hamburger" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="m-drawer">
+    <a href="AGNUS - Explore.html">Explore</a><a href="AGNUS - Intelligence.html">Intelligence</a><a href="AGNUS - Research.html" class="active">Research</a><a href="AGNUS - Review.html">Reviews</a><a href="AGNUS - Academy.html">Academy</a><a href="AGNUS - Business.html">Business</a>
+  </div>
+</nav>
+<div class="rsub"><div class="rsub-inner">
+<a href="AGNUS - Research.html">Research Home</a>
+<a href="AGNUS - Research.html#taxonomy">Topics</a>
+<a href="AGNUS - Research Topic.html">EU AI Act</a>
+<a href="AGNUS - Research Country.html">Countries</a>
+<a href="AGNUS - Research Sources.html">Sources</a>
+<a href="AGNUS - Research Calendar.html">Calendar</a>
+<a href="AGNUS - Research Methodology.html">Methodology</a>
+<a href="AGNUS - Research Author.html">Authors</a>
+</div></div>
+
+<header class="art-head">
+  <div class="container">
+    <div data-rc="classification" data-rc-arg="AR-000188"></div>
+    <h1>Technical Documentation Requirements Under the EU AI Act</h1>
+    <p class="art-abstract">Article 11 requires technical documentation to be drawn up before a high-risk AI system is placed on the market and kept up-to-date throughout. Annex IV sets the minimum nine-item content list. This article covers both in full, including the SME simplified-form option and the single-documentation rule for Annex I products.</p>
+    <div data-rc="articleMeta" data-rc-arg="AR-000188"></div>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:20px">
+      <span data-rc="trackButton" data-rc-arg="EU AI Act"></span>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <figure class="art-hero-fig">
+    <image-slot id="rs-art-hero" shape="rect" fit="cover" placeholder="An open technical dossier on a desk, showing diagrams, test logs, and a formal declaration — evoking the pre-market documentation a provider must assemble and maintain. Editorial, institutional. 21:9."></image-slot>
+  </figure>
+  <div class="art-hero-cap"><span class="d"></span>The technical documentation dossier must exist before a high-risk AI system reaches the market &mdash; not after &mdash; and must remain current throughout the system&rsquo;s lifecycle.</div>
+</div>
+
+<div class="container">
+  <div class="art-shell">
+
+    <aside class="art-toc">
+      <div class="toc-h">Contents</div>
+      <ol id="tocList"></ol>
+      <div class="toc-foot">
+        <button onclick="window.print()">Print / PDF</button>
+        <button onclick="document.getElementById('cite').scrollIntoView({behavior:'smooth'})">Cite this research</button>
+        <button onclick="document.getElementById('sources').scrollIntoView({behavior:'smooth'})">Jump to sources</button>
+      </div>
+    </aside>
+
+    <article class="prose" id="prose">
+
+      <p class="dependency-note">Builds on <a href="AGNUS - Research Article - AI Act Explained.html">AR-000200 (The EU AI Act Explained)</a>, <a href="AGNUS - Research Article - High-Risk AI.html">AR-000210 (High-Risk AI Systems)</a>, and <a href="AGNUS - Research Article - Risk Classification.html">AR-000163 (Risk Classification)</a> &mdash; none of their content is re-derived here. This article covers Article 11&rsquo;s timing and structure requirements and Annex IV&rsquo;s nine-item content list in full. AR-000240 (Provider Obligations) covers the Article 18 documentation-keeping duty that applies once the documentation is drawn up.</p>
+
+      <div data-rc="atAGlance" data-rc-arg="AR-000188"></div>
+
+      <h2 id="s-summary">Executive summary</h2>
+      <div data-rc="fact" data-rc-arg='{"source_id":"SRC-0054","locator":"Article 11(1)","text":"The technical documentation of a high-risk AI system shall be drawn up before that system is placed on the market or put into service and shall be kept up-to-date. The technical documentation shall be drawn up in such a way as to demonstrate that the high-risk AI system complies with the requirements set out in Chapter III Section 2 and to provide national competent authorities and notified bodies with the necessary information in a clear and comprehensive form to assess the compliance of the AI system with those requirements. It shall contain, at a minimum, the elements set out in Annex IV. SMEs, including start-ups, may provide the elements of the technical documentation specified in Annex IV in a simplified manner, using a form the Commission shall establish; notified bodies shall accept that form for conformity assessment purposes."}'></div>
+      <div data-rc="fact" data-rc-arg='{"source_id":"SRC-0054","locator":"Article 11(2)","text":"Where a high-risk AI system related to a product covered by the Union harmonisation legislation listed in Section A of Annex I is placed on the market or put into service, a single set of technical documentation shall be drawn up containing all the information set out in paragraph 1 as well as the information required under those legal acts."}'></div>
+      <div data-rc="analysis" data-rc-arg='{"text":"Technical documentation is the foundational compliance record for a high-risk AI system \u2014 it predates and enables conformity assessment (AR-000240\u2019s Article 43), the EU declaration of conformity (Article 47), and CE marking (Article 48). It is not a form to file with a regulator but a living dossier: Article 11 requires it to be kept up-to-date, meaning it must track the system through substantial modifications and post-market changes that Article 3(23) would classify as relevant."}'></div>
+
+      <div data-rc="takeaways" data-rc-arg='["Technical documentation must exist before market placement \u2014 not during or after conformity assessment, and not after a market surveillance authority requests it.","Annex IV specifies nine minimum content items; Annex IV is a floor, not a ceiling \u2014 the documentation must be sufficient to demonstrate compliance with all Chapter III Section 2 requirements.","SMEs and start-ups may use a Commission-established simplified form; notified bodies are required to accept it for conformity assessment.","For Annex I Section A product-embedded AI systems, a single combined documentation set covers both Article 11 and the sectoral legislation.","Article 11 carries the Digital Omnibus amendment disclaimer on the Service Desk \u2014 the requirements described here are pre-amendment text; Annex IV does not carry that disclaimer."]'></div>
+
+      <h2 id="s-means">What this means</h2>
+      <div data-rc="analysis" data-rc-arg='{"text":"Technical documentation is the written record that the provider has actually done the compliance work Article 9\u201315 requires \u2014 not a parallel administrative task but the artefact produced by running the risk management system, the data governance process, the accuracy testing, the human oversight design, and the cybersecurity measures. A provider who has genuinely met the Chapter III Section 2 requirements should be able to draw up compliant documentation as a consequence. A provider who cannot assemble the documentation probably has a compliance gap, not a documentation problem."}'></div>
+      <div data-rc="analysis" data-rc-arg='{"text":"The up-to-date requirement is not cosmetic. Article 43(4) \u2014 covered in AR-000240 \u2014 ties a new conformity assessment obligation to substantial modification; the Article 11 duty to keep documentation current is the parallel obligation at the documentation layer. A continuously-learning system whose behaviour changes in ways the original assessment did not plan for generates both an Article 11 update duty and, potentially, an Article 43(4) reassessment duty."}'></div>
+
+      <h2 id="s-applies">Who this applies to</h2>
+      <div data-rc="analysis" data-rc-arg='{"text":"Article 11 runs to providers of high-risk AI systems \u2014 the same scope as Article 16\u2019s full obligation list, which AR-000240 covers in detail, and which Article 25 (AR-000310) may extend to distributors, importers, or deployers who rebrand, substantially modify, or repurpose a system. Deployers do not draw up Article 11 documentation independently, but they rely on it: Article 13\u2019s instructions-for-use obligation (AR-000230) requires the provider to make the information deployers need to understand and oversee the system available, which in practice means the Annex IV content shapes what deployers receive."}'></div>
+
+      <h2 id="s-context">Regulatory context</h2>
+
+      <h3>The Annex IV nine-item minimum content list</h3>
+      <div data-rc="fact" data-rc-arg='{"source_id":"SRC-0055","locator":"Annex IV, items 1\u20139","text":"The technical documentation shall contain at least: (1) a general description of the AI system \u2014 intended purpose, provider name, version, hardware/software interactions, software/firmware version requirements, forms of placement on the market, hardware requirements, product photographs or illustrations where applicable, and instructions for use for the deployer; (2) a detailed description of the development process \u2014 methods and steps, design specifications (general logic, algorithms, rationale, assumptions, classification choices, optimisation targets, expected output), system architecture and computational resources, data requirements including datasheets on training data provenance, scope, labelling and cleaning methodologies, human oversight assessment per Article 14, pre-determined changes and continuous compliance measures, validation and testing procedures including metrics and test logs, and cybersecurity measures; (3) monitoring, functioning and control information \u2014 performance capabilities and limitations including per-group accuracy, foreseeable unintended outcomes and risks, human oversight measures, input data specifications; (4) a description of the appropriateness of performance metrics; (5) a detailed description of the risk management system per Article 9; (6) a description of relevant changes made through the system\u2019s lifecycle; (7) a list of harmonised standards applied, or detailed description of solutions adopted where none apply; (8) a copy of the EU declaration of conformity per Article 47; (9) a detailed description of the post-market monitoring system per Article 72, including the post-market monitoring plan."}'></div>
+
+      <div class="annex-grid">
+        <div class="annex-card"><div class="ac-num">Item 1</div><div class="ac-title">General description</div><div class="ac-desc">Intended purpose; provider name and version; hardware/software interactions; placement forms (packages, downloads, APIs); hardware requirements; product illustrations; deployer instructions.</div></div>
+        <div class="annex-card"><div class="ac-num">Item 2</div><div class="ac-title">Development process</div><div class="ac-desc">Methods and steps; design specifications and algorithms; architecture and compute resources; training data datasheets (provenance, labelling, cleaning); human oversight assessment; pre-determined changes; test logs and metrics; cybersecurity measures.</div></div>
+        <div class="annex-card"><div class="ac-num">Item 3</div><div class="ac-title">Monitoring and control</div><div class="ac-desc">Performance capabilities and limitations; per-group accuracy; foreseeable unintended outcomes and risks to health, safety, rights, and non-discrimination; human oversight measures; input data specifications.</div></div>
+        <div class="annex-card"><div class="ac-num">Item 4</div><div class="ac-title">Performance metrics</div><div class="ac-desc">Description of the appropriateness of the performance metrics chosen for the specific AI system.</div></div>
+        <div class="annex-card"><div class="ac-num">Item 5</div><div class="ac-title">Risk management system</div><div class="ac-desc">Detailed description of the Article 9 risk management system as applied to this system.</div></div>
+        <div class="annex-card"><div class="ac-num">Item 6</div><div class="ac-title">Lifecycle changes</div><div class="ac-desc">Description of all relevant changes made to the system through its lifecycle since initial placement on the market.</div></div>
+        <div class="annex-card"><div class="ac-num">Item 7</div><div class="ac-title">Standards and solutions</div><div class="ac-desc">List of harmonised standards applied in full or in part; where none, detailed description of the alternative solutions adopted to meet Chapter III Section 2 requirements.</div></div>
+        <div class="annex-card"><div class="ac-num">Item 8</div><div class="ac-title">EU declaration of conformity</div><div class="ac-desc">A copy of the Article 47 EU declaration of conformity, which is the provider&rsquo;s formal assumption of legal responsibility for compliance.</div></div>
+        <div class="annex-card"><div class="ac-num">Item 9</div><div class="ac-title">Post-market monitoring</div><div class="ac-desc">Detailed description of the post-market monitoring system per Article 72, including the Article 72(3) monitoring plan.</div></div>
+      </div>
+
+      <div data-rc="analysis" data-rc-arg='{"text":"Annex IV is a minimum \u2014 the documentation must contain these nine items \u201cat a minimum.\u201d Where a Chapter III Section 2 requirement generates compliance evidence that does not fit neatly into one of the nine items, that evidence must still be included. The phrase \u2018as applicable to the relevant AI system\u2019 in the Annex IV preamble introduces proportionality for items that genuinely do not apply (a system with no training data has nothing to put in Item 2\u2019s training data section), but this is narrow \u2014 the exemption tracks what the system actually involves, not what the provider finds convenient to document."}'></div>
+
+      <h3>The SME simplified form</h3>
+      <div data-rc="analysis" data-rc-arg='{"text":"Article 11(1) requires the Commission to establish a simplified form targeted at SMEs and start-ups. Notified bodies are required to accept it for conformity assessment purposes. The simplified form does not reduce the substantive compliance obligations \u2014 it reduces the documentation burden by allowing a different format for presenting the Annex IV content, not a reduced content set. Whether the Commission has published the simplified form was not confirmed against a primary source on this research pass."}'></div>
+
+      <h3>Single documentation for Annex I products</h3>
+      <div data-rc="analysis" data-rc-arg='{"text":"Article 11(2)\u2019s single-documentation rule applies where the AI system is related to a product covered by Annex I Section A Union harmonisation legislation (medical devices, machinery, vehicles, and other regulated product categories listed there). A single dossier must cover both the Article 11/Annex IV content and the information required by the applicable sectoral legislation. This avoids a provider needing to maintain two separate but overlapping documentation sets, and aligns with the Article 43(1) and (3) conformity assessment mechanics AR-000240 already covered."}'></div>
+
+      <h3>Digital Omnibus status</h3>
+      <div data-rc="analysis" data-rc-arg='{"text":"Article 11 carries the Digital Omnibus amendment disclaimer on the AI Act Service Desk \u2014 the text described here is the pre-amendment version of 13 June 2024 and may not reflect the current legal text. Annex IV does not carry that disclaimer on the Service Desk as of this verification pass, consistent with the pattern noted for other annexes in earlier articles."}'></div>
+
+      <h2 id="s-requirements">Requirements</h2>
+      <div data-rc="analysis" data-rc-arg='{"text":"The core Article 11 requirement has three dimensions: timing (before market placement, not concurrent with it), content (Annex IV nine items as a minimum), and currency (kept up-to-date). All three must be satisfied simultaneously. The Article 18 documentation-keeping obligation \u2014 which AR-000240 covers as part of the Article 16 provider checklist \u2014 governs how the documentation is stored and made available to authorities; Article 11 governs what it must contain and when it must exist."}'></div>
+
+      <h2 id="s-do">What organizations must do</h2>
+      <ul class="checklist" id="doList">
+        <li><span class="cb"></span>Begin the technical documentation dossier at the start of the development process, not at the end &mdash; Article 11 requires it to exist before market placement, and the Annex IV content (design specifications, training data datasheets, test logs, risk management description) is generated during development, not retrospectively.</li>
+        <li><span class="cb"></span>Treat the nine Annex IV items as a structural checklist, not a filing taxonomy &mdash; each item should be satisfied by the evidence the Chapter III Section 2 compliance process actually produces.</li>
+        <li><span class="cb"></span>Build a lifecycle-change tracking process that feeds Item 6 as the system evolves &mdash; and reassess whether any change meets the Article 3(23) substantial-modification definition, triggering Article 11 and potentially Article 43(4) update obligations.</li>
+        <li><span class="cb"></span>For Annex I Section A product-embedded systems, co-ordinate the Article 11/Annex IV documentation with the sectoral legislation&rsquo;s documentation requirements from the start &mdash; Article 11(2) requires a single set, which means separate drafting processes that later need to be reconciled create unnecessary work.</li>
+        <li><span class="cb"></span>SMEs and start-ups should check whether the Commission has published the Article 11(1) simplified form before drafting documentation from scratch &mdash; if it exists, using it ensures notified-body acceptance without further negotiation.</li>
+      </ul>
+
+      <h2 id="s-mistakes">Common mistakes</h2>
+      <p>Treating technical documentation as a post-development summary rather than a live compliance record is a common mistake &mdash; Article 11 requires it before market placement, and the Annex IV content (particularly Items 2 and 3) is produced during development, not after.</p>
+      <p>Treating the Annex IV list as exhaustive is a second mistake &mdash; it is a minimum; where the Chapter III Section 2 requirements generate compliance evidence beyond the nine items, that evidence must still be captured in the documentation.</p>
+      <p>Treating the &ldquo;as applicable&rdquo; qualifier in Annex IV&rsquo;s preamble as a blanket proportionality escape is a third mistake &mdash; it covers items genuinely inapplicable to the specific system, not items the provider finds burdensome to complete.</p>
+      <p>Failing to update the documentation when the system changes is a fourth mistake &mdash; the Article 11 up-to-date duty is ongoing; a dossier that accurately describes the system as it was at initial assessment but not as it is now is non-compliant, regardless of whether a substantial modification under Article 3(23) was triggered.</p>
+
+      <h2 id="s-open">Open questions</h2>
+      <ul>
+        <li><strong>Whether the Digital Omnibus has changed Article 11&rsquo;s timing, content, or SME-form requirements</strong> &mdash; Article 11 carries the Omnibus disclaimer; the pre-amendment text is what is verified here.</li>
+        <li><strong>Whether the Commission has published the Article 11(1) simplified documentation form for SMEs and start-ups</strong> &mdash; not confirmed against a primary source on this research pass.</li>
+        <li><strong>Whether Annex IV has been amended by any delegated act under Article 11(3)</strong> &mdash; no such act was identified; Annex IV carries no Omnibus disclaimer as of this verification pass.</li>
+      </ul>
+
+      <h2 id="s-faq">Frequently asked</h2>
+      <div class="definition"><div class="df-k">FAQ</div>
+        <dt>Must technical documentation exist before conformity assessment starts, or just before market placement?</dt>
+        <dd>Article 11(1) requires it before market placement; conformity assessment under Article 43 presupposes the documentation because the assessment is of compliance with Chapter III Section 2, and the documentation is how that compliance is evidenced. In practice the documentation must substantially exist before assessment can proceed.</dd>
+      </div>
+      <div class="definition"><div class="df-k">FAQ</div>
+        <dt>Has the Digital Omnibus changed Article 11&rsquo;s documentation requirements?</dt>
+        <dd>Confirmed amended, but the Service Desk has not yet been updated. The text verified here is the pre-amendment version of 13 June 2024.</dd>
+      </div>
+      <div class="definition"><div class="df-k">FAQ</div>
+        <dt>Has the Commission published the simplified technical documentation form for SMEs?</dt>
+        <dd>Not confirmed against a primary source on this research pass.</dd>
+      </div>
+      <div class="definition"><div class="df-k">FAQ</div>
+        <dt>Does an SME using the simplified form still need to cover all nine Annex IV items?</dt>
+        <dd>Yes &mdash; Article 11(1) specifies that SMEs may provide the Annex IV elements &ldquo;in a simplified manner,&rdquo; not that they may provide fewer elements. The form changes the format, not the minimum content.</dd>
+      </div>
+
+      <div data-rc="evidence" data-rc-arg="AR-000188"></div>
+      <div data-rc="history" data-rc-arg="AR-000188"></div>
+      <div data-rc="citation" data-rc-arg="AR-000188"></div>
+      <div data-rc="languageBar" data-rc-arg="AR-000188"></div>
+
+    </article>
+
+    <aside class="art-rail">
+      <div class="trustpanel">
+        <div class="tp-h"><h4>About this research</h4><span data-rc="statusPill" data-rc-arg="current"></span></div>
+        <div class="tp-rows">
+          <div class="tp-row"><span class="k">Research object</span><span class="v">AR-000188</span></div>
+          <div class="tp-row"><span class="k">Author</span><span class="v">Jean-Daniel Alexis</span></div>
+          <div class="tp-row"><span class="k">Reviewer</span><span class="v soft">Jean-Daniel Alexis</span></div>
+          <div class="tp-row"><span class="k">Review cycle</span><span class="v soft">On regulatory change</span></div>
+          <div class="tp-row"><span class="k">Sources</span><span class="v" id="railSources">&mdash;</span></div>
+          <div class="tp-row"><span class="k">Revisions</span><span class="v" id="railRevisions">&mdash;</span></div>
+        </div>
+        <div class="tp-disclaim">AGNUS Research is an independent publication. It is not an EU institution, regulator or certification body, and this is not legal advice.</div>
+      </div>
+
+      <div style="margin-top:-4px"><span data-rc="trackButton" data-rc-arg="EU AI Act" data-rc-mode="block"></span></div>
+
+      <div class="railbox">
+        <h5>Institutional</h5>
+        <div class="rb-list">
+          <a href="AGNUS - Research Methodology.html">Methodology</a>
+          <a href="AGNUS - Research Sources.html">Source Library</a>
+          <a href="AGNUS - Research Calendar.html">Regulatory Calendar</a>
+          <a href="AGNUS - Research Author.html">About the author</a>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <div data-rc="related" data-rc-arg="AR-000188"></div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="foot-top" style="grid-template-columns:1.35fr 1fr 1fr 1fr 1fr">
+      <div class="foot-brand">
+        <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+        <p>Intelligence for the future of work. The trusted source for what&rsquo;s happening, which tools matter, and where AI is heading.</p>
+        <form class="fsearch" onsubmit="return false;">
+          <input type="email" placeholder="Your email for the Research Brief" aria-label="Email" />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+      <div class="foot-col">
+        <h5>Research</h5>
+        <ul>
+          <li><a href="AGNUS - Research Topic.html">AI Governance</a></li>
+          <li><a href="AGNUS - Research Topic.html">EU AI Act</a></li>
+          <li><a href="AGNUS - Research Topic.html">AI Agents</a></li>
+          <li><a href="AGNUS - Research Topic.html">AI Security</a></li>
+          <li><a href="AGNUS - Research Topic.html">AI Audit</a></li>
+          <li><a href="AGNUS - Research Topic.html">Data Governance</a></li>
+          <li><a href="AGNUS - Research Topic.html">Standards</a></li>
+          <li><a href="AGNUS - Research Country.html">Countries</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Evidence</h5>
+        <ul>
+          <li><a href="AGNUS - Research Sources.html">Source Library</a></li>
+          <li><a href="AGNUS - Research Calendar.html">Regulatory Calendar</a></li>
+          <li><a href="AGNUS - Research Methodology.html">Methodology</a></li>
+          <li><a href="AGNUS - Research Report.html">AGNUS Reports</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Discover</h5>
+        <ul>
+          <li><a href="AGNUS - Review.html">AI Reviews</a></li>
+          <li><a href="AGNUS - Compare.html">Comparisons</a></li>
+          <li><a href="AGNUS - Tools.html">AI Tools</a></li>
+          <li><a href="AGNUS - Marketplace.html">Marketplace</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Learn &amp; Build</h5>
+        <ul>
+          <li><a href="AGNUS - Academy.html">Academy</a></li>
+          <li><a href="AGNUS - Prompts.html">Prompt Library</a></li>
+          <li><a href="AGNUS - Agents.html">Agents</a></li>
+          <li><a href="AGNUS - Business.html">Business Automation</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&#169; 2026 AGNUS &middot; Truth before hype. &middot; AGNUS Research is an independent publication, not a regulator or certification body.</span>
+      <div class="fb-links">
+        <a href="#">About</a><a href="AGNUS - Research Methodology.html">Methodology</a><a href="#">Editorial Policy</a><a href="#">Privacy</a><a href="#">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="image-slot.js"></script>
+<script src="agnus-research-data.js"></script>
+<script src="agnus-research-components2.js"></script>
+<script src="agnus-research-components.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var toc = document.getElementById('tocList');
+  var heads = document.querySelectorAll('#prose h2[id]');
+  heads.forEach(function (h) {
+    var li = document.createElement('li');
+    li.innerHTML = '<a href="#' + h.id + '">' + h.textContent + '</a>';
+    toc.appendChild(li);
+  });
+
+  var links = toc.querySelectorAll('a');
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      links.forEach(function (l) { l.classList.toggle('on', l.getAttribute('href') === '#' + e.target.id); });
+    });
+  }, { rootMargin: '-100px 0px -70% 0px' });
+  heads.forEach(function (h) { io.observe(h); });
+
+  var bar = document.getElementById('progBar'), prose = document.getElementById('prose');
+  function prog() {
+    var r = prose.getBoundingClientRect(), total = r.height - window.innerHeight;
+    var done = Math.min(Math.max(-r.top, 0), Math.max(total, 1));
+    bar.style.width = (total > 0 ? done / total * 100 : 0) + '%';
+  }
+  document.addEventListener('scroll', prog, { passive: true }); prog();
+
+  document.querySelectorAll('#doList li').forEach(function (li) {
+    li.addEventListener('click', function () { li.classList.toggle('on'); });
+  });
+
+  var a = AR.byArticleId('AR-000188');
+  document.getElementById('railSources').textContent = a.sources.length + ' cited';
+  document.getElementById('railRevisions').textContent = a.history.length + ' recorded';
+});
+</script>
+</body>
+</html>

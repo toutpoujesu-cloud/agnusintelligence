@@ -1,0 +1,638 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Marketplace — AGNUS</title>
+<meta name="description" content="The AGNUS Marketplace — a collection of worlds. Choose your industry and assemble your AI business: software, agents, prompts, workflows and courses, arranged as a complete transformation blueprint." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<style>
+/* cache-safe v1.0 tokens (in case a stale agnus.css is served) */
+:root{ --bg:#F8F7F4; --paper:#FCFBF8; --paper-warm:#F3F1EC; --paper-2:#ECE9E1; --char:#1C1B19; --char-2:#272522; --char-3:#2A2825; --ink:#1D1D1F; --ink-soft:#6E6B66; --ink-mute:#908D86; --ink-faint:#B8B4AB; --gold:#B28A42; --gold-deep:#8F6E32; --gold-mid:#C9A96A; --gold-light:#E7D6AE; --gold-soft:#FFF8EA; --gold-grad:linear-gradient(100deg,#8F6E32 0%,#E7D6AE 42%,#B28A42 70%,#E7D6AE 100%); --line:#E7E2D8; --line-soft:#F0ECE3; --line-strong:#DAD4C8; --line-dark:#393530; --success:#2E8B57; --pass:#2E8B57; --warn:#C67A00; --error:#B83C3C; --sapphire:#3E6AE1; --sh-1:0 1px 2px rgba(28,27,25,.05); --sh-2:0 18px 44px -28px rgba(28,27,25,.09); --sh-3:0 40px 80px -44px rgba(28,27,25,.14); --gold-glow:0 0 24px -6px rgba(178,138,66,.45); }
+:root {
+  /* per-industry accent — updated by JS when a world is chosen */
+  --ind: #8F6E32;
+  --ind-soft: rgba(143,110,50,0.14);
+  /* deep space-black surfaces for the operations center */
+  --graphite:#161513; --graphite-2:#201E1B; --graphite-3:#2A2724;
+  --tex:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+/* ── HERO (Light World — Scandinavian library) ──────────────────── */
+.mk-hero { padding: clamp(46px,6vw,82px) 0 clamp(20px,2.5vw,30px); text-align: center; position: relative; overflow: hidden; }
+.mk-hero::after { content:""; position:absolute; inset:0; background: radial-gradient(80% 70% at 50% -10%, rgba(178,138,66,0.07), transparent 56%); pointer-events:none; }
+.mk-hero > * { position: relative; z-index: 1; }
+.mk-hero .kicker { justify-content: center; margin-bottom: 22px; }
+.mk-hero h1 { font-family: var(--font-sans); font-weight: 700; font-size: clamp(40px,6.6vw,88px); line-height: 0.95; letter-spacing: -0.04em; margin: 0 0 18px; }
+.mk-hero h1 em { font-family: var(--font-serif); font-style: italic; font-weight: 300; color: var(--gold-deep); }
+.mk-hero .lede { font-family: var(--font-serif); font-weight: 300; font-size: clamp(18px,2.1vw,23px); line-height: 1.5; color: var(--ink-soft); max-width: 60ch; margin: 0 auto; }
+.mk-search { margin: clamp(28px,4vw,42px) auto 0; max-width: 720px; display: flex; align-items: center; gap: 10px; border: 1px solid var(--line); border-radius: 999px; padding: 10px 10px 10px 26px; background: var(--paper); box-shadow: var(--sh-2); transition: border-color .25s ease, box-shadow .25s ease; }
+.mk-search:focus-within { border-color: var(--char); box-shadow: var(--sh-3); }
+.mk-search svg { width: 22px; height: 22px; color: var(--ink-mute); flex: none; }
+.mk-search .field { flex: 1; position: relative; text-align: left; }
+.mk-search input { width: 100%; border: none; outline: none; font-family: var(--font-sans); font-size: 17px; color: var(--ink); background: transparent; padding: 14px 4px; letter-spacing: -0.01em; position: relative; z-index: 1; }
+.mk-search .rotor { position: absolute; left: 4px; top: 50%; transform: translateY(-50%); font-size: 17px; color: var(--ink-mute); pointer-events: none; z-index: 0; }
+.mk-search .rotor .word { color: var(--ink); font-weight: 500; }
+.mk-search input:focus + .rotor, .mk-search input:not(:placeholder-shown) + .rotor { opacity: 0; }
+.mk-search .btn { padding: 14px 26px; }
+
+/* ── WORLDS GRID ────────────────────────────────────────────────── */
+.worlds-sec { padding: clamp(34px,4vw,52px) 0 clamp(40px,5vw,62px); }
+.worlds-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 24px; }
+.worlds-head h2 { font-family: var(--font-sans); font-weight: 700; font-size: clamp(22px,2.8vw,34px); letter-spacing: -0.03em; margin: 0; }
+.worlds-head .wh-note { font-family: var(--font-mono); font-size: 12px; color: var(--ink-mute); letter-spacing: 0.02em; }
+.worlds { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+.world { position: relative; border-radius: 20px; overflow: hidden; border: 1px solid var(--line); background: var(--graphite); color: #fff; aspect-ratio: 3/4; cursor: pointer; transition: transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s ease, border-color .4s ease; isolation: isolate; }
+.world:hover { transform: translateY(-7px); box-shadow: 0 40px 84px -46px rgba(0,0,0,0.62); }
+.world.on { border-color: var(--ind); box-shadow: 0 0 0 1.5px var(--ind), 0 40px 84px -46px rgba(0,0,0,0.5); }
+.world .w-photo { position: absolute; inset: 0; z-index: 0; }
+.world .w-photo image-slot { width: 100%; height: 100%; display: block; filter: grayscale(.42) brightness(.62) contrast(1.05); transition: transform .7s cubic-bezier(.2,.8,.2,1), filter .5s ease; }
+.world:hover .w-photo image-slot { transform: scale(1.06); filter: grayscale(.18) brightness(.74) contrast(1.05); }
+.world .w-base { position: absolute; inset: 0; z-index: 1; background: linear-gradient(165deg, var(--w-accent, rgba(178,138,66,0.18)), transparent 44%), linear-gradient(0deg, rgba(16,15,13,0.93) 6%, rgba(16,15,13,0.22) 54%, rgba(16,15,13,0.4) 100%); }
+.world .w-tex { position: absolute; inset: 0; z-index: 1; background-image: var(--tex); background-size: 180px; opacity: 0.05; mix-blend-mode: overlay; }
+/* glass reflection sweep */
+.world .w-shine { position: absolute; inset: 0; z-index: 2; background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.10) 46%, transparent 60%); transform: translateX(-120%); transition: transform .9s cubic-bezier(.2,.8,.2,1); pointer-events: none; }
+.world:hover .w-shine { transform: translateX(120%); }
+.world .w-inner { position: absolute; inset: 0; z-index: 3; padding: 20px; display: flex; flex-direction: column; }
+.world .w-emoji { font-size: 25px; filter: saturate(0.85); }
+.world .w-body { margin-top: auto; }
+.world .w-name { font-family: var(--font-sans); font-weight: 700; font-size: 20px; letter-spacing: -0.02em; line-height: 1.05; }
+.world .w-tag { font-family: var(--font-serif); font-style: italic; font-weight: 300; font-size: 13px; color: rgba(255,255,255,0.66); margin-top: 6px; line-height: 1.35; }
+.world .w-enter { margin-top: 13px; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: #fff; display: inline-flex; align-items: center; gap: 7px; opacity: 0; transform: translateY(6px); transition: opacity .35s ease, transform .35s ease; }
+.world .w-enter b { color: var(--w-ink, var(--gold-light)); }
+.world:hover .w-enter { opacity: 1; transform: none; }
+
+/* ── INTENTIONAL DARK / LIGHT TRANSITION ────────────────────────── */
+.modeshift { position: relative; background: linear-gradient(180deg, var(--bg) 0%, var(--graphite) 100%); padding: clamp(30px,4vw,52px) 0 0; text-align: center; }
+.modeshift .ms-line { width: 1px; height: 56px; margin: 0 auto 20px; background: linear-gradient(180deg, var(--line-strong), var(--ind)); }
+.modeshift .ms-k { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ind); display: inline-flex; align-items: center; gap: 9px; }
+.modeshift .ms-k .pulse { width: 7px; height: 7px; border-radius: 50%; background: var(--ind); box-shadow: 0 0 0 0 var(--ind); animation: msp 2.2s ease-out infinite; }
+@keyframes msp { 0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--ind) 60%,transparent);} 70%{box-shadow:0 0 0 9px transparent;} 100%{box-shadow:0 0 0 0 transparent;} }
+.modeshift .ms-t { font-family: var(--font-sans); font-weight: 700; font-size: clamp(20px,2.6vw,30px); letter-spacing: -0.03em; color: #fff; margin: 14px 0 0; }
+.modeshift .ms-s { font-family: var(--font-serif); font-style: italic; font-weight: 300; font-size: 15px; color: rgba(245,244,241,0.55); margin: 8px 0 0; }
+
+/* ── OPERATIONS CENTER (Dark World — Transformation Studio) ─────── */
+.ops { background: var(--graphite); color: #fff; padding: clamp(30px,4vw,56px) 0 clamp(48px,6vw,84px); position: relative; overflow: hidden; }
+.ops .m-photo { position: absolute; inset: 0; z-index: 0; }
+.ops .m-photo image-slot { width: 100%; height: 100%; display: block; filter: grayscale(.5) brightness(.4) contrast(1.05); opacity: 0.08; }
+.ops .m-scrim { position: absolute; inset: 0; z-index: 1; background: radial-gradient(80% 70% at 84% 4%, color-mix(in srgb, var(--ind) 22%, transparent), transparent 60%); transition: background .6s ease; }
+.ops .m-tex { position: absolute; inset: 0; z-index: 1; background-image: var(--tex); background-size: 220px; opacity: 0.045; mix-blend-mode: overlay; }
+.ops .container { position: relative; z-index: 2; }
+.ops-grid { display: grid; grid-template-columns: 0.86fr 1.14fr; gap: clamp(26px,3.6vw,58px); align-items: start; }
+
+.m-left .mk2 { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ind); margin-bottom: 16px; display: inline-flex; align-items: center; gap: 10px; transition: color .5s ease; }
+.m-left .mk2 .e { font-size: 17px; filter: saturate(.85); }
+.m-left h2 { font-family: var(--font-sans); font-weight: 700; font-size: clamp(30px,4.4vw,56px); line-height: 0.98; letter-spacing: -0.035em; margin: 0 0 16px; color: #fff; }
+.m-left h2 em { font-family: var(--font-serif); font-style: italic; font-weight: 300; color: var(--gold-light); }
+.m-left .m-note { font-family: var(--font-serif); font-weight: 300; font-size: clamp(17px,2vw,21px); line-height: 1.5; color: rgba(245,244,241,0.7); margin: 0 0 24px; max-width: 42ch; }
+.m-metric { display: inline-flex; align-items: baseline; gap: 12px; padding: 16px 22px; border-radius: 16px; margin-bottom: 26px; }
+.m-metric .ml { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(245,244,241,0.5); }
+.m-metric .mv { font-family: var(--font-sans); font-weight: 800; font-size: clamp(28px,3.4vw,42px); letter-spacing: -0.03em; color: var(--gold-light); line-height: 1; }
+.m-metric .mv .pre { color: var(--success); }
+.m-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-ind { background: var(--ind); color: #fff; border: 1px solid color-mix(in srgb, #fff 24%, var(--ind)); }
+.btn-ind:hover { filter: brightness(1.1); box-shadow: 0 0 26px -6px var(--ind); }
+
+/* ── TRANSFORMATION BLUEPRINT (signature) ───────────────────────── */
+.studio { border-radius: 22px; padding: clamp(22px,2.6vw,32px); position: relative; }
+.studio-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 22px; flex-wrap: wrap; }
+.studio-head .sh-t { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(245,244,241,0.6); display: flex; align-items: center; gap: 10px; }
+.studio-head .sh-t .ico { width: 26px; height: 26px; border-radius: 7px; display: grid; place-items: center; background: var(--ind-soft); color: var(--ind); font-size: 13px; }
+.studio-head .sh-r { font-family: var(--font-mono); font-size: 11px; color: rgba(245,244,241,0.5); }
+.studio-head .sh-r b { color: var(--gold-light); font-weight: 600; }
+.blueprint { display: grid; gap: 13px; margin-bottom: 24px; }
+.cap { display: grid; grid-template-columns: 130px 1fr 44px; align-items: center; gap: 14px; }
+.cap .cap-n { font-size: 13.5px; font-weight: 500; color: rgba(245,244,241,0.82); letter-spacing: -0.01em; }
+.cap .cap-track { height: 8px; border-radius: 999px; background-color: rgba(245,244,241,0.08); background-image: linear-gradient(90deg, var(--ind), var(--gold-light)); background-repeat:no-repeat; background-position:left center; background-size:0% 100%; overflow: hidden; transition: background-size 1.1s cubic-bezier(.2,.8,.2,1); }
+.cap .cap-fill { display:none; }
+.cap .cap-pct { font-family: var(--font-mono); font-size: 12px; color: rgba(245,244,241,0.6); text-align: right; }
+.studio-foot { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding-top: 20px; border-top: 1px solid rgba(245,244,241,0.1); flex-wrap: wrap; }
+.studio-foot .modules { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.studio-foot .mchip { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; color: rgba(245,244,241,0.66); border: 1px solid rgba(245,244,241,0.14); border-radius: 999px; padding: 6px 12px; display: inline-flex; align-items: center; gap: 6px; transition: border-color .3s ease, color .3s ease, transform .3s ease; }
+.studio-foot .mchip:hover { border-color: var(--ind); color: #fff; transform: translateY(-1px); }
+.studio-foot .mchip .d { width: 5px; height: 5px; border-radius: 50%; background: var(--ind); }
+
+/* architectural anatomy strip ("entering a building") */
+.anatomy { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: rgba(245,244,241,0.1); border: 1px solid rgba(245,244,241,0.1); border-radius: 16px; overflow: hidden; margin-top: 20px; }
+.anatomy .floor { background: var(--graphite-2); padding: 18px 16px; position: relative; transition: background .3s ease; }
+.anatomy .floor:hover { background: var(--graphite-3); }
+.anatomy .floor .fl-n { font-family: var(--font-sans); font-weight: 800; font-size: 26px; letter-spacing: -0.03em; color: #fff; line-height: 1; }
+.anatomy .floor .fl-n.sm { font-size: 17px; padding-top: 7px; }
+.anatomy .floor .fl-l { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(245,244,241,0.5); margin-top: 8px; }
+.anatomy .floor::after { content:"→"; position: absolute; right: -8px; top: 50%; transform: translateY(-50%); z-index: 3; color: var(--ind); font-size: 12px; }
+.anatomy .floor:last-child::after { display: none; }
+
+/* ── SEASONS (curated editions) ─────────────────────────────────── */
+.mk-sec { padding: clamp(40px,5vw,68px) 0; }
+.mk-sec.warm { background: var(--paper-warm); }
+.sec-intro { max-width: 660px; margin-bottom: clamp(26px,3.4vw,40px); }
+.sec-intro .kicker { margin-bottom: 16px; }
+.sec-intro h2 { font-family: var(--font-sans); font-weight: 700; font-size: clamp(24px,3vw,38px); letter-spacing: -0.03em; margin: 0 0 8px; }
+.sec-intro p { font-size: 15.5px; color: var(--ink-soft); margin: 0; }
+.seasons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.season { position: relative; border-radius: 20px; overflow: hidden; border: 1px solid var(--line); min-height: 230px; color: #fff; background: var(--graphite); cursor: pointer; isolation: isolate; transition: transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s ease; }
+.season:hover { transform: translateY(-5px); box-shadow: var(--sh-3); }
+.season:nth-child(1) { grid-column: span 2; }
+.season .s-photo { position: absolute; inset: 0; z-index: 0; }
+.season .s-photo image-slot { width: 100%; height: 100%; display: block; filter: grayscale(.4) brightness(.6) contrast(1.04); transition: transform .8s cubic-bezier(.2,.8,.2,1); }
+.season:hover .s-photo image-slot { transform: scale(1.05); }
+.season .s-scrim { position: absolute; inset: 0; z-index: 1; background: linear-gradient(0deg, rgba(16,15,13,0.9) 6%, rgba(16,15,13,0.18) 70%), linear-gradient(120deg, var(--s-accent, rgba(178,138,66,0.2)), transparent 50%); }
+.season .s-inner { position: absolute; inset: 0; z-index: 2; padding: 24px; display: flex; flex-direction: column; }
+.season .s-ed { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); }
+.season .s-body { margin-top: auto; }
+.season .s-name { font-family: var(--font-sans); font-weight: 700; font-size: clamp(20px,2.4vw,28px); letter-spacing: -0.025em; line-height: 1.04; }
+.season .s-desc { font-family: var(--font-serif); font-style: italic; font-weight: 300; font-size: 14px; color: rgba(245,244,241,0.72); margin-top: 7px; max-width: 40ch; }
+.season .s-meta { font-family: var(--font-mono); font-size: 11px; color: rgba(245,244,241,0.55); margin-top: 13px; }
+
+/* ── FILTER STRIP ───────────────────────────────────────────────── */
+.filterstrip { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); position: sticky; top: 72px; z-index: 40; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: saturate(180%) blur(16px); }
+.filterstrip-inner { display: flex; align-items: center; gap: 10px; padding: 15px 0; overflow-x: auto; }
+.filterstrip-inner::-webkit-scrollbar { height: 0; }
+.fchip { flex: none; font-family: var(--font-sans); font-size: 13.5px; font-weight: 500; color: var(--ink-soft); border: 1px solid var(--line); border-radius: 999px; padding: 9px 17px; transition: all .2s ease; white-space: nowrap; display: inline-flex; align-items: center; gap: 7px; }
+.fchip:hover { border-color: var(--ink-faint); color: var(--ink); }
+.fchip.on { background: var(--char); color: #fff; border-color: var(--char); }
+.fchip.gold.on { background: var(--gold-grad); color: #241B07; border-color: transparent; }
+.fchip .vmark { color: var(--gold-deep); }
+.fchip.on .vmark { color: inherit; }
+
+/* ── PRODUCTS: FULL-BLEED MAGAZINE CARDS ────────────────────────── */
+.shelf { margin-bottom: clamp(30px,4vw,46px); }
+.shelf.hidden { display: none; }
+.shelf-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
+.shelf-head h2 { font-family: var(--font-sans); font-weight: 700; font-size: clamp(19px,2.2vw,26px); letter-spacing: -0.025em; margin: 0; }
+.shelf-head .see { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.04em; color: var(--ink-soft); display: inline-flex; gap: 7px; align-items: center; flex: none; }
+.shelf-head .see:hover { color: var(--gold-deep); }
+.rail-scroll { display: flex; gap: 22px; overflow-x: auto; scroll-snap-type: x proximity; padding: 6px var(--pad-x) 22px; margin: 0 calc(-1 * var(--pad-x)); }
+.rail-scroll::-webkit-scrollbar { height: 7px; }
+.rail-scroll::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 99px; }
+
+.mcard { flex: 0 0 318px; scroll-snap-align: start; position: relative; border-radius: 24px; overflow: hidden; background: var(--graphite); color: #fff; aspect-ratio: 3/4.2; cursor: pointer; isolation: isolate; border: 1px solid var(--line); transition: transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .5s ease, border-color .4s ease; }
+.mcard.hidden { display: none; }
+.mcard:hover { transform: translateY(-7px); box-shadow: 0 44px 88px -46px rgba(16,15,13,0.5); border-color: var(--gold); }
+.mphoto { position: absolute; inset: 0; z-index: 0; }
+.mphoto image-slot { width: 100%; height: 100%; display: block; transition: transform .8s cubic-bezier(.2,.8,.2,1); filter: grayscale(.32) brightness(.72) contrast(1.04); }
+.mcard:hover .mphoto image-slot { transform: scale(1.06); }
+.mscrim { position: absolute; inset: 0; z-index: 1; background: linear-gradient(0deg, rgba(16,15,13,0.94) 12%, rgba(16,15,13,0.34) 52%, rgba(16,15,13,0.5) 100%); }
+.mshine { position: absolute; inset: 0; z-index: 2; background: linear-gradient(115deg, transparent 32%, rgba(255,255,255,0.09) 48%, transparent 62%); transform: translateX(-120%); transition: transform 1s cubic-bezier(.2,.8,.2,1); pointer-events: none; }
+.mcard:hover .mshine { transform: translateX(120%); }
+.mglyph { position: absolute; top: 16px; left: 16px; z-index: 3; width: 42px; height: 42px; border-radius: 12px; background: rgba(245,244,241,0.12); border: 1px solid rgba(245,244,241,0.2); display: grid; place-items: center; font-family: var(--font-serif); font-style: italic; font-size: 19px; color: var(--gold-light); backdrop-filter: blur(8px); }
+.mbadge { position: absolute; top: 18px; right: 16px; z-index: 3; height: 24px; display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 9.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 999px; padding: 0 11px; backdrop-filter: blur(6px); }
+.mbadge.verified { color: #F2DFAE; background: rgba(143,110,50,0.4); border: 1px solid rgba(231,214,174,0.5); }
+.mbadge.free { color: #B6E6C6; background: rgba(46,139,87,0.34); border: 1px solid rgba(110,191,140,0.45); }
+.mbadge.premium { color: #fff; background: rgba(16,15,13,0.5); border: 1px solid var(--gold); }
+.mbadge .vmark { font-size: 11px; }
+.minner { position: absolute; left: 0; right: 0; bottom: 0; z-index: 3; padding: 22px; display: flex; flex-direction: column; }
+.minner .mtype { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(245,244,241,0.66); margin-bottom: 7px; }
+.minner h3 { font-family: var(--font-sans); font-weight: 700; font-size: 23px; letter-spacing: -0.028em; margin: 0; color: #fff; line-height: 1.04; }
+.minner .mtagline { font-family: var(--font-serif); font-style: italic; font-weight: 300; font-size: 15.5px; line-height: 1.4; color: rgba(245,244,241,0.82); margin: 9px 0 0; }
+.minner .mrow { display: flex; align-items: center; gap: 9px; margin-top: 14px; }
+.minner .mrow .stars { font-size: 12.5px; color: var(--gold-light); }
+.minner .mrow .sc { font-family: var(--font-mono); font-size: 12.5px; font-weight: 600; color: #fff; }
+.minner .mrow .sc small { color: rgba(245,244,241,0.5); font-weight: 400; }
+.minner .mrow .price { margin-left: auto; font-family: var(--font-mono); font-size: 12.5px; color: #fff; font-weight: 600; }
+/* hover-reveal buttons */
+.minner .mbtns { display: grid; grid-template-columns: 1fr auto; gap: 10px; margin-top: 0; max-height: 0; opacity: 0; overflow: hidden; transition: max-height .5s cubic-bezier(.2,.8,.2,1), opacity .4s ease, margin-top .5s ease; }
+.mcard:hover .minner .mbtns { max-height: 60px; opacity: 1; margin-top: 16px; }
+.mbtn { height: 42px; border-radius: 999px; display: grid; place-items: center; font-size: 13.5px; font-weight: 600; letter-spacing: -0.01em; transition: background .2s ease, color .2s ease, border-color .2s ease; }
+.mbtn.view { background: #fff; color: var(--char); }
+.mbtn.view:hover { background: var(--gold-light); }
+.mbtn.compare { border: 1px solid rgba(245,244,241,0.3); color: #fff; padding: 0 18px; }
+.mbtn.compare:hover { border-color: #fff; }
+.mk-empty { display: none; padding: 60px 0; text-align: center; color: var(--ink-mute); font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.04em; }
+.mk-empty.show { display: block; }
+
+/* verified band */
+.verified-band { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; background: var(--graphite); color: #fff; border-radius: 20px; padding: clamp(28px,3vw,44px); position: relative; overflow: hidden; isolation: isolate; }
+.verified-band .vb-tex { position: absolute; inset: 0; z-index: 0; background-image: var(--tex); background-size: 200px; opacity: 0.05; mix-blend-mode: overlay; }
+.verified-band > * { position: relative; z-index: 1; }
+.verified-band .vb-l { display: flex; align-items: center; gap: 22px; }
+.verified-band .seal { width: 60px; height: 60px; border-radius: 50%; border: 1px solid var(--gold); display: grid; place-items: center; font-family: var(--font-serif); font-style: italic; font-size: 26px; background: linear-gradient(160deg, rgba(231,214,174,0.22), rgba(143,110,50,0.04)); flex: none; }
+.verified-band h3 { font-family: var(--font-sans); font-weight: 700; font-size: clamp(20px,2.4vw,28px); letter-spacing: -0.025em; margin: 0 0 6px; color: #fff; }
+.verified-band p { font-size: 14.5px; color: rgba(245,244,241,0.65); margin: 0; max-width: 52ch; }
+
+@media (max-width: 1080px) { .worlds { grid-template-columns: repeat(4, 1fr); } .ops-grid { grid-template-columns: 1fr; gap: 32px; } .seasons { grid-template-columns: repeat(2, 1fr); } .season:nth-child(1) { grid-column: span 2; } }
+@media (max-width: 860px) {
+  .worlds { grid-template-columns: repeat(3, 1fr); }
+  .filterstrip { top: 60px; }
+  .anatomy { grid-template-columns: 1fr 1fr; }
+  .anatomy .floor::after { display: none; }
+}
+@media (max-width: 560px) {
+  .worlds { grid-template-columns: repeat(2, 1fr); }
+  .seasons { grid-template-columns: 1fr; } .season:nth-child(1) { grid-column: span 1; }
+  .mcard { flex-basis: 80vw; }
+  .cap { grid-template-columns: 96px 1fr 40px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ticker -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-label">Today's Intelligence</div>
+  <div class="ticker-track">
+    <span><span class="tk">COLLECTIONS</span> 19 industry worlds, each fully assembled</span><span class="dot"></span>
+    <span><span class="tk">VERIFIED</span> 318 solutions carry the AGNUS badge</span><span class="dot"></span>
+    <span><span class="tk">NEW</span> GPT-X Research Agent now listed</span><span class="dot"></span>
+    <span><span class="tk">ENTERPRISE</span> AI adoption in F500 <span class="up">&nbsp;+38% YoY</span></span><span class="dot"></span>
+    <span><span class="tk">COLLECTIONS</span> 19 industry worlds, each fully assembled</span><span class="dot"></span>
+    <span><span class="tk">VERIFIED</span> 318 solutions carry the AGNUS badge</span><span class="dot"></span>
+    <span><span class="tk">NEW</span> GPT-X Research Agent now listed</span><span class="dot"></span>
+    <span><span class="tk">ENTERPRISE</span> AI adoption in F500 <span class="up">&nbsp;+38% YoY</span></span><span class="dot"></span>
+  </div>
+</div>
+
+<!-- nav -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Marketplace.html" class="active">Marketplace</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Practice.html">Practice</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+      <a href="AGNUS - Business.html">Business</a>
+      </div>
+    <div class="nav-right">
+      <a href="AGNUS - Explore.html" class="nav-search">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="6"/><path d="M14 14l4 4"/></svg>
+        Search <kbd>/</kbd>
+      </a>
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+      <button class="hamburger" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="m-drawer">
+    <a href="AGNUS - Explore.html">Explore</a>
+    <a href="AGNUS - Marketplace.html">Marketplace</a>
+    <a href="AGNUS - Intelligence.html">Intelligence</a>
+    <a href="AGNUS - Review.html">Reviews</a>
+    <a href="AGNUS - Agents.html">Agents</a>
+    <a href="AGNUS - Academy.html">Academy</a>
+    <a href="AGNUS - Business.html">Business</a>
+    <a href="AGNUS - Home.html#premium" style="color: var(--gold-deep);">Premium Membership</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="mk-hero">
+  <div class="container">
+    <div class="kicker"><span class="ix">◆</span> The AGNUS Marketplace</div>
+    <h1>What world do you<br />want to <em>enter today?</em></h1>
+    <p class="lede">You don't wake up needing software. You wake up running a clinic, a firm, a studio. Choose your world — everything reorganizes around it.</p>
+    <div class="mk-search">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="6"/><path d="M14 14l4.5 4.5" stroke-linecap="round"/></svg>
+      <div class="field">
+        <input type="text" id="mkSearch" placeholder=" " aria-label="What do you want to automate?" />
+        <div class="rotor" id="rotor">What do you want to automate?</div>
+      </div>
+      <button class="btn btn-dark">Find it <span class="arr">→</span></button>
+    </div>
+  </div>
+</header>
+
+<!-- WORLDS GRID -->
+<section class="worlds-sec">
+  <div class="container">
+    <div class="worlds-head">
+      <h2>Choose your world</h2>
+      <span class="wh-note">Each world is a complete AGNUS Collection</span>
+    </div>
+    <div class="worlds" id="worlds"></div>
+  </div>
+</section>
+
+<!-- DARK / LIGHT TRANSITION -->
+<div class="modeshift">
+  <div class="container">
+    <div class="ms-line"></div>
+    <div class="ms-k"><span class="pulse"></span> Entering implementation mode</div>
+    <h3 class="ms-t">The Transformation Studio</h3>
+    <p class="ms-s">This is where you stop browsing and start building.</p>
+  </div>
+</div>
+
+<!-- OPERATIONS CENTER -->
+<section class="ops" id="studio">
+  <div class="m-photo"><image-slot id="ops-photo" shape="rect" placeholder="Cinematic wide scene for the chosen world (clinic / firm / studio) in low light — sits at 8% behind the studio. Calm, premium."></image-slot></div>
+  <div class="m-scrim" id="opsScrim"></div>
+  <div class="m-tex"></div>
+  <div class="container">
+    <div class="ops-grid">
+      <div class="m-left">
+        <div class="mk2"><span class="e" id="mEmoji">🦷</span> <span id="mTag">AGNUS Collection · Verified</span></div>
+        <h2 id="mTitle">AI for <em>Dental Clinics</em></h2>
+        <p class="m-note" id="mNote">Not a list of tools. The complete AI transformation blueprint for your clinic — assembled, tested, and ready to deploy.</p>
+        <div class="m-metric glass"><span class="ml">Productivity</span><span class="mv"><span class="pre">+</span><span id="mValue">€2,800</span></span><span class="ml">/ month</span></div>
+        <div class="m-cta">
+          <a href="AGNUS - Home.html#premium" class="btn btn-ind btn-lg">Deploy this world <span class="arr">→</span></a>
+          <a href="AGNUS - Business.html" class="btn btn-ghost-d btn-lg">See the roadmap</a>
+        </div>
+      </div>
+      <div class="m-right">
+        <div class="studio glass">
+          <div class="studio-head">
+            <div class="sh-t"><span class="ico">▣</span> AI Transformation Blueprint</div>
+            <div class="sh-r">Coverage <b id="bpAvg">71%</b></div>
+          </div>
+          <div class="blueprint" id="blueprint"></div>
+          <div class="studio-foot">
+            <div class="modules" id="modules"></div>
+          </div>
+          <div class="anatomy" id="anatomy"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEASONS -->
+<section class="mk-sec">
+  <div class="container">
+    <div class="sec-intro">
+      <div class="kicker"><span class="ix">◆</span> The AGNUS Seasons</div>
+      <h2>Curated editions, not a feed.</h2>
+      <p>Every season, our editors assemble the collections that matter most right now — for a kind of company, a moment in the market.</p>
+    </div>
+    <div class="seasons" id="seasons"></div>
+  </div>
+</section>
+
+<!-- FILTER STRIP -->
+<div class="filterstrip">
+  <div class="container">
+    <div class="filterstrip-inner" id="filters">
+      <button class="fchip on" data-f="all">All products</button>
+      <button class="fchip" data-f="software">Software</button>
+      <button class="fchip" data-f="agents">Agents</button>
+      <button class="fchip" data-f="prompts">Prompts</button>
+      <button class="fchip" data-f="templates">Templates</button>
+      <button class="fchip" data-f="workflows">Workflows</button>
+      <button class="fchip" data-f="free">Free</button>
+      <button class="fchip" data-f="premium">Premium</button>
+      <button class="fchip gold" data-f="verified"><span class="vmark">✦</span> AGNUS Verified</button>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="mk-sec warm" id="shelves">
+  <div class="container">
+    <div class="sec-intro">
+      <div class="kicker"><span class="ix">◆</span> Or browse individual products</div>
+      <h2>Worlds solve identities. Products solve tasks.</h2>
+      <p>Already know exactly what you need? Every individual solution is here too — scored, verified, ready.</p>
+    </div>
+    <div class="mk-empty" id="mkEmpty">No products match these filters — try widening them.</div>
+
+    <div class="shelf" data-shelf>
+      <div class="shelf-head"><h2>New AI Agents</h2><a href="AGNUS - Agents.html" class="see">See all <span class="arr">→</span></a></div>
+      <div class="rail-scroll" id="railAgents"></div>
+    </div>
+    <div class="shelf" data-shelf>
+      <div class="shelf-head"><h2>AI Software</h2><a href="AGNUS - Review.html" class="see">See all <span class="arr">→</span></a></div>
+      <div class="rail-scroll" id="railSoftware"></div>
+    </div>
+    <div class="shelf" data-shelf>
+      <div class="shelf-head"><h2>Prompt Packs</h2><a href="AGNUS - Prompts.html" class="see">See all <span class="arr">→</span></a></div>
+      <div class="rail-scroll" id="railPrompts"></div>
+    </div>
+    <div class="shelf" data-shelf>
+      <div class="shelf-head"><h2>Templates &amp; Workflows</h2><a href="AGNUS - Business.html" class="see">See all <span class="arr">→</span></a></div>
+      <div class="rail-scroll" id="railTemplates"></div>
+    </div>
+  </div>
+</section>
+
+<!-- VERIFIED BAND -->
+<section class="mk-sec">
+  <div class="container">
+    <div class="verified-band">
+      <div class="vb-tex"></div>
+      <div class="vb-l">
+        <div class="seal"><span class="gold-text">✦</span></div>
+        <div>
+          <h3>The <span class="gold-text">AGNUS Verified</span> badge</h3>
+          <p>Not everything gets in. Each solution is tested against our rubric for capability, reliability and value. The badge is something companies earn — and people trust.</p>
+        </div>
+      </div>
+      <a href="AGNUS - Awards.html" class="btn btn-gold">How we verify <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- footer -->
+<footer>
+  <div class="container">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+        <p>Intelligence for the future of work. The trusted source for what's happening, which tools matter, and where AI is heading.</p>
+        <form class="fsearch" onsubmit="return false;"><input type="email" placeholder="Your email for the daily brief" aria-label="Email" /><button type="submit">Subscribe</button></form>
+      </div>
+      <div class="foot-col"><h5>Marketplace</h5><ul>
+        <li><a href="AGNUS - Marketplace.html">Collections</a></li>
+        <li><a href="AGNUS - Agents.html">AI Agents</a></li>
+        <li><a href="AGNUS - Prompts.html">Prompt Packs</a></li>
+        <li><a href="AGNUS - Business.html">Workflows &amp; Templates</a></li>
+        <li><a href="AGNUS - Marketplace.html"><span class="gd">AGNUS Verified</span></a></li>
+      </ul></div>
+      <div class="foot-col"><h5>Discover</h5><ul>
+        <li><a href="AGNUS - Explore.html">Explore</a></li>
+        <li><a href="AGNUS - Review.html">AI Reviews</a></li>
+        <li><a href="AGNUS - Compare.html">AI Comparisons</a></li>
+        <li><a href="AGNUS - Intelligence.html">Intelligence Journal</a></li>
+        <li><a href="AGNUS - Tools.html">Free AI Tools</a></li>
+      </ul></div>
+      <div class="foot-col"><h5>Company</h5><ul>
+        <li><a href="#">About AGNUS</a></li>
+        <li><a href="#">Our methodology</a></li>
+        <li><a href="AGNUS - Awards.html">The AGNUS Awards</a></li>
+        <li><a href="#">Become a creator</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="AGNUS - Dashboard.html" class="gd">Editorial Dashboard ↗</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 AGNUS · Truth before hype.</span><div class="fb-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Editorial Policy</a><a href="#">Advertise</a></div></div>
+  </div>
+</footer>
+
+<script src="image-slot.js"></script>
+<script src="agnus-research-data.js"></script>
+<script>
+/* rotating search placeholder */
+(function(){
+  const ex = ['customer support','restaurant marketing','legal research','a YouTube workflow','invoicing','patient reminders'];
+  const rotor = document.getElementById('rotor'); let i=0;
+  function tick(){ rotor.innerHTML = 'What do you want to automate? &nbsp;<span class="word">'+ex[i]+'</span>'; i=(i+1)%ex.length; }
+  tick(); setInterval(tick, 2400);
+  const input=document.getElementById('mkSearch');
+  input.addEventListener('focus',()=>rotor.style.opacity='0');
+  input.addEventListener('blur',()=>{ if(!input.value) rotor.style.opacity=''; });
+})();
+
+/* ── WORLDS (with per-industry accent + blueprint) ── */
+const WORLDS = [
+  { k:'health', e:'🏥', name:'Healthcare', tag:'Clinics, practices & care teams', accent:'#5F8FA8', value:'€5,100', title:'<em>Healthcare</em>', note:'From intake to follow-up — documentation and admin handled, so clinicians get their time back.',
+    bp:[['Patient Intake',90],['Reception',85],['Documentation',78],['Reminders',82],['Reviews',60],['Analytics',64]],
+    mods:['Clinical Docs','Intake Agent','Reminders','350 Prompts','AI for Clinics','ROI'], anatomy:[['8','Products'],['12','Automations'],['1','Course'],['6','Case Studies'],['ROI','Calculator']] },
+  { k:'law', e:'🏛', name:'Law', tag:'Firms & in-house teams', accent:'#6B5A44', value:'€6,800', title:'<em>Law Firms</em>', note:'Cut review and drafting time without cutting corners on accuracy — every output auditable.',
+    bp:[['Drafting',88],['Research',92],['Review',80],['Intake',66],['Billing',58],['Analytics',55]],
+    mods:['Claude','Research Analyst','500 Prompts','Contract Library','Review Course','ROI'], anatomy:[['7','Products'],['9','Automations'],['1','Course'],['8','Case Studies'],['ROI','Calculator']] },
+  { k:'hotels', e:'🏨', name:'Hotels', tag:'Hospitality & guest experience', accent:'#7A7F83', value:'€3,100', title:'<em>Hotels</em>', note:'A concierge that never sleeps, pricing that adapts, and guests who feel remembered.',
+    bp:[['Booking',86],['Concierge',82],['Messaging',78],['Reviews',74],['Upsell',62],['Analytics',58]],
+    mods:['Booking AI','Voice Concierge','Guest Msg','Review Mgmt','Hospitality Course','ROI'], anatomy:[['8','Products'],['11','Automations'],['1','Course'],['5','Case Studies'],['ROI','Calculator']] },
+  { k:'restaurant', e:'🍽', name:'Restaurants', tag:'Independents & groups', accent:'#9A6A52', value:'€2,400', title:'<em>Restaurants</em>', note:'Fill tables, cut no-shows, and keep the reviews glowing — automatically.',
+    bp:[['Booking',88],['Reception',84],['Reminders',80],['Reviews',76],['Marketing',64],['Analytics',52]],
+    mods:['Booking AI','Voice Receptionist','Reminders','Review Replies','Marketing Pack','ROI'], anatomy:[['9','Products'],['12','Automations'],['1','Course'],['6','Case Studies'],['ROI','Calculator']] },
+  { k:'build', e:'🏗', name:'Construction', tag:'Contractors & builders', accent:'#7D6A55', value:'€4,900', title:'<em>Construction</em>', note:'Bids out faster, schedules that hold, and paperwork that files itself.',
+    bp:[['Estimating',84],['Bidding',80],['Reporting',72],['Safety SOPs',68],['Scheduling',60],['Analytics',50]],
+    mods:['Estimating AI','RFI Assistant','Progress Reports','Safety SOPs','Jobsite Course','ROI'], anatomy:[['7','Products'],['10','Automations'],['1','Course'],['4','Case Studies'],['ROI','Calculator']] },
+  { k:'finance', e:'🏦', name:'Finance', tag:'Advisors & finance teams', accent:'#4E5F52', value:'€8,200', title:'<em>Finance</em>', note:'Analysis, reporting and risk — with the audit trail built in from the first click.',
+    bp:[['Analysis',90],['Reporting',86],['Reconciliation',82],['Risk',74],['Forecasting',68],['Compliance',72]],
+    mods:['Financial Analysis','Reporting Agent','Reconciliation','Finance Pack','Finance Course','ROI'], anatomy:[['8','Products'],['13','Automations'],['1','Course'],['7','Case Studies'],['ROI','Calculator']] },
+  { k:'education', e:'🎓', name:'Education', tag:'Schools & educators', accent:'#6A79A8', value:'€2,900', title:'<em>Education</em>', note:'Lesson planning, grading and feedback — handled, so teachers can teach.',
+    bp:[['Lesson Plans',86],['Grading',82],['Feedback',78],['Parent Comms',72],['Curriculum',62],['Analytics',54]],
+    mods:['Lesson Planning','Grading Assistant','Parent Comms','Educator Pack','Classroom Course','ROI'], anatomy:[['7','Products'],['9','Automations'],['1','Course'],['5','Case Studies'],['ROI','Calculator']] },
+  { k:'creators', e:'🎬', name:'Creators', tag:'YouTubers & studios', accent:'#8A5FA8', value:'€3,700', title:'<em>Creators</em>', note:'From idea to upload — scripts, edits, thumbnails and titles, one connected pipeline.',
+    bp:[['Ideation',88],['Scripting',84],['Editing',74],['Thumbnails',80],['Titles/SEO',70],['Analytics',60]],
+    mods:['Script & Ideation','Video Agent','Thumbnail Tester','Creator Pack','Creator Course','ROI'], anatomy:[['8','Products'],['10','Automations'],['1','Course'],['6','Case Studies'],['ROI','Calculator']] },
+  { k:'ecommerce', e:'🛒', name:'Ecommerce', tag:'Online stores & DTC', accent:'#A86D4A', value:'€4,300', title:'<em>Ecommerce</em>', note:'Grow revenue and automate support across the whole storefront.',
+    bp:[['Support',88],['Cart Recovery',80],['Product Copy',84],['Email Flows',78],['Ads',66],['Analytics',62]],
+    mods:['ChatGPT','Support Agent','Cart Recovery','200 Prompts','Lead → Close','ROI'], anatomy:[['9','Products'],['12','Automations'],['1','Course'],['7','Case Studies'],['ROI','Calculator']] },
+  { k:'dev', e:'💻', name:'Developers', tag:'Engineers & teams', accent:'#66717C', value:'€7,400', title:'<em>Developers</em>', note:'Ship faster with agents that review, debug and refactor across your codebase.',
+    bp:[['Code Review',88],['Debugging',82],['Refactoring',78],['Testing',74],['Docs',68],['CI/CD',64]],
+    mods:['Cursor','Coding Agent','400 Prompts','Eval Harness','Developer Path','ROI'], anatomy:[['9','Products'],['14','Automations'],['1','Course'],['6','Case Studies'],['ROI','Calculator']] }
+];
+
+const SEASONS = [
+  { ed:'Spring Edition · 2026', name:'The Enterprise Collection', accent:'#4E5F52', desc:'Everything a 1,000-person company needs to adopt AI with governance built in.', meta:'14 collections · 60+ verified solutions' },
+  { ed:'Featured', name:'Healthcare', accent:'#5F8FA8', desc:'AI that gives clinicians their time back.', meta:'8 collections' },
+  { ed:'Spotlight', name:'Open-Source', accent:'#7A7F83', desc:'The best self-hostable, no-lock-in stack.', meta:'11 solutions' },
+  { ed:'For Creators', name:'The Creator Studio', accent:'#8A5FA8', desc:'Idea to upload, fully automated.', meta:'9 solutions' },
+  { ed:'For Founders', name:'The Startup Kit', accent:'#A86D4A', desc:'Run lean. Punch above your weight.', meta:'12 solutions' }
+];
+
+const PRODUCTS = {
+  agents: [
+    { dark:1, glyph:'⟁', badge:['premium','New'], type:'AI Agent', name:'GPT-X Research Agent', tag:'"Reads everything. Tells you what matters."', score:'9.1', stars:4, price:'€49/mo', href:'AGNUS - Agents.html', img:'p-research' },
+    { glyph:'◈', badge:['verified','Verified'], type:'AI Agent', name:'Sales Agent', tag:'"Never lets a warm lead go cold."', score:'8.8', stars:4, price:'€45/mo', href:'AGNUS - Agents.html', img:'p-sales' },
+    { glyph:'♪', badge:['verified','Verified'], type:'AI Agent', name:'Voice Receptionist', tag:'"Answers and books, 24 hours a day."', score:'8.5', stars:4, price:'€35/mo', href:'AGNUS - Agents.html', img:'p-voice' },
+    { glyph:'⬡', badge:['premium','New'], type:'AI Agent', name:'Bookkeeping Agent', tag:'"Closes the books while you sleep."', score:'8.7', stars:4, price:'€69/mo', href:'AGNUS - Agents.html', img:'p-books' },
+    { glyph:'⟁', badge:['verified','Verified'], type:'AI Agent', name:'Customer Support Agent', tag:'"Answers every customer the moment they ask."', score:'9.4', stars:5, price:'€39/mo', href:'AGNUS - Solution.html', img:'p-support' }
+  ],
+  software: [
+    { glyph:'❖', badge:['verified','Verified'], type:'AI Software', name:'Claude', tag:'"The best AI for deep reasoning."', score:'9.6', stars:5, price:'$20/mo', href:'AGNUS - Review.html', img:'p-claude' },
+    { glyph:'◐', badge:['verified','Verified'], type:'AI Software', name:'ChatGPT', tag:'"The most capable all-rounder."', score:'9.5', stars:5, price:'$20/mo', href:'AGNUS - Review.html', img:'p-gpt' },
+    { glyph:'✸', badge:['verified','Verified'], type:'AI Software', name:'Cursor', tag:'"Where modern software gets built."', score:'9.3', stars:5, price:'$20/mo', href:'AGNUS - Review.html', img:'p-cursor' },
+    { dark:1, glyph:'∑', badge:['free','Free'], type:'Free Tool', name:'AI ROI Calculator', tag:'"Prove the value before you spend."', score:'9.2', stars:5, price:'Free', href:'AGNUS - Tools.html', img:'p-roi' }
+  ],
+  prompts: [
+    { glyph:'¶', badge:['free','Free'], type:'Prompt Pack', name:'Marketing Pack · 200', tag:'"A month of campaigns in an afternoon."', score:'9.2', stars:5, price:'Free', href:'AGNUS - Prompts.html', img:'p-mkt' },
+    { glyph:'¶', badge:['premium','Premium'], type:'Prompt Pack', name:'Lawyer Pack · 500', tag:'"Draft, review and research in half the time."', score:'9.3', stars:5, price:'€29', href:'AGNUS - Prompts.html', img:'p-legal' },
+    { glyph:'¶', badge:['premium','Premium'], type:'Prompt Pack', name:'Healthcare Pack · 350', tag:'"Faster notes. More time with patients."', score:'9.0', stars:4, price:'€39', href:'AGNUS - Prompts.html', img:'p-health' },
+    { glyph:'¶', badge:['free','Free'], type:'Prompt Pack', name:'Starter Pack · 50', tag:'"The essentials, free, forever."', score:'8.6', stars:4, price:'Free', href:'AGNUS - Prompts.html', img:'p-start' }
+  ],
+  templates: [
+    { glyph:'⬡', badge:['verified','Verified'], type:'AI Workflow', name:'Lead → Close', tag:'"Every lead, qualified and booked — on its own."', score:'9.0', stars:4, price:'€79', href:'AGNUS - Business.html', img:'p-lead' },
+    { glyph:'▤', badge:['free','Free'], type:'Template', name:'AI Policy & SOP Kit', tag:'"Governance, sorted in an afternoon."', score:'9.1', stars:5, price:'Free', href:'AGNUS - Business.html', img:'p-sop' },
+    { glyph:'▤', badge:['premium','Premium'], type:'Template', name:'Proposal & Pitch Pack', tag:'"Win more. Write less."', score:'8.8', stars:4, price:'€19', href:'AGNUS - Business.html', img:'p-proposal' },
+    { glyph:'⬡', badge:['verified','Verified'], type:'AI Workflow', name:'Customer Onboarding', tag:'"Welcome, set up, first value — automatic."', score:'8.9', stars:4, price:'€59', href:'AGNUS - Business.html', img:'p-onboard' }
+  ]
+};
+
+function stars(n){ let s=''; for(let i=0;i<5;i++) s+= i<n?'★':'<span style="color:rgba(245,244,241,0.28)">★</span>'; return s; }
+
+(function(){
+  /* worlds */
+  const grid=document.getElementById('worlds');
+  grid.innerHTML = WORLDS.map((w,i)=>(
+    '<button class="world'+(i===0?' on':'')+'" data-k="'+w.k+'" style="--w-accent:'+hexa(w.accent,0.22)+';--w-ink:'+w.accent+'">'+
+      '<div class="w-photo"><image-slot id="world-'+w.k+'" shape="rect" placeholder="'+w.name+' world · cinematic editorial scene. Calm, premium, low light."></image-slot></div>'+
+      '<div class="w-base"></div><div class="w-tex"></div><div class="w-shine"></div>'+
+      '<div class="w-inner"><span class="w-emoji">'+w.e+'</span>'+
+        '<div class="w-body"><div class="w-name">'+w.name+'</div><div class="w-tag">'+w.tag+'</div>'+
+        '<span class="w-enter">Enter this world <b>→</b></span></div></div>'+
+    '</button>'
+  )).join('');
+
+  /* seasons */
+  document.getElementById('seasons').innerHTML = SEASONS.map(s=>(
+    '<button class="season" style="--s-accent:'+hexa(s.accent,0.34)+'">'+
+      '<div class="s-photo"><image-slot id="season-'+s.name.replace(/[^a-z]/gi,'').toLowerCase()+'" shape="rect" placeholder="'+s.name+' · editorial cover scene. Cinematic."></image-slot></div>'+
+      '<div class="s-scrim"></div>'+
+      '<div class="s-inner"><div class="s-ed">'+s.ed+'</div>'+
+        '<div class="s-body"><div class="s-name">'+s.name+'</div><div class="s-desc">'+s.desc+'</div><div class="s-meta">'+s.meta+'</div></div></div>'+
+    '</button>'
+  )).join('');
+
+  /* products */
+  function cardHTML(p){
+    const b=p.badge;
+    return '<a href="'+p.href+'" class="mcard'+(p.dark?' dark':'')+'" data-type="'+typeOf(p.type)+'" data-tier="'+tierOf(b[0])+'" data-verified="'+(b[0]==='verified'?1:0)+'">'+
+      '<div class="mphoto"><image-slot id="'+p.img+'" shape="rect" placeholder="Editorial · '+p.name+'. Story, not screenshot. Cinematic, warm."></image-slot></div>'+
+      '<div class="mscrim"></div><div class="mshine"></div>'+
+      '<div class="mglyph">'+p.glyph+'</div><span class="mbadge '+b[0]+'">'+(b[0]==='verified'?'<span class="vmark">✦</span> ':'')+b[1]+'</span>'+
+      '<div class="minner"><div class="mtype">'+p.type+'</div><h3>'+p.name+'</h3><p class="mtagline">'+p.tag+'</p>'+
+        '<div class="mrow"><span class="stars">'+stars(p.stars)+'</span><span class="sc">'+p.score+' <small>AGNUS</small></span><span class="price">'+p.price+'</span></div>'+
+        '<div class="mbtns"><span class="mbtn view">View</span><span class="mbtn compare">Compare</span></div></div></a>';
+  }
+  function typeOf(t){ t=t.toLowerCase(); if(t.includes('agent'))return'agents'; if(t.includes('prompt'))return'prompts'; if(t.includes('template'))return'templates'; if(t.includes('workflow'))return'workflows'; return'software'; }
+  function tierOf(b){ return b==='free'?'free':(b==='premium'||b==='verified'?'premium':'premium'); }
+  document.getElementById('railAgents').innerHTML = PRODUCTS.agents.map(cardHTML).join('');
+  document.getElementById('railSoftware').innerHTML = PRODUCTS.software.map(cardHTML).join('');
+  document.getElementById('railPrompts').innerHTML = PRODUCTS.prompts.map(cardHTML).join('');
+  document.getElementById('railTemplates').innerHTML = PRODUCTS.templates.map(cardHTML).join('');
+
+  /* ── mission / blueprint ── */
+  const E={ emoji:document.getElementById('mEmoji'), tag:document.getElementById('mTag'), title:document.getElementById('mTitle'), note:document.getElementById('mNote'), value:document.getElementById('mValue'), bp:document.getElementById('blueprint'), mods:document.getElementById('modules'), avg:document.getElementById('bpAvg'), anat:document.getElementById('anatomy'), scrim:document.getElementById('opsScrim') };
+  function setWorld(w){
+    document.documentElement.style.setProperty('--ind', w.accent);
+    document.documentElement.style.setProperty('--ind-soft', hexa(w.accent,0.14));
+    E.emoji.textContent=w.e; E.title.innerHTML='AI for '+w.title; E.note.textContent=w.note; E.value.textContent=w.value;
+    E.bp.innerHTML = w.bp.map(c=>'<div class="cap"><div class="cap-n">'+c[0]+'</div><div class="cap-track" style="background-size:'+c[1]+'% 100%"></div><div class="cap-pct">'+c[1]+'%</div></div>').join('');
+    const avg=Math.round(w.bp.reduce((a,c)=>a+c[1],0)/w.bp.length); E.avg.textContent=avg+'%';
+    E.mods.innerHTML = w.mods.map(m=>'<span class="mchip"><span class="d"></span>'+m+'</span>').join('');
+    E.anat.innerHTML = w.anatomy.map(a=>'<div class="floor"><div class="fl-n'+(a[0].length>2?' sm':'')+'">'+a[0]+'</div><div class="fl-l">'+a[1]+'</div></div>').join('');
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{ E.bp.querySelectorAll('.cap-fill').forEach(f=>{ f.parentElement.style.backgroundSize=(+f.dataset.v)+'% 100%'; }); }));
+  }
+  grid.addEventListener('click', e=>{
+    const b=e.target.closest('.world'); if(!b) return;
+    grid.querySelectorAll('.world').forEach(x=>x.classList.toggle('on',x===b));
+    const w=WORLDS.find(x=>x.k===b.dataset.k); if(w){ setWorld(w); document.getElementById('studio').scrollIntoView({behavior:'smooth',block:'start'}); }
+  });
+  setWorld(WORLDS[0]);
+
+  /* fill blueprint on first scroll into view too */
+  const io=new IntersectionObserver((ents)=>{ ents.forEach(en=>{ if(en.isIntersecting){ E.bp.querySelectorAll('.cap-fill').forEach(f=>{ f.parentElement.style.backgroundSize=(+f.dataset.v)+'% 100%'; }); } }); },{threshold:0.3});
+  io.observe(document.getElementById('studio'));
+
+  /* product filtering */
+  const filters=document.getElementById('filters');
+  const shelves=Array.from(document.querySelectorAll('[data-shelf]'));
+  const empty=document.getElementById('mkEmpty');
+  let f='all';
+  function match(c){ if(f==='all')return true; if(f==='free'||f==='premium')return c.dataset.tier===f; if(f==='verified')return c.dataset.verified==='1'; return c.dataset.type===f; }
+  function apply(){ let n=0; document.querySelectorAll('.mcard').forEach(c=>{ const m=match(c); c.classList.toggle('hidden',!m); if(m)n++; }); shelves.forEach(s=>{ s.classList.toggle('hidden', s.querySelectorAll('.mcard:not(.hidden)').length===0); }); empty.classList.toggle('show',n===0); }
+  filters.addEventListener('click',e=>{ const c=e.target.closest('.fchip'); if(!c)return; filters.querySelectorAll('.fchip').forEach(x=>x.classList.toggle('on',x===c)); f=c.dataset.f; apply(); });
+})();
+
+function hexa(hex,a){ const n=parseInt(hex.slice(1),16); return 'rgba('+((n>>16)&255)+','+((n>>8)&255)+','+(n&255)+','+a+')'; }
+
+document.addEventListener('keydown',e=>{ if(e.key==='/' && !/input|textarea/i.test(document.activeElement.tagName)){ e.preventDefault(); document.getElementById('mkSearch').focus(); window.scrollTo({top:0,behavior:'smooth'}); } });
+</script>
+</body>
+</html>

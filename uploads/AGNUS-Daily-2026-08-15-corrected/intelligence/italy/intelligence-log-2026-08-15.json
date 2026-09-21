@@ -1,0 +1,27 @@
+{
+  "run_date": "2026-08-15",
+  "source_checks": [
+    {
+      "source_url": "https://www.agid.gov.it",
+      "date_checked": "2026-08-15",
+      "status": "unreachable",
+      "last_successful_check": "",
+      "observed_version_or_date": "Registry homepage returned an internal retrieval error",
+      "open_questions": [
+        "Official AI topic pages were discoverable, including https://www.agid.gov.it/it/ambiti-intervento/intelligenza-artificiale; registry URL needs manual review"
+      ]
+    },
+    {
+      "source_url": "https://www.garanteprivacy.it",
+      "date_checked": "2026-08-15",
+      "status": "manual_review",
+      "last_successful_check": "2026-08-15",
+      "observed_version_or_date": "Garante homepage retrieved; AI topic index contains official 2026 items; baseline established",
+      "open_questions": []
+    }
+  ],
+  "findings": [],
+  "editorial_alerts": [
+    "Agenzia per l'Italia Digitale (AgID): Registry homepage returned an internal retrieval error"
+  ]
+}

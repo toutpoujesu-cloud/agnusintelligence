@@ -1,0 +1,330 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Logging Requirements for High-Risk AI Systems (Article 12) — AGNUS Research</title>
+<meta name="description" content="Article 12 requires high-risk AI systems to technically enable automatic event logging throughout their operational lifetime. Three purposes govern what must be recorded; one category of system — remote biometric identification — carries additional minimum requirements." />
+<link rel="canonical" href="https://agnus.example/research/eu-ai-act/eu-ai-act-logging/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Logging Requirements for High-Risk AI Systems (Article 12)" />
+<meta property="article:published_time" content="2026-05-22" />
+<meta property="article:modified_time" content="2026-08-22" />
+<meta property="article:author" content="Jean-Daniel Alexis" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>a,a:visited{color:inherit}
+.dependency-note{font-size:13px;color:var(--ink-mute);font-style:italic;margin:-6px 0 26px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.dependency-note a{color:var(--gold-deep);font-style:normal}
+.prose h3{font-family:var(--font-sans);font-weight:700;font-size:19px;letter-spacing:-.018em;margin:32px 0 14px}
+.log-purposes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0}
+.log-card{background:var(--paper-warm,#F7F5F0);border:1px solid var(--line);border-radius:8px;padding:18px 20px}
+.log-card .lc-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:6px}
+.log-card .lc-title{font-family:var(--font-sans);font-weight:700;font-size:15px;margin-bottom:8px;color:var(--ink)}
+.log-card .lc-desc{font-size:13px;color:var(--ink-mute);line-height:1.55}
+@media(max-width:640px){.log-purposes{grid-template-columns:1fr}}
+.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
+.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
+.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s}
+.rsub a:hover{color:var(--ink);background:var(--line-soft,rgba(0,0,0,.04))}
+.rsub a.on{color:var(--gold-deep);font-weight:600}
+</style>
+</head>
+<body>
+
+<div class="art-progress"><i id="progBar"></i></div>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Marketplace.html">Marketplace</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+      <a href="AGNUS - Business.html">Business</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+      <button class="hamburger" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="m-drawer">
+    <a href="AGNUS - Explore.html">Explore</a><a href="AGNUS - Intelligence.html">Intelligence</a><a href="AGNUS - Research.html" class="active">Research</a><a href="AGNUS - Review.html">Reviews</a><a href="AGNUS - Academy.html">Academy</a><a href="AGNUS - Business.html">Business</a>
+  </div>
+</nav>
+<div class="rsub"><div class="rsub-inner">
+<a href="AGNUS - Research.html">Research Home</a>
+<a href="AGNUS - Research.html#taxonomy">Topics</a>
+<a href="AGNUS - Research Topic.html">EU AI Act</a>
+<a href="AGNUS - Research Country.html">Countries</a>
+<a href="AGNUS - Research Sources.html">Sources</a>
+<a href="AGNUS - Research Calendar.html">Calendar</a>
+<a href="AGNUS - Research Methodology.html">Methodology</a>
+<a href="AGNUS - Research Author.html">Authors</a>
+</div></div>
+
+<header class="art-head">
+  <div class="container">
+    <div data-rc="classification" data-rc-arg="AR-000151"></div>
+    <h1>Logging Requirements for High-Risk AI Systems</h1>
+    <p class="art-abstract">Article 12 requires high-risk AI systems to technically enable automatic event logging throughout their operational lifetime. Three statutory purposes govern what must be captured. Remote biometric identification systems carry a separate, more demanding minimum-content requirement.</p>
+    <div data-rc="articleMeta" data-rc-arg="AR-000151"></div>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:20px">
+      <span data-rc="trackButton" data-rc-arg="EU AI Act"></span>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <figure class="art-hero-fig">
+    <image-slot id="rs-art-hero" shape="rect" fit="cover" placeholder="A server rack with blinking status lights and a terminal displaying timestamped log entries, evoking the automated event record a high-risk AI system must maintain throughout operation. Editorial, institutional. 21:9."></image-slot>
+  </figure>
+  <div class="art-hero-cap"><span class="d"></span>Logging is a technical capability requirement, not a retention policy &mdash; Article 12 places the obligation at the system level, not at the operational layer.</div>
+</div>
+
+<div class="container">
+  <div class="art-shell">
+
+    <aside class="art-toc">
+      <div class="toc-h">Contents</div>
+      <ol id="tocList"></ol>
+      <div class="toc-foot">
+        <button onclick="window.print()">Print / PDF</button>
+        <button onclick="document.getElementById('cite').scrollIntoView({behavior:'smooth'})">Cite this research</button>
+        <button onclick="document.getElementById('sources').scrollIntoView({behavior:'smooth'})">Jump to sources</button>
+      </div>
+    </aside>
+
+    <article class="prose" id="prose">
+
+      <p class="dependency-note">Builds on <a href="AGNUS - Research Article - AI Act Explained.html">AR-000200 (The EU AI Act Explained)</a> and <a href="AGNUS - Research Article - High-Risk AI.html">AR-000210 (High-Risk AI Systems)</a> &mdash; none of their content is re-derived here. Article 12 is one of seven Chapter III Section 2 requirements for high-risk systems; Article 19 (automatically generated logs) and Article 26(5) (deployer log-keeping duties) are closely related and referenced throughout.</p>
+
+      <div data-rc="atAGlance" data-rc-arg="AR-000151"></div>
+
+      <h2 id="s-summary">Executive summary</h2>
+      <div data-rc="fact" data-rc-arg='{"source_id":"SRC-0056","locator":"Article 12(1)","text":"High-risk AI systems shall technically allow for the automatic recording of events (logs) over the lifetime of the system."}'></div>
+      <div data-rc="fact" data-rc-arg='{"source_id":"SRC-0056","locator":"Article 12(2)(a)-(c)","text":"Logging capabilities shall enable the recording of events relevant for: (a) identifying situations that may result in the high-risk AI system presenting a risk within the meaning of Article 79(1) or in a substantial modification; (b) facilitating the post-market monitoring referred to in Article 72; and (c) monitoring the operation of high-risk AI systems referred to in Article 26(5)."}'></div>
+      <div data-rc="fact" data-rc-arg='{"source_id":"SRC-0056","locator":"Article 12(3)(a)-(d)","text":"For high-risk AI systems referred to in Annex III point 1(a) (remote biometric identification systems), the logging capabilities shall provide, at a minimum: (a) recording of the period of each use (start date and time and end date and time); (b) the reference database against which input data has been checked; (c) the input data for which the search has led to a match; (d) the identification of the natural persons involved in the verification of the results, as referred to in Article 14(5)."}'></div>
+      <div data-rc="analysis" data-rc-arg='{"text":"Article 12 is a technical design requirement, not an operational policy. The obligation falls on the system itself \u2014 a high-risk AI system must be built with the capability to generate logs automatically. Article 19 then governs the provider\u2019s documentation-keeping obligations for those logs; Article 26(5) governs the deployer\u2019s duty to keep the logs the system generates during their use period. Article 12 is the foundation: without technical logging capability, Articles 19 and 26(5) have nothing to operate on."}'></div>
+
+      <div data-rc="takeaways" data-rc-arg='["Article 12 is a technical capability obligation placed on the system at design time \u2014 the system must be built to log automatically, not configured to do so after deployment.","Three statutory purposes define the scope of what logging must cover: risk identification, post-market monitoring support, and deployer operational monitoring.","Remote biometric identification systems (Annex III point 1(a)) carry a separate minimum-content requirement with four specific data categories that must be captured per use period.","Article 12 carries no Digital Omnibus amendment disclaimer on the Service Desk \u2014 confirmed clean as of this verification pass.","The \u2018appropriate to intended purpose\u2019 traceability standard in Article 12(2) introduces proportionality \u2014 logging depth should match the system\u2019s risk profile, not a universal maximum."]'></div>
+
+      <h2 id="s-means">What this means</h2>
+      <div data-rc="analysis" data-rc-arg='{"text":"The three-purpose structure in Article 12(2) defines what logging must be capable of supporting, not what specific events must be recorded in every deployment. This is deliberate \u2014 the events relevant to risk identification or post-market monitoring differ by system type, so the Regulation sets the functional target (traceability appropriate to intended purpose) rather than a universal event list. The Annex III point 1(a) minimum-content requirement in Article 12(3) is the exception: for remote biometric identification systems, four specific data categories must be captured per use period, regardless of intended purpose."}'></div>
+      <div data-rc="analysis" data-rc-arg='{"text":"The Article 12(2)(c) reference to Article 26(5) is significant. Article 26(5) requires deployers of certain high-risk systems to keep the logs generated by the system under their control for the retention period set by sectoral law or, absent that, a minimum three years. That obligation only functions if the system generates the logs in the first place \u2014 a provider who does not build Article 12(1) logging capability into the system is creating a downstream non-compliance gap for every deployer."}'></div>
+
+      <h2 id="s-applies">Who this applies to</h2>
+      <div data-rc="analysis" data-rc-arg='{"text":"Article 12(1) and (2) run to providers \u2014 the logging capability must be built into the system before it is placed on the market or put into service. Deployers do not build the logging capability; they use it and, under Article 26(5), keep the logs it generates during their use period. For remote biometric identification systems under Article 12(3), both layers matter: the provider must build the four-category minimum capability, and the deployer operates the system in circumstances where those logs will be generated and must be retained."}'></div>
+
+      <h2 id="s-context">Regulatory context</h2>
+
+      <h3>The three logging purposes</h3>
+      <div class="log-purposes">
+        <div class="log-card"><div class="lc-label">Purpose (a)</div><div class="lc-title">Risk identification</div><div class="lc-desc">Events that may indicate the system presents a risk under Article 79(1) or that a substantial modification has occurred. Logs must make these situations identifiable, not merely record all activity.</div></div>
+        <div class="log-card"><div class="lc-label">Purpose (b)</div><div class="lc-title">Post-market monitoring</div><div class="lc-desc">Events that feed the Article 72 post-market monitoring obligation. The provider&rsquo;s monitoring plan (Annex IV Item 9) defines what operational evidence is needed; Article 12 ensures the system can generate it.</div></div>
+        <div class="log-card"><div class="lc-label">Purpose (c)</div><div class="lc-title">Deployer monitoring</div><div class="lc-desc">Events relevant to the Article 26(5) deployer log-keeping obligation. The system must generate logs the deployer is required to retain; logging capability is the provider&rsquo;s responsibility, retention is the deployer&rsquo;s.</div></div>
+      </div>
+
+      <h3>The Annex III point 1(a) enhanced requirements</h3>
+      <div data-rc="analysis" data-rc-arg='{"text":"Remote biometric identification systems \u2014 Annex III point 1(a) \u2014 are the only Article 12 category with a statutory minimum-content list. The four items (use period timestamps; reference database identity; matched input data; result-verification personnel identity per Article 14(5)) reflect the fundamental rights sensitivity of these systems and the need for full accountability of each identification operation. The Article 14(5) cross-reference is precise \u2014 it requires that a high-risk system used for remote biometric identification in publicly accessible spaces log who verified the results, tying Article 12 to the human oversight obligation Article 14 imposes."}'></div>
+
+      <h3>Relationship with Articles 19 and 26(5)</h3>
+      <div data-rc="analysis" data-rc-arg='{"text":"Article 19 requires providers to ensure that automatically generated logs are kept by the system to the extent such logs are under their control \u2014 this is the provider\u2019s documentation-keeping obligation for logs that exist at the provider\u2019s level. Article 26(5) requires deployers to keep the logs generated by systems under their control for a retention period set by sectoral law or, absent that, three years. The three articles together form a chain: Article 12 (technical capability) \u2192 Article 19 (provider-level retention) \u2192 Article 26(5) (deployer-level retention). A gap at any point breaks the chain."}'></div>
+
+      <h3>Digital Omnibus status</h3>
+      <div data-rc="analysis" data-rc-arg='{"text":"Article 12 carries no Digital Omnibus amendment disclaimer on the AI Act Service Desk as of this verification pass. This is consistent with the pattern noted for other Article 12-adjacent articles (Articles 13, 14 also have no disclaimer in prior research passes). The text described here is confirmed against the pre-amendment version of 13 June 2024."}'></div>
+
+      <h2 id="s-requirements">Requirements</h2>
+      <div data-rc="analysis" data-rc-arg='{"text":"The core Article 12 requirement has two dimensions for most high-risk systems: technical capability (the system must be built to log automatically) and functional adequacy (the logging must be capable of supporting the three statutory purposes, at a traceability level appropriate to the system\u2019s intended purpose). For Annex III point 1(a) systems, a third dimension adds: the four minimum-content categories must be captured per use period, regardless of whether the general Article 12(2) purposes would have required them."}'></div>
+
+      <h2 id="s-do">What organizations must do</h2>
+      <ul class="checklist" id="doList">
+        <li><span class="cb"></span>Build automatic logging capability into the system at design time &mdash; Article 12(1) is a technical design obligation on the provider, not a configuration instruction to deployers.</li>
+        <li><span class="cb"></span>Design logging to cover the three statutory purposes: risk-triggering events (Article 79(1)), post-market monitoring evidence (Article 72), and deployer operational monitoring (Article 26(5)).</li>
+        <li><span class="cb"></span>Calibrate logging depth to the system&rsquo;s intended purpose &mdash; the Article 12(2) traceability standard is &ldquo;appropriate to the intended purpose,&rdquo; which implies proportionality but not minimalism: a system with high fundamental-rights impact warrants more granular logging than a narrow procedural system.</li>
+        <li><span class="cb"></span>For remote biometric identification systems (Annex III point 1(a)): ensure the system captures all four Article 12(3) minimum-content categories per use period &mdash; timestamps, reference database identity, matched input data, and verification personnel identification per Article 14(5).</li>
+        <li><span class="cb"></span>Document the logging capability in the Article 11/Annex IV technical documentation (Item 3 covers monitoring and control; Item 2(h) covers cybersecurity measures that protect log integrity).</li>
+      </ul>
+
+      <h2 id="s-mistakes">Common mistakes</h2>
+      <p>Treating Article 12 as an operational logging policy rather than a technical design requirement is a common mistake &mdash; the obligation is on the system itself to be capable of automatic logging, not on the deployer to configure logging after deployment.</p>
+      <p>Conflating Article 12 (logging capability) with Article 19 (provider log retention) and Article 26(5) (deployer log retention) is a second mistake &mdash; they are distinct obligations at different layers of the compliance chain.</p>
+      <p>Treating the Article 12(3) four-category list as applying to all high-risk systems is a third mistake &mdash; it applies only to Annex III point 1(a) remote biometric identification systems; other high-risk systems are governed by the general Article 12(2) purpose-based standard only.</p>
+      <p>Designing logging to capture maximum possible data rather than events appropriate to the system&rsquo;s intended purpose is a fourth mistake &mdash; Article 12(2) sets a proportionality standard, and indiscriminate logging may create data protection issues without adding regulatory value.</p>
+
+      <h2 id="s-open">Open questions</h2>
+      <ul>
+        <li><strong>Whether the Digital Omnibus has changed Article 12</strong> &mdash; no disclaimer found on the Service Desk as of this verification pass; treated as clean pre-amendment text, not as confirmation of no amendment.</li>
+        <li><strong>How the Article 12(2) &ldquo;appropriate to the intended purpose&rdquo; traceability standard should be interpreted in practice</strong> &mdash; no Commission guidance specifically addressing the calibration question was identified on this research pass.</li>
+        <li><strong>What retention periods sectoral law sets for Article 26(5) purposes</strong> &mdash; these differ by Annex III category and sectoral legislation; not surveyed in this research pass.</li>
+      </ul>
+
+      <h2 id="s-faq">Frequently asked</h2>
+      <div class="definition"><div class="df-k">FAQ</div>
+        <dt>Does Article 12 require the provider to store the logs, or just to build the system so logs can be generated?</dt>
+        <dd>Article 12 requires the system to technically enable automatic logging. Storage obligations fall under Article 19 (provider level) and Article 26(5) (deployer level). Article 12 is the capability layer; the other two articles are the retention layers.</dd>
+      </div>
+      <div class="definition"><div class="df-k">FAQ</div>
+        <dt>Does the Annex III point 1(a) minimum-content requirement apply to all biometric systems or only remote identification?</dt>
+        <dd>Only remote biometric identification systems &mdash; Annex III point 1(a) specifically. Biometric categorisation systems (point 1(b)) and emotion recognition systems (point 1(c)) are not subject to the Article 12(3) enhanced minimum-content requirement.</dd>
+      </div>
+      <div class="definition"><div class="df-k">FAQ</div>
+        <dt>Has the Digital Omnibus changed Article 12&rsquo;s logging requirements?</dt>
+        <dd>No disclaimer found on the AI Act Service Desk as of this research pass &mdash; the text described here is the pre-amendment version of 13 June 2024, treated as clean but not formally confirmed as unamended.</dd>
+      </div>
+
+      <div data-rc="evidence" data-rc-arg="AR-000151"></div>
+      <div data-rc="history" data-rc-arg="AR-000151"></div>
+      <div data-rc="citation" data-rc-arg="AR-000151"></div>
+      <div data-rc="languageBar" data-rc-arg="AR-000151"></div>
+
+    </article>
+
+    <aside class="art-rail">
+      <div class="trustpanel">
+        <div class="tp-h"><h4>About this research</h4><span data-rc="statusPill" data-rc-arg="current"></span></div>
+        <div class="tp-rows">
+          <div class="tp-row"><span class="k">Research object</span><span class="v">AR-000151</span></div>
+          <div class="tp-row"><span class="k">Author</span><span class="v">Jean-Daniel Alexis</span></div>
+          <div class="tp-row"><span class="k">Reviewer</span><span class="v soft">Jean-Daniel Alexis</span></div>
+          <div class="tp-row"><span class="k">Review cycle</span><span class="v soft">On regulatory change</span></div>
+          <div class="tp-row"><span class="k">Sources</span><span class="v" id="railSources">&mdash;</span></div>
+          <div class="tp-row"><span class="k">Revisions</span><span class="v" id="railRevisions">&mdash;</span></div>
+        </div>
+        <div class="tp-disclaim">AGNUS Research is an independent publication. It is not an EU institution, regulator or certification body, and this is not legal advice.</div>
+      </div>
+
+      <div style="margin-top:-4px"><span data-rc="trackButton" data-rc-arg="EU AI Act" data-rc-mode="block"></span></div>
+
+      <div class="railbox">
+        <h5>Institutional</h5>
+        <div class="rb-list">
+          <a href="AGNUS - Research Methodology.html">Methodology</a>
+          <a href="AGNUS - Research Sources.html">Source Library</a>
+          <a href="AGNUS - Research Calendar.html">Regulatory Calendar</a>
+          <a href="AGNUS - Research Author.html">About the author</a>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <div data-rc="related" data-rc-arg="AR-000151"></div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="foot-top" style="grid-template-columns:1.35fr 1fr 1fr 1fr 1fr">
+      <div class="foot-brand">
+        <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+        <p>Intelligence for the future of work. The trusted source for what&rsquo;s happening, which tools matter, and where AI is heading.</p>
+        <form class="fsearch" onsubmit="return false;">
+          <input type="email" placeholder="Your email for the Research Brief" aria-label="Email" />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+      <div class="foot-col">
+        <h5>Research</h5>
+        <ul>
+          <li><a href="AGNUS - Research Topic.html">AI Governance</a></li>
+          <li><a href="AGNUS - Research Topic.html">EU AI Act</a></li>
+          <li><a href="AGNUS - Research Topic.html">AI Agents</a></li>
+          <li><a href="AGNUS - Research Topic.html">AI Security</a></li>
+          <li><a href="AGNUS - Research Topic.html">AI Audit</a></li>
+          <li><a href="AGNUS - Research Topic.html">Data Governance</a></li>
+          <li><a href="AGNUS - Research Topic.html">Standards</a></li>
+          <li><a href="AGNUS - Research Country.html">Countries</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Evidence</h5>
+        <ul>
+          <li><a href="AGNUS - Research Sources.html">Source Library</a></li>
+          <li><a href="AGNUS - Research Calendar.html">Regulatory Calendar</a></li>
+          <li><a href="AGNUS - Research Methodology.html">Methodology</a></li>
+          <li><a href="AGNUS - Research Report.html">AGNUS Reports</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Discover</h5>
+        <ul>
+          <li><a href="AGNUS - Review.html">AI Reviews</a></li>
+          <li><a href="AGNUS - Compare.html">Comparisons</a></li>
+          <li><a href="AGNUS - Tools.html">AI Tools</a></li>
+          <li><a href="AGNUS - Marketplace.html">Marketplace</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Learn &amp; Build</h5>
+        <ul>
+          <li><a href="AGNUS - Academy.html">Academy</a></li>
+          <li><a href="AGNUS - Prompts.html">Prompt Library</a></li>
+          <li><a href="AGNUS - Agents.html">Agents</a></li>
+          <li><a href="AGNUS - Business.html">Business Automation</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&#169; 2026 AGNUS &middot; Truth before hype. &middot; AGNUS Research is an independent publication, not a regulator or certification body.</span>
+      <div class="fb-links">
+        <a href="#">About</a><a href="AGNUS - Research Methodology.html">Methodology</a><a href="#">Editorial Policy</a><a href="#">Privacy</a><a href="#">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="image-slot.js"></script>
+<script src="agnus-research-data.js"></script>
+<script src="agnus-research-components2.js"></script>
+<script src="agnus-research-components.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var toc = document.getElementById('tocList');
+  var heads = document.querySelectorAll('#prose h2[id]');
+  heads.forEach(function (h) {
+    var li = document.createElement('li');
+    li.innerHTML = '<a href="#' + h.id + '">' + h.textContent + '</a>';
+    toc.appendChild(li);
+  });
+
+  var links = toc.querySelectorAll('a');
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      links.forEach(function (l) { l.classList.toggle('on', l.getAttribute('href') === '#' + e.target.id); });
+    });
+  }, { rootMargin: '-100px 0px -70% 0px' });
+  heads.forEach(function (h) { io.observe(h); });
+
+  var bar = document.getElementById('progBar'), prose = document.getElementById('prose');
+  function prog() {
+    var r = prose.getBoundingClientRect(), total = r.height - window.innerHeight;
+    var done = Math.min(Math.max(-r.top, 0), Math.max(total, 1));
+    bar.style.width = (total > 0 ? done / total * 100 : 0) + '%';
+  }
+  document.addEventListener('scroll', prog, { passive: true }); prog();
+
+  document.querySelectorAll('#doList li').forEach(function (li) {
+    li.addEventListener('click', function () { li.classList.toggle('on'); });
+  });
+
+  var a = AR.byArticleId('AR-000151');
+  document.getElementById('railSources').textContent = a.sources.length + ' cited';
+  document.getElementById('railRevisions').textContent = a.history.length + ' recorded';
+});
+</script>
+</body>
+</html>

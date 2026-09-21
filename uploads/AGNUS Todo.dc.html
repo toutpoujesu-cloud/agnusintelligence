@@ -1,0 +1,251 @@
+﻿<!DOCTYPE html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #0B0F18; color: #E2E8F0; font-family: Manrope, sans-serif; -webkit-font-smoothing: antialiased; }
+a, a:hover { color: #B59048; }
+input[type="checkbox"] { accent-color: #3ECF86; width: 15px; height: 15px; cursor: pointer; flex-shrink: 0; margin-top: 2px; }
+</style>
+</helmet>
+
+<div style="min-height:100vh; background:#0B0F18;">
+
+  <div style="background:#0F1A28; border-bottom:1px solid #1E2D42; padding:0 32px; height:52px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:50;">
+    <div style="display:flex; align-items:center; gap:16px;">
+      <span style="font-weight:800; font-size:14px;">AGNUS</span>
+      <span style="font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:#4A6080;">Todo List</span>
+    </div>
+    <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#4A6080;">Updated 22 August 2026 · Check off as you go</div>
+  </div>
+
+  <div style="max-width:860px; margin:0 auto; padding:48px 24px 80px;">
+
+    <div style="margin-bottom:40px;">
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:#4A6080; margin-bottom:10px;">AGNUS · Active Tasks</div>
+      <h1 style="font-size:30px; font-weight:800; letter-spacing:-.03em; margin-bottom:8px;">What to do next.</h1>
+      <p style="font-size:13.5px; color:#6B82A4; line-height:1.6;">Ordered by dependency — top items block everything below them. Work top to bottom.</p>
+    </div>
+
+    <!-- ── IMMEDIATE / BLOCKING ── -->
+    <div style="margin-bottom:36px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+        <div style="width:8px; height:8px; border-radius:50%; background:#F0776A;"></div>
+        <span style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:#F0776A;">Immediate — blocking everything else</span>
+      </div>
+      <div style="display:grid; gap:6px;">
+        {{ blocking }}
+      </div>
+    </div>
+
+    <!-- ── RESEARCH INSERTION ── -->
+    <div style="margin-bottom:36px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+        <div style="width:8px; height:8px; border-radius:50%; background:#E0B354;"></div>
+        <span style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:#E0B354;">Research insertion — ready to do now</span>
+      </div>
+      <div style="display:grid; gap:6px;">
+        {{ insertion }}
+      </div>
+    </div>
+
+    <!-- ── EU AI ACT ARTICLES ── -->
+    <div style="margin-bottom:36px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+        <div style="width:8px; height:8px; border-radius:50%; background:#4D9EFF;"></div>
+        <span style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:#4D9EFF;">EU AI Act — articles to commission</span>
+      </div>
+      <div style="display:grid; gap:6px;">
+        {{ euArticles }}
+      </div>
+    </div>
+
+    <!-- ── PLATFORM BUILD ── -->
+    <div style="margin-bottom:36px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+        <div style="width:8px; height:8px; border-radius:50%; background:#8A5CF6;"></div>
+        <span style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:#8A5CF6;">Platform — pages to build</span>
+      </div>
+      <div style="display:grid; gap:6px;">
+        {{ platform }}
+      </div>
+    </div>
+
+    <!-- ── ACADEMY ── -->
+    <div style="margin-bottom:36px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+        <div style="width:8px; height:8px; border-radius:50%; background:#3ECF86;"></div>
+        <span style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:#3ECF86;">Academy</span>
+      </div>
+      <div style="display:grid; gap:6px;">
+        {{ academyTodos }}
+      </div>
+    </div>
+
+    <!-- ── ALEXIS IKT ── -->
+    <div style="margin-bottom:36px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+        <div style="width:8px; height:8px; border-radius:50%; background:#0F9E92;"></div>
+        <span style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:#0F9E92;">Alexis IKT — Phase 4</span>
+      </div>
+      <div style="display:grid; gap:6px;">
+        {{ alexisTodos }}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+
+class Component extends DCLogic {
+  state = { checked: {} };
+
+  componentDidMount() {
+    try {
+      const saved = JSON.parse(localStorage.getItem('agnus-todos') || '{}');
+      this.setState({ checked: saved });
+    } catch(e) {}
+  }
+
+  toggle(id) {
+    const checked = { ...this.state.checked, [id]: !this.state.checked[id] };
+    this.setState({ checked });
+    try { localStorage.setItem('agnus-todos', JSON.stringify(checked)); } catch(e) {}
+  }
+
+  renderVals() {
+    const item = (id, priority, text, note) => {
+      const done = this.state.checked[id];
+      return React.createElement('div', {
+        key: id,
+        style: {
+          background: done ? '#0A1208' : '#0F161F',
+          border: `1px solid ${done ? '#1A2D1A' : '#1A2535'}`,
+          borderRadius: '9px',
+          padding: '12px 16px',
+          display: 'flex',
+          gap: '12px',
+          alignItems: 'flex-start',
+          opacity: done ? 0.5 : 1,
+          transition: 'opacity .2s',
+        }
+      },
+        React.createElement('input', { type: 'checkbox', checked: !!done, onChange: () => this.toggle(id) }),
+        React.createElement('div', { style: { flex: 1 } },
+          React.createElement('div', { style: { display: 'flex', alignItems: 'center', gap: '8px', marginBottom: note ? '4px' : '0' } },
+            React.createElement('span', {
+              style: {
+                fontFamily: "'IBM Plex Mono',monospace",
+                fontSize: '9px',
+                letterSpacing: '.08em',
+                textTransform: 'uppercase',
+                padding: '2px 7px',
+                borderRadius: '4px',
+                background: priority === 'critical' ? 'rgba(240,119,106,.15)' : priority === 'high' ? 'rgba(224,179,84,.12)' : 'rgba(77,158,255,.1)',
+                color: priority === 'critical' ? '#F0776A' : priority === 'high' ? '#E0B354' : '#4D9EFF',
+                flexShrink: 0,
+              }
+            }, priority),
+            React.createElement('span', {
+              style: {
+                fontSize: '13px',
+                fontWeight: 600,
+                textDecoration: done ? 'line-through' : 'none',
+                color: done ? '#3A4F68' : '#E2E8F0',
+              }
+            }, text)
+          ),
+          note ? React.createElement('div', { style: { fontSize: '11px', color: '#4A6080', lineHeight: 1.55 } }, note) : null
+        )
+      );
+    };
+
+    const blocking = [
+      item('b1','critical','Decide Intelligence Agent output destination','Options: project chat (current), Google Drive, Git, database. Nothing in Intelligence moves until this is decided.'),
+      item('b2','critical','Resolve AR-000280 / AR-000290 collision','Are both Market Surveillance articles? Is one a duplicate? Must be clean before inserting AR-000310.'),
+      item('b3','critical','Decide v1 launch scope','Research-only? Research + Intelligence? Defines all build priorities.'),
+      item('b4','critical','Replace demo articles before launch','AR-000151 (Logging), AR-000163 (Risk Classification), AR-000188 (Documentation). All _demo:true. Real readers can reach them now.'),
+    ];
+
+    const insertion = [
+      item('i1','high','Fix AR-000240 cross-reference','Change "AR-000210 already noted..." → "AR-000200 already noted..., now verified in AR-000310." Add AR-000310 to related_articles.'),
+      item('i2','high','Insert AR-000310 — Value Chain Responsibilities','Confirm SRC-0046 is free. Add to SOURCES, ARTICLES, COVERAGE, ARTICLE_FILES. Build HTML page.'),
+      item('i3','high','Insert AR-000320 — Governance Structure','Confirm SRC-0047–0053 are free. Note Article 64 partial fetch in source notes field. Build HTML page.'),
+      item('i4','high','Update Live ID Registry after insertions','Next free: SRC-0054, AR-000330 after both inserted.'),
+    ];
+
+    const euArticles = [
+      item('e1','high','Commission: Logging (Article 12) — real research to replace AR-000151 demo','Assigned IDs TBD. Must read existing demo article to avoid repetition.'),
+      item('e2','high','Commission: Risk Classification — real research to replace AR-000163 demo','Article 6 + Annex III. Cornerstone article.'),
+      item('e3','high','Commission: Technical Documentation — real research to replace AR-000188 demo','Article 11 + Annex IV.'),
+      item('e4','high','Commission: Scope (Article 2)','Who and what the AI Act covers.'),
+      item('e5','high','Commission: Definitions (Article 3)','AI system, provider, deployer, substantial modification, GPAI model.'),
+      item('e6','medium','Commission: Conformity Assessment (Article 43)','Third-party vs self-assessment. Notified bodies.'),
+      item('e7','medium','Commission: Registration (Article 49)','EU database for high-risk systems.'),
+      item('e8','medium','Commission: Post-Market Monitoring (Article 72)',''),
+      item('e9','medium','Commission: Incident Reporting (Article 73)','Serious incident notification.'),
+      item('e10','medium','Commission: Penalties (Article 99)','Fine tiers. Partially covered in AR-000220 — do not duplicate.'),
+      item('e11','medium','Commission: Regulatory Sandboxes (Article 57)',''),
+      item('e12','medium','Commission: Standards (Article 40)','Harmonised standards and conformity presumption.'),
+      item('e13','medium','Commission: Codes of Practice (Article 56)','GPAI codes.'),
+      item('e14','medium','Commission: Deadlines (Article 113)','All application dates consolidated.'),
+    ];
+
+    const platform = [
+      item('p1','high','Build Intelligence page','Against existing INTELLIGENCE schema in agnus-research-data.js. Needs output destination decided first.'),
+      item('p2','high','Build Explore page','"Library of Alexandria for AI." Navigation hub. Collections by industry. Knowledge Universe.'),
+      item('p3','medium','Build Academy platform page','COURSES data layer linking to ARTICLES/OBLIGATIONS by ID.'),
+      item('p4','medium','Write test protocols for Reviews','One protocol per product category before Reviews Fetch Agent can run.'),
+      item('p5','medium','Build Reviews section','REVIEWS + TEST_PROTOCOLS data layer. Scoring methodology page.'),
+      item('p6','medium','Build Agents section','AGENTS data layer with permission/scope/incident schema.'),
+      item('p7','low','Build Business section','Industry + jurisdiction cross-reference. Links to OBLIGATIONS records.'),
+      item('p8','low','Build Marketplace','Requires Reviews + Agents to exist first. Collections by industry.'),
+    ];
+
+    const academyTodos = [
+      item('a1','high','Fill L1: M02–M07 (6 modules)','Shape 1. Copy M01 pattern. Vocabulary foundation.'),
+      item('a2','high','Fill L2–L3: M08, M10–M15, M17–M21 (9 modules)','Shape 1. Mechanical once M01/M09 patterns are followed.'),
+      item('a3','medium','Fill L4–L5: M22–M25, M27, M30–M35 (10 modules)','Shape 2. Most complex. Budget review time.'),
+      item('a4','medium','Fill L6: M39–M42, M42b (5 modules)','Shape 3. Follow M37/M38 patterns.'),
+      item('a5','low','Fill L7: M44–M48 (5 modules) + M49 Capstone','Shape 4. Capstone last — must reference everything above.'),
+    ];
+
+    const alexisTodos = [
+      item('x1','high','Real remote session protocol for Tekniker','TeamViewer or AnyDesk SDK. Invoice table wiring.'),
+      item('x2','medium','Tekniker session history & invoices from DB','session_invoices table. Queries for tekniker/okter and tekniker/fakturaer.'),
+      item('x3','medium','Persistent ChatDrawer','Move from React state to Supabase Realtime or Crisp/Intercom.'),
+      item('x4','low','Mobile app — React Native Expo','Full spec in HANDOFF-mobile.md. Push notifications are the core feature.'),
+      item('x5','low','Vipps MobilePay integration','Stripe is live. Vipps still pending for Norwegian market.'),
+    ];
+
+    return {
+      blocking: React.createElement(React.Fragment, null, ...blocking),
+      insertion: React.createElement(React.Fragment, null, ...insertion),
+      euArticles: React.createElement(React.Fragment, null, ...euArticles),
+      platform: React.createElement(React.Fragment, null, ...platform),
+      academyTodos: React.createElement(React.Fragment, null, ...academyTodos),
+      alexisTodos: React.createElement(React.Fragment, null, ...alexisTodos),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

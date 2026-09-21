@@ -1,0 +1,824 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS — Full Handoff to Claude Code</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --char:#1C1B19;--bg:#F8F7F4;--paper:#FCFBF8;--paper-warm:#F3F1EC;--paper-2:#ECE9E1;
+  --ink:#1D1D1F;--ink-soft:#6E6B66;--ink-mute:#908D86;
+  --gold:#B28A42;--gold-deep:#8F6E32;--gold-light:#E7D6AE;
+  --line:#E7E2D8;--line-strong:#DAD4C8;
+  --pass:#2E8B57;--warn:#C67A00;--error:#B83C3C;--blue:#3E6AE1;
+  --font-sans:"Manrope",system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono",monospace;
+  --font-serif:"Newsreader",Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:var(--font-sans);color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;font-size:15px;line-height:1.6}
+/* NAV */
+.doc-nav{background:var(--char);position:sticky;top:0;z-index:100;height:52px;display:flex;align-items:center;gap:0;padding:0 32px;border-bottom:1px solid rgba(255,255,255,.08)}
+.doc-nav .logo{font-weight:800;font-size:15px;color:#fff;margin-right:24px;letter-spacing:-.01em}
+.doc-nav a{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);padding:6px 12px;border-radius:6px;text-decoration:none;transition:.15s;white-space:nowrap}
+.doc-nav a:hover{color:rgba(255,255,255,.88);background:rgba(255,255,255,.07)}
+/* LAYOUT */
+.doc-layout{display:grid;grid-template-columns:260px 1fr;min-height:100vh}
+.sidebar{background:#fff;border-right:1px solid var(--line);padding:28px 0;position:sticky;top:52px;height:calc(100vh - 52px);overflow-y:auto}
+.sb-section{margin-bottom:20px}
+.sb-section-label{font-family:var(--font-mono);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);padding:0 20px;margin-bottom:6px;display:block}
+.sb-link{display:block;font-size:13px;padding:7px 20px;color:var(--ink-soft);text-decoration:none;transition:.12s;border-left:2px solid transparent}
+.sb-link:hover{color:var(--ink);background:var(--paper-warm);border-left-color:var(--line-strong)}
+.sb-link.active{color:var(--gold-deep);font-weight:600;background:color-mix(in srgb,var(--gold-deep) 6%,transparent);border-left-color:var(--gold-deep)}
+/* CONTENT */
+.content{padding:48px 60px 120px;max-width:900px}
+h1{font-size:42px;font-weight:800;letter-spacing:-.035em;line-height:1.05;margin-bottom:16px}
+h1 em{font-family:var(--font-serif);font-style:italic;font-weight:300;color:var(--gold-deep)}
+h2{font-size:28px;font-weight:800;letter-spacing:-.025em;color:var(--char);margin:56px 0 16px;padding-top:4px}
+h2:first-child{margin-top:0}
+h3{font-size:19px;font-weight:700;letter-spacing:-.015em;color:var(--char);margin:32px 0 12px}
+h4{font-size:15px;font-weight:700;color:var(--char);margin:22px 0 8px}
+p{color:var(--ink-soft);line-height:1.75;margin-bottom:14px}
+p strong{color:var(--ink);font-weight:700}
+ul,ol{margin:12px 0 16px 20px;color:var(--ink-soft);line-height:1.8}
+li{margin-bottom:4px}
+li strong{color:var(--ink)}
+a{color:var(--gold-deep)}
+/* COMPONENTS */
+.hero-band{background:var(--char);padding:52px 60px;color:#fff;border-bottom:1px solid rgba(255,255,255,.08)}
+.hero-band h1{color:#fff;font-size:48px;margin-bottom:12px}
+.hero-band h1 em{color:var(--gold-light)}
+.hero-band .sub{font-size:17px;color:rgba(255,255,255,.6);max-width:60ch;line-height:1.6;margin-bottom:24px}
+.hero-meta{display:flex;gap:20px;flex-wrap:wrap}
+.hm-pill{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:5px 12px}
+.section-divider{height:1px;background:var(--line);margin:48px 0}
+.callout{border-radius:14px;padding:20px 24px;margin:20px 0;display:flex;gap:14px;align-items:flex-start}
+.callout.gold{background:color-mix(in srgb,var(--gold-deep) 7%,transparent);border:1px solid color-mix(in srgb,var(--gold-deep) 25%,transparent)}
+.callout.blue{background:color-mix(in srgb,var(--blue) 7%,transparent);border:1px solid color-mix(in srgb,var(--blue) 22%,transparent)}
+.callout.green{background:color-mix(in srgb,var(--pass) 7%,transparent);border:1px solid color-mix(in srgb,var(--pass) 22%,transparent)}
+.callout.red{background:color-mix(in srgb,var(--error) 7%,transparent);border:1px solid color-mix(in srgb,var(--error) 22%,transparent)}
+.callout-icon{font-size:18px;flex-shrink:0;margin-top:1px}
+.callout p{margin:0;color:var(--ink)}
+.code{font-family:var(--font-mono);font-size:12.5px;background:var(--char);color:#A8D8A8;border-radius:10px;padding:16px 20px;margin:14px 0;overflow-x:auto;line-height:1.75}
+.code .cm{color:rgba(255,255,255,.35)}
+.code .kw{color:#93C5FD}
+.code .str{color:#A8D8A8}
+.code .prop{color:#FBD66B}
+.inline-code{font-family:var(--font-mono);font-size:12px;background:var(--paper-2);color:var(--char);padding:2px 7px;border-radius:5px;border:1px solid var(--line-strong)}
+/* ARCHITECTURE DIAGRAM */
+.arch-diagram{background:var(--char);border-radius:20px;padding:36px;margin:24px 0;overflow-x:auto}
+.arch-diagram .ad-title{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:28px}
+.arch-row{display:flex;gap:10px;align-items:stretch;margin-bottom:10px;flex-wrap:wrap}
+.arch-node{border-radius:12px;padding:14px 18px;flex:1;min-width:140px;position:relative}
+.arch-node.primary{background:rgba(178,138,66,.15);border:1px solid rgba(178,138,66,.3)}
+.arch-node.secondary{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)}
+.arch-node.accent{background:rgba(62,106,225,.12);border:1px solid rgba(62,106,225,.25)}
+.arch-node.pass{background:rgba(46,139,87,.12);border:1px solid rgba(46,139,87,.25)}
+.arch-node.dark{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07)}
+.an-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:5px}
+.an-title{font-size:14px;font-weight:700;color:#fff;line-height:1.25;margin-bottom:4px}
+.an-sub{font-size:11.5px;color:rgba(255,255,255,.45);line-height:1.4}
+.arch-arrow{display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.2);font-size:18px;padding:0 4px;flex-shrink:0}
+/* FILE TABLE */
+.file-table{width:100%;border-collapse:collapse;margin:16px 0;background:#fff;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+.file-table th{font-family:var(--font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);background:var(--paper-warm);padding:10px 14px;text-align:left;border-bottom:1px solid var(--line-strong)}
+.file-table td{padding:10px 14px;font-size:13px;border-bottom:1px solid var(--line);vertical-align:top}
+.file-table tr:last-child td{border-bottom:none}
+.file-table td:first-child{font-family:var(--font-mono);font-size:11.5px;color:var(--blue)}
+.file-table .tag{font-family:var(--font-mono);font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:5px;padding:2px 7px}
+.tag-live{background:color-mix(in srgb,var(--pass) 10%,transparent);color:var(--pass);border:1px solid color-mix(in srgb,var(--pass) 25%,transparent)}
+.tag-build{background:color-mix(in srgb,var(--warn) 10%,transparent);color:var(--warn);border:1px solid color-mix(in srgb,var(--warn) 25%,transparent)}
+.tag-post{background:var(--paper-2);color:var(--ink-mute);border:1px solid var(--line-strong)}
+/* STEPS */
+.steps{margin:20px 0;display:grid;gap:12px}
+.step{display:grid;grid-template-columns:40px 1fr;gap:16px;align-items:start;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:12px}
+.step-num{font-family:var(--font-mono);font-size:18px;font-weight:700;color:var(--gold-deep);line-height:1}
+.step-body h4{font-size:14.5px;font-weight:700;color:var(--char);margin-bottom:5px}
+.step-body p{font-size:13.5px;color:var(--ink-soft);margin:0;line-height:1.6}
+/* FLOW DIAGRAM */
+.flow{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 28px;margin:20px 0}
+.flow-row{display:flex;align-items:center;gap:0;flex-wrap:wrap;margin-bottom:8px}
+.flow-node{background:var(--paper-warm);border:1px solid var(--line-strong);border-radius:8px;padding:8px 14px;font-size:13px;font-weight:600;color:var(--char);white-space:nowrap}
+.flow-node.gold{background:color-mix(in srgb,var(--gold-deep) 10%,transparent);border-color:color-mix(in srgb,var(--gold-deep) 30%,transparent);color:var(--gold-deep)}
+.flow-node.blue{background:color-mix(in srgb,var(--blue) 8%,transparent);border-color:color-mix(in srgb,var(--blue) 25%,transparent);color:var(--blue)}
+.flow-node.green{background:color-mix(in srgb,var(--pass) 8%,transparent);border-color:color-mix(in srgb,var(--pass) 25%,transparent);color:var(--pass)}
+.flow-node.dark{background:var(--char);border-color:var(--char);color:#fff}
+.flow-arrow{font-size:16px;color:var(--ink-mute);padding:0 8px}
+.roadmap-table{width:100%;border-collapse:collapse;margin:20px 0;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.roadmap-table th{background:var(--char);color:rgba(255,255,255,.7);font-family:var(--font-mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:10px 14px;text-align:left;border-bottom:1px solid rgba(255,255,255,.1)}
+.roadmap-table td{padding:11px 14px;font-size:13px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink-soft)}
+.roadmap-table tr:last-child td{border-bottom:none}
+.roadmap-table td:first-child{font-weight:700;color:var(--char);white-space:nowrap}
+.priority-1{color:#B83C3C!important;font-weight:700}
+.priority-2{color:#C67A00!important;font-weight:700}
+.priority-3{color:#2E8B57!important;font-weight:700}
+</style>
+</head>
+<body>
+
+<nav class="doc-nav">
+  <span class="logo">AGNUS</span>
+  <a href="#blueprint">Blueprint</a>
+  <a href="#architecture">Architecture</a>
+  <a href="#sections">Sections</a>
+  <a href="#data">Data Layer</a>
+  <a href="#workflows">Workflows</a>
+  <a href="#backend">Backend Build</a>
+  <a href="#launch">Launch Roadmap</a>
+</nav>
+
+<div class="hero-band">
+  <h1>AGNUS — Full Handoff<br/><em>to Claude Code</em></h1>
+  <p class="sub">Everything Claude Code needs to assemble, connect, and deploy AGNUS. Architecture diagrams, section-by-section build instructions, workflow maps, data contracts, and a sequenced public launch roadmap.</p>
+  <div class="hero-meta">
+    <span class="hm-pill">12 Sep 2026</span>
+    <span class="hm-pill">177 files</span>
+    <span class="hm-pill">104 articles</span>
+    <span class="hm-pill">91 academy modules</span>
+    <span class="hm-pill">Status: launch-ready (frontend)</span>
+  </div>
+</div>
+
+<div class="doc-layout">
+<nav class="sidebar">
+  <div class="sb-section">
+    <span class="sb-section-label">Overview</span>
+    <a class="sb-link" href="#blueprint">What AGNUS is</a>
+    <a class="sb-link" href="#products">Two products</a>
+    <a class="sb-link" href="#architecture">Full architecture</a>
+  </div>
+  <div class="sb-section">
+    <span class="sb-section-label">Sections</span>
+    <a class="sb-link" href="#section-home">Home</a>
+    <a class="sb-link" href="#section-research">Research</a>
+    <a class="sb-link" href="#section-practice">Practice</a>
+    <a class="sb-link" href="#section-intelligence">Intelligence</a>
+    <a class="sb-link" href="#section-academy">Academy</a>
+    <a class="sb-link" href="#section-reviews">Reviews</a>
+    <a class="sb-link" href="#section-marketplace">Marketplace</a>
+    <a class="sb-link" href="#section-editorial">Editorial (internal)</a>
+    <a class="sb-link" href="#section-tandem">AGNUS Code (Tandem)</a>
+  </div>
+  <div class="sb-section">
+    <span class="sb-section-label">Technical</span>
+    <a class="sb-link" href="#data">Data layer</a>
+    <a class="sb-link" href="#workflows">Workflows</a>
+    <a class="sb-link" href="#nav">Navigation</a>
+    <a class="sb-link" href="#css">Design tokens</a>
+    <a class="sb-link" href="#backend">Backend build</a>
+  </div>
+  <div class="sb-section">
+    <span class="sb-section-label">Launch</span>
+    <a class="sb-link" href="#launch">Public launch roadmap</a>
+    <a class="sb-link" href="#priorities">Priority order</a>
+    <a class="sb-link" href="#checklist">Pre-launch checklist</a>
+  </div>
+</nav>
+
+<div class="content">
+
+<!-- ═══════════════════════════════════════════
+     BLUEPRINT
+════════════════════════════════════════════ -->
+<h2 id="blueprint">What AGNUS is — the blueprint</h2>
+
+<p>AGNUS is an <strong>AI governance intelligence platform</strong>. Its purpose is to be the most trusted, most source-grounded resource for professionals who need to understand, comply with, and act on AI regulation — and for organisations deploying AI who need governance frameworks that actually work.</p>
+
+<p>The insight behind AGNUS is that the AI ecosystem has two problems running in parallel. The first: there is too much noise and not enough primary-source clarity on what AI laws actually say. The second: there is no practical layer between "read the regulation" and "build a compliant system." AGNUS bridges both gaps.</p>
+
+<div class="callout gold">
+  <span class="callout-icon">◆</span>
+  <p><strong>The positioning:</strong> AGNUS is not a tool review site. It is not a blog. It is not a consultancy. It is a structured intelligence platform — grounded in primary law, structured by pillar, updated by jurisdiction, and taught systematically. Bloomberg for AI governance.</p>
+</div>
+
+<h3>The three commitments</h3>
+<ol>
+  <li><strong>Primary sources only.</strong> Every factual claim links to the article, section, and paragraph of the originating law or standard. No invented summaries.</li>
+  <li><strong>Structure before volume.</strong> 100 articles organised into 6 pillars with cross-links beats 1,000 unconnected posts.</li>
+  <li><strong>Practice, not just theory.</strong> The Practice section provides usable tools. The Academy provides tested knowledge. Both are grounded in the same sources as the Research.</li>
+</ol>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════════════
+     TWO PRODUCTS
+════════════════════════════════════════════ -->
+<h2 id="products">Two distinct products</h2>
+
+<p>AGNUS contains two products that share a design system but are otherwise independent:</p>
+
+<table class="file-table">
+  <thead><tr><th>Product</th><th>What it is</th><th>Entry point</th><th>Status</th></tr></thead>
+  <tbody>
+    <tr><td>AGNUS Research & Academy</td><td>Public editorial + education platform. Research articles, Practice tools, Intelligence feed, Reviews, Marketplace, Academy modules.</td><td>AGNUS - Home.html</td><td><span class="tag tag-live">Launch-ready</span></td></tr>
+    <tr><td>AGNUS Code (Tandem)</td><td>AI agent governance layer for coding environments. Dark Studio + Light Governance workspace. Live action stream, provenance, approvals, incidents.</td><td>tandem/AGNUS - Tandem Platform.html</td><td><span class="tag tag-build">Backend needed</span></td></tr>
+  </tbody>
+</table>
+
+<p>This handoff covers both. The Research & Academy platform is complete as frontend HTML/CSS/JS. AGNUS Code is a complete interactive prototype requiring backend wiring.</p>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════════════
+     ARCHITECTURE
+════════════════════════════════════════════ -->
+<h2 id="architecture">Full platform architecture</h2>
+
+<div class="arch-diagram">
+  <div class="ad-title">AGNUS Platform — System Architecture</div>
+
+  <div style="font-family:var(--font-mono);font-size:9px;color:rgba(255,255,255,.3);margin-bottom:12px;letter-spacing:.1em;text-transform:uppercase">Visitor entry points</div>
+  <div class="arch-row">
+    <div class="arch-node primary"><div class="an-label">Entry</div><div class="an-title">Home</div><div class="an-sub">AGNUS - Home.html · canonical entry · all nav links originate here</div></div>
+    <div class="arch-arrow">→</div>
+    <div class="arch-node secondary"><div class="an-label">Nav</div><div class="an-title">Explore · Intelligence · Research · Practice · Reviews · Academy</div><div class="an-sub">6-item nav on every public page</div></div>
+  </div>
+
+  <div style="font-family:var(--font-mono);font-size:9px;color:rgba(255,255,255,.3);margin:18px 0 12px;letter-spacing:.1em;text-transform:uppercase">Content sections (public)</div>
+  <div class="arch-row">
+    <div class="arch-node accent"><div class="an-label">Research</div><div class="an-title">Research Hub</div><div class="an-sub">104 articles · 6 pillars · source citations · cross-links</div></div>
+    <div class="arch-node accent"><div class="an-label">Practice</div><div class="an-title">6 Tools</div><div class="an-sub">Risk classifier · Checklist · FRIA · Roles · Incident · Tech Doc</div></div>
+    <div class="arch-node accent"><div class="an-label">Intel</div><div class="an-title">Intelligence</div><div class="an-sub">Daily jurisdiction feed · 11 regions · agent-produced</div></div>
+    <div class="arch-node accent"><div class="an-label">Reviews</div><div class="an-title">AI Reviews</div><div class="an-sub">Structured AI tool reviews · test protocol · scoring</div></div>
+    <div class="arch-node accent"><div class="an-label">Market</div><div class="an-title">Marketplace</div><div class="an-sub">AI tool directory · categories · filters</div></div>
+  </div>
+
+  <div style="font-family:var(--font-mono);font-size:9px;color:rgba(255,255,255,.3);margin:18px 0 12px;letter-spacing:.1em;text-transform:uppercase">Academy (gated)</div>
+  <div class="arch-row">
+    <div class="arch-node pass"><div class="an-label">Entry</div><div class="an-title">AGNUS - Academy.html</div><div class="an-sub">Path selector · 7 cards → Academy App</div></div>
+    <div class="arch-arrow">→</div>
+    <div class="arch-node pass"><div class="an-label">App</div><div class="an-title">academy/AGNUS - Academy App.html</div><div class="an-sub">52 Track A modules · 7 levels · navigation</div></div>
+    <div class="arch-arrow">→</div>
+    <div class="arch-node pass"><div class="an-label">Modules</div><div class="an-title">academy/AGNUS - Academy M*.html</div><div class="an-sub">M01–M49 + M26 AI Liability · all linked from App</div></div>
+  </div>
+  <div class="arch-row" style="margin-top:8px">
+    <div class="arch-node dark"><div class="an-label">Track B</div><div class="an-title">5 Simulations</div><div class="an-sub">B01–B05 · Finance/HR/Legal/Healthcare/Customer Service · €1,500</div></div>
+    <div class="arch-node dark"><div class="an-label">CTE</div><div class="an-title">Control Training Environment</div><div class="an-sub">7 stages · briefing panels · scoring engine · company context</div></div>
+  </div>
+
+  <div style="font-family:var(--font-mono);font-size:9px;color:rgba(255,255,255,.3);margin:18px 0 12px;letter-spacing:.1em;text-transform:uppercase">Data layer</div>
+  <div class="arch-row">
+    <div class="arch-node primary"><div class="an-label">JS</div><div class="an-title">agnus-research-data.js</div><div class="an-sub">window.AR · ARTICLES · SOURCES · byArticleId() · byPillar()</div></div>
+    <div class="arch-arrow">→</div>
+    <div class="arch-node secondary"><div class="an-label">Components</div><div class="an-title">agnus-research-components.js + 2.js</div><div class="an-sub">Related articles · source blocks · article cards · cross-links</div></div>
+    <div class="arch-arrow">→</div>
+    <div class="arch-node secondary"><div class="an-label">Styles</div><div class="an-title">agnus.css + agnus-research.css</div><div class="an-sub">Design tokens · article layout · nav · components</div></div>
+  </div>
+
+  <div style="font-family:var(--font-mono);font-size:9px;color:rgba(255,255,255,.3);margin:18px 0 12px;letter-spacing:.1em;text-transform:uppercase">Internal (editor-only)</div>
+  <div class="arch-row">
+    <div class="arch-node dark"><div class="an-label">Editorial</div><div class="an-title">AGNUS - Editorial Platform.html</div><div class="an-sub">11 tools · Pipeline · Story Builder · AI Writer · Review · Archive · Sources</div></div>
+    <div class="arch-node dark"><div class="an-label">Tandem</div><div class="an-title">tandem/AGNUS - Tandem Platform.html</div><div class="an-sub">AGNUS Code · Dark Studio · governance workspace · agent layer</div></div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════════════
+     SECTION: HOME
+════════════════════════════════════════════ -->
+<h2 id="sections">Section-by-section build instructions</h2>
+<h3 id="section-home">1. Home (AGNUS - Home.html)</h3>
+
+<p><strong>Status:</strong> Complete. This is the canonical homepage — use this file, not the uploads version.</p>
+
+<div class="flow">
+  <div class="flow-row"><div class="flow-node dark">Home</div><div class="flow-arrow">→</div><div class="flow-node">Hero + nav</div><div class="flow-arrow">→</div><div class="flow-node">Research section</div><div class="flow-arrow">→</div><div class="flow-node">Intelligence section</div><div class="flow-arrow">→</div><div class="flow-node">Academy CTA</div><div class="flow-arrow">→</div><div class="flow-node">Practice tools</div><div class="flow-arrow">→</div><div class="flow-node">Footer</div></div>
+</div>
+
+<p><strong>Backend connections needed:</strong></p>
+<ul>
+  <li>Latest 3 intelligence items — feed from daily agent output</li>
+  <li>Featured articles — pull from <span class="inline-code">AR.ARTICLES</span> (most recent by <span class="inline-code">published</span> date)</li>
+  <li>Search bar → Algolia/Typesense index over article titles + bodies</li>
+  <li>Join AGNUS button → Auth flow (email + payment for premium)</li>
+</ul>
+
+<h3 id="section-research">2. Research (AGNUS - Research.html + 104 articles)</h3>
+
+<p><strong>Status:</strong> Complete. 104 articles built, all with source citations, callout diagrams, cross-links.</p>
+
+<div class="flow">
+  <div class="flow-row"><div class="flow-node">Research Hub</div><div class="flow-arrow">→</div><div class="flow-node gold">Pillar filter</div><div class="flow-arrow">→</div><div class="flow-node">Article list</div><div class="flow-arrow">→</div><div class="flow-node blue">Article page</div><div class="flow-arrow">→</div><div class="flow-node green">Source block</div><div class="flow-arrow">→</div><div class="flow-node">Related articles</div></div>
+</div>
+
+<p><strong>6 pillars and article counts:</strong></p>
+<ul>
+  <li><strong>EU AI Act</strong> — 19 articles (AR-000010 to AR-000190)</li>
+  <li><strong>AI Governance</strong> — 10 articles</li>
+  <li><strong>AI Audit</strong> — 9 articles</li>
+  <li><strong>Standards</strong> — 6 articles</li>
+  <li><strong>AI Agents</strong> — 5 articles</li>
+  <li><strong>AI Security</strong> — 6 articles</li>
+  <li><strong>Country/Intelligence</strong> — 9 articles</li>
+</ul>
+
+<p><strong>Article file naming:</strong> <span class="inline-code">AGNUS - Research Article - [Title].html</span> — all at root level.</p>
+
+<p><strong>Data layer dependency:</strong> Each article loads <span class="inline-code">agnus-research-data.js</span> → <span class="inline-code">agnus-research-components.js</span> → <span class="inline-code">agnus-research-components2.js</span> in that exact order. The components read <span class="inline-code">window.AR</span> to render related articles and source blocks. If the data layer fails, article bodies still render — only the dynamic components (sidebar, related, source block) break.</p>
+
+<div class="code">
+<span class="cm">// Script load order in every article page — do not change</span>
+&lt;link rel="stylesheet" href="agnus.css"&gt;
+&lt;link rel="stylesheet" href="agnus-research.css"&gt;
+&lt;script src="agnus-research-data.js"&gt;&lt;/script&gt;
+&lt;script src="agnus-research-components.js"&gt;&lt;/script&gt;
+&lt;script src="agnus-research-components2.js"&gt;&lt;/script&gt;
+</div>
+
+<p><strong>Backend connections needed:</strong></p>
+<ul>
+  <li>Replace <span class="inline-code">agnus-research-data.js</span> with API calls — shape is identical, just async. <span class="inline-code">window.AR.ARTICLES</span> becomes an awaited fetch.</li>
+  <li>Article bodies are static HTML — no backend needed for content itself.</li>
+  <li>View counts, read time tracking — add analytics per article.</li>
+  <li>Premium gating — flag articles <span class="inline-code">premium: true</span> in data layer; gate with auth check before rendering body.</li>
+</ul>
+
+<h3 id="section-practice">3. Practice (AGNUS - Practice.html)</h3>
+
+<p><strong>Status:</strong> Complete. 6 interactive tools, all client-side JS.</p>
+
+<table class="file-table">
+  <thead><tr><th>Tool</th><th>Tier</th><th>Technology</th><th>Export</th></tr></thead>
+  <tbody>
+    <tr><td>EU AI Act Risk Classifier</td><td><span class="tag tag-live">Free</span></td><td>Client-side JS decision tree</td><td>None needed</td></tr>
+    <tr><td>Compliance Checklist</td><td><span class="tag tag-live">Free</span></td><td>Client-side with localStorage</td><td>window.print()</td></tr>
+    <tr><td>FRIA Template</td><td><span class="tag tag-build">Premium</span></td><td>HTML form</td><td>PDF export needed</td></tr>
+    <tr><td>Provider vs Deployer</td><td><span class="tag tag-live">Free</span></td><td>Client-side JS</td><td>None needed</td></tr>
+    <tr><td>Incident Report (Art. 73)</td><td><span class="tag tag-build">Premium</span></td><td>HTML form</td><td>PDF export needed</td></tr>
+    <tr><td>Technical Documentation (Annex IV)</td><td><span class="tag tag-build">Premium</span></td><td>HTML form</td><td>PDF export needed</td></tr>
+  </tbody>
+</table>
+
+<p><strong>Premium gating logic:</strong> Premium tools show a lock overlay until the user is authenticated as a premium member. The tool HTML is already in the page — the gate is a CSS overlay + JS auth check on load.</p>
+
+<div class="code">
+<span class="cm">// Premium gate pattern for each Premium tool panel</span>
+<span class="kw">function</span> <span class="prop">openTool</span>(id) {
+  <span class="kw">const</span> premiumTools = [<span class="str">'fria'</span>, <span class="str">'incident'</span>, <span class="str">'techdoc'</span>];
+  <span class="kw">if</span> (premiumTools.includes(id) && !<span class="prop">isUserPremium</span>()) {
+    <span class="prop">showPremiumGate</span>();  <span class="cm">// show upgrade modal</span>
+    <span class="kw">return</span>;
+  }
+  <span class="cm">// open the tool panel as normal</span>
+}
+</div>
+
+<h3 id="section-intelligence">4. Intelligence (AGNUS - Intelligence.html)</h3>
+
+<p><strong>Status:</strong> Frontend complete. Backend: daily agent pipeline not yet connected.</p>
+
+<div class="flow">
+  <div class="flow-row">
+    <div class="flow-node dark">Intelligence Agent</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node">Daily JSON package<br/><span style="font-size:11px;color:#888">AGNUS-Daily-YYYY-MM-DD/</span></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node gold">Research Handoff<br/><span style="font-size:11px;color:#888">research-handoff-*.json</span></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node blue">Article Build</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node green">Published Article</div>
+  </div>
+</div>
+
+<p><strong>Daily package structure</strong> (already defined by the agent):</p>
+<div class="code">
+AGNUS-Daily-YYYY-MM-DD/
+  manifest.json                  <span class="cm">← run summary: jurisdictions checked, findings, errors</span>
+  intelligence/
+    european-union/
+      intelligence-log-YYYY-MM-DD.json   <span class="cm">← findings per jurisdiction</span>
+    united-kingdom/...
+    united-states/...
+    norway/... japan/... singapore/... south-korea/...
+    italy/... china/... canada/... standards/...
+  research/
+    [jurisdiction]/
+      research-handoff-*.json    <span class="cm">← ready-to-build article briefings</span>
+  academy/                       <span class="cm">← (optional) new module suggestions</span>
+</div>
+
+<p><strong>Backend task:</strong> Watch <span class="inline-code">handoffs/</span> folder for new packages. For each <span class="inline-code">research-handoff-*.json</span>, trigger the article build process. The JSON structure is documented in <span class="inline-code">The Protocol/Intelligence Monitoring Wiring Guide.md</span>.</p>
+
+<p><strong>Jurisdictions monitored:</strong> EU, UK, USA, Norway, Japan, Singapore, South Korea, Italy, China, Canada, Standards (ISO/NIST/CEN).</p>
+
+<h3 id="section-academy">5. Academy (AGNUS - Academy.html → academy/)</h3>
+
+<p><strong>Status:</strong> Complete. 91 files, fully navigable.</p>
+
+<div class="flow">
+  <div class="flow-row">
+    <div class="flow-node dark">AGNUS - Academy.html</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node">7 path cards<br/>(Beginner to Enterprise)</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node blue">academy/AGNUS - Academy App.html</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node green">M01–M49 modules</div>
+  </div>
+  <div class="flow-row" style="margin-top:8px">
+    <div class="flow-node" style="visibility:hidden">AGNUS - Academy.html</div>
+    <div class="flow-arrow" style="visibility:hidden">→</div>
+    <div class="flow-node" style="visibility:hidden">7 path cards</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node gold">Track B simulations</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node dark">CTE (7 stages)</div>
+  </div>
+</div>
+
+<p><strong>Module files:</strong></p>
+<ul>
+  <li>Track A: <span class="inline-code">academy/AGNUS - Academy M01-M49.html</span> — 52 files</li>
+  <li>Track B: <span class="inline-code">academy/AGNUS - Academy B01-B05.html</span> — 5 simulation files</li>
+  <li>CTE: <span class="inline-code">academy/AGNUS - Control Training Environment.html</span></li>
+  <li>Entry: <span class="inline-code">academy/AGNUS - Academy App.html</span></li>
+</ul>
+
+<p><strong>Academy App navigation:</strong> The App is a single-page application. All 52 modules are listed in a <span class="inline-code">CURRICULUM</span> JS object. <span class="inline-code">location.href</span> opens the module file. No iframe — full page navigation.</p>
+
+<p><strong>Premium gating:</strong> Track B simulations and advanced Level 5–7 modules are premium. Gate with auth check in the Academy App before <span class="inline-code">location.href</span> executes.</p>
+
+<h3 id="section-reviews">6. Reviews (AGNUS - Review.html)</h3>
+
+<p><strong>Status:</strong> Complete. Static review template with test protocol scoring.</p>
+
+<p><strong>Backend:</strong> Review submissions from editors → structured JSON → rendered via review component. The review template (<span class="inline-code">AGNUS - Review.html</span>) is the canonical display format.</p>
+
+<h3 id="section-marketplace">7. Marketplace (AGNUS - Marketplace.html)</h3>
+
+<p><strong>Status:</strong> Complete. Filtering, category browsing, tool cards.</p>
+
+<p><strong>Backend:</strong> Tool listings → JSON data source → marketplace renders from data. Currently static. Wire to a tools database (Postgres table or Airtable).</p>
+
+<h3 id="section-editorial">8. Editorial Platform (AGNUS - Editorial Platform.html) — INTERNAL</h3>
+
+<p><strong>Status:</strong> Complete interactive mockup. Not in public nav. Editor-only tool.</p>
+
+<p>This is the editorial team's workspace. 11 sections:</p>
+<ol>
+  <li><strong>Dashboard</strong> — pipeline overview, pillar coverage, pending reviews</li>
+  <li><strong>Article Pipeline</strong> — 6-stage kanban (Brief → Research → AI Writer → Review → Scheduled → Published)</li>
+  <li><strong>Story Builder</strong> — angle planning, audience selection, source/article linking</li>
+  <li><strong>AI Writer</strong> — draft generation from handoff JSON</li>
+  <li><strong>Human Review</strong> — approve/revise/reject workflow</li>
+  <li><strong>Research Panel</strong> — source browser, handoff inbox</li>
+  <li><strong>Topic Clusters</strong> — coverage map, gap identification</li>
+  <li><strong>Keywords</strong> — SEO keyword bank with search volumes</li>
+  <li><strong>Calendar</strong> — scheduled publish dates</li>
+  <li><strong>Archive</strong> — published article browser</li>
+  <li><strong>Knowledge Database</strong> — source registry with scoring</li>
+</ol>
+
+<p><strong>Backend:</strong> This is the highest-complexity build. Wire each section to real data: CMS for articles, source database, agent handoff queue, scheduling system.</p>
+
+<h3 id="section-tandem">9. AGNUS Code / Tandem (tandem/)</h3>
+
+<p><strong>Status:</strong> Complete interactive prototype. All governance screens built. Requires backend for live data.</p>
+
+<p><strong>Entry points:</strong></p>
+<ul>
+  <li><span class="inline-code">tandem/AGNUS - Tandem Platform.html</span> — Dark Studio (code editor view)</li>
+  <li><span class="inline-code">tandem/AGNUS - Tandem Standalone.html</span> — Full governance workspace (10 views)</li>
+  <li><span class="inline-code">tandem/AGNUS - Code Project Provenance.html</span> — Project-level provenance (7 tabs)</li>
+  <li><span class="inline-code">tandem/dashboard-core.js</span> — External script, must be co-deployed</li>
+</ul>
+
+<p><strong>Tandem governance views:</strong> Overview · Missions · Policies (7 layers) · Approvals · Incidents · Timeline · External Actions · Agents · Restriction Controls · Studio link</p>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════════════
+     DATA LAYER
+════════════════════════════════════════════ -->
+<h2 id="data">Data layer — contracts and migration</h2>
+
+<h3>agnus-research-data.js — the JS data layer</h3>
+
+<p>The JS data layer is the bridge between the static HTML frontend and the future API backend. It exposes <span class="inline-code">window.AR</span> — a namespace that components call to get articles and sources.</p>
+
+<div class="code">
+<span class="cm">// Current: synchronous JS object</span>
+<span class="kw">window</span>.AR = (<span class="kw">function</span>() {
+  <span class="kw">const</span> ARTICLES = [ { article_id: <span class="str">'AR-000010'</span>, ... }, ... ];
+  <span class="kw">const</span> SOURCES  = [ { source_id: <span class="str">'SRC-0001'</span>, ... }, ... ];
+  <span class="kw">return</span> {
+    ARTICLES, SOURCES,
+    byArticleId: (id) => ARTICLES.find(a => a.article_id === id),
+    byPillar:    (p)  => ARTICLES.filter(a => a.pillar === p),
+  };
+})();
+
+<span class="cm">// Future: async API wrapper — same interface, no template changes needed</span>
+<span class="kw">window</span>.AR = {
+  _cache: { articles: <span class="kw">null</span>, sources: <span class="kw">null</span> },
+  _load: <span class="kw">async function</span>() {
+    <span class="kw">const</span> [articles, sources] = <span class="kw">await</span> Promise.all([
+      fetch(<span class="str">'/api/articles'</span>).then(r => r.json()),
+      fetch(<span class="str">'/api/sources'</span>).then(r => r.json()),
+    ]);
+    <span class="kw">this</span>._cache = { articles, sources };
+  },
+  byArticleId: (id) => AR._cache.articles?.find(a => a.article_id === id),
+  byPillar:    (p)  => AR._cache.articles?.filter(a => a.pillar === p),
+};
+<span class="kw">await</span> AR._load(); <span class="cm">// call once on page load</span>
+</div>
+
+<h3>Article data contract</h3>
+<div class="code">
+{
+  <span class="prop">article_id</span>:    <span class="str">'AR-000010'</span>,    <span class="cm">// unique ID, format: AR-NNNNNN</span>
+  <span class="prop">source_id</span>:     <span class="str">'SRC-0001'</span>,     <span class="cm">// primary source reference</span>
+  <span class="prop">title</span>:         <span class="str">'EU AI Act Explained'</span>,
+  <span class="prop">pillar</span>:        <span class="str">'EU AI Act'</span>,     <span class="cm">// controlled: EU AI Act | AI Governance | AI Audit | Standards | AI Agents | AI Security | Intelligence</span>
+  <span class="prop">jurisdiction</span>:  <span class="str">'EU'</span>,           <span class="cm">// controlled: EU | UK | USA | Norway | Japan | Singapore | South Korea | Italy | China | Canada | Global</span>
+  <span class="prop">published</span>:     <span class="str">'2026-08-22'</span>,   <span class="cm">// ISO date</span>
+  <span class="prop">reading_time</span>:  15,             <span class="cm">// minutes</span>
+  <span class="prop">premium</span>:       <span class="kw">false</span>,          <span class="cm">// gating flag</span>
+  <span class="prop">file</span>:          <span class="str">'AGNUS - Research Article - AI Act Explained.html'</span>
+}
+</div>
+
+<h3>Source data contract</h3>
+<div class="code">
+{
+  <span class="prop">source_id</span>:              <span class="str">'SRC-0001'</span>,
+  <span class="prop">title</span>:                  <span class="str">'EU AI Act (Regulation 2024/1689)'</span>,
+  <span class="prop">issuing_organization</span>:   <span class="str">'European Parliament and Council of the EU'</span>,
+  <span class="prop">url</span>:                    <span class="str">'https://eur-lex.europa.eu/...'</span>,
+  <span class="prop">date_published</span>:         <span class="str">'2024-07-12'</span>,
+  <span class="prop">verified</span>:               <span class="kw">true</span>,
+  <span class="prop">authority_type</span>:         <span class="str">'primary'</span>   <span class="cm">// primary | standard | academic | supporting</span>
+}
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════════════
+     WORKFLOWS
+════════════════════════════════════════════ -->
+<h2 id="workflows">End-to-end workflows</h2>
+
+<h3>Workflow 1: Intelligence → Article (daily)</h3>
+<div class="steps">
+  <div class="step"><div class="step-num">1</div><div class="step-body"><h4>Agent runs daily scan</h4><p>Intelligence agent checks 11 jurisdiction sources. Produces <span class="inline-code">AGNUS-Daily-YYYY-MM-DD/manifest.json</span> + per-jurisdiction <span class="inline-code">intelligence-log-*.json</span>. Flags findings with materiality: high/medium/low.</p></div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><h4>Research handoff generated</h4><p>For each high/medium finding, agent produces <span class="inline-code">research/[jurisdiction]/research-handoff-*.json</span> with: title, question, verified_facts[], editorial_notes[], provisional_source. This is the article brief.</p></div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><h4>Claude Code picks up handoff</h4><p>Watch <span class="inline-code">handoffs/</span> folder. For each new <span class="inline-code">research-handoff-*.json</span>: extract title, verified_facts, source URL. Assign next AR-ID and SRC-ID from the data layer.</p></div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><h4>Article built from template</h4><p>Use <span class="inline-code">TEMPLATE - Research Article.html</span> as base. Inject: title, deck, article body (from verified_facts), source block (from source), cross-links (from AR.byPillar). Save as <span class="inline-code">AGNUS - Research Article - [Title].html</span>.</p></div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body"><h4>Data layer updated</h4><p>Add new article record to <span class="inline-code">agnus-research-data.js</span> ARTICLES array. Add source record to SOURCES array. Commit both files.</p></div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-body"><h4>Deployed</h4><p>Push to production. Article appears in Research hub, pillar filter, related articles sidebar, and daily intelligence feed.</p></div></div>
+</div>
+
+<h3>Workflow 2: Learner through Academy</h3>
+<div class="steps">
+  <div class="step"><div class="step-num">1</div><div class="step-body"><h4>Learner arrives at AGNUS - Academy.html</h4><p>Sees 7 path cards (Beginner to Enterprise). All cards link to <span class="inline-code">academy/AGNUS - Academy App.html</span>.</p></div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><h4>Academy App loads</h4><p>Renders 7 levels, 52 modules. Auth check: free tier sees L1–L3, premium sees all. "Begin Level 1" button → <span class="inline-code">location.href = 'AGNUS - Academy M01 - What is an AI Agent.html'</span>.</p></div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><h4>Module completes</h4><p>Each module has a hidden pass test. On pass: write completion to <span class="inline-code">localStorage['agnus_progress']</span> as <span class="inline-code">{'M01': true, 'M02': true, ...}</span>. Academy App reads this on load to show progress badges.</p></div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><h4>Track B unlocks</h4><p>After L1+L2 complete (M01–M14), Track B simulations unlock. Auth check: premium required. B01–B05 are standalone HTML files in <span class="inline-code">academy/</span>.</p></div></div>
+  <div class="step"><div class="step-num">5</div><div class="step-body"><h4>Certificate issued</h4><p>On Track B B05 completion: generate competency certificate (PDF or page). Store in user profile. Credential ID format: <span class="inline-code">AGNUS-B05-[timestamp36]</span>.</p></div></div>
+</div>
+
+<h3>Workflow 3: Practice tool → Research → Academy</h3>
+<div class="flow">
+  <div class="flow-row">
+    <div class="flow-node">User in Practice</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node gold">Risk Classifier result</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node blue">"Read the research" CTA</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node">Article page</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node green">Academy CTA in sidebar</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node dark">Module on that topic</div>
+  </div>
+</div>
+<p>Every Practice tool result links to the AGNUS Research article that explains it. Every article has an Academy CTA in the sidebar. This creates a closed loop: Practice → Research → Academy → Practice.</p>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════════════
+     NAV
+════════════════════════════════════════════ -->
+<h2 id="nav">Navigation — the canonical structure</h2>
+
+<p>Every public-facing page must have this exact nav:</p>
+<div class="code">
+&lt;<span class="kw">nav</span> class=<span class="str">"nav"</span>&gt;
+  &lt;div class=<span class="str">"container nav-inner"</span>&gt;
+    &lt;a href=<span class="str">"AGNUS - Home.html"</span> class=<span class="str">"wordmark"</span>&gt;AGNUS&lt;/a&gt;
+    &lt;div class=<span class="str">"nav-links"</span>&gt;
+      &lt;a href=<span class="str">"AGNUS - Explore.html"</span>&gt;Explore&lt;/a&gt;
+      &lt;a href=<span class="str">"AGNUS - Intelligence.html"</span>&gt;Intelligence&lt;/a&gt;
+      &lt;a href=<span class="str">"AGNUS - Research.html"</span>&gt;Research&lt;/a&gt;
+      &lt;a href=<span class="str">"AGNUS - Practice.html"</span>&gt;Practice&lt;/a&gt;
+      &lt;a href=<span class="str">"AGNUS - Review.html"</span>&gt;Reviews&lt;/a&gt;
+      &lt;a href=<span class="str">"AGNUS - Academy.html"</span>&gt;Academy&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=<span class="str">"nav-right"</span>&gt;
+      &lt;a href=<span class="str">"AGNUS - Home.html#premium"</span> class=<span class="str">"btn btn-gold"</span>&gt;Join AGNUS&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;
+</div>
+<p>Add <span class="inline-code">class="active"</span> to the current page's nav link. The active page uses the nav item without a link (or <span class="inline-code">aria-current="page"</span>).</p>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════════════
+     CSS
+════════════════════════════════════════════ -->
+<h2 id="css">Design system tokens</h2>
+
+<p>All tokens are defined in <span class="inline-code">AGNUS - Home.html</span> <span class="inline-code">:root {}</span> and mirrored in <span class="inline-code">agnus.css</span>. Always reference tokens — never hardcode hex values in templates.</p>
+
+<div class="code">
+<span class="cm">/* Core palette */</span>
+<span class="prop">--char</span>:        #1C1B19;    <span class="cm">/* near-black — headings, logo, featured backgrounds */</span>
+<span class="prop">--bg</span>:          #F8F7F4;    <span class="cm">/* warm white — page background */</span>
+<span class="prop">--paper</span>:       #FCFBF8;    <span class="cm">/* off-white — card backgrounds */</span>
+<span class="prop">--paper-warm</span>:  #F3F1EC;    <span class="cm">/* warm — sidebar, callout backgrounds */</span>
+<span class="prop">--ink</span>:         #1D1D1F;    <span class="cm">/* body text */</span>
+<span class="prop">--ink-soft</span>:    #6E6B66;    <span class="cm">/* secondary text */</span>
+<span class="prop">--ink-mute</span>:    #908D86;    <span class="cm">/* metadata, captions */</span>
+
+<span class="cm">/* Gold — used sparingly, only for accents and CTAs */</span>
+<span class="prop">--gold</span>:        #B28A42;    <span class="cm">/* medium gold */</span>
+<span class="prop">--gold-deep</span>:   #8F6E32;    <span class="cm">/* dark gold — links, accents */</span>
+<span class="prop">--gold-light</span>:  #E7D6AE;    <span class="cm">/* pale gold — on dark backgrounds */</span>
+
+<span class="cm">/* Typography */</span>
+<span class="prop">--font-sans</span>:   "Manrope";      <span class="cm">/* headings and UI */</span>
+<span class="prop">--font-mono</span>:   "IBM Plex Mono";<span class="cm">/* IDs, metadata, labels */</span>
+<span class="prop">--font-serif</span>:  "Newsreader";   <span class="cm">/* article body, italic accents */</span>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════════════
+     BACKEND BUILD
+════════════════════════════════════════════ -->
+<h2 id="backend">Backend build — what needs to be built</h2>
+
+<h3>Priority 1 — Required for launch</h3>
+<div class="steps">
+  <div class="step"><div class="step-num">1</div><div class="step-body"><h4>User authentication</h4><p>Email + password auth. Two tiers: Free (access to free tools + L1–L3 Academy) and Premium (all tools + full Academy + Track B). Use NextAuth, Supabase Auth, or Clerk. Store tier in JWT. Add auth check to Academy App and Practice page.</p></div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><h4>Payment (premium subscriptions)</h4><p>Stripe for subscription billing. Monthly and annual plans. Webhook to update user tier on payment. Connect to auth tier check.</p></div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><h4>Static file hosting</h4><p>All HTML/CSS/JS at root, <span class="inline-code">academy/</span>, <span class="inline-code">tandem/</span> must be served as static files. Vercel, Netlify, or Cloudflare Pages. No framework needed for the frontend — it is plain HTML.</p></div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><h4>agnus-research-data.js load order</h4><p>Ensure all article pages load scripts in the correct order: <span class="inline-code">agnus-research-data.js</span> → <span class="inline-code">agnus-research-components.js</span> → <span class="inline-code">agnus-research-components2.js</span>. Currently correct in all pages — verify on deploy.</p></div></div>
+</div>
+
+<h3>Priority 2 — Post-launch week 1</h3>
+<div class="steps">
+  <div class="step"><div class="step-num">5</div><div class="step-body"><h4>Search</h4><p>Algolia or Typesense index over article titles, bodies, pillar, jurisdiction. Add search input to Explore page. Surface results with pillar filters.</p></div></div>
+  <div class="step"><div class="step-num">6</div><div class="step-body"><h4>Academy progress persistence</h4><p>Write module completion to user profile (not just localStorage). API: <span class="inline-code">POST /api/progress</span> with <span class="inline-code">{moduleId, completed: true, score}</span>. Academy App reads from API on load (fall back to localStorage for guests).</p></div></div>
+  <div class="step"><div class="step-num">7</div><div class="step-body"><h4>Intelligence agent connection</h4><p>Set up watcher on <span class="inline-code">handoffs/</span> folder (or S3 bucket). When new <span class="inline-code">research-handoff-*.json</span> appears, trigger article build pipeline. See Workflow 1 above.</p></div></div>
+</div>
+
+<h3>Priority 3 — Month 1</h3>
+<div class="steps">
+  <div class="step"><div class="step-num">8</div><div class="step-body"><h4>PDF export for Practice tools</h4><p>Wire Puppeteer or WeasyPrint to the 3 premium form tools (FRIA, Incident Report, Technical Documentation). Each form POSTs to <span class="inline-code">/api/export-pdf</span> → receives PDF download. Current <span class="inline-code">window.print()</span> is the fallback.</p></div></div>
+  <div class="step"><div class="step-num">9</div><div class="step-body"><h4>Editorial Platform backend</h4><p>Wire <span class="inline-code">AGNUS - Editorial Platform.html</span> to real data: article CMS (Postgres + S3 for files), source database, scheduling system, handoff queue. This is the highest-complexity build — do not block launch on it.</p></div></div>
+  <div class="step"><div class="step-num">10</div><div class="step-body"><h4>Tandem live data</h4><p>Wire <span class="inline-code">tandem/AGNUS - Tandem Standalone.html</span> governance views to real agent session data via WebSocket or polling. See <span class="inline-code">The Protocol/AGNUS Phase III - Control Plane Architecture.md</span> for the full spec.</p></div></div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════════════
+     LAUNCH ROADMAP
+════════════════════════════════════════════ -->
+<h2 id="launch">Public launch roadmap</h2>
+
+<p>The sequenced path from current state to public launch and beyond.</p>
+
+<table class="roadmap-table">
+  <thead><tr><th>Phase</th><th>Task</th><th>Effort</th><th>Priority</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>Deploy</td>
+      <td>Host all HTML/CSS/JS on Vercel/Netlify. Verify all internal links resolve. Check script load order on all article pages.</td>
+      <td>1 day</td>
+      <td class="priority-1">P1 — blocks launch</td>
+    </tr>
+    <tr>
+      <td>Auth</td>
+      <td>Add user auth (Supabase Auth or Clerk). Free tier: open access to Research + Practice free tools + L1–L3 Academy. Premium tier: everything.</td>
+      <td>2–3 days</td>
+      <td class="priority-1">P1 — blocks launch</td>
+    </tr>
+    <tr>
+      <td>Payment</td>
+      <td>Stripe subscription. Monthly/annual plans. Webhook → update user tier. Gate Practice premium tools and Academy Track B.</td>
+      <td>2 days</td>
+      <td class="priority-1">P1 — blocks launch</td>
+    </tr>
+    <tr>
+      <td>Domain</td>
+      <td>Point agnus.ai (or chosen domain) to hosting. SSL. Configure www/apex redirect.</td>
+      <td>1 hour</td>
+      <td class="priority-1">P1 — blocks launch</td>
+    </tr>
+    <tr>
+      <td>Analytics</td>
+      <td>Add Plausible or Fathom analytics (privacy-first). Track: page views, article reads, tool completions, Academy module completions.</td>
+      <td>0.5 day</td>
+      <td class="priority-1">P1 — blocks launch</td>
+    </tr>
+    <tr>
+      <td>Search (v1)</td>
+      <td>Algolia index over 104 articles. Wire Explore page search input. Basic pillar + jurisdiction filters.</td>
+      <td>1–2 days</td>
+      <td class="priority-2">P2 — week 1</td>
+    </tr>
+    <tr>
+      <td>Progress sync</td>
+      <td>Academy progress API. <span class="inline-code">POST /api/progress</span>. Academy App reads from API, falls back to localStorage.</td>
+      <td>1 day</td>
+      <td class="priority-2">P2 — week 1</td>
+    </tr>
+    <tr>
+      <td>Intel pipeline</td>
+      <td>Connect intelligence agent output to article build pipeline. Watch handoffs folder → build article → deploy. First automated article within 24h of launch.</td>
+      <td>2–3 days</td>
+      <td class="priority-2">P2 — week 1</td>
+    </tr>
+    <tr>
+      <td>PDF export</td>
+      <td>Wire Puppeteer to 3 Practice premium forms (FRIA, Incident Report, Tech Doc).</td>
+      <td>1 day</td>
+      <td class="priority-3">P3 — month 1</td>
+    </tr>
+    <tr>
+      <td>Editorial backend</td>
+      <td>Wire Editorial Platform to Postgres CMS. Article CRUD, source database, scheduling. Not blocking launch.</td>
+      <td>5–7 days</td>
+      <td class="priority-3">P3 — month 1</td>
+    </tr>
+    <tr>
+      <td>Tandem live</td>
+      <td>Wire Tandem governance views to real agent session data via WebSocket. See AGNUS Phase III Architecture doc.</td>
+      <td>2–4 weeks</td>
+      <td class="priority-3">P3 — month 2+</td>
+    </tr>
+    <tr>
+      <td>Country articles</td>
+      <td>9 missing countries (UK, US, Singapore, Japan, Italy, Canada, China × 2, South Korea). Build from intelligence daily packages as they arrive. Target: 1 per week.</td>
+      <td>Ongoing</td>
+      <td class="priority-3">P3 — month 1+</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="section-divider"></div>
+
+<h2 id="priorities">Priority decision guide</h2>
+
+<div class="callout red">
+  <span class="callout-icon">🚫</span>
+  <p><strong>Do not block launch on:</strong> Editorial Platform backend, Tandem live data, PDF export, advanced search, country articles. These are post-launch growth items. The frontend is complete and valuable without them.</p>
+</div>
+
+<div class="callout green">
+  <span class="callout-icon">✓</span>
+  <p><strong>Launch is viable when:</strong> Static files are deployed, auth + payment work, free tools are gated correctly, and the intelligence agent is connected. Everything else is iteration.</p>
+</div>
+
+<div class="section-divider"></div>
+
+<h2 id="checklist">Pre-launch checklist</h2>
+
+<div class="steps">
+  <div class="step"><div class="step-num">✓</div><div class="step-body"><h4>agnus-research-data.js syntax fixed</h4><p>Verified: records moved from AUTHORITY object to correct arrays. No syntax errors.</p></div></div>
+  <div class="step"><div class="step-num">✓</div><div class="step-body"><h4>All 104 articles have source citations</h4><p>Every article has at least one <span class="inline-code">SRC-</span> referenced source block.</p></div></div>
+  <div class="step"><div class="step-num">✓</div><div class="step-body"><h4>Image slots replaced with callouts/diagrams</h4><p>36 articles updated. No broken image placeholders at launch.</p></div></div>
+  <div class="step"><div class="step-num">✓</div><div class="step-body"><h4>Practice nav in all 23 public pages</h4><p>Verified: every public page has Explore · Intelligence · Research · Practice · Reviews · Academy.</p></div></div>
+  <div class="step"><div class="step-num">✓</div><div class="step-body"><h4>Academy path cards link to correct subfolder</h4><p><span class="inline-code">AGNUS - Academy.html</span> cards link to <span class="inline-code">academy/AGNUS - Academy App.html</span>.</p></div></div>
+  <div class="step"><div class="step-num">✓</div><div class="step-body"><h4>92 Academy files present</h4><p>52 Track A modules, 5 Track B simulations, CTE, Academy App — all in <span class="inline-code">academy/</span>.</p></div></div>
+  <div class="step"><div class="step-num">□</div><div class="step-body"><h4>Static file hosting configured</h4><p>Vercel / Netlify / Cloudflare Pages. All root + academy/ + tandem/ files served.</p></div></div>
+  <div class="step"><div class="step-num">□</div><div class="step-body"><h4>Auth + payment wired</h4><p>Free vs premium tier. Stripe subscription. Academy and Practice gated correctly.</p></div></div>
+  <div class="step"><div class="step-num">□</div><div class="step-body"><h4>Script load order verified on deploy</h4><p>agnus-research-data.js → agnus-research-components.js → agnus-research-components2.js — in that order on all article pages.</p></div></div>
+  <div class="step"><div class="step-num">□</div><div class="step-body"><h4>Analytics installed</h4><p>Plausible or Fathom. Track article reads and Academy completions from day 1.</p></div></div>
+  <div class="step"><div class="step-num">□</div><div class="step-body"><h4>Intelligence agent connected</h4><p>Handoff JSON lands in watched folder. Build pipeline triggers. First automated article deployed.</p></div></div>
+</div>
+
+<p style="margin-top:40px;font-family:var(--font-mono);font-size:11px;color:var(--ink-mute)">AGNUS Handoff Document · Generated 12 September 2026 · AGNUS Claude Design Agent</p>
+
+</div>
+</div>
+
+</body>
+</html>

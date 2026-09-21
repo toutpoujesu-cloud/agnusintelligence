@@ -1,0 +1,31 @@
+{
+  "run_date": "2026-08-15",
+  "source_checks": [
+    {
+      "source_url": "https://www.aisi.gov.uk",
+      "date_checked": "2026-08-15",
+      "status": "manual_review",
+      "last_successful_check": "2026-08-15",
+      "observed_version_or_date": "AISI homepage retrieved; baseline established",
+      "open_questions": []
+    },
+    {
+      "source_url": "https://www.gov.uk/government/organisations/department-for-science-innovation-and-technology",
+      "date_checked": "2026-08-15",
+      "status": "manual_review",
+      "last_successful_check": "2026-08-15",
+      "observed_version_or_date": "DSIT organization page retrieved; baseline established",
+      "open_questions": []
+    },
+    {
+      "source_url": "https://ico.org.uk",
+      "date_checked": "2026-08-15",
+      "status": "manual_review",
+      "last_successful_check": "2026-08-15",
+      "observed_version_or_date": "ICO homepage retrieved; baseline established",
+      "open_questions": []
+    }
+  ],
+  "findings": [],
+  "editorial_alerts": []
+}

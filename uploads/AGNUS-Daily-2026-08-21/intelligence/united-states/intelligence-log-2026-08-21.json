@@ -1,0 +1,46 @@
+{
+  "run_date": "2026-08-21",
+  "source_checks": [
+    {
+      "source_url": "https://www.congress.gov",
+      "date_checked": "2026-08-21",
+      "status": "unreachable",
+      "last_successful_check": "",
+      "observed_version_or_date": "The registry URL exposed only a stale retrieval snapshot and current bill-search access remained blocked, so a current comparison could not be verified.",
+      "open_questions": [
+        "Manual review or an official Congress.gov API route is required for current federal AI-bill coverage."
+      ]
+    },
+    {
+      "source_url": "https://leginfo.legislature.ca.gov",
+      "date_checked": "2026-08-21",
+      "status": "no_change",
+      "last_successful_check": "2026-08-21",
+      "observed_version_or_date": "Official legislature site retrieved; no material AI-bill action after 2026-08-15 was located in the official domain check.",
+      "open_questions": []
+    },
+    {
+      "source_url": "https://leg.colorado.gov",
+      "date_checked": "2026-08-21",
+      "status": "no_change",
+      "last_successful_check": "2026-08-21",
+      "observed_version_or_date": "Official site retrieved; the 2026 regular session remains adjourned sine die from 2026-05-13, with no material AI legislative action after the baseline located.",
+      "open_questions": []
+    },
+    {
+      "source_url": "https://www.nysenate.gov/legislation",
+      "date_checked": "2026-08-21",
+      "status": "unreachable",
+      "last_successful_check": "2026-08-15",
+      "observed_version_or_date": "The exact registry legislation index returned an internal retrieval error; prior successful baseline was preserved.",
+      "open_questions": [
+        "Repair or replace the registry index URL with a stable official query endpoint before relying on complete New York coverage."
+      ]
+    }
+  ],
+  "findings": [],
+  "editorial_alerts": [
+    "Congress.gov current retrieval was unavailable; federal AI-bill coverage requires manual or official API review.",
+    "The New York legislation index was unreachable; the 2026-08-15 baseline was preserved."
+  ]
+}

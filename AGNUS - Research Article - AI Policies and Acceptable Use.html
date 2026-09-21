@@ -1,0 +1,203 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI Policies and Acceptable Use: What Every Organisation Needs in Writing — AGNUS Research</title>
+<meta name="description" content="An AI policy translates governance principles into operational rules. This article covers what a complete AI acceptable use policy must contain, how to structure it for different audiences (employees, developers, vendors), and what the EU AI Act and GDPR require organisations to document." />
+<link rel="canonical" href="https://agnus.example/research/ai-governance/ai-policies/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="AI Policies and Acceptable Use: What Every Organisation Needs in Writing" />
+<meta property="article:published_time" content="2026-09-11" />
+<meta property="article:author" content="Jean-Daniel Alexis" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>
+a,a:visited{color:inherit}
+.prose h3{font-family:var(--font-sans);font-weight:700;font-size:19px;letter-spacing:-.018em;margin:32px 0 14px}
+.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
+.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
+.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s}
+.rsub a:hover{color:var(--ink);background:var(--line-soft,rgba(0,0,0,.04))}
+.rsub a.on{color:var(--gold-deep);font-weight:600}
+.pillar-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:var(--gold-pale,#FEF9ED);color:var(--gold-deep,#8B6914);border:1px solid var(--gold-line,#E8D9A0);border-radius:4px;padding:3px 8px;margin-bottom:16px}
+.pol-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:24px 0}
+@media(max-width:700px){.pol-grid{grid-template-columns:1fr}}
+.pol-card{background:var(--paper-warm,#F7F5F0);border:1px solid var(--line);border-radius:8px;padding:18px 20px}
+.pol-card .pc-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:6px}
+.pol-card .pc-title{font-family:var(--font-sans);font-weight:800;font-size:15px;color:var(--ink);margin-bottom:6px}
+.pol-card .pc-body{font-size:13px;color:var(--ink-mute);line-height:1.6}
+.pol-example{background:#0F1E34;border-radius:10px;padding:22px 26px;margin:20px 0;color:rgba(255,255,255,.85);font-size:13px;line-height:1.75}
+.pol-example .pe-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:12px;display:block}
+.pol-example .pe-section{font-family:var(--font-sans);font-weight:700;font-size:12.5px;color:rgba(255,255,255,.55);margin-bottom:6px;margin-top:14px}
+.pol-example .pe-body{color:rgba(255,255,255,.7)}
+</style>
+</head>
+<body>
+<div class="art-progress"><i id="progBar"></i></div>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+    </div>
+  </div>
+</nav>
+<div class="rsub">
+  <div class="rsub-inner">
+    <a href="#layers">Policy layers</a>
+    <a href="#aup">Acceptable use policy</a>
+    <a href="#example">Example structure</a>
+    <a href="#regulation">Regulatory grounding</a>
+    <a href="#common-errors">Common errors</a>
+    <a href="#sources">Sources</a>
+  </div>
+</div>
+<main class="art-layout">
+  <article class="art-main">
+    <header class="art-header">
+      <span class="pillar-tag">AI Governance</span>
+      <h1 class="art-h1">AI Policies and Acceptable Use: What Every Organisation Needs in Writing</h1>
+      <p class="art-lede">An AI governance framework without written policies is a set of intentions. Policies translate principles into operational rules — what employees may and may not do, what developers must build in, what vendors must provide. This article maps the policy architecture that effective AI governance requires and the specific content that must be documented to satisfy EU AI Act and GDPR requirements.</p>
+      <div class="art-meta">
+        <span>Jean-Daniel Alexis</span><span class="meta-sep">·</span>
+        <span>11 September 2026</span><span class="meta-sep">·</span>
+        <span>AI Governance pillar</span><span class="meta-sep">·</span>
+        <span>AR-000620</span>
+      </div>
+    </header>
+    <div class="prose">
+
+      <h3 id="layers">The three policy layers</h3>
+      <p>AI governance policy operates at three distinct layers, each with a different audience and a different level of specificity:</p>
+      <div class="pol-grid">
+        <div class="pol-card">
+          <div class="pc-label">Layer 1</div>
+          <div class="pc-title">Principles and values</div>
+          <div class="pc-body">Board-level statements of what the organisation believes about AI — fairness, accountability, transparency, human oversight. These are aspirational and directional. They cannot be violated but they cannot be enforced because they contain no specific rules. Most organisations have these. They are necessary but not sufficient.</div>
+        </div>
+        <div class="pol-card">
+          <div class="pc-label">Layer 2</div>
+          <div class="pc-title">Governance policy</div>
+          <div class="pc-body">The operational rules that implement the principles. Who approves what. What risk assessment is required before deployment. What documentation must be produced. What incidents must be reported and to whom. This is where governance principles become enforceable.</div>
+        </div>
+        <div class="pol-card">
+          <div class="pc-label">Layer 3</div>
+          <div class="pc-title">Acceptable use policy (AUP)</div>
+          <div class="pc-body">The specific rules for employees using AI tools in their work. What they may and may not input into AI systems. What they must check before using AI outputs. What they must disclose when they have used AI. This is the employee-facing policy.</div>
+        </div>
+        <div class="pol-card">
+          <div class="pc-label">Supplementary</div>
+          <div class="pc-title">Developer and procurement policies</div>
+          <div class="pc-body">Specific rules for teams building AI systems (security by design, testing requirements, documentation standards) and for teams procuring AI from vendors (assessment requirements, contractual terms, ongoing obligations). These are audience-specific implementations of the governance policy.</div>
+        </div>
+      </div>
+
+      <h3 id="aup">What an Acceptable Use Policy must contain</h3>
+      <p>An AI Acceptable Use Policy addresses the most common governance failures in AI use by employees: inputting confidential or personal data into public AI systems; relying on AI outputs without verification; failing to disclose AI use when required; using AI for prohibited purposes. Six sections are required:</p>
+      <p><strong>1. Scope.</strong> Which AI tools and systems are covered, and which employees are subject to the policy. A policy that says "AI systems" without specifying what counts as an AI system will be interpreted inconsistently.</p>
+      <p><strong>2. Approved tools.</strong> A list of AI tools that employees are approved to use for work purposes, with any conditions. Tools not on the approved list require prior approval. This prevents shadow AI — employees using unapproved tools with unknown data processing implications.</p>
+      <p><strong>3. Data restrictions.</strong> Explicit rules about what data may not be entered into AI systems — personal data of clients or employees, confidential business information, legally privileged communications, trade secrets. The restriction should reference the data classification that applies: "Category 1 (Confidential) data may not be entered into any external AI system."</p>
+      <p><strong>4. Verification requirements.</strong> Rules about when AI outputs must be verified before use: before communicating to clients, before publishing, before using in legal or financial documents, before making consequential decisions. The policy should specify what verification means — not just "check it" but "verify factual claims against a primary source before including in external communications."</p>
+      <p><strong>5. Disclosure requirements.</strong> When and how employees must disclose AI use — in client deliverables, in published content, in regulatory submissions. Some sectors (legal, financial services) have specific professional rules about AI disclosure that this section should reference.</p>
+      <p><strong>6. Prohibited uses.</strong> Explicit list of uses that are never permitted — generating content that discriminates, making automated decisions with legal or similarly significant effect without human review, using AI for surveillance of employees or clients, circumventing access controls using AI-generated credentials.</p>
+
+      <h3 id="example">Example AUP structure</h3>
+      <div class="pol-example">
+        <span class="pe-label">Example AI Acceptable Use Policy — illustrative only</span>
+        <div class="pe-section">1. Scope</div>
+        <div class="pe-body">This policy applies to all employees, contractors, and consultants using AI tools for work purposes. It covers all AI systems including generative AI, AI-assisted writing tools, AI coding assistants, and AI analytics platforms.</div>
+        <div class="pe-section">2. Approved tools</div>
+        <div class="pe-body">Approved tools are listed in the AI Tools Register (Intranet &gt; IT &gt; AI Tools). Using unapproved AI tools for work purposes requires prior written approval from your department head and IT Security.</div>
+        <div class="pe-section">3. Data you must not enter</div>
+        <div class="pe-body">You must not enter into any external AI system: personal data of clients or employees (names, contact details, financial data, health data); confidential business information classified Category 1 or above; legally privileged communications; source code from production systems.</div>
+        <div class="pe-section">4. Verification before use</div>
+        <div class="pe-body">Before including AI-generated factual claims in any external communication, you must verify those claims against a primary source. Do not represent AI-generated content as independently researched unless you have verified it.</div>
+        <div class="pe-section">5. Prohibited uses</div>
+        <div class="pe-body">You must not use AI to: make automated decisions with legal or similarly significant effects on individuals without human review; generate content that discriminates on protected characteristics; create false or misleading representations about company products or services; circumvent access controls or security systems.</div>
+      </div>
+
+      <h3 id="regulation">Regulatory grounding</h3>
+      <p>Several regulatory requirements create a direct obligation to have specific AI policies in writing:</p>
+      <p>The EU AI Act's deployer obligations (Article 26) require that deployers "put in place appropriate technical and organisational measures" to ensure AI systems are used in accordance with their instructions. Written policies are the primary organisational measure for employee use.</p>
+      <p>GDPR Article 5(2) requires controllers to be able to demonstrate compliance (accountability principle). For organisations using AI to process personal data, this means being able to show that policies governing AI use of personal data exist and are implemented — not just that principles exist.</p>
+      <p>ISO/IEC 42001 (AI Management System standard) requires organisations to establish documented policies for AI use as part of its clause 5.2 (AI policy) and clause 6 (planning). Organisations seeking ISO 42001 certification must demonstrate that policies are documented, communicated, and implemented.</p>
+
+      <h3 id="common-errors">Common policy errors</h3>
+      <p><strong>Policies that are principles, not rules.</strong> "We use AI responsibly" is a principle. "Factual claims generated by AI must be verified against a primary source before inclusion in external communications" is a rule. Rules are enforceable; principles are not.</p>
+      <p><strong>Data restrictions that reference undefined categories.</strong> "Confidential data" is not a restriction unless the organisation has a data classification scheme that defines what confidential means. Policies must reference definitions that employees can apply.</p>
+      <p><strong>Verification requirements without verification criteria.</strong> "Check AI outputs before using them" is not a verification requirement. Employees need to know: check for what, against what, and at what level of detail.</p>
+      <p><strong>Policies that are never communicated or trained.</strong> A policy that employees have not been trained on is not an operational control — it is a document. Communication and training on AI policies should be mandatory for all employees covered by the scope, with a documented completion record.</p>
+    </div>
+    <section class="art-sources" id="sources">
+      <h2 class="sources-h">Sources and verification</h2>
+      <div class="sources-grid">
+        <div class="source-card">
+          <div class="sc-id">SRC-0062</div>
+          <div class="sc-title">EU AI Act — Article 26: Obligations of deployers</div>
+          <div class="sc-org">European Parliament and Council</div>
+          <div class="sc-url"><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689" target="_blank" rel="noopener">eur-lex.europa.eu</a></div>
+        </div>
+        <div class="source-card">
+          <div class="sc-id">SRC-0001</div>
+          <div class="sc-title">GDPR — Article 5(2): Accountability principle</div>
+          <div class="sc-org">European Parliament and Council</div>
+          <div class="sc-url"><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679" target="_blank" rel="noopener">eur-lex.europa.eu</a></div>
+        </div>
+        <div class="source-card">
+          <div class="sc-id">SRC-0071</div>
+          <div class="sc-title">ISO/IEC 42001:2023 — Clause 5.2 (AI Policy)</div>
+          <div class="sc-org">International Organisation for Standardisation</div>
+          <div class="sc-url"><a href="https://www.iso.org/standard/81230.html" target="_blank" rel="noopener">iso.org</a></div>
+          <div class="sc-note">Clause 5.2 requires the organisation to establish a documented AI policy. Clause 6 requires planning to achieve AI governance objectives.</div>
+        </div>
+      </div>
+      <div class="src-registry-note">Article ID: AR-000620 · Sources: SRC-0001, SRC-0062, SRC-0071 · Published: 2026-09-11 · AGNUS Research</div>
+    </section>
+  </article>
+  <aside class="art-aside">
+    <div class="aside-block"><div class="aside-label">Pillar</div><a href="AGNUS - Research.html" class="aside-pill">AI Governance</a></div>
+    <div class="aside-block">
+      <div class="aside-label">Related articles</div>
+      <ul class="aside-links">
+        <li><a href="AGNUS - Research Article - Governance Frameworks.html">AI Governance Frameworks</a></li>
+        <li><a href="AGNUS - Research Article - AI Governance Structures.html">AI Governance Structures</a></li>
+        <li><a href="AGNUS - Research Article - ISO 42001.html">ISO/IEC 42001: AI Management Systems</a></li>
+        <li><a href="AGNUS - Research Article - Deployer Obligations.html">Deployer Obligations Under the EU AI Act</a></li>
+      </ul>
+    </div>
+    <div class="aside-block">
+      <div class="aside-label">Key standard</div>
+      <div class="aside-value">ISO 42001 Clause 5.2</div>
+      <div class="aside-note">Requires a documented AI policy as a prerequisite for certification. The policy must be communicated to all relevant employees.</div>
+    </div>
+  </aside>
+</main>
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-copy">© 2026 AGNUS. All rights reserved.</div>
+    <div class="footer-links"><a href="AGNUS - Home.html">Home</a><a href="AGNUS - Research.html">Research</a><a href="AGNUS - Academy.html">Academy</a></div>
+  </div>
+</footer>
+<script src="agnus-research-data.js"></script>
+<script>(function(){var bar=document.getElementById('progBar');if(!bar)return;window.addEventListener('scroll',function(){var h=document.documentElement;bar.style.width=((h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100)+'%';});})();</script>
+</body>
+</html>

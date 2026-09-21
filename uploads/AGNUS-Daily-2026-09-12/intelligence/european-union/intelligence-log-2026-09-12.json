@@ -1,0 +1,31 @@
+{
+  "run_date": "2026-09-12",
+  "source_checks": [
+    {
+      "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX%3A02024R1689-20260727",
+      "date_checked": "2026-09-12",
+      "status": "unreachable",
+      "last_successful_check": null,
+      "observed_version_or_date": "Prior successful baseline preserved; the current consolidated AI Act text could not be retrieved.",
+      "open_questions": [
+        "Manual access review remains required; the prior successful state baseline was preserved."
+      ]
+    },
+    {
+      "source_url": "https://digital-strategy.ec.europa.eu/en",
+      "date_checked": "2026-09-12",
+      "status": "no_change",
+      "last_successful_check": "2026-09-12",
+      "observed_version_or_date": "The Commission Digital Strategy homepage continues to foreground the European Technological Sovereignty Package; no newer material AI-policy item was verified.",
+      "open_questions": []
+    }
+  ],
+  "findings": [],
+  "editorial_alerts": [
+    {
+      "type": "source_access_error",
+      "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX%3A02024R1689-20260727",
+      "message": "EUR-Lex required a JavaScript anti-bot verification page; current consolidated text could not be verified. Prior successful baseline preserved."
+    }
+  ]
+}

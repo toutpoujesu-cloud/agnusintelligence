@@ -1,0 +1,31 @@
+{
+  "run_date": "2026-08-22",
+  "source_checks": [
+    {
+      "source_url": "https://www.datatilsynet.no",
+      "date_checked": "2026-08-22",
+      "status": "no_change",
+      "last_successful_check": "2026-08-22",
+      "observed_version_or_date": "Datatilsynet homepage retrieved; no new monitored AI/GDPR guidance found since 2026-08-15.",
+      "open_questions": []
+    },
+    {
+      "source_url": "https://www.digdir.no",
+      "date_checked": "2026-08-22",
+      "status": "no_change",
+      "last_successful_check": "2026-08-22",
+      "observed_version_or_date": "Digdir homepage retrieved; latest post-2026-08-15 item was unrelated to the monitored AI-policy scope.",
+      "open_questions": []
+    },
+    {
+      "source_url": "https://www.regjeringen.no",
+      "date_checked": "2026-08-22",
+      "status": "no_change",
+      "last_successful_check": "2026-08-22",
+      "observed_version_or_date": "Latest relevant AI-law publication remains dated 2026-08-06.",
+      "open_questions": []
+    }
+  ],
+  "findings": [],
+  "editorial_alerts": []
+}

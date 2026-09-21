@@ -1,0 +1,14 @@
+{
+  "vendor_facts": {
+    "pricing": "",
+    "limits": "",
+    "release_date": "",
+    "changelog_url": ""
+  },
+  "benchmark_standing": [],
+  "reliability_signal": [],
+  "protocol_results": [],
+  "sourcing_gaps": [
+    "BLOCKED: OpenAI GPT-5 was selected as the proposed product assignment, but no requester-supplied LLM category test protocol exists in the supplied AGNUS files. Agent 3's dependency gate states that the test protocol must be supplied by the requester and that the agent must not invent its own methodology. No product research, testing, scoring, or final review was performed. Required next input: a fixed LLM test protocol specifying tasks, prompts, environment, timing rules, pass/fail rubric, and output-retention requirements."
+  ]
+}

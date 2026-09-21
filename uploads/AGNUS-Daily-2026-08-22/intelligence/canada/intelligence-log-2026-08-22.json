@@ -1,0 +1,24 @@
+{
+  "run_date": "2026-08-22",
+  "source_checks": [
+    {
+      "source_url": "https://ised-isde.canada.ca",
+      "date_checked": "2026-08-22",
+      "status": "unreachable",
+      "last_successful_check": "",
+      "observed_version_or_date": "Exact registry homepage returned an internal retrieval error.",
+      "open_questions": [
+        "No successful registry baseline exists; manual review of official ISED AI/AIDA pages is required."
+      ]
+    }
+  ],
+  "findings": [],
+  "editorial_alerts": [
+    {
+      "type": "source_unreachable",
+      "source_url": "https://ised-isde.canada.ca",
+      "message": "Exact registry homepage returned an internal retrieval error.",
+      "baseline_action": "Prior successful baseline preserved; no fingerprint or last-successful value overwritten."
+    }
+  ]
+}

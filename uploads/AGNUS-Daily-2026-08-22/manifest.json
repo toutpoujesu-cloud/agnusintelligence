@@ -1,0 +1,204 @@
+{
+  "run_date": "2026-08-22",
+  "sections": {
+    "intelligence": {
+      "status": "ran",
+      "workflows_ran": [
+        "due-source cadence evaluation",
+        "primary-source retrieval",
+        "baseline comparison",
+        "materiality triage"
+      ],
+      "jurisdictions": [
+        "european-union",
+        "norway",
+        "italy",
+        "united-states",
+        "united-kingdom",
+        "china",
+        "singapore",
+        "south-korea",
+        "japan",
+        "canada"
+      ],
+      "sources_due": 28,
+      "sources_checked": 28,
+      "successful_checks": 19,
+      "changed_sources": 1,
+      "no_change_sources": 18,
+      "unreachable_sources": 9,
+      "findings": 1,
+      "high_materiality_findings": 1,
+      "generated_files": [
+        "intelligence/european-union/intelligence-log-2026-08-22.json",
+        "intelligence/norway/intelligence-log-2026-08-22.json",
+        "intelligence/italy/intelligence-log-2026-08-22.json",
+        "intelligence/united-states/intelligence-log-2026-08-22.json",
+        "intelligence/united-kingdom/intelligence-log-2026-08-22.json",
+        "intelligence/china/intelligence-log-2026-08-22.json",
+        "intelligence/singapore/intelligence-log-2026-08-22.json",
+        "intelligence/south-korea/intelligence-log-2026-08-22.json",
+        "intelligence/japan/intelligence-log-2026-08-22.json",
+        "intelligence/canada/intelligence-log-2026-08-22.json"
+      ]
+    },
+    "research": {
+      "status": "ran",
+      "workflows_ran": [
+        "raw Intelligence-to-Research handoff"
+      ],
+      "generated_files": [
+        "research/south-korea/research-handoff-2026-08-22-pipc-ai-data-amendment.json"
+      ],
+      "article_written": false,
+      "agnus_research_data_modified": false
+    },
+    "reviews": {
+      "status": "skipped",
+      "reason": "Reviews workflow was not part of this Intelligence monitoring run."
+    },
+    "agents": {
+      "status": "skipped",
+      "reason": "Agents workflow was not part of this Intelligence monitoring run."
+    },
+    "business": {
+      "status": "skipped",
+      "reason": "Business workflow was not part of this Intelligence monitoring run."
+    },
+    "academy": {
+      "status": "skipped",
+      "reason": "Academy workflow was not part of this Intelligence monitoring run."
+    },
+    "marketplace": {
+      "status": "skipped",
+      "reason": "Marketplace workflow was not part of this Intelligence monitoring run."
+    }
+  },
+  "generated_files": [
+    "intelligence/european-union/intelligence-log-2026-08-22.json",
+    "intelligence/norway/intelligence-log-2026-08-22.json",
+    "intelligence/italy/intelligence-log-2026-08-22.json",
+    "intelligence/united-states/intelligence-log-2026-08-22.json",
+    "intelligence/united-kingdom/intelligence-log-2026-08-22.json",
+    "intelligence/china/intelligence-log-2026-08-22.json",
+    "intelligence/singapore/intelligence-log-2026-08-22.json",
+    "intelligence/south-korea/intelligence-log-2026-08-22.json",
+    "intelligence/japan/intelligence-log-2026-08-22.json",
+    "intelligence/canada/intelligence-log-2026-08-22.json",
+    "research/south-korea/research-handoff-2026-08-22-pipc-ai-data-amendment.json",
+    "manifest.json"
+  ],
+  "empty_sections": [
+    "reviews",
+    "agents",
+    "business",
+    "academy",
+    "marketplace"
+  ],
+  "skipped_sections": [
+    "reviews",
+    "agents",
+    "business",
+    "academy",
+    "marketplace"
+  ],
+  "source_counts": {
+    "due": 28,
+    "checked": 28,
+    "successful": 19,
+    "unreachable": 9,
+    "changed": 1,
+    "no_change": 18
+  },
+  "finding_counts": {
+    "total": 1,
+    "high": 1,
+    "medium": 0,
+    "low": 0
+  },
+  "high_materiality_alerts": [
+    {
+      "record_id": "IR-PROVISIONAL-20260822-001",
+      "source_id": "SRC-0046",
+      "jurisdiction": "south-korea",
+      "publication_date": "2026-08-20",
+      "summary": "National Assembly passage of a privacy-law amendment creating a safeguarded personal-data route for qualifying AI development; promulgation and subordinate rules remain pending.",
+      "editorial_status": "pending_review; IDs provisional"
+    }
+  ],
+  "errors": [
+    {
+      "jurisdiction": "european-union",
+      "organization": "AI Act Service Desk",
+      "url": "https://ai-act-service-desk.ec.europa.eu/en/ai-act",
+      "error": "Registry URL returned an internal retrieval error.",
+      "baseline_action": "Preserved the prior successful baseline, fingerprint, and last-successful check; appended this access error to persistent state."
+    },
+    {
+      "jurisdiction": "european-union",
+      "organization": "ENISA",
+      "url": "https://www.enisa.europa.eu/topics/artificial-intelligence",
+      "error": "Registry URL returned an internal retrieval error.",
+      "baseline_action": "Preserved the prior successful baseline, fingerprint, and last-successful check; appended this access error to persistent state."
+    },
+    {
+      "jurisdiction": "italy",
+      "organization": "AgID",
+      "url": "https://www.agid.gov.it",
+      "error": "Registry homepage returned HTTP 403/internal retrieval error.",
+      "baseline_action": "Preserved the prior successful baseline, fingerprint, and last-successful check; appended this access error to persistent state."
+    },
+    {
+      "jurisdiction": "united-states",
+      "organization": "FTC",
+      "url": "https://www.ftc.gov/business-guidance/resources/artificial-intelligence",
+      "error": "Exact registry URL could not be opened by the retrieval service.",
+      "baseline_action": "Preserved the prior successful baseline, fingerprint, and last-successful check; appended this access error to persistent state."
+    },
+    {
+      "jurisdiction": "united-states",
+      "organization": "Congress.gov",
+      "url": "https://www.congress.gov",
+      "error": "Current Congress.gov retrieval remained unavailable.",
+      "baseline_action": "Preserved the prior successful baseline, fingerprint, and last-successful check; appended this access error to persistent state."
+    },
+    {
+      "jurisdiction": "singapore",
+      "organization": "IMDA",
+      "url": "https://www.imda.gov.sg/regulations-and-licensing/ai-governance",
+      "error": "Exact registry URL returned an internal retrieval error.",
+      "baseline_action": "Preserved the prior successful baseline, fingerprint, and last-successful check; appended this access error to persistent state."
+    },
+    {
+      "jurisdiction": "south-korea",
+      "organization": "Ministry of Science and ICT",
+      "url": "https://www.msit.go.kr",
+      "error": "Exact registry homepage returned an empty document.",
+      "baseline_action": "Preserved the prior successful baseline, fingerprint, and last-successful check; appended this access error to persistent state."
+    },
+    {
+      "jurisdiction": "japan",
+      "organization": "METI",
+      "url": "https://www.meti.go.jp",
+      "error": "Registry homepage returned HTTP 403/internal retrieval error.",
+      "baseline_action": "Preserved the prior successful baseline, fingerprint, and last-successful check; appended this access error to persistent state."
+    },
+    {
+      "jurisdiction": "canada",
+      "organization": "ISED Canada",
+      "url": "https://ised-isde.canada.ca",
+      "error": "Exact registry homepage returned an internal retrieval error.",
+      "baseline_action": "Preserved the prior successful baseline, fingerprint, and last-successful check; appended this access error to persistent state."
+    }
+  ],
+  "cadence_skips": {
+    "monthly_standards_not_due": [
+      "https://www.cencenelec.eu/areas-of-work/cen-cenelec-topics/artificial-intelligence/",
+      "https://www.miit.gov.cn",
+      "https://www.tc260.org.cn",
+      "https://www.iso.org/committee/6794475.html",
+      "https://owasp.org/www-project-top-10-for-large-language-model-applications/"
+    ]
+  },
+  "state_file_outside_archive": "AGNUS-Intelligence-State.json"
+}

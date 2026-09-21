@@ -1,0 +1,387 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI Agent Governance: Oversight, Accountability and Control — AGNUS Research</title>
+<meta name="description" content="Agentic AI systems create accountability gaps that conventional governance frameworks were not designed to address. This article maps the governance architecture: principal-agent accountability chains, autonomy boundaries, oversight design, audit trails, and multi-agent system controls." />
+<link rel="canonical" href="https://agnus.example/research/ai-agents/agent-governance/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="AI Agent Governance: Oversight, Accountability and Control" />
+<meta property="article:published_time" content="2026-08-22" />
+<meta property="article:modified_time" content="2026-08-22" />
+<meta property="article:author" content="Jean-Daniel Alexis" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>a,a:visited{color:inherit}
+.prose h3{font-family:var(--font-sans);font-weight:700;font-size:19px;letter-spacing:-.018em;margin:32px 0 14px}
+.ag-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0}
+@media(max-width:700px){.ag-grid{grid-template-columns:1fr}}
+.ag-card{background:var(--paper-warm,#F7F5F0);border:1px solid var(--line);border-radius:8px;padding:20px}
+.ag-card .ac-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:6px}
+.ag-card .ac-title{font-family:var(--font-sans);font-weight:800;font-size:17px;color:var(--ink);margin-bottom:8px;line-height:1.25}
+.ag-card .ac-body{font-size:13px;color:var(--ink-mute);line-height:1.6}
+.oversight-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:13px}
+.oversight-table th{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);font-weight:600;text-align:left;padding:10px 14px;border-bottom:2px solid var(--line);background:var(--paper-warm,#F7F5F0)}
+.oversight-table td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+.oversight-table tr:last-child td{border-bottom:none}
+.oversight-table .td-mode{font-weight:600;color:var(--ink);white-space:nowrap}
+.oversight-table .td-when{color:var(--ink-mute)}
+.oversight-table .td-risk{color:var(--ink-mute)}
+.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
+.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
+.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s}
+.rsub a:hover{color:var(--ink);background:var(--line-soft,rgba(0,0,0,.04))}
+.rsub a.on{color:var(--gold-deep);font-weight:600}
+.pillar-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:var(--gold-pale,#FEF9ED);color:var(--gold-deep,#8B6914);border:1px solid var(--gold-line,#E8D9A0);border-radius:4px;padding:3px 8px;margin-bottom:16px}
+</style>
+</head>
+<body>
+
+<div class="art-progress"><i id="progBar"></i></div>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Marketplace.html">Marketplace</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+      <a href="AGNUS - Business.html">Business</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+      <button class="hamburger" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="m-drawer">
+    <a href="AGNUS - Explore.html">Explore</a><a href="AGNUS - Intelligence.html">Intelligence</a><a href="AGNUS - Research.html" class="active">Research</a><a href="AGNUS - Review.html">Reviews</a><a href="AGNUS - Academy.html">Academy</a><a href="AGNUS - Business.html">Business</a>
+  </div>
+</nav>
+<div class="rsub"><div class="rsub-inner">
+<a href="AGNUS - Research.html">Research Home</a>
+<a href="AGNUS - Research.html#taxonomy">Topics</a>
+<a href="AGNUS - Research Topic.html">AI Agents</a>
+<a href="AGNUS - Research Country.html">Countries</a>
+<a href="AGNUS - Research Sources.html">Sources</a>
+<a href="AGNUS - Research Calendar.html">Calendar</a>
+<a href="AGNUS - Research Methodology.html">Methodology</a>
+<a href="AGNUS - Research Author.html">Authors</a>
+</div></div>
+
+<header class="art-head">
+  <div class="container">
+    <div class="pillar-tag">AI Agents</div>
+    <div data-rc="classification" data-rc-arg="AR-000450"></div>
+    <h1>AI Agent Governance: Oversight, Accountability and Control</h1>
+    <p class="art-abstract">Agentic AI systems &mdash; systems that plan, decide, and act across multiple steps with minimal human intervention &mdash; create accountability gaps that conventional AI governance frameworks were not designed to address. The critical questions: who is accountable when an agent causes harm; how much autonomy is appropriate for a given context; and how do you maintain meaningful oversight when agents operate faster than humans can review their decisions.</p>
+    <div data-rc="articleMeta" data-rc-arg="AR-000450"></div>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:20px">
+      <span data-rc="trackButton" data-rc-arg="AI Agents"></span>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <figure class="art-hero-fig">
+    <image-slot id="rs-art-hero" shape="rect" fit="cover" placeholder="A control room or monitoring dashboard showing AI agent activity — screens with process flows, decision trees, or real-time logs. Alternatively, a human supervisor reviewing AI outputs at a workstation. Suggests supervised autonomy and oversight infrastructure. Clean, institutional, slightly technical. 21:9."></image-slot>
+  </figure>
+  <div class="art-hero-cap"><span class="d"></span>Oversight is not the same as control. An agent that requires human approval for every step isn&rsquo;t an agent &mdash; it&rsquo;s a form. Governance design is the question of where to draw the autonomy boundary and how to verify it holds.</div>
+</div>
+
+<div class="container">
+  <div class="art-shell">
+
+    <aside class="art-toc">
+      <div class="toc-h">Contents</div>
+      <ol id="tocList"></ol>
+      <div class="toc-foot">
+        <button onclick="window.print()">Print / PDF</button>
+        <button onclick="document.getElementById('cite').scrollIntoView({behavior:'smooth'})">Cite this research</button>
+        <button onclick="document.getElementById('sources').scrollIntoView({behavior:'smooth'})">Jump to sources</button>
+      </div>
+    </aside>
+
+    <article class="prose" id="prose">
+
+      <div data-rc="atAGlance" data-rc-arg="AR-000450"></div>
+
+      <h2 id="s-what">What makes an AI system agentic</h2>
+      <div data-rc="analysis" data-rc-arg='{"text":"An AI system is agentic when it can take actions in the world \u2014 not merely produce outputs for a human to act on. Three properties define agentic behaviour: (1) planning \u2014 the system breaks a goal into steps and decides the sequence; (2) tool use \u2014 the system can call external tools (web search, code execution, APIs, databases, email, file systems) to complete steps; and (3) persistence \u2014 the system maintains state across multiple steps, retaining context and updating its plan based on intermediate results. A chatbot that answers questions is not agentic. A system that receives a goal (\u2018draft and send the Q3 report to the board\u2019) and executes it through a sequence of research, drafting, review, and sending steps is agentic. The governance challenge is proportional to the action surface: an agent with access to email, calendar, file systems, financial APIs, and external web services has a much larger potential impact than one confined to reading documents."}'></div>
+
+      <div data-rc="takeaways" data-rc-arg='["Agentic AI systems are defined by planning, tool use, and persistence across multiple steps \u2014 not by model capability alone.","The accountability gap is the central governance challenge: in a multi-agent system, a harmful outcome may have resulted from decisions made by several agents, none of whom individually caused the harm.","The principal-agent framework from economics is the foundational governance lens: the principal (human/organisation) delegates to the agent (AI system), but the agent has information and capabilities the principal cannot fully observe.","Autonomy design is a governance decision, not a technical one: human-in-the-loop (approval required before action), human-on-the-loop (automatic action with review capability), and fully autonomous (action with retrospective audit) represent three positions on the oversight spectrum.","The minimum viable audit trail for any agentic system: every decision point, every tool call, every external action, with timestamps and the model output that triggered each. Without this, post-incident investigation is impossible.","Multi-agent systems require governance at the system level, not just the agent level: the handoff protocol between agents, the scope boundaries of each agent, and the escalation pathway when an agent encounters a situation outside its scope are all governance design decisions.","The EU AI Act categorises some agentic deployments as high-risk \u2014 particularly in critical infrastructure, employment, essential services, law enforcement, and migration. High-risk agentic systems must satisfy Article 14 human oversight requirements, which are demanding for systems that by definition operate with reduced human review."]'></div>
+
+      <h2 id="s-principal">The principal-agent problem</h2>
+      <div data-rc="analysis" data-rc-arg='{"text":"The principal-agent problem from economics describes a relationship where one party (the principal) delegates work to another (the agent) who has information or capabilities the principal cannot fully observe. Classical examples: shareholders and executives; patients and doctors; clients and lawyers. The same dynamic applies to AI agents. The organisation deploying an agent (principal) delegates tasks to the agent (AI system). The agent has information the principal does not \u2014 what it searched, what it found, what intermediate conclusions it drew, what it almost did before changing course. And the agent acts in ways the principal cannot monitor in real time without negating the efficiency gains that motivated the delegation in the first place."}'></div>
+      <div data-rc="analysis" data-rc-arg='{"text":"The governance response to the principal-agent problem is not to eliminate the information asymmetry \u2014 that\u2019s impossible without eliminating the agent\u2019s autonomy. It is to structure the delegation carefully. This means: (1) specifying the agent\u2019s scope and constraints clearly at the system design stage; (2) building audit mechanisms that allow the principal to reconstruct what the agent did, even if they cannot observe it in real time; (3) designing escalation pathways for situations outside the agent\u2019s scope; and (4) testing the agent\u2019s behaviour against adversarial inputs and edge cases before deployment. The NIST AI RMF\u2019s \u2018Govern\u2019 function is the principal-agent governance framework in technical language."}'></div>
+
+      <h2 id="s-autonomy">Autonomy levels and oversight design</h2>
+
+      <table class="oversight-table">
+        <thead>
+          <tr>
+            <th>Oversight mode</th>
+            <th>What it means</th>
+            <th>When appropriate</th>
+            <th>Governance requirements</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td-mode">Human-in-the-loop</td>
+            <td>Agent proposes; human approves before any external action is taken.</td>
+            <td class="td-when">High-stakes, low-frequency decisions. Legal, financial, clinical actions with significant consequences. Novel or unclear situations.</td>
+            <td>Approval workflow design, escalation criteria, time constraints on approvals, fallback if human is unavailable.</td>
+          </tr>
+          <tr>
+            <td class="td-mode">Human-on-the-loop</td>
+            <td>Agent acts; human can monitor and intervene. Agent pauses for human review at defined checkpoints or when confidence is below threshold.</td>
+            <td class="td-when">Medium-stakes, moderate-frequency operations. Routine but consequential work where speed matters and errors are recoverable.</td>
+            <td>Real-time monitoring interface, intervention mechanism, checkpoint design, confidence threshold calibration, escalation triggers.</td>
+          </tr>
+          <tr>
+            <td class="td-mode">Fully autonomous</td>
+            <td>Agent acts; human reviews outcomes retrospectively in audit logs.</td>
+            <td class="td-when">Low-stakes, high-frequency operations. Reversible actions. Well-understood, bounded domains with extensive prior testing.</td>
+            <td>Comprehensive audit trail, automated anomaly detection, retrospective review schedule, circuit breakers for out-of-bounds behaviour.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div data-rc="analysis" data-rc-arg='{"text":"The oversight mode is not a fixed property of an agent \u2014 it is a governance design decision that should be made per task type, per action category, and per risk level. A single agentic system may operate in human-in-the-loop mode for financial transactions, human-on-the-loop mode for research and drafting, and fully autonomous mode for internal file organisation. The governance architecture must make these boundaries explicit and enforce them technically \u2014 not just as policy statements. An agent whose scope says \u2018do not send external emails without approval\u2019 but that has unmonitored access to the email API has a governance gap between the stated boundary and the technical implementation."}'></div>
+
+      <h2 id="s-accountability">Accountability chains</h2>
+      <div data-rc="analysis" data-rc-arg='{"text":"When an agentic AI system causes harm, accountability must trace through the chain: the organisation that deployed the agent (deployer), the organisation that built the agent (provider/developer), and potentially the organisation that supplied the underlying model (base model provider). The EU AI Act\u2019s actor-role framework (Articles 3, 16, 25, 26) provides a legal accountability structure for this chain: providers are responsible for the system\u2019s design and training; deployers are responsible for deployment context, user information, and monitoring. In agentic deployments, the deployer\u2019s accountability is especially significant because the deployment context \u2014 what tools the agent has access to, what scope it is given, what human oversight is in place \u2014 is entirely the deployer\u2019s design decision."}'></div>
+      <div data-rc="analysis" data-rc-arg='{"text":"Multi-agent systems complicate accountability further. When Agent A passes a task to Agent B, and Agent B\u2019s action causes harm, who is accountable? The operator of Agent A, who initiated the chain? The operator of Agent B, whose agent took the harmful action? The developer of whichever agent had the design flaw that allowed the harm? The answer depends on which failure in the chain was the proximate cause and which were contributing conditions. Governance design should specify accountability at each handoff: the sending agent\u2019s responsibility ends when it passes a verified, bounded task; the receiving agent\u2019s responsibility begins with that task. Unverified handoffs \u2014 where the sending agent passes unvalidated inputs to the receiving agent \u2014 are the primary attack surface for prompt injection in multi-agent systems."}'></div>
+
+      <h2 id="s-threats">Governance-level threats</h2>
+
+      <div class="ag-grid">
+        <div class="ag-card">
+          <div class="ac-label">Threat</div>
+          <div class="ac-title">Prompt injection</div>
+          <div class="ac-body">Malicious content in the agent&rsquo;s environment (a webpage, a document, a database record) that instructs the agent to take actions outside its authorised scope. The agent cannot distinguish between its legitimate instructions and injected instructions embedded in content it retrieves. Governance response: scope restriction (the agent should not be able to act on instructions from retrieved content that conflict with its system prompt), input validation, and audit trail review for unexpected action patterns.</div>
+        </div>
+        <div class="ag-card">
+          <div class="ac-label">Threat</div>
+          <div class="ac-title">Scope creep</div>
+          <div class="ac-body">An agent that progressively acquires capabilities or access beyond its authorised scope, either through explicit tool calls that weren&rsquo;t anticipated at design time, or through accumulated context that allows it to construct actions the original scope boundaries didn&rsquo;t explicitly prohibit. Governance response: least-privilege tool design (every tool the agent has access to should be the minimum necessary), explicit deny-list for tool combinations, and regular scope audits against the original design specification.</div>
+        </div>
+        <div class="ag-card">
+          <div class="ac-label">Threat</div>
+          <div class="ac-title">Unverified handoffs</div>
+          <div class="ac-body">In multi-agent systems, Agent A passes a task to Agent B without validating that the task is within Agent B&rsquo;s authorised scope, or without sanitising inputs that may contain injected instructions. Governance response: handoff protocols that specify what each agent is authorised to receive, input sanitisation at every handoff boundary, and audit logging of every inter-agent communication.</div>
+        </div>
+      </div>
+
+      <h2 id="s-audit">Audit trail requirements</h2>
+      <div data-rc="analysis" data-rc-arg='{"text":"The minimum viable audit trail for any agentic system must capture: (1) every decision point \u2014 what the agent decided to do and the model output that generated the decision; (2) every tool call \u2014 the tool called, the inputs passed, and the outputs returned; (3) every external action \u2014 what the agent did in the world (email sent, file written, API called, database record modified); (4) timestamps for each event; and (5) the context state at each decision point, including any retrieved content that influenced the decision. Without this record, post-incident investigation cannot determine whether a harmful outcome resulted from a model failure, a scope design failure, an external prompt injection, or a human-approved action that had unintended downstream effects."}'></div>
+      <div data-rc="analysis" data-rc-arg='{"text":"The EU AI Act\u2019s Article 12 logging requirements apply to high-risk AI systems and specify that logs must enable post-market monitoring and, where relevant, incident investigation. For agentic high-risk systems, Article 12(1)(e) requires that logs capture \u2018the input data for which the search has led to a match\u2019 \u2014 which in an agentic context means the retrieved content that triggered a decision. Article 12(2) requires logs to be kept for a period appropriate to the intended purpose and at minimum the period specified by applicable law. For agentic systems not classified as high-risk, there is no statutory logging requirement under the EU AI Act, but logging is a governance best practice regardless of classification."}'></div>
+
+      <h2 id="s-eu">Agentic AI and the EU AI Act</h2>
+      <div data-rc="analysis" data-rc-arg='{"text":"The EU AI Act does not have a dedicated agentic AI provision \u2014 it predates the widespread deployment of agentic systems. However, the Act\u2019s framework applies to agentic systems through the existing risk classification and actor-role provisions. An agentic AI system that is a safety component of critical infrastructure, or that makes consequential decisions in employment, credit, education, law enforcement, migration, or judicial contexts, is high-risk under Annex III regardless of whether it is agentic. High-risk agentic systems face the Article 14 human oversight requirements, which are demanding: the system must be designed to allow human override, the deployer must assign oversight responsibility to a named natural person with the competence and authority to override, and the system must provide sufficient information for that person to make an informed override decision."}'></div>
+      <div data-rc="analysis" data-rc-arg='{"text":"Article 14\u2019s human oversight requirements are in direct tension with the efficiency rationale for agentic deployment. An agent that operates too fast for human review, or whose decisions are too complex for a non-technical overseer to meaningfully evaluate, is structurally non-compliant with Article 14 if it is high-risk. This is not a technical problem \u2014 it is a governance design problem. The organisation must decide whether the agentic deployment can be designed to satisfy Article 14 (human oversight that is technically feasible and actually exercised), or whether the efficiency gains require accepting a higher risk classification and all that entails."}'></div>
+
+      <h2 id="s-do">What organizations must do</h2>
+      <ul class="checklist" id="doList">
+        <li><span class="cb"></span>For every agentic AI system: map its action surface completely. Every tool it has access to, every external system it can write to, every API it can call. The action surface is the governance perimeter.</li>
+        <li><span class="cb"></span>Classify each agentic system by risk level using the EU AI Act taxonomy if EU-exposed. Agentic systems in Annex III use cases (employment, essential services, credit, law enforcement) are high-risk regardless of their agentic architecture.</li>
+        <li><span class="cb"></span>Design the oversight mode per task type, not per system. Document which operations require human-in-the-loop, which human-on-the-loop, and which can be fully autonomous. Enforce those boundaries technically, not just as policy.</li>
+        <li><span class="cb"></span>Implement the minimum viable audit trail: every decision point, every tool call, every external action, with timestamps. Retain logs for the period required by applicable law and your post-incident investigation needs.</li>
+        <li><span class="cb"></span>For multi-agent systems: define and document the handoff protocol at every agent boundary. Specify what each agent is authorised to receive, require input sanitisation at every handoff, and log every inter-agent communication.</li>
+        <li><span class="cb"></span>Apply least-privilege design to tool access: give each agent only the tools it needs for its authorised tasks. Every additional tool is an additional attack surface for scope creep and prompt injection.</li>
+        <li><span class="cb"></span>Run adversarial testing before deployment: prompt injection attempts against every tool the agent can access, scope-creep scenarios, and out-of-scope task requests. Test what happens at the boundaries of authorised behaviour.</li>
+      </ul>
+
+      <h2 id="s-mistakes">Common mistakes</h2>
+      <p>Treating agentic AI governance as a technical problem rather than a governance design problem is the most common mistake. The autonomy boundary, the oversight mode, the audit trail design, and the accountability chain are governance decisions that must be made before the system is built, not debugged after deployment.</p>
+      <p>Assuming that prompt injection is a model problem and not a governance problem is a second mistake. Prompt injection is possible in any agentic system that retrieves content from the environment and uses it as context for decisions. Governance design &mdash; scope restriction, input validation, handoff sanitisation &mdash; is the primary mitigation, not model hardening.</p>
+      <p>Conflating human oversight with human approval is a third mistake. Human oversight under Article 14 of the EU AI Act does not require approving every action. It requires that a human with the competence and authority to override can meaningfully do so when needed. Designing for performative oversight &mdash; where approvals are rubber-stamped because the volume and speed make review impossible &mdash; is non-compliant and creates liability without providing protection.</p>
+      <p>Deploying multi-agent systems without governance at the system level is a fourth mistake. Agent-level governance (each agent has a well-defined scope) is necessary but not sufficient. The system-level governance &mdash; how agents hand off to each other, who is accountable for the overall system outcome, how the system escalates when it encounters a situation none of its agents are authorised to handle &mdash; must be designed explicitly.</p>
+
+      <h2 id="s-open">Open questions</h2>
+      <ul>
+        <li><strong>Whether the EU AI Act will be amended or supplemented to address agentic AI specifically</strong> &mdash; the Act predates widespread agentic deployment; the Commission has indicated supplemental guidance is possible but no timeline is confirmed.</li>
+        <li><strong>How Article 14 human oversight requirements apply to agentic systems that operate faster than human review is feasible</strong> &mdash; the practical tension between agentic efficiency and Article 14 compliance is unresolved in the statute and not addressed in the AI Office guidance published to date.</li>
+        <li><strong>Whether multi-agent systems where each agent is developed by a different provider create gaps in the EU AI Act actor-role framework</strong> &mdash; the Act defines roles for individual systems; the accountability structure for emergent multi-system behaviour is not explicitly addressed.</li>
+        <li><strong>How prompt injection liability is allocated between the model provider (whose model was susceptible), the agent developer (whose tool architecture allowed injection), and the deployer (whose use case created the exposure)</strong> &mdash; no legal precedent established as of August 2026.</li>
+      </ul>
+
+      <h2 id="s-faq">Frequently asked</h2>
+      <div class="definition"><div class="df-k">FAQ</div>
+        <dt>Is an agentic AI system automatically high-risk under the EU AI Act?</dt>
+        <dd>No. The EU AI Act classifies systems by use case, not by architecture. An agentic AI system used for internal document summarisation is not high-risk. An agentic AI system used to screen job applicants is high-risk under Annex III point 4, regardless of whether it is agentic. The classification depends on what the system does and in what context, not on how it does it.</dd>
+      </div>
+      <div class="definition"><div class="df-k">FAQ</div>
+        <dt>What is the difference between an AI assistant and an AI agent?</dt>
+        <dd>An AI assistant produces outputs that a human then acts on. An AI agent takes actions directly. An assistant that drafts an email for you to review and send is not an agent. An assistant that has access to your email API and sends the email itself is an agent. The governance distinction matters because the agent&rsquo;s actions have direct consequences in the world, without the human review step that an assistant model assumes.</dd>
+      </div>
+      <div class="definition"><div class="df-k">FAQ</div>
+        <dt>Can fully autonomous agentic AI systems comply with Article 14 of the EU AI Act?</dt>
+        <dd>For high-risk AI systems, full autonomy without meaningful human oversight capacity is structurally non-compliant with Article 14. The Article requires that the system can be monitored, that a human can understand what the system is doing sufficiently to make an override decision, and that override is technically possible. A fully autonomous system operating in a high-risk context must be designed so that these conditions can be met, even if they are not invoked on every action. If the system operates too fast or too opaquely for any of these conditions to be satisfied, it cannot be a high-risk AI system under the Act.</dd>
+      </div>
+
+      <div data-rc="evidence" data-rc-arg="AR-000450"></div>
+      <div data-rc="history" data-rc-arg="AR-000450"></div>
+      <div data-rc="citation" data-rc-arg="AR-000450"></div>
+      <div data-rc="languageBar" data-rc-arg="AR-000450"></div>
+
+    </article>
+
+    <aside class="art-rail">
+      <div class="trustpanel">
+        <div class="tp-h"><h4>About this research</h4><span data-rc="statusPill" data-rc-arg="current"></span></div>
+        <div class="tp-rows">
+          <div class="tp-row"><span class="k">Research object</span><span class="v">AR-000450</span></div>
+          <div class="tp-row"><span class="k">Pillar</span><span class="v">AI Agents</span></div>
+          <div class="tp-row"><span class="k">Author</span><span class="v">Jean-Daniel Alexis</span></div>
+          <div class="tp-row"><span class="k">Reviewer</span><span class="v soft">Jean-Daniel Alexis</span></div>
+          <div class="tp-row"><span class="k">Review cycle</span><span class="v soft">Quarterly</span></div>
+          <div class="tp-row"><span class="k">Sources</span><span class="v" id="railSources">&mdash;</span></div>
+          <div class="tp-row"><span class="k">Revisions</span><span class="v" id="railRevisions">&mdash;</span></div>
+        </div>
+        <div class="tp-disclaim">AGNUS Research is an independent publication. It is not an EU institution, regulator or certification body, and this is not legal advice.</div>
+      </div>
+
+      <div style="margin-top:-4px"><span data-rc="trackButton" data-rc-arg="AI Agents" data-rc-mode="block"></span></div>
+
+      <div class="railbox">
+        <h5>Related</h5>
+        <div class="rb-list">
+          <a href="AGNUS - Research Article - Governance Frameworks.html">AI Governance Frameworks &rarr; AR-000440</a>
+          <a href="AGNUS - Research Article - AI Act Explained.html">EU AI Act Explained &rarr; AR-000200</a>
+          <a href="AGNUS - Research Article - Human Oversight.html">Human Oversight (Art. 14) &rarr; AR-000142</a>
+        </div>
+      </div>
+
+      <div class="railbox">
+        <h5>Institutional</h5>
+        <div class="rb-list">
+          <a href="AGNUS - Research Methodology.html">Methodology</a>
+          <a href="AGNUS - Research Sources.html">Source Library</a>
+          <a href="AGNUS - Research Calendar.html">Regulatory Calendar</a>
+          <a href="AGNUS - Research Author.html">About the author</a>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <div data-rc="related" data-rc-arg="AR-000450"></div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="foot-top" style="grid-template-columns:1.35fr 1fr 1fr 1fr 1fr">
+      <div class="foot-brand">
+        <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+        <p>Intelligence for the future of work. The trusted source for what&rsquo;s happening, which tools matter, and where AI is heading.</p>
+        <form class="fsearch" onsubmit="return false;">
+          <input type="email" placeholder="Your email for the Research Brief" aria-label="Email" />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+      <div class="foot-col">
+        <h5>Research</h5>
+        <ul>
+          <li><a href="AGNUS - Research Topic.html">AI Governance</a></li>
+          <li><a href="AGNUS - Research Topic.html">EU AI Act</a></li>
+          <li><a href="AGNUS - Research Topic.html">AI Agents</a></li>
+          <li><a href="AGNUS - Research Topic.html">AI Security</a></li>
+          <li><a href="AGNUS - Research Topic.html">AI Audit</a></li>
+          <li><a href="AGNUS - Research Topic.html">Data Governance</a></li>
+          <li><a href="AGNUS - Research Topic.html">Standards</a></li>
+          <li><a href="AGNUS - Research Country.html">Countries</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Evidence</h5>
+        <ul>
+          <li><a href="AGNUS - Research Sources.html">Source Library</a></li>
+          <li><a href="AGNUS - Research Calendar.html">Regulatory Calendar</a></li>
+          <li><a href="AGNUS - Research Methodology.html">Methodology</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Discover</h5>
+        <ul>
+          <li><a href="AGNUS - Review.html">AI Reviews</a></li>
+          <li><a href="AGNUS - Compare.html">Comparisons</a></li>
+          <li><a href="AGNUS - Tools.html">AI Tools</a></li>
+          <li><a href="AGNUS - Marketplace.html">Marketplace</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Learn &amp; Build</h5>
+        <ul>
+          <li><a href="AGNUS - Academy.html">Academy</a></li>
+          <li><a href="AGNUS - Prompts.html">Prompt Library</a></li>
+          <li><a href="AGNUS - Agents.html">Agents</a></li>
+          <li><a href="AGNUS - Business.html">Business Automation</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&#169; 2026 AGNUS &middot; Truth before hype. &middot; AGNUS Research is an independent publication, not a regulator or certification body.</span>
+      <div class="fb-links">
+        <a href="#">About</a><a href="AGNUS - Research Methodology.html">Methodology</a><a href="#">Editorial Policy</a><a href="#">Privacy</a><a href="#">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="image-slot.js"></script>
+<script src="agnus-research-data.js"></script>
+<script src="agnus-research-components2.js"></script>
+<script src="agnus-research-components.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var toc = document.getElementById('tocList');
+  var heads = document.querySelectorAll('#prose h2[id]');
+  heads.forEach(function (h) {
+    var li = document.createElement('li');
+    li.innerHTML = '<a href="#' + h.id + '">' + h.textContent + '</a>';
+    toc.appendChild(li);
+  });
+
+  var links = toc.querySelectorAll('a');
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      links.forEach(function (l) { l.classList.toggle('on', l.getAttribute('href') === '#' + e.target.id); });
+    });
+  }, { rootMargin: '-100px 0px -70% 0px' });
+  heads.forEach(function (h) { io.observe(h); });
+
+  var bar = document.getElementById('progBar'), prose = document.getElementById('prose');
+  function prog() {
+    var r = prose.getBoundingClientRect(), total = r.height - window.innerHeight;
+    var done = Math.min(Math.max(-r.top, 0), Math.max(total, 1));
+    bar.style.width = (total > 0 ? done / total * 100 : 0) + '%';
+  }
+  document.addEventListener('scroll', prog, { passive: true }); prog();
+
+  document.querySelectorAll('#doList li').forEach(function (li) {
+    li.addEventListener('click', function () { li.classList.toggle('on'); });
+  });
+
+  var a = AR.byArticleId('AR-000450');
+  document.getElementById('railSources').textContent = a.sources.length + ' cited';
+  document.getElementById('railRevisions').textContent = (a.history || []).length + ' recorded';
+});
+</script>
+</body>
+</html>

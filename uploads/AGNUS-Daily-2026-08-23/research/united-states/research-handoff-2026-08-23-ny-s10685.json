@@ -1,0 +1,24 @@
+{
+  "handoff_type": "raw_intelligence_to_research",
+  "created_date": "2026-08-23",
+  "jurisdiction": "United States — New York",
+  "intelligence_record_id": "IR-PROVISIONAL-20260823-001",
+  "provisional_source": {
+    "source_id": "SRC-0047",
+    "title": "New York Senate Bill S10685 — Fostering Optimal Classroom Use of Screens Act",
+    "publisher": "New York State Senate",
+    "source_url": "https://www.nysenate.gov/legislation/bills/2025/S10685",
+    "publication_date": "2026-08-21",
+    "date_checked": "2026-08-23",
+    "authority_level": "Primary",
+    "verification_status": "official_bill_page_verified"
+  },
+  "research_question": "How would S10685 affect AI-enabled educational products, student-data model training, school-device controls, provider registration, contracting, and enforcement if it advances?",
+  "editorial_controls": [
+    "Treat S10685 only as an introduced bill referred to committee, not enacted law.",
+    "Confirm SRC-0047 and the Intelligence record ID against the live registries before publication.",
+    "Track amendments, committee action, companion legislation, passage, executive action, and any final effective date."
+  ],
+  "article_written": false,
+  "agnus_research_data_modified": false
+}

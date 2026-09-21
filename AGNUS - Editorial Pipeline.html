@@ -1,0 +1,319 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Editorial Pipeline</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#F4F2EE;--surface:#FFF;--surface-2:#EFEDE9;--surface-3:#E6E3DE;
+  --border:#D8D5CF;--ink:#1A1612;--ink-2:#3D3A35;--ink-3:#7A7670;--ink-4:#ABA8A2;
+  --gold:#9A7020;--gold-bg:rgba(154,112,32,.09);--gold-border:rgba(154,112,32,.22);
+  --navy:#0F1E34;
+  --s1:#E8EDF8;--s1b:#3D5AA8;  /* briefing */
+  --s2:#E8F3E8;--s2b:#2D6E2D;  /* handoff ready */
+  --s3:#FEF8E8;--s3b:#8A6A00;  /* drafting */
+  --s4:#FEF0E8;--s4b:#8A4500;  /* review */
+  --s5:#E8F8E8;--s5b:#0F6E3A;  /* published */
+  --mono:'IBM Plex Mono',monospace;--sans:'Manrope',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;font-family:var(--sans);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;overflow:hidden}
+.shell{display:grid;grid-template-rows:52px 1fr;height:100vh}
+
+/* TOP BAR */
+.topbar{background:var(--navy);display:flex;align-items:center;padding:0 20px;gap:14px}
+.tb-logo{font-family:var(--mono);font-size:15px;font-weight:700;color:#fff;letter-spacing:-.01em}
+.tb-sep{width:1px;height:20px;background:rgba(255,255,255,.15);flex-shrink:0}
+.tb-title{font-size:13px;font-weight:600;color:rgba(255,255,255,.75)}
+.tb-right{margin-left:auto;display:flex;align-items:center;gap:10px}
+.tb-btn{font-family:var(--sans);font-size:12px;font-weight:600;padding:6px 13px;border-radius:7px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.07);color:#fff;cursor:pointer;transition:background .15s}
+.tb-btn:hover{background:rgba(255,255,255,.14)}
+.tb-stat{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.45);padding:4px 10px;background:rgba(255,255,255,.06);border-radius:6px}
+
+/* BOARD */
+.board{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;padding:18px 20px;overflow:hidden;height:100%}
+
+/* COLUMN */
+.col{background:var(--surface-2);border-radius:12px;border:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
+.col-head{padding:13px 14px 11px;border-bottom:1px solid var(--border);flex-shrink:0}
+.ch-top{display:flex;align-items:center;gap:8px;margin-bottom:2px}
+.ch-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.ch-title{font-size:13px;font-weight:800;color:var(--ink)}
+.ch-count{margin-left:auto;font-family:var(--mono);font-size:10px;font-weight:700;padding:2px 7px;border-radius:5px}
+.ch-sub{font-size:11.5px;color:var(--ink-3);line-height:1.45;margin-top:3px}
+.col-body{flex:1;overflow-y:auto;padding:10px 10px 12px;display:flex;flex-direction:column;gap:8px}
+
+/* CARD */
+.card{background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:12px 13px;cursor:pointer;transition:box-shadow .15s,transform .1s;user-select:none}
+.card:hover{box-shadow:0 3px 12px rgba(0,0,0,.1);transform:translateY(-1px)}
+.card.dragging{opacity:.5;transform:rotate(2deg)}
+.card-over{border-color:var(--gold);background:var(--gold-bg)}
+.card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:7px}
+.card-id{font-family:var(--mono);font-size:9px;color:var(--ink-4);letter-spacing:.04em}
+.card-pillar{font-family:var(--mono);font-size:8.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-radius:4px;padding:2px 6px}
+.card-title{font-size:13px;font-weight:700;color:var(--ink);line-height:1.35;margin-bottom:6px}
+.card-meta{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.card-tag{font-size:10.5px;color:var(--ink-3);display:flex;align-items:center;gap:4px}
+.card-tag svg{flex-shrink:0}
+.card-source{font-family:var(--mono);font-size:9.5px;color:var(--ink-4);margin-top:5px;padding-top:5px;border-top:1px solid var(--border);display:flex;align-items:center;gap:5px}
+.card-actions{display:flex;gap:5px;margin-top:8px}
+.card-btn{font-family:var(--sans);font-size:11px;font-weight:600;padding:4px 9px;border-radius:6px;cursor:pointer;border:1px solid var(--border);background:var(--surface-2);color:var(--ink-3);transition:all .12s}
+.card-btn:hover{background:var(--gold-bg);border-color:var(--gold-border);color:var(--gold)}
+.card-btn.primary{background:var(--navy);color:#fff;border-color:var(--navy)}
+.card-btn.primary:hover{background:#1d3252}
+
+/* ADD CARD */
+.add-card{border:1.5px dashed var(--border);border-radius:10px;padding:10px 13px;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:8px;color:var(--ink-4);font-size:12.5px;font-weight:600}
+.add-card:hover{border-color:var(--gold-border);color:var(--gold);background:var(--gold-bg)}
+
+/* MODAL */
+.modal-bg{position:fixed;inset:0;background:rgba(15,30,52,.5);z-index:100;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(3px)}
+.modal-bg.hidden{display:none}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px 28px;max-width:480px;width:calc(100vw - 40px);box-shadow:0 24px 70px rgba(0,0,0,.18)}
+.modal h2{font-size:17px;font-weight:800;margin-bottom:6px;color:var(--ink)}
+.modal-sub{font-size:13px;color:var(--ink-3);margin-bottom:18px;line-height:1.55}
+.form-row{margin-bottom:14px}
+.form-label{font-size:12px;font-weight:600;color:var(--ink-3);margin-bottom:5px;display:block}
+.form-input{width:100%;font-family:var(--sans);font-size:13px;border:1.5px solid var(--border);border-radius:8px;padding:8px 11px;color:var(--ink);background:var(--surface-2);outline:none;transition:border .15s}
+.form-input:focus{border-color:var(--gold-border)}
+.form-select{width:100%;font-family:var(--sans);font-size:13px;border:1.5px solid var(--border);border-radius:8px;padding:8px 11px;color:var(--ink);background:var(--surface-2);outline:none}
+.modal-btns{display:flex;gap:10px;margin-top:18px}
+.modal-cancel{flex:1;font-family:var(--sans);font-size:13px;font-weight:600;padding:9px;border-radius:9px;cursor:pointer;border:1px solid var(--border);background:var(--surface-2);color:var(--ink-3)}
+.modal-save{flex:1;font-family:var(--sans);font-size:13px;font-weight:700;padding:9px;border-radius:9px;cursor:pointer;border:none;background:var(--navy);color:#fff}
+
+/* DRAG INDICATOR */
+.drop-zone{border:2px dashed var(--gold-border)!important;background:var(--gold-bg)!important}
+</style>
+</head>
+<body>
+<div class="shell">
+
+<header class="topbar">
+  <span class="tb-logo">AGNUS</span>
+  <span class="tb-sep"></span>
+  <span class="tb-title">Editorial Pipeline</span>
+  <div class="tb-right">
+    <span class="tb-stat" id="totalStat">— articles</span>
+    <span class="tb-stat" id="publishedStat">— published</span>
+    <button class="tb-btn" onclick="openNewCard()">+ New article</button>
+  </div>
+</header>
+
+<div class="board" id="board">
+  <div class="col" id="col-briefing" ondragover="dragOver(event,'briefing')" ondragleave="dragLeave(event)" ondrop="drop(event,'briefing')">
+    <div class="col-head">
+      <div class="ch-top">
+        <div class="ch-dot" style="background:var(--s1b)"></div>
+        <span class="ch-title">Briefing</span>
+        <span class="ch-count" id="count-briefing" style="background:var(--s1);color:var(--s1b)">0</span>
+      </div>
+      <div class="ch-sub">Topic identified. Intelligence handoff exists or brief written. Waiting for build.</div>
+    </div>
+    <div class="col-body" id="body-briefing"></div>
+  </div>
+
+  <div class="col" id="col-drafting" ondragover="dragOver(event,'drafting')" ondragleave="dragLeave(event)" ondrop="drop(event,'drafting')">
+    <div class="col-head">
+      <div class="ch-top">
+        <div class="ch-dot" style="background:var(--s3b)"></div>
+        <span class="ch-title">Drafting</span>
+        <span class="ch-count" id="count-drafting" style="background:var(--s3);color:var(--s3b)">0</span>
+      </div>
+      <div class="ch-sub">Claude Design is building the article HTML. Upload handoff and wait.</div>
+    </div>
+    <div class="col-body" id="body-drafting"></div>
+  </div>
+
+  <div class="col" id="col-review" ondragover="dragOver(event,'review')" ondragleave="dragLeave(event)" ondrop="drop(event,'review')">
+    <div class="col-head">
+      <div class="ch-top">
+        <div class="ch-dot" style="background:var(--s4b)"></div>
+        <span class="ch-title">Your review</span>
+        <span class="ch-count" id="count-review" style="background:var(--s4);color:var(--s4b)">0</span>
+      </div>
+      <div class="ch-sub">Article built. You check tone, depth, sources. Approve or send back.</div>
+    </div>
+    <div class="col-body" id="body-review"></div>
+  </div>
+
+  <div class="col" id="col-ready" ondragover="dragOver(event,'ready')" ondragleave="dragLeave(event)" ondrop="drop(event,'ready')">
+    <div class="col-head">
+      <div class="ch-top">
+        <div class="ch-dot" style="background:var(--s2b)"></div>
+        <span class="ch-title">Ready to publish</span>
+        <span class="ch-count" id="count-ready" style="background:var(--s2);color:var(--s2b)">0</span>
+      </div>
+      <div class="ch-sub">Approved. Wire to Research page. Assign AR-ID. Go live.</div>
+    </div>
+    <div class="col-body" id="body-ready"></div>
+  </div>
+
+  <div class="col" id="col-published" ondragover="dragOver(event,'published')" ondragleave="dragLeave(event)" ondrop="drop(event,'published')">
+    <div class="col-head">
+      <div class="ch-top">
+        <div class="ch-dot" style="background:var(--s5b)"></div>
+        <span class="ch-title">Published</span>
+        <span class="ch-count" id="count-published" style="background:var(--s2);color:var(--s5b)">0</span>
+      </div>
+      <div class="ch-sub">Live on AGNUS Research. Wired to data layer.</div>
+    </div>
+    <div class="col-body" id="body-published"></div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-bg hidden" id="modalBg" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <h2 id="modalTitle">New article brief</h2>
+    <div class="modal-sub" id="modalSub">Add an article to the pipeline. You can drag it through stages as it progresses.</div>
+    <div class="form-row">
+      <label class="form-label">Working title</label>
+      <input class="form-input" id="fTitle" type="text" placeholder="e.g. EU AI Act enforcement actions 2026"/>
+    </div>
+    <div class="form-row">
+      <label class="form-label">Pillar</label>
+      <select class="form-select" id="fPillar">
+        <option value="EU AI Act">EU AI Act</option>
+        <option value="AI Governance">AI Governance</option>
+        <option value="AI Agents">AI Agents</option>
+        <option value="AI Security">AI Security</option>
+        <option value="AI Audit">AI Audit</option>
+        <option value="AI Data Governance">AI Data Governance</option>
+        <option value="Standards">Standards</option>
+        <option value="Country">Country</option>
+        <option value="Intelligence">Intelligence</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <label class="form-label">Source / handoff reference</label>
+      <input class="form-input" id="fSource" type="text" placeholder="e.g. Daily-2026-09-12 or SRC-0088"/>
+    </div>
+    <div class="form-row">
+      <label class="form-label">Notes</label>
+      <input class="form-input" id="fNotes" type="text" placeholder="e.g. Focus on enforcement timeline"/>
+    </div>
+    <div class="modal-btns">
+      <button class="modal-cancel" onclick="closeModal()">Cancel</button>
+      <button class="modal-save" onclick="saveCard()">Add to pipeline</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const PILLAR_COLORS={
+  'EU AI Act':'#1A4E8A','AI Governance':'#5C1E8A','AI Agents':'#2D6E2D',
+  'AI Security':'#8A1A0A','AI Audit':'#8A4500','AI Data Governance':'#0F6E3A',
+  'Standards':'#8A6A00','Country':'#3D5AA8','Intelligence':'#8A1A28'
+};
+const PILLAR_BG={
+  'EU AI Act':'rgba(26,78,138,.1)','AI Governance':'rgba(92,30,138,.1)','AI Agents':'rgba(45,110,45,.1)',
+  'AI Security':'rgba(138,26,10,.1)','AI Audit':'rgba(138,69,0,.1)','AI Data Governance':'rgba(15,110,58,.1)',
+  'Standards':'rgba(138,106,0,.1)','Country':'rgba(61,90,168,.1)','Intelligence':'rgba(138,26,40,.1)'
+};
+const STAGES=['briefing','drafting','review','ready','published'];
+const STAGE_LABELS={'briefing':'Briefing','drafting':'Drafting','review':'Your review','ready':'Ready to publish','published':'Published'};
+let cards=JSON.parse(localStorage.getItem('agnus_pipeline')||'null')||[
+  {id:'ART-001',title:'EU AI Act: Enforcement actions 2026 round-up',pillar:'EU AI Act',source:'IR-000102',notes:'First wave of enforcement cases',stage:'briefing',created:'2026-09-11'},
+  {id:'ART-002',title:'Agent Governance: GPAI code of practice — final text',pillar:'AI Governance',source:'Daily-2026-09-10',notes:'Compare to codes of practice article',stage:'briefing',created:'2026-09-10'},
+  {id:'ART-003',title:'AI Security: OWASP Agentic Top 10 released',pillar:'AI Security',source:'IR-000110',notes:'Full analysis + mapping to EU AI Act',stage:'drafting',created:'2026-09-09'},
+  {id:'ART-004',title:'Country: Germany — AI enforcement authority designation',pillar:'Country',source:'Daily-2026-09-08',notes:'',stage:'review',created:'2026-09-08'},
+  {id:'ART-005',title:'Standards: EU CRA application — AI components checklist',pillar:'Standards',source:'SRC-0088',notes:'Links to existing Standards articles',stage:'ready',created:'2026-09-07'},
+  {id:'ART-006',title:'AI Agents: Multi-agent systems (published)',pillar:'AI Agents',source:'SRC-0062',notes:'AR-000510',stage:'published',created:'2026-09-11'},
+  {id:'ART-007',title:'AI Security: Supply chain attacks (published)',pillar:'AI Security',source:'SRC-0068',notes:'AR-000550',stage:'published',created:'2026-09-11'},
+];
+let dragId=null;
+let editId=null;
+
+function save(){localStorage.setItem('agnus_pipeline',JSON.stringify(cards));}
+
+function render(){
+  STAGES.forEach(function(stage){
+    var body=document.getElementById('body-'+stage);
+    var stageCards=cards.filter(function(c){return c.stage===stage;});
+    body.innerHTML='';
+    stageCards.forEach(function(c){
+      var col=PILLAR_COLORS[c.pillar]||'#666';
+      var bg=PILLAR_BG[c.pillar]||'rgba(100,100,100,.08)';
+      var div=document.createElement('div');
+      div.className='card';div.dataset.id=c.id;div.draggable=true;
+      div.addEventListener('dragstart',function(e){dragId=c.id;setTimeout(function(){div.classList.add('dragging');},0);});
+      div.addEventListener('dragend',function(){div.classList.remove('dragging');dragId=null;});
+      var next=STAGES[STAGES.indexOf(stage)+1];
+      var prev=STAGES[STAGES.indexOf(stage)-1];
+      var btns='';
+      if(prev) btns+='<button class="card-btn" onclick="moveCard(\''+c.id+'\',\''+prev+'\');event.stopPropagation()">← Back</button>';
+      if(next) btns+='<button class="card-btn primary" onclick="moveCard(\''+c.id+'\',\''+next+'\');event.stopPropagation()">'+STAGE_LABELS[next]+' →</button>';
+      btns+='<button class="card-btn" onclick="editCard(\''+c.id+'\');event.stopPropagation()" style="margin-left:auto">Edit</button>';
+      btns+='<button class="card-btn" onclick="deleteCard(\''+c.id+'\');event.stopPropagation()" style="color:#8A1A0A">✕</button>';
+      div.innerHTML='<div class="card-top"><span class="card-id">'+c.id+'</span><span class="card-pillar" style="background:'+bg+';color:'+col+'">'+c.pillar+'</span></div><div class="card-title">'+c.title+'</div>'+(c.notes?'<div class="card-tag" style="font-size:11px;color:var(--ink-3);margin-bottom:4px">'+c.notes+'</div>':'')+'<div class="card-source"><svg width="9" height="9" viewBox="0 0 9 9" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="4.5" cy="4.5" r="3.5"/><path d="M4.5 2.5v2l1.5 1"/></svg>'+c.source+'</div><div class="card-actions">'+btns+'</div>';
+      body.appendChild(div);
+    });
+    var addBtn=document.createElement('div');
+    addBtn.className='add-card';
+    addBtn.innerHTML='<svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="6.5" y1="1" x2="6.5" y2="12"/><line x1="1" y1="6.5" x2="12" y2="6.5"/></svg> Add article';
+    addBtn.onclick=function(){openNewCard(stage);};
+    body.appendChild(addBtn);
+    document.getElementById('count-'+stage).textContent=stageCards.length;
+  });
+  document.getElementById('totalStat').textContent=cards.length+' articles';
+  document.getElementById('publishedStat').textContent=cards.filter(function(c){return c.stage==='published';}).length+' published';
+}
+
+function moveCard(id,stage){cards=cards.map(function(c){return c.id===id?Object.assign({},c,{stage:stage}):c;});save();render();}
+function deleteCard(id){if(confirm('Remove this article from the pipeline?')){cards=cards.filter(function(c){return c.id!==id;});save();render();}}
+
+function openNewCard(stage){
+  editId=null;
+  document.getElementById('modalTitle').textContent='New article brief';
+  document.getElementById('modalSub').textContent='Add an article to the pipeline.';
+  document.getElementById('fTitle').value='';
+  document.getElementById('fPillar').value='EU AI Act';
+  document.getElementById('fSource').value='';
+  document.getElementById('fNotes').value='';
+  document.getElementById('fPillar').dataset.defaultStage=stage||'briefing';
+  document.getElementById('modalBg').classList.remove('hidden');
+  setTimeout(function(){document.getElementById('fTitle').focus();},100);
+}
+function editCard(id){
+  var c=cards.find(function(x){return x.id===id;});if(!c)return;
+  editId=id;
+  document.getElementById('modalTitle').textContent='Edit article';
+  document.getElementById('modalSub').textContent='Update this article\'s details.';
+  document.getElementById('fTitle').value=c.title;
+  document.getElementById('fPillar').value=c.pillar;
+  document.getElementById('fSource').value=c.source;
+  document.getElementById('fNotes').value=c.notes||'';
+  document.getElementById('modalBg').classList.remove('hidden');
+}
+function closeModal(){document.getElementById('modalBg').classList.add('hidden');}
+function saveCard(){
+  var title=document.getElementById('fTitle').value.trim();
+  if(!title)return;
+  if(editId){
+    cards=cards.map(function(c){return c.id===editId?Object.assign({},c,{title:title,pillar:document.getElementById('fPillar').value,source:document.getElementById('fSource').value.trim(),notes:document.getElementById('fNotes').value.trim()}):c;});
+  } else {
+    var stage=document.getElementById('fPillar').dataset.defaultStage||'briefing';
+    var num=String(cards.length+1).padStart(3,'0');
+    cards.push({id:'ART-'+num,title:title,pillar:document.getElementById('fPillar').value,source:document.getElementById('fSource').value.trim(),notes:document.getElementById('fNotes').value.trim(),stage:stage,created:new Date().toISOString().slice(0,10)});
+  }
+  save();render();closeModal();
+}
+
+function dragOver(e,stage){e.preventDefault();document.getElementById('col-'+stage).classList.add('drop-zone');}
+function dragLeave(e){e.currentTarget.classList.remove('drop-zone');}
+function drop(e,stage){e.preventDefault();e.currentTarget.classList.remove('drop-zone');if(dragId)moveCard(dragId,stage);}
+
+render();
+</script>
+</body>
+</html>

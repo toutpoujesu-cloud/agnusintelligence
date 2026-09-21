@@ -1,0 +1,183 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI Procurement Governance: What to Require from AI Vendors — AGNUS Research</title>
+<meta name="description" content="Most organisations deploy AI systems they did not build. The governance questions shift from internal controls to vendor assessment: what documentation, contractual commitments, and ongoing obligations should an AI deployer require from its vendors? This article maps the procurement governance framework." />
+<link rel="canonical" href="https://agnus.example/research/ai-governance/ai-procurement-governance/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="AI Procurement Governance: What to Require from AI Vendors" />
+<meta property="article:published_time" content="2026-09-11" />
+<meta property="article:author" content="Jean-Daniel Alexis" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>
+a,a:visited{color:inherit}
+.prose h3{font-family:var(--font-sans);font-weight:700;font-size:19px;letter-spacing:-.018em;margin:32px 0 14px}
+.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
+.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
+.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s}
+.rsub a:hover{color:var(--ink);background:var(--line-soft,rgba(0,0,0,.04))}
+.rsub a.on{color:var(--gold-deep);font-weight:600}
+.pillar-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:var(--gold-pale,#FEF9ED);color:var(--gold-deep,#8B6914);border:1px solid var(--gold-line,#E8D9A0);border-radius:4px;padding:3px 8px;margin-bottom:16px}
+.proc-table{width:100%;border-collapse:collapse;margin:20px 0;font-size:13px}
+.proc-table th{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);font-weight:600;text-align:left;padding:10px 14px;border-bottom:2px solid var(--line);background:var(--paper-warm,#F7F5F0)}
+.proc-table td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5}
+.proc-table tr:last-child td{border-bottom:none}
+.req-must{color:#1A5C1A;font-weight:600}
+.req-should{color:#7A5A00;font-weight:600}
+</style>
+</head>
+<body>
+<div class="art-progress"><i id="progBar"></i></div>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+    </div>
+  </div>
+</nav>
+<div class="rsub">
+  <div class="rsub-inner">
+    <a href="#deployer-liability">Deployer liability</a>
+    <a href="#vendor-assessment">Vendor assessment</a>
+    <a href="#contractual">Contractual requirements</a>
+    <a href="#ongoing">Ongoing obligations</a>
+    <a href="#sources">Sources</a>
+  </div>
+</div>
+<main class="art-layout">
+  <article class="art-main">
+    <header class="art-header">
+      <span class="pillar-tag">AI Governance</span>
+      <h1 class="art-h1">AI Procurement Governance: What to Require from AI Vendors</h1>
+      <p class="art-lede">Deploying a vendor's AI product does not transfer regulatory accountability. Under the EU AI Act, the deployer remains accountable for ensuring the system is used appropriately, that human oversight is in place, and that incidents are reported. This article maps what deployers should require from their AI vendors — in pre-procurement assessment, in contract terms, and as ongoing obligations.</p>
+      <div class="art-meta">
+        <span>Jean-Daniel Alexis</span><span class="meta-sep">·</span>
+        <span>11 September 2026</span><span class="meta-sep">·</span>
+        <span>AI Governance pillar</span><span class="meta-sep">·</span>
+        <span>AR-000610</span>
+      </div>
+    </header>
+    <div class="prose">
+      <h3 id="deployer-liability">The deployer liability problem</h3>
+      <p>The EU AI Act distributes responsibility between providers (who build AI systems) and deployers (who put them into use). Providers bear the primary obligations for high-risk AI — conformity assessment, technical documentation, registration. But deployers are not passive recipients of a compliant product. Article 26 imposes direct obligations on deployers that cannot be contracted away to the provider.</p>
+      <p>Deployers must: use the system in accordance with its instructions for use; implement human oversight measures; monitor operation; report serious incidents; and, for systems that process personal data, conduct a DPIA where required. None of these obligations transfer to the vendor simply because the deployer did not build the system.</p>
+      <p>This means AI procurement is a governance-heavy process. The deployer must understand the system well enough to fulfil its own obligations — which requires the vendor to provide sufficient documentation, transparency, and support to make that possible.</p>
+
+      <h3 id="vendor-assessment">Pre-procurement vendor assessment</h3>
+      <table class="proc-table">
+        <thead><tr><th>Assessment area</th><th>Questions to ask</th><th>Requirement level</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>EU AI Act classification</strong></td>
+            <td>Has the vendor assessed whether the system is high-risk under Annex III? If yes, has conformity assessment been completed? Is the system registered in the EU database?</td>
+            <td><span class="req-must">Must ask</span> — non-compliance transfers risk to deployer</td>
+          </tr>
+          <tr>
+            <td><strong>Technical documentation</strong></td>
+            <td>Is Annex IV technical documentation available? Does it include training data description, testing results, known limitations, and intended purpose?</td>
+            <td><span class="req-must">Must require</span> for high-risk AI; should request for all AI systems</td>
+          </tr>
+          <tr>
+            <td><strong>Instructions for use</strong></td>
+            <td>Are instructions for use available? Do they specify intended purpose, conditions of use, performance limitations, and human oversight requirements?</td>
+            <td><span class="req-must">Must require</span> — deployer cannot fulfil Article 26 without them</td>
+          </tr>
+          <tr>
+            <td><strong>Incident history</strong></td>
+            <td>Has the system been involved in any serious incidents? What is the vendor's incident response track record? Is there a public vulnerability disclosure policy?</td>
+            <td><span class="req-should">Should ask</span></td>
+          </tr>
+          <tr>
+            <td><strong>Data processing</strong></td>
+            <td>What personal data does the system process? Where is it stored? What sub-processors are involved? Is a data processing agreement in place?</td>
+            <td><span class="req-must">Must establish</span> — GDPR Article 28 requires a DPA with processors</td>
+          </tr>
+          <tr>
+            <td><strong>Model updates and changes</strong></td>
+            <td>What is the vendor's policy on model updates? Will the deployer be notified before significant changes? Can the deployer freeze a model version?</td>
+            <td><span class="req-should">Should establish</span> — model updates can change risk profile</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="contractual">Contractual requirements for AI procurement</h3>
+      <p>AI procurement contracts should go beyond standard SaaS terms in several areas. The following provisions are relevant for deployers of AI systems that fall within EU AI Act scope or that process personal data:</p>
+      <p><strong>Notification of material changes.</strong> The vendor must notify the deployer before making material changes to the model, training data, or system architecture that could affect the deployer's risk profile or compliance position. For high-risk AI, material changes may require a new conformity assessment.</p>
+      <p><strong>Incident notification.</strong> The vendor must notify the deployer of serious incidents and near-misses within a defined timeframe. The deployer needs this information to fulfil its own incident reporting obligations under Article 73.</p>
+      <p><strong>Audit rights.</strong> For high-risk AI, the deployer should retain the right to audit the vendor's compliance with its representations — or to require third-party audit evidence. This is particularly important for systems where the deployer's own regulator may request evidence of the vendor's compliance.</p>
+      <p><strong>Termination for regulatory non-compliance.</strong> The contract should include a right for the deployer to terminate if the vendor's system fails to maintain compliance with applicable regulations, without penalty. A deployer should not be locked into a non-compliant vendor.</p>
+      <p><strong>Data deletion and portability.</strong> On termination, the vendor must delete the deployer's data and, where applicable, provide it in a portable format. GDPR Article 20 data portability obligations may apply depending on the deployment context.</p>
+
+      <h3 id="ongoing">Ongoing vendor management obligations</h3>
+      <p>Procurement governance does not end at contract signature. Deployers should maintain ongoing vendor oversight through four mechanisms:</p>
+      <p><strong>Annual compliance review.</strong> Review the vendor's compliance position annually against the requirements at time of procurement. Check for changes in the vendor's EU AI Act classification, data processing practices, or sub-processor relationships.</p>
+      <p><strong>Change notification tracking.</strong> Maintain a log of all material changes notified by the vendor and assess the governance implications of each change before it takes effect in the deployer's environment.</p>
+      <p><strong>Incident log maintenance.</strong> Maintain a log of all incidents and near-misses involving the vendor's system, with assessment of whether they trigger the deployer's own reporting obligations.</p>
+      <p><strong>Performance monitoring.</strong> Track the system's performance against the metrics established at procurement. Systematic performance degradation may indicate model drift, data poisoning, or a change in the vendor's service quality — all of which have governance implications.</p>
+    </div>
+    <section class="art-sources" id="sources">
+      <h2 class="sources-h">Sources and verification</h2>
+      <div class="sources-grid">
+        <div class="source-card">
+          <div class="sc-id">SRC-0062</div>
+          <div class="sc-title">EU AI Act — Articles 26, 68, 73; Annex IV</div>
+          <div class="sc-org">European Parliament and Council</div>
+          <div class="sc-url"><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689" target="_blank" rel="noopener">eur-lex.europa.eu</a></div>
+          <div class="sc-note">Article 26 (deployer obligations), Article 68 (EU database of high-risk AI), Article 73 (serious incident reporting), Annex IV (technical documentation).</div>
+        </div>
+        <div class="source-card">
+          <div class="sc-id">SRC-0001</div>
+          <div class="sc-title">GDPR — Articles 20 and 28</div>
+          <div class="sc-org">European Parliament and Council</div>
+          <div class="sc-url"><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679" target="_blank" rel="noopener">eur-lex.europa.eu</a></div>
+          <div class="sc-note">Article 28 (data processor agreements) and Article 20 (data portability) apply to AI vendors that process personal data on behalf of deployers.</div>
+        </div>
+      </div>
+      <div class="src-registry-note">Article ID: AR-000610 · Sources: SRC-0001, SRC-0062 · Published: 2026-09-11 · AGNUS Research</div>
+    </section>
+  </article>
+  <aside class="art-aside">
+    <div class="aside-block"><div class="aside-label">Pillar</div><a href="AGNUS - Research.html" class="aside-pill">AI Governance</a></div>
+    <div class="aside-block">
+      <div class="aside-label">Related articles</div>
+      <ul class="aside-links">
+        <li><a href="AGNUS - Research Article - Deployer Obligations.html">Deployer Obligations Under the EU AI Act</a></li>
+        <li><a href="AGNUS - Research Article - High-Risk AI.html">High-Risk AI Classification</a></li>
+        <li><a href="AGNUS - Research Article - Documentation.html">Technical Documentation Requirements</a></li>
+        <li><a href="AGNUS - Research Article - GDPR and AI.html">GDPR and AI</a></li>
+      </ul>
+    </div>
+  </aside>
+</main>
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-copy">© 2026 AGNUS. All rights reserved.</div>
+    <div class="footer-links"><a href="AGNUS - Home.html">Home</a><a href="AGNUS - Research.html">Research</a><a href="AGNUS - Academy.html">Academy</a></div>
+  </div>
+</footer>
+<script src="agnus-research-data.js"></script>
+<script>(function(){var bar=document.getElementById('progBar');if(!bar)return;window.addEventListener('scroll',function(){var h=document.documentElement;bar.style.width=((h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100)+'%';});})();</script>
+</body>
+</html>

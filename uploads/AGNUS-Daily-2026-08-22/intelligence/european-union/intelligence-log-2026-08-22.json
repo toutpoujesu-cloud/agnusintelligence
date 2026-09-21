@@ -1,0 +1,72 @@
+{
+  "run_date": "2026-08-22",
+  "source_checks": [
+    {
+      "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689",
+      "date_checked": "2026-08-22",
+      "status": "no_change",
+      "last_successful_check": "2026-08-22",
+      "observed_version_or_date": "Current consolidated version remains 2026-07-27; act remains in force.",
+      "open_questions": []
+    },
+    {
+      "source_url": "https://digital-strategy.ec.europa.eu/en/policies/ai-office",
+      "date_checked": "2026-08-22",
+      "status": "no_change",
+      "last_successful_check": "2026-08-22",
+      "observed_version_or_date": "AI Office policy page retrieved; no new monitored guidance or GPAI-obligation publication since 2026-08-15.",
+      "open_questions": []
+    },
+    {
+      "source_url": "https://ai-act-service-desk.ec.europa.eu/en/ai-act",
+      "date_checked": "2026-08-22",
+      "status": "unreachable",
+      "last_successful_check": "",
+      "observed_version_or_date": "Registry URL returned an internal retrieval error.",
+      "open_questions": [
+        "Confirm whether the registry URL should be replaced by https://ai-act-service-desk.ec.europa.eu/en/ai-act-explorer."
+      ]
+    },
+    {
+      "source_url": "https://digital-strategy.ec.europa.eu/en",
+      "date_checked": "2026-08-22",
+      "status": "no_change",
+      "last_successful_check": "2026-08-22",
+      "observed_version_or_date": "No monitored Digital Omnibus or AI legislative publication newer than the 2026-07-31 baseline marker.",
+      "open_questions": []
+    },
+    {
+      "source_url": "https://www.enisa.europa.eu/topics/artificial-intelligence",
+      "date_checked": "2026-08-22",
+      "status": "unreachable",
+      "last_successful_check": "",
+      "observed_version_or_date": "Registry URL returned an internal retrieval error.",
+      "open_questions": [
+        "Confirm replacement with the current ENISA artificial-intelligence-and-next-gen-technologies topic URL."
+      ]
+    },
+    {
+      "source_url": "https://www.edpb.europa.eu",
+      "date_checked": "2026-08-22",
+      "status": "no_change",
+      "last_successful_check": "2026-08-22",
+      "observed_version_or_date": "EDPB homepage retrieved; no new AI/GDPR guidance found since 2026-08-15.",
+      "open_questions": []
+    }
+  ],
+  "findings": [],
+  "editorial_alerts": [
+    {
+      "type": "source_unreachable",
+      "source_url": "https://ai-act-service-desk.ec.europa.eu/en/ai-act",
+      "message": "Registry URL returned an internal retrieval error.",
+      "baseline_action": "Prior successful baseline preserved; no fingerprint or last-successful value overwritten."
+    },
+    {
+      "type": "source_unreachable",
+      "source_url": "https://www.enisa.europa.eu/topics/artificial-intelligence",
+      "message": "Registry URL returned an internal retrieval error.",
+      "baseline_action": "Prior successful baseline preserved; no fingerprint or last-successful value overwritten."
+    }
+  ]
+}

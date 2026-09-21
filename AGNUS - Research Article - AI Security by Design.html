@@ -1,0 +1,232 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI Security by Design: Building Governance Controls Before Deployment — AGNUS Research</title>
+<meta name="description" content="Security controls bolted onto AI systems after deployment are less effective and more expensive than controls designed in from the start. This article maps the security-by-design principles for AI deployments, covering threat modelling, capability scoping, policy architecture, and the controls that must be in place before an agent reaches production." />
+<link rel="canonical" href="https://agnus.example/research/ai-security/security-by-design/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="AI Security by Design: Building Governance Controls Before Deployment" />
+<meta property="article:published_time" content="2026-09-11" />
+<meta property="article:author" content="Jean-Daniel Alexis" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>
+a,a:visited{color:inherit}
+.prose h3{font-family:var(--font-sans);font-weight:700;font-size:19px;letter-spacing:-.018em;margin:32px 0 14px}
+.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
+.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
+.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s}
+.rsub a:hover{color:var(--ink);background:var(--line-soft,rgba(0,0,0,.04))}
+.rsub a.on{color:var(--gold-deep);font-weight:600}
+.pillar-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:var(--gold-pale,#FEF9ED);color:var(--gold-deep,#8B6914);border:1px solid var(--gold-line,#E8D9A0);border-radius:4px;padding:3px 8px;margin-bottom:16px}
+.sbd-checklist{background:#0F1E34;border-radius:10px;padding:24px 28px;margin:24px 0;color:rgba(255,255,255,.85)}
+.sbd-checklist .sc-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:14px;display:block}
+.sbd-phase{margin-bottom:18px}
+.sbd-phase-name{font-family:var(--font-sans);font-weight:700;font-size:13px;color:rgba(255,255,255,.6);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.sbd-phase-name::before{content:'';display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--gold-deep)}
+.sbd-item{display:flex;align-items:flex-start;gap:10px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:12.5px;color:rgba(255,255,255,.7)}
+.sbd-item:last-child{border-bottom:none}
+.sbd-check{color:rgba(255,255,255,.25);flex-shrink:0;margin-top:1px}
+.tm-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:24px 0}
+@media(max-width:700px){.tm-grid{grid-template-columns:1fr}}
+.tm-card{background:var(--paper-warm,#F7F5F0);border:1px solid var(--line);border-radius:8px;padding:18px 20px}
+.tm-card .tc-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:6px}
+.tm-card .tc-title{font-family:var(--font-sans);font-weight:800;font-size:15px;color:var(--ink);margin-bottom:6px}
+.tm-card .tc-body{font-size:13px;color:var(--ink-mute);line-height:1.6}
+</style>
+</head>
+<body>
+<div class="art-progress"><i id="progBar"></i></div>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+    </div>
+  </div>
+</nav>
+<div class="rsub">
+  <div class="rsub-inner">
+    <a href="#why">Why it matters</a>
+    <a href="#threat-modelling">Threat modelling</a>
+    <a href="#checklist">Pre-deployment checklist</a>
+    <a href="#ongoing">Ongoing controls</a>
+    <a href="#sources">Sources</a>
+  </div>
+</div>
+<main class="art-layout">
+  <article class="art-main">
+    <header class="art-header">
+      <span class="pillar-tag">AI Security</span>
+      <h1 class="art-h1">AI Security by Design: Building Governance Controls Before Deployment</h1>
+      <p class="art-lede">Security controls added to an AI system after it reaches production are reactive and incomplete. The patterns of incidents in early commercial AI deployments consistently show the same root cause: governance was not part of the design. This article maps what security by design means for agentic AI — from threat modelling to pre-deployment checklists to the controls that must be in place on day one.</p>
+      <div class="art-meta">
+        <span>Jean-Daniel Alexis</span><span class="meta-sep">·</span>
+        <span>11 September 2026</span><span class="meta-sep">·</span>
+        <span>AI Security pillar</span><span class="meta-sep">·</span>
+        <span>AR-000580</span>
+      </div>
+    </header>
+    <div class="prose">
+      <h3 id="why">Why security by design matters for AI</h3>
+      <p>Security by design is not a new principle — it has been a foundational concept in software security since at least the 1970s. Applied to AI, it means that security and governance controls are not features added to a working system, but properties that are designed in from the requirements stage.</p>
+      <p>The incentive to retrofit governance is strong: building an agent that works is hard enough without simultaneously designing its permission architecture, audit trail, escalation paths, and incident response procedures. Most teams reach for working functionality first and governance later. This consistently produces deployments where the governance arrives after the first incident, not before.</p>
+      <p>The EU AI Act operationalises security by design for high-risk AI. The conformity assessment process (Article 43) must be completed before the system is deployed on the market — not after. The technical documentation (Article 11) and the data governance practices (Article 10) must be in place before deployment. The Act does not permit a "deploy now, govern later" approach for high-risk systems.</p>
+
+      <h3 id="threat-modelling">Threat modelling for AI agents</h3>
+      <p>Threat modelling — systematically identifying what could go wrong with a system and who could cause it to go wrong — is the foundation of security by design. For AI agents, the threat model has several components that differ from classical software:</p>
+      <div class="tm-grid">
+        <div class="tm-card">
+          <div class="tc-label">Threat 1</div>
+          <div class="tc-title">Prompt injection via external inputs</div>
+          <div class="tc-body">Any external content the agent processes is a potential injection vector: emails, web pages, documents, tool responses, database records. Identify all external input channels and model what an attacker could achieve by controlling each one.</div>
+        </div>
+        <div class="tm-card">
+          <div class="tc-label">Threat 2</div>
+          <div class="tc-title">Excessive agency via misconfiguration</div>
+          <div class="tc-body">What is the worst thing the agent could do if it had all the permissions it is being granted? If the answer is "cause significant harm through normal operation," the permission set is too broad. Work backwards from worst case to minimum necessary permissions.</div>
+        </div>
+        <div class="tm-card">
+          <div class="tc-label">Threat 3</div>
+          <div class="tc-title">Supply chain compromise</div>
+          <div class="tc-body">What third-party components does the agent depend on? For each dependency, model what happens if the dependency is compromised: poisoned weights, malicious tool responses, manipulated retrieval content.</div>
+        </div>
+        <div class="tm-card">
+          <div class="tc-label">Threat 4</div>
+          <div class="tc-title">Credential compromise</div>
+          <div class="tc-body">What happens if the agent's API keys, database credentials, or service tokens are stolen? Model the blast radius of a credential compromise and design the permission architecture to minimise it.</div>
+        </div>
+        <div class="tm-card">
+          <div class="tc-label">Threat 5</div>
+          <div class="tc-title">Human-in-loop bypass</div>
+          <div class="tc-body">If the agent's approval gates can be bypassed — through social engineering of the approver, through volume overwhelming the reviewer, or through technical manipulation of the approval workflow — what harm can result? Design approval gates to be resistant to bypass.</div>
+        </div>
+        <div class="tm-card">
+          <div class="tc-label">Threat 6</div>
+          <div class="tc-title">Data exfiltration</div>
+          <div class="tc-body">Can the agent be used to exfiltrate data it has legitimate access to? Prompt injection that causes an agent to include sensitive content in its outputs, or to send outputs to an attacker-controlled destination, is a realistic attack vector when agents have broad data access.</div>
+        </div>
+      </div>
+
+      <h3 id="checklist">Pre-deployment governance checklist</h3>
+      <div class="sbd-checklist">
+        <span class="sc-label">Governance checklist — must be completed before production deployment</span>
+        <div class="sbd-phase">
+          <div class="sbd-phase-name">Identity and registration</div>
+          <div class="sbd-item"><span class="sbd-check">☐</span>Agent has a unique identity and is registered in the agent registry</div>
+          <div class="sbd-item"><span class="sbd-check">☐</span>Agent runs under dedicated credentials — not shared with humans or other systems</div>
+          <div class="sbd-item"><span class="sbd-check">☐</span>A named human sponsor is designated and has acknowledged accountability</div>
+        </div>
+        <div class="sbd-phase">
+          <div class="sbd-phase-name">Mission and scope</div>
+          <div class="sbd-item"><span class="sbd-check">☐</span>Mission Contract is written, reviewed, and approved by the human sponsor</div>
+          <div class="sbd-item"><span class="sbd-check">☐</span>Capability set is derived from task requirements — not from what is technically available</div>
+          <div class="sbd-item"><span class="sbd-check">☐</span>Explicit prohibitions are documented — not just a list of allowed actions</div>
+          <div class="sbd-item"><span class="sbd-check">☐</span>Autonomy level is set to the minimum required for the task</div>
+        </div>
+        <div class="sbd-phase">
+          <div class="sbd-phase-name">Policy and controls</div>
+          <div class="sbd-item"><span class="sbd-check">☐</span>Approval thresholds are defined for high-risk action types</div>
+          <div class="sbd-item"><span class="sbd-check">☐</span>Policy engine is configured and tested against the Mission Contract</div>
+          <div class="sbd-item"><span class="sbd-check">☐</span>Escalation paths are documented and tested — human contact is reachable</div>
+        </div>
+        <div class="sbd-phase">
+          <div class="sbd-phase-name">Monitoring and incident response</div>
+          <div class="sbd-item"><span class="sbd-check">☐</span>Audit logging is configured and writing to append-only storage</div>
+          <div class="sbd-item"><span class="sbd-check">☐</span>Anomaly detection baselines are established</div>
+          <div class="sbd-item"><span class="sbd-check">☐</span>Incident response procedure is documented and the team is briefed</div>
+          <div class="sbd-item"><span class="sbd-check">☐</span>Kill switch (session termination) mechanism is tested</div>
+        </div>
+        <div class="sbd-phase">
+          <div class="sbd-phase-name">Security testing</div>
+          <div class="sbd-item"><span class="sbd-check">☐</span>Prompt injection testing conducted against all external input channels</div>
+          <div class="sbd-item"><span class="sbd-check">☐</span>Excessive agency testing conducted — attempted actions outside scope were blocked</div>
+          <div class="sbd-item"><span class="sbd-check">☐</span>Supply chain components verified against trusted sources</div>
+        </div>
+      </div>
+
+      <h3 id="ongoing">Ongoing controls after deployment</h3>
+      <p>Security by design does not end at deployment. Four ongoing controls matter most:</p>
+      <p><strong>Mission Contract review.</strong> At least quarterly — more often for high-risk systems — the human sponsor reviews the Mission Contract against current usage data and incident records. Capability creep (the gradual expansion of what the agent is asked to do) is a common path to excessive agency.</p>
+      <p><strong>Audit log review.</strong> A human reviews a sample of the agent's actions against its Mission Contract. This is not just anomaly detection — it is a human judgement about whether the agent is behaving as intended, which machine detection alone cannot provide.</p>
+      <p><strong>Red-team exercises.</strong> Periodic exercises in which a team attempts to compromise the agent through prompt injection, social engineering of approval gates, or supply chain manipulation. The goal is to find vulnerabilities before attackers do.</p>
+      <p><strong>Post-incident retrospectives.</strong> After every incident — including near-misses — a structured review identifies what governance control failed or was absent, and updates the Mission Contract, policy configuration, and checklist accordingly.</p>
+    </div>
+    <section class="art-sources" id="sources">
+      <h2 class="sources-h">Sources and verification</h2>
+      <div class="sources-grid">
+        <div class="source-card">
+          <div class="sc-id">SRC-0062</div>
+          <div class="sc-title">EU AI Act — Articles 10, 11, 14, 15, and 43</div>
+          <div class="sc-org">European Parliament and Council</div>
+          <div class="sc-url"><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689" target="_blank" rel="noopener">eur-lex.europa.eu</a></div>
+          <div class="sc-note">Articles 10 (data governance), 11 (technical documentation), 14 (human oversight), 15 (robustness and cybersecurity), and 43 (conformity assessment) together define the EU AI Act's security-by-design requirements for high-risk AI.</div>
+        </div>
+        <div class="source-card">
+          <div class="sc-id">SRC-0068</div>
+          <div class="sc-title">OWASP Top 10 for LLM Applications</div>
+          <div class="sc-org">OWASP Foundation</div>
+          <div class="sc-url"><a href="https://owasp.org/www-project-top-10-for-large-language-model-applications/" target="_blank" rel="noopener">owasp.org</a></div>
+        </div>
+        <div class="source-card">
+          <div class="sc-id">SRC-0067</div>
+          <div class="sc-title">NIST AI RMF 1.0</div>
+          <div class="sc-org">National Institute of Standards and Technology</div>
+          <div class="sc-url"><a href="https://airc.nist.gov/RMF" target="_blank" rel="noopener">airc.nist.gov</a></div>
+        </div>
+      </div>
+      <div class="src-registry-note">Article ID: AR-000580 · Sources: SRC-0062, SRC-0067, SRC-0068 · Published: 2026-09-11 · AGNUS Research</div>
+    </section>
+  </article>
+  <aside class="art-aside">
+    <div class="aside-block"><div class="aside-label">Pillar</div><a href="AGNUS - Research.html" class="aside-pill">AI Security</a></div>
+    <div class="aside-block">
+      <div class="aside-label">Related articles</div>
+      <ul class="aside-links">
+        <li><a href="AGNUS - Research Article - Prompt Injection.html">Prompt Injection: Attack Taxonomy and Defences</a></li>
+        <li><a href="AGNUS - Research Article - Excessive Agency.html">Excessive Agency</a></li>
+        <li><a href="AGNUS - Research Article - AI Supply Chain Security.html">Supply Chain Attacks on AI Systems</a></li>
+        <li><a href="AGNUS - Research Article - Mission Contracts.html">Mission Contracts</a></li>
+      </ul>
+    </div>
+    <div class="aside-block">
+      <div class="aside-label">Practice it</div>
+      <div class="aside-note">The AGNUS Control Training Environment puts you through a full security-by-design deployment — from threat modelling in Stage 1 to incident response in Stage 6.</div>
+      <a href="AGNUS - Academy.html" class="btn btn-gold" style="margin-top:10px;display:inline-block">Control Training Environment</a>
+    </div>
+  </aside>
+</main>
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-copy">© 2026 AGNUS. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="AGNUS - Home.html">Home</a>
+      <a href="AGNUS - Research.html">Research</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+    </div>
+  </div>
+</footer>
+<script src="agnus-research-data.js"></script>
+<script>(function(){var bar=document.getElementById('progBar');if(!bar)return;window.addEventListener('scroll',function(){var h=document.documentElement;bar.style.width=((h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100)+'%';});})();</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+{
+  "sector_specific_obligations": [
+    {
+      "regulator": "European Securities and Markets Authority",
+      "rule": "When investment firms use AI to provide investment services to retail clients, ESMA expects compliance with relevant MiFID II organisational and conduct-of-business requirements, particularly the duty to act in the client's best interests.",
+      "url": "https://www.esma.europa.eu/press-news/esma-news/esma-provides-guidance-firms-using-artificial-intelligence-investment-services",
+      "date": "2024-05-30"
+    },
+    {
+      "regulator": "European Union",
+      "rule": "DORA requires financial entities to manage ICT third-party risk, including due diligence, contractual controls, registers of ICT arrangements, monitoring and exit-related protections; these controls are relevant when AI services are obtained from ICT third parties.",
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=OJ%3AL%3A2022%3A333%3AFULL",
+      "date": "2022-12-27"
+    }
+  ],
+  "named_case_studies": [
+    {
+      "company": "BBVA",
+      "source_url": "https://www.bbva.com/en/innovation/bbva-deploys-the-eight-its-strategy-to-transform-the-financial-experience-with-ai/",
+      "description": "BBVA describes its 'The Eight' roadmap for AI-supported customer interaction, risk management, process automation and software development. This is a named vendor/company account, not an independent effectiveness study, and no unverified ROI figure is adopted here."
+    },
+    {
+      "company": "BBVA",
+      "source_url": "https://www.bbva.com/en/innovation/responsible-innovation-how-bbva-ensures-safe-use-of-artificial-intelligence/",
+      "description": "BBVA says it maintains an AI-system inventory and monitors systems for accuracy, errors and currency as part of its data and AI governance strategy. This is company-reported practice and has not been independently audited in this run."
+    }
+  ],
+  "adoption_data": [
+    {
+      "stat": "The EBA reported that 92% of EU banks were deploying AI and 8% were pilot testing or discussing AI use cases.",
+      "source": "https://www.eba.europa.eu/sites/default/files/2025-09/146b3558-d026-47bf-a872-f05e93ed30d2/Rising%20application%20of%20AI%20in%20EU%20banking%20and%20payments%20sector.pdf",
+      "methodology_note": "Regulator-reported observation from the EBA's 25 September 2025 banking and payments sector publication. The accessible source excerpt did not expose the sample frame or questionnaire detail, so the percentage should not be generalized beyond the EBA population without checking the PDF methodology.",
+      "date": "2025-09-25"
+    }
+  ],
+  "sourcing_gaps": [
+    "The sanitized AGNUS live-ID registry does not map OBL or AR IDs to financial-services topics; existing_obligations_reference therefore remains unresolved and must be supplied by editorial before insertion.",
+    "The EBA adoption PDF was identified from the official EBA source, but its methodology section was not fully extractable in this run.",
+    "BBVA evidence is company-published and verifies that the named deployment is claimed, not that its effectiveness or governance has been independently validated.",
+    "No ROI figure was included because no suitable independently verified, sector-specific ROI result was established."
+  ]
+}

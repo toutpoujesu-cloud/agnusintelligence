@@ -1,0 +1,1163 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AGNUS — Intelligence for the Future of Work</title>
+<meta name="description" content="AGNUS is the trusted intelligence platform for artificial intelligence. Honest reviews, clear comparisons, daily intelligence, and deep guidance across 20,000+ AI tools. Truth before hype." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet" />
+<style>
+/* =====================================================================
+   AGNUS · HOMEPAGE
+   --------------------------------------------------------------------
+   Apple × Bloomberg × OpenAI × National Geographic.
+   Deep warm charcoal · large white space · metallic gold, used sparingly.
+   Editorial. Calm. Premium. Trustworthy. No neon, no robots, no clichés.
+   ===================================================================== */
+:root {
+  /* AGNUS Design System v1.0 */
+  --char:        #1C1B19;
+  --char-2:      #272522;
+  --char-3:      #2A2825;
+
+  /* paper */
+  --bg:          #F8F7F4;
+  --paper:       #FCFBF8;
+  --paper-warm:  #F3F1EC;
+  --paper-2:     #ECE9E1;
+
+  /* ink (on light) */
+  --ink:         #1D1D1F;
+  --ink-soft:    #6E6B66;
+  --ink-mute:    #908D86;
+  --ink-faint:   #B8B4AB;
+
+  /* ink (on dark) */
+  --on-dark:        #F5F4F1;
+  --on-dark-soft:   rgba(245,244,241,0.64);
+  --on-dark-mute:   rgba(245,244,241,0.42);
+  --on-dark-faint:  rgba(245,244,241,0.16);
+
+  /* metallic gold */
+  --gold:        #B28A42;
+  --gold-deep:   #8F6E32;
+  --gold-mid:    #C9A96A;
+  --gold-light:  #E7D6AE;
+  --gold-soft:   #FFF8EA;
+  --gold-grad:   linear-gradient(100deg, #8F6E32 0%, #E7D6AE 42%, #B28A42 70%, #E7D6AE 100%);
+
+  --line:        #E7E2D8;
+  --line-soft:   #F0ECE3;
+  --line-strong: #DAD4C8;
+  --line-dark:   #393530;
+
+  --pass:        #2E8B57;
+  --success:     #2E8B57;
+  --warn:        #C67A00;
+  --error:       #B83C3C;
+  --sapphire:      #3E6AE1;
+  --sapphire-deep: #2C53C4;
+  --sapphire-soft: #ECF1FD;
+
+  --font-sans:  "Manrope", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-mono:  "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  --font-serif: "Newsreader", Georgia, "Times New Roman", serif;
+
+  --container: 1280px;
+  --pad-x: clamp(20px, 5vw, 72px);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 120px; }
+body {
+  font-family: var(--font-sans);
+  color: var(--ink); background: var(--paper);
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+  font-size: 16px; line-height: 1.5; letter-spacing: -0.005em;
+}
+a { text-decoration: none; color: inherit; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+img { max-width: 100%; display: block; }
+::selection { background: var(--gold-soft); }
+
+.container { max-width: var(--container); margin: 0 auto; padding: 0 var(--pad-x); }
+.wide { max-width: 1500px; }
+
+/* ─── METALLIC GOLD TEXT ──────────────────────────────────────────── */
+.gold-text {
+  background: var(--gold-grad); -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: var(--gold-deep);
+}
+
+/* ─── EYEBROW / KICKER ────────────────────────────────────────────── */
+.kicker {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-family: var(--font-mono); font-size: 11.5px; font-weight: 500;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-mute);
+}
+.kicker .ix { color: var(--gold-deep); }
+.kicker::before {
+  content: ""; width: 24px; height: 1px; background: var(--gold);
+}
+.kicker.no-rule::before { display: none; }
+section.dark .kicker { color: var(--on-dark-mute); }
+section.dark .kicker .ix { color: var(--gold-light); }
+
+/* ─── HEADINGS ────────────────────────────────────────────────────── */
+.h-display {
+  font-family: var(--font-sans); font-weight: 700;
+  font-size: clamp(44px, 7.2vw, 104px); line-height: 0.98; letter-spacing: -0.038em;
+  margin: 0;
+}
+.h-section {
+  font-family: var(--font-sans); font-weight: 700;
+  font-size: clamp(30px, 4.4vw, 54px); line-height: 1.02; letter-spacing: -0.03em;
+  margin: 0;
+}
+.h-lede {
+  font-family: var(--font-serif); font-weight: 300;
+  font-size: clamp(18px, 2vw, 23px); line-height: 1.5; letter-spacing: -0.005em;
+  color: var(--ink-soft); max-width: 560px; margin: 0;
+}
+.h-lede em { font-style: italic; }
+section.dark .h-lede { color: var(--on-dark-soft); }
+
+/* section scaffold */
+section { padding: clamp(72px, 9vw, 132px) 0; }
+section.dark { background: var(--char); color: var(--on-dark); }
+section.warm { background: var(--paper-warm); }
+.sec-head {
+  display: grid; grid-template-columns: 1fr auto; align-items: end;
+  gap: 32px; margin-bottom: clamp(40px, 5vw, 64px);
+}
+.sec-head .copy { max-width: 720px; }
+.sec-head .kicker { margin-bottom: 20px; }
+
+/* ─── BUTTONS ─────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-sans); font-size: 15px; font-weight: 600;
+  padding: 14px 26px; border-radius: 999px; letter-spacing: -0.01em;
+  transition: background .22s ease, color .22s ease, border-color .22s ease, transform .22s ease;
+  white-space: nowrap;
+}
+.btn .arr { transition: transform .22s ease; font-size: 1.05em; }
+.btn:hover .arr { transform: translateX(4px); }
+.btn-dark { background: var(--char); color: #fff; }
+.btn-dark:hover { background: var(--char-3); }
+.btn-light { background: #fff; color: var(--char); border: 1px solid var(--line); }
+.btn-light:hover { border-color: var(--char); }
+.btn-gold {
+  background: var(--char); color: var(--gold-light);
+  border: 1px solid var(--gold-deep);
+}
+.btn-gold:hover { background: #000; }
+.btn-ghost { padding: 14px 4px; color: var(--ink); }
+.btn-ghost:hover { color: var(--gold-deep); }
+.btn-outline-light { border: 1px solid var(--on-dark-faint); color: #fff; }
+.btn-outline-light:hover { border-color: #fff; }
+
+/* ════════════════════════════════════════════════════════════════════
+   TICKER — Bloomberg-style intelligence strip
+   ════════════════════════════════════════════════════════════════════ */
+.ticker {
+  background: var(--char); color: var(--on-dark-soft);
+  border-bottom: 1px solid var(--line-dark);
+  height: 38px; overflow: hidden; position: relative;
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.02em;
+}
+.ticker-label {
+  position: absolute; left: 0; top: 0; bottom: 0; z-index: 2;
+  display: flex; align-items: center; padding: 0 18px 0 var(--pad-x);
+  background: var(--char); color: var(--gold-light); font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase; font-size: 10.5px;
+  border-right: 1px solid var(--line-dark);
+}
+.ticker-track {
+  display: flex; align-items: center; height: 100%; white-space: nowrap;
+  width: max-content; animation: ticker 46s linear infinite;
+  padding-left: 200px;
+}
+.ticker:hover .ticker-track { animation-play-state: paused; }
+.ticker-track span { display: inline-flex; align-items: center; padding: 0 26px; }
+.ticker-track .up { color: #7FB48A; }
+.ticker-track .dn { color: #C98B7E; }
+.ticker-track .tk { color: var(--on-dark); margin-right: 8px; font-weight: 500; }
+.ticker-track .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); margin: 0 26px; }
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ════════════════════════════════════════════════════════════════════
+   NAV
+   ════════════════════════════════════════════════════════════════════ */
+.nav {
+  position: sticky; top: 0; z-index: 60;
+  background: rgba(255,255,255,0.82); backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 28px; }
+.wordmark {
+  font-family: var(--font-sans); font-weight: 800; font-size: 22px;
+  letter-spacing: 0.36em; padding-left: 0.36em; color: var(--char);
+}
+.nav-links { display: flex; align-items: center; gap: 30px; }
+.nav-links a {
+  font-size: 14.5px; font-weight: 500; color: var(--ink-soft);
+  letter-spacing: -0.01em; transition: color .18s ease; position: relative;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-links a.gold:hover { color: var(--gold-deep); }
+.nav-right { display: flex; align-items: center; gap: 14px; }
+.nav-search {
+  display: inline-flex; align-items: center; gap: 9px;
+  border: 1px solid var(--line); border-radius: 999px; padding: 9px 16px;
+  color: var(--ink-mute); font-size: 13.5px; transition: border-color .2s ease;
+  background: var(--paper-warm);
+}
+.nav-search:hover { border-color: var(--ink-faint); }
+.nav-search svg { width: 15px; height: 15px; }
+.nav-search kbd {
+  font-family: var(--font-mono); font-size: 10px; border: 1px solid var(--line);
+  border-radius: 4px; padding: 1px 5px; color: var(--ink-faint); background: #fff;
+}
+.hamburger { display: none; width: 42px; height: 42px; border: 1px solid var(--line);
+  border-radius: 10px; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
+.hamburger span { width: 18px; height: 1.6px; background: var(--char); transition: .22s; }
+body.menu-open .hamburger span:nth-child(1) { transform: translateY(5.6px) rotate(45deg); }
+body.menu-open .hamburger span:nth-child(2) { opacity: 0; }
+body.menu-open .hamburger span:nth-child(3) { transform: translateY(-5.6px) rotate(-45deg); }
+.m-drawer { display: none; flex-direction: column; padding: 8px var(--pad-x) 24px; border-top: 1px solid var(--line); background: rgba(255,255,255,0.97); }
+.m-drawer a { padding: 15px 0; font-size: 17px; font-weight: 600; border-bottom: 1px solid var(--line-soft); }
+body.menu-open .m-drawer { display: flex; }
+
+/* ════════════════════════════════════════════════════════════════════
+   HERO
+   ════════════════════════════════════════════════════════════════════ */
+.hero { padding: clamp(72px, 11vw, 150px) 0 clamp(56px, 7vw, 96px); position: relative; overflow: hidden; }
+.hero::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(120% 80% at 82% 8%, rgba(176,140,74,0.07), transparent 55%);
+}
+.hero-inner { position: relative; z-index: 1; }
+.hero .kicker { margin-bottom: 30px; }
+.hero h1 { max-width: 14ch; }
+.hero h1 .line2 { color: var(--ink-faint); }
+.hero-sub {
+  font-family: var(--font-serif); font-weight: 300; font-style: italic;
+  font-size: clamp(20px, 2.4vw, 30px); color: var(--ink-soft);
+  margin: 28px 0 0; letter-spacing: -0.01em;
+}
+.hero-sub b { font-style: normal; font-weight: 500; color: var(--ink); font-family: var(--font-sans); }
+.searchbar {
+  margin-top: 44px; max-width: 660px;
+  display: flex; align-items: center; gap: 8px;
+  border: 1px solid var(--line); border-radius: 999px;
+  padding: 8px 8px 8px 24px; background: #fff;
+  box-shadow: 0 1px 0 rgba(26,26,23,0.02), 0 18px 48px -24px rgba(26,26,23,0.22);
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.searchbar:focus-within { border-color: var(--char); box-shadow: 0 24px 60px -28px rgba(26,26,23,0.32); }
+.searchbar svg { width: 20px; height: 20px; color: var(--ink-mute); flex: none; }
+.searchbar input {
+  flex: 1; border: none; outline: none; font-family: var(--font-sans);
+  font-size: 16.5px; color: var(--ink); background: transparent; padding: 12px 4px;
+  letter-spacing: -0.01em;
+}
+.searchbar input::placeholder { color: var(--ink-mute); }
+.searchbar .btn { padding: 13px 26px; }
+.search-meta {
+  margin-top: 18px; display: flex; gap: 10px 22px; flex-wrap: wrap;
+  font-family: var(--font-mono); font-size: 12px; color: var(--ink-mute); letter-spacing: 0.02em;
+}
+.search-meta b { color: var(--ink); font-weight: 600; }
+.search-meta a { color: var(--ink-soft); border-bottom: 1px solid var(--line); padding-bottom: 1px; }
+.search-meta a:hover { color: var(--gold-deep); border-color: var(--gold); }
+
+.hero-figure {
+  margin-top: clamp(48px, 6vw, 88px);
+  position: relative; border-radius: 22px; overflow: hidden;
+  aspect-ratio: 21 / 9; background: var(--paper-2);
+  box-shadow: 0 40px 90px -50px rgba(26,26,23,0.45);
+}
+.hero-figure image-slot { width: 100%; height: 100%; }
+.hero-figcap {
+  position: absolute; left: 22px; bottom: 22px; z-index: 2;
+  display: flex; align-items: center; gap: 12px;
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: #fff; background: rgba(26,26,23,0.55); backdrop-filter: blur(8px);
+  padding: 8px 14px; border-radius: 999px;
+}
+.hero-figcap .d { width: 5px; height: 5px; border-radius: 50%; background: var(--gold-light); }
+
+/* trust strip */
+.trust {
+  border-top: 1px solid var(--line); margin-top: clamp(48px, 6vw, 80px); padding-top: 30px;
+  display: flex; align-items: center; gap: 40px; flex-wrap: wrap;
+}
+.trust .tlabel { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-mute); }
+.trust .tlogos { display: flex; align-items: center; gap: 34px; flex-wrap: wrap; }
+.trust .tlogos span { font-weight: 600; font-size: 16px; color: var(--ink-faint); letter-spacing: 0.01em; }
+
+/* ════════════════════════════════════════════════════════════════════
+   TODAY'S INTELLIGENCE — Bloomberg-style news
+   ════════════════════════════════════════════════════════════════════ */
+.intel-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(28px, 4vw, 56px); align-items: start; }
+.lead-story { display: block; }
+.lead-figure {
+  position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 16 / 10;
+  background: var(--paper-2); margin-bottom: 24px;
+}
+.lead-figure image-slot { width: 100%; height: 100%; }
+.story-tag {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-deep);
+  display: inline-flex; gap: 12px; align-items: center;
+}
+.story-tag .time { color: var(--ink-mute); }
+.lead-story h3 {
+  font-family: var(--font-sans); font-weight: 700; letter-spacing: -0.028em;
+  font-size: clamp(26px, 3vw, 38px); line-height: 1.06; margin: 16px 0 14px; max-width: 18ch;
+  transition: color .18s ease;
+}
+.lead-story:hover h3 { color: var(--gold-deep); }
+.lead-story p { font-family: var(--font-serif); font-weight: 300; font-size: 18px; line-height: 1.55; color: var(--ink-soft); margin: 0; max-width: 52ch; }
+
+.story-list { border-top: 1px solid var(--char); }
+.story {
+  display: grid; grid-template-columns: 28px 1fr; gap: 18px;
+  padding: 22px 0; border-bottom: 1px solid var(--line);
+  transition: background .18s ease;
+}
+.story:hover { background: var(--paper-warm); }
+.story .num { font-family: var(--font-mono); font-size: 13px; color: var(--gold-deep); padding-top: 3px; }
+.story h4 {
+  font-family: var(--font-sans); font-weight: 600; font-size: 18px; line-height: 1.22;
+  letter-spacing: -0.018em; margin: 0 0 8px; transition: color .18s ease;
+}
+.story:hover h4 { color: var(--gold-deep); }
+.story .meta { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-mute); display: flex; gap: 12px; }
+.story .meta .cat { color: var(--ink-soft); }
+
+/* ════════════════════════════════════════════════════════════════════
+   FEATURED REVIEWS — Apple product-page cards
+   ════════════════════════════════════════════════════════════════════ */
+.review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.rcard {
+  display: flex; flex-direction: column; border-radius: 18px; overflow: hidden;
+  background: var(--paper-warm); border: 1px solid var(--line);
+  transition: transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s ease;
+}
+.rcard:hover { transform: translateY(-6px); box-shadow: 0 32px 64px -36px rgba(26,26,23,0.4); }
+.rcard-figure { position: relative; aspect-ratio: 4 / 3; background: var(--paper-2); overflow: hidden; }
+.rcard-figure image-slot { width: 100%; height: 100%; }
+.rscore {
+  position: absolute; top: 16px; right: 16px; z-index: 2;
+  display: inline-flex; align-items: baseline; gap: 3px;
+  background: rgba(26,26,23,0.86); backdrop-filter: blur(8px); color: #fff;
+  padding: 7px 12px; border-radius: 999px;
+  font-family: var(--font-mono); font-size: 15px; font-weight: 600;
+  border: 1px solid var(--gold-deep);
+}
+.rscore .gold-text { font-weight: 700; }
+.rscore small { font-size: 10px; color: var(--on-dark-mute); }
+.rcard-body { padding: 26px 26px 28px; display: flex; flex-direction: column; flex: 1; }
+.rcard .rtag { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 14px; }
+.rcard h3 { font-family: var(--font-sans); font-weight: 700; font-size: 25px; letter-spacing: -0.025em; margin: 0 0 10px; }
+.rcard p { font-size: 14.5px; line-height: 1.55; color: var(--ink-soft); margin: 0 0 22px; }
+.rcard .rfoot {
+  margin-top: auto; padding-top: 18px; border-top: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.rcard .verdict { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); font-weight: 500; }
+.rcard .read { font-size: 13.5px; font-weight: 600; color: var(--gold-deep); display: inline-flex; gap: 7px; align-items: center; }
+.rcard:hover .read .arr { transform: translateX(3px); }
+
+/* ════════════════════════════════════════════════════════════════════
+   BEST AI AWARDS — gold moment
+   ════════════════════════════════════════════════════════════════════ */
+.awards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line-dark); border: 1px solid var(--line-dark); border-radius: 18px; overflow: hidden; }
+.award { background: var(--char); padding: 34px 28px 30px; display: flex; flex-direction: column; gap: 14px; transition: background .25s ease; }
+.award:hover { background: var(--char-2); }
+.award .medal {
+  width: 44px; height: 44px; border-radius: 50%;
+  border: 1px solid var(--gold-deep);
+  display: grid; place-items: center;
+  font-family: var(--font-serif); font-style: italic; font-size: 19px;
+  background: linear-gradient(160deg, rgba(220,192,137,0.18), rgba(151,118,58,0.05));
+}
+.award .medal .gold-text { font-weight: 400; }
+.award .acat { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--on-dark-mute); }
+.award h3 { font-family: var(--font-sans); font-weight: 700; font-size: 24px; letter-spacing: -0.02em; margin: 2px 0 0; color: #fff; }
+.award .winner { display: flex; align-items: center; gap: 10px; margin-top: auto; padding-top: 18px; border-top: 1px solid var(--line-dark); }
+.award .winner .nm { font-size: 15px; font-weight: 600; color: var(--on-dark); }
+.award .winner .tag { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-light); }
+.awards-note { margin-top: 34px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.awards-note p { font-family: var(--font-serif); font-style: italic; font-weight: 300; font-size: 19px; color: var(--on-dark-soft); margin: 0; max-width: 50ch; }
+
+/* ════════════════════════════════════════════════════════════════════
+   COMPARE
+   ════════════════════════════════════════════════════════════════════ */
+.compare-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.vs {
+  border: 1px solid var(--line); border-radius: 16px; padding: 30px 28px;
+  background: var(--paper); transition: border-color .25s ease, transform .25s ease;
+  display: flex; flex-direction: column; gap: 22px;
+}
+.vs:hover { border-color: var(--char); transform: translateY(-4px); }
+.vs-pair { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 14px; }
+.vs-side { text-align: center; }
+.vs-side .logo { width: 46px; height: 46px; margin: 0 auto 12px; border-radius: 12px; background: var(--paper-2); border: 1px solid var(--line); display: grid; place-items: center; font-family: var(--font-sans); font-weight: 700; font-size: 19px; color: var(--ink); }
+.vs-side .nm { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; }
+.vs .vmark { font-family: var(--font-serif); font-style: italic; font-size: 20px; color: var(--gold-deep); }
+.vs .vsum { font-size: 14px; line-height: 1.55; color: var(--ink-soft); margin: 0; text-align: center; padding-top: 20px; border-top: 1px solid var(--line); }
+.vs .vsum b { color: var(--ink); font-weight: 600; }
+
+/* ════════════════════════════════════════════════════════════════════
+   FEATURE SPLIT (Agents / Academy)
+   ════════════════════════════════════════════════════════════════════ */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(36px, 5vw, 80px); align-items: center; }
+.split.flip .split-media { order: 2; }
+.split-media { position: relative; border-radius: 18px; overflow: hidden; aspect-ratio: 5 / 4; background: var(--paper-2); }
+section.dark .split-media { background: var(--char-2); }
+.split-media image-slot { width: 100%; height: 100%; }
+.split-copy .kicker { margin-bottom: 22px; }
+.split-copy h2 { margin-bottom: 22px; }
+.split-copy p { font-size: 16.5px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 28px; max-width: 46ch; }
+section.dark .split-copy p { color: var(--on-dark-soft); }
+.feature-list { list-style: none; padding: 0; margin: 0 0 32px; display: grid; gap: 0; border-top: 1px solid var(--line); }
+section.dark .feature-list { border-color: var(--line-dark); }
+.feature-list li { display: grid; grid-template-columns: 26px 1fr; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--line); font-size: 15px; line-height: 1.5; }
+section.dark .feature-list li { border-color: var(--line-dark); color: var(--on-dark-soft); }
+.feature-list .ix { font-family: var(--font-mono); font-size: 12px; color: var(--gold-deep); padding-top: 2px; }
+section.dark .feature-list .ix { color: var(--gold-light); }
+.feature-list b { color: var(--ink); font-weight: 600; }
+section.dark .feature-list b { color: var(--on-dark); }
+
+/* ════════════════════════════════════════════════════════════════════
+   DIRECTORY ROWS (Free tools / Prompt library / Business)
+   ════════════════════════════════════════════════════════════════════ */
+.col-2 { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(36px, 5vw, 72px); align-items: start; }
+.dirlist { border-top: 1px solid var(--char); margin-top: 26px; }
+.dir-row { display: grid; grid-template-columns: auto 1fr auto; gap: 18px; align-items: center; padding: 20px 2px; border-bottom: 1px solid var(--line); transition: padding-left .25s ease, background .2s ease; }
+.dir-row:hover { padding-left: 12px; background: var(--paper-warm); }
+.dir-row .dnum { font-family: var(--font-mono); font-size: 12px; color: var(--ink-mute); }
+.dir-row .dname { font-weight: 600; font-size: 17px; letter-spacing: -0.015em; }
+.dir-row .dname small { display: block; font-family: var(--font-sans); font-weight: 400; font-size: 13.5px; color: var(--ink-mute); margin-top: 3px; letter-spacing: 0; }
+.dir-row .dcount { font-family: var(--font-mono); font-size: 12px; color: var(--ink-mute); letter-spacing: 0.06em; }
+.dir-row:hover .dcount { color: var(--gold-deep); }
+
+/* ════════════════════════════════════════════════════════════════════
+   INDUSTRIES
+   ════════════════════════════════════════════════════════════════════ */
+.ind-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.ind {
+  background: #fff; padding: 30px 26px; min-height: 158px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  transition: background .25s ease, color .25s ease;
+}
+.ind:hover { background: var(--char); color: #fff; }
+.ind .inum { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; color: var(--ink-mute); }
+.ind:hover .inum { color: var(--gold-light); }
+.ind h4 { font-family: var(--font-sans); font-weight: 600; font-size: 21px; letter-spacing: -0.02em; margin: 0; }
+.ind .icount { font-family: var(--font-mono); font-size: 11px; color: var(--ink-mute); letter-spacing: 0.04em; }
+.ind:hover .icount { color: var(--on-dark-mute); }
+
+/* ════════════════════════════════════════════════════════════════════
+   PREMIUM MEMBERSHIP
+   ════════════════════════════════════════════════════════════════════ */
+.premium { position: relative; overflow: hidden; }
+.premium::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(80% 120% at 88% 12%, rgba(220,192,137,0.12), transparent 58%);
+}
+.premium-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(40px, 5vw, 80px); align-items: center; }
+.premium h2 { color: #fff; margin-bottom: 24px; }
+.premium h2 em { font-style: normal; }
+.premium .plede { font-family: var(--font-serif); font-weight: 300; font-size: 20px; line-height: 1.55; color: var(--on-dark-soft); margin: 0 0 36px; max-width: 44ch; }
+.premium .plede em { font-style: italic; color: var(--gold-light); }
+.premium-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+.perks { border-top: 1px solid var(--line-dark); }
+.perk { display: grid; grid-template-columns: auto 1fr; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--line-dark); }
+.perk .pix { font-family: var(--font-serif); font-style: italic; font-size: 17px; }
+.perk .pix .gold-text { font-weight: 400; }
+.perk b { display: block; color: var(--on-dark); font-weight: 600; font-size: 15.5px; margin-bottom: 4px; letter-spacing: -0.01em; }
+.perk span { color: var(--on-dark-soft); font-size: 14px; line-height: 1.5; }
+
+/* ════════════════════════════════════════════════════════════════════
+   VALUES STRIP
+   ════════════════════════════════════════════════════════════════════ */
+.values { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border-top: 1px solid var(--char); border-bottom: 1px solid var(--char); }
+.value { background: var(--paper); padding: 38px 30px 34px; }
+.value .vnum { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; color: var(--gold-deep); }
+.value h4 { font-family: var(--font-sans); font-weight: 700; font-size: 21px; letter-spacing: -0.02em; margin: 18px 0 10px; }
+.value p { font-size: 14px; line-height: 1.55; color: var(--ink-soft); margin: 0; }
+
+/* ════════════════════════════════════════════════════════════════════
+   FOOTER
+   ════════════════════════════════════════════════════════════════════ */
+footer { background: var(--char); color: var(--on-dark-soft); padding: clamp(64px, 8vw, 100px) 0 40px; }
+.foot-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr 1fr; gap: 36px; padding-bottom: 56px; border-bottom: 1px solid var(--line-dark); }
+.foot-brand .wordmark { color: #fff; font-size: 26px; }
+.foot-brand p { font-family: var(--font-serif); font-weight: 300; font-size: 17px; line-height: 1.55; color: var(--on-dark-soft); margin: 22px 0 26px; max-width: 38ch; }
+.foot-brand .fsearch { display: flex; gap: 8px; max-width: 360px; }
+.foot-brand .fsearch input { flex: 1; background: var(--char-2); border: 1px solid var(--line-dark); border-radius: 999px; padding: 12px 18px; color: #fff; font-family: var(--font-sans); font-size: 14px; outline: none; }
+.foot-brand .fsearch input::placeholder { color: var(--on-dark-mute); }
+.foot-brand .fsearch button { border-radius: 999px; padding: 12px 22px; background: #fff; color: var(--char); font-weight: 600; font-size: 14px; }
+.foot-col h5 { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--on-dark-mute); margin: 0 0 18px; }
+.foot-col ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+.foot-col a { font-size: 14.5px; color: var(--on-dark-soft); transition: color .18s ease; }
+.foot-col a:hover { color: #fff; }
+.foot-col a .gd { color: var(--gold-light); }
+.foot-bottom { padding-top: 30px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; color: var(--on-dark-mute); }
+.foot-bottom .fb-links { display: flex; gap: 22px; }
+.foot-bottom a:hover { color: var(--on-dark); }
+
+/* ─── reveal animation ─────────────────────────────────────────────── */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════════════════════════════ */
+@media (max-width: 1080px) {
+  .review-grid, .compare-grid { grid-template-columns: repeat(2, 1fr); }
+  .awards-grid { grid-template-columns: repeat(2, 1fr); }
+  .ind-grid { grid-template-columns: repeat(2, 1fr); }
+  .values { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 1024px) {
+  .hp-research { grid-template-columns: 1fr !important; }
+  .nav-links { display: none; }
+  .nav-search { display: none; }
+  .hamburger { display: flex; }
+  .nav-right .btn { display: none; }
+}
+@media (max-width: 860px) {
+  .intel-grid { grid-template-columns: 1fr; gap: 44px; }
+  .split, .split.flip { grid-template-columns: 1fr; gap: 36px; }
+  .split.flip .split-media { order: 0; }
+  .col-2 { grid-template-columns: 1fr; gap: 44px; }
+  .premium-inner { grid-template-columns: 1fr; gap: 44px; }
+  .sec-head { grid-template-columns: 1fr; }
+  .sec-head .sec-cta { justify-self: start; }
+  .foot-top { grid-template-columns: 1fr 1fr 1fr; gap: 36px; }
+  .foot-brand { grid-column: 1 / -1; }
+}
+@media (max-width: 560px) {
+  .review-grid, .compare-grid, .awards-grid, .ind-grid, .values { grid-template-columns: 1fr; }
+  .hero-figure { aspect-ratio: 4 / 3; }
+  .trust { gap: 20px; }
+  .foot-top { grid-template-columns: 1fr 1fr; }
+  .h-display { font-size: clamp(40px, 13vw, 60px); }
+  .vs-pair { gap: 8px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ TICKER ═══════════ -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-label">Today's Intelligence</div>
+  <div class="ticker-track">
+    <span><span class="tk">FUNDING</span> Anthropic series F closes at record valuation</span><span class="dot"></span>
+    <span><span class="tk">MODELS</span> Frontier context windows cross 10M tokens</span><span class="dot"></span>
+    <span><span class="tk">AGENTS</span> Autonomous coding agents reach <span class="up">&nbsp;94% SWE-bench</span></span><span class="dot"></span>
+    <span><span class="tk">POLICY</span> EU AI Act enforcement window opens Aug 2</span><span class="dot"></span>
+    <span><span class="tk">ENTERPRISE</span> AI adoption in F500 <span class="up">&nbsp;+38% YoY</span></span><span class="dot"></span>
+    <span><span class="tk">REVIEWS</span> 412 tools re-scored this quarter</span><span class="dot"></span>
+    <!-- duplicate for seamless loop -->
+    <span><span class="tk">FUNDING</span> Anthropic series F closes at record valuation</span><span class="dot"></span>
+    <span><span class="tk">MODELS</span> Frontier context windows cross 10M tokens</span><span class="dot"></span>
+    <span><span class="tk">AGENTS</span> Autonomous coding agents reach <span class="up">&nbsp;94% SWE-bench</span></span><span class="dot"></span>
+    <span><span class="tk">POLICY</span> EU AI Act enforcement window opens Aug 2</span><span class="dot"></span>
+    <span><span class="tk">ENTERPRISE</span> AI adoption in F500 <span class="up">&nbsp;+38% YoY</span></span><span class="dot"></span>
+    <span><span class="tk">REVIEWS</span> 412 tools re-scored this quarter</span><span class="dot"></span>
+  </div>
+</div>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="#top" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Marketplace.html">Marketplace</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html">Research</a>
+      <a href="AGNUS - Practice.html">Practice</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+      <a href="AGNUS - Business.html">Business</a>
+      <a href="#premium" class="gold">Premium</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Explore.html" class="nav-search">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="6"/><path d="M14 14l4 4"/></svg>
+        Search tools
+        <kbd>⌘K</kbd>
+      </a>
+      <a href="#premium" class="btn btn-gold">Join AGNUS</a>
+      <button class="hamburger" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="m-drawer">
+    <a href="AGNUS - Explore.html">Explore</a>
+    <a href="AGNUS - Marketplace.html">Marketplace</a>
+    <a href="AGNUS - Intelligence.html">Intelligence</a>
+    <a href="AGNUS - Research.html">Research</a>
+    <a href="AGNUS - Review.html">Reviews</a>
+    <a href="AGNUS - Compare.html">Compare</a>
+    <a href="AGNUS - Agents.html">Agents</a>
+    <a href="AGNUS - Academy.html">Academy</a>
+    <a href="#tools" onclick="document.body.classList.remove('menu-open')">Free Tools</a>
+    <a href="AGNUS - Business.html">Business</a>
+    <a href="#premium" onclick="document.body.classList.remove('menu-open')" style="color: var(--gold-deep);">Premium Membership</a>
+  </div>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<header class="hero" id="top">
+  <div class="container hero-inner">
+    <div class="kicker"><span>The Intelligence Platform for the Future of Work</span></div>
+    <h1 class="h-display">
+      Intelligence for the<br /><span class="line2">future of work.</span>
+    </h1>
+    <p class="hero-sub"><b>Discover. Compare. Master AI.</b> &nbsp;The trusted source for what's happening, what matters, and what to use.</p>
+
+    <div class="searchbar">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="6"/><path d="M14 14l4.5 4.5" stroke-linecap="round"/></svg>
+      <input type="text" placeholder="Search over 20,000 AI tools, reviews and comparisons…" aria-label="Search AI tools" onkeydown="if(event.key==='Enter')location.href='AGNUS - Explore.html'" />
+      <a href="AGNUS - Explore.html" class="btn btn-dark">Search AI <span class="arr">→</span></a>
+    </div>
+    <div class="search-meta">
+      <span><b>20,148</b> tools indexed</span>
+      <span><b>3,200+</b> independent reviews</span>
+      <span>Popular: <a href="#compare">ChatGPT vs Claude</a> <a href="#reviews">Best coding agent</a> <a href="#agents">AI agents</a></span>
+    </div>
+
+    <figure class="hero-figure reveal">
+      <image-slot id="agnus-hero" shape="rect" fit="cover" placeholder="Hero · large cinematic photograph. Minimalist glass architecture or a calm, light-filled modern workspace — professional, editorial, National Geographic / Apple feeling. No robots, no neon. Wide 21:9."></image-slot>
+      <figcaption class="hero-figcap"><span class="d"></span> The Intelligence Issue · 2026</figcaption>
+    </figure>
+
+    <div class="trust">
+      <span class="tlabel">Trusted by teams at</span>
+      <div class="tlogos">
+        <span>Mercury</span><span>Notion</span><span>Ramp</span><span>Linear</span><span>Vercel</span><span>Brex</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════ TODAY'S INTELLIGENCE (AI NEWS) ═══════════ -->
+<section id="intelligence" class="warm">
+  <div class="container">
+    <div class="sec-head">
+      <div class="copy">
+        <div class="kicker"><span class="ix">01</span> AI News &middot; Today's Intelligence</div>
+        <h2 class="h-section">Five stories shaping the<br />industry this morning.</h2>
+      </div>
+      <a href="AGNUS - Intelligence.html" class="btn btn-light sec-cta">All news <span class="arr">→</span></a>
+    </div>
+
+    <div class="intel-grid">
+      <a href="AGNUS - Intelligence.html" class="lead-story reveal">
+        <div class="lead-figure">
+          <image-slot id="news-lead" shape="rect" placeholder="Lead news photo · cinematic editorial — a data center exterior at dusk, glass skyline, or a quiet professional reading. Clean, premium. Landscape 16:10."></image-slot>
+        </div>
+        <div class="story-tag">Frontier Models <span class="time">· 38 min ago</span></div>
+        <h3>The race past ten million tokens changes what software can remember.</h3>
+        <p>New long-context models are quietly rewriting how teams build — and why the next year of enterprise AI looks nothing like the last.</p>
+      </a>
+
+      <div class="story-list">
+        <a href="AGNUS - Intelligence.html" class="story">
+          <div class="num">02</div>
+          <div>
+            <h4>Anthropic's latest round resets the valuation ceiling for AI labs.</h4>
+            <div class="meta"><span class="cat">Funding</span><span>1h ago</span></div>
+          </div>
+        </a>
+        <a href="AGNUS - Intelligence.html" class="story">
+          <div class="num">03</div>
+          <div>
+            <h4>Coding agents cross 94% on SWE-bench — what it means for engineering teams.</h4>
+            <div class="meta"><span class="cat">Agents</span><span>2h ago</span></div>
+          </div>
+        </a>
+        <a href="AGNUS - Intelligence.html" class="story">
+          <div class="num">04</div>
+          <div>
+            <h4>The EU AI Act enforcement window opens August 2 — a readiness checklist.</h4>
+            <div class="meta"><span class="cat">Policy</span><span>3h ago</span></div>
+          </div>
+        </a>
+        <a href="AGNUS - Intelligence.html" class="story">
+          <div class="num">05</div>
+          <div>
+            <h4>Inside the quiet enterprise shift: AI moves from pilots to production.</h4>
+            <div class="meta"><span class="cat">Enterprise</span><span>5h ago</span></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ AGNUS RESEARCH ═══════════ -->
+<section id="research">
+  <div class="container">
+    <div class="sec-head">
+      <div class="copy">
+        <div class="kicker"><span class="ix">02</span> AGNUS Research</div>
+        <h2 class="h-section">Beyond the headlines.<br />Understand what changes.</h2>
+      </div>
+      <a href="AGNUS - Research.html" class="btn btn-light sec-cta">Explore AGNUS Research <span class="arr">→</span></a>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1.45fr 1fr;gap:clamp(28px,3.4vw,52px);align-items:start" class="hp-research">
+      <a href="AGNUS - Research Article - AI Act Explained.html" style="display:block">
+        <figure style="margin:0 0 22px;aspect-ratio:16/10;border-radius:14px;overflow:hidden;background:var(--paper-2)">
+          <image-slot id="hp-rs-lead" shape="rect" fit="cover" placeholder="Research lead · European institutional architecture or a calm reading room. Editorial, restrained. 16:10."></image-slot>
+        </figure>
+        <div style="font-family:var(--font-mono);font-size:10px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep)">EU AI Act <span style="color:var(--ink-mute)">· AI Act Explained</span></div>
+        <h3 style="font-family:var(--font-serif);font-weight:400;font-size:clamp(26px,3vw,38px);line-height:1.15;letter-spacing:-.02em;margin:14px 0 0">The EU AI Act: A Practical Guide for Organizations</h3>
+        <p style="font-size:16px;line-height:1.62;color:var(--ink-soft);margin:14px 0 0;max-width:54ch">A structured explanation of the regulation, who it affects, its obligations and the implementation timeline.</p>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-mute);margin-top:18px">
+          <span style="color:var(--ink)">Jean-Daniel Alexis</span>
+          <span style="width:3px;height:3px;border-radius:50%;background:var(--line-strong)"></span>
+          <span>Updated 11 Aug 2026</span>
+          <span style="width:3px;height:3px;border-radius:50%;background:var(--line-strong)"></span>
+          <span style="color:var(--gold-deep)">EU</span>
+          <span style="width:3px;height:3px;border-radius:50%;background:var(--line-strong)"></span>
+          <span>18 min read</span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-top:14px">
+          <span style="display:inline-flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:9.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;border-radius:999px;padding:4px 10px;color:#2E7D52;border:1px solid rgba(46,125,82,.34);background:#EEF7F0"><span style="width:5px;height:5px;border-radius:50%;background:#2E7D52"></span>Current</span>
+          <span style="font-family:var(--font-mono);font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-mute)">Last regulatory review · 11 Aug 2026</span>
+        </div>
+      </a>
+
+      <div>
+        <a href="AGNUS - Research Article - AI Governance Structures.html" style="display:block;padding:0 0 20px;border-bottom:1px solid var(--line-soft)">
+          <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep)">AI Governance</div>
+          <h4 style="font-weight:600;font-size:17px;line-height:1.32;letter-spacing:-.018em;margin:9px 0 0">Building an AI governance operating model</h4>
+          <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-mute);margin-top:9px">Updated 04 Aug 2026 · 14 min</div>
+        </a>
+        <a href="AGNUS - Research Article - Prompt Injection.html" style="display:block;padding:20px 0;border-bottom:1px solid var(--line-soft)">
+          <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep)">AI Security</div>
+          <h4 style="font-weight:600;font-size:17px;line-height:1.32;letter-spacing:-.018em;margin:9px 0 0">Indirect prompt injection in agent systems</h4>
+          <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-mute);margin-top:9px">Updated 29 Jul 2026 · 16 min</div>
+        </a>
+        <a href="AGNUS - Research Article - Agent Governance.html" style="display:block;padding:20px 0">
+          <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep)">AI Agents</div>
+          <h4 style="font-weight:600;font-size:17px;line-height:1.32;letter-spacing:-.018em;margin:9px 0 0">Agent identity, permissions and human approval</h4>
+          <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-mute);margin-top:9px">Updated 22 Jul 2026 · 12 min</div>
+        </a>
+
+        <div style="margin-top:22px;padding-top:22px;border-top:1px solid var(--line)">
+          <div style="font-family:var(--font-mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:12px">Research pillars</div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <a href="AGNUS - Research Topic.html" style="font-size:13px;color:var(--ink-soft);border:1px solid var(--line);border-radius:999px;padding:7px 13px;background:var(--paper)">AI Governance</a>
+            <a href="AGNUS - Research Topic.html" style="font-size:13px;color:var(--ink-soft);border:1px solid var(--line);border-radius:999px;padding:7px 13px;background:var(--paper)">EU AI Act</a>
+            <a href="AGNUS - Research Topic.html" style="font-size:13px;color:var(--ink-soft);border:1px solid var(--line);border-radius:999px;padding:7px 13px;background:var(--paper)">AI Agents</a>
+            <a href="AGNUS - Research Topic.html" style="font-size:13px;color:var(--ink-soft);border:1px solid var(--line);border-radius:999px;padding:7px 13px;background:var(--paper)">AI Security</a>
+            <a href="AGNUS - Research Topic.html" style="font-size:13px;color:var(--ink-soft);border:1px solid var(--line);border-radius:999px;padding:7px 13px;background:var(--paper)">AI Audit</a>
+            <a href="AGNUS - Research Topic.html" style="font-size:13px;color:var(--ink-soft);border:1px solid var(--line);border-radius:999px;padding:7px 13px;background:var(--paper)">Data Governance</a>
+            <a href="AGNUS - Research Topic.html" style="font-size:13px;color:var(--ink-soft);border:1px solid var(--line);border-radius:999px;padding:7px 13px;background:var(--paper)">Standards</a>
+            <a href="AGNUS - Research.html" style="font-size:13px;color:var(--ink);border:1px solid var(--line-strong);border-radius:999px;padding:7px 13px;background:var(--paper);font-weight:600">All Research →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p style="font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);margin:34px 0 0">Today's Intelligence — current, fast-moving developments &nbsp;·&nbsp; AGNUS Research — durable, sourced and reviewed knowledge</p>
+  </div>
+</section>
+
+<!-- ═══════════ FEATURED REVIEWS ═══════════ -->
+<section id="reviews">
+  <div class="container">
+    <div class="sec-head">
+      <div class="copy">
+        <div class="kicker"><span class="ix">03</span> AI Reviews</div>
+        <h2 class="h-section">Reviews you can actually trust.</h2>
+        <p class="h-lede" style="margin-top: 22px;">Every tool tested in real workflows, scored on the same rubric. <em>Honest verdicts — never paid praise.</em></p>
+      </div>
+      <a href="AGNUS - Review.html" class="btn btn-light sec-cta">All reviews <span class="arr">→</span></a>
+    </div>
+
+    <div class="review-grid">
+      <a href="AGNUS - Review.html" class="rcard reveal">
+        <div class="rcard-figure">
+          <image-slot id="rev-1" shape="rect" placeholder="Review hero · clean product shot or elegant workspace, soft daylight, glass surfaces. Apple-like. 4:3."></image-slot>
+          <div class="rscore"><span class="gold-text">9.4</span><small>/10</small></div>
+        </div>
+        <div class="rcard-body">
+          <div class="rtag">Writing &amp; Research</div>
+          <h3>Claude</h3>
+          <p>The most capable assistant for long-form reasoning and nuanced writing. Where it leads, and where it still asks for a second pair of eyes.</p>
+          <div class="rfoot"><span class="verdict">Editor's Choice</span><span class="read">Read review <span class="arr">→</span></span></div>
+        </div>
+      </a>
+
+      <a href="AGNUS - Review.html" class="rcard reveal">
+        <div class="rcard-figure">
+          <image-slot id="rev-2" shape="rect" placeholder="Review hero · minimalist developer desk, clean monitor, calm light. 4:3."></image-slot>
+          <div class="rscore"><span class="gold-text">9.2</span><small>/10</small></div>
+        </div>
+        <div class="rcard-body">
+          <div class="rtag">Coding Assistant</div>
+          <h3>Cursor</h3>
+          <p>The editor that finally made agentic coding feel native. We pushed it across three real codebases for two weeks — here's the honest picture.</p>
+          <div class="rfoot"><span class="verdict">Top Rated</span><span class="read">Read review <span class="arr">→</span></span></div>
+        </div>
+      </a>
+
+      <a href="AGNUS - Review.html" class="rcard reveal">
+        <div class="rcard-figure">
+          <image-slot id="rev-3" shape="rect" placeholder="Review hero · architectural glass interior, professional environment. 4:3."></image-slot>
+          <div class="rscore"><span class="gold-text">8.9</span><small>/10</small></div>
+        </div>
+        <div class="rcard-body">
+          <div class="rtag">Productivity Suite</div>
+          <h3>ChatGPT</h3>
+          <p>The default that keeps getting deeper. Strong across the board, with a few sharp edges in long-running tasks that you should know about first.</p>
+          <div class="rfoot"><span class="verdict">Most Popular</span><span class="read">Read review <span class="arr">→</span></span></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ BEST AI AWARDS 2026 (gold) ═══════════ -->
+<section class="dark">
+  <div class="container">
+    <div class="sec-head">
+      <div class="copy">
+        <div class="kicker no-rule"><span class="ix gold-text">★</span> The AGNUS Awards</div>
+        <h2 class="h-section" style="color:#fff;">Best AI of <span class="gold-text">2026</span>.</h2>
+        <p class="h-lede">The categories that define the year, judged on the record. <em>The awards companies will want to win.</em></p>
+      </div>
+    </div>
+
+    <div class="awards-grid reveal">
+      <div class="award">
+        <div class="medal"><span class="gold-text">I</span></div>
+        <div class="acat">Category 01</div>
+        <h3>AI Coding Assistant</h3>
+        <div class="winner"><span class="nm">Cursor</span><span class="tag">Winner</span></div>
+      </div>
+      <div class="award">
+        <div class="medal"><span class="gold-text">II</span></div>
+        <div class="acat">Category 02</div>
+        <h3>AI Writer</h3>
+        <div class="winner"><span class="nm">Claude</span><span class="tag">Winner</span></div>
+      </div>
+      <div class="award">
+        <div class="medal"><span class="gold-text">III</span></div>
+        <div class="acat">Category 03</div>
+        <h3>AI CRM</h3>
+        <div class="winner"><span class="nm">Attio</span><span class="tag">Winner</span></div>
+      </div>
+      <div class="award">
+        <div class="medal"><span class="gold-text">IV</span></div>
+        <div class="acat">Category 04</div>
+        <h3>AI Agent</h3>
+        <div class="winner"><span class="nm">Devin</span><span class="tag">Winner</span></div>
+      </div>
+    </div>
+
+    <div class="awards-note">
+      <p>Judged by working professionals across twelve categories — scored on capability, reliability, and value. No sponsorships. No pay-to-win.</p>
+      <a href="AGNUS - Awards.html" class="btn btn-outline-light">See all winners <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ COMPARE ═══════════ -->
+<section id="compare" class="warm">
+  <div class="container">
+    <div class="sec-head">
+      <div class="copy">
+        <div class="kicker"><span class="ix">04</span> AI Comparisons</div>
+        <h2 class="h-section">Clear comparisons.<br />No clickbait.</h2>
+      </div>
+      <a href="AGNUS - Compare.html" class="btn btn-light sec-cta">All comparisons <span class="arr">→</span></a>
+    </div>
+
+    <div class="compare-grid">
+      <a href="AGNUS - Compare.html" class="vs reveal">
+        <div class="vs-pair">
+          <div class="vs-side"><div class="logo">G</div><div class="nm">ChatGPT</div></div>
+          <div class="vmark">vs</div>
+          <div class="vs-side"><div class="logo">C</div><div class="nm">Claude</div></div>
+        </div>
+        <p class="vsum">The everyday default against the reasoning specialist. <b>We name a winner for nine real use-cases.</b></p>
+      </a>
+      <a href="AGNUS - Compare.html" class="vs reveal">
+        <div class="vs-pair">
+          <div class="vs-side"><div class="logo">G</div><div class="nm">Gemini</div></div>
+          <div class="vmark">vs</div>
+          <div class="vs-side"><div class="logo">C</div><div class="nm">Claude</div></div>
+        </div>
+        <p class="vsum">Multimodal reach versus depth of reasoning. <b>Which one earns a seat in your stack.</b></p>
+      </a>
+      <a href="AGNUS - Compare.html" class="vs reveal">
+        <div class="vs-pair">
+          <div class="vs-side"><div class="logo">C</div><div class="nm">Cursor</div></div>
+          <div class="vmark">vs</div>
+          <div class="vs-side"><div class="logo">W</div><div class="nm">Windsurf</div></div>
+        </div>
+        <p class="vsum">The agentic-editor showdown. <b>Tested side by side on the same codebase.</b></p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ AI AGENTS ═══════════ -->
+<section id="agents">
+  <div class="container">
+    <div class="split">
+      <div class="split-media reveal">
+        <image-slot id="agents-media" shape="rect" placeholder="Agents · abstract elegant photograph — glass, light, motion. Or a calm professional overseeing work. Editorial, premium. 5:4."></image-slot>
+      </div>
+      <div class="split-copy">
+        <div class="kicker"><span class="ix">05</span> AI Agents</div>
+        <h2 class="h-section">The agents doing real work — and which ones to trust.</h2>
+        <p>Autonomous systems are leaving the demo stage. We track the agents that ship, benchmark what they actually deliver, and tell you where they break.</p>
+        <ul class="feature-list">
+          <li><span class="ix">01</span><div><b>Live capability benchmarks</b> — scored on real tasks, refreshed quarterly.</div></li>
+          <li><span class="ix">02</span><div><b>Reliability &amp; safety notes</b> — where each agent needs a human in the loop.</div></li>
+          <li><span class="ix">03</span><div><b>Deployment playbooks</b> — how teams put agents into production responsibly.</div></li>
+        </ul>
+        <a href="AGNUS - Agents.html" class="btn btn-dark">Explore agents <span class="arr">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ACADEMY + PROMPT LIBRARY ═══════════ -->
+<section id="academy" class="dark">
+  <div class="container">
+    <div class="split flip">
+      <div class="split-media reveal">
+        <image-slot id="academy-media" shape="rect" placeholder="Academy · a calm, light-filled study space or elegant lecture setting. Editorial, intelligent, premium. 5:4."></image-slot>
+      </div>
+      <div class="split-copy">
+        <div class="kicker"><span class="ix">06</span> AI Academy &middot; Prompt Library</div>
+        <h2 class="h-section" style="color:#fff;">Master AI properly — depth instead of noise.</h2>
+        <p>Structured courses and a curated prompt library, written by practitioners. From your first principles to production-grade workflows — no hype, no filler.</p>
+        <ul class="feature-list">
+          <li><span class="ix">01</span><div><b>Guided learning paths</b> — from fundamentals to advanced, role by role.</div></li>
+          <li><span class="ix">02</span><div><b>2,400+ prompts</b> — tested, categorized, and ready to adapt.</div></li>
+          <li><span class="ix">03</span><div><b>Certificates</b> — verifiable proof of AI competence for your team.</div></li>
+        </ul>
+        <div style="display:flex; gap:14px; flex-wrap:wrap;">
+          <a href="AGNUS - Academy.html" class="btn btn-light">Browse courses <span class="arr">→</span></a>
+          <a href="AGNUS - Prompts.html" class="btn btn-outline-light">Prompt Library <span class="arr">→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FREE TOOLS + BUSINESS AUTOMATION ═══════════ -->
+<section id="tools" class="warm">
+  <div class="container">
+    <div class="col-2">
+      <div>
+        <div class="kicker"><span class="ix">07</span> Free AI Tools</div>
+        <h2 class="h-section" style="margin: 20px 0 0;">Genuinely useful.<br />Genuinely free.</h2>
+        <div class="dirlist">
+          <a href="AGNUS - Tools.html" class="dir-row"><span class="dnum">01</span><span class="dname">AI Cost Calculator<small>Estimate token spend across every major model</small></span><span class="dcount">FREE →</span></a>
+          <a href="AGNUS - Tools.html" class="dir-row"><span class="dnum">02</span><span class="dname">Prompt Optimizer<small>Rewrite any prompt for clearer, sharper output</small></span><span class="dcount">FREE →</span></a>
+          <a href="AGNUS - Tools.html" class="dir-row"><span class="dnum">03</span><span class="dname">Model Picker<small>Answer five questions, get the right tool</small></span><span class="dcount">FREE →</span></a>
+          <a href="AGNUS - Tools.html" class="dir-row"><span class="dnum">04</span><span class="dname">AI Readiness Score<small>Benchmark your team in three minutes</small></span><span class="dcount">FREE →</span></a>
+        </div>
+      </div>
+      <div>
+        <div class="kicker"><span class="ix">08</span> Business Automation</div>
+        <h2 class="h-section" style="margin: 20px 0 0;">Put AI to work<br />across the company.</h2>
+        <div class="dirlist">
+          <a href="AGNUS - Business.html" class="dir-row"><span class="dnum">01</span><span class="dname">Workflow Blueprints<small>Proven automations for ops, sales and support</small></span><span class="dcount">142 →</span></a>
+          <a href="AGNUS - Business.html" class="dir-row"><span class="dnum">02</span><span class="dname">Integration Guides<small>Connect AI to the tools you already run</small></span><span class="dcount">86 →</span></a>
+          <a href="AGNUS - Business.html" class="dir-row"><span class="dnum">03</span><span class="dname">ROI Playbooks<small>Measure impact before you scale</small></span><span class="dcount">38 →</span></a>
+          <a href="AGNUS - Business.html" class="dir-row"><span class="dnum">04</span><span class="dname">Vendor Shortlists<small>Pre-vetted stacks by department</small></span><span class="dcount">24 →</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ AI FOR BUSINESS / INDUSTRIES ═══════════ -->
+<section id="business">
+  <div class="container">
+    <div class="sec-head">
+      <div class="copy">
+        <div class="kicker"><span class="ix">09</span> AI for Business &middot; Every Industry</div>
+        <h2 class="h-section">A dedicated hub for<br />every industry.</h2>
+        <p class="h-lede" style="margin-top: 22px;">The tools, playbooks and case studies that matter to your field — nothing that doesn't.</p>
+      </div>
+      <a href="AGNUS - Home.html#business" class="btn btn-light sec-cta">All industries <span class="arr">→</span></a>
+    </div>
+
+    <div class="ind-grid reveal">
+      <a href="AGNUS - Business.html" class="ind"><div class="inum">01</div><h4>Healthcare</h4><div class="icount">214 tools</div></a>
+      <a href="AGNUS - Business.html" class="ind"><div class="inum">02</div><h4>Education</h4><div class="icount">186 tools</div></a>
+      <a href="AGNUS - Business.html" class="ind"><div class="inum">03</div><h4>Law</h4><div class="icount">132 tools</div></a>
+      <a href="AGNUS - Business.html" class="ind"><div class="inum">04</div><h4>Architecture</h4><div class="icount">98 tools</div></a>
+      <a href="AGNUS - Business.html" class="ind"><div class="inum">05</div><h4>Finance</h4><div class="icount">241 tools</div></a>
+      <a href="AGNUS - Business.html" class="ind"><div class="inum">06</div><h4>Marketing</h4><div class="icount">308 tools</div></a>
+      <a href="AGNUS - Business.html" class="ind"><div class="inum">07</div><h4>Construction</h4><div class="icount">74 tools</div></a>
+      <a href="AGNUS - Business.html" class="ind"><div class="inum">08</div><h4>Restaurants</h4><div class="icount">61 tools</div></a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PREMIUM MEMBERSHIP ═══════════ -->
+<section id="premium" class="dark premium">
+  <div class="container premium-inner">
+    <div>
+      <div class="kicker no-rule"><span class="ix gold-text">◆</span> Premium Membership</div>
+      <h2 class="h-section" style="margin-top: 22px;">The <span class="gold-text">Bloomberg</span> of artificial intelligence.</h2>
+      <p class="plede">Members don't come for one affiliate link. They come because they trust AGNUS to tell them what's happening, what matters, and where the industry is heading. <em>Truth before hype.</em></p>
+      <div class="premium-ctas">
+        <a href="AGNUS - Dashboard.html" class="btn btn-gold">Become a member <span class="arr">→</span></a>
+        <a href="AGNUS - Academy.html" class="btn btn-outline-light">See what's included</a>
+      </div>
+    </div>
+    <div class="perks">
+      <div class="perk"><span class="pix gold-text">I</span><div><b>The full intelligence brief</b><span>Daily, in-depth analysis — the five stories that actually matter, before anyone else.</span></div></div>
+      <div class="perk"><span class="pix gold-text">II</span><div><b>Unlimited deep reviews</b><span>Every scored review, benchmark and teardown, with no paywalled verdicts.</span></div></div>
+      <div class="perk"><span class="pix gold-text">III</span><div><b>The Academy &amp; Prompt Library</b><span>Full course catalogue, certificates, and 2,400+ tested prompts.</span></div></div>
+      <div class="perk"><span class="pix gold-text">IV</span><div><b>Awards &amp; industry access</b><span>Early access to the AGNUS Awards and every industry hub.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ VALUES ═══════════ -->
+<section style="padding: 0;">
+  <div class="container" style="padding: 0 var(--pad-x);">
+    <div class="values">
+      <div class="value"><div class="vnum">01</div><h4>Truth before hype</h4><p>We say what's real, even when it's less exciting than the headline.</p></div>
+      <div class="value"><div class="vnum">02</div><h4>Honest reviews</h4><p>Tested in real workflows. Never paid praise, never pay-to-win.</p></div>
+      <div class="value"><div class="vnum">03</div><h4>Clear comparisons</h4><p>We name a winner and show our reasoning. No clickbait verdicts.</p></div>
+      <div class="value"><div class="vnum">04</div><h4>Depth over noise</h4><p>Fewer things, covered properly — the signal in a world of hype.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="container">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="#top" class="wordmark">AGNUS</a>
+        <p>Intelligence for the future of work. The trusted source for what's happening, which tools matter, and where AI is heading.</p>
+        <form class="fsearch" onsubmit="return false;">
+          <input type="email" placeholder="Your email for the daily brief" aria-label="Email" />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+      <div class="foot-col">
+        <h5>Intelligence</h5>
+        <ul>
+          <li><a href="#intelligence">AI News</a></li>
+          <li><a href="AGNUS - Intelligence.html">Daily Intelligence</a></li>
+          <li><a href="AGNUS - Research.html#regulatory">Regulatory Intelligence</a></li>
+          <li><a href="AGNUS - Business.html">Industry Intelligence</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Research</h5>
+        <ul>
+          <li><a href="AGNUS - Research Topic.html">AI Governance</a></li>
+          <li><a href="AGNUS - Research Topic.html">EU AI Act</a></li>
+          <li><a href="AGNUS - Research Topic.html">AI Agents</a></li>
+          <li><a href="AGNUS - Research Topic.html">AI Security</a></li>
+          <li><a href="AGNUS - Research Topic.html">AI Audit</a></li>
+          <li><a href="AGNUS - Research Topic.html">Data Governance</a></li>
+          <li><a href="AGNUS - Research Topic.html">Standards</a></li>
+          <li><a href="AGNUS - Research Country.html">Countries</a></li>
+          <li><a href="AGNUS - Research.html"><span class="gd">AGNUS Reports</span></a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Discover</h5>
+        <ul>
+          <li><a href="#reviews">AI Reviews</a></li>
+          <li><a href="#compare">Comparisons</a></li>
+          <li><a href="#tools">AI Tools</a></li>
+          <li><a href="AGNUS - Marketplace.html">Marketplace</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Learn &amp; Build</h5>
+        <ul>
+          <li><a href="AGNUS - Academy.html">Academy</a></li>
+          <li><a href="#academy">Prompt Library</a></li>
+          <li><a href="AGNUS - Agents.html">Agents</a></li>
+          <li><a href="AGNUS - Business.html">Business Automation</a></li>
+          <li><a href="#premium"><span class="gd">Premium Membership</span></a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#">About AGNUS</a></li>
+          <li><a href="#">Our methodology</a></li>
+          <li><a href="AGNUS - Awards.html">The AGNUS Awards</a></li>
+          <li><a href="#">Editorial standards</a></li>
+          <li><a href="AGNUS - Dashboard.html" class="gd">Editorial Dashboard ↗</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 AGNUS · Truth before hype.</span>
+      <div class="fb-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Editorial Policy</a>
+        <a href="#">Advertise</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="image-slot.js"></script>
+<script>
+/* subtle scroll reveal */
+(function () {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+})();
+
+/* ⌘K focuses hero search */
+document.addEventListener('keydown', (e) => {
+  if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+    e.preventDefault();
+    const input = document.querySelector('.searchbar input');
+    if (input) { input.focus(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+  }
+});
+</script>
+
+</body>
+</html>

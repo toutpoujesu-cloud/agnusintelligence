@@ -1,0 +1,23 @@
+{
+  "run_date": "2026-08-21",
+  "source_checks": [
+    {
+      "source_url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689",
+      "date_checked": "2026-08-21",
+      "status": "no_change",
+      "last_successful_check": "2026-08-21",
+      "observed_version_or_date": "Current consolidated version remains 2026-07-27; EUR-Lex still marks the act in force and changed.",
+      "open_questions": []
+    },
+    {
+      "source_url": "https://digital-strategy.ec.europa.eu/en",
+      "date_checked": "2026-08-21",
+      "status": "no_change",
+      "last_successful_check": "2026-08-21",
+      "observed_version_or_date": "No registry-scope legislative publication after the 2026-08-15 baseline was located; the latest relevant homepage AI Act highlight remains dated 2026-07-31.",
+      "open_questions": []
+    }
+  ],
+  "findings": [],
+  "editorial_alerts": []
+}

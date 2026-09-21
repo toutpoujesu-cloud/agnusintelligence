@@ -1,0 +1,23 @@
+{
+  "run_date": "2026-08-15",
+  "source_checks": [
+    {
+      "source_url": "https://www.iso.org/committee/6794475.html",
+      "date_checked": "2026-08-15",
+      "status": "manual_review",
+      "last_successful_check": "2026-08-15",
+      "observed_version_or_date": "Committee page retrieved; 44 published standards and 48 under development shown; baseline established",
+      "open_questions": []
+    },
+    {
+      "source_url": "https://owasp.org/www-project-top-10-for-large-language-model-applications/",
+      "date_checked": "2026-08-15",
+      "status": "manual_review",
+      "last_successful_check": "2026-08-15",
+      "observed_version_or_date": "OWASP LLM Top 10 project page retrieved; baseline established",
+      "open_questions": []
+    }
+  ],
+  "findings": [],
+  "editorial_alerts": []
+}

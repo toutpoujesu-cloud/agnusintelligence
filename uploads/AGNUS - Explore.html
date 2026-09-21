@@ -1,0 +1,722 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Explore Intelligence — AGNUS</title>
+<meta name="description" content="Explore AGNUS — the world's knowledge about artificial intelligence, organized into connected learning paths. Browse collections, follow the threads, and travel the Knowledge Universe." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<style>
+/* sapphire fallback (cache-safe) */
+:root { --sapphire:#3E6AE1; --sapphire-deep:#2C53C4; --sapphire-soft:#ECF1FD; }
+
+/* ── HERO ───────────────────────────────────────────────────────── */
+.ex-hero { padding: clamp(44px,6vw,84px) 0 clamp(28px,3vw,40px); text-align: center; position: relative; overflow: hidden; }
+.ex-hero::after { content:""; position:absolute; inset:0; background: radial-gradient(80% 70% at 50% -10%, rgba(176,140,74,0.07), transparent 56%); pointer-events:none; }
+.ex-hero > * { position: relative; z-index: 1; }
+.ex-hero .kicker { justify-content: center; margin-bottom: 24px; }
+.ex-hero h1 { font-family: var(--font-sans); font-weight: 700; font-size: clamp(44px,7vw,92px); line-height: 0.96; letter-spacing: -0.04em; margin: 0 0 20px; }
+.ex-hero h1 em { font-family: var(--font-serif); font-style: italic; font-weight: 300; color: var(--gold-deep); }
+.ex-hero .lede { font-family: var(--font-serif); font-weight: 300; font-size: clamp(18px,2.1vw,23px); line-height: 1.5; color: var(--ink-soft); max-width: 60ch; margin: 0 auto; }
+
+/* giant search */
+.ex-search { margin: clamp(34px,4vw,48px) auto 0; max-width: 720px; display: flex; align-items: center; gap: 10px; border: 1px solid var(--line); border-radius: 999px; padding: 10px 10px 10px 26px; background: #fff; box-shadow: 0 1px 0 rgba(26,26,23,0.02), 0 26px 60px -34px rgba(26,26,23,0.32); transition: border-color .2s ease, box-shadow .2s ease; }
+.ex-search:focus-within { border-color: var(--char); box-shadow: 0 30px 70px -36px rgba(26,26,23,0.4); }
+.ex-search svg { width: 22px; height: 22px; color: var(--ink-mute); flex: none; }
+.ex-search .field { flex: 1; position: relative; text-align: left; }
+.ex-search input { width: 100%; border: none; outline: none; font-family: var(--font-sans); font-size: 17px; color: var(--ink); background: transparent; padding: 14px 4px; letter-spacing: -0.01em; position: relative; z-index: 1; }
+.ex-search .rotor { position: absolute; left: 4px; top: 50%; transform: translateY(-50%); font-size: 17px; color: var(--ink-mute); pointer-events: none; z-index: 0; display: flex; gap: 7px; }
+.ex-search .rotor .word { color: var(--ink); font-weight: 500; }
+.ex-search input:focus + .rotor, .ex-search input:not(:placeholder-shown) + .rotor { opacity: 0; }
+.ex-search .btn { padding: 14px 26px; }
+.kbd-hint { margin-top: 16px; font-family: var(--font-mono); font-size: 12px; color: var(--ink-mute); letter-spacing: 0.02em; }
+.kbd-hint kbd { border: 1px solid var(--line); border-radius: 5px; padding: 1px 6px; color: var(--ink-soft); background: var(--paper-warm); }
+
+/* universe entry */
+.universe-cta { margin-top: 30px; display: inline-flex; align-items: center; gap: 12px; }
+.universe-btn { display: inline-flex; align-items: center; gap: 11px; font-family: var(--font-sans); font-size: 15px; font-weight: 600; padding: 14px 26px; border-radius: 999px; background: var(--char); color: #fff; border: 1px solid var(--gold-deep); transition: transform .2s ease, box-shadow .2s ease; }
+.universe-btn:hover { transform: translateY(-2px); box-shadow: 0 20px 44px -20px rgba(176,140,74,0.7); }
+.universe-btn .orb { width: 18px; height: 18px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, var(--gold-light), var(--gold-deep)); box-shadow: 0 0 0 3px rgba(220,192,137,0.18); }
+.universe-btn .gold-text { font-weight: 700; }
+
+/* ── FILTER CHIPS ───────────────────────────────────────────────── */
+.filterstrip { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.filterstrip-inner { display: flex; align-items: center; gap: 10px; padding: 16px 0; overflow-x: auto; }
+.filterstrip-inner::-webkit-scrollbar { height: 0; }
+.fchip { flex: none; font-family: var(--font-sans); font-size: 13.5px; font-weight: 500; color: var(--ink-soft); border: 1px solid var(--line); border-radius: 999px; padding: 9px 17px; transition: all .2s ease; white-space: nowrap; }
+.fchip:hover { border-color: var(--ink-faint); color: var(--ink); }
+.fchip.on { background: var(--char); color: #fff; border-color: var(--char); }
+.fchip.gold.on { background: var(--gold-grad); color: #241B07; border-color: transparent; }
+
+/* ── MAIN 3-COLUMN ──────────────────────────────────────────────── */
+.ex-grid { display: grid; grid-template-columns: 232px minmax(0,1fr) 300px; gap: clamp(24px,3vw,44px); align-items: start; padding: clamp(32px,4vw,52px) 0 clamp(56px,7vw,88px); }
+
+/* left — Notion-like tree */
+.sidebar { position: sticky; top: 96px; }
+.sidebar .sk { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 14px; }
+.tree { display: grid; gap: 2px; }
+.tree-group > .tg-head { display: flex; align-items: center; gap: 9px; width: 100%; text-align: left; padding: 9px 10px; border-radius: 9px; font-size: 14px; font-weight: 600; letter-spacing: -0.01em; color: var(--ink); transition: background .18s ease; }
+.tree-group > .tg-head:hover { background: var(--paper-2); }
+.tree-group > .tg-head .tw { font-family: var(--font-serif); font-style: italic; color: var(--gold-deep); width: 18px; text-align: center; }
+.tree-group > .tg-head .cv { margin-left: auto; font-family: var(--font-mono); font-size: 12px; color: var(--ink-faint); transition: transform .2s ease; }
+.tree-group.open > .tg-head .cv { transform: rotate(90deg); }
+.tree-children { display: none; padding: 2px 0 6px 28px; }
+.tree-group.open .tree-children { display: grid; gap: 1px; }
+.tree-children a { font-size: 13px; color: var(--ink-mute); padding: 7px 10px; border-radius: 7px; transition: color .18s ease, background .18s ease; }
+.tree-children a:hover { color: var(--sapphire-deep); background: var(--sapphire-soft); }
+
+/* center — collections */
+.col-head2 { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 22px; gap: 16px; }
+.col-head2 h2 { font-family: var(--font-sans); font-weight: 700; font-size: clamp(22px,2.6vw,30px); letter-spacing: -0.025em; margin: 0; }
+.col-head2 .ct { font-family: var(--font-mono); font-size: 12px; color: var(--ink-mute); }
+.collections { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.collection { position: relative; border: 1px solid var(--line); border-radius: 20px; overflow: hidden; min-height: 318px; display: flex; flex-direction: column; background: #fff; transition: transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s ease, border-color .4s ease; cursor: pointer; }
+.collection:hover { transform: translateY(-6px); box-shadow: 0 40px 80px -48px rgba(26,26,23,0.5); border-color: var(--ink-faint); }
+.collection .cbg { position: absolute; inset: 0; opacity: 0.9; }
+.collection .cbg .grad { position: absolute; inset: 0; }
+.collection.c-models .grad { background: radial-gradient(120% 90% at 85% 0%, rgba(42,91,215,0.14), transparent 55%), linear-gradient(170deg, #fff, var(--paper-warm)); }
+.collection.c-business .grad { background: radial-gradient(120% 90% at 85% 0%, rgba(176,140,74,0.16), transparent 55%), linear-gradient(170deg, #fff, var(--paper-2)); }
+.collection.c-learn .grad { background: radial-gradient(120% 90% at 85% 0%, rgba(92,126,99,0.14), transparent 55%), linear-gradient(170deg, #fff, var(--paper-warm)); }
+.collection.c-tools .grad { background: radial-gradient(120% 90% at 85% 0%, rgba(151,118,58,0.14), transparent 55%), linear-gradient(170deg, #fff, var(--paper-2)); }
+.collection.c-agents .grad { background: radial-gradient(120% 90% at 85% 0%, rgba(42,91,215,0.14), transparent 55%), linear-gradient(170deg, var(--char), var(--char-2)); }
+.collection.c-market .grad { background: radial-gradient(120% 90% at 85% 0%, rgba(220,192,137,0.18), transparent 55%), linear-gradient(170deg, #fff, var(--paper-warm)); }
+/* decorative line motif */
+.collection .motif { position: absolute; inset: 0; opacity: 0.5; transition: opacity .4s ease, transform 1.2s ease; }
+.collection:hover .motif { opacity: 0.9; transform: scale(1.05); }
+/* soft embedded editorial image — atmosphere in the upper half, dissolves into the card */
+.collection .photo { position: absolute; top: 0; left: 0; right: 0; height: 182px; z-index: 1; overflow: hidden; }
+.collection .photo image-slot { width: 100%; height: 100%; display: block;
+  -webkit-mask-image: linear-gradient(180deg, #000 42%, transparent 100%);
+          mask-image: linear-gradient(180deg, #000 42%, transparent 100%); }
+.collection .photo image-slot[data-filled] { filter: grayscale(1) sepia(.45) brightness(1.06) contrast(.86); opacity: .30; transition: opacity .4s ease; }
+.collection:hover .photo image-slot[data-filled] { opacity: .42; }
+.collection.c-agents .photo image-slot[data-filled] { filter: grayscale(1) sepia(.3) brightness(.82) contrast(1.02); opacity: .42; }
+.collection.c-agents:hover .photo image-slot[data-filled] { opacity: .56; }
+.collection .inner { position: relative; z-index: 2; padding: 112px 26px 26px; display: flex; flex-direction: column; flex: 1; }
+.collection.c-agents .inner { color: #fff; }
+.collection .cglyph { position: absolute; top: 24px; left: 26px; z-index: 3; width: 50px; height: 50px; border-radius: 14px; background: rgba(255,255,255,0.7); border: 1px solid var(--line); display: grid; place-items: center; font-family: var(--font-serif); font-style: italic; font-size: 24px; color: var(--gold-deep); backdrop-filter: blur(6px); }
+.collection.c-agents .cglyph { background: rgba(255,255,255,0.08); border-color: var(--line-dark); color: var(--gold-light); }
+.collection h3 { font-family: var(--font-sans); font-weight: 700; font-size: 24px; letter-spacing: -0.025em; margin: 0 0 12px; }
+.collection .inside { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 18px; transition: opacity .3s ease; }
+.collection .inside span { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.02em; color: var(--ink-soft); background: rgba(255,255,255,0.6); border: 1px solid var(--line); border-radius: 999px; padding: 4px 11px; }
+.collection.c-agents .inside span { color: var(--on-dark-soft); background: rgba(255,255,255,0.07); border-color: var(--line-dark); }
+.collection .cstats { margin-top: auto; display: flex; gap: 16px; font-family: var(--font-mono); font-size: 11.5px; color: var(--ink-mute); letter-spacing: 0.02em; padding-top: 14px; border-top: 1px solid var(--line); }
+.collection.c-agents .cstats { color: var(--on-dark-mute); border-color: var(--line-dark); }
+.collection .cstats b { color: var(--ink); font-weight: 600; }
+.collection.c-agents .cstats b { color: #fff; }
+/* hover preview */
+.collection .preview { position: absolute; left: 0; right: 0; bottom: 0; z-index: 3; background: linear-gradient(180deg, transparent, rgba(26,26,23,0.96) 38%); padding: 50px 26px 24px; transform: translateY(101%); transition: transform .42s cubic-bezier(.2,.7,.2,1); }
+.collection:hover .preview { transform: translateY(0); }
+.collection .preview .pk { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 12px; }
+.collection .preview .prow { display: flex; align-items: center; gap: 10px; padding: 7px 0; }
+.collection .preview .prow .tag { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; color: #241B07; background: var(--gold-light); border-radius: 999px; padding: 3px 8px; flex: none; }
+.collection .preview .prow .tag.blue { background: var(--sapphire); color: #fff; }
+.collection .preview .prow .pn { font-size: 13.5px; font-weight: 600; color: #fff; }
+.collection .preview .pgo { margin-top: 12px; font-size: 13px; font-weight: 600; color: var(--gold-light); display: inline-flex; gap: 7px; align-items: center; }
+
+/* right rail */
+.rail { position: sticky; top: 96px; display: grid; gap: 16px; }
+.rail-card { border: 1px solid var(--line); border-radius: 16px; background: #fff; overflow: hidden; }
+.rail-card .rh { padding: 15px 18px 13px; border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 9px; }
+.rail-card .rh .rk { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-mute); }
+.rail-card .rh .rk b { color: var(--gold-deep); }
+.rail-item { display: block; padding: 14px 18px; border-top: 1px solid var(--line-soft); transition: background .18s ease; }
+.rail-item:first-of-type { border-top: none; }
+.rail-item:hover { background: var(--paper-warm); }
+.rail-item .ri-k { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sapphire-deep); margin-bottom: 5px; }
+.rail-item .ri-t { font-size: 14px; font-weight: 600; letter-spacing: -0.012em; line-height: 1.3; }
+.rail-item .ri-m { font-family: var(--font-mono); font-size: 11px; color: var(--ink-mute); margin-top: 6px; display: flex; align-items: center; gap: 8px; }
+.rail-item .ri-prog { height: 4px; border-radius: 99px; background: var(--paper-2); overflow: hidden; margin-top: 9px; }
+.rail-item .ri-prog i { display: block; height: 100%; background: var(--gold-grad); border-radius: 99px; }
+
+/* connected knowledge floating */
+.connected { border: 1px solid var(--line); border-radius: 16px; padding: 18px; background: var(--paper-warm); }
+.connected .ck2 { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 14px; }
+.connected .nodes { display: flex; flex-wrap: wrap; gap: 8px; }
+.connected .nodes a { font-size: 12.5px; font-weight: 500; color: var(--ink-soft); border: 1px solid var(--line); border-radius: 999px; padding: 7px 13px; background: #fff; transition: all .2s ease; }
+.connected .nodes a:hover { border-color: var(--sapphire); color: var(--sapphire-deep); background: var(--sapphire-soft); }
+
+/* ── KNOWLEDGE UNIVERSE OVERLAY ─────────────────────────────────── */
+.universe { position: fixed; inset: 0; z-index: 200; background: #0E0E0C; opacity: 0; visibility: hidden; transition: opacity .5s ease, visibility .5s; }
+.universe.open { opacity: 1; visibility: visible; }
+.universe canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.universe .u-top { position: absolute; top: 0; left: 0; right: 0; z-index: 3; display: flex; align-items: center; justify-content: space-between; padding: 22px clamp(20px,4vw,44px); pointer-events: none; }
+.universe .u-top > * { pointer-events: auto; }
+.universe .u-title { color: #fff; }
+.universe .u-title .uk { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); }
+.universe .u-title h2 { font-family: var(--font-sans); font-weight: 700; font-size: clamp(22px,3vw,32px); letter-spacing: -0.03em; margin: 6px 0 0; color: #fff; }
+.universe .u-close { width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); color: #fff; display: grid; place-items: center; font-size: 18px; transition: border-color .2s ease, background .2s ease; }
+.universe .u-close:hover { border-color: #fff; background: rgba(255,255,255,0.06); }
+.universe .u-hint { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: 3; font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.06em; color: rgba(255,255,255,0.5); text-align: center; }
+.universe .u-hint b { color: var(--gold-light); }
+/* node info card */
+.u-info { position: absolute; z-index: 4; min-width: 240px; max-width: 280px; background: rgba(20,20,16,0.92); backdrop-filter: blur(14px); border: 1px solid rgba(220,192,137,0.4); border-radius: 16px; padding: 20px; opacity: 0; transform: scale(0.96); transition: opacity .25s ease, transform .25s ease; pointer-events: none; }
+.u-info.show { opacity: 1; transform: scale(1); pointer-events: auto; }
+.u-info .uc { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 8px; }
+.u-info h3 { font-family: var(--font-sans); font-weight: 700; font-size: 21px; letter-spacing: -0.02em; color: #fff; margin: 0 0 8px; }
+.u-info p { font-size: 13px; line-height: 1.5; color: rgba(255,255,255,0.6); margin: 0 0 16px; }
+.u-info .ulinks { display: flex; flex-wrap: wrap; gap: 7px; }
+.u-info .ulinks a { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; color: #fff; border: 1px solid rgba(255,255,255,0.2); border-radius: 999px; padding: 6px 12px; transition: all .2s ease; }
+.u-info .ulinks a:hover { border-color: var(--gold-light); color: var(--gold-light); }
+
+.sec-head2 { margin-bottom: clamp(28px,3.5vw,40px); }
+.sec-head2 .kicker { margin-bottom: 16px; }
+
+@media (max-width: 1080px) {
+  .ex-grid { grid-template-columns: minmax(0,1fr) 280px; }
+  .sidebar { display: none; }
+}
+@media (max-width: 860px) {
+  .ex-grid { grid-template-columns: 1fr; }
+  .rail { position: static; order: 3; }
+  .collections { grid-template-columns: 1fr; }
+  .collection .preview { transform: translateY(0); position: relative; background: var(--char); border-radius: 0 0 20px 20px; padding: 22px 26px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ticker -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-label">Today's Intelligence</div>
+  <div class="ticker-track">
+    <span><span class="tk">EXPLORE</span> 2,400 articles across 6 collections</span><span class="dot"></span>
+    <span><span class="tk">MODELS</span> Frontier context windows cross 10M tokens</span><span class="dot"></span>
+    <span><span class="tk">UNIVERSE</span> Every page connected in one knowledge graph</span><span class="dot"></span>
+    <span><span class="tk">ENTERPRISE</span> AI adoption in F500 <span class="up">&nbsp;+38% YoY</span></span><span class="dot"></span>
+    <span><span class="tk">EXPLORE</span> 2,400 articles across 6 collections</span><span class="dot"></span>
+    <span><span class="tk">MODELS</span> Frontier context windows cross 10M tokens</span><span class="dot"></span>
+    <span><span class="tk">UNIVERSE</span> Every page connected in one knowledge graph</span><span class="dot"></span>
+    <span><span class="tk">ENTERPRISE</span> AI adoption in F500 <span class="up">&nbsp;+38% YoY</span></span><span class="dot"></span>
+  </div>
+</div>
+
+<!-- nav -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html" class="active">Explore</a>
+      <a href="AGNUS - Marketplace.html">Marketplace</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+      <a href="AGNUS - Business.html">Business</a>
+      </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+      <button class="hamburger" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="m-drawer">
+    <a href="AGNUS - Explore.html">Explore</a>
+    <a href="AGNUS - Marketplace.html">Marketplace</a>
+    <a href="AGNUS - Intelligence.html">Intelligence</a>
+    <a href="AGNUS - Review.html">Reviews</a>
+    <a href="AGNUS - Compare.html">Compare</a>
+    <a href="AGNUS - Agents.html">Agents</a>
+    <a href="AGNUS - Academy.html">Academy</a>
+    <a href="AGNUS - Business.html">Business</a>
+    <a href="AGNUS - Home.html#premium" style="color: var(--gold-deep);">Premium Membership</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="ex-hero">
+  <div class="container">
+    <div class="kicker"><span class="ix">◆</span> Explore</div>
+    <h1>Explore <em>Intelligence.</em></h1>
+    <p class="lede">Discover the world's knowledge about artificial intelligence, organized into connected learning paths.</p>
+
+    <div class="ex-search">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="6"/><path d="M14 14l4.5 4.5" stroke-linecap="round"/></svg>
+      <div class="field">
+        <input type="text" id="exSearch" placeholder=" " aria-label="What do you want to understand today?" />
+        <div class="rotor" id="rotor"><span>What do you want to understand today?</span></div>
+      </div>
+      <button class="btn btn-dark">Explore <span class="arr">→</span></button>
+    </div>
+    <div class="kbd-hint">Press <kbd>/</kbd> to search anywhere · or travel the map below</div>
+
+    <div class="universe-cta">
+      <button class="universe-btn" onclick="openUniverse()"><span class="orb"></span> Enter the <span class="gold-text">Knowledge Universe</span></button>
+    </div>
+  </div>
+</header>
+
+<!-- FILTER CHIPS -->
+<div class="filterstrip">
+  <div class="container filterstrip-inner" id="filters">
+    <button class="fchip on" data-k="all">All</button>
+    <button class="fchip" data-k="beginner">Beginner</button>
+    <button class="fchip" data-k="professional">Professional</button>
+    <button class="fchip" data-k="business">Business</button>
+    <button class="fchip" data-k="developer">Developer</button>
+    <button class="fchip" data-k="enterprise">Enterprise</button>
+    <button class="fchip" data-k="free">Free</button>
+    <button class="fchip gold" data-k="premium">Premium</button>
+    <button class="fchip" data-k="latest">Latest</button>
+    <button class="fchip" data-k="trending">Trending</button>
+    <button class="fchip" data-k="mostread">Most Read</button>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="container ex-grid">
+
+  <!-- LEFT SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sk">Collections</div>
+    <div class="tree" id="tree">
+      <div class="tree-group open">
+        <button class="tg-head" onclick="this.parentElement.classList.toggle('open')"><span class="tw">❖</span> AI Models <span class="cv">›</span></button>
+        <div class="tree-children">
+          <a href="AGNUS - Review.html">OpenAI</a><a href="AGNUS - Review.html">Claude</a><a href="AGNUS - Review.html">Gemini</a><a href="AGNUS - Review.html">Llama</a><a href="AGNUS - Review.html">Mistral</a>
+        </div>
+      </div>
+      <div class="tree-group">
+        <button class="tg-head" onclick="this.parentElement.classList.toggle('open')"><span class="tw">⟁</span> AI Agents <span class="cv">›</span></button>
+        <div class="tree-children">
+          <a href="AGNUS - Agents.html">Customer Support</a><a href="AGNUS - Agents.html">Sales</a><a href="AGNUS - Agents.html">Finance</a><a href="AGNUS - Agents.html">Legal</a><a href="AGNUS - Agents.html">Marketing</a>
+        </div>
+      </div>
+      <div class="tree-group">
+        <button class="tg-head" onclick="this.parentElement.classList.toggle('open')"><span class="tw">⬡</span> Business <span class="cv">›</span></button>
+        <div class="tree-children">
+          <a href="AGNUS - Business.html">Healthcare</a><a href="AGNUS - Business.html">Construction</a><a href="AGNUS - Business.html">Finance</a><a href="AGNUS - Business.html">Law</a><a href="AGNUS - Business.html">Education</a>
+        </div>
+      </div>
+      <div class="tree-group">
+        <button class="tg-head" onclick="this.parentElement.classList.toggle('open')"><span class="tw">◎</span> Learn <span class="cv">›</span></button>
+        <div class="tree-children">
+          <a href="AGNUS - Academy.html">Beginner</a><a href="AGNUS - Academy.html">Professional</a><a href="AGNUS - Academy.html">Developer</a><a href="AGNUS - Academy.html">Executive</a>
+        </div>
+      </div>
+      <div class="tree-group">
+        <button class="tg-head" onclick="this.parentElement.classList.toggle('open')"><span class="tw">✎</span> Tools <span class="cv">›</span></button>
+        <div class="tree-children">
+          <a href="AGNUS - Tools.html">Writing</a><a href="AGNUS - Tools.html">Coding</a><a href="AGNUS - Tools.html">Voice</a><a href="AGNUS - Tools.html">Research</a>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- CENTER · COLLECTIONS -->
+  <main>
+    <div class="col-head2">
+      <h2>Where do you want to explore today?</h2>
+      <span class="ct" id="colCount">6 collections</span>
+    </div>
+    <div class="collections" id="collections">
+
+      <div class="collection c-models" data-k="all developer professional" onclick="location.href='AGNUS - Review.html'">
+        <div class="cbg"><div class="grad"></div></div>
+        <div class="photo" onclick="event.stopPropagation()"><image-slot id="ex-models" shape="rect" placeholder="AI Models · abstract neural constellation or crystal lattice. Editorial, duotone — auto-blends."></image-slot></div>
+        <div class="inner">
+          <div class="cglyph">❖</div>
+          <h3>AI Models</h3>
+          <div class="inside"><span>OpenAI</span><span>Claude</span><span>Gemini</span><span>Llama</span><span>Mistral</span><span>Grok</span></div>
+          <div class="cstats"><span><b>120</b> articles</span><span><b>42</b> reviews</span><span><b>18</b> comparisons</span></div>
+        </div>
+        <div class="preview">
+          <div class="pk">Inside right now</div>
+          <div class="prow"><span class="tag">New</span><span class="pn">GPT-X released</span></div>
+          <div class="prow"><span class="tag blue">Trending</span><span class="pn">ChatGPT vs Claude</span></div>
+          <div class="prow"><span class="tag">Top rated</span><span class="pn">Claude 9.6/10</span></div>
+          <span class="pgo">Open collection →</span>
+        </div>
+      </div>
+
+      <div class="collection c-business" data-k="all business enterprise" onclick="location.href='AGNUS - Business.html'">
+        <div class="cbg"><div class="grad"></div></div>
+        <div class="photo" onclick="event.stopPropagation()"><image-slot id="ex-business" shape="rect" placeholder="Business · glass boardroom or modern city architecture. Calm, editorial — auto-blends."></image-slot></div>
+        <div class="inner">
+          <div class="cglyph">⬡</div>
+          <h3>Business</h3>
+          <div class="inside"><span>Healthcare</span><span>Construction</span><span>Finance</span><span>Law</span><span>Education</span><span>Retail</span></div>
+          <div class="cstats"><span><b>19</b> industries</span><span><b>240</b> case studies</span></div>
+        </div>
+        <div class="preview">
+          <div class="pk">Inside right now</div>
+          <div class="prow"><span class="tag blue">Trending</span><span class="pn">AI for Legal teams</span></div>
+          <div class="prow"><span class="tag">Popular</span><span class="pn">The AGNUS Framework</span></div>
+          <div class="prow"><span class="tag">New</span><span class="pn">Enterprise rollout guide</span></div>
+          <span class="pgo">Open collection →</span>
+        </div>
+      </div>
+
+      <div class="collection c-learn" data-k="all beginner professional developer enterprise" onclick="location.href='AGNUS - Academy.html'">
+        <div class="cbg"><div class="grad"></div></div>
+        <div class="photo" onclick="event.stopPropagation()"><image-slot id="ex-learn" shape="rect" placeholder="Learn · luminous library staircase or modern academy hall. Editorial — auto-blends."></image-slot></div>
+        <div class="inner">
+          <div class="cglyph">◎</div>
+          <h3>Learn</h3>
+          <div class="inside"><span>Beginner</span><span>Intermediate</span><span>Professional</span><span>Enterprise</span><span>Developer</span><span>Executive</span></div>
+          <div class="cstats"><span><b>6</b> paths</span><span><b>38k</b> certified</span></div>
+        </div>
+        <div class="preview">
+          <div class="pk">Inside right now</div>
+          <div class="prow"><span class="tag">New</span><span class="pn">AI Agents path</span></div>
+          <div class="prow"><span class="tag blue">Popular</span><span class="pn">Prompt Engineering</span></div>
+          <div class="prow"><span class="tag">Start</span><span class="pn">What do you want to become?</span></div>
+          <span class="pgo">Open the Academy →</span>
+        </div>
+      </div>
+
+      <div class="collection c-tools" data-k="all free developer" onclick="location.href='AGNUS - Tools.html'">
+        <div class="cbg"><div class="grad"></div></div>
+        <div class="photo" onclick="event.stopPropagation()"><image-slot id="ex-tools" shape="rect" placeholder="AI Tools · refined digital workstation / layered interface. Editorial — auto-blends."></image-slot></div>
+        <div class="inner">
+          <div class="cglyph">✎</div>
+          <h3>AI Tools</h3>
+          <div class="inside"><span>Writing</span><span>Video</span><span>Design</span><span>Coding</span><span>Automation</span><span>Voice</span><span>Research</span></div>
+          <div class="cstats"><span><b>64</b> free tools</span><span><b>20k</b> reviewed</span></div>
+        </div>
+        <div class="preview">
+          <div class="pk">Inside right now</div>
+          <div class="prow"><span class="tag">Free</span><span class="pn">AI Cost Calculator</span></div>
+          <div class="prow"><span class="tag blue">Popular</span><span class="pn">Prompt Optimizer</span></div>
+          <div class="prow"><span class="tag">New</span><span class="pn">AI Readiness Score</span></div>
+          <span class="pgo">Open the toolbox →</span>
+        </div>
+      </div>
+
+      <div class="collection c-agents" data-k="all professional enterprise developer" onclick="location.href='AGNUS - Agents.html'">
+        <div class="cbg"><div class="grad"></div></div>
+        <div class="photo" onclick="event.stopPropagation()"><image-slot id="ex-agents" shape="rect" placeholder="AI Agents · autonomous command center / quiet operations desk. Cinematic — auto-blends."></image-slot></div>
+        <div class="inner">
+          <div class="cglyph">⟁</div>
+          <h3>AI Agents</h3>
+          <div class="inside"><span>Support</span><span>Sales</span><span>HR</span><span>Legal</span><span>Finance</span><span>Marketing</span><span>Assistant</span></div>
+          <div class="cstats"><span><b>1,240</b> agents</span><span><b>8</b> categories</span></div>
+        </div>
+        <div class="preview">
+          <div class="pk">Inside right now</div>
+          <div class="prow"><span class="tag">Top rated</span><span class="pn">Customer Support Agent</span></div>
+          <div class="prow"><span class="tag blue">New</span><span class="pn">OpenAI Research Agent</span></div>
+          <div class="prow"><span class="tag">Popular</span><span class="pn">Sales Automation</span></div>
+          <span class="pgo">Open the marketplace →</span>
+        </div>
+      </div>
+
+      <div class="collection c-market" data-k="all business trending latest" onclick="location.href='AGNUS - Intelligence.html'">
+        <div class="cbg"><div class="grad"></div></div>
+        <div class="photo" onclick="event.stopPropagation()"><image-slot id="ex-market" shape="rect" placeholder="Market Intelligence · editorial newsroom / data wall. Cinematic, calm — auto-blends."></image-slot></div>
+        <div class="inner">
+          <div class="cglyph">▲</div>
+          <h3>Market Intelligence</h3>
+          <div class="inside"><span>Funding</span><span>Startups</span><span>Acquisitions</span><span>Launches</span><span>Investments</span></div>
+          <div class="cstats"><span><b>Daily</b> briefs</span><span><b>Weekly</b> edition</span></div>
+        </div>
+        <div class="preview">
+          <div class="pk">Inside right now</div>
+          <div class="prow"><span class="tag blue">Critical</span><span class="pn">GPT-X launch impact</span></div>
+          <div class="prow"><span class="tag">Trending</span><span class="pn">Anthropic raises Series F</span></div>
+          <div class="prow"><span class="tag">New</span><span class="pn">This Week in AI</span></div>
+          <span class="pgo">Open the Journal →</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- connected knowledge -->
+    <div class="connected" style="margin-top:24px;">
+      <div class="ck2">◆ Connected knowledge · follow the thread</div>
+      <div class="nodes">
+        <a href="AGNUS - Article.html">RAG</a>
+        <a href="AGNUS - Article.html">Vector Databases</a>
+        <a href="AGNUS - Article.html">Memory Systems</a>
+        <a href="AGNUS - Review.html">Claude</a>
+        <a href="AGNUS - Prompts.html">Prompt Engineering</a>
+        <a href="AGNUS - Business.html">Enterprise AI</a>
+        <a href="AGNUS - Compare.html">Cursor</a>
+        <a href="AGNUS - Agents.html">Voice AI</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- RIGHT RAIL -->
+  <aside class="rail">
+    <div class="rail-card">
+      <div class="rh"><span class="rk"><b>↻</b> &nbsp;Continue reading</span></div>
+      <a href="AGNUS - Article.html" class="rail-item">
+        <div class="ri-k">You left this yesterday</div>
+        <div class="ri-t">GPT-X is here — and it redraws the map</div>
+        <div class="ri-prog"><i style="width:32%"></i></div>
+        <div class="ri-m">32% · 5 min left</div>
+      </a>
+    </div>
+    <div class="rail-card">
+      <div class="rh"><span class="rk">Recommended · because you studied <b>AI Agents</b></span></div>
+      <a href="AGNUS - Agents.html" class="rail-item"><div class="ri-k">Marketplace</div><div class="ri-t">The 6 agents worth hiring now</div></a>
+      <a href="AGNUS - Compare.html" class="rail-item"><div class="ri-k">Compare</div><div class="ri-t">Devin vs Operator</div></a>
+    </div>
+    <div class="rail-card">
+      <div class="rh"><span class="rk">Trending · among <b>business owners</b></span></div>
+      <a href="AGNUS - Business.html" class="rail-item"><div class="ri-k">Guide</div><div class="ri-t">Implement GPT-X in your company</div></a>
+      <a href="AGNUS - Awards.html" class="rail-item"><div class="ri-k">Awards</div><div class="ri-t">Best AI of 2026</div></a>
+    </div>
+    <div class="rail-card">
+      <div class="rh"><span class="rk"><b>♥</b> &nbsp;Saved · your collection</span></div>
+      <a href="AGNUS - Review.html" class="rail-item"><div class="ri-k">Review</div><div class="ri-t">Claude · 9.6/10</div></a>
+    </div>
+  </aside>
+</div>
+
+<!-- KNOWLEDGE UNIVERSE OVERLAY -->
+<div class="universe" id="universe">
+  <canvas id="uCanvas"></canvas>
+  <div class="u-top">
+    <div class="u-title">
+      <div class="uk">◆ The Knowledge Universe</div>
+      <h2 id="uTitle">Everything, connected.</h2>
+    </div>
+    <button class="u-close" onclick="closeUniverse()" aria-label="Close">✕</button>
+  </div>
+  <div class="u-info" id="uInfo">
+    <div class="uc" id="uiCat">Cluster</div>
+    <h3 id="uiName">Node</h3>
+    <p id="uiDesc"></p>
+    <div class="ulinks" id="uiLinks"></div>
+  </div>
+  <div class="u-hint">Drag to travel · <b>click a star</b> to dive in · scroll to zoom</div>
+</div>
+
+<!-- footer -->
+<footer>
+  <div class="container">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+        <p>Intelligence for the future of work. The trusted source for what's happening, which tools matter, and where AI is heading.</p>
+        <form class="fsearch" onsubmit="return false;"><input type="email" placeholder="Your email for the daily brief" aria-label="Email" /><button type="submit">Subscribe</button></form>
+      </div>
+      <div class="foot-col"><h5>Discover</h5><ul>
+        <li><a href="AGNUS - Explore.html">Explore</a></li>
+        <li><a href="AGNUS - Review.html">AI Reviews</a></li>
+        <li><a href="AGNUS - Compare.html">AI Comparisons</a></li>
+        <li><a href="AGNUS - Intelligence.html">Intelligence Journal</a></li>
+        <li><a href="AGNUS - Tools.html">Free AI Tools</a></li>
+      </ul></div>
+      <div class="foot-col"><h5>Learn &amp; Build</h5><ul>
+        <li><a href="AGNUS - Academy.html">AI Academy</a></li>
+        <li><a href="AGNUS - Prompts.html">Prompt Library</a></li>
+        <li><a href="AGNUS - Agents.html">AI Agents</a></li>
+        <li><a href="AGNUS - Business.html">AI for Business</a></li>
+        <li><a href="AGNUS - Home.html#premium"><span class="gd">Premium Membership</span></a></li>
+      </ul></div>
+      <div class="foot-col"><h5>Company</h5><ul>
+        <li><a href="#">About AGNUS</a></li>
+        <li><a href="#">Our methodology</a></li>
+        <li><a href="AGNUS - Awards.html">The AGNUS Awards</a></li>
+        <li><a href="#">Editorial standards</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="AGNUS - Dashboard.html" class="gd">Editorial Dashboard ↗</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 AGNUS · Truth before hype.</span><div class="fb-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Editorial Policy</a><a href="#">Advertise</a></div></div>
+  </div>
+</footer>
+
+<script src="image-slot.js"></script>
+<script>
+/* rotating search placeholder */
+(function(){
+  const examples = ['AI Agents','Marketing Automation','Cursor AI','Voice AI','Healthcare AI','Prompt Engineering','RAG frameworks','Enterprise rollout'];
+  const rotor = document.getElementById('rotor');
+  let i = 0;
+  function tick(){
+    rotor.innerHTML = 'Try <span class="word">'+examples[i]+'</span>';
+    i = (i+1) % examples.length;
+  }
+  tick(); setInterval(tick, 2200);
+  const input = document.getElementById('exSearch');
+  input.addEventListener('focus', ()=>{ rotor.style.opacity='0'; });
+  input.addEventListener('blur', ()=>{ if(!input.value) rotor.style.opacity=''; });
+})();
+
+/* filter chips → filter collections */
+(function(){
+  const filters = document.getElementById('filters');
+  const cols = Array.from(document.querySelectorAll('#collections .collection'));
+  const count = document.getElementById('colCount');
+  filters.addEventListener('click', e=>{
+    const c = e.target.closest('.fchip'); if(!c) return;
+    filters.querySelectorAll('.fchip').forEach(x=>x.classList.toggle('on', x===c));
+    const k = c.dataset.k; let n=0;
+    cols.forEach(col=>{ const show = k==='all' || (col.dataset.k||'').split(' ').includes(k); col.style.display = show?'':'none'; if(show)n++; });
+    count.textContent = n + (n===1?' collection':' collections');
+  });
+})();
+
+/* search shortcut */
+document.addEventListener('keydown', e=>{
+  if(e.key==='/' && !/input|textarea/i.test(document.activeElement.tagName)){ e.preventDefault(); document.getElementById('exSearch').focus(); window.scrollTo({top:0,behavior:'smooth'}); }
+  if(e.key==='Escape') closeUniverse();
+});
+
+/* ============================================================== */
+/* KNOWLEDGE UNIVERSE — interactive constellation                 */
+/* ============================================================== */
+const UNI = {
+  clusters: {
+    models:   { label:'AI Models',   color:'#5B8DEF' },
+    agents:   { label:'AI Agents',   color:'#DCC089' },
+    business: { label:'Business',    color:'#7FB48A' },
+    tools:    { label:'AI Tools',    color:'#C9A86A' },
+    learn:    { label:'Learn',       color:'#B79BE0' },
+    market:   { label:'Market',      color:'#E0A87F' }
+  },
+  nodes: [
+    // models
+    {n:'OpenAI', c:'models', big:1, d:'The lab behind GPT-X and ChatGPT.', links:[['Review','AGNUS - Review.html'],['Compare','AGNUS - Compare.html']]},
+    {n:'Claude', c:'models', big:1, d:'The reasoning & writing specialist.', links:[['Review','AGNUS - Review.html'],['Compare','AGNUS - Compare.html']]},
+    {n:'Gemini', c:'models', d:'Google\'s multimodal frontier model.', links:[['Compare','AGNUS - Compare.html']]},
+    {n:'Llama', c:'models', d:'The open-weight standard-bearer.', links:[['Review','AGNUS - Review.html']]},
+    {n:'Mistral', c:'models', d:'Efficient open models from Europe.', links:[['Review','AGNUS - Review.html']]},
+    {n:'GPT-X', c:'models', big:1, d:'Native agents, 10M context, flat price.', links:[['Read','AGNUS - Article.html']]},
+    // agents
+    {n:'Support Agent', c:'agents', big:1, d:'Resolves tier-1 tickets end to end.', links:[['Marketplace','AGNUS - Agents.html']]},
+    {n:'Coding Agent', c:'agents', d:'Ships real PRs across codebases.', links:[['Marketplace','AGNUS - Agents.html']]},
+    {n:'Research Agent', c:'agents', d:'Synthesizes sources autonomously.', links:[['Marketplace','AGNUS - Agents.html']]},
+    {n:'Sales Agent', c:'agents', d:'Qualifies and follows up leads.', links:[['Marketplace','AGNUS - Agents.html']]},
+    // business
+    {n:'Enterprise AI', c:'business', big:1, d:'From pilot to production, responsibly.', links:[['Guide','AGNUS - Business.html']]},
+    {n:'Healthcare', c:'business', d:'Documentation, intake, triage.', links:[['Hub','AGNUS - Business.html']]},
+    {n:'Legal', c:'business', d:'Contract review and research.', links:[['Hub','AGNUS - Business.html']]},
+    {n:'Finance', c:'business', d:'Analysis, reporting, risk.', links:[['Hub','AGNUS - Business.html']]},
+    // tools
+    {n:'Prompt Engineering', c:'tools', big:1, d:'The skill that unlocks everything.', links:[['Library','AGNUS - Prompts.html'],['Lesson','AGNUS - Academy App.html']]},
+    {n:'RAG', c:'tools', d:'Retrieval-augmented generation.', links:[['Read','AGNUS - Article.html']]},
+    {n:'Vector DBs', c:'tools', d:'The memory layer for AI.', links:[['Read','AGNUS - Article.html']]},
+    {n:'Automation', c:'tools', d:'Put AI to work on repetitive tasks.', links:[['Tools','AGNUS - Tools.html']]},
+    {n:'Voice AI', c:'tools', d:'Natural speech in and out.', links:[['Tools','AGNUS - Tools.html']]},
+    // learn
+    {n:'Academy', c:'learn', big:1, d:'Become an AI professional.', links:[['Start','AGNUS - Academy App.html']]},
+    {n:'Beginner Path', c:'learn', d:'From zero to confident.', links:[['Path','AGNUS - Academy.html']]},
+    {n:'Developer Path', c:'learn', d:'APIs, RAG, evals, production.', links:[['Path','AGNUS - Academy.html']]},
+    // market
+    {n:'Funding', c:'market', d:'Who raised, who\'s scaling.', links:[['Journal','AGNUS - Intelligence.html']]},
+    {n:'Launches', c:'market', big:1, d:'Every major product drop, decoded.', links:[['Journal','AGNUS - Intelligence.html']]},
+    {n:'Awards 2026', c:'market', d:'The best AI of the year.', links:[['Awards','AGNUS - Awards.html']]}
+  ],
+  // cross-cluster threads (by node name)
+  links: [['GPT-X','OpenAI'],['GPT-X','Support Agent'],['GPT-X','Enterprise AI'],['Claude','Prompt Engineering'],['Prompt Engineering','Academy'],['RAG','Vector DBs'],['RAG','Enterprise AI'],['Support Agent','Coding Agent'],['Enterprise AI','Legal'],['Enterprise AI','Finance'],['Academy','Developer Path'],['Academy','Beginner Path'],['Launches','GPT-X'],['Launches','Awards 2026'],['Voice AI','Support Agent'],['Automation','Enterprise AI']]
+};
+
+let uCanvas, uCtx, uW, uH, uRAF, uReady=false;
+let view = { x:0, y:0, scale:1, tx:0, ty:0 };
+let drag = null, hoverNode=null, selNode=null;
+
+function layoutUniverse(){
+  const cx = uW/2, cy = uH/2;
+  const clusterKeys = Object.keys(UNI.clusters);
+  const R = Math.min(uW,uH)*0.30;
+  const centers = {};
+  clusterKeys.forEach((k,i)=>{ const a = (i/clusterKeys.length)*Math.PI*2 - Math.PI/2; centers[k] = { x: cx + Math.cos(a)*R, y: cy + Math.sin(a)*R }; });
+  // group nodes per cluster, ring them around cluster center
+  const byC = {}; UNI.nodes.forEach(n=>{ (byC[n.c]=byC[n.c]||[]).push(n); });
+  Object.keys(byC).forEach(k=>{
+    const arr = byC[k]; const cc = centers[k];
+    arr.forEach((n,j)=>{
+      if(n.big && j===0){ n.x = cc.x; n.y = cc.y; }
+      else { const a = (j/arr.length)*Math.PI*2; const rr = 78 + (j%2)*26; n.x = cc.x + Math.cos(a)*rr; n.y = cc.y + Math.sin(a)*rr; }
+      n.bx = n.x; n.by = n.y; n.ph = Math.random()*Math.PI*2; n.r = n.big?7:4;
+    });
+  });
+}
+function nodeByName(nm){ return UNI.nodes.find(n=>n.n===nm); }
+
+function drawUniverse(t){
+  uCtx.clearRect(0,0,uW,uH);
+  uCtx.save();
+  uCtx.translate(view.tx, view.ty); uCtx.scale(view.scale, view.scale);
+  // gentle drift
+  UNI.nodes.forEach(n=>{ n.x = n.bx + Math.sin(t*0.0004 + n.ph)*7; n.y = n.by + Math.cos(t*0.00035 + n.ph)*7; });
+  // intra-cluster faint links
+  const byC = {}; UNI.nodes.forEach(n=>{ (byC[n.c]=byC[n.c]||[]).push(n); });
+  Object.keys(byC).forEach(k=>{ const arr=byC[k]; const hub=arr[0]; uCtx.strokeStyle='rgba(255,255,255,0.05)'; uCtx.lineWidth=0.6/view.scale; arr.forEach(n=>{ if(n===hub)return; uCtx.beginPath(); uCtx.moveTo(hub.x,hub.y); uCtx.lineTo(n.x,n.y); uCtx.stroke(); }); });
+  // cross threads
+  UNI.links.forEach(([a,b])=>{ const na=nodeByName(a), nb=nodeByName(b); if(!na||!nb)return; const hot = selNode&&(na===selNode||nb===selNode); uCtx.strokeStyle = hot?'rgba(220,192,137,0.5)':'rgba(220,192,137,0.12)'; uCtx.lineWidth=(hot?1.4:0.7)/view.scale; uCtx.beginPath(); uCtx.moveTo(na.x,na.y); uCtx.lineTo(nb.x,nb.y); uCtx.stroke(); });
+  // nodes
+  UNI.nodes.forEach(n=>{
+    const col = UNI.clusters[n.c].color;
+    const active = (n===hoverNode||n===selNode);
+    const glow = n.big?22:13;
+    const g = uCtx.createRadialGradient(n.x,n.y,0,n.x,n.y,glow);
+    g.addColorStop(0, col + (active?'cc':'88')); g.addColorStop(1, col+'00');
+    uCtx.fillStyle=g; uCtx.beginPath(); uCtx.arc(n.x,n.y,glow,0,Math.PI*2); uCtx.fill();
+    uCtx.fillStyle = active?'#fff':col; uCtx.beginPath(); uCtx.arc(n.x,n.y,(active?n.r+1.5:n.r),0,Math.PI*2); uCtx.fill();
+    if(n.big || active){
+      uCtx.fillStyle = active?'rgba(255,255,255,0.96)':'rgba(255,255,255,0.62)';
+      uCtx.font = (active?'600 ':'')+(13/Math.max(view.scale,0.7))+'px Manrope, sans-serif';
+      uCtx.textAlign='center';
+      uCtx.fillText(n.n, n.x, n.y - (n.r+9));
+    }
+  });
+  uCtx.restore();
+  uRAF = requestAnimationFrame(drawUniverse);
+}
+
+function screenToWorld(px,py){ return { x:(px-view.tx)/view.scale, y:(py-view.ty)/view.scale }; }
+function pickNode(px,py){ const w=screenToWorld(px,py); let best=null,bd=1e9; UNI.nodes.forEach(n=>{ const dx=n.x-w.x, dy=n.y-w.y, d=dx*dx+dy*dy; const hit=(n.r+10)*(n.r+10); if(d<hit && d<bd){ bd=d; best=n; } }); return best; }
+
+function openUniverse(){
+  const u = document.getElementById('universe'); u.classList.add('open');
+  uCanvas = document.getElementById('uCanvas'); uCtx = uCanvas.getContext('2d');
+  resizeUniverse(); layoutUniverse();
+  view.scale=1; view.tx=0; view.ty=0; selNode=null; document.getElementById('uInfo').classList.remove('show');
+  if(!uReady){ bindUniverse(); uReady=true; }
+  cancelAnimationFrame(uRAF); uRAF = requestAnimationFrame(drawUniverse);
+}
+function closeUniverse(){ const u=document.getElementById('universe'); if(!u.classList.contains('open'))return; u.classList.remove('open'); cancelAnimationFrame(uRAF); }
+function resizeUniverse(){ const dpr=Math.min(window.devicePixelRatio||1,2); uW=window.innerWidth; uH=window.innerHeight; uCanvas.width=uW*dpr; uCanvas.height=uH*dpr; uCanvas.style.width=uW+'px'; uCanvas.style.height=uH+'px'; uCtx.setTransform(dpr,0,0,dpr,0,0); }
+
+function bindUniverse(){
+  window.addEventListener('resize', ()=>{ if(document.getElementById('universe').classList.contains('open')){ resizeUniverse(); layoutUniverse(); } });
+  uCanvas.addEventListener('mousedown', e=>{ drag={x:e.clientX,y:e.clientY,tx:view.tx,ty:view.ty,moved:false}; });
+  window.addEventListener('mousemove', e=>{
+    if(drag){ view.tx=drag.tx+(e.clientX-drag.x); view.ty=drag.ty+(e.clientY-drag.y); if(Math.abs(e.clientX-drag.x)+Math.abs(e.clientY-drag.y)>4) drag.moved=true; }
+    else { const r=uCanvas.getBoundingClientRect(); hoverNode=pickNode(e.clientX-r.left,e.clientY-r.top); uCanvas.style.cursor=hoverNode?'pointer':'grab'; }
+  });
+  window.addEventListener('mouseup', e=>{
+    if(drag && !drag.moved){ const r=uCanvas.getBoundingClientRect(); const n=pickNode(e.clientX-r.left,e.clientY-r.top); if(n) selectNode(n,e.clientX,e.clientY); else hideInfo(); }
+    drag=null;
+  });
+  uCanvas.addEventListener('wheel', e=>{ e.preventDefault(); const f=e.deltaY<0?1.12:0.89; const nx=Math.min(2.6,Math.max(0.55,view.scale*f)); const r=uCanvas.getBoundingClientRect(); const mx=e.clientX-r.left,my=e.clientY-r.top; view.tx=mx-(mx-view.tx)*(nx/view.scale); view.ty=my-(my-view.ty)*(nx/view.scale); view.scale=nx; }, {passive:false});
+  // touch
+  uCanvas.addEventListener('touchstart', e=>{ const t=e.touches[0]; drag={x:t.clientX,y:t.clientY,tx:view.tx,ty:view.ty,moved:false}; }, {passive:true});
+  uCanvas.addEventListener('touchmove', e=>{ if(!drag)return; const t=e.touches[0]; view.tx=drag.tx+(t.clientX-drag.x); view.ty=drag.ty+(t.clientY-drag.y); if(Math.abs(t.clientX-drag.x)+Math.abs(t.clientY-drag.y)>4) drag.moved=true; }, {passive:true});
+  uCanvas.addEventListener('touchend', e=>{ if(drag && !drag.moved){ const r=uCanvas.getBoundingClientRect(); const tt=e.changedTouches[0]; const n=pickNode(tt.clientX-r.left,tt.clientY-r.top); if(n) selectNode(n,tt.clientX,tt.clientY); } drag=null; });
+}
+
+function selectNode(n, px, py){
+  selNode=n;
+  document.getElementById('uTitle').textContent = UNI.clusters[n.c].label;
+  const info=document.getElementById('uInfo');
+  document.getElementById('uiCat').textContent = UNI.clusters[n.c].label;
+  document.getElementById('uiName').textContent = n.n;
+  document.getElementById('uiDesc').textContent = n.d||'';
+  document.getElementById('uiLinks').innerHTML = (n.links||[]).map(l=>'<a href="'+l[1]+'">'+l[0]+' →</a>').join('');
+  // position info near click, clamped
+  const iw=280, ih=200; let x=px+18, y=py-20;
+  if(x+iw>window.innerWidth) x=px-iw-18; if(y+ih>window.innerHeight) y=window.innerHeight-ih-18; if(y<80) y=80;
+  info.style.left=x+'px'; info.style.top=y+'px'; info.classList.add('show');
+  // gentle zoom toward node
+  const target=1.5; view.scale=target; view.tx=window.innerWidth/2 - n.x*target; view.ty=window.innerHeight/2 - n.y*target;
+}
+function hideInfo(){ selNode=null; document.getElementById('uInfo').classList.remove('show'); }
+</script>
+</body>
+</html>

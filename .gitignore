@@ -1,0 +1,5 @@
+.thumbnail
+temp_*.json
+temp_handoffs*.json
+tmp-check.txt
+.claude/

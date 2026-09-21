@@ -1,0 +1,15 @@
+{
+  "run_date": "2026-09-11",
+  "source_checks": [
+    {
+      "source_url": "https://www.cac.gov.cn",
+      "date_checked": "2026-09-11",
+      "status": "no_change",
+      "last_successful_check": "2026-09-11",
+      "observed_version_or_date": "The CAC homepage continues to list the digital-green plan and second-phase AI-application enforcement campaign as the latest monitored AI-policy baselines; no newer material AI-regulatory change was verified.",
+      "open_questions": []
+    }
+  ],
+  "findings": [],
+  "editorial_alerts": []
+}

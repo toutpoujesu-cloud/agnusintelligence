@@ -1,0 +1,15 @@
+{
+  "run_date": "2026-08-23",
+  "source_checks": [
+    {
+      "source_url": "http://www.cac.gov.cn",
+      "date_checked": "2026-08-23",
+      "status": "no_change",
+      "last_successful_check": "2026-08-23T06:01:17+02:00",
+      "observed_version_or_date": "CAC homepage retrieved; no new monitored generative-AI measure or algorithm-registration rule was verified since 2026-08-22.",
+      "open_questions": []
+    }
+  ],
+  "findings": [],
+  "editorial_alerts": []
+}

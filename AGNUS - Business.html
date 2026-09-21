@@ -1,0 +1,357 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI for Business — AGNUS</title>
+<meta name="description" content="AGNUS for Business: choose your industry and get the AI tools, automations, ROI and case studies that matter to your field — through one repeatable framework." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<style>
+.pg-head { padding: clamp(40px,5vw,64px) 0 0; }
+.pg-head h1 { font-family: var(--font-sans); font-weight: 700; font-size: clamp(40px,6vw,84px); line-height: 0.96; letter-spacing: -0.035em; margin: 0 0 18px; }
+.pg-head h1 em { font-family: var(--font-serif); font-style: italic; font-weight: 300; color: var(--gold-deep); }
+.pg-head .h-lede { max-width: 600px; }
+.sec-head2 { margin-bottom: clamp(32px,4vw,48px); }
+.sec-head2 .kicker { margin-bottom: 16px; }
+
+/* industry grid */
+.ind-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.ind { background: #fff; padding: 22px 20px; min-height: 96px; display: flex; flex-direction: column; justify-content: space-between; cursor: pointer; transition: background .2s ease, color .2s ease; text-align: left; }
+.ind:hover { background: var(--paper-warm); }
+.ind.on { background: var(--char); }
+.ind .in { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.1em; color: var(--ink-faint); }
+.ind.on .in { color: var(--gold-light); }
+.ind h4 { font-family: var(--font-sans); font-weight: 600; font-size: 16px; letter-spacing: -0.015em; margin: 0; }
+.ind.on h4 { color: #fff; }
+
+/* industry hub panel */
+.hub { margin-top: 26px; border: 1px solid var(--line); border-radius: 20px; overflow: hidden; }
+.hub-head { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 20px; padding: 30px 34px; background: var(--char); color: #fff; }
+.hub-head .hk { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 8px; }
+.hub-head h3 { font-family: var(--font-sans); font-weight: 700; font-size: clamp(26px,3.4vw,40px); letter-spacing: -0.03em; margin: 0; }
+.hub-head .hstat { text-align: right; font-family: var(--font-mono); font-size: 12px; color: var(--on-dark-soft); letter-spacing: 0.04em; }
+.hub-head .hstat b { color: var(--gold-light); }
+.hub-body { padding: 34px; display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(28px,4vw,52px); }
+.hub-cap { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-mute); margin: 0 0 16px; }
+.hub-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 28px; border-top: 1px solid var(--char); }
+.hub-list .hl { display: grid; grid-template-columns: 22px 1fr; gap: 10px; padding: 12px 0; border-bottom: 1px solid var(--line-soft); font-size: 14.5px; font-weight: 500; }
+.hub-list .hl .ix { font-family: var(--font-mono); font-size: 11px; color: var(--gold-deep); padding-top: 3px; }
+.hub-side .hcard { border: 1px solid var(--line); border-radius: 14px; padding: 22px; margin-bottom: 14px; }
+.hub-side .hcard .ht { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 8px; }
+.hub-side .hcard .hv { font-family: var(--font-sans); font-weight: 800; font-size: 30px; letter-spacing: -0.03em; }
+.hub-side .hcard .hv.gold-text { -webkit-text-fill-color: transparent; }
+.hub-side .hcard p { font-size: 13px; line-height: 1.45; color: var(--ink-soft); margin: 6px 0 0; }
+.hub-side .hcase { border: 1px solid var(--line); border-radius: 14px; padding: 22px; }
+.hub-side .hcase .ht { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-deep); margin-bottom: 10px; }
+.hub-side .hcase p { font-family: var(--font-serif); font-style: italic; font-weight: 300; font-size: 16px; line-height: 1.45; color: var(--ink); margin: 0; }
+
+/* framework */
+.fw { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; counter-reset: fw; }
+.fw-step { background: #fff; padding: 28px 22px; min-height: 200px; display: flex; flex-direction: column; gap: 12px; transition: background .25s ease, color .25s ease; }
+.fw-step:hover { background: var(--char); }
+.fw-step .fn { counter-increment: fw; font-family: var(--font-mono); font-size: 12px; color: var(--gold-deep); }
+.fw-step .fn::before { content: "0" counter(fw); }
+.fw-step:hover .fn { color: var(--gold-light); }
+.fw-step h4 { font-family: var(--font-sans); font-weight: 700; font-size: 19px; letter-spacing: -0.02em; margin: 0; }
+.fw-step:hover h4 { color: #fff; }
+.fw-step p { font-size: 13px; line-height: 1.45; color: var(--ink-soft); margin: 0; }
+.fw-step:hover p { color: var(--on-dark-soft); }
+
+/* ROI (reused) */
+.roi { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px,4vw,64px); align-items: center; background: var(--char); color: var(--on-dark); border-radius: 22px; padding: clamp(36px,4vw,56px); }
+.roi h3 { font-family: var(--font-sans); font-weight: 700; font-size: clamp(24px,3vw,34px); letter-spacing: -0.025em; margin: 0 0 10px; color: #fff; }
+.roi .rk { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 14px; }
+.roi p { font-size: 15px; line-height: 1.55; color: var(--on-dark-soft); margin: 0 0 26px; }
+.roi-field { margin-bottom: 22px; }
+.roi-field label { display: flex; justify-content: space-between; align-items: baseline; font-size: 14px; font-weight: 500; margin-bottom: 12px; }
+.roi-field label b { font-family: var(--font-mono); font-weight: 600; color: var(--gold-light); font-size: 15px; }
+.roi-field input[type=range] { width: 100%; -webkit-appearance: none; appearance: none; height: 4px; border-radius: 999px; background: rgba(255,255,255,0.16); outline: none; }
+.roi-field input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--gold-light); cursor: pointer; border: 3px solid var(--char); box-shadow: 0 0 0 1px var(--gold-deep); }
+.roi-field input[type=range]::-moz-range-thumb { width: 17px; height: 17px; border-radius: 50%; background: var(--gold-light); cursor: pointer; border: 3px solid var(--char); }
+.roi-out { border-top: 1px solid var(--line-dark); }
+.roi-out .ro { display: flex; align-items: baseline; justify-content: space-between; padding: 18px 0; border-bottom: 1px solid var(--line-dark); }
+.roi-out .ro:last-child { border-bottom: none; }
+.roi-out .ro .rl { font-size: 14px; color: var(--on-dark-soft); }
+.roi-out .ro .rv { font-family: var(--font-sans); font-weight: 800; font-size: clamp(26px,3.4vw,40px); letter-spacing: -0.03em; }
+.roi-out .ro.hero .rv { color: var(--gold-light); }
+.roi-note { font-family: var(--font-mono); font-size: 11px; color: var(--on-dark-mute); letter-spacing: 0.04em; margin-top: 16px; }
+
+/* enterprise band */
+.ent { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px,4vw,64px); align-items: center; }
+.ent .ek { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-deep); margin-bottom: 16px; }
+.ent h2 { margin-bottom: 18px; }
+.ent p { font-size: 17px; line-height: 1.6; color: var(--ink-soft); margin: 0 0 26px; max-width: 46ch; }
+.ent-have { border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+.ent-have .eh-top { background: var(--paper-2); padding: 18px 24px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); display: flex; justify-content: space-between; }
+.ent-have .eh-top b { color: var(--ink); }
+.ent-have .eh-row { display: grid; grid-template-columns: 1fr auto; gap: 16px; padding: 16px 24px; border-top: 1px solid var(--line); font-size: 15px; font-weight: 500; }
+.ent-have .eh-row .n { font-family: var(--font-mono); font-weight: 600; color: var(--gold-deep); }
+
+@media (max-width: 1024px){ .ind-grid { grid-template-columns: repeat(4, 1fr); } .fw { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 860px){ .hub-body { grid-template-columns: 1fr; gap: 28px; } .roi { grid-template-columns: 1fr; gap: 28px; } .ent { grid-template-columns: 1fr; gap: 30px; } }
+@media (max-width: 620px){ .ind-grid { grid-template-columns: repeat(2, 1fr); } .fw { grid-template-columns: 1fr 1fr; } .hub-list, .hub-head { grid-template-columns: 1fr; } .hub-head .hstat { text-align: left; } }
+</style>
+</head>
+<body>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-label">Today's Intelligence</div>
+  <div class="ticker-track">
+    <span><span class="tk">ENTERPRISE</span> AI adoption in F500 <span class="up">&nbsp;+38% YoY</span></span><span class="dot"></span>
+    <span><span class="tk">BUSINESS</span> 19 industry hubs now live</span><span class="dot"></span>
+    <span><span class="tk">ROI</span> Median payback under 90 days</span><span class="dot"></span>
+    <span><span class="tk">CASES</span> 240 case studies published</span><span class="dot"></span>
+    <span><span class="tk">ENTERPRISE</span> AI adoption in F500 <span class="up">&nbsp;+38% YoY</span></span><span class="dot"></span>
+    <span><span class="tk">BUSINESS</span> 19 industry hubs now live</span><span class="dot"></span>
+    <span><span class="tk">ROI</span> Median payback under 90 days</span><span class="dot"></span>
+    <span><span class="tk">CASES</span> 240 case studies published</span><span class="dot"></span>
+  </div>
+</div>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Marketplace.html">Marketplace</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Practice.html">Practice</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+      <a href="AGNUS - Business.html" class="active">Business</a>
+      </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#top" class="nav-search">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="6"/><path d="M14 14l4 4"/></svg>
+        Search tools <kbd>⌘K</kbd>
+      </a>
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+      <button class="hamburger" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="m-drawer">
+    <a href="AGNUS - Explore.html">Explore</a>
+    <a href="AGNUS - Marketplace.html">Marketplace</a>
+    <a href="AGNUS - Intelligence.html">Intelligence</a>
+    <a href="AGNUS - Review.html">Reviews</a>
+    <a href="AGNUS - Compare.html">Compare</a>
+    <a href="AGNUS - Agents.html">Agents</a>
+    <a href="AGNUS - Academy.html">Academy</a>
+    <a href="AGNUS - Business.html">Business</a>
+    <a href="AGNUS - Home.html#premium" style="color: var(--gold-deep);">Premium Membership</a>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<div class="container pg-head">
+  <div class="crumbs"><a href="AGNUS - Home.html">AGNUS</a><span class="sep">/</span><span class="here">Business</span></div>
+  <div class="kicker" style="margin-bottom:22px;"><span class="ix">◆</span> AI for Business</div>
+  <h1>Choose your industry.<br /><em>We'll handle the rest.</em></h1>
+  <p class="h-lede">Most AI sites speak to individuals. We speak to companies. Pick your field and everything — tools, automations, ROI, case studies — becomes about you.</p>
+</div>
+
+<!-- INDUSTRY GRID + HUB -->
+<section style="padding-top: clamp(44px,5vw,64px);">
+  <div class="container">
+    <div class="sec-head2">
+      <div class="kicker"><span class="ix">01</span> Your industry hub</div>
+      <h2 class="h-section">Pick a field. Watch it change.</h2>
+    </div>
+
+    <div class="ind-grid" id="indGrid">
+      <button class="ind on" data-k="restaurants"><span class="in">01</span><h4>Restaurants</h4></button>
+      <button class="ind" data-k="law"><span class="in">02</span><h4>Law</h4></button>
+      <button class="ind" data-k="healthcare"><span class="in">03</span><h4>Healthcare</h4></button>
+      <button class="ind" data-k="marketing"><span class="in">04</span><h4>Marketing</h4></button>
+      <button class="ind" data-k="realestate"><span class="in">05</span><h4>Real Estate</h4></button>
+      <button class="ind" data-k="construction"><span class="in">06</span><h4>Construction</h4></button>
+      <button class="ind" data-k="accounting"><span class="in">07</span><h4>Accounting</h4></button>
+      <button class="ind" data-k="hotels"><span class="in">08</span><h4>Hotels</h4></button>
+      <button class="ind" data-k="education"><span class="in">09</span><h4>Education</h4></button>
+      <button class="ind" data-k="finance"><span class="in">10</span><h4>Finance</h4></button>
+    </div>
+
+    <div class="hub">
+      <div class="hub-head">
+        <div><div class="hk">Industry hub</div><h3 id="hubName">Restaurants</h3></div>
+        <div class="hstat"><b id="hubTools">142</b> tools · <b id="hubCases">18</b> case studies</div>
+      </div>
+      <div class="hub-body">
+        <div>
+          <p class="hub-cap">What AGNUS covers for <span id="hubName2">restaurants</span></p>
+          <div class="hub-list" id="hubList"></div>
+        </div>
+        <div class="hub-side">
+          <div class="hcard">
+            <div class="ht">Typical ROI</div>
+            <div class="hv gold-text" id="hubRoi">€2,400 / mo</div>
+            <p id="hubRoiNote">Saved across booking, reviews and scheduling.</p>
+          </div>
+          <div class="hcase">
+            <div class="ht">Case study</div>
+            <p id="hubCase">"A 3-site group cut no-shows 31% with an AI booking and reminder agent."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FRAMEWORK -->
+<section class="warm">
+  <div class="container">
+    <div class="sec-head2">
+      <div class="kicker"><span class="ix">02</span> The AGNUS Framework</div>
+      <h2 class="h-section">One method, every industry.</h2>
+    </div>
+    <div class="fw">
+      <div class="fw-step"><span class="fn"></span><h4>Understand</h4><p>What AI can — and can't — do for your field.</p></div>
+      <div class="fw-step"><span class="fn"></span><h4>Evaluate</h4><p>The best software, scored on our rubric.</p></div>
+      <div class="fw-step"><span class="fn"></span><h4>Compare</h4><p>Top solutions side by side, honestly.</p></div>
+      <div class="fw-step"><span class="fn"></span><h4>Implement</h4><p>Step-by-step rollout guides that work.</p></div>
+      <div class="fw-step"><span class="fn"></span><h4>Scale</h4><p>Advanced automation across the org.</p></div>
+      <div class="fw-step"><span class="fn"></span><h4>Measure</h4><p>Track the ROI, prove the value.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ROI -->
+<section>
+  <div class="container">
+    <div class="roi">
+      <div>
+        <div class="rk">ROI Calculator</div>
+        <h3>What would AI save you?</h3>
+        <p>A rough, honest estimate of what automating routine work is worth to your business each month.</p>
+        <div class="roi-field"><label>Team size <b><span id="emp-val">12</span> people</b></label><input type="range" id="emp" min="1" max="500" value="12" /></div>
+        <div class="roi-field"><label>Hours automated per person / week <b><span id="hrs-val">3.0</span> h</b></label><input type="range" id="hrs" min="0.5" max="10" step="0.1" value="3" /></div>
+        <div class="roi-field"><label>Loaded hourly cost <b>€<span id="rate-val">48</span></b></label><input type="range" id="rate" min="20" max="150" value="48" /></div>
+      </div>
+      <div class="roi-out">
+        <div class="ro"><span class="rl">Hours reclaimed / week</span><span class="rv" id="out-hrs">36</span></div>
+        <div class="ro hero"><span class="rl">Estimated monthly value</span><span class="rv" id="out-eur">€7,500</span></div>
+        <div class="ro"><span class="rl">Annual value</span><span class="rv" id="out-yr" style="font-size:clamp(20px,2.4vw,28px);">€90,000</span></div>
+        <div class="roi-note">Indicative estimate · validate against your own numbers</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENTERPRISE -->
+<section class="warm">
+  <div class="container">
+    <div class="ent">
+      <div>
+        <div class="ek">Enterprise</div>
+        <h2 class="h-section">When Mercedes needs<br />AI for manufacturing —</h2>
+        <p>they don't start by hiring consultants for basic research. They start with AGNUS, because the groundwork is already done.</p>
+        <a href="#" class="btn btn-dark">Talk to our enterprise team <span class="arr">→</span></a>
+      </div>
+      <div class="ent-have">
+        <div class="eh-top"><span>Already in the <b>Manufacturing</b> hub</span><span>Ready today</span></div>
+        <div class="eh-row"><span>In-depth articles</span><span class="n">50</span></div>
+        <div class="eh-row"><span>Tool comparisons</span><span class="n">20</span></div>
+        <div class="eh-row"><span>Case studies</span><span class="n">10</span></div>
+        <div class="eh-row"><span>ROI calculators</span><span class="n">4</span></div>
+        <div class="eh-row"><span>Training tracks</span><span class="n">6</span></div>
+        <div class="eh-row"><span>Implementation guides</span><span class="n">12</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+        <p>Intelligence for the future of work. The trusted source for what's happening, which tools matter, and where AI is heading.</p>
+        <form class="fsearch" onsubmit="return false;"><input type="email" placeholder="Your email for the daily brief" aria-label="Email" /><button type="submit">Subscribe</button></form>
+      </div>
+      <div class="foot-col"><h5>Discover</h5><ul>
+        <li><a href="AGNUS - Review.html">AI Reviews</a></li>
+        <li><a href="AGNUS - Compare.html">AI Comparisons</a></li>
+        <li><a href="AGNUS - Intelligence.html">AI News</a></li>
+        <li><a href="AGNUS - Agents.html">AI Agents</a></li>
+        <li><a href="AGNUS - Tools.html">Free AI Tools</a></li>
+      </ul></div>
+      <div class="foot-col"><h5>Learn &amp; Build</h5><ul>
+        <li><a href="AGNUS - Academy.html">AI Academy</a></li>
+        <li><a href="AGNUS - Prompts.html">Prompt Library</a></li>
+        <li><a href="AGNUS - Business.html">Business Automation</a></li>
+        <li><a href="AGNUS - Business.html">AI for Business</a></li>
+        <li><a href="AGNUS - Home.html#premium"><span class="gd">Premium Membership</span></a></li>
+      </ul></div>
+      <div class="foot-col"><h5>Company</h5><ul>
+        <li><a href="#">About AGNUS</a></li>
+        <li><a href="#">Our methodology</a></li>
+        <li><a href="AGNUS - Awards.html">The AGNUS Awards</a></li>
+        <li><a href="#">Editorial standards</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="AGNUS - Dashboard.html" class="gd">Editorial Dashboard ↗</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 AGNUS · Truth before hype.</span><div class="fb-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Editorial Policy</a><a href="#">Advertise</a></div></div>
+  </div>
+</footer>
+
+<script src="image-slot.js"></script>
+<script src="agnus-research-data.js"></script>
+<script>
+/* industry hub data — sourced from agnus-research-data.js */
+const HUBS = (window.AR && window.AR.BUSINESS_HUBS) || {};
+
+(function () {
+  const grid = document.getElementById('indGrid');
+  const els = {
+    name: document.getElementById('hubName'), name2: document.getElementById('hubName2'),
+    tools: document.getElementById('hubTools'), cases: document.getElementById('hubCases'),
+    list: document.getElementById('hubList'), roi: document.getElementById('hubRoi'),
+    roiNote: document.getElementById('hubRoiNote'), caseEl: document.getElementById('hubCase')
+  };
+  function render(k) {
+    const d = HUBS[k]; if (!d) return;
+    els.name.textContent = d.name; els.name2.textContent = d.name.toLowerCase();
+    els.tools.textContent = d.tools; els.cases.textContent = d.cases;
+    els.roi.textContent = d.roi; els.roiNote.textContent = d.roiNote; els.caseEl.textContent = d.case;
+    els.list.innerHTML = d.items.map((it, i) => `<div class="hl"><span class="ix">${String(i+1).padStart(2,'0')}</span><span>${it}</span></div>`).join('');
+  }
+  grid.addEventListener('click', (e) => {
+    const b = e.target.closest('.ind'); if (!b) return;
+    grid.querySelectorAll('.ind').forEach((x) => x.classList.toggle('on', x === b));
+    render(b.dataset.k);
+  });
+  render('restaurants');
+})();
+
+/* ROI calculator */
+(function () {
+  const emp = document.getElementById('emp'), hrs = document.getElementById('hrs'), rate = document.getElementById('rate');
+  const empV = document.getElementById('emp-val'), hrsV = document.getElementById('hrs-val'), rateV = document.getElementById('rate-val');
+  const oH = document.getElementById('out-hrs'), oE = document.getElementById('out-eur'), oY = document.getElementById('out-yr');
+  const fmt = (n) => '€' + Math.round(n).toLocaleString('en-US');
+  function calc() {
+    const e = +emp.value, h = +hrs.value, r = +rate.value;
+    const weekly = e * h, monthly = weekly * r * 4.33;
+    empV.textContent = e; hrsV.textContent = h.toFixed(1); rateV.textContent = r;
+    oH.textContent = Math.round(weekly); oE.textContent = fmt(monthly); oY.textContent = fmt(monthly * 12);
+  }
+  [emp, hrs, rate].forEach((el) => el.addEventListener('input', calc));
+  calc();
+})();
+document.addEventListener('keydown', (e) => { if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); window.location.href = 'AGNUS - Home.html#top'; } });
+</script>
+</body>
+</html>

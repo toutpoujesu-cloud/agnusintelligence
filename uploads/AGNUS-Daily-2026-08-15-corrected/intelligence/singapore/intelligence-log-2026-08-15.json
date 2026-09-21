@@ -1,0 +1,27 @@
+{
+  "run_date": "2026-08-15",
+  "source_checks": [
+    {
+      "source_url": "https://www.imda.gov.sg/regulations-and-licensing/ai-governance",
+      "date_checked": "2026-08-15",
+      "status": "unreachable",
+      "last_successful_check": "",
+      "observed_version_or_date": "Registry URL could not be opened by the retrieval service",
+      "open_questions": [
+        "Official IMDA AI governance pages were discoverable; registry URL needs manual review"
+      ]
+    },
+    {
+      "source_url": "https://www.pdpc.gov.sg",
+      "date_checked": "2026-08-15",
+      "status": "manual_review",
+      "last_successful_check": "2026-08-15",
+      "observed_version_or_date": "PDPC homepage retrieved; page states last updated 2025-12-11; baseline established",
+      "open_questions": []
+    }
+  ],
+  "findings": [],
+  "editorial_alerts": [
+    "IMDA: Registry URL could not be opened by the retrieval service"
+  ]
+}

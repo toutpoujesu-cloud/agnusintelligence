@@ -1,0 +1,350 @@
+﻿<!DOCTYPE html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #0B0F18; color: #E2E8F0; font-family: Manrope, sans-serif; -webkit-font-smoothing: antialiased; }
+a, a:hover { color: #B59048; }
+</style>
+</helmet>
+
+<div style="min-height:100vh; background:#0B0F18;">
+
+  <!-- Top bar -->
+  <div style="background:#0F1A28; border-bottom:1px solid #1E2D42; padding:0 32px; height:52px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:50;">
+    <div style="display:flex; align-items:center; gap:16px;">
+      <span style="font-weight:800; font-size:14px; letter-spacing:-.01em;">AGNUS</span>
+      <span style="font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:#4A6080;">Research Roadmap</span>
+    </div>
+    <div style="display:flex; gap:20px; align-items:center;">
+      <div style="text-align:right;">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; color:#4A6080; text-transform:uppercase; letter-spacing:.1em;">Last updated</div>
+        <div style="font-size:12px; font-weight:600; color:#B59048;">22 August 2026 · Session 2</div>
+      </div>
+      <div style="display:flex; gap:10px; align-items:center;">
+        <span style="display:flex; align-items:center; gap:5px; font-size:11px; color:#3ECF86;"><span style="width:7px;height:7px;border-radius:50%;background:#3ECF86;display:inline-block;"></span>Done</span>
+        <span style="display:flex; align-items:center; gap:5px; font-size:11px; color:#E0B354;"><span style="width:7px;height:7px;border-radius:50%;background:#E0B354;display:inline-block;"></span>In progress</span>
+        <span style="display:flex; align-items:center; gap:5px; font-size:11px; color:#3A4F68;"><span style="width:7px;height:7px;border-radius:50%;background:#3A4F68;display:inline-block;"></span>Not started</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="max-width:1100px; margin:0 auto; padding:48px 24px 80px;">
+
+    <!-- Header -->
+    <div style="margin-bottom:48px;">
+      <div style="font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:#4A6080; margin-bottom:10px;">AGNUS · Master Roadmap</div>
+      <h1 style="font-size:34px; font-weight:800; letter-spacing:-.03em; line-height:1.1; margin-bottom:10px;">What is done. What is next.</h1>
+      <p style="font-size:14px; color:#6B82A4; line-height:1.6; max-width:600px;">A living document. Update this every time an article is inserted, a section is built, or a decision is made. Research first, platform second, everything else after.</p>
+    </div>
+
+    <!-- ── EU AI ACT ARTICLES ── -->
+    <div style="margin-bottom:48px;">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:20px; padding-bottom:14px; border-bottom:1px solid #1E2D42;">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.14em; text-transform:uppercase; padding:3px 10px; border-radius:99px; background:rgba(180,144,72,.15); color:#B59048; border:1px solid rgba(180,144,72,.25);">02 — EU AI Act</div>
+        <h2 style="font-size:18px; font-weight:700; letter-spacing:-.02em;">Research Articles</h2>
+        <div style="margin-left:auto; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#4A6080;">14 done · 3 demo · 11 not started</div>
+      </div>
+
+      <!-- Done -->
+      <div style="margin-bottom:16px;">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:#3ECF86; margin-bottom:10px;">Done — verified research</div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:8px;">
+          {{ euDone }}
+        </div>
+      </div>
+
+      <!-- Ready to insert -->
+      <div style="margin-bottom:16px;">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:#E0B354; margin-bottom:10px;">Ready to insert — research done, not yet in data layer</div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:8px;">
+          {{ euReady }}
+        </div>
+      </div>
+
+      <!-- Demo — needs replacement -->
+      <div style="margin-bottom:16px;">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:#F08080; margin-bottom:10px;">Demo placeholders — need real verified research before launch</div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:8px;">
+          {{ euDemo }}
+        </div>
+      </div>
+
+      <!-- Not started -->
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:#3A4F68; margin-bottom:10px;">Not yet started</div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:8px;">
+          {{ euNotStarted }}
+        </div>
+      </div>
+    </div>
+
+    <!-- ── OTHER PILLARS ── -->
+    <div style="margin-bottom:48px;">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:20px; padding-bottom:14px; border-bottom:1px solid #1E2D42;">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.14em; text-transform:uppercase; padding:3px 10px; border-radius:99px; background:rgba(62,207,134,.12); color:#3ECF86; border:1px solid rgba(62,207,134,.2);">01–08</div>
+        <h2 style="font-size:18px; font-weight:700; letter-spacing:-.02em;">Other Research Pillars</h2>
+        <div style="margin-left:auto; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#4A6080;">0 real articles · ~80 subtopics total</div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:10px;">
+        {{ pillars }}
+      </div>
+    </div>
+
+    <!-- ── PLATFORM SECTIONS ── -->
+    <div style="margin-bottom:48px;">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:20px; padding-bottom:14px; border-bottom:1px solid #1E2D42;">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.14em; text-transform:uppercase; padding:3px 10px; border-radius:99px; background:rgba(77,158,255,.12); color:#4D9EFF; border:1px solid rgba(77,158,255,.2);">Public Platform</div>
+        <h2 style="font-size:18px; font-weight:700; letter-spacing:-.02em;">AGNUS Public Sections</h2>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:10px;">
+        {{ sections }}
+      </div>
+    </div>
+
+    <!-- ── ACADEMY ── -->
+    <div style="margin-bottom:48px;">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:20px; padding-bottom:14px; border-bottom:1px solid #1E2D42;">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.14em; text-transform:uppercase; padding:3px 10px; border-radius:99px; background:rgba(138,92,246,.12); color:#8A5CF6; border:1px solid rgba(138,92,246,.2);">Academy</div>
+        <h2 style="font-size:18px; font-weight:700; letter-spacing:-.02em;">49-Module Curriculum</h2>
+        <div style="margin-left:auto; font-family:'IBM Plex Mono',monospace; font-size:11px; color:#4A6080;">6 built · 43 not started</div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:10px;">
+        {{ academy }}
+      </div>
+    </div>
+
+    <!-- ── EDITORIAL PLATFORM ── -->
+    <div style="margin-bottom:48px;">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:20px; padding-bottom:14px; border-bottom:1px solid #1E2D42;">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.14em; text-transform:uppercase; padding:3px 10px; border-radius:99px; background:rgba(240,168,48,.12); color:#F0A830; border:1px solid rgba(240,168,48,.2);">Backend</div>
+        <h2 style="font-size:18px; font-weight:700; letter-spacing:-.02em;">AGNUS Editorial Platform</h2>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:10px;">
+        {{ editorial }}
+      </div>
+    </div>
+
+    <!-- ── ALEXIS IKT ── -->
+    <div style="margin-bottom:48px;">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:20px; padding-bottom:14px; border-bottom:1px solid #1E2D42;">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.14em; text-transform:uppercase; padding:3px 10px; border-radius:99px; background:rgba(15,158,146,.12); color:#0F9E92; border:1px solid rgba(15,158,146,.2);">Alexis IKT</div>
+        <h2 style="font-size:18px; font-weight:700; letter-spacing:-.02em;">Article 4 / Alexis IKT Platform</h2>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:10px;">
+        {{ alexis }}
+      </div>
+    </div>
+
+    <!-- ── OPEN DECISIONS ── -->
+    <div>
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:20px; padding-bottom:14px; border-bottom:1px solid #1E2D42;">
+        <div style="font-family:'IBM Plex Mono',monospace; font-size:9px; letter-spacing:.14em; text-transform:uppercase; padding:3px 10px; border-radius:99px; background:rgba(240,119,106,.12); color:#F0776A; border:1px solid rgba(240,119,106,.2);">Blocked</div>
+        <h2 style="font-size:18px; font-weight:700; letter-spacing:-.02em;">Open Decisions — Nothing Moves Until These Are Made</h2>
+      </div>
+      <div style="display:grid; gap:10px;">
+        {{ decisions }}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+
+class Component extends DCLogic {
+  renderVals() {
+    const e = React.createElement;
+
+    const done = (id, title, note) => e('div', { style: { background:'#111D2C', border:'1px solid #1E2D42', borderLeft:'3px solid #3ECF86', borderRadius:'10px', padding:'13px 16px', display:'flex', gap:'10px', alignItems:'flex-start' } },
+      e('span', { style: { color:'#3ECF86', fontSize:'14px', flexShrink:0, marginTop:'1px' } }, '✓'),
+      e('div', null,
+        e('div', { style: { fontFamily:"'IBM Plex Mono',monospace", fontSize:'9px', color:'#3ECF86', letterSpacing:'.08em', marginBottom:'3px' } }, id),
+        e('div', { style: { fontSize:'12.5px', fontWeight:600, lineHeight:1.4, marginBottom: note ? '4px' : '0' } }, title),
+        note ? e('div', { style: { fontSize:'11px', color:'#4A6080', lineHeight:1.5 } }, note) : null
+      )
+    );
+
+    const ready = (id, title, note) => e('div', { style: { background:'#111D2C', border:'1px solid #2A3A20', borderLeft:'3px solid #E0B354', borderRadius:'10px', padding:'13px 16px', display:'flex', gap:'10px', alignItems:'flex-start' } },
+      e('span', { style: { color:'#E0B354', fontSize:'14px', flexShrink:0, marginTop:'1px' } }, '⬆'),
+      e('div', null,
+        e('div', { style: { fontFamily:"'IBM Plex Mono',monospace", fontSize:'9px', color:'#E0B354', letterSpacing:'.08em', marginBottom:'3px' } }, id),
+        e('div', { style: { fontSize:'12.5px', fontWeight:600, lineHeight:1.4, marginBottom: note ? '4px' : '0' } }, title),
+        note ? e('div', { style: { fontSize:'11px', color:'#4A6080', lineHeight:1.5 } }, note) : null
+      )
+    );
+
+    const demo = (id, title, note) => e('div', { style: { background:'#111D2C', border:'1px solid #2D1A1A', borderLeft:'3px solid #F08080', borderRadius:'10px', padding:'13px 16px', display:'flex', gap:'10px', alignItems:'flex-start' } },
+      e('span', { style: { color:'#F08080', fontSize:'14px', flexShrink:0, marginTop:'1px' } }, '⚠'),
+      e('div', null,
+        e('div', { style: { fontFamily:"'IBM Plex Mono',monospace", fontSize:'9px', color:'#F08080', letterSpacing:'.08em', marginBottom:'3px' } }, id + ' · DEMO'),
+        e('div', { style: { fontSize:'12.5px', fontWeight:600, lineHeight:1.4, marginBottom: note ? '4px' : '0' } }, title),
+        note ? e('div', { style: { fontSize:'11px', color:'#4A6080', lineHeight:1.5 } }, note) : null
+      )
+    );
+
+    const todo = (title, note) => e('div', { style: { background:'#0F161F', border:'1px solid #1A2535', borderLeft:'3px solid #2A3A50', borderRadius:'10px', padding:'13px 16px', display:'flex', gap:'10px', alignItems:'flex-start' } },
+      e('span', { style: { color:'#3A4F68', fontSize:'14px', flexShrink:0, marginTop:'1px' } }, '○'),
+      e('div', null,
+        e('div', { style: { fontSize:'12.5px', fontWeight:600, lineHeight:1.4, color:'#6B82A4', marginBottom: note ? '4px' : '0' } }, title),
+        note ? e('div', { style: { fontSize:'11px', color:'#3A4F68', lineHeight:1.5 } }, note) : null
+      )
+    );
+
+    const pillarCard = (n, name, count, items) => e('div', { style: { background:'#0F161F', border:'1px solid #1A2535', borderRadius:'10px', padding:'16px 18px' } },
+      e('div', { style: { display:'flex', alignItems:'center', gap:'8px', marginBottom:'10px' } },
+        e('span', { style: { fontFamily:"'IBM Plex Mono',monospace", fontSize:'9px', color:'#B59048', letterSpacing:'.1em' } }, n),
+        e('span', { style: { fontWeight:700, fontSize:'13px' } }, name),
+        e('span', { style: { marginLeft:'auto', fontFamily:"'IBM Plex Mono',monospace", fontSize:'9px', color:'#3A4F68' } }, count + ' subtopics')
+      ),
+      e('div', { style: { display:'flex', flexWrap:'wrap', gap:'5px' } },
+        ...items.map(i => e('span', { style: { fontSize:'10.5px', color:'#3A4F68', background:'#0B1220', border:'1px solid #1A2535', borderRadius:'5px', padding:'2px 8px' } }, i))
+      ),
+      e('div', { style: { marginTop:'10px', fontSize:'10px', color:'#F08080' } }, '0 articles written')
+    );
+
+    const sectionCard = (name, status, note) => {
+      const colors = { done:'#3ECF86', progress:'#E0B354', notstarted:'#3A4F68' };
+      const labels = { done:'Done', progress:'In progress', notstarted:'Not started' };
+      return e('div', { style: { background:'#0F161F', border:'1px solid #1A2535', borderLeft:'3px solid ' + colors[status], borderRadius:'10px', padding:'14px 16px' } },
+        e('div', { style: { display:'flex', alignItems:'center', gap:'8px', marginBottom:'6px' } },
+          e('span', { style: { fontSize:'12.5px', fontWeight:700 } }, name),
+          e('span', { style: { marginLeft:'auto', fontFamily:"'IBM Plex Mono',monospace", fontSize:'9px', color:colors[status] } }, labels[status])
+        ),
+        e('div', { style: { fontSize:'11px', color:'#4A6080', lineHeight:1.55 } }, note)
+      );
+    };
+
+    const decisionCard = (title, detail) => e('div', { style: { background:'#1A0F0F', border:'1px solid #2D1A1A', borderRadius:'10px', padding:'16px 18px' } },
+      e('div', { style: { display:'flex', gap:'10px', alignItems:'flex-start' } },
+        e('span', { style: { color:'#F0776A', fontSize:'16px', flexShrink:0 } }, '⊘'),
+        e('div', null,
+          e('div', { style: { fontSize:'13px', fontWeight:700, marginBottom:'6px' } }, title),
+          e('div', { style: { fontSize:'11.5px', color:'#6B82A4', lineHeight:1.6 } }, detail)
+        )
+      )
+    );
+
+    const grid = (...kids) => e(React.Fragment, null, ...kids);
+
+    return {
+      euDone: grid(
+        done('AR-000142','Human Oversight (Article 14)','Full-page fetch verified. Cornerstone.'),
+        done('AR-000200','EU AI Act Explained','Overview article. Cross-pillar cornerstone.'),
+        done('AR-000210','High-Risk AI Systems','Risk classification and obligations.'),
+        done('AR-000220','Prohibited Practices (Article 5)','Applied from 2 February 2025.'),
+        done('AR-000230','Transparency Obligations','Articles 50, 52.'),
+        done('AR-000240','Provider Obligations','Article 16 full obligation set. Cross-ref fixed 2026-08-22.'),
+        done('AR-000250','Deployer Obligations','Article 26 + Article 27 FRIA trigger.'),
+        done('AR-000260','FRIA (Fundamental Rights Impact Assessment)','Article 27.'),
+        done('AR-000270','GPAI Model Obligations','Articles 51, 53, 55. Applied from 2 Aug 2025.'),
+        done('AR-000280','Market Surveillance & Enforcement','Articles 74–81. Canonical. AR-000290 bundle discarded (duplicate).'),
+        done('AR-000300','Importers & Distributors','Articles 23–24.'),
+        done('AR-000310','Value Chain Responsibilities (Article 25)','Inserted. SRC-0046. HTML page still needs to be built.'),
+        done('AR-000320','Governance Structure (Articles 64–70)','Inserted 2026-08-22. SRC-0047–0053. HTML page built and fixed.')
+      ),
+      euReady: grid(
+        done('AR-000310','Value Chain Responsibilities (Article 25)','Data record + HTML page both complete. 2026-08-22.')
+      ),
+      euDemo: grid(
+        demo('AR-000151','Logging Requirements (Article 12)','Placeholder only. Must be replaced before launch.'),
+        demo('AR-000163','Risk Classification','Placeholder only. Must be replaced before launch.'),
+        demo('AR-000188','Technical Documentation (Article 11 / Annex IV)','Placeholder only. Must be replaced before launch.')
+      ),
+      euNotStarted: grid(
+        todo('Scope (Article 2)','Who and what the AI Act covers.'),
+        todo('Definitions (Article 3)','Key terms including AI system, provider, deployer, substantial modification.'),
+        todo('Conformity Assessment (Article 43)','Third-party vs self-assessment routes.'),
+        todo('Registration (Article 49)','EU database for high-risk AI systems.'),
+        todo('Post-Market Monitoring (Article 72)','Ongoing monitoring obligations for providers.'),
+        todo('Incident Reporting (Article 73)','Serious incident notification to authorities.'),
+        todo('Penalties (Article 99)','Fine tiers and calculation rules.'),
+        todo('Regulatory Sandboxes (Article 57)','National sandbox schemes.'),
+        todo('Standards (Article 40)','Harmonised standards and conformity presumption.'),
+        todo('Codes of Practice (Article 56)','GPAI codes and their role.'),
+        todo('Deadlines (Article 113)','Full application timeline — all dates in one place.')
+      ),
+      pillars: grid(
+        pillarCard('01','AI Governance', 8, ['Governance Frameworks','AI Inventory','Risk Management','Human Oversight','AI Policies','Accountability','Governance Operating Models','Board & Executive Governance']),
+        pillarCard('03','AI Agents', 16, ['Agent Governance','Agent Identity','Authentication','Authorization','Permissions','Tool Use','Memory','Planning','Human Approval','Multi-Agent Systems','Agent-to-Agent Communication','Agent Lifecycle','Monitoring','Evaluation','Provenance','Agent Passports']),
+        pillarCard('04','AI Security', 17, ['Prompt Injection','Indirect Prompt Injection','Data Leakage','Agent Hijacking','Tool Abuse','Excessive Agency','Identity','Authentication','Authorization','Secrets','API Security','Supply Chain','Runtime Security','Sandboxing','Exfiltration','Incident Response','AI Threat Intelligence']),
+        pillarCard('05','AI Audit', 11, ['Logging','Audit Trails','Evidence','Monitoring','Observability','Decision Records','Approval Records','Incident Records','Tamper-Evident Logs','Audit Readiness','Assurance']),
+        pillarCard('06','AI Data Governance', 13, ['GDPR','Data Classification','Data Lineage','Data Residency','Encryption','Zero-Data Architecture','Retention','Deletion','Legal Basis','Cross-Border Transfers','Training Data','RAG / Knowledge Bases','Sensitive Data']),
+        pillarCard('07','Standards', 9, ['ISO/IEC','NIST','OWASP','ENISA','CEN','CENELEC','ETSI','AI Management Systems','Cybersecurity Frameworks']),
+        pillarCard('08','Countries', 9, ['European Union','Norway','Italy','Germany','France','Spain','Netherlands','Sweden','Denmark'])
+      ),
+      sections: grid(
+        sectionCard('Research — EU AI Act pillar','done','16 verified articles. Homepage, Topic, Author, Calendar, Sources, Country, Coverage, Methodology pages all built.'),
+        sectionCard('Intelligence page','done','Page built (AGNUS - Intelligence.html). Schema exists. Intelligence Monitoring Agent output destination still unresolved — page is design, not wired to live agent data.'),
+        sectionCard('Explore','done','Page built (AGNUS - Explore.html). Design complete.'),
+        sectionCard('Reviews','done','Page built (AGNUS - Review.html). Compare page built. Data layer (REVIEWS, TEST_PROTOCOLS) not yet wired. Zero published reviews.'),
+        sectionCard('Agents','done','Page built (AGNUS - Agents.html). AGENTS data layer not yet wired.'),
+        sectionCard('Business','done','Page built (AGNUS - Business.html). Design complete. Data layer not yet wired.'),
+        sectionCard('Academy','done','Page built. App + Design built. M01–M49 almost all complete. L8 series (14 modules). Level checkpoints built. See Academy section below.'),
+        sectionCard('Marketplace','done','Page built (AGNUS - Marketplace.html). Collections-first version also built. Story Builder, Prompts, Tools, Compare, Awards, Solution pages all built.')
+      ),
+      academy: grid(
+        sectionCard('L1 — M01–M07 (7 modules)','done','All built: What is an AI Agent, Model vs Agent, Reading a Tool Call, Memory, First Deviation, Reasoning Trace, Why AI Sounds Certain.'),
+        sectionCard('L2 — M08, M11–M14 (5 modules)','done','Built: Running First Agent Task, Common Failure Patterns, Retry Logic, Validating Output, Handing Off Work. M10 not present (covered by M16).'),
+        sectionCard('L3 — M15–M21 (7 modules)','done','Built: Instruction Design 101, M16 (Image Prompt), Scope Constraints, Approval Gates, Multi-Agent Coordination, Priority Handling, Escalation Paths.'),
+        sectionCard('L4 — M22–M24, M27–M28 (5 modules)','done','Built: Reading Execution Logs, Spotting Scope Drift, Authority Chain Analysis, Policy Architecture, Instruction Workspace.'),
+        sectionCard('L5 — M29–M35 (7 modules)','done',"Built: Agent Won't Budge, Verifying Financial Claims, Marketing Claim, Legal Drafts, Two Experts Disagree, Data Analysis, Customer-Facing Agents."),
+        sectionCard('L6 — M36e–M36g, M37–M42b (9 modules)','done','Built: Assignment Build App, Test Before Trust, From Tested to Live, Build First Guardrail, Contract Review Checker, Research Brief, Video Brief, Fact-Check Step, Multi-Agent Guardrail, Verification Test Suite.'),
+        sectionCard('L7 — M43–M49 (7 modules)','done','Built: Quarterly Agent Audit, Governing Agent-to-Agent Handoffs, Ambiguous Governance Call, Auditing Vendor Claims, Org-Wide Policy, Override Policy, Capstone.'),
+        sectionCard('L8 — 14 modules (special track)','done','Built: What Is an AI Agent, Architecture Patterns, Memory Architecture, Models vs Frameworks, Choosing a Framework, MCP, Wider Model Landscape, Execution Layer, Blueprint, Shaping, Structuring, Visual Prototype, Assembly, Governance, Verification. Plus Level Complete page.'),
+        sectionCard('Level checkpoints (7)','done','Level 1–7 checkpoints all built.'),
+        sectionCard('Academy App + Design pages','done','AGNUS - Academy App.html and AGNUS - Academy Design.html built.'),
+        sectionCard('M25 — Intervention Controls','notstarted','L4. Shape 2. Not yet in local folder.'),
+        sectionCard('Academy COURSES data layer','notstarted','Links to ARTICLES/OBLIGATIONS by ID. Not yet wired.')
+      ),
+      editorial: grid(
+        sectionCard('Dashboard (AGNUS - Dashboard.html)','done','LOCKED. CEO command center.'),
+        sectionCard('AGNUS Brain / Strategic Advisor','done','LOCKED. Page built. Rename "Ask the Brain" → "Strategic Advisor" still pending.'),
+        sectionCard('Story Builder (AGNUS - Story Builder.html)','done','Page built. Full design spec implemented.'),
+        sectionCard('Research Editor (AGNUS - Research Editor.html)','done','Editor page built.'),
+        sectionCard('Knowledge Sources','done','Designed to production-ready spec. Backend connectors not yet wired.'),
+        sectionCard('Knowledge Graph','done','Designed (9.6/10). Interactive backend not yet wired.'),
+        sectionCard('Article Pipeline','done','Designed with full card intelligence, actions, drawer. Not yet functional backend.'),
+        sectionCard('Knowledge Database','progress','Specified. UI partially built. Not functional system yet.'),
+        sectionCard('Intelligence Monitoring Agent (daily)','notstarted','Fully defined. Output destination unresolved — blocking autonomous operation.'),
+        sectionCard('Backend wiring — all modules','notstarted','Knowledge Sources connectors, Knowledge Graph live functionality, Article Pipeline real DB, AI Writer, Human Review all need backend implementation.')
+      ),
+      alexis: grid(
+        sectionCard('Marketing site — Landing + 16 articles','done','All articles A1–A8, B1–B8, overview, cheat sheet, quiz built.'),
+        sectionCard('Dashboard — P0 priorities (P0.1–P0.12)','done','All GREEN as of 2026-08-11.'),
+        sectionCard('Dashboard — R1–R11 remaining work','done','All GREEN as of 2026-08-14. Supabase wired, real ticket flow, payments (Stripe).'),
+        sectionCard('Mobile app (React Native Expo)','notstarted','Full spec exists in HANDOFF-mobile.md. Not started. Push notifications are the headline feature.'),
+        sectionCard('Vipps payment integration','done','Stripe implemented as alternative. Vipps still pending.'),
+        sectionCard('Real remote session protocol','notstarted','TeamViewer/AnyDesk integration. Phase 4.'),
+        sectionCard('Tekniker session history & invoices from DB','notstarted','Phase 4. Tables exist, queries not wired.'),
+        sectionCard('Persistent ChatDrawer','notstarted','Phase 4. Currently React state only.')
+      ),
+      decisions: grid(
+        decisionCard('Intelligence Monitoring Agent — output destination','Where does the daily agent land its findings? Options: project chat (current default), Google Drive, Git commit, database. Blocking the agent running autonomously.'),
+        decisionCard('Launch scope for v1','The platform is largely built. What specifically needs to be live and wired before launch? Defines the final sprint.'),
+        decisionCard('Demo articles before launch','AR-000151 (Logging), AR-000163 (Risk Classification), AR-000188 (Documentation) are _demo:true placeholders. Real readers can reach them now. Commission real research or launch with them?'),
+        decisionCard('Value Chain Responsibilities HTML','AR-000310 data record is in the live file but the HTML page does not exist. Needs to be built from template before that article is reachable.')
+      ),
+    };
+  }
+}
+
+</script>
+</body>
+</html>

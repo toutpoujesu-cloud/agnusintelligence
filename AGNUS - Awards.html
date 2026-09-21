@@ -1,0 +1,300 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>The AGNUS Awards 2026 — Best AI of the Year</title>
+<meta name="description" content="The AGNUS Awards: the definitive, independent recognition of the best AI of the year. Judged on capability, reliability and value. No sponsorships, no pay-to-win." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<style>
+/* whole page leans dark + gold — the prestige moment */
+body { background: var(--char); }
+.aw-hero { padding: clamp(48px,6vw,90px) 0 clamp(40px,5vw,64px); position: relative; overflow: hidden; background: var(--char); color: var(--on-dark); }
+.aw-hero::after { content:""; position:absolute; inset:0; background: radial-gradient(70% 80% at 50% -10%, rgba(220,192,137,0.16), transparent 58%); pointer-events:none; }
+.aw-hero > * { position: relative; z-index: 1; }
+.aw-hero .crumbs a, .aw-hero .crumbs .here { color: var(--on-dark-soft); }
+.aw-hero .crumbs .here { color:#fff; }
+.aw-hero .crumbs .sep { color: var(--on-dark-faint); }
+.aw-medallion { width: 84px; height: 84px; border-radius: 50%; border: 1px solid var(--gold-deep); display:grid; place-items:center; font-family: var(--font-serif); font-style: italic; font-size: 34px; margin: 0 auto 30px; background: linear-gradient(160deg, rgba(220,192,137,0.2), rgba(151,118,58,0.05)); }
+.aw-hero .ctr { text-align:center; max-width: 880px; margin: 0 auto; }
+.aw-hero h1 { font-family: var(--font-sans); font-weight: 700; font-size: clamp(44px,7vw,96px); line-height: 0.96; letter-spacing: -0.04em; margin: 0 0 22px; color:#fff; }
+.aw-hero h1 em { font-family: var(--font-serif); font-style: italic; font-weight: 300; }
+.aw-hero .sub { font-family: var(--font-serif); font-weight: 300; font-size: clamp(18px,2.2vw,24px); line-height: 1.5; color: var(--on-dark-soft); max-width: 60ch; margin: 0 auto; }
+.aw-hero .stamp { margin-top: 30px; display:inline-flex; align-items:center; gap: 14px; font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-light); border: 1px solid var(--gold-deep); border-radius: 999px; padding: 10px 20px; }
+.aw-hero .stamp .d { width: 6px; height: 6px; border-radius: 50%; background: var(--gold-light); }
+
+/* winner of the year — hero spotlight */
+.tooy { background: var(--char-2); border-top: 1px solid var(--line-dark); border-bottom: 1px solid var(--line-dark); padding: clamp(48px,6vw,88px) 0; }
+.tooy-inner { display:grid; grid-template-columns: 1fr 1fr; gap: clamp(32px,4vw,64px); align-items:center; }
+.tooy .tk { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 18px; display:inline-flex; align-items:center; gap: 10px; }
+.tooy h2 { font-family: var(--font-sans); font-weight: 700; font-size: clamp(34px,5vw,64px); line-height: 0.98; letter-spacing: -0.035em; margin: 0 0 16px; color:#fff; }
+.tooy p { font-family: var(--font-serif); font-weight: 300; font-size: clamp(17px,2vw,21px); line-height: 1.55; color: var(--on-dark-soft); margin: 0 0 28px; max-width: 44ch; }
+.tooy .row { display:flex; gap: 12px; flex-wrap: wrap; }
+.tooy-card { aspect-ratio: 4/5; border-radius: 20px; border: 1px solid var(--gold-deep); background: linear-gradient(165deg, rgba(220,192,137,0.16), rgba(26,26,23,0.4)); padding: 34px; display:flex; flex-direction:column; justify-content:space-between; position: relative; overflow: hidden; }
+.tooy-card::after { content:""; position:absolute; inset:0; background: radial-gradient(60% 50% at 70% 12%, rgba(220,192,137,0.22), transparent 60%); pointer-events:none; }
+.tooy-card > * { position: relative; z-index: 1; }
+.tooy-card .ct { display:flex; justify-content:space-between; align-items:flex-start; }
+.tooy-card .seal { width: 52px; height: 52px; border-radius:50%; border: 1px solid var(--gold-deep); display:grid; place-items:center; font-family: var(--font-serif); font-style: italic; font-size: 22px; }
+.tooy-card .yr { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; color: var(--gold-light); }
+.tooy-card .nm { font-family: var(--font-sans); font-weight: 800; font-size: clamp(34px,4.5vw,52px); letter-spacing: -0.035em; color:#fff; line-height: 1; }
+.tooy-card .cat { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--on-dark-mute); margin-top: 8px; }
+
+/* category winners grid */
+.aw-section { background: var(--char); color: var(--on-dark); padding: clamp(56px,7vw,104px) 0; }
+.aw-section.warm-dark { background: var(--char-2); }
+.aw-head { text-align:center; max-width: 680px; margin: 0 auto clamp(40px,5vw,60px); }
+.aw-head .kicker { justify-content:center; margin-bottom: 18px; }
+.aw-head h2 { font-family: var(--font-sans); font-weight: 700; font-size: clamp(30px,4.4vw,54px); line-height: 1.02; letter-spacing: -0.03em; margin: 0; color:#fff; }
+.aw-head h2 em { font-family: var(--font-serif); font-style: italic; font-weight: 300; }
+
+.winners { display:grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line-dark); border: 1px solid var(--line-dark); border-radius: 18px; overflow: hidden; }
+.win { background: var(--char); padding: 32px 28px; display:flex; flex-direction:column; gap: 14px; transition: background .25s ease; }
+.aw-section.warm-dark .win { background: var(--char-2); }
+.win:hover { background: var(--char-3); }
+.win .medal { width: 46px; height: 46px; border-radius:50%; border: 1px solid var(--gold-deep); display:grid; place-items:center; font-family: var(--font-serif); font-style: italic; font-size: 19px; background: linear-gradient(160deg, rgba(220,192,137,0.16), rgba(151,118,58,0.04)); }
+.win .acat { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--on-dark-mute); }
+.win h3 { font-family: var(--font-sans); font-weight: 700; font-size: 24px; letter-spacing: -0.02em; margin: 2px 0 0; color:#fff; }
+.win .winner { display:flex; align-items:center; gap: 10px; margin-top: auto; padding-top: 18px; border-top: 1px solid var(--line-dark); }
+.win .winner .nm { font-size: 16px; font-weight: 600; color: var(--on-dark); }
+.win .winner .tag { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-light); margin-left: auto; }
+.win .runner { font-family: var(--font-mono); font-size: 11px; color: var(--on-dark-mute); letter-spacing: 0.04em; }
+.win .runner b { color: var(--on-dark-soft); font-weight: 500; }
+
+/* podium */
+.podium-wrap { display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items:end; max-width: 760px; margin: 0 auto; }
+.pod { border-radius: 16px 16px 0 0; border: 1px solid var(--line-dark); border-bottom: none; padding: 26px 22px 30px; text-align:center; background: var(--char); }
+.pod.first { background: linear-gradient(180deg, rgba(220,192,137,0.16), rgba(26,26,23,0)); border-color: var(--gold-deep); }
+.pod .rank { font-family: var(--font-serif); font-style: italic; font-size: 30px; margin-bottom: 12px; }
+.pod.first { padding-top: 44px; }
+.pod .nm { font-family: var(--font-sans); font-weight: 700; font-size: 20px; letter-spacing: -0.02em; color:#fff; }
+.pod .sc { font-family: var(--font-mono); font-size: 12px; color: var(--gold-light); margin-top: 6px; }
+.pod .base { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--on-dark-mute); margin-top: 14px; }
+
+/* methodology */
+.method { display:grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line-dark); border: 1px solid var(--line-dark); border-radius: 16px; overflow:hidden; }
+.mc { background: var(--char); padding: 32px 28px; }
+.mc .mn { font-family: var(--font-mono); font-size: 12px; color: var(--gold-light); }
+.mc h4 { font-family: var(--font-sans); font-weight: 700; font-size: 20px; letter-spacing: -0.02em; margin: 16px 0 10px; color:#fff; }
+.mc p { font-size: 14px; line-height: 1.55; color: var(--on-dark-soft); margin: 0; }
+.pledge { text-align:center; max-width: 60ch; margin: clamp(40px,5vw,56px) auto 0; }
+.pledge p { font-family: var(--font-serif); font-weight: 300; font-style: italic; font-size: clamp(19px,2.3vw,26px); line-height: 1.5; color: var(--on-dark); margin: 0; }
+.pledge .by { margin-top: 18px; font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold-light); }
+
+/* cta */
+.aw-cta { text-align:center; max-width: 640px; margin: 0 auto; }
+.aw-cta h2 { color:#fff; margin-bottom: 18px; }
+.aw-cta p { color: var(--on-dark-soft); font-size: 17px; margin: 0 0 30px; }
+.aw-cta .row { display:flex; gap: 14px; justify-content:center; flex-wrap: wrap; }
+
+footer { border-top: 1px solid var(--line-dark); }
+
+@media (max-width: 920px){ .tooy-inner { grid-template-columns: 1fr; gap: 32px; } .winners, .method { grid-template-columns: 1fr; } .tooy-card { aspect-ratio: 16/10; max-width: 480px; } }
+@media (max-width: 560px){ .podium-wrap { grid-template-columns: 1fr; } .pod { border-radius: 16px; border-bottom: 1px solid var(--line-dark); } }
+</style>
+</head>
+<body>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-label">Today's Intelligence</div>
+  <div class="ticker-track">
+    <span><span class="tk">AWARDS</span> The AGNUS Awards 2026 are live</span><span class="dot"></span>
+    <span><span class="tk">JUDGED</span> 12 categories · zero sponsorships</span><span class="dot"></span>
+    <span><span class="tk">METHOD</span> Scored on capability, reliability, value</span><span class="dot"></span>
+    <span><span class="tk">VOTES</span> 41,000 practitioners weighed in</span><span class="dot"></span>
+    <span><span class="tk">AWARDS</span> The AGNUS Awards 2026 are live</span><span class="dot"></span>
+    <span><span class="tk">JUDGED</span> 12 categories · zero sponsorships</span><span class="dot"></span>
+    <span><span class="tk">METHOD</span> Scored on capability, reliability, value</span><span class="dot"></span>
+    <span><span class="tk">VOTES</span> 41,000 practitioners weighed in</span><span class="dot"></span>
+  </div>
+</div>
+
+<nav class="nav" style="background:rgba(26,26,23,0.82); border-bottom:1px solid var(--line-dark);">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark" style="color:#fff;">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html" style="color:var(--on-dark-soft);">Explore</a>
+      <a href="AGNUS - Marketplace.html" style="color:var(--on-dark-soft);">Marketplace</a>
+      <a href="AGNUS - Intelligence.html" style="color:var(--on-dark-soft);">Intelligence</a>
+      <a href="AGNUS - Practice.html" style="color:var(--on-dark-soft);">Practice</a>
+      <a href="AGNUS - Review.html" style="color:var(--on-dark-soft);">Reviews</a>
+      <a href="AGNUS - Agents.html" style="color:var(--on-dark-soft);">Agents</a>
+      <a href="AGNUS - Academy.html" style="color:var(--on-dark-soft);">Academy</a>
+      <a href="AGNUS - Business.html" style="color:var(--on-dark-soft);">Business</a>
+      </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+      <button class="hamburger" aria-label="Menu" style="border-color:var(--line-dark);" onclick="document.body.classList.toggle('menu-open')"><span style="background:#fff;"></span><span style="background:#fff;"></span><span style="background:#fff;"></span></button>
+    </div>
+  </div>
+  <div class="m-drawer" style="background:rgba(26,26,23,0.97); border-color:var(--line-dark);">
+    <a href="AGNUS - Explore.html" style="color:#fff; border-color:var(--line-dark);">Explore</a>
+    <a href="AGNUS - Marketplace.html" style="color:#fff; border-color:var(--line-dark);">Marketplace</a>
+    <a href="AGNUS - Intelligence.html" style="color:#fff; border-color:var(--line-dark);">Intelligence</a>
+    <a href="AGNUS - Review.html" style="color:#fff; border-color:var(--line-dark);">Reviews</a>
+    <a href="AGNUS - Compare.html" style="color:#fff; border-color:var(--line-dark);">Compare</a>
+    <a href="AGNUS - Agents.html" style="color:#fff; border-color:var(--line-dark);">Agents</a>
+    <a href="AGNUS - Academy.html" style="color:#fff; border-color:var(--line-dark);">Academy</a>
+    <a href="AGNUS - Business.html" style="color:#fff; border-color:var(--line-dark);">Business</a>
+    <a href="AGNUS - Home.html#premium" style="color: var(--gold-light); border-color:var(--line-dark);">Premium Membership</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="aw-hero">
+  <div class="container">
+    <div class="crumbs" style="justify-content:center; display:flex;"><a href="AGNUS - Home.html">AGNUS</a><span class="sep">/</span><span class="here">The Awards</span></div>
+    <div class="ctr">
+      <div class="aw-medallion"><span class="gold-text">★</span></div>
+      <div class="kicker on-dark no-rule" style="justify-content:center; margin-bottom:22px;"><span class="ix gold-text">2026</span> The AGNUS Awards</div>
+      <h1>The Best AI<br />of <em>the Year.</em></h1>
+      <p class="sub">The definitive, independent recognition of the tools that defined the year — judged on the record by working professionals. The awards companies actually want to win.</p>
+      <div class="stamp"><span class="d"></span> 12 categories · 41,000 voices · zero sponsorships</div>
+    </div>
+  </div>
+</header>
+
+<!-- TOOL OF THE YEAR -->
+<section class="tooy">
+  <div class="container tooy-inner">
+    <div>
+      <div class="tk"><span class="gold-text">✦</span> Tool of the Year</div>
+      <h2>Claude.</h2>
+      <p>Across every category we judged, one tool drew the most consistent praise from professionals for capability, reliability and trust. Our highest honour for 2026.</p>
+      <div class="row">
+        <a href="AGNUS - Review.html" class="btn btn-gold">Read the review <span class="arr">→</span></a>
+        <a href="AGNUS - Compare.html" class="btn btn-ghost-d">See the comparison</a>
+      </div>
+    </div>
+    <div class="tooy-card">
+      <div class="ct"><span class="yr">AGNUS · 2026</span><span class="seal"><span class="gold-text">★</span></span></div>
+      <div>
+        <div class="nm">Claude</div>
+        <div class="cat">Tool of the Year</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORY WINNERS -->
+<section class="aw-section">
+  <div class="container">
+    <div class="aw-head">
+      <div class="kicker on-dark"><span class="ix">01</span> The Winners</div>
+      <h2>Twelve categories.<br /><em>Judged on the record.</em></h2>
+    </div>
+    <div class="winners">
+      <div class="win"><div class="medal"><span class="gold-text">I</span></div><div class="acat">Category 01</div><h3>AI Assistant</h3><div class="winner"><span class="nm">ChatGPT</span><span class="tag">Winner</span></div><div class="runner">Runner-up · <b>Claude</b></div></div>
+      <div class="win"><div class="medal"><span class="gold-text">II</span></div><div class="acat">Category 02</div><h3>AI Writer</h3><div class="winner"><span class="nm">Claude</span><span class="tag">Winner</span></div><div class="runner">Runner-up · <b>Jasper</b></div></div>
+      <div class="win"><div class="medal"><span class="gold-text">III</span></div><div class="acat">Category 03</div><h3>AI Coding Assistant</h3><div class="winner"><span class="nm">Cursor</span><span class="tag">Winner</span></div><div class="runner">Runner-up · <b>Copilot</b></div></div>
+      <div class="win"><div class="medal"><span class="gold-text">IV</span></div><div class="acat">Category 04</div><h3>AI Agent</h3><div class="winner"><span class="nm">Devin</span><span class="tag">Winner</span></div><div class="runner">Runner-up · <b>Operator</b></div></div>
+      <div class="win"><div class="medal"><span class="gold-text">V</span></div><div class="acat">Category 05</div><h3>AI Search</h3><div class="winner"><span class="nm">Perplexity</span><span class="tag">Winner</span></div><div class="runner">Runner-up · <b>Gemini</b></div></div>
+      <div class="win"><div class="medal"><span class="gold-text">VI</span></div><div class="acat">Category 06</div><h3>AI Image</h3><div class="winner"><span class="nm">Midjourney</span><span class="tag">Winner</span></div><div class="runner">Runner-up · <b>Ideogram</b></div></div>
+      <div class="win"><div class="medal"><span class="gold-text">VII</span></div><div class="acat">Category 07</div><h3>AI Video</h3><div class="winner"><span class="nm">Runway</span><span class="tag">Winner</span></div><div class="runner">Runner-up · <b>Pika</b></div></div>
+      <div class="win"><div class="medal"><span class="gold-text">VIII</span></div><div class="acat">Category 08</div><h3>AI CRM</h3><div class="winner"><span class="nm">Attio</span><span class="tag">Winner</span></div><div class="runner">Runner-up · <b>HubSpot</b></div></div>
+      <div class="win"><div class="medal"><span class="gold-text">IX</span></div><div class="acat">Category 09</div><h3>AI Meeting</h3><div class="winner"><span class="nm">Granola</span><span class="tag">Winner</span></div><div class="runner">Runner-up · <b>Fathom</b></div></div>
+      <div class="win"><div class="medal"><span class="gold-text">X</span></div><div class="acat">Category 10</div><h3>AI Voice</h3><div class="winner"><span class="nm">ElevenLabs</span><span class="tag">Winner</span></div><div class="runner">Runner-up · <b>PlayHT</b></div></div>
+      <div class="win"><div class="medal"><span class="gold-text">XI</span></div><div class="acat">Category 11</div><h3>Best Value</h3><div class="winner"><span class="nm">Gemini</span><span class="tag">Winner</span></div><div class="runner">Runner-up · <b>DeepSeek</b></div></div>
+      <div class="win"><div class="medal"><span class="gold-text">XII</span></div><div class="acat">Category 12</div><h3>Newcomer</h3><div class="winner"><span class="nm">Manus</span><span class="tag">Winner</span></div><div class="runner">Runner-up · <b>Genspark</b></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PODIUM -->
+<section class="aw-section warm-dark">
+  <div class="container">
+    <div class="aw-head">
+      <div class="kicker on-dark"><span class="ix">02</span> The Podium</div>
+      <h2>AI Assistant of the Year</h2>
+    </div>
+    <div class="podium-wrap">
+      <div class="pod"><div class="rank" style="color:var(--ink-faint);">II</div><div class="nm">Claude</div><div class="sc">9.6 / 10</div><div class="base">Silver</div></div>
+      <div class="pod first"><div class="rank gold-text">I</div><div class="nm">ChatGPT</div><div class="sc">9.8 / 10</div><div class="base">Winner</div></div>
+      <div class="pod"><div class="rank" style="color:#A87B52;">III</div><div class="nm">Gemini</div><div class="sc">9.2 / 10</div><div class="base">Bronze</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- METHODOLOGY -->
+<section class="aw-section">
+  <div class="container">
+    <div class="aw-head">
+      <div class="kicker on-dark"><span class="ix">03</span> How we judge</div>
+      <h2>No sponsorships.<br /><em>No pay-to-win.</em></h2>
+    </div>
+    <div class="method">
+      <div class="mc"><div class="mn">01</div><h4>Capability</h4><p>Tested on real tasks against a consistent rubric — not marketing demos.</p></div>
+      <div class="mc"><div class="mn">02</div><h4>Reliability</h4><p>How it holds up over weeks of daily use, including where it breaks.</p></div>
+      <div class="mc"><div class="mn">03</div><h4>Value</h4><p>What you actually get for the price, weighted by who it's for.</p></div>
+    </div>
+    <div class="pledge">
+      <p>"A company can't buy an AGNUS Award. They can only earn one — by being the best for the people who use it."</p>
+      <div class="by">The AGNUS editorial standard</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="aw-section warm-dark">
+  <div class="container aw-cta">
+    <div class="aw-medallion" style="margin-bottom:24px;"><span class="gold-text">★</span></div>
+    <h2 class="h-section">Be first to the 2027 shortlist.</h2>
+    <p>Members get early access to nominations, the full results, and the data behind every verdict.</p>
+    <div class="row">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold btn-lg">Become a member <span class="arr">→</span></a>
+      <a href="AGNUS - Review.html" class="btn btn-ghost-d btn-lg">Browse reviews</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+        <p>Intelligence for the future of work. The trusted source for what's happening, which tools matter, and where AI is heading.</p>
+        <form class="fsearch" onsubmit="return false;"><input type="email" placeholder="Your email for the daily brief" aria-label="Email" /><button type="submit">Subscribe</button></form>
+      </div>
+      <div class="foot-col"><h5>Discover</h5><ul>
+        <li><a href="AGNUS - Review.html">AI Reviews</a></li>
+        <li><a href="AGNUS - Compare.html">AI Comparisons</a></li>
+        <li><a href="AGNUS - Intelligence.html">AI News</a></li>
+        <li><a href="AGNUS - Agents.html">AI Agents</a></li>
+        <li><a href="AGNUS - Tools.html">Free AI Tools</a></li>
+      </ul></div>
+      <div class="foot-col"><h5>Learn &amp; Build</h5><ul>
+        <li><a href="AGNUS - Academy.html">AI Academy</a></li>
+        <li><a href="AGNUS - Prompts.html">Prompt Library</a></li>
+        <li><a href="AGNUS - Business.html">Business Automation</a></li>
+        <li><a href="AGNUS - Business.html">AI for Business</a></li>
+        <li><a href="AGNUS - Home.html#premium"><span class="gd">Premium Membership</span></a></li>
+      </ul></div>
+      <div class="foot-col"><h5>Company</h5><ul>
+        <li><a href="#">About AGNUS</a></li>
+        <li><a href="#">Our methodology</a></li>
+        <li><a href="AGNUS - Awards.html">The AGNUS Awards</a></li>
+        <li><a href="#">Editorial standards</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="AGNUS - Dashboard.html" class="gd">Editorial Dashboard ↗</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-bottom"><span>© 2026 AGNUS · Truth before hype.</span><div class="fb-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Editorial Policy</a><a href="#">Advertise</a></div></div>
+  </div>
+</footer>
+
+<script src="image-slot.js"></script>
+<script>
+document.addEventListener('keydown',e=>{ if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){ e.preventDefault(); window.location.href='AGNUS - Home.html#top'; } });
+</script>
+</body>
+</html>

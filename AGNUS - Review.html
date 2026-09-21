@@ -1,0 +1,506 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ChatGPT Review (2026) — AGNUS</title>
+<meta name="description" content="The AGNUS ChatGPT review: tested ourselves, scored on a consistent rubric, with honest strengths, weaknesses and real-world results. Affiliate links never affect the rating." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<style>
+/* ── REVIEW PAGE ─────────────────────────────────────────────────── */
+.rv-hero { padding: clamp(40px,5vw,64px) 0 clamp(56px,7vw,88px); }
+.rv-hero-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(40px,5vw,72px); align-items: center; }
+.rv-logo { width: 60px; height: 60px; border-radius: 16px; background: var(--paper-2); border: 1px solid var(--line); display: grid; place-items: center; font-weight: 700; font-size: 26px; margin-bottom: 22px; }
+.rv-hero h1 { font-family: var(--font-sans); font-weight: 700; font-size: clamp(40px,6vw,80px); line-height: 0.98; letter-spacing: -0.035em; margin: 0 0 10px; }
+.rv-hero h1 .yr { color: var(--ink-faint); font-weight: 600; }
+.rv-scoreline { display: flex; align-items: center; gap: 16px; margin: 18px 0 22px; }
+.rv-scoreline .stars { font-size: 22px; }
+.rv-scoreline .big { font-family: var(--font-mono); font-weight: 600; font-size: 26px; }
+.rv-scoreline .big small { color: var(--ink-mute); font-size: 15px; font-weight: 400; }
+.rv-oneliner { font-family: var(--font-serif); font-weight: 300; font-size: clamp(20px,2.4vw,28px); line-height: 1.4; color: var(--ink); margin: 0 0 30px; letter-spacing: -0.01em; max-width: 22ch; }
+.rv-fit { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; margin-bottom: 32px; }
+.rv-fit h5 { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-mute); margin: 0 0 12px; }
+.rv-fit ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 9px; }
+.rv-fit li { display: grid; grid-template-columns: 20px 1fr; gap: 10px; font-size: 14.5px; line-height: 1.4; }
+.rv-fit .yes .mk { color: var(--pass); }
+.rv-fit .no .mk { color: var(--ink-faint); }
+.rv-fit .mk { font-weight: 700; }
+.rv-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+.rv-figure { position: relative; border-radius: 20px; overflow: hidden; aspect-ratio: 4/5; background: var(--paper-2); box-shadow: 0 40px 90px -50px rgba(26,26,23,0.45); }
+.rv-figure image-slot { width: 100%; height: 100%; }
+.rv-badge { position: absolute; top: 18px; left: 18px; z-index: 2; display: inline-flex; align-items: center; gap: 8px; background: rgba(26,26,23,0.86); backdrop-filter: blur(8px); color: #fff; padding: 8px 14px; border-radius: 999px; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; border: 1px solid var(--gold-deep); }
+.rv-badge .gold-text { font-weight: 600; }
+
+.sec-head2 { margin-bottom: clamp(32px,4vw,48px); }
+.sec-head2 .kicker { margin-bottom: 16px; }
+
+/* score breakdown */
+.score-table { border-top: 1px solid var(--char); }
+.score-row { display: grid; grid-template-columns: 200px 90px 1fr; gap: 24px; align-items: center; padding: 20px 2px; border-bottom: 1px solid var(--line); }
+.score-row .scat { font-weight: 600; font-size: 16px; letter-spacing: -0.01em; }
+.score-row .snum { font-family: var(--font-mono); font-weight: 600; font-size: 18px; }
+.score-row .snum.hi { color: var(--gold-deep); }
+.score-row .swhy { font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
+@media (max-width: 640px){ .score-row { grid-template-columns: 1fr auto; gap: 6px 14px; } .score-row .swhy { grid-column: 1 / -1; } }
+
+/* overview specs */
+.specs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.spec { background: #fff; padding: 24px 22px; }
+.spec dt { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 7px; }
+.spec dd { margin: 0; font-size: 16px; font-weight: 600; letter-spacing: -0.01em; }
+
+/* trust panel */
+.trust-panel { background: var(--char); color: var(--on-dark); border-radius: 20px; padding: clamp(32px,4vw,52px); display: grid; grid-template-columns: 240px 1fr; gap: clamp(28px,4vw,56px); }
+.trust-panel h3 { font-family: var(--font-sans); font-weight: 700; font-size: clamp(24px,3vw,34px); letter-spacing: -0.025em; margin: 0; color: #fff; }
+.trust-panel h3 em { font-family: var(--font-serif); font-style: italic; font-weight: 300; }
+.trust-list { display: grid; gap: 0; }
+.trust-list .ti { display: grid; grid-template-columns: 24px 1fr; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--line-dark); font-size: 15px; line-height: 1.5; color: var(--on-dark-soft); }
+.trust-list .ti:last-child { border-bottom: none; }
+.trust-list .ti b { color: #fff; font-weight: 600; }
+.trust-list .ti .tm { color: var(--gold-light); font-family: var(--font-mono); font-size: 13px; padding-top: 2px; }
+
+/* screenshots */
+.shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.shot { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--paper-2); }
+.shot .sf { aspect-ratio: 16/10; }
+.shot image-slot { width:100%; height:100%; }
+.shot .scap { padding: 12px 15px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; color: var(--ink-soft); border-top: 1px solid var(--line); background: #fff; }
+
+/* strengths / weaknesses */
+.sw-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+.sw { border: 1px solid var(--line); border-radius: 18px; padding: 32px 30px; }
+.sw h4 { font-family: var(--font-sans); font-weight: 700; font-size: 21px; letter-spacing: -0.02em; margin: 0 0 20px; }
+.sw ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; }
+.sw li { display: grid; grid-template-columns: 22px 1fr; gap: 12px; padding: 13px 0; border-top: 1px solid var(--line-soft); font-size: 15px; line-height: 1.45; }
+.sw li:first-child { border-top: none; }
+.sw.good .mk { color: var(--pass); font-weight: 700; }
+.sw.bad .mk { color: var(--ink-faint); font-weight: 700; }
+
+/* best for professions */
+.prof-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 clamp(28px,4vw,64px); border-top: 1px solid var(--char); }
+.prof-row { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.prof-row .pn { font-size: 16px; font-weight: 600; letter-spacing: -0.01em; }
+
+/* alternatives */
+.alt-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.alt { border: 1px solid var(--line); border-radius: 16px; padding: 26px; display: flex; flex-direction: column; gap: 8px; transition: border-color .25s ease, transform .25s ease; }
+.alt:hover { border-color: var(--char); transform: translateY(-4px); }
+.alt .abetter { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-deep); }
+.alt .anm { font-family: var(--font-sans); font-weight: 700; font-size: 24px; letter-spacing: -0.02em; }
+.alt .acmp { margin-top: auto; font-size: 14px; font-weight: 600; color: var(--ink); display: inline-flex; gap: 7px; align-items: center; padding-top: 14px; }
+.alt:hover .acmp .arr { transform: translateX(3px); }
+
+/* real-world testing */
+.test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+.test { background: #fff; padding: 28px 24px; }
+.test .tnum { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--ink-mute); }
+.test h4 { font-family: var(--font-sans); font-weight: 600; font-size: 17px; letter-spacing: -0.015em; margin: 12px 0 8px; }
+.test p { font-size: 13.5px; line-height: 1.5; color: var(--ink-soft); margin: 0 0 14px; }
+.test .res { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--pass); font-weight: 500; }
+.test .res .d { width: 6px; height: 6px; border-radius: 50%; background: var(--pass); }
+
+/* final verdict */
+.fv { background: var(--char); color: var(--on-dark); border-radius: 22px; padding: clamp(40px,5vw,72px); position: relative; overflow: hidden; }
+.fv::after { content: ""; position: absolute; inset: 0; background: radial-gradient(70% 110% at 88% 8%, rgba(220,192,137,0.12), transparent 60%); pointer-events: none; }
+.fv-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 280px; gap: clamp(32px,4vw,64px); align-items: center; }
+.fv .fk { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 18px; }
+.fv h3 { font-family: var(--font-sans); font-weight: 700; font-size: clamp(28px,3.4vw,42px); letter-spacing: -0.03em; line-height: 1.05; margin: 0 0 18px; color: #fff; }
+.fv p { font-family: var(--font-serif); font-weight: 300; font-size: 19px; line-height: 1.5; color: var(--on-dark-soft); margin: 0; max-width: 46ch; }
+.fv-score { text-align: center; border-left: 1px solid var(--line-dark); padding-left: clamp(20px,3vw,48px); }
+.fv-score .fnum { font-family: var(--font-sans); font-weight: 800; font-size: clamp(56px,7vw,84px); line-height: 1; letter-spacing: -0.04em; }
+.fv-score .fout { font-family: var(--font-mono); font-size: 13px; color: var(--on-dark-mute); margin-top: 4px; }
+.fv-score .stars { font-size: 18px; margin: 16px 0 8px; }
+.fv-score .frec { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-light); font-weight: 500; }
+@media (max-width: 760px){ .fv-inner { grid-template-columns: 1fr; gap: 28px; } .fv-score { border-left: none; border-top: 1px solid var(--line-dark); padding-left: 0; padding-top: 28px; } }
+
+@media (max-width: 860px) {
+  .rv-hero-grid { grid-template-columns: 1fr; gap: 36px; }
+  .rv-figure { aspect-ratio: 16/10; max-width: 520px; }
+  .specs { grid-template-columns: repeat(2,1fr); }
+  .shots { grid-template-columns: 1fr; }
+  .sw-grid { grid-template-columns: 1fr; }
+  .prof-grid { grid-template-columns: 1fr; }
+  .alt-grid, .test-grid { grid-template-columns: 1fr; }
+  .trust-panel { grid-template-columns: 1fr; gap: 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-label">Today's Intelligence</div>
+  <div class="ticker-track">
+    <span><span class="tk">REVIEWS</span> 412 tools re-scored this quarter</span><span class="dot"></span>
+    <span><span class="tk">MODELS</span> Frontier context windows cross 10M tokens</span><span class="dot"></span>
+    <span><span class="tk">METHOD</span> AGNUS rubric updated for 2026</span><span class="dot"></span>
+    <span><span class="tk">ENTERPRISE</span> AI adoption in F500 <span class="up">&nbsp;+38% YoY</span></span><span class="dot"></span>
+    <span><span class="tk">REVIEWS</span> 412 tools re-scored this quarter</span><span class="dot"></span>
+    <span><span class="tk">MODELS</span> Frontier context windows cross 10M tokens</span><span class="dot"></span>
+    <span><span class="tk">METHOD</span> AGNUS rubric updated for 2026</span><span class="dot"></span>
+    <span><span class="tk">ENTERPRISE</span> AI adoption in F500 <span class="up">&nbsp;+38% YoY</span></span><span class="dot"></span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Marketplace.html">Marketplace</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Review.html" class="active">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+      <a href="AGNUS - Business.html">Business</a>
+      </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#top" class="nav-search">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="9" r="6"/><path d="M14 14l4 4"/></svg>
+        Search tools <kbd>⌘K</kbd>
+      </a>
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+      <button class="hamburger" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="m-drawer">
+    <a href="AGNUS - Explore.html">Explore</a>
+    <a href="AGNUS - Marketplace.html">Marketplace</a>
+    <a href="AGNUS - Intelligence.html">Intelligence</a>
+    <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Practice.html">Practice</a>
+    <a href="AGNUS - Compare.html">Compare</a>
+    <a href="AGNUS - Agents.html">Agents</a>
+    <a href="AGNUS - Academy.html">Academy</a>
+    <a href="AGNUS - Business.html">Business</a>
+    <a href="AGNUS - Home.html#premium" style="color: var(--gold-deep);">Premium Membership</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="container rv-hero">
+  <div class="crumbs">
+    <a href="AGNUS - Home.html">AGNUS</a><span class="sep">/</span>
+    <a href="AGNUS - Review.html">Reviews</a><span class="sep">/</span>
+    <span class="here">ChatGPT</span>
+  </div>
+  <div class="rv-hero-grid">
+    <div>
+      <div class="rv-logo">G</div>
+      <h1>ChatGPT Review <span class="yr">2026</span></h1>
+      <div class="rv-scoreline">
+        <span class="stars">★★★★★</span>
+        <span class="big">9.8 <small>/ 10</small></span>
+      </div>
+      <p class="rv-oneliner">The most complete AI assistant available today.</p>
+
+      <div class="rv-fit">
+        <div>
+          <h5>Best for</h5>
+          <ul>
+            <li class="yes"><span class="mk">✓</span> Professionals</li>
+            <li class="yes"><span class="mk">✓</span> Students</li>
+            <li class="yes"><span class="mk">✓</span> Developers</li>
+            <li class="yes"><span class="mk">✓</span> Small businesses</li>
+          </ul>
+        </div>
+        <div>
+          <h5>Not ideal for</h5>
+          <ul>
+            <li class="no"><span class="mk">✕</span> Users needing offline AI</li>
+            <li class="no"><span class="mk">✕</span> Strict on-premise requirements</li>
+            <li class="no"><span class="mk">✕</span> Zero-retention-only policies</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="rv-ctas">
+        <a href="#" class="btn btn-dark">Try free <span class="arr">→</span></a>
+        <a href="AGNUS - Compare.html" class="btn btn-light">Compare with Claude</a>
+      </div>
+    </div>
+
+    <figure class="rv-figure">
+      <div class="rv-badge"><span class="gold-text">★</span> Editor's Choice</div>
+      <image-slot id="rv-hero-shot" shape="rect" placeholder="Product hero · the ChatGPT interface on a clean device, or an elegant workspace using it. Calm, premium, Apple-like. Portrait 4:5."></image-slot>
+    </figure>
+  </div>
+</header>
+
+<!-- AGNUS SCORE -->
+<section class="warm">
+  <div class="container">
+    <div class="sec-head2">
+      <div class="kicker"><span class="ix">01</span> The AGNUS Score</div>
+      <h2 class="h-section">Not one number.<br />The whole picture.</h2>
+    </div>
+    <div class="score-table">
+      <div class="score-row"><div class="scat">Ease of Use</div><div class="snum hi">10<small style="color:var(--ink-mute);font-size:13px;">/10</small></div><div class="swhy">Nothing to learn — productive within the first minute.</div></div>
+      <div class="score-row"><div class="scat">Features</div><div class="snum hi">10<small style="color:var(--ink-mute);font-size:13px;">/10</small></div><div class="swhy">The deepest toolset of any assistant we test.</div></div>
+      <div class="score-row"><div class="scat">Writing</div><div class="snum">9.5<small style="color:var(--ink-mute);font-size:13px;">/10</small></div><div class="swhy">Reliable and fast; a touch generic without steering.</div></div>
+      <div class="score-row"><div class="scat">Coding</div><div class="snum hi">10<small style="color:var(--ink-mute);font-size:13px;">/10</small></div><div class="swhy">Best-in-class ecosystem and agentic coding support.</div></div>
+      <div class="score-row"><div class="scat">Research</div><div class="snum">9.8<small style="color:var(--ink-mute);font-size:13px;">/10</small></div><div class="swhy">Excellent tool use and source synthesis.</div></div>
+      <div class="score-row"><div class="scat">Privacy</div><div class="snum">8.5<small style="color:var(--ink-mute);font-size:13px;">/10</small></div><div class="swhy">Good controls; enterprise tier needed for the strictest needs.</div></div>
+      <div class="score-row"><div class="scat">Enterprise</div><div class="snum">9.6<small style="color:var(--ink-mute);font-size:13px;">/10</small></div><div class="swhy">Mature admin, SSO and compliance tooling.</div></div>
+      <div class="score-row"><div class="scat">Value for Money</div><div class="snum">9.7<small style="color:var(--ink-mute);font-size:13px;">/10</small></div><div class="swhy">Hard to beat for the breadth you get at $20.</div></div>
+      <div class="score-row"><div class="scat">Support</div><div class="snum">9.0<small style="color:var(--ink-mute);font-size:13px;">/10</small></div><div class="swhy">Responsive help and a deep, current knowledge base.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW SPECS -->
+<section>
+  <div class="container">
+    <div class="sec-head2">
+      <div class="kicker"><span class="ix">02</span> Product Overview</div>
+      <h2 class="h-section">The essentials, at a glance.</h2>
+    </div>
+    <dl class="specs">
+      <div class="spec"><dt>Developer</dt><dd>OpenAI</dd></div>
+      <div class="spec"><dt>Founded</dt><dd>2015</dd></div>
+      <div class="spec"><dt>Free version</dt><dd>Yes</dd></div>
+      <div class="spec"><dt>Mobile app</dt><dd>Yes</dd></div>
+      <div class="spec"><dt>API</dt><dd>Yes</dd></div>
+      <div class="spec"><dt>Enterprise</dt><dd>Yes</dd></div>
+      <div class="spec"><dt>Platforms</dt><dd>Web · iOS · Android · Win · Mac</dd></div>
+      <div class="spec"><dt>Starting price</dt><dd>$20/month</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="warm">
+  <div class="container">
+    <div class="trust-panel">
+      <h3>Can you <em>trust</em> this review?</h3>
+      <div class="trust-list">
+        <div class="ti"><span class="tm">✓</span><div><b>We tested it ourselves.</b> Two weeks of daily use across writing, coding and research.</div></div>
+        <div class="ti"><span class="tm">↻</span><div><b>Last updated</b> June 2026 — re-scored against the current model.</div></div>
+        <div class="ti"><span class="tm">⊘</span><div><b>Affiliate links do not affect the rating.</b> Ever. Scores come before commerce.</div></div>
+        <div class="ti"><span class="tm">≡</span><div><b>Here's how we scored it</b> — the same nine-point rubric we apply to every tool.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section>
+  <div class="container">
+    <div class="sec-head2">
+      <div class="kicker"><span class="ix">03</span> What it actually feels like</div>
+      <h2 class="h-section">Real screenshots. No marketing renders.</h2>
+    </div>
+    <div class="shots">
+      <div class="shot"><div class="sf"><image-slot id="shot-chat" shape="rect" placeholder="Real screenshot · chat interface"></image-slot></div><div class="scap">Chat interface</div></div>
+      <div class="shot"><div class="sf"><image-slot id="shot-dash" shape="rect" placeholder="Real screenshot · dashboard / home"></image-slot></div><div class="scap">Dashboard</div></div>
+      <div class="shot"><div class="sf"><image-slot id="shot-mobile" shape="rect" placeholder="Real screenshot · mobile app"></image-slot></div><div class="scap">Mobile app</div></div>
+      <div class="shot"><div class="sf"><image-slot id="shot-settings" shape="rect" placeholder="Real screenshot · settings"></image-slot></div><div class="scap">Settings</div></div>
+      <div class="shot"><div class="sf"><image-slot id="shot-pricing" shape="rect" placeholder="Real screenshot · pricing page"></image-slot></div><div class="scap">Pricing</div></div>
+      <div class="shot"><div class="sf"><image-slot id="shot-output" shape="rect" placeholder="Real screenshot · example output"></image-slot></div><div class="scap">Example output</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STRENGTHS / WEAKNESSES -->
+<section class="warm">
+  <div class="container">
+    <div class="sw-grid">
+      <div class="sw good">
+        <h4>What impressed us</h4>
+        <ul>
+          <li><span class="mk">✓</span> Extremely fast, even on hard prompts</li>
+          <li><span class="mk">✓</span> Excellent reasoning and tool use</li>
+          <li><span class="mk">✓</span> Huge plugin and custom-GPT ecosystem</li>
+          <li><span class="mk">✓</span> Best voice mode of any assistant</li>
+          <li><span class="mk">✓</span> Mature, well-documented API</li>
+          <li><span class="mk">✓</span> Polished mobile app</li>
+        </ul>
+      </div>
+      <div class="sw bad">
+        <h4>What could improve</h4>
+        <ul>
+          <li><span class="mk">✕</span> Can still hallucinate on niche facts</li>
+          <li><span class="mk">✕</span> Best features require a subscription</li>
+          <li><span class="mk">✕</span> Advanced tools have a learning curve</li>
+          <li><span class="mk">✕</span> Heavy API use can get expensive</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEST FOR PROFESSIONS -->
+<section>
+  <div class="container">
+    <div class="sec-head2">
+      <div class="kicker"><span class="ix">04</span> Best for</div>
+      <h2 class="h-section">Is it a good fit for you?</h2>
+    </div>
+    <div class="prof-grid">
+      <div class="prof-row"><span class="pn">Lawyers</span><span class="stars">★★★★★</span></div>
+      <div class="prof-row"><span class="pn">Teachers</span><span class="stars">★★★★★</span></div>
+      <div class="prof-row"><span class="pn">Students</span><span class="stars">★★★★★</span></div>
+      <div class="prof-row"><span class="pn">Entrepreneurs</span><span class="stars">★★★★★</span></div>
+      <div class="prof-row"><span class="pn">Designers</span><span class="stars">★★★★<span class="off">★</span></span></div>
+      <div class="prof-row"><span class="pn">Researchers</span><span class="stars">★★★★<span class="off">★</span></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ALTERNATIVES -->
+<section class="warm">
+  <div class="container">
+    <div class="sec-head2">
+      <div class="kicker"><span class="ix">05</span> Alternatives</div>
+      <h2 class="h-section">Not the right fit? Start here.</h2>
+    </div>
+    <div class="alt-grid">
+      <a href="AGNUS - Compare.html" class="alt"><span class="abetter">Better for writing</span><span class="anm">Claude</span><span class="acmp">Compare <span class="arr">→</span></span></a>
+      <a href="AGNUS - Compare.html" class="alt"><span class="abetter">Better for Google users</span><span class="anm">Gemini</span><span class="acmp">Compare <span class="arr">→</span></span></a>
+      <a href="AGNUS - Compare.html" class="alt"><span class="abetter">Better open source</span><span class="anm">Llama</span><span class="acmp">Compare <span class="arr">→</span></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- REAL-WORLD TESTING -->
+<section>
+  <div class="container">
+    <div class="sec-head2">
+      <div class="kicker"><span class="ix">06</span> Real-world testing</div>
+      <h2 class="h-section">We didn't just read the docs.<br />We put it to work.</h2>
+    </div>
+    <div class="test-grid">
+      <div class="test"><div class="tnum">Test 01</div><h4>Draft a legal contract</h4><p>A two-party NDA from a plain-language brief.</p><div class="res"><span class="d"></span> Clean, usable first draft</div></div>
+      <div class="test"><div class="tnum">Test 02</div><h4>Build a website</h4><p>A responsive landing page from a one-line prompt.</p><div class="res"><span class="d"></span> Shipped with minor edits</div></div>
+      <div class="test"><div class="tnum">Test 03</div><h4>Translate a document</h4><p>A 12-page report, EN → FR, tone preserved.</p><div class="res"><span class="d"></span> Near-native quality</div></div>
+      <div class="test"><div class="tnum">Test 04</div><h4>Explain quantum physics</h4><p>Superposition for a curious 12-year-old.</p><div class="res"><span class="d"></span> Clear and accurate</div></div>
+      <div class="test"><div class="tnum">Test 05</div><h4>Write Python code</h4><p>A data pipeline with tests and error handling.</p><div class="res"><span class="d"></span> Ran on first try</div></div>
+      <div class="test"><div class="tnum">Test 06</div><h4>Summarize a PDF</h4><p>A 40-page whitepaper into one page.</p><div class="res"><span class="d"></span> Faithful, no key misses</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL VERDICT -->
+<section class="warm">
+  <div class="container">
+    <div class="fv">
+      <div class="fv-inner">
+        <div>
+          <div class="fk">Final Verdict · Should you buy it?</div>
+          <h3>Yes — without hesitation.</h3>
+          <p>If you need one AI assistant that handles writing, coding, research and business tasks exceptionally well, this is our top recommendation for 2026.</p>
+        </div>
+        <div class="fv-score">
+          <div class="fnum gold-text">9.8</div>
+          <div class="fout">/ 10 overall</div>
+          <div class="stars">★★★★★</div>
+          <div class="frec">Recommended</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE AGNUS SIGNATURE -->
+<section class="dark">
+  <div class="container">
+    <div class="sec-head2">
+      <div class="kicker no-rule"><span class="ix gold-text">◆</span> The AGNUS Signature</div>
+      <h2 class="h-section" style="color:#fff;">Not just "is it good."<br /><span class="gold-text">Is it good for you?</span></h2>
+    </div>
+    <div class="prof-grid" style="border-top-color: var(--line-dark);">
+      <div class="prof-row" style="border-color:var(--line-dark);"><span class="pn" style="color:#fff;">Student</span><span class="stars">★★★★★</span></div>
+      <div class="prof-row" style="border-color:var(--line-dark);"><span class="pn" style="color:#fff;">Lawyer</span><span class="stars">★★★★★</span></div>
+      <div class="prof-row" style="border-color:var(--line-dark);"><span class="pn" style="color:#fff;">Doctor</span><span class="stars">★★★★<span class="off">★</span></span></div>
+      <div class="prof-row" style="border-color:var(--line-dark);"><span class="pn" style="color:#fff;">Developer</span><span class="stars">★★★★★</span></div>
+      <div class="prof-row" style="border-color:var(--line-dark);"><span class="pn" style="color:#fff;">Marketing Agency</span><span class="stars">★★★★★</span></div>
+      <div class="prof-row" style="border-color:var(--line-dark);"><span class="pn" style="color:#fff;">Small Business</span><span class="stars">★★★★★</span></div>
+      <div class="prof-row" style="border-color:var(--line-dark);"><span class="pn" style="color:#fff;">Enterprise</span><span class="stars">★★★★<span class="off">★</span></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+        <p>Intelligence for the future of work. The trusted source for what's happening, which tools matter, and where AI is heading.</p>
+        <form class="fsearch" onsubmit="return false;">
+          <input type="email" placeholder="Your email for the daily brief" aria-label="Email" />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+      <div class="foot-col"><h5>Discover</h5><ul>
+        <li><a href="AGNUS - Review.html">AI Reviews</a></li>
+        <li><a href="AGNUS - Compare.html">AI Comparisons</a></li>
+        <li><a href="AGNUS - Intelligence.html">AI News</a></li>
+        <li><a href="AGNUS - Agents.html">AI Agents</a></li>
+        <li><a href="AGNUS - Tools.html">Free AI Tools</a></li>
+      </ul></div>
+      <div class="foot-col"><h5>Learn &amp; Build</h5><ul>
+        <li><a href="AGNUS - Academy.html">AI Academy</a></li>
+        <li><a href="AGNUS - Academy.html">Prompt Library</a></li>
+        <li><a href="AGNUS - Business.html">Business Automation</a></li>
+        <li><a href="AGNUS - Business.html">AI for Business</a></li>
+        <li><a href="AGNUS - Home.html#premium"><span class="gd">Premium Membership</span></a></li>
+      </ul></div>
+      <div class="foot-col"><h5>Company</h5><ul>
+        <li><a href="#">About AGNUS</a></li>
+        <li><a href="#">Our methodology</a></li>
+        <li><a href="AGNUS - Awards.html">The AGNUS Awards</a></li>
+        <li><a href="#">Editorial standards</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="AGNUS - Dashboard.html" class="gd">Editorial Dashboard ↗</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 AGNUS · Truth before hype.</span>
+      <div class="fb-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Editorial Policy</a><a href="#">Advertise</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="image-slot.js"></script>
+<script src="agnus-research-data.js"></script>
+<script>
+(function () {
+  var rev = window.AR && window.AR.REVIEWS && window.AR.REVIEWS[0];
+  if (!rev) return;
+  var bigScore = document.querySelector('.rv-scoreline .big');
+  if (bigScore) bigScore.innerHTML = rev.overall_score + ' <small>/ 10</small>';
+  var oneliner = document.querySelector('.rv-oneliner');
+  if (oneliner) oneliner.textContent = rev.verdict;
+  var scoreTable = document.querySelector('.score-table');
+  if (scoreTable && rev.scores) {
+    scoreTable.innerHTML = rev.scores.map(function (s) {
+      var score = s.score != null ? s.score : '—';
+      var hi = s.score != null && s.score >= 8.5 ? ' hi' : '';
+      return '<div class="score-row">'
+        + '<div class="scat">' + s.name + '</div>'
+        + '<div class="snum' + hi + '">' + score + '<small style="color:var(--ink-mute);font-size:13px;">/10</small></div>'
+        + '<div class="swhy">' + s.note + '</div>'
+        + '</div>';
+    }).join('');
+  }
+  var fnum = document.querySelector('.fv-score .fnum');
+  if (fnum) fnum.textContent = rev.overall_score;
+})();
+document.addEventListener('keydown', (e) => {
+  if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); window.location.href = 'AGNUS - Home.html#top'; }
+});
+</script>
+</body>
+</html>

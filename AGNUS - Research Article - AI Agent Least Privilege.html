@@ -1,0 +1,217 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Securing AI Agents: Tool Permissions, Sandboxing, and the Principle of Least Privilege — AGNUS Research</title>
+<meta name="description" content="AI agents that can take actions — call APIs, execute code, access databases — create a new security attack surface. This article explains how to apply the principle of least privilege, tool permission design, and sandboxing to agentic AI systems."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="agnus.css"/>
+<link rel="stylesheet" href="agnus-research.css"/>
+<style>
+a,a:visited{color:inherit}
+.finding-strip{margin:28px 0;border:1px solid var(--line-strong);border-left:3px solid var(--gold);border-radius:0 12px 12px 0;background:var(--gold-soft);padding:18px 22px}
+.finding-strip .fs-k{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:8px}
+.finding-strip p{font-size:15px;line-height:1.6;color:var(--ink);margin:0}
+.principle-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:24px 0}
+@media(max-width:720px){.principle-grid{grid-template-columns:1fr}}
+.principle-card{border:1px solid var(--line-strong);border-radius:14px;padding:20px 22px;background:var(--surface,#fff)}
+.pc-label{font-family:var(--font-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:8px}
+.pc-title{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.pc-body{font-size:14px;color:var(--ink-mute);line-height:1.68}
+.perm-matrix{width:100%;border-collapse:collapse;margin:20px 0;background:var(--surface,#fff)}
+.perm-matrix th{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-mute);background:var(--paper-warm,#F7F5F0);padding:10px 14px;text-align:left;border-bottom:2px solid var(--line-strong)}
+.perm-matrix td{padding:11px 14px;font-size:13.5px;border-bottom:1px solid var(--line-strong);vertical-align:top}
+.perm-allow{color:#0F6E3A;font-weight:700}
+.perm-deny{color:#8A1A0A;font-weight:700}
+.perm-review{color:#8A5C00;font-weight:700}
+.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
+.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
+.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s;text-decoration:none}
+.rsub a:hover{color:var(--ink)}
+.rsub a.on{color:var(--gold-deep);font-weight:600}
+</style>
+</head>
+<body>
+<div class="art-progress"><i id="progBar"></i></div>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+    </div>
+  </div>
+</nav>
+
+<header class="art-hero">
+  <div class="container">
+    <div class="art-kicker"><a href="AGNUS - Research.html">Research</a><span class="sep">·</span><a href="#">AI Security</a></div>
+    <h1 class="art-title">Securing AI Agents: Tool Permissions, Sandboxing, and the Principle of Least Privilege</h1>
+    <p class="art-deck">AI agents that can take actions — call APIs, execute code, access databases, send email — create a fundamentally new security attack surface. The same properties that make them useful make them dangerous if compromised or misdirected. This article explains how to apply security principles developed for privileged software systems to agentic AI.</p>
+    <div class="art-meta">
+      <span class="art-author">Jean-Daniel Alexis</span>
+      <span class="sep">·</span>
+      <span>12 September 2026</span>
+      <span class="sep">·</span>
+      <span>14 min read</span>
+      <span class="sep">·</span>
+      <span>AI Security</span>
+    </div>
+  </div>
+</header>
+
+<nav class="rsub">
+  <div class="rsub-inner">
+    <a href="#surface" class="on">Attack surface</a>
+    <a href="#least-privilege">Least privilege</a>
+    <a href="#tool-design">Tool permission design</a>
+    <a href="#sandboxing">Sandboxing</a>
+    <a href="#governance">Governance layer</a>
+    <a href="#regulatory">Regulatory basis</a>
+  </div>
+</nav>
+
+<main class="container art-body">
+
+  <div class="finding-strip">
+    <div class="fs-k">AGNUS Finding · SRC-0083 / SRC-0001</div>
+    <p>The EU AI Act's robustness requirements (Article 15) and NIST's AI RMF (Govern 1.6, Manage 2.4) both require that AI systems operating with extended capabilities be designed to limit the potential impact of failure or misuse. For agentic AI, this translates directly to tool permission design and the principle of least privilege — the agent should have exactly the access it needs and no more.</p>
+  </div>
+
+  <h2 id="surface" class="h-section">The agentic AI attack surface</h2>
+  <p>A conversational AI that only generates text has a limited attack surface: the worst outcome of a prompt injection attack is a harmful or misleading text output. An AI agent that can take actions has a dramatically larger attack surface: a successful prompt injection attack could cause the agent to exfiltrate data, send unauthorised communications, modify or delete records, execute malicious code, or make financial transactions.</p>
+  <p>The attack surface of an agentic AI system has four dimensions:</p>
+  <div class="principle-grid">
+    <div class="principle-card">
+      <div class="pc-label">Dimension 1</div>
+      <div class="pc-title">Tool access</div>
+      <div class="pc-body">Every tool the agent can call — file system, database, API, email, code executor — is a potential exploitation vector. The broader the tool access, the greater the potential damage from a compromised or misdirected agent.</div>
+    </div>
+    <div class="principle-card">
+      <div class="pc-label">Dimension 2</div>
+      <div class="pc-title">Content processing</div>
+      <div class="pc-body">Agents that process external content — documents, emails, web pages, code — are vulnerable to indirect prompt injection: malicious instructions embedded in the content that redirect the agent's behaviour. Every external content source is a potential injection vector.</div>
+    </div>
+    <div class="principle-card">
+      <div class="pc-label">Dimension 3</div>
+      <div class="pc-title">Multi-agent delegation</div>
+      <div class="pc-body">When agents orchestrate other agents, permissions and trust can propagate through the delegation chain. A compromised sub-agent can attempt to acquire permissions beyond its scope by impersonating the orchestrator or by fabricating outputs that trigger privileged actions in the parent agent.</div>
+    </div>
+    <div class="principle-card">
+      <div class="pc-label">Dimension 4</div>
+      <div class="pc-title">Persistence and memory</div>
+      <div class="pc-body">Agents with persistent memory can be made to store malicious instructions that affect future behaviour — a form of persistent prompt injection. Every memory write is a potential attack on the agent's future behaviour.</div>
+    </div>
+  </div>
+
+  <h2 id="least-privilege" class="h-section">Applying the principle of least privilege to AI agents</h2>
+  <p>The principle of least privilege — a fundamental principle of secure system design — holds that every component should have access only to the resources it needs to perform its defined function, and no more. Applied to AI agents:</p>
+  <ul style="margin:16px 0 16px 20px;line-height:1.9;color:var(--ink-mute)">
+    <li><strong style="color:var(--ink)">Per-task permissions, not session-wide permissions.</strong> An agent assigned to summarise a document should not have write access to the database. Grant permissions for the specific task, revoke them when the task is complete.</li>
+    <li><strong style="color:var(--ink)">Read before write, write before delete.</strong> Privilege escalation within a session should require explicit human approval. An agent should not be able to upgrade its own permissions.</li>
+    <li><strong style="color:var(--ink)">Scope permissions to the minimum necessary resource.</strong> If an agent needs to read one table, it should not have access to the entire database schema.</li>
+    <li><strong style="color:var(--ink)">Time-bound permissions.</strong> Permissions granted for a task should expire when the task ends, not persist indefinitely in the session context.</li>
+  </ul>
+  <p>The principle of least privilege directly maps to the EU AI Act's requirement for human oversight mechanisms (Article 14) and to the NIST AI RMF's Govern function, which requires establishing "policies, processes, and procedures for AI system oversight."</p>
+
+  <h2 id="tool-design" class="h-section">Tool permission design</h2>
+  <p>Tool permission design is the practical implementation of least privilege for agentic AI. The goal is to make the permission system explicit, auditable, and aligned with the agent's defined mission.</p>
+  <p>A well-designed tool permission system for an AI agent distinguishes between:</p>
+
+  <table class="perm-matrix">
+    <thead><tr><th>Permission level</th><th>Definition</th><th>Appropriate for</th><th>Human approval required</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span class="perm-allow">READ</span></td>
+        <td>Access information, no modification</td>
+        <td>Research tasks, context gathering, document analysis</td>
+        <td>No (unless sensitive data)</td>
+      </tr>
+      <tr>
+        <td><span class="perm-review">SUGGEST</span></td>
+        <td>Draft an action for human review; does not execute</td>
+        <td>Email drafts, code proposals, data modifications</td>
+        <td>Yes — human reviews before execution</td>
+      </tr>
+      <tr>
+        <td><span class="perm-allow">ACT (bounded)</span></td>
+        <td>Execute within a defined, limited scope</td>
+        <td>Routine, reversible, low-risk operations</td>
+        <td>No, if within defined scope and reversible</td>
+      </tr>
+      <tr>
+        <td><span class="perm-deny">ACT (unbounded)</span></td>
+        <td>Execute with broad or irreversible effects</td>
+        <td>Financial transactions, production deployments, data deletion</td>
+        <td>Yes — mandatory for all irreversible actions</td>
+      </tr>
+      <tr>
+        <td><span class="perm-deny">SYSTEM</span></td>
+        <td>Modify permissions, system configuration, or agent parameters</td>
+        <td>Never granted to AI agents</td>
+        <td>N/A — agents must not be able to modify their own permissions</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="finding-strip">
+    <div class="fs-k">Design principle</div>
+    <p>The critical rule: an AI agent must never be able to grant itself higher permissions than it was assigned. Any action that would increase the agent's own authority requires a human approval step — an agent requesting permission escalation is itself a signal worth investigating.</p>
+  </div>
+
+  <h2 id="sandboxing" class="h-section">Sandboxing agentic AI systems</h2>
+  <p>Sandboxing is the practice of isolating a process from the systems it could affect, limiting the blast radius if something goes wrong. For agentic AI, sandboxing operates at multiple levels:</p>
+
+  <h3 style="font-size:18px;font-weight:700;margin:28px 0 12px;color:var(--ink)">Network isolation</h3>
+  <p>AI agents should not have unrestricted network access. In most deployment contexts, an agent's outbound connections should be limited to a defined allowlist. An agent that can make arbitrary outbound network connections can exfiltrate data, establish command-and-control channels, or interact with services outside its defined scope.</p>
+
+  <h3 style="font-size:18px;font-weight:700;margin:28px 0 12px;color:var(--ink)">Code execution environments</h3>
+  <p>Agents that can execute code — a capability increasingly common in commercial AI tools — must execute in isolated environments with no access to host system resources, production data, or credentials. Code execution sandboxes should enforce: time limits, memory limits, no filesystem persistence beyond the task, no outbound network by default, and no access to environment variables or secret stores.</p>
+
+  <h3 style="font-size:18px;font-weight:700;margin:28px 0 12px;color:var(--ink)">Content processing isolation</h3>
+  <p>External content (documents, emails, web pages) processed by an AI agent should be handled in a context that is clearly separated from the agent's instruction context. This reduces the effectiveness of indirect prompt injection by making it harder for injected instructions in content to reach the model's instruction-following pathways.</p>
+
+  <h2 id="governance" class="h-section">The governance layer for agentic AI security</h2>
+  <p>Technical controls — least privilege, sandboxing, permission matrices — are necessary but not sufficient. They must be supported by a governance layer that makes permissions explicit, auditable, and human-reviewable:</p>
+  <ul style="margin:16px 0 16px 20px;line-height:1.9;color:var(--ink-mute)">
+    <li><strong style="color:var(--ink)">Mission Contracts.</strong> Every AI agent deployment should have a documented Mission Contract specifying: the agent's purpose, its permitted tool access, the conditions under which human approval is required, and the evidence requirements for audit. This is the governance equivalent of a service account access policy.</li>
+    <li><strong style="color:var(--ink)">Immutable audit logs.</strong> Every agent action that crosses a system boundary — reads a protected resource, calls an external API, executes code — must be logged with enough detail to reconstruct the event. Logs must be immutable and stored outside the agent's own context.</li>
+    <li><strong style="color:var(--ink)">Human approval gates for consequential actions.</strong> Actions with irreversible effects — sending external communications, modifying production data, deploying code — require a human approval step with a time-bound, single-use approval token. The agent cannot execute the action before the approval is granted, and cannot reuse the approval for a different action.</li>
+    <li><strong style="color:var(--ink)">Anomaly detection.</strong> Monitor agent behaviour for deviations from expected patterns: unusual tool call sequences, requests for resources outside the mission scope, repeated attempts to escalate permissions. These are signals of either compromise or misuse.</li>
+  </ul>
+
+  <h2 id="regulatory" class="h-section">Regulatory basis</h2>
+  <p>The EU AI Act's requirements for high-risk AI systems — robustness (Article 15), human oversight (Article 14), and technical documentation (Article 11) — all apply with heightened force to agentic AI systems with tool access. The Commission's guidance on Article 50 transparency requirements also implies that users interacting with agentic AI should be informed of the system's capabilities, including its ability to take actions on their behalf.</p>
+  <p>NIST AI RMF's Govern 1.6 explicitly addresses "risk tolerance and risk appetite" for AI systems that can "take actions that affect the environment" — the primary reference point for tool-using agents. The Manage function's requirements for impact assessment and residual risk management apply to every tool the agent can call.</p>
+
+  <div class="art-source-block">
+    <div class="asb-label">Primary sources</div>
+    <div class="asb-item"><span class="asb-id">SRC-0001</span><span class="asb-title">EU AI Act — Articles 14, 15 (robustness and oversight)</span><span class="asb-url"><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32024R1689" target="_blank" rel="noopener">eur-lex.europa.eu</a></span></div>
+    <div class="asb-item"><span class="asb-id">SRC-0083</span><span class="asb-title">NIST AI RMF 1.0 — Govern 1.6, Manage 2.4</span><span class="asb-url"><a href="https://airc.nist.gov/RMF_Overview" target="_blank" rel="noopener">airc.nist.gov</a></span></div>
+  </div>
+</main>
+
+<script>
+const bar=document.getElementById('progBar');
+window.addEventListener('scroll',()=>{const d=document.documentElement;bar.style.width=(d.scrollTop/(d.scrollHeight-d.clientHeight)*100)+'%';});
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const id=e.target.id;document.querySelectorAll('.rsub a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+id));}});},{threshold:.5,rootMargin:'-20% 0px -60% 0px'});
+document.querySelectorAll('h2[id]').forEach(h=>obs.observe(h));
+</script>
+</body>
+</html>

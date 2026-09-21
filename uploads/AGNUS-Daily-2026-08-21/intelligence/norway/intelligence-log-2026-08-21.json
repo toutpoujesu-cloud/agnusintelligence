@@ -1,0 +1,15 @@
+{
+  "run_date": "2026-08-21",
+  "source_checks": [
+    {
+      "source_url": "https://www.regjeringen.no",
+      "date_checked": "2026-08-21",
+      "status": "no_change",
+      "last_successful_check": "2026-08-21",
+      "observed_version_or_date": "No new official KI-law incorporation publication after the 2026-08-15 baseline was located; the latest relevant item found remains dated 2026-08-06.",
+      "open_questions": []
+    }
+  ],
+  "findings": [],
+  "editorial_alerts": []
+}

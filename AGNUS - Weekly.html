@@ -1,0 +1,264 @@
+<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>This Week in AI — AGNUS</title>
+<meta name="description" content="Five intelligence records. One page. Every Sunday — AGNUS This Week in AI." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<style>
+.page-shell { display: grid; grid-template-columns: 260px 1fr; gap: 0; min-height: calc(100vh - 64px); }
+.archive-rail { border-right: 1px solid var(--line); padding: clamp(32px,4vw,48px) 0; position: sticky; top: 64px; height: calc(100vh - 64px); overflow-y: auto; }
+.archive-rail-inner { padding: 0 clamp(20px,3vw,32px); }
+.arc-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 16px; display: block; }
+.arc-item { display: block; padding: 12px 14px; border-radius: 10px; cursor: pointer; border: 1px solid transparent; transition: background .16s, border-color .16s; margin-bottom: 4px; }
+.arc-item:hover { background: var(--paper-2); }
+.arc-item.active { background: var(--char); border-color: var(--char); }
+.arc-item .ed { font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 4px; }
+.arc-item.active .ed { color: var(--gold-light); }
+.arc-item:not(.active) .ed { color: var(--gold-deep); }
+.arc-item .dt { font-size: 14px; font-weight: 600; color: var(--ink); line-height: 1.2; }
+.arc-item.active .dt { color: #fff; }
+.arc-item .preview { font-size: 12px; color: var(--ink-mute); margin-top: 4px; line-height: 1.35; }
+.arc-item.active .preview { color: var(--on-dark-mute); }
+
+.edition-main { padding: clamp(40px,5vw,64px) clamp(32px,5vw,72px); }
+.ed-kicker { font-family: var(--font-mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--gold-deep); margin-bottom: 8px; }
+.ed-title { font-family: var(--font-sans); font-weight: 800; font-size: clamp(32px,4vw,52px); letter-spacing: -.035em; line-height: .96; margin: 0 0 20px; }
+.ed-meta { font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 28px; display: flex; align-items: center; gap: 12px; }
+.ed-intro { font-family: var(--font-serif); font-weight: 300; font-size: clamp(17px,1.8vw,20px); line-height: 1.6; color: var(--ink-soft); max-width: 700px; margin: 0 0 clamp(36px,4vw,52px); border-bottom: 1px solid var(--line); padding-bottom: clamp(36px,4vw,52px); }
+
+.rec-card { border-top: 1px solid var(--line); padding: clamp(36px,4vw,52px) 0; display: grid; grid-template-columns: 32px 1fr; gap: 24px; align-items: start; }
+.rec-num { font-family: var(--font-serif); font-style: italic; font-size: 22px; color: var(--ink-faint); padding-top: 4px; }
+.rec-body { display: flex; flex-direction: column; gap: 14px; }
+.rec-tag { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--gold-deep); }
+.rec-h { font-family: var(--font-sans); font-weight: 700; font-size: clamp(19px,2vw,26px); letter-spacing: -.025em; line-height: 1.15; color: var(--ink); }
+.rec-body-text { font-size: 14.5px; line-height: 1.65; color: var(--ink-soft); max-width: 680px; margin: 0 0 14px; }
+.rec-body-text:last-of-type { margin-bottom: 0; }
+.rec-source { display: flex; align-items: baseline; gap: 8px; margin-top: 6px; }
+.rec-source-label { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-deep); font-weight: 600; flex-shrink: 0; }
+.rec-source-title { font-family: var(--font-mono); font-size: 11px; color: var(--ink-soft); line-height: 1.4; }
+.rec-confidence { font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; color: var(--ink-mute); margin-top: 4px; }
+.rec-regulation { font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-mute); margin-top: 2px; }
+.rec-footer { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 10px; }
+.mat-badge { font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; border-radius: 4px; padding: 3px 8px; font-weight: 600; }
+.mat-critical { background: #FFF0F0; color: #8B1A1A; border: 1px solid #F0C0C0; }
+.mat-high { background: #FFF8EC; color: #8B6914; border: 1px solid #E8D9A0; }
+.mat-medium { background: #F4F2EE; color: #6B5D40; border: 1px solid #DDD5C0; }
+.rec-id { font-family: var(--font-mono); font-size: 10.5px; color: var(--ink-mute); }
+.rec-link { font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--gold-deep); font-weight: 600; text-decoration: none; display: inline-flex; gap: 6px; }
+.rec-link:hover { text-decoration: underline; }
+
+.ed-empty { padding: 80px 0; text-align: center; color: var(--ink-mute); font-family: var(--font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; }
+
+.page-hero { padding: clamp(48px,6vw,80px) 0 clamp(32px,4vw,48px); }
+.page-hero .kicker { margin-bottom: 16px; }
+.page-hero h1 { font-family: var(--font-sans); font-weight: 800; font-size: clamp(40px,6vw,80px); line-height: .95; letter-spacing: -.04em; margin: 0 0 20px; color: var(--ink); text-wrap: balance; }
+.page-hero h1 em { font-family: var(--font-serif); font-style: italic; font-weight: 300; color: var(--gold-deep); }
+.page-hero .lede { font-size: 17px; line-height: 1.6; color: var(--ink-soft); max-width: 560px; margin: 0; }
+.page-hero .rule-line { border: none; border-top: 1px solid var(--char); margin: clamp(32px,4vw,48px) 0 0; }
+
+.rec-deadline { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 2px; }
+.deadline-chip { font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; padding: 3px 9px; border-radius: 4px; font-weight: 600; }
+.deadline-effective { background: #EFF6FF; color: #1E40AF; border: 1px solid #BFDBFE; }
+.deadline-act { background: #FFF7ED; color: #9A3412; border: 1px solid #FED7AA; }
+
+@media (max-width: 860px) {
+  .page-shell { grid-template-columns: 1fr; }
+  .archive-rail { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--line); padding: 20px 0; }
+  .edition-main { padding: 32px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Marketplace.html">Marketplace</a>
+      <a href="AGNUS - Intelligence.html" class="active">Intelligence</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Practice.html">Practice</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+      <a href="AGNUS - Business.html">Business</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+      <button class="hamburger" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="container" style="padding-top:20px;padding-bottom:0">
+  <div class="crumbs">
+    <a href="AGNUS - Home.html">AGNUS</a><span class="sep">/</span>
+    <a href="AGNUS - Intelligence.html">Intelligence</a><span class="sep">/</span>
+    <span class="here">This Week in AI</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="container">
+  <section class="page-hero">
+    <div class="kicker">This Week in AI · Every Sunday</div>
+    <h1>Intelligence / <em>not headlines.</em></h1>
+    <p class="lede">Five intelligence records every Sunday — drawn from primary regulatory and governance sources, scored by materiality, and briefed for professional action. The goal is a working instrument, not a digest.</p>
+    <hr class="rule-line" />
+  </section>
+</div>
+
+<!-- SHELL -->
+<div class="page-shell">
+
+  <!-- ARCHIVE RAIL -->
+  <aside class="archive-rail">
+    <div class="archive-rail-inner">
+      <span class="arc-label">Archive</span>
+      <div id="arcList"></div>
+    </div>
+  </aside>
+
+  <!-- EDITION CONTENT -->
+  <main class="edition-main" id="editionMain">
+    <div class="ed-empty">Loading edition…</div>
+  </main>
+
+</div>
+
+<!-- FOOTER (condensed) -->
+<footer>
+  <div class="container">
+    <div class="foot-bottom">
+      <span>© 2026 AGNUS · Truth before hype.</span>
+      <div class="fb-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Editorial Policy</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="agnus-research-data.js"></script>
+<script>
+(function () {
+  var AR = window.AR;
+
+  function paragraphs(text) {
+    if (!text) return '';
+    var sents = text.match(/[^.!?]+[.!?]+['"]?/g) || [text];
+    var out = [];
+    for (var i = 0; i < sents.length; i += 2) {
+      out.push('<p class="rec-body-text">' + sents.slice(i, i + 2).join(' ').trim() + '</p>');
+    }
+    return out.join('');
+  }
+
+  if (!AR || !AR.WEEKLY_BRIEFS || !AR.WEEKLY_BRIEFS.length) {
+    document.getElementById('editionMain').innerHTML = '<div class="ed-empty">No editions published yet.</div>';
+    return;
+  }
+
+  var briefs = AR.WEEKLY_BRIEFS.slice().sort(function(a,b){ return b.published_date.localeCompare(a.published_date); });
+  var mat = { Critical:'Critical', High:'High', Medium:'Medium', Low:'Low' };
+  var matClass = { Critical:'mat-critical', High:'mat-high', Medium:'mat-medium', Low:'mat-medium' };
+  var matSymbol = { Critical:'▲▲', High:'▲', Medium:'△', Low:'△' };
+
+  function fmtDate(d) {
+    if (!d) return '';
+    var p = d.split('-');
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    return months[parseInt(p[1],10)-1] + ' ' + p[2] + ', ' + p[0];
+  }
+
+  function renderEdition(brief) {
+    var records = (brief.record_ids || []).map(function(id){ return AR.INTELLIGENCE.find(function(r){ return r.record_id === id; }); }).filter(Boolean);
+
+    var cardsHtml = records.map(function(r, i) {
+      var tag = r.jurisdiction + (r.subtopic ? ' · ' + r.subtopic : '') + ' · ' + (r.publication_date || '');
+      var mc = matClass[r.materiality] || 'mat-medium';
+      var ms = matSymbol[r.materiality] || '△';
+      var ml = r.materiality ? ms + ' ' + r.materiality.toUpperCase() + ' MATERIALITY' : '';
+      var bodyParts = [];
+      if (r.business_significance) bodyParts.push(paragraphs(r.business_significance));
+      if (r.legal_significance) bodyParts.push(paragraphs(r.legal_significance));
+      var body = bodyParts.join('') || '<p class="rec-body-text"></p>';
+      var src = AR.SOURCES ? AR.SOURCES.find(function(s){ return s.source_id === r.source_id; }) : null;
+      var srcHtml = '';
+      if (src) {
+        srcHtml = '<div class="rec-source">'
+          + '<span class="rec-source-label">Source</span>'
+          + '<span class="rec-source-title">' + src.title + ' — ' + src.issuing_organization + '</span>'
+          + '</div>';
+      }
+      var regRef = [r.regulation, r.article_concerned].filter(Boolean).join(' · ');
+      var regHtml = regRef ? '<div class="rec-regulation">' + regRef + '</div>' : '';
+      var confHtml = r.confidence ? '<div class="rec-confidence">Verified: ' + r.confidence + '</div>' : '';
+      var deadlineParts = [];
+      if (r.effective_date) deadlineParts.push('<span class="deadline-chip deadline-effective">Effective ' + fmtDate(r.effective_date) + '</span>');
+      if (r.deadline) deadlineParts.push('<span class="deadline-chip deadline-act">Act by ' + fmtDate(r.deadline) + '</span>');
+      var deadlineHtml = deadlineParts.length ? '<div class="rec-deadline">' + deadlineParts.join('') + '</div>' : '';
+      var intelLink = 'AGNUS - Intelligence.html#' + r.record_id;
+      return '<div class="rec-card">'
+        + '<div class="rec-num">' + (i + 1) + '</div>'
+        + '<div class="rec-body">'
+          + '<div class="rec-tag">' + tag + '</div>'
+          + '<div class="rec-h">' + (r.short_headline || r.what_changed || r.regulation) + '</div>'
+          + body
+          + deadlineHtml
+          + regHtml
+          + srcHtml
+          + confHtml
+          + '<div class="rec-footer">'
+            + (ml ? '<span class="mat-badge ' + mc + '">' + ml + '</span>' : '')
+            + '<span class="rec-id">' + r.record_id + ' · ' + r.source_id + '</span>'
+            + '<a href="' + intelLink + '" class="rec-link">See in Intelligence →</a>'
+          + '</div>'
+        + '</div>'
+      + '</div>';
+    }).join('');
+
+    document.getElementById('editionMain').innerHTML =
+      '<div class="ed-kicker">Every Sunday · Edition ' + brief.edition + '</div>'
+      + '<h1 class="ed-title">This Week in AI.</h1>'
+      + '<div class="ed-meta"><span>' + fmtDate(brief.published_date) + '</span><span>·</span><span>' + records.length + ' records</span></div>'
+      + '<p class="ed-intro">' + (brief.intro || '') + '</p>'
+      + cardsHtml;
+  }
+
+  function renderRail(briefs, activeId) {
+    document.getElementById('arcList').innerHTML = briefs.map(function(b) {
+      var isActive = b.week_id === activeId;
+      return '<div class="arc-item' + (isActive ? ' active' : '') + '" onclick="selectEdition(\'' + b.week_id + '\')">'
+        + '<div class="ed">Edition ' + b.edition + '</div>'
+        + '<div class="dt">' + fmtDate(b.published_date) + '</div>'
+        + '<div class="preview">' + (b.intro || '').slice(0, 60) + '…</div>'
+      + '</div>';
+    }).join('');
+  }
+
+  var current = briefs[0];
+
+  window.selectEdition = function(weekId) {
+    current = briefs.find(function(b){ return b.week_id === weekId; }) || briefs[0];
+    renderEdition(current);
+    renderRail(briefs, current.week_id);
+  };
+
+  renderEdition(current);
+  renderRail(briefs, current.week_id);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,489 @@
+﻿<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=1440"/>
+<title>AGNUS — Editorial Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#F5F3EF;--surface:#FFFFFF;--surface-2:#F0EDE8;--surface-3:#E8E5DF;
+  --border:#DDD9D2;--border-2:#C8C4BC;
+  --char:#1A1612;--ink-soft:#3D3830;--ink-mute:#7A756E;--ink-ghost:#AFAAA2;
+  --gold-deep:#92600A;--gold-mid:#C49A2C;--gold-light:#F5D878;
+  --pass:#0F6E3A;--pass-bg:rgba(15,110,58,.08);--pass-border:rgba(15,110,58,.2);
+  --amber:#8A5C00;--amber-bg:rgba(138,92,0,.08);--amber-border:rgba(138,92,0,.22);
+  --danger:#8A1A0A;--danger-bg:rgba(138,26,10,.08);--danger-border:rgba(138,26,10,.2);
+  --blue:#1A4E8A;--blue-bg:rgba(26,78,138,.08);--blue-border:rgba(26,78,138,.2);
+  --mono:'IBM Plex Mono',monospace;--sans:'Manrope',system-ui,sans-serif;--serif:'Newsreader',Georgia,serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;font-family:var(--sans);background:var(--bg);color:var(--char);-webkit-font-smoothing:antialiased;overflow:hidden}
+.shell{display:grid;grid-template-columns:220px 1fr;grid-template-rows:48px 1fr;height:100vh}
+
+/* TOP BAR */
+.topbar{grid-column:1/-1;background:var(--char);height:48px;display:flex;align-items:center;padding:0 16px;gap:0}
+.tb-logo{font-weight:800;font-size:14px;color:#fff;letter-spacing:-.01em;margin-right:10px}
+.tb-sep{width:1px;height:20px;background:rgba(255,255,255,.15);margin:0 12px}
+.tb-badge{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;background:rgba(255,255,255,.1);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.15);border-radius:5px;padding:3px 9px}
+.tb-right{margin-left:auto;display:flex;align-items:center;gap:10px}
+.tb-stats{display:flex;gap:16px}
+.ts-item{font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.5)}
+.ts-item strong{color:rgba(255,255,255,.85)}
+
+/* SIDEBAR */
+.sidebar{grid-row:2;grid-column:1;background:var(--surface);border-right:1px solid var(--border);overflow-y:auto;padding:12px 0}
+.sb-section{margin-bottom:6px}
+.sb-label{font-family:var(--mono);font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-ghost);padding:0 14px;margin:12px 0 6px;display:block}
+.sb-item{display:flex;align-items:center;gap:9px;padding:8px 14px;cursor:pointer;transition:background .12s;font-size:12.5px;font-weight:600;color:var(--ink-soft);border-radius:0;position:relative}
+.sb-item:hover{background:var(--surface-2);color:var(--char)}
+.sb-item.active{background:var(--surface-2);color:var(--char)}
+.sb-item.active::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold-deep);border-radius:0 2px 2px 0}
+.sb-count{margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--ink-ghost);background:var(--surface-3);border-radius:99px;padding:1px 7px}
+.sb-item svg{flex-shrink:0;color:var(--ink-ghost)}
+.sb-item.active svg{color:var(--gold-deep)}
+
+/* MAIN */
+.main{overflow-y:auto;grid-row:2;grid-column:2}
+.view{display:none;padding:28px 32px 80px}.view.active{display:block}
+
+/* COMMON */
+.view-head{margin-bottom:24px;display:flex;align-items:flex-start;justify-content:space-between;gap:20px}
+.vh-text{}
+.vh-eyebrow{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-ghost);margin-bottom:5px}
+.vh-title{font-size:22px;font-weight:800;letter-spacing:-.025em;color:var(--char);margin-bottom:4px}
+.vh-sub{font-size:13px;color:var(--ink-mute);line-height:1.6;max-width:58ch}
+.btn{font-family:var(--sans);font-weight:700;font-size:13px;padding:9px 18px;border-radius:9px;cursor:pointer;transition:all .15s;border:1px solid var(--border-2);background:var(--surface);color:var(--ink-soft)}
+.btn:hover{background:var(--surface-2)}
+.btn-gold{background:var(--gold-deep);color:#fff;border-color:var(--gold-deep)}
+.btn-gold:hover{background:var(--gold-mid)}
+.pill{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;border-radius:99px;padding:3px 9px}
+.pill-pass{background:var(--pass-bg);color:var(--pass);border:1px solid var(--pass-border)}
+.pill-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-border)}
+.pill-danger{background:var(--danger-bg);color:var(--danger);border:1px solid var(--danger-border)}
+.pill-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-border)}
+.pill-ghost{background:var(--surface-3);color:var(--ink-ghost);border:1px solid var(--border)}
+
+/* GRID CARDS */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:20px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.card-head{padding:14px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.card-icon{width:28px;height:28px;border-radius:7px;background:var(--surface-2);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--ink-mute)}
+.card-title{font-size:13.5px;font-weight:700;color:var(--char)}
+.card-sub{font-size:11.5px;color:var(--ink-ghost);margin-top:1px}
+.card-body{padding:14px 16px}
+.card-num{font-family:var(--mono);font-size:24px;font-weight:700;color:var(--char);line-height:1;margin-bottom:3px}
+.card-label{font-size:11.5px;color:var(--ink-mute)}
+.metric-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+
+/* TABLE */
+.data-table{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.data-table th{font-family:var(--mono);font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-ghost);background:var(--surface-2);padding:10px 14px;text-align:left;border-bottom:1px solid var(--border)}
+.data-table td{padding:11px 14px;font-size:12.5px;border-bottom:1px solid var(--border);color:var(--ink-soft);vertical-align:middle}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tr{cursor:pointer;transition:background .1s}
+.data-table tr:hover{background:var(--surface-2)}
+
+/* PIPELINE */
+.pipeline-stage{border:1.5px solid var(--border);border-radius:12px;margin-bottom:12px;overflow:hidden;cursor:pointer;transition:border-color .15s}
+.pipeline-stage:hover{border-color:var(--border-2)}
+.pipeline-stage.active{border-color:var(--gold-deep)}
+.ps-head{padding:12px 16px;display:flex;align-items:center;gap:10px;background:var(--surface)}
+.ps-num{width:24px;height:24px;border-radius:50%;background:var(--surface-3);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:10px;font-weight:700;color:var(--ink-mute);flex-shrink:0}
+.pipeline-stage.active .ps-num{background:var(--gold-deep);color:#fff}
+.ps-title{font-size:13.5px;font-weight:700;color:var(--char);flex:1}
+.ps-count{font-family:var(--mono);font-size:10.5px;color:var(--ink-ghost)}
+.ps-body{padding:12px 16px;background:var(--surface-2);border-top:1px solid var(--border);display:none}
+.pipeline-stage.active .ps-body{display:block}
+.ps-items{display:flex;flex-direction:column;gap:8px}
+.ps-item{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px 12px;display:flex;align-items:center;gap:10px;font-size:12.5px}
+.ps-item-title{flex:1;font-weight:600;color:var(--char)}
+.ps-item-meta{font-size:11px;color:var(--ink-ghost)}
+
+/* WRITER */
+.writer-shell{display:grid;grid-template-columns:1fr 320px;gap:16px}
+.writer-editor{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.we-toolbar{padding:10px 14px;border-bottom:1px solid var(--border);display:flex;gap:6px;align-items:center;background:var(--surface-2)}
+.we-btn{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:6px;border:1px solid var(--border);background:var(--surface);color:var(--ink-mute);cursor:pointer;transition:all .12s}
+.we-btn:hover{border-color:var(--border-2);color:var(--char)}
+.we-btn.active{background:var(--char);color:#fff;border-color:var(--char)}
+.we-body{padding:20px 24px;min-height:400px;font-family:var(--serif);font-size:17px;line-height:1.8;color:var(--char);outline:none}
+.we-body h1{font-size:28px;font-weight:700;letter-spacing:-.02em;margin-bottom:16px}
+.we-body h2{font-size:21px;font-weight:700;margin:32px 0 12px}
+.we-body p{margin-bottom:16px;color:var(--ink-soft)}
+.we-body .highlight{background:rgba(196,154,44,.15);border-radius:3px;padding:1px 3px}
+.ai-panel{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.ap-head{padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;background:var(--surface-2)}
+.ap-dot{width:8px;height:8px;border-radius:50%;background:var(--pass);animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.4}}
+.ap-title{font-size:13px;font-weight:700;color:var(--char);flex:1}
+.ap-body{padding:14px 16px}
+.ap-suggestion{background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin-bottom:8px;font-size:13px;color:var(--ink-soft);cursor:pointer;transition:all .12s;line-height:1.55}
+.ap-suggestion:hover{border-color:var(--gold-deep);background:rgba(146,96,10,.05)}
+.ap-suggestion strong{color:var(--char);display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;font-family:var(--mono);color:var(--gold-deep)}
+.input-field{width:100%;background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:9px 12px;font-family:var(--sans);font-size:13px;color:var(--char);outline:none;margin-bottom:10px}
+.input-field:focus{border-color:var(--border-2)}
+textarea.input-field{resize:vertical;min-height:80px}
+
+/* CALENDAR */
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:16px}
+.cal-day-header{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;text-align:center;color:var(--ink-ghost);padding:8px 0}
+.cal-day{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px;min-height:80px;cursor:pointer;transition:all .12s}
+.cal-day:hover{border-color:var(--border-2)}
+.cal-day.today{border-color:var(--gold-deep);background:rgba(146,96,10,.04)}
+.cal-day.has-article{background:rgba(15,110,58,.04);border-color:var(--pass-border)}
+.cal-day-num{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--char);margin-bottom:5px}
+.cal-article-dot{font-size:11px;color:var(--pass);line-height:1.4;font-weight:600}
+
+/* SOURCE SCORING */
+.score-bar{height:8px;background:var(--surface-3);border-radius:4px;overflow:hidden;margin:6px 0}
+.sb-fill{height:8px;border-radius:4px;background:var(--gold-deep);transition:width .3s}
+.score-card{background:var(--surface);border:1.5px solid var(--border);border-radius:12px;padding:14px 16px;margin-bottom:10px;display:flex;align-items:center;gap:14px}
+.sc-rank{font-family:var(--mono);font-size:18px;font-weight:700;color:var(--char);min-width:28px}
+.sc-info{flex:1}
+.sc-name{font-size:13.5px;font-weight:700;color:var(--char);margin-bottom:2px}
+.sc-org{font-size:11.5px;color:var(--ink-ghost)}
+.sc-score{font-family:var(--mono);font-size:22px;font-weight:700;color:var(--gold-deep)}
+
+/* CLUSTER */
+.cluster-map{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px}
+.cluster-bubble{border-radius:12px;padding:12px 16px;cursor:pointer;transition:all .15s;border:1.5px solid}
+.cluster-bubble:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.cb-name{font-size:14px;font-weight:800;color:var(--char);margin-bottom:3px}
+.cb-count{font-family:var(--mono);font-size:10px;color:var(--ink-mute)}
+
+/* REVIEW */
+.review-item{background:var(--surface);border:1.5px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:14px}
+.ri-head{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px}
+.ri-title{font-size:14px;font-weight:700;color:var(--char);flex:1}
+.ri-meta{font-size:11.5px;color:var(--ink-ghost)}
+.ri-body{padding:16px 18px}
+.ri-excerpt{font-family:var(--serif);font-size:15px;line-height:1.7;color:var(--ink-soft);margin-bottom:14px}
+.ri-actions{display:flex;gap:8px}
+.ri-btn{font-family:var(--sans);font-size:12.5px;font-weight:700;padding:8px 16px;border-radius:8px;border:none;cursor:pointer;transition:all .15s}
+.ri-approve{background:var(--pass);color:#fff}
+.ri-approve:hover{opacity:.9}
+.ri-reject{background:var(--danger-bg);color:var(--danger);border:1px solid var(--danger-border)}
+.ri-revise{background:var(--surface-2);color:var(--ink-soft);border:1px solid var(--border-2)}
+
+/* KEYWORD */
+.kw-tag{display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1.5px solid var(--border);border-radius:99px;padding:6px 14px;font-size:13px;font-weight:600;color:var(--char);cursor:pointer;transition:all .12s;margin:4px}
+.kw-tag:hover{border-color:var(--gold-deep)}
+.kw-tag.selected{background:var(--gold-deep);color:#fff;border-color:var(--gold-deep)}
+.kw-vol{font-family:var(--mono);font-size:9px;color:var(--ink-ghost)}
+.kw-tag.selected .kw-vol{color:rgba(255,255,255,.7)}
+
+/* ARCHIVE */
+.arch-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)}
+.arch-row:last-child{border-bottom:none}
+.arch-thumb{width:48px;height:36px;background:var(--surface-3);border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:8px;color:var(--ink-ghost)}
+.arch-info{flex:1}
+.arch-title{font-size:13px;font-weight:700;color:var(--char);margin-bottom:2px}
+.arch-meta{font-size:11px;color:var(--ink-ghost)}
+.arch-status{font-family:var(--mono);font-size:9px;font-weight:700}
+</style>
+</head>
+<body>
+<div class="shell">
+
+<!-- TOP BAR -->
+<header class="topbar">
+  <div class="tb-logo">AGNUS Editorial</div>
+  <div class="tb-sep"></div>
+  <div class="tb-badge">Operator Platform · Internal</div>
+  <div class="tb-right">
+    <div class="tb-stats">
+      <div class="ts-item"><strong>79</strong> articles</div>
+      <div class="ts-item"><strong>104</strong> sources</div>
+      <div class="ts-item"><strong>3</strong> in review</div>
+      <div class="ts-item"><strong>5</strong> queued</div>
+    </div>
+    <a href="AGNUS - Research.html" style="font-family:var(--sans);font-size:12px;font-weight:600;padding:5px 12px;border-radius:6px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:rgba(255,255,255,.8);text-decoration:none">→ Public site</a>
+  </div>
+</header>
+
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <div class="sb-section">
+    <span class="sb-label">Overview</span>
+    <div class="sb-item active" onclick="goView('dashboard',this)">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><rect x="1" y="1" width="5" height="5" rx="1"/><rect x="7" y="1" width="5" height="5" rx="1"/><rect x="1" y="7" width="5" height="5" rx="1"/><rect x="7" y="7" width="5" height="5" rx="1"/></svg>
+      Dashboard
+    </div>
+  </div>
+  <div class="sb-section">
+    <span class="sb-label">Content</span>
+    <div class="sb-item" onclick="goView('pipeline',this)">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M1 2h11M1 6.5h8M1 11h5"/></svg>
+      Article Pipeline
+      <span class="sb-count">8</span>
+    </div>
+    <div class="sb-item" onclick="goView('storybuilder',this)">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M2 10V3a1 1 0 011-1h7a1 1 0 011 1v7l-3-2-3 2z"/></svg>
+      Story Builder
+    </div>
+    <div class="sb-item" onclick="goView('writer',this)">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M9 2l2 2-7 7H2v-2l7-7z"/><path d="M7.5 3.5l2 2"/></svg>
+      AI Writer
+    </div>
+    <div class="sb-item" onclick="goView('review',this)">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M2 6.5l3.5 3.5 5.5-6"/></svg>
+      Human Review
+      <span class="sb-count" style="background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-border)">3</span>
+    </div>
+    <div class="sb-item" onclick="goView('research',this)">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><circle cx="5.5" cy="5.5" r="3.5"/><path d="M8.5 8.5l3 3"/></svg>
+      Research Panel
+    </div>
+  </div>
+  <div class="sb-section">
+    <span class="sb-label">Strategy</span>
+    <div class="sb-item" onclick="goView('clusters',this)">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><circle cx="3" cy="6.5" r="2"/><circle cx="10" cy="3" r="2"/><circle cx="10" cy="10" r="2"/><path d="M5 6.5h3M8.1 4.5l-2.2 1.5M8.1 8.5l-2.2-1.5"/></svg>
+      Topic Clusters
+    </div>
+    <div class="sb-item" onclick="goView('keywords',this)">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M1 6.5h11M5 2l-4 4.5 4 4.5M8 2l4 4.5-4 4.5"/></svg>
+      Keyword Discovery
+    </div>
+    <div class="sb-item" onclick="goView('calendar',this)">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><rect x="1" y="2" width="11" height="10" rx="1.5"/><path d="M1 5.5h11M4 1v3M9 1v3"/></svg>
+      Publishing Calendar
+    </div>
+  </div>
+  <div class="sb-section">
+    <span class="sb-label">Data</span>
+    <div class="sb-item" onclick="goView('archive',this)">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M1 3h11v2H1zM2 5v6h9V5"/><path d="M5 8h3"/></svg>
+      Content Archive
+      <span class="sb-count">79</span>
+    </div>
+    <div class="sb-item" onclick="goView('knowledge',this)">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M6.5 1a5.5 5.5 0 100 11A5.5 5.5 0 006.5 1z"/><path d="M4.5 5.5C4.5 4.3 5.4 3.5 6.5 3.5s2 .8 2 2c0 1.2-2 3-2 3"/><circle cx="6.5" cy="10" r=".5" fill="currentColor"/></svg>
+      Knowledge Database
+      <span class="sb-count">104</span>
+    </div>
+    <div class="sb-item" onclick="goView('scoring',this)">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M6.5 1l1.5 3.5 3.5.5-2.5 2.5.5 3.5L6.5 9.5 3 11l.5-3.5L1 5l3.5-.5z"/></svg>
+      Source Scoring
+    </div>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main class="main">
+
+<!-- ═══════════════════════ DASHBOARD ═══════════════════════ -->
+<div class="view active" id="view-dashboard">
+  <div class="view-head">
+    <div class="vh-text">
+      <div class="vh-eyebrow">Editorial · Overview</div>
+      <div class="vh-title">Dashboard</div>
+      <div class="vh-sub">Your complete picture of AGNUS content — pipeline, quality, and coverage at a glance.</div>
+    </div>
+    <button class="btn btn-gold" onclick="goView('storybuilder',document.querySelectorAll('.sb-item')[3])">+ New article</button>
+  </div>
+  <div class="grid-3">
+    <div class="card"><div class="card-head"><div class="card-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M2 2h10v10H2z"/><path d="M5 5h4M5 8h3"/></svg></div><div><div class="card-title">Total articles</div><div class="card-sub">All published and in-progress</div></div></div><div class="card-body"><div class="card-num">79</div><div class="card-label">+9 this week</div></div></div>
+    <div class="card"><div class="card-head"><div class="card-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><circle cx="7" cy="7" r="5.5"/><path d="M7 4v4l2.5 2"/></svg></div><div><div class="card-title">Awaiting review</div><div class="card-sub">Needs editorial sign-off</div></div></div><div class="card-body"><div class="card-num" style="color:var(--amber)">3</div><div class="card-label">Oldest: 2 days ago</div></div></div>
+    <div class="card"><div class="card-head"><div class="card-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M7 1L1 4.5v3.5C1 11 3.5 13 7 14c3.5-1 6-3 6-6V4.5L7 1z"/></svg></div><div><div class="card-title">Source coverage</div><div class="card-sub">Verified primary sources</div></div></div><div class="card-body"><div class="card-num">104</div><div class="card-label">All verified · 0 flagged</div></div></div>
+  </div>
+  <div class="grid-2">
+    <div><h3 style="font-size:14px;font-weight:700;color:var(--char);margin-bottom:12px">Pipeline overview</h3>
+      <div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px"><span style="flex:1;font-weight:600;color:var(--char)">Draft</span><span style="color:var(--ink-mute)">2 articles</span><span class="pill pill-ghost">Draft</span></div><div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px"><span style="flex:1;font-weight:600;color:var(--char)">Research</span><span style="color:var(--ink-mute)">1 article</span><span class="pill pill-blue">Research</span></div><div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px"><span style="flex:1;font-weight:600;color:var(--char)">AI Writer</span><span style="color:var(--ink-mute)">2 articles</span><span class="pill pill-amber">AI Writer</span></div><div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px"><span style="flex:1;font-weight:600;color:var(--char)">Review</span><span style="color:var(--ink-mute)">3 articles</span><span class="pill pill-amber">Review</span></div><div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px"><span style="flex:1;font-weight:600;color:var(--char)">Scheduled</span><span style="color:var(--ink-mute)">0 articles</span><span class="pill pill-pass">Scheduled</span></div><div style="display:flex;align-items:center;gap:10px;padding:9px 0;font-size:13px"><span style="flex:1;font-weight:600;color:var(--char)">Published</span><span style="color:var(--ink-mute)">79 articles</span><span class="pill pill-pass">Published</span></div>
+    </div>
+    <div><h3 style="font-size:14px;font-weight:700;color:var(--char);margin-bottom:12px">Pillar coverage</h3>
+      <div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;margin-bottom:4px;font-size:12px"><span style="font-weight:600;color:var(--char)">EU AI Act</span><span style="font-family:var(--mono);color:var(--ink-mute)">19 articles</span></div><div class="score-bar"><div class="sb-fill" style="width:95%"></div></div></div><div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;margin-bottom:4px;font-size:12px"><span style="font-weight:600;color:var(--char)">AI Governance</span><span style="font-family:var(--mono);color:var(--ink-mute)">6 articles</span></div><div class="score-bar"><div class="sb-fill" style="width:30%"></div></div></div><div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;margin-bottom:4px;font-size:12px"><span style="font-weight:600;color:var(--char)">AI Agents</span><span style="font-family:var(--mono);color:var(--ink-mute)">4 articles</span></div><div class="score-bar"><div class="sb-fill" style="width:20%"></div></div></div><div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;margin-bottom:4px;font-size:12px"><span style="font-weight:600;color:var(--char)">AI Audit</span><span style="font-family:var(--mono);color:var(--ink-mute)">4 articles</span></div><div class="score-bar"><div class="sb-fill" style="width:20%"></div></div></div><div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;margin-bottom:4px;font-size:12px"><span style="font-weight:600;color:var(--char)">AI Security</span><span style="font-family:var(--mono);color:var(--ink-mute)">2 articles</span></div><div class="score-bar"><div class="sb-fill" style="width:10%"></div></div></div><div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;margin-bottom:4px;font-size:12px"><span style="font-weight:600;color:var(--char)">Standards</span><span style="font-family:var(--mono);color:var(--ink-mute)">4 articles</span></div><div class="score-bar"><div class="sb-fill" style="width:20%"></div></div></div><div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;margin-bottom:4px;font-size:12px"><span style="font-weight:600;color:var(--char)">Intelligence</span><span style="font-family:var(--mono);color:var(--ink-mute)">24 articles</span></div><div class="score-bar"><div class="sb-fill" style="width:80%"></div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ PIPELINE ═══════════════════════ -->
+<div class="view" id="view-pipeline">
+  <div class="view-head">
+    <div class="vh-text">
+      <div class="vh-eyebrow">Editorial · E11</div>
+      <div class="vh-title">Article Pipeline</div>
+      <div class="vh-sub">Every article in progress, by stage. Click a stage to expand its queue.</div>
+    </div>
+    <button class="btn btn-gold" onclick="goView('storybuilder',document.querySelectorAll('.sb-item')[3])">+ New brief</button>
+  </div>
+  <div class="pipeline-stage" onclick="this.classList.toggle('active')"><div class="ps-head"><div class="ps-num">1</div><div class="ps-title">Brief</div><div class="ps-count">2 articles</div></div><div class="ps-body"><div style="font-size:12.5px;color:var(--ink-mute);margin-bottom:10px">Articles commissioned, research questions defined</div><div class="ps-items"><div class="ps-item"><div class="ps-item-title">AI Security — GDPR Article 9 and AI</div><button style="font-size:11.5px;font-weight:600;padding:5px 12px;border-radius:6px;border:1px solid var(--border-2);background:var(--surface);color:var(--ink-soft);cursor:pointer">Open →</button></div><div class="ps-item"><div class="ps-item-title">EU AI Act — GPAI Open Source exemption</div><button style="font-size:11.5px;font-weight:600;padding:5px 12px;border-radius:6px;border:1px solid var(--border-2);background:var(--surface);color:var(--ink-soft);cursor:pointer">Open →</button></div></div></div></div>
+  <div class="pipeline-stage" onclick="this.classList.toggle('active')"><div class="ps-head"><div class="ps-num">2</div><div class="ps-title">Research</div><div class="ps-count">1 article</div></div><div class="ps-body"><div style="font-size:12.5px;color:var(--ink-mute);margin-bottom:10px">Agent fetch in progress or handoff received</div><div class="ps-items"><div class="ps-item"><div class="ps-item-title">UK DSIT AI Regulation — White Paper update 2026</div><button style="font-size:11.5px;font-weight:600;padding:5px 12px;border-radius:6px;border:1px solid var(--border-2);background:var(--surface);color:var(--ink-soft);cursor:pointer">Open →</button></div></div></div></div>
+  <div class="pipeline-stage" onclick="this.classList.toggle('active')"><div class="ps-head"><div class="ps-num">3</div><div class="ps-title">AI Writer</div><div class="ps-count">2 articles</div></div><div class="ps-body"><div style="font-size:12.5px;color:var(--ink-mute);margin-bottom:10px">Draft being generated from handoff</div><div class="ps-items"><div class="ps-item"><div class="ps-item-title">Singapore MAS AI governance circular</div><button style="font-size:11.5px;font-weight:600;padding:5px 12px;border-radius:6px;border:1px solid var(--border-2);background:var(--surface);color:var(--ink-soft);cursor:pointer">Open →</button></div><div class="ps-item"><div class="ps-item-title">Canada ISED AI regulatory framework</div><button style="font-size:11.5px;font-weight:600;padding:5px 12px;border-radius:6px;border:1px solid var(--border-2);background:var(--surface);color:var(--ink-soft);cursor:pointer">Open →</button></div></div></div></div>
+  <div class="pipeline-stage active" onclick="this.classList.toggle('active')"><div class="ps-head"><div class="ps-num">4</div><div class="ps-title">Review</div><div class="ps-count">3 articles</div></div><div class="ps-body"><div style="font-size:12.5px;color:var(--ink-mute);margin-bottom:10px">Draft complete — awaiting editorial approval</div><div class="ps-items"><div class="ps-item"><div class="ps-item-title">Japan METI AI governance guidelines update</div><button style="font-size:11.5px;font-weight:600;padding:5px 12px;border-radius:6px;border:1px solid var(--border-2);background:var(--surface);color:var(--ink-soft);cursor:pointer" onclick="goView('review',document.querySelectorAll('.sb-item')[5])">Review →</button></div><div class="ps-item"><div class="ps-item-title">Norway Datatilsynet AI enforcement Q3 2026</div><button style="font-size:11.5px;font-weight:600;padding:5px 12px;border-radius:6px;border:1px solid var(--border-2);background:var(--surface);color:var(--ink-soft);cursor:pointer" onclick="goView('review',document.querySelectorAll('.sb-item')[5])">Review →</button></div><div class="ps-item"><div class="ps-item-title">EU AI Act Art. 6 — high-risk classification guidance</div><button style="font-size:11.5px;font-weight:600;padding:5px 12px;border-radius:6px;border:1px solid var(--border-2);background:var(--surface);color:var(--ink-soft);cursor:pointer" onclick="goView('review',document.querySelectorAll('.sb-item')[5])">Review →</button></div></div></div></div>
+  <div class="pipeline-stage" onclick="this.classList.toggle('active')"><div class="ps-head"><div class="ps-num">5</div><div class="ps-title">Scheduled</div><div class="ps-count">0 articles</div></div><div class="ps-body"><div style="font-size:12.5px;color:var(--ink-mute)">No articles scheduled</div></div></div>
+  <div class="pipeline-stage" onclick="this.classList.toggle('active')"><div class="ps-head"><div class="ps-num">6</div><div class="ps-title">Published</div><div class="ps-count">79 articles</div></div><div class="ps-body"><div style="font-size:12.5px;color:var(--ink-mute)">79 articles live on AGNUS Research</div></div></div>
+</div>
+
+<!-- ═══════════════════════ STORY BUILDER ═══════════════════════ -->
+<div class="view" id="view-storybuilder">
+  <div class="view-head">
+    <div class="vh-text">
+      <div class="vh-eyebrow">Editorial · E12</div>
+      <div class="vh-title">Story Builder</div>
+      <div class="vh-sub">Plan an article before writing it. Define the angle, audience, sources, and structure — then send to AI Writer.</div>
+    </div>
+  </div>
+  <div class="grid-2">
+    <div>
+      <div style="margin-bottom:16px">
+        <label style="font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-ghost);display:block;margin-bottom:6px">Article title</label>
+        <input class="input-field" type="text" value="EU AI Act — What Changes for Banks After the GPAI Chapter Takes Full Effect"/>
+      </div>
+      <div style="margin-bottom:16px">
+        <label style="font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-ghost);display:block;margin-bottom:6px">Pillar</label>
+        <select class="input-field"><option>EU AI Act</option><option>AI Governance</option><option>AI Agents</option><option>AI Audit</option><option>AI Security</option><option>Standards</option></select>
+      </div>
+      <div style="margin-bottom:16px">
+        <label style="font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-ghost);display:block;margin-bottom:6px">Audience</label>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <div style="padding:6px 12px;border-radius:99px;border:1.5px solid var(--gold-deep);background:rgba(146,96,10,.08);cursor:pointer;font-size:12px;font-weight:600;color:var(--gold-deep)" onclick="this.style.borderColor=this.style.borderColor?'':'var(--border)'">Compliance officer</div><div style="padding:6px 12px;border-radius:99px;border:1.5px solid var(--gold-deep);background:rgba(146,96,10,.08);cursor:pointer;font-size:12px;font-weight:600;color:var(--gold-deep)">CTO / CRO</div><div style="padding:6px 12px;border-radius:99px;border:1.5px solid var(--border);background:var(--surface);cursor:pointer;font-size:12px;font-weight:600;color:var(--ink-soft)">Board member</div><div style="padding:6px 12px;border-radius:99px;border:1.5px solid var(--border);background:var(--surface);cursor:pointer;font-size:12px;font-weight:600;color:var(--ink-soft)">Legal team</div><div style="padding:6px 12px;border-radius:99px;border:1.5px solid var(--border);background:var(--surface);cursor:pointer;font-size:12px;font-weight:600;color:var(--ink-soft)">Policy analyst</div><div style="padding:6px 12px;border-radius:99px;border:1.5px solid var(--border);background:var(--surface);cursor:pointer;font-size:12px;font-weight:600;color:var(--ink-soft)">Non-specialist</div>
+        </div>
+      </div>
+      <div style="margin-bottom:16px">
+        <label style="font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-ghost);display:block;margin-bottom:6px">Core argument (the claim this article proves)</label>
+        <textarea class="input-field">Banks using AI in credit scoring, fraud detection, or customer-facing services are GPAI deployers — not just passive consumers. The GPAI chapter changes their obligations materially, and most have not mapped those obligations to their current AI stack.</textarea>
+      </div>
+      <div style="margin-bottom:16px">
+        <label style="font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-ghost);display:block;margin-bottom:6px">Sections (one per line)</label>
+        <textarea class="input-field" style="min-height:120px">What the GPAI chapter requires from deployers
+Why banks qualify as deployers (not just users)
+The documentation requirements that are new
+Model evaluation obligations for financial services AI
+The compliance timeline and what is overdue</textarea>
+      </div>
+      <div style="display:flex;gap:10px">
+        <button class="btn btn-gold" onclick="goView('writer',document.querySelectorAll('.sb-item')[4])">Send to AI Writer →</button>
+        <button class="btn">Save brief</button>
+      </div>
+    </div>
+    <div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px">
+        <div style="font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-ghost);margin-bottom:12px">Related sources</div>
+        <div style="padding:8px 0;border-bottom:1px solid var(--border);font-size:12.5px;color:var(--ink-soft);display:flex;justify-content:space-between;align-items:center">SRC-0001 · EU AI Act Art. 53–56: GPAI obligations<button class="btn" style="font-size:10px;padding:3px 8px">+ Add</button></div><div style="padding:8px 0;border-bottom:1px solid var(--border);font-size:12.5px;color:var(--ink-soft);display:flex;justify-content:space-between;align-items:center">SRC-0004 · EU AI Act Art. 6 + Annex III: high-risk in financial services<button class="btn" style="font-size:10px;padding:3px 8px">+ Add</button></div><div style="padding:8px 0;border-bottom:1px solid var(--border);font-size:12.5px;color:var(--ink-soft);display:flex;justify-content:space-between;align-items:center">SRC-0028 · EBA Guidelines on AI in credit risk<button class="btn" style="font-size:10px;padding:3px 8px">+ Add</button></div><div style="padding:8px 0;font-size:12.5px;color:var(--ink-soft);display:flex;justify-content:space-between;align-items:center">SRC-0041 · ECB supervisory expectations on AI governance<button class="btn" style="font-size:10px;padding:3px 8px">+ Add</button></div>
+        <div style="margin-top:14px">
+          <div style="font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-ghost);margin-bottom:10px">Related articles</div>
+          <div style="padding:8px 0;border-bottom:1px solid var(--border);font-size:12.5px;color:var(--ink-soft)">AR-000100 · GPAI Obligations</div><div style="padding:8px 0;border-bottom:1px solid var(--border);font-size:12.5px;color:var(--ink-soft)">AR-000040 · High-Risk AI in Financial Services</div><div style="padding:8px 0;font-size:12.5px;color:var(--ink-soft)">AR-000060 · MiFID II and AI</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ AI WRITER ═══════════════════════ -->
+<div class="view" id="view-writer">
+  <div class="view-head">
+    <div class="vh-text">
+      <div class="vh-eyebrow">Editorial · E13</div>
+      <div class="vh-title">AI Writer</div>
+      <div class="vh-sub">Draft from verified handoff. The AI writes; you review. No claim goes live without a source citation.</div>
+    </div>
+    <div style="display:flex;gap:8px">
+      <button class="btn">Save draft</button>
+      <button class="btn btn-gold" onclick="goView('review',document.querySelectorAll('.sb-item')[5])">Send to review →</button>
+    </div>
+  </div>
+  <div class="writer-shell">
+    <div class="writer-editor">
+      <div class="we-toolbar">
+        <button class="we-btn active">Edit</button>
+        <button class="we-btn">Preview</button>
+        <div style="width:1px;height:18px;background:var(--border);margin:0 4px"></div>
+        <button class="we-btn">H2</button>
+        <button class="we-btn">Bold</button>
+        <button class="we-btn">Italic</button>
+        <button class="we-btn">Source ref</button>
+        <div style="margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--ink-ghost)">~1,840 words · 12 min read</div>
+      </div>
+      <div class="we-body" contenteditable="true">
+        <h1>EU AI Act — What Changes for Banks After the GPAI Chapter Takes Full Effect</h1>
+        <p>The General-Purpose AI chapter of the EU AI Act came into full effect in August 2025. For most banks, the immediate response was to assess whether any of their AI systems qualified as GPAI models — and most concluded that they did not, because they do not <span class="highlight">develop</span> general-purpose AI. This conclusion was correct but incomplete.</p>
+        <h2>Banks as GPAI deployers, not GPAI developers</h2>
+        <p>The GPAI chapter creates obligations for two categories of actor: GPAI <em>providers</em> — the organisations that develop and supply GPAI models — and GPAI <em>deployers</em> — the organisations that integrate GPAI model outputs into their own products and services. Most banks fall into the second category.</p>
+        <p>A bank that uses an external large language model to generate draft regulatory reports, summarise loan applications, or respond to customer queries is integrating GPAI model outputs into a business process. Under Article 53, this makes it a GPAI deployer with specific obligations regarding evaluation, monitoring, and transparency. <span class="highlight">[SRC-0001]</span></p>
+        <h2>The documentation requirements that are new</h2>
+        <p>GPAI deployers in financial services must maintain technical documentation sufficient to demonstrate that they have assessed the AI system's fitness for purpose in their specific use case. For a bank using a third-party LLM, this means: records of the evaluation conducted before deployment; evidence of ongoing performance monitoring; documentation of any fine-tuning or system prompting applied; and records of user-reported issues.</p>
+      </div>
+    </div>
+    <div class="ai-panel">
+      <div class="ap-head">
+        <div class="ap-dot"></div>
+        <div class="ap-title">AI Writing Assistant</div>
+      </div>
+      <div class="ap-body">
+        <div style="font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-ghost);margin-bottom:10px">Suggestions</div>
+        <div class="ap-suggestion"><strong>Add source reference</strong>"Article 53(1)(b) requires deployers to..." — cite SRC-0001 here to satisfy Protocol.</div>
+        <div class="ap-suggestion"><strong>Expand section</strong>The documentation requirement section could include a concrete checklist. Want me to draft it?</div>
+        <div class="ap-suggestion"><strong>Related article link</strong>The GPAI obligations article (AR-000100) covers the provider side — add a cross-reference for readers who need both perspectives.</div>
+        <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border)">
+          <div style="font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-ghost);margin-bottom:8px">Ask the writer</div>
+          <textarea class="input-field" placeholder="e.g. Add a section on the EBA's position on GPAI in credit risk…" style="min-height:60px"></textarea>
+          <button class="btn btn-gold" style="width:100%">Generate</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ HUMAN REVIEW ═══════════════════════ -->
+<div class="view" id="view-review">
+  <div class="view-head">
+    <div class="vh-text">
+      <div class="vh-eyebrow">Editorial · E14</div>
+      <div class="vh-title">Human Review</div>
+      <div class="vh-sub">3 articles awaiting sign-off. Every article must pass editorial review before publishing.</div>
+    </div>
+  </div>
+  <div class="review-item"><div class="ri-head"><div><div class="ri-title">Japan METI AI governance guidelines — Q3 2026 update</div><div class="ri-meta">AI Governance · Jean-Daniel Alexis · 2 days ago</div></div><span class="pill pill-amber">Awaiting review</span></div><div class="ri-body"><div class="ri-excerpt">The Japan Ministry of Economy, Trade and Industry published updated AI governance guidelines in July 2026, extending the voluntary framework to cover AI agents operating in commercial transactions. This article analyses the key changes and their implications for Japanese subsidiaries of European companies…</div><div class="ri-actions"><button class="ri-btn ri-approve" onclick="this.closest('.review-item').style.opacity='.5';this.textContent='✓ Approved'">Approve &amp; publish</button><button class="ri-btn ri-revise">Request revision</button><button class="ri-btn ri-reject">Reject</button></div></div></div><div class="review-item"><div class="ri-head"><div><div class="ri-title">Norway Datatilsynet — AI enforcement actions Q3 2026</div><div class="ri-meta">AI Governance · Jean-Daniel Alexis · 1 day ago</div></div><span class="pill pill-amber">Awaiting review</span></div><div class="ri-body"><div class="ri-excerpt">The Norwegian Data Protection Authority published its Q3 2026 AI enforcement report, documenting three cases involving automated decision-making in recruitment, one case involving biometric identification in retail, and two advisory notices to financial services firms…</div><div class="ri-actions"><button class="ri-btn ri-approve" onclick="this.closest('.review-item').style.opacity='.5';this.textContent='✓ Approved'">Approve &amp; publish</button><button class="ri-btn ri-revise">Request revision</button><button class="ri-btn ri-reject">Reject</button></div></div></div><div class="review-item"><div class="ri-head"><div><div class="ri-title">EU AI Act Art. 6 — High-risk classification: Commission guidance note</div><div class="ri-meta">EU AI Act · Jean-Daniel Alexis · 3 hours ago</div></div><span class="pill pill-amber">Awaiting review</span></div><div class="ri-body"><div class="ri-excerpt">The European Commission's AI Office published a guidance note on Article 6 high-risk AI classification in September 2026, clarifying the boundary conditions for Annex III applicability in employment screening tools. This analysis…</div><div class="ri-actions"><button class="ri-btn ri-approve" onclick="this.closest('.review-item').style.opacity='.5';this.textContent='✓ Approved'">Approve &amp; publish</button><button class="ri-btn ri-revise">Request revision</button><button class="ri-btn ri-reject">Reject</button></div></div></div>
+</div>
+
+<!-- ═══════════════════════ RESEARCH PANEL ═══════════════════════ -->
+<div class="view" id="view-research">
+  <div class="view-head">
+    <div class="vh-text">
+      <div class="vh-eyebrow">Editorial · E15</div>
+      <div class="vh-title">Research Panel</div>
+      <div class="vh-sub">Evidence before words. Verify every claim against a primary source before it enters an article.</div>
+    </div>
+  </div>
+  <div class="grid-2">
+    <div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:14px">
+        <div style="font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-ghost);margin-bottom:10px">Claim verification</div>
+        <textarea class="input-field" style="min-height:80px" placeholder="Paste a claim from a draft article to verify it...">GPAI deployers must maintain technical documentation sufficient to demonstrate fitness for purpose under Article 53(1)(b).</textarea>
+        <button class="btn btn-gold" style="width:100%;margin-top:8px">Verify against sources</button>
+        <div style="margin-top:14px;background:var(--pass-bg);border:1px solid var(--pass-border);border-radius:8px;padding:12px 14px">
+          <div style="font-family:var(--mono);font-size:9px;color:var(--pass);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px">✓ Verified — SRC-0001</div>
+          <div style="font-size:12.5px;color:var(--ink-soft);line-height:1.6">EU AI Act Art. 53(1)(b) confirmed: GPAI model providers — and by extension deployers with fine-tuning rights — must draw up technical documentation. The article correctly identifies the obligation. Cite as: EU AI Act Art. 53(1)(b), OJ L 2024/1689.</div>
+        </div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px">
+        <div style="font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-ghost);margin-bottom:10px">Source search</div>
+        <input class="input-field" type="text" placeholder="Search 104 verified sources…" value="GPAI deployer documentation"/>
+        <div class="score-card"><div class="sc-rank">SRC-0001</div><div class="sc-info"><div class="sc-name">EU AI Act (Regulation 2024/1689)</div><div class="sc-org">European Parliament &amp; Council</div><div class="score-bar" style="width:240px;margin-top:6px"><div class="sb-fill" style="width:98%;background:var(--pass)"></div></div></div><div class="sc-score">98</div></div><div class="score-card"><div class="sc-rank">SRC-0080</div><div class="sc-info"><div class="sc-name">ISO/IEC 42001:2023</div><div class="sc-org">International Organization for Standardization</div><div class="score-bar" style="width:240px;margin-top:6px"><div class="sb-fill" style="width:95%;background:var(--pass)"></div></div></div><div class="sc-score">95</div></div><div class="score-card"><div class="sc-rank">SRC-0083</div><div class="sc-info"><div class="sc-name">NIST AI RMF 1.0</div><div class="sc-org">National Institute of Standards and Technology</div><div class="score-bar" style="width:240px;margin-top:6px"><div class="sb-fill" style="width:92%;background:var(--pass)"></div></div></div><div class="sc-score">92</div></div><div class="score-card"><div class="sc-rank">SRC-0028</div><div class="sc-info"><div class="sc-name">EBA Guidelines on Machine Learning</div><div class="sc-org">European Banking Authority</div><div class="score-bar" style="width:240px;margin-top:6px"><div class="sb-fill" style="width:89%;background:var(--pass)"></div></div></div><div class="sc-score">89</div></div><div class="score-card"><div class="sc-rank">SRC-0079</div><div class="sc-info"><div class="sc-name">NYC Local Law 144</div><div class="sc-org">New York City Council</div><div class="score-bar" style="width:240px;margin-top:6px"><div class="sb-fill" style="width:88%;background:var(--pass)"></div></div></div><div class="sc-score">88</div></div>
+  </div>
+</div>
+
+</main>
+</div>
+
+<script>
+function goView(id,el){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.querySelectorAll('.sb-item').forEach(b=>b.classList.remove('active'));
+  document.getElementById('view-'+id).classList.add('active');
+  if(el)el.classList.add('active');
+}
+</script>
+</body>
+</html>

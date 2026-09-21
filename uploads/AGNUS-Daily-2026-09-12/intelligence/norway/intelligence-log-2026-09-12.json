@@ -1,0 +1,15 @@
+{
+  "run_date": "2026-09-12",
+  "source_checks": [
+    {
+      "source_url": "https://www.regjeringen.no",
+      "date_checked": "2026-09-12",
+      "status": "no_change",
+      "last_successful_check": "2026-09-12",
+      "observed_version_or_date": "Homepage publications through 2026-09-11 were outside the monitored AI-law scope; no new Norwegian AI-law publication was verified.",
+      "open_questions": []
+    }
+  ],
+  "findings": [],
+  "editorial_alerts": []
+}
