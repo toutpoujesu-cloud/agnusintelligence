@@ -1,0 +1,980 @@
+<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Editorial Knowledge Database — AGNUS</title>
+<meta name="description" content="Searchable index of every verified source and article in AGNUS — the reference library for editors and writers." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>
+body { overflow: hidden; }
+
+/* ── Shell ── */
+.ek-shell {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 68px);
+  overflow: hidden;
+}
+
+/* ── Top bar ── */
+.ek-topbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 20px;
+  height: 50px;
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+  flex-shrink: 0;
+}
+.ek-topbar-title {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.ek-search-wrap {
+  position: relative;
+  flex: 1;
+  max-width: 420px;
+}
+.ek-search-wrap svg {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ink-mute);
+  pointer-events: none;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+.ek-search {
+  width: 100%;
+  padding: 6px 10px 6px 32px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--paper);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--ink);
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color .15s;
+}
+.ek-search:focus { border-color: var(--gold-deep,#8F6E32); }
+.ek-search::placeholder { color: var(--ink-mute); }
+.ek-stats {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .04em;
+  color: var(--ink-mute);
+  white-space: nowrap;
+  margin-left: auto;
+}
+/* reuse E13/E14/E18 button */
+.ew-action-btn {
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  transition: background .12s, border-color .12s;
+  letter-spacing: -0.005em;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+.ew-action-btn:hover { background: var(--paper-2,#ECE9E1); border-color: var(--ink-mute); }
+.ew-action-btn.ghost {
+  border-color: transparent;
+  background: transparent;
+  color: var(--ink-mute);
+  padding: 5px 8px;
+  font-size: 11.5px;
+}
+.ew-action-btn.ghost:hover { background: var(--paper-2,#ECE9E1); color: var(--ink); border-color: transparent; }
+
+/* ── Body ── */
+.ek-body {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* ── Sidebar ── */
+.ek-sidebar {
+  border-right: 1px solid var(--line);
+  overflow-y: auto;
+  background: var(--paper);
+  padding-bottom: 24px;
+}
+.ek-filter-section {
+  padding: 14px 16px 12px;
+  border-bottom: 1px solid var(--line);
+}
+.ek-filter-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.ek-filter-label {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.ek-filter-clear {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--gold-deep,#8F6E32);
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  letter-spacing: .04em;
+  display: none;
+}
+.ek-filter-clear.visible { display: inline; }
+.ek-filter-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.ek-filter-opt {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+  padding: 3px 0;
+  border-radius: 4px;
+}
+.ek-filter-opt:hover .ek-filter-opt-label { color: var(--ink); }
+.ek-filter-opt input[type="checkbox"] {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+  accent-color: var(--gold-deep,#8F6E32);
+  cursor: pointer;
+}
+.ek-filter-opt-label {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: var(--ink-soft);
+  line-height: 1.3;
+  flex: 1;
+}
+.ek-filter-opt-count {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-mute);
+  letter-spacing: .03em;
+}
+.ek-clear-all {
+  margin: 12px 16px 0;
+  width: calc(100% - 32px);
+  text-align: center;
+}
+
+/* ── Main ── */
+.ek-main {
+  flex: 1;
+  overflow-y: auto;
+  background: var(--bg,#F8F7F4);
+}
+.ek-result-bar {
+  padding: 9px 20px 8px;
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: .04em;
+  color: var(--ink-mute);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ek-result-count {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* ── Source rows ── */
+.ek-source-list {
+  display: flex;
+  flex-direction: column;
+}
+.ek-source-item {
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+}
+.ek-source-item:last-child { border-bottom: none; }
+.ek-source-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0 16px;
+  padding: 13px 20px;
+  cursor: pointer;
+  transition: background .1s;
+  align-items: start;
+}
+.ek-source-header:hover { background: var(--paper-2,#ECE9E1); }
+.ek-source-item.open .ek-source-header { background: var(--paper-2,#ECE9E1); }
+
+/* col 1: ID + type badge */
+.ek-source-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+  padding-top: 1px;
+}
+/* col 2: title + org + tags */
+.ek-source-body { min-width: 0; }
+.ek-source-title {
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  line-height: 1.35;
+  margin-bottom: 3px;
+}
+.ek-source-org {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-bottom: 5px;
+  line-height: 1.3;
+}
+.ek-source-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+}
+/* col 3: article count + external link */
+.ek-source-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+  padding-top: 2px;
+}
+.ek-source-date {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-mute);
+  letter-spacing: .04em;
+}
+/* expand toggle */
+.ek-toggle {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-mute);
+  letter-spacing: .03em;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.ek-toggle-arrow {
+  display: inline-block;
+  font-size: 10px;
+  transition: transform .15s;
+}
+.ek-source-item.open .ek-toggle-arrow { transform: rotate(90deg); }
+
+/* ── Expanded articles ── */
+.ek-articles-panel {
+  display: none;
+  padding: 0 20px 14px 20px;
+  background: var(--paper-2,#ECE9E1);
+  border-top: 1px solid var(--line);
+}
+.ek-source-item.open .ek-articles-panel { display: block; }
+.ek-articles-head {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  padding: 10px 0 8px;
+}
+.ek-article-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.ek-article-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0 10px;
+  align-items: baseline;
+  padding: 7px 12px;
+  border-radius: 5px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+}
+.ek-article-row:hover { background: var(--paper-2,#ECE9E1); }
+.ek-article-id {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: .06em;
+  color: var(--ink-mute);
+  white-space: nowrap;
+}
+.ek-article-title {
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  text-decoration: none;
+  line-height: 1.35;
+}
+.ek-article-title:hover { color: var(--gold-deep,#8F6E32); }
+.ek-article-right {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+.ek-no-articles {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-mute);
+  padding: 10px 0;
+  letter-spacing: .03em;
+}
+
+/* ── Badges ── */
+.ew-badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .05em;
+  border-radius: 4px;
+  padding: 2px 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.ew-badge.id    { background: var(--paper-2,#ECE9E1); color: var(--ink-soft); font-size: 10px; }
+.ew-badge.gold  { background: #FFF8EC; color: #8B6914; }
+.ew-badge.blue  { background: #EFF6FF; color: #1D4ED8; }
+.ew-badge.green { background: #E6F4EA; color: #1A6E2A; }
+.ew-badge.grey  { background: var(--paper-2,#ECE9E1); color: var(--ink-soft); }
+.ew-badge.cite  {
+  background: var(--gold-deep,#8F6E32);
+  color: #fff;
+  cursor: pointer;
+  font-size: 10.5px;
+  padding: 2px 7px;
+  gap: 3px;
+}
+.ew-badge.cite.zero {
+  background: var(--paper-2,#ECE9E1);
+  color: var(--ink-mute);
+  cursor: default;
+}
+
+/* ── Empty state ── */
+.ek-empty {
+  padding: 64px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.ek-empty-title {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+.ek-empty-sub {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-mute);
+  letter-spacing: .03em;
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Marketplace.html">Marketplace</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+      <a href="AGNUS - Business.html">Business</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+      <button class="hamburger" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="m-drawer">
+    <a href="AGNUS - Explore.html">Explore</a><a href="AGNUS - Intelligence.html">Intelligence</a><a href="AGNUS - Research.html">Research</a><a href="AGNUS - Review.html">Reviews</a><a href="AGNUS - Academy.html">Academy</a><a href="AGNUS - Business.html">Business</a>
+  </div>
+</nav>
+
+<div class="ek-shell">
+
+  <!-- ── Top bar ── -->
+  <div class="ek-topbar">
+    <span class="ek-topbar-title">Knowledge Database</span>
+    <div class="ek-search-wrap">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="6.5" cy="6.5" r="4.5"/><line x1="10" y1="10" x2="14" y2="14"/>
+      </svg>
+      <input class="ek-search" id="ekSearch" type="search" placeholder="Search sources, organisations, jurisdictions, articles…" autocomplete="off" />
+    </div>
+    <span class="ek-stats" id="ekStats"></span>
+    <a href="AGNUS - Editorial Calendar Board.html" class="ew-action-btn">Calendar</a>
+    <a href="AGNUS - Research.html"                 class="ew-action-btn">Research</a>
+  </div>
+
+  <!-- ── Body ── -->
+  <div class="ek-body">
+
+    <!-- ── Sidebar filters ── -->
+    <div class="ek-sidebar" id="ekSidebar">
+
+      <!-- Pillar -->
+      <div class="ek-filter-section">
+        <div class="ek-filter-head">
+          <span class="ek-filter-label">Pillar</span>
+          <button class="ek-filter-clear" id="ekClearPillar" onclick="clearFilter('pillar')">clear</button>
+        </div>
+        <div class="ek-filter-list" id="ekPillarList"></div>
+      </div>
+
+      <!-- Jurisdiction -->
+      <div class="ek-filter-section">
+        <div class="ek-filter-head">
+          <span class="ek-filter-label">Jurisdiction</span>
+          <button class="ek-filter-clear" id="ekClearJurisd" onclick="clearFilter('jurisd')">clear</button>
+        </div>
+        <div class="ek-filter-list" id="ekJurisdList"></div>
+      </div>
+
+      <!-- Source type (authority level) -->
+      <div class="ek-filter-section">
+        <div class="ek-filter-head">
+          <span class="ek-filter-label">Source type</span>
+          <button class="ek-filter-clear" id="ekClearAuth" onclick="clearFilter('auth')">clear</button>
+        </div>
+        <div class="ek-filter-list" id="ekAuthList"></div>
+      </div>
+
+      <div class="ek-clear-all">
+        <button class="ew-action-btn ghost" id="ekClearAll" onclick="clearAllFilters()">Clear all filters</button>
+      </div>
+
+    </div>
+
+    <!-- ── Main list ── -->
+    <div class="ek-main" id="ekMain">
+      <div class="ek-result-bar" id="ekResultBar"></div>
+      <div class="ek-source-list" id="ekSourceList"></div>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="agnus-research-data.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  /* ── Authority level display labels ── */
+  var AUTH_LABELS = {
+    primary:       'Primary — legislation / regulator',
+    standard:      'Standard / technical',
+    academic:      'Academic',
+    supporting:    'Supporting',
+    authoritative: 'Authoritative',
+    secondary:     'Secondary'
+  };
+
+  /* ── State ── */
+  var activePillars    = {};   /* pillar   → true/false */
+  var activeJurisds    = {};   /* jurisdiction → true/false */
+  var activeAuths      = {};   /* authority_level → true/false */
+  var searchQuery      = '';
+  var debounceTimer    = null;
+
+  /* ── Derived data ── */
+  var articlesBySource = {};   /* source_id → [article, …] */
+  var pillarOptions    = [];
+  var jursdOptions     = [];
+  var authOptions      = [];
+
+  /* ── Init ── */
+  function init() {
+    if (typeof window.AR === 'undefined' ||
+        !Array.isArray(window.AR.SOURCES) || !Array.isArray(window.AR.ARTICLES)) {
+      showFatalError();
+      return;
+    }
+
+    buildIndexes();
+    buildFilterOptions();
+    renderFilters();
+    renderStats();
+    render();
+  }
+
+  function showFatalError() {
+    document.getElementById('ekStats').textContent = 'Data unavailable';
+    document.getElementById('ekSourceList').innerHTML =
+      '<div class="ek-empty"><div class="ek-empty-title">Data not loaded</div>' +
+      '<div class="ek-empty-sub">agnus-research-data.js did not load or SOURCES/ARTICLES arrays are missing.</div></div>';
+    document.getElementById('ekResultBar').textContent = '';
+  }
+
+  /* ─────────────────────────────────────────────────────────
+     INDEXES
+  ───────────────────────────────────────────────────────── */
+  function buildIndexes() {
+    var AR = window.AR;
+
+    /* reverse map: source_id → articles that cite it */
+    articlesBySource = {};
+    AR.ARTICLES.forEach(function (a) {
+      (a.sources || []).forEach(function (sid) {
+        if (!articlesBySource[sid]) articlesBySource[sid] = [];
+        articlesBySource[sid].push(a);
+      });
+    });
+
+    /* unique filter values */
+    var pillarsSet = {}, jursdSet = {}, authSet = {};
+
+    AR.ARTICLES.forEach(function (a) {
+      if (a.pillar) pillarsSet[a.pillar] = (pillarsSet[a.pillar] || 0) + 1;
+    });
+    AR.SOURCES.forEach(function (s) {
+      if (s.jurisdiction)    jursdSet[s.jurisdiction]    = (jursdSet[s.jurisdiction]    || 0) + 1;
+      if (s.authority_level) authSet[s.authority_level]  = (authSet[s.authority_level]  || 0) + 1;
+    });
+
+    pillarOptions = Object.keys(pillarsSet).sort().map(function (k) {
+      return { value:k, count:pillarsSet[k] };
+    });
+    jursdOptions  = Object.keys(jursdSet).sort().map(function (k) {
+      return { value:k, count:jursdSet[k] };
+    });
+    authOptions   = Object.keys(authSet).sort().map(function (k) {
+      return { value:k, count:authSet[k] };
+    });
+  }
+
+  /* ─────────────────────────────────────────────────────────
+     FILTERS UI
+  ───────────────────────────────────────────────────────── */
+  function buildFilterOptions() {
+    pillarOptions.forEach(function (o) { activePillars[o.value] = false; });
+    jursdOptions.forEach(function (o)  { activeJurisds[o.value] = false; });
+    authOptions.forEach(function (o)   { activeAuths[o.value]   = false; });
+  }
+
+  function renderFilters() {
+    renderFilterGroup('ekPillarList', pillarOptions, activePillars, 'pillar');
+    renderFilterGroup('ekJurisdList', jursdOptions,  activeJurisds, 'jurisd');
+    renderFilterGroup('ekAuthList',   authOptions,   activeAuths,   'auth',  AUTH_LABELS);
+  }
+
+  function renderFilterGroup(containerId, options, state, key, labelMap) {
+    var el = document.getElementById(containerId);
+    el.innerHTML = '';
+    options.forEach(function (opt) {
+      var label = document.createElement('label');
+      label.className = 'ek-filter-opt';
+
+      var cb = document.createElement('input');
+      cb.type    = 'checkbox';
+      cb.checked = !!state[opt.value];
+      cb.addEventListener('change', function () {
+        state[opt.value] = cb.checked;
+        updateClearBtn(key);
+        render();
+      });
+
+      var span = document.createElement('span');
+      span.className   = 'ek-filter-opt-label';
+      span.textContent = (labelMap && labelMap[opt.value]) || opt.value;
+
+      var cnt = document.createElement('span');
+      cnt.className   = 'ek-filter-opt-count';
+      cnt.textContent = opt.count;
+
+      label.appendChild(cb);
+      label.appendChild(span);
+      label.appendChild(cnt);
+      el.appendChild(label);
+    });
+  }
+
+  function updateClearBtn(key) {
+    var state = key === 'pillar' ? activePillars : key === 'jurisd' ? activeJurisds : activeAuths;
+    var btnId  = key === 'pillar' ? 'ekClearPillar' : key === 'jurisd' ? 'ekClearJurisd' : 'ekClearAuth';
+    var hasAny = Object.keys(state).some(function (k) { return state[k]; });
+    var btn = document.getElementById(btnId);
+    if (btn) btn.classList.toggle('visible', hasAny);
+  }
+
+  window.clearFilter = function (key) {
+    var state = key === 'pillar' ? activePillars : key === 'jurisd' ? activeJurisds : activeAuths;
+    Object.keys(state).forEach(function (k) { state[k] = false; });
+    renderFilters();
+    updateClearBtn(key);
+    render();
+  };
+
+  window.clearAllFilters = function () {
+    ['pillar','jurisd','auth'].forEach(function (k) { window.clearFilter(k); });
+    document.getElementById('ekSearch').value = '';
+    searchQuery = '';
+    render();
+  };
+
+  /* ─────────────────────────────────────────────────────────
+     FILTERING LOGIC
+  ───────────────────────────────────────────────────────── */
+  function anySelected(state) {
+    return Object.keys(state).some(function (k) { return state[k]; });
+  }
+
+  function matchesFilters(source) {
+    /* authority_level filter */
+    if (anySelected(activeAuths) && !activeAuths[source.authority_level]) return false;
+
+    /* jurisdiction filter */
+    if (anySelected(activeJurisds) && !activeJurisds[source.jurisdiction]) return false;
+
+    /* pillar filter — source qualifies if any citing article is in a selected pillar */
+    if (anySelected(activePillars)) {
+      var arts = articlesBySource[source.source_id] || [];
+      var ok = arts.some(function (a) { return activePillars[a.pillar]; });
+      if (!ok) return false;
+    }
+
+    /* full-text search */
+    if (searchQuery) {
+      var q = searchQuery.toLowerCase();
+      var srcMatch =
+        (source.title || '').toLowerCase().indexOf(q) >= 0 ||
+        (source.issuing_organization || '').toLowerCase().indexOf(q) >= 0 ||
+        (source.jurisdiction || '').toLowerCase().indexOf(q) >= 0 ||
+        (source.source_type || '').toLowerCase().indexOf(q) >= 0 ||
+        (source.notes || '').toLowerCase().indexOf(q) >= 0;
+
+      if (!srcMatch) {
+        var arts = articlesBySource[source.source_id] || [];
+        var artMatch = arts.some(function (a) {
+          return (a.title || '').toLowerCase().indexOf(q) >= 0 ||
+                 (a.pillar || '').toLowerCase().indexOf(q) >= 0 ||
+                 (a.jurisdiction || '').toLowerCase().indexOf(q) >= 0 ||
+                 (a.subtopic || '').toLowerCase().indexOf(q) >= 0;
+        });
+        if (!artMatch) return false;
+      }
+    }
+
+    return true;
+  }
+
+  /* ─────────────────────────────────────────────────────────
+     RENDER
+  ───────────────────────────────────────────────────────── */
+  function renderStats() {
+    var AR = window.AR;
+    document.getElementById('ekStats').textContent =
+      AR.SOURCES.length + ' sources · ' + AR.ARTICLES.length + ' articles';
+  }
+
+  function render() {
+    var AR = window.AR;
+    var visible = AR.SOURCES.filter(matchesFilters);
+
+    /* result bar */
+    var bar = document.getElementById('ekResultBar');
+    bar.innerHTML = '';
+    var ct = document.createElement('span');
+    ct.className   = 'ek-result-count';
+    ct.textContent = visible.length;
+    bar.appendChild(ct);
+    bar.appendChild(document.createTextNode(
+      ' source' + (visible.length !== 1 ? 's' : '') +
+      (visible.length < AR.SOURCES.length
+        ? ' of ' + AR.SOURCES.length + ' match filters'
+        : ' total')
+    ));
+
+    /* source list */
+    var list = document.getElementById('ekSourceList');
+    list.innerHTML = '';
+
+    if (!visible.length) {
+      list.appendChild(buildEmpty());
+      return;
+    }
+
+    visible.forEach(function (source) {
+      list.appendChild(buildSourceRow(source));
+    });
+  }
+
+  function buildEmpty() {
+    var el = document.createElement('div');
+    el.className = 'ek-empty';
+    el.innerHTML =
+      '<div class="ek-empty-title">No sources match</div>' +
+      '<div class="ek-empty-sub">Try a different search term or clear the active filters.</div>' +
+      '<button class="ew-action-btn" style="margin-top:8px" onclick="clearAllFilters()">Clear all filters</button>';
+    return el;
+  }
+
+  function buildSourceRow(source) {
+    var arts = articlesBySource[source.source_id] || [];
+    var citeCount = arts.length;
+
+    var item = document.createElement('div');
+    item.className = 'ek-source-item';
+
+    /* ── Header (always visible) ── */
+    var header = document.createElement('div');
+    header.className = 'ek-source-header';
+    header.setAttribute('role', 'button');
+    header.setAttribute('tabindex', '0');
+
+    /* col 1: IDs + authority badge */
+    var meta = document.createElement('div');
+    meta.className = 'ek-source-meta';
+
+    var idBadge = document.createElement('span');
+    idBadge.className   = 'ew-badge id';
+    idBadge.textContent = source.source_id;
+    meta.appendChild(idBadge);
+
+    if (source.authority_level) {
+      var authBadge = document.createElement('span');
+      authBadge.className   = 'ew-badge ' + authLevelClass(source.authority_level);
+      authBadge.textContent = (AUTH_LABELS[source.authority_level] || source.authority_level).split(' — ')[0];
+      meta.appendChild(authBadge);
+    }
+
+    /* col 2: title + org + tags */
+    var body = document.createElement('div');
+    body.className = 'ek-source-body';
+
+    var titleEl = document.createElement('div');
+    titleEl.className   = 'ek-source-title';
+    titleEl.textContent = source.title;
+    body.appendChild(titleEl);
+
+    var orgEl = document.createElement('div');
+    orgEl.className   = 'ek-source-org';
+    orgEl.textContent = source.issuing_organization || '';
+    body.appendChild(orgEl);
+
+    var tags = document.createElement('div');
+    tags.className = 'ek-source-tags';
+
+    if (source.jurisdiction) {
+      var jBadge = document.createElement('span');
+      jBadge.className   = 'ew-badge grey';
+      jBadge.textContent = source.jurisdiction;
+      tags.appendChild(jBadge);
+    }
+    if (source.source_type) {
+      var stBadge = document.createElement('span');
+      stBadge.className   = 'ew-badge grey';
+      stBadge.textContent = source.source_type;
+      tags.appendChild(stBadge);
+    }
+    body.appendChild(tags);
+
+    /* col 3: date + cite count + external link */
+    var right = document.createElement('div');
+    right.className = 'ek-source-right';
+
+    if (source.verification_date) {
+      var dateEl = document.createElement('span');
+      dateEl.className   = 'ek-source-date';
+      dateEl.textContent = 'verified ' + source.verification_date;
+      right.appendChild(dateEl);
+    }
+
+    var citeBadge = document.createElement('span');
+    citeBadge.className = 'ew-badge cite' + (citeCount === 0 ? ' zero' : '');
+    citeBadge.innerHTML = citeCount === 0
+      ? 'no articles'
+      : citeCount + ' art.';
+    right.appendChild(citeBadge);
+
+    if (source.url && source.url !== '#') {
+      var extLink = document.createElement('a');
+      extLink.href      = source.url;
+      extLink.target    = '_blank';
+      extLink.rel       = 'noopener noreferrer';
+      extLink.className = 'ew-action-btn ghost';
+      extLink.style.fontSize = '11px';
+      extLink.style.padding  = '3px 6px';
+      extLink.textContent    = '↗ source';
+      extLink.addEventListener('click', function (e) { e.stopPropagation(); });
+      right.appendChild(extLink);
+    }
+
+    var toggle = document.createElement('span');
+    toggle.className = 'ek-toggle';
+    toggle.innerHTML = '<span class="ek-toggle-arrow">&#9658;</span>';
+    right.appendChild(toggle);
+
+    /* assemble header columns */
+    header.appendChild(meta);
+    header.appendChild(body);
+    header.appendChild(right);
+
+    /* ── Expanded articles panel ── */
+    var panel = document.createElement('div');
+    panel.className = 'ek-articles-panel';
+
+    var panelHead = document.createElement('div');
+    panelHead.className   = 'ek-articles-head';
+    panelHead.textContent = citeCount
+      ? 'Articles citing this source (' + citeCount + ')'
+      : 'No articles cite this source yet';
+    panel.appendChild(panelHead);
+
+    if (citeCount > 0) {
+      var artList = document.createElement('div');
+      artList.className = 'ek-article-list';
+      arts.forEach(function (a) {
+        var row = document.createElement('div');
+        row.className = 'ek-article-row';
+
+        var idEl = document.createElement('span');
+        idEl.className   = 'ek-article-id';
+        idEl.textContent = a.article_id;
+
+        var titleEl = document.createElement('a');
+        titleEl.className = 'ek-article-title';
+        titleEl.href      = 'AGNUS - Research.html';
+        titleEl.target    = '_blank';
+        titleEl.rel       = 'noopener noreferrer';
+        titleEl.textContent = a.title;
+        titleEl.title       = 'Open research hub to find this article';
+        titleEl.addEventListener('click', function (e) { e.stopPropagation(); });
+
+        var ar = document.createElement('div');
+        ar.className = 'ek-article-right';
+
+        if (a.pillar) {
+          var pb = document.createElement('span');
+          pb.className   = 'ew-badge blue';
+          pb.textContent = a.pillar;
+          ar.appendChild(pb);
+        }
+        if (a.published) {
+          var pd = document.createElement('span');
+          pd.className   = 'ek-source-date';
+          pd.textContent = a.published;
+          ar.appendChild(pd);
+        }
+
+        row.appendChild(idEl);
+        row.appendChild(titleEl);
+        row.appendChild(ar);
+        artList.appendChild(row);
+      });
+      panel.appendChild(artList);
+    }
+
+    /* ── Click to expand/collapse ── */
+    header.addEventListener('click', function () {
+      var isOpen = item.classList.contains('open');
+      item.classList.toggle('open', !isOpen);
+    });
+    header.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        item.classList.toggle('open');
+      }
+    });
+
+    item.appendChild(header);
+    item.appendChild(panel);
+    return item;
+  }
+
+  /* ─────────────────────────────────────────────────────────
+     HELPERS
+  ───────────────────────────────────────────────────────── */
+  function authLevelClass(level) {
+    if (level === 'primary')       return 'gold';
+    if (level === 'standard')      return 'green';
+    if (level === 'authoritative') return 'blue';
+    return 'grey';
+  }
+
+  /* ─────────────────────────────────────────────────────────
+     SEARCH
+  ───────────────────────────────────────────────────────── */
+  document.getElementById('ekSearch').addEventListener('input', function () {
+    clearTimeout(debounceTimer);
+    var val = this.value.trim();
+    debounceTimer = setTimeout(function () {
+      searchQuery = val;
+      render();
+    }, 180);
+  });
+
+  /* ─────────────────────────────────────────────────────────
+     BOOT
+  ───────────────────────────────────────────────────────── */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+}());
+</script>
+</body>
+</html>
