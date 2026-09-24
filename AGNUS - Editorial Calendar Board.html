@@ -1,0 +1,878 @@
+<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Editorial Calendar Board — AGNUS</title>
+<meta name="description" content="Editorial calendar: scheduled publishes, pipeline status, and overdue items at a glance." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>
+body { overflow: hidden; }
+
+/* ── Shell ── */
+.ec-shell {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 68px);
+  overflow: hidden;
+}
+
+/* ── Top bar ── */
+.ec-topbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 20px;
+  height: 50px;
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+  flex-shrink: 0;
+}
+.ec-topbar-title {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin-right: 4px;
+}
+.ec-month-label {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--ink);
+  min-width: 152px;
+  text-align: center;
+}
+/* reuse E13/E14 button style */
+.ew-action-btn {
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  transition: background .12s, border-color .12s;
+  letter-spacing: -0.005em;
+}
+.ew-action-btn:hover { background: var(--paper-2,#ECE9E1); border-color: var(--ink-mute); }
+.ew-action-btn.gold {
+  background: var(--gold-deep,#8F6E32);
+  color: #fff;
+  border-color: var(--gold-deep,#8F6E32);
+}
+.ew-action-btn.gold:hover { background: var(--char,#1C1B19); border-color: var(--char,#1C1B19); }
+.ec-topbar-sep { flex: 1; }
+
+/* ── Body (calendar + sidebar) ── */
+.ec-body {
+  display: grid;
+  grid-template-columns: 1fr 272px;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* ── Calendar area ── */
+.ec-calendar-area {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.ec-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+  flex-shrink: 0;
+}
+.ec-weekday {
+  padding: 7px 4px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  border-right: 1px solid var(--line-soft, rgba(0,0,0,.04));
+}
+.ec-weekday:last-child { border-right: none; }
+.ec-grid {
+  flex: 1;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: minmax(76px, 1fr);
+  align-content: start;
+  background: var(--bg,#F8F7F4);
+}
+
+/* ── Day cells ── */
+.ec-day {
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 8px 9px 6px;
+  min-height: 76px;
+  transition: background .1s;
+  position: relative;
+}
+.ec-day:nth-child(7n) { border-right: none; }
+.ec-day.empty { background: var(--bg,#F8F7F4); opacity: .4; }
+.ec-day.weekend { background: var(--paper-warm,#F7F5F0); }
+.ec-day.has-events { cursor: pointer; }
+.ec-day.has-events:hover { background: var(--paper-2,#ECE9E1); }
+
+.ec-day-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-soft,#6E6B66);
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.ec-day.today .ec-day-num {
+  background: var(--gold-deep,#8F6E32);
+  color: #fff;
+  font-weight: 700;
+}
+.ec-day-dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  align-items: center;
+}
+
+/* ── Event dots ── */
+.ec-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.ec-dot.brief      { background: var(--gold-deep,#8F6E32); }
+.ec-dot.monthly    { background: var(--ink,#1D1D1F); }
+.ec-dot.fc-graded  { background: #16A34A; }
+.ec-dot.fc-overdue { background: #B91C1C; }
+.ec-dot.fc-pending { background: var(--ink-mute,#908D86); }
+.ec-count {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  background: var(--paper-2,#ECE9E1);
+  color: var(--ink-soft,#6E6B66);
+  border-radius: 3px;
+  padding: 1px 4px;
+  line-height: 14px;
+  flex-shrink: 0;
+}
+
+/* ── Sidebar ── */
+.ec-sidebar {
+  border-left: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background: var(--paper);
+}
+.ec-sidebar-section {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--line);
+  flex-shrink: 0;
+}
+.ec-sidebar-section:last-child { border-bottom: none; flex: 1; }
+.ec-section-head {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin: 0 0 10px;
+}
+.ec-attention-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ec-attention-item {
+  padding: 9px 11px;
+  border-radius: 6px;
+  background: var(--paper-2,#ECE9E1);
+  cursor: pointer;
+  transition: opacity .1s;
+}
+.ec-attention-item:hover { opacity: .8; }
+.ec-attention-item.overdue { background: #FEE2E2; }
+.ec-attention-item.warning { background: #FFFBEB; }
+.ec-attention-label {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.ec-attention-item.overdue .ec-attention-label { color: #B91C1C; }
+.ec-attention-item.warning .ec-attention-label { color: #92400E; }
+.ec-attention-sub {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: .03em;
+  color: var(--ink-mute);
+  margin-top: 2px;
+}
+.ec-all-clear {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .04em;
+  color: #16A34A;
+}
+/* ── Legend ── */
+.ec-legend-list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.ec-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: .03em;
+  color: var(--ink-soft);
+}
+
+/* ── Popover ── */
+.ec-popover {
+  position: fixed;
+  z-index: 300;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: 0 6px 28px rgba(0,0,0,.12);
+  width: 292px;
+  max-height: 380px;
+  overflow-y: auto;
+  display: none;
+}
+.ec-popover.open { display: block; }
+.ec-popover-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 14px 8px;
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  background: var(--paper);
+  z-index: 1;
+}
+.ec-popover-date {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.ec-popover-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--ink-mute);
+  font-size: 18px;
+  line-height: 1;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  transition: background .1s;
+}
+.ec-popover-close:hover { background: var(--paper-2,#ECE9E1); }
+.ec-popover-body {
+  padding: 10px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.ec-popover-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.ec-popover-type {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.ec-popover-link {
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+}
+.ec-popover-link:hover { color: var(--gold-deep,#8F6E32); }
+.ec-popover-intro {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-mute);
+  line-height: 1.5;
+  letter-spacing: .02em;
+}
+.ec-popover-sep {
+  height: 1px;
+  background: var(--line);
+}
+
+/* ── Error / empty state ── */
+.ec-error {
+  grid-column: 1 / -1;
+  padding: 48px 24px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-mute);
+  letter-spacing: .04em;
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Marketplace.html">Marketplace</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+      <a href="AGNUS - Business.html">Business</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+      <button class="hamburger" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="m-drawer">
+    <a href="AGNUS - Explore.html">Explore</a><a href="AGNUS - Intelligence.html">Intelligence</a><a href="AGNUS - Research.html">Research</a><a href="AGNUS - Review.html">Reviews</a><a href="AGNUS - Academy.html">Academy</a><a href="AGNUS - Business.html">Business</a>
+  </div>
+</nav>
+
+<div class="ec-shell">
+
+  <!-- ── Top bar ── -->
+  <div class="ec-topbar">
+    <span class="ec-topbar-title">Editorial Calendar</span>
+    <button class="ew-action-btn" onclick="prevMonth()">&#8592;</button>
+    <span class="ec-month-label" id="ecMonthLabel"></span>
+    <button class="ew-action-btn" onclick="nextMonth()">&#8594;</button>
+    <button class="ew-action-btn gold" onclick="goToday()">Today</button>
+    <span class="ec-topbar-sep"></span>
+    <a href="AGNUS - Editorial Writer.html"    class="ew-action-btn">E13 Writer</a>
+    <a href="AGNUS - Editorial Review.html"    class="ew-action-btn">E14 Review</a>
+  </div>
+
+  <!-- ── Body ── -->
+  <div class="ec-body">
+
+    <!-- ── Calendar ── -->
+    <div class="ec-calendar-area">
+      <div class="ec-weekdays">
+        <div class="ec-weekday">Mon</div>
+        <div class="ec-weekday">Tue</div>
+        <div class="ec-weekday">Wed</div>
+        <div class="ec-weekday">Thu</div>
+        <div class="ec-weekday">Fri</div>
+        <div class="ec-weekday">Sat</div>
+        <div class="ec-weekday">Sun</div>
+      </div>
+      <div class="ec-grid" id="ecGrid">
+        <div class="ec-error" id="ecLoadError" style="display:none">
+          agnus-research-data.js did not load — no data available.
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Sidebar ── -->
+    <div class="ec-sidebar">
+
+      <div class="ec-sidebar-section">
+        <p class="ec-section-head">Needs Attention</p>
+        <div class="ec-attention-list" id="ecAttentionList">
+          <span class="ec-attention-sub">Loading…</span>
+        </div>
+      </div>
+
+      <div class="ec-sidebar-section">
+        <p class="ec-section-head">Legend</p>
+        <div class="ec-legend-list">
+          <div class="ec-legend-item">
+            <span class="ec-dot brief"></span>Weekly Brief
+          </div>
+          <div class="ec-legend-item">
+            <span class="ec-dot monthly"></span>Monthly Rankings
+          </div>
+          <div class="ec-legend-item">
+            <span class="ec-dot fc-graded"></span>Forecast — graded
+          </div>
+          <div class="ec-legend-item">
+            <span class="ec-dot fc-overdue"></span>Forecast — overdue grading
+          </div>
+          <div class="ec-legend-item">
+            <span class="ec-dot fc-pending"></span>Forecast — grading date
+          </div>
+          <div class="ec-legend-item">
+            <span class="ec-count" style="font-size:9px">N art.</span>Articles published
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ── Popover ── -->
+<div class="ec-popover" id="ecPopover" role="dialog" aria-modal="true">
+  <div class="ec-popover-head">
+    <span class="ec-popover-date" id="ecPopoverDate"></span>
+    <button class="ec-popover-close" id="ecPopoverClose" aria-label="Close">&#215;</button>
+  </div>
+  <div class="ec-popover-body" id="ecPopoverBody"></div>
+</div>
+
+<script src="agnus-research-data.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  /* ── Today (normalized to midnight) ── */
+  var _now  = new Date();
+  var TODAY = new Date(_now.getFullYear(), _now.getMonth(), _now.getDate());
+  var TODAY_STR = fmtDate(TODAY);
+
+  /* ── View state ── */
+  var viewYear  = TODAY.getFullYear();
+  var viewMonth = TODAY.getMonth();
+
+  /* ── Data indexes ── */
+  var briefsByDate    = {};
+  var rankingsByMonth = {};
+  var forecastsByDate = {};
+  var articlesByDate  = {};
+
+  var MONTHS   = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var DAY_NAMES= ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+  /* ─────────────────────────────────────────────────────────
+     INIT
+  ───────────────────────────────────────────────────────── */
+  function init() {
+    if (typeof window.AR === 'undefined') {
+      document.getElementById('ecLoadError').style.display = '';
+      document.getElementById('ecAttentionList').innerHTML =
+        '<span class="ec-attention-sub">Data unavailable</span>';
+      return;
+    }
+    indexData();
+    renderCalendar();
+  }
+
+  function indexData() {
+    var AR = window.AR;
+    briefsByDate    = {};
+    rankingsByMonth = {};
+    forecastsByDate = {};
+    articlesByDate  = {};
+
+    (AR.WEEKLY_BRIEFS || []).forEach(function (b) {
+      briefsByDate[b.published_date] = b;
+    });
+    (AR.MONTHLY_RANKINGS || []).forEach(function (r) {
+      rankingsByMonth[r.month] = r;
+    });
+    (AR.FORECASTS || []).forEach(function (f) {
+      if (!forecastsByDate[f.grading_date]) forecastsByDate[f.grading_date] = [];
+      forecastsByDate[f.grading_date].push(f);
+    });
+    (AR.ARTICLES || []).forEach(function (a) {
+      if (!a.published || a._demo) return;
+      if (!articlesByDate[a.published]) articlesByDate[a.published] = [];
+      articlesByDate[a.published].push(a);
+    });
+  }
+
+  /* ─────────────────────────────────────────────────────────
+     CALENDAR RENDER
+  ───────────────────────────────────────────────────────── */
+  function renderCalendar() {
+    var y = viewYear, m = viewMonth;
+    document.getElementById('ecMonthLabel').textContent = MONTHS[m] + ' ' + y;
+
+    var grid = document.getElementById('ecGrid');
+    grid.innerHTML = '';
+
+    /* leading empty cells (Mon-first grid) */
+    var firstDow  = new Date(y, m, 1).getDay();       /* 0=Sun */
+    var startPad  = (firstDow + 6) % 7;                /* Mon=0 … Sun=6 */
+    var daysInMo  = new Date(y, m + 1, 0).getDate();
+    var totalCells= startPad + daysInMo;
+    var trailing  = (7 - (totalCells % 7)) % 7;
+
+    for (var p = 0; p < startPad; p++) {
+      grid.appendChild(emptyCell());
+    }
+
+    for (var d = 1; d <= daysInMo; d++) {
+      var dateStr = fmtDate(new Date(y, m, d));
+      var dow     = new Date(y, m, d).getDay();
+      var isWknd  = (dow === 0 || dow === 6);
+      var isToday = (dateStr === TODAY_STR);
+      var events  = getEvents(dateStr, y, m, d);
+
+      var cell = document.createElement('div');
+      var cls  = 'ec-day';
+      if (isToday)       cls += ' today';
+      if (isWknd)        cls += ' weekend';
+      if (events.length) cls += ' has-events';
+      cell.className   = cls;
+      cell.dataset.date= dateStr;
+
+      var numEl = document.createElement('div');
+      numEl.className  = 'ec-day-num';
+      numEl.textContent= d;
+      cell.appendChild(numEl);
+
+      if (events.length) {
+        var dotsEl = document.createElement('div');
+        dotsEl.className = 'ec-day-dots';
+        events.forEach(function (ev) {
+          if (ev.type === 'articles') {
+            var ct = document.createElement('span');
+            ct.className   = 'ec-count';
+            ct.textContent = ev.count + ' art.';
+            dotsEl.appendChild(ct);
+          } else {
+            var dot = document.createElement('span');
+            dot.className  = 'ec-dot ' + ev.dotCls;
+            dot.title      = ev.label;
+            dotsEl.appendChild(dot);
+          }
+        });
+        cell.appendChild(dotsEl);
+        cell.addEventListener('click', function (e) {
+          showPopover(this.dataset.date, e);
+        });
+      }
+
+      grid.appendChild(cell);
+    }
+
+    for (var t = 0; t < trailing; t++) {
+      grid.appendChild(emptyCell());
+    }
+
+    renderSidebar();
+  }
+
+  function emptyCell() {
+    var el = document.createElement('div');
+    el.className = 'ec-day empty';
+    return el;
+  }
+
+  /* ─────────────────────────────────────────────────────────
+     EVENT LOOKUP FOR A DATE
+  ───────────────────────────────────────────────────────── */
+  function getEvents(dateStr, y, m, d) {
+    var evs = [];
+    var monthStr = y + '-' + pad(m + 1);
+
+    if (briefsByDate[dateStr]) {
+      evs.push({ type:'brief', dotCls:'brief',
+        label:'Weekly Brief ' + briefsByDate[dateStr].week_id,
+        data: briefsByDate[dateStr] });
+    }
+
+    if (d === 1 && rankingsByMonth[monthStr]) {
+      evs.push({ type:'monthly', dotCls:'monthly',
+        label:'Monthly Rankings — ' + monthStr,
+        data: rankingsByMonth[monthStr] });
+    }
+
+    if (forecastsByDate[dateStr]) {
+      forecastsByDate[dateStr].forEach(function (f) {
+        var dc;
+        if (f.verdict !== 'pending') dc = 'fc-graded';
+        else if (dateStr <= TODAY_STR) dc = 'fc-overdue';
+        else dc = 'fc-pending';
+        evs.push({ type:'forecast', dotCls:dc,
+          label:f.forecast_id + ' grading',
+          data:f });
+      });
+    }
+
+    if (articlesByDate[dateStr]) {
+      evs.push({ type:'articles', count:articlesByDate[dateStr].length,
+        label:articlesByDate[dateStr].length + ' articles published',
+        data:articlesByDate[dateStr] });
+    }
+
+    return evs;
+  }
+
+  /* ─────────────────────────────────────────────────────────
+     SIDEBAR — NEEDS ATTENTION
+  ───────────────────────────────────────────────────────── */
+  function renderSidebar() {
+    var list  = document.getElementById('ecAttentionList');
+    list.innerHTML = '';
+    var items = computeAttention();
+
+    if (!items.length) {
+      var ok = document.createElement('div');
+      ok.className = 'ec-all-clear';
+      ok.innerHTML = '<span style="font-size:14px">&#10003;</span> All clear';
+      list.appendChild(ok);
+      return;
+    }
+
+    items.forEach(function (item) {
+      var el = document.createElement('div');
+      el.className = 'ec-attention-item ' + (item.cls || '');
+      el.innerHTML =
+        '<div class="ec-attention-label">' + esc(item.label) + '</div>' +
+        '<div class="ec-attention-sub">'   + esc(item.sub)   + '</div>';
+      if (item.link) {
+        el.onclick = function () { window.location.href = item.link; };
+      }
+      list.appendChild(el);
+    });
+  }
+
+  function computeAttention() {
+    var items = [];
+    var AR = window.AR || {};
+
+    /* 1 — Overdue forecast grading */
+    (AR.FORECASTS || []).forEach(function (f) {
+      if (f.verdict === 'pending' && f.grading_date <= TODAY_STR) {
+        items.push({ cls:'overdue',
+          label: f.forecast_id + ' — Overdue grading',
+          sub:   trunc(f.statement, 72),
+          link: 'AGNUS - Forecast.html' });
+      }
+    });
+
+    /* 2 — Weekly brief for the most recent past Sunday */
+    var dow = TODAY.getDay();                       /* 0=Sun */
+    var lastSunday = new Date(TODAY);
+    lastSunday.setDate(TODAY.getDate() - dow);       /* roll back to last/this Sunday */
+    var lastSundayStr = fmtDate(lastSunday);
+
+    if (!briefsByDate[lastSundayStr]) {
+      if (dow === 0) {
+        items.push({ cls:'warning',
+          label:'Weekly Brief not published',
+          sub:  'Today is Sunday — brief due today',
+          link: 'AGNUS - Weekly.html' });
+      } else {
+        items.push({ cls:'warning',
+          label:'Weekly Brief missing',
+          sub:  'No brief for Sunday ' + lastSundayStr,
+          link: 'AGNUS - Weekly.html' });
+      }
+    }
+
+    /* 3 — Monthly rankings for current month */
+    var monthStr = TODAY.getFullYear() + '-' + pad(TODAY.getMonth() + 1);
+    if (!rankingsByMonth[monthStr] && TODAY.getDate() > 1) {
+      items.push({ cls:'warning',
+        label:'Monthly Rankings not published',
+        sub:  'No entry for ' + monthStr,
+        link: 'AGNUS - Monthly.html' });
+    }
+
+    return items;
+  }
+
+  /* ─────────────────────────────────────────────────────────
+     POPOVER
+  ───────────────────────────────────────────────────────── */
+  var popover = document.getElementById('ecPopover');
+
+  function showPopover(dateStr, e) {
+    var parts = dateStr.split('-');
+    var y = +parts[0], m = +parts[1] - 1, d = +parts[2];
+    var events = getEvents(dateStr, y, m, d);
+    if (!events.length) return;
+
+    var dateObj = new Date(y, m, d);
+    document.getElementById('ecPopoverDate').textContent =
+      DAY_NAMES[dateObj.getDay()] + ', ' + MONTHS[m] + ' ' + d + ' · ' + y;
+
+    var body = document.getElementById('ecPopoverBody');
+    body.innerHTML = '';
+
+    events.forEach(function (ev, idx) {
+      if (idx > 0) {
+        var sep = document.createElement('div');
+        sep.className = 'ec-popover-sep';
+        body.appendChild(sep);
+      }
+
+      var item = document.createElement('div');
+      item.className = 'ec-popover-item';
+
+      if (ev.type === 'brief') {
+        var b = ev.data;
+        item.innerHTML =
+          '<span class="ec-popover-type">Weekly Brief &middot; ' + b.week_id + ' &middot; Edition ' + b.edition + '</span>' +
+          '<a class="ec-popover-link" href="AGNUS - Weekly.html">' + esc(b.intro.slice(0, 110)) + (b.intro.length > 110 ? '…' : '') + '</a>';
+
+      } else if (ev.type === 'monthly') {
+        var r = ev.data;
+        item.innerHTML =
+          '<span class="ec-popover-type">Monthly Rankings &middot; ' + r.month + '</span>' +
+          '<a class="ec-popover-link" href="AGNUS - Monthly.html">' + r.rankings.length + ' tools ranked this month</a>';
+
+      } else if (ev.type === 'forecast') {
+        var f = ev.data;
+        var statusTag = f.verdict !== 'pending'
+          ? ('<span style="color:#16A34A">' + f.verdict + '</span>')
+          : (f.grading_date <= TODAY_STR
+            ? '<span style="color:#B91C1C">overdue</span>'
+            : '<span style="color:var(--ink-mute)">pending</span>');
+        item.innerHTML =
+          '<span class="ec-popover-type">Forecast grading &middot; ' + f.forecast_id + ' &middot; ' + f.confidence + ' confidence &middot; ' + statusTag + '</span>' +
+          '<a class="ec-popover-link" href="AGNUS - Forecast.html">' + esc(trunc(f.statement, 100)) + '</a>';
+
+      } else if (ev.type === 'articles') {
+        var arts = ev.data;
+        var typeEl = document.createElement('span');
+        typeEl.className   = 'ec-popover-type';
+        typeEl.textContent = arts.length + ' article' + (arts.length !== 1 ? 's' : '') + ' published';
+        item.appendChild(typeEl);
+
+        arts.slice(0, 6).forEach(function (a) {
+          var aEl = document.createElement('a');
+          aEl.className = 'ec-popover-link';
+          aEl.href      = a.url || '#';
+          aEl.textContent = a.title || a.article_id;
+          item.appendChild(aEl);
+        });
+        if (arts.length > 6) {
+          var more = document.createElement('span');
+          more.className   = 'ec-popover-intro';
+          more.textContent = '+ ' + (arts.length - 6) + ' more';
+          item.appendChild(more);
+        }
+      }
+
+      body.appendChild(item);
+    });
+
+    /* Position near the clicked cell */
+    var cellRect = e.target.closest('.ec-day').getBoundingClientRect();
+    var pw = 292, ph = 380;
+    var left = cellRect.left + cellRect.width / 2 - pw / 2;
+    var top  = cellRect.bottom + 6;
+    if (left + pw > window.innerWidth  - 8) left = window.innerWidth  - pw - 8;
+    if (left < 8)                           left = 8;
+    if (top  + ph > window.innerHeight - 8) top  = cellRect.top - ph - 6;
+    if (top  < 68)                          top  = 68;
+
+    popover.style.left = left + 'px';
+    popover.style.top  = top  + 'px';
+    popover.classList.add('open');
+  }
+
+  document.getElementById('ecPopoverClose').addEventListener('click', function () {
+    popover.classList.remove('open');
+  });
+  document.addEventListener('click', function (e) {
+    if (!popover.classList.contains('open')) return;
+    if (!popover.contains(e.target) && !e.target.closest('.ec-day')) {
+      popover.classList.remove('open');
+    }
+  });
+
+  /* ─────────────────────────────────────────────────────────
+     MONTH NAVIGATION
+  ───────────────────────────────────────────────────────── */
+  window.prevMonth = function () {
+    viewMonth--;
+    if (viewMonth < 0) { viewMonth = 11; viewYear--; }
+    popover.classList.remove('open');
+    renderCalendar();
+  };
+  window.nextMonth = function () {
+    viewMonth++;
+    if (viewMonth > 11) { viewMonth = 0; viewYear++; }
+    popover.classList.remove('open');
+    renderCalendar();
+  };
+  window.goToday = function () {
+    viewYear  = TODAY.getFullYear();
+    viewMonth = TODAY.getMonth();
+    popover.classList.remove('open');
+    renderCalendar();
+  };
+
+  /* ─────────────────────────────────────────────────────────
+     HELPERS
+  ───────────────────────────────────────────────────────── */
+  function fmtDate(d) {
+    return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+  }
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+  function trunc(s, n) { return s.length > n ? s.slice(0, n) + '…' : s; }
+  function esc(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  /* ─────────────────────────────────────────────────────────
+     BOOT
+  ───────────────────────────────────────────────────────── */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+}());
+</script>
+</body>
+</html>
