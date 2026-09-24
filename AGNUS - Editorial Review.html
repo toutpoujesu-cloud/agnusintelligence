@@ -1,0 +1,617 @@
+<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Editorial Review — AGNUS</title>
+<meta name="description" content="Human editor review: approve, revise, or send back an AI-drafted research article." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<link rel="stylesheet" href="agnus-research.css" />
+<style>
+body { overflow: hidden; }
+
+/* ── Shell ── */
+.er-shell {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 68px);
+  overflow: hidden;
+}
+
+/* ── Header strip ── */
+.er-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 24px;
+  height: 52px;
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.er-header-title {
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  min-width: 0;
+}
+.er-header-title.empty {
+  font-weight: 400;
+  color: var(--ink-mute);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+.er-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* reuse E13 badge style */
+.ew-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--paper-2,#ECE9E1);
+  color: var(--ink-mute);
+  white-space: nowrap;
+}
+.ew-badge.status-pending  { background: #EFF6FF; color: #1D4ED8; }
+.ew-badge.status-approved { background: #E6F4EA; color: #1A6E2A; }
+.ew-badge.status-revise   { background: #FFFBEB; color: #92400E; }
+.ew-badge.status-sent     { background: #FEE2E2; color: #B91C1C; }
+.ew-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; flex-shrink: 0; }
+
+/* ── Paste fallback panel ── */
+.er-paste-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg,#F8F7F4);
+  padding: 40px 24px;
+  gap: 16px;
+}
+.er-paste-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 28px 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  max-width: 600px;
+}
+.er-paste-card h3 {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0;
+}
+.ew-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin: 0;
+}
+.ew-textarea {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--paper-2,#ECE9E1);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px 16px;
+  resize: vertical;
+  outline: none;
+  transition: border-color .15s;
+  height: 160px;
+  width: 100%;
+  box-sizing: border-box;
+}
+.ew-textarea:focus { border-color: var(--gold-mid,#C9A96A); }
+.ew-error {
+  display: none;
+  background: #FEF2F2;
+  border: 1px solid #FCA5A5;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  line-height: 1.5;
+  color: #991B1B;
+}
+.ew-error.show { display: block; }
+
+/* ── Main iframe area ── */
+.er-main {
+  flex: 1;
+  display: none;
+  min-height: 0;
+}
+.er-main.loaded { display: block; }
+#reviewFrame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* ── Notes panel ── */
+.er-notes-panel {
+  display: none;
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+  padding: 14px 20px 12px;
+  flex-shrink: 0;
+}
+.er-notes-panel.open { display: block; }
+.er-notes-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin: 0 0 8px;
+}
+.er-notes-textarea {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--paper-2,#ECE9E1);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 14px;
+  resize: none;
+  outline: none;
+  width: 100%;
+  height: 80px;
+  box-sizing: border-box;
+  transition: border-color .15s;
+}
+.er-notes-textarea:focus { border-color: var(--gold-mid,#C9A96A); }
+.er-notes-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+/* ── Action bar (reuse E13 .ew-actions pattern) ── */
+.ew-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+  border-top: 1px solid var(--line);
+  background: var(--paper);
+  flex-shrink: 0;
+}
+.ew-action-btn {
+  padding: 7px 16px;
+  border-radius: 6px;
+  font-family: var(--font-sans);
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  transition: background .12s, border-color .12s;
+  letter-spacing: -0.005em;
+}
+.ew-action-btn:hover:not(:disabled) { background: var(--paper-2,#ECE9E1); border-color: var(--ink-mute); }
+.ew-action-btn:disabled { opacity: .3; cursor: not-allowed; }
+.ew-action-btn.gold {
+  background: var(--gold-deep,#8F6E32);
+  color: #fff;
+  border-color: var(--gold-deep,#8F6E32);
+}
+.ew-action-btn.gold:hover:not(:disabled) { background: var(--char,#1C1B19); border-color: var(--char,#1C1B19); }
+.ew-action-btn.active {
+  background: var(--paper-2,#ECE9E1);
+  border-color: var(--ink-mute);
+}
+.ew-toast {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .05em;
+  color: var(--ink-mute);
+  opacity: 0;
+  transition: opacity .3s;
+  white-space: nowrap;
+}
+.ew-toast.show { opacity: 1; }
+
+/* ── Load button ── */
+.ew-btn-load {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 20px;
+  background: var(--char,#1C1B19);
+  color: var(--on-dark,#F5F4F1);
+  border: none;
+  border-radius: 8px;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition: background .15s;
+  width: 100%;
+}
+.ew-btn-load:hover { background: var(--char-2,#272522); }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Marketplace.html">Marketplace</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+      <a href="AGNUS - Business.html">Business</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
+      <button class="hamburger" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="m-drawer">
+    <a href="AGNUS - Explore.html">Explore</a><a href="AGNUS - Intelligence.html">Intelligence</a><a href="AGNUS - Research.html">Research</a><a href="AGNUS - Review.html">Reviews</a><a href="AGNUS - Academy.html">Academy</a><a href="AGNUS - Business.html">Business</a>
+  </div>
+</nav>
+
+<div class="er-shell">
+
+  <!-- ── Header strip ── -->
+  <div class="er-header">
+    <span class="er-header-title empty" id="erTitle">No article loaded</span>
+    <div class="er-meta" id="erMeta" style="display:none">
+      <span class="ew-badge" id="erJurisdiction" style="display:none"></span>
+      <span class="ew-badge" id="erWordCount" style="display:none"></span>
+      <span class="ew-badge status-pending" id="erStatus">
+        <span class="ew-badge-dot"></span>
+        <span id="erStatusLabel">Pending review</span>
+      </span>
+    </div>
+  </div>
+
+  <!-- ── Paste fallback panel (shown when no article loaded) ── */-->
+  <div class="er-paste-panel" id="erPastePanel">
+    <div class="er-paste-card">
+      <h3>Editorial Review — E14</h3>
+      <p class="ew-label">Paste article HTML to begin</p>
+      <textarea class="ew-textarea" id="pasteInput" spellcheck="false"
+        placeholder="Paste the full HTML of the article generated by E13 Editorial Writer..."></textarea>
+      <div class="ew-error" id="pasteError"></div>
+      <button class="ew-btn-load" onclick="loadPasted()">Load for Review</button>
+    </div>
+  </div>
+
+  <!-- ── Main iframe ── -->
+  <div class="er-main" id="erMain">
+    <iframe id="reviewFrame" sandbox="allow-same-origin allow-scripts"></iframe>
+  </div>
+
+  <!-- ── Notes panel (Revise / Send back) ── -->
+  <div class="er-notes-panel" id="erNotesPanel">
+    <p class="er-notes-label" id="erNotesLabel">Revision notes</p>
+    <textarea class="er-notes-textarea" id="erNotesInput" placeholder="Describe what needs to change..."></textarea>
+    <div class="er-notes-row">
+      <button class="ew-action-btn gold" id="erNotesSubmit" onclick="submitNotes()">Submit</button>
+      <button class="ew-action-btn" onclick="cancelNotes()">Cancel</button>
+    </div>
+  </div>
+
+  <!-- ── Action bar ── -->
+  <div class="ew-actions">
+    <button class="ew-action-btn gold" id="approveBtn" onclick="doApprove()" disabled>Approve</button>
+    <button class="ew-action-btn"      id="reviseBtn"  onclick="toggleNotes('revise')"    disabled>Revise</button>
+    <button class="ew-action-btn"      id="sendBackBtn" onclick="toggleNotes('send_back')" disabled>Send Back</button>
+    <span class="ew-toast" id="toast"></span>
+  </div>
+
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  var LS_KEY  = 'agnus_review_decisions';
+  var SS_KEY  = 'agnus_pending_review';
+
+  var currentHtml   = null;
+  var currentSlug   = '';
+  var currentId     = '';
+  var activeAction  = null;   /* 'revise' | 'send_back' */
+
+  /* ────────────────────────────────────────────────
+     INIT — check sessionStorage then URL param
+  ──────────────────────────────────────────────── */
+  (function init() {
+    var html = null;
+
+    /* 1. sessionStorage */
+    try {
+      var ss = sessionStorage.getItem(SS_KEY);
+      if (ss) {
+        html = ss;
+        sessionStorage.removeItem(SS_KEY);
+      }
+    } catch (e) {}
+
+    /* 2. URL param ?source=sessionKey (E13 can set a key, pass the key name) */
+    if (!html) {
+      try {
+        var params = new URLSearchParams(window.location.search);
+        var srcKey = params.get('source');
+        if (srcKey) {
+          var val = sessionStorage.getItem(srcKey);
+          if (val) {
+            html = val;
+            sessionStorage.removeItem(srcKey);
+          }
+        }
+      } catch (e) {}
+    }
+
+    if (html) {
+      loadArticle(html);
+    }
+  }());
+
+  /* ────────────────────────────────────────────────
+     LOAD ARTICLE
+  ──────────────────────────────────────────────── */
+  function loadArticle(html) {
+    currentHtml = html;
+
+    /* extract metadata from HTML string */
+    var titleMatch = html.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
+    var rawTitle   = titleMatch ? titleMatch[1].replace(/\s*—\s*AGNUS.*$/i, '').trim() : 'Untitled article';
+
+    var arMatch = html.match(/\bAR-\d{6}\b/);
+    currentId   = arMatch ? arMatch[0] : '';
+
+    var jurMatch = html.match(/jurisdiction["']?\s*[:=]\s*["']([^"']+)["']/i);
+    var jur = jurMatch ? jurMatch[1] : '';
+
+    /* word count (strip tags) */
+    var stripped  = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+    var wordCount = stripped.trim().split(' ').length;
+
+    currentSlug = rawTitle + (currentId ? ' (' + currentId + ')' : '');
+
+    /* update header */
+    var titleEl = document.getElementById('erTitle');
+    titleEl.textContent = rawTitle;
+    titleEl.className   = 'er-header-title';
+
+    document.getElementById('erMeta').style.display = 'flex';
+
+    if (jur) {
+      var jurEl = document.getElementById('erJurisdiction');
+      jurEl.textContent = jur;
+      jurEl.style.display = 'inline-flex';
+    }
+
+    var wcEl = document.getElementById('erWordCount');
+    wcEl.textContent = wordCount.toLocaleString() + ' words';
+    wcEl.style.display = 'inline-flex';
+
+    /* render */
+    document.getElementById('erPastePanel').style.display = 'none';
+    document.getElementById('erMain').classList.add('loaded');
+    document.getElementById('reviewFrame').srcdoc = html;
+
+    /* enable actions */
+    ['approveBtn', 'reviseBtn', 'sendBackBtn'].forEach(function (id) {
+      document.getElementById(id).disabled = false;
+    });
+  }
+
+  /* ────────────────────────────────────────────────
+     PASTE FALLBACK
+  ──────────────────────────────────────────────── */
+  window.loadPasted = function () {
+    var val = document.getElementById('pasteInput').value.trim();
+    var errEl = document.getElementById('pasteError');
+    errEl.className = 'ew-error';
+
+    if (!val) {
+      errEl.textContent = 'Paste an article HTML before loading.';
+      errEl.className = 'ew-error show';
+      return;
+    }
+    if (!val.toLowerCase().includes('<!doctype') && !val.toLowerCase().includes('<html')) {
+      errEl.textContent = 'This does not look like a complete HTML document. Paste the full file including <!doctype html>.';
+      errEl.className = 'ew-error show';
+      return;
+    }
+
+    loadArticle(val);
+  };
+
+  /* ────────────────────────────────────────────────
+     APPROVE
+  ──────────────────────────────────────────────── */
+  window.doApprove = function () {
+    if (!currentHtml) return;
+    cancelNotes();
+
+    var entry = {
+      slug:       currentSlug,
+      article_id: currentId || null,
+      decision:   'approved',
+      timestamp:  new Date().toISOString(),
+      html:       currentHtml
+    };
+    saveDecision(entry);
+
+    setStatus('status-approved', 'Approved');
+    showToast('✓ Article approved and saved');
+  };
+
+  /* ────────────────────────────────────────────────
+     REVISE / SEND BACK — toggle notes panel
+  ──────────────────────────────────────────────── */
+  window.toggleNotes = function (action) {
+    var panel    = document.getElementById('erNotesPanel');
+    var labelEl  = document.getElementById('erNotesLabel');
+    var submitEl = document.getElementById('erNotesSubmit');
+    var textEl   = document.getElementById('erNotesInput');
+
+    if (activeAction === action && panel.classList.contains('open')) {
+      cancelNotes();
+      return;
+    }
+
+    activeAction = action;
+
+    if (action === 'revise') {
+      labelEl.textContent   = 'Revision notes — describe what needs to change';
+      submitEl.textContent  = 'Submit Revision Notes';
+      textEl.placeholder    = 'Describe what needs to change in the article...';
+    } else {
+      labelEl.textContent   = 'Send back — reason (optional)';
+      submitEl.textContent  = 'Confirm Send Back';
+      textEl.placeholder    = 'Optional: explain why the article is being sent back...';
+    }
+
+    textEl.value = '';
+    panel.classList.add('open');
+
+    /* toggle active state on the triggering button */
+    document.getElementById('reviseBtn').classList.toggle('active', action === 'revise');
+    document.getElementById('sendBackBtn').classList.toggle('active', action === 'send_back');
+
+    setTimeout(function () { textEl.focus(); }, 50);
+  };
+
+  window.cancelNotes = function () {
+    activeAction = null;
+    document.getElementById('erNotesPanel').classList.remove('open');
+    document.getElementById('erNotesInput').value = '';
+    document.getElementById('reviseBtn').classList.remove('active');
+    document.getElementById('sendBackBtn').classList.remove('active');
+  };
+
+  window.submitNotes = function () {
+    if (!activeAction) return;
+    var notes = document.getElementById('erNotesInput').value.trim();
+
+    var entry = {
+      slug:       currentSlug,
+      article_id: currentId || null,
+      decision:   activeAction,
+      timestamp:  new Date().toISOString()
+    };
+
+    if (activeAction === 'revise') {
+      entry.notes = notes;
+      saveDecision(entry);
+      setStatus('status-revise', 'Needs revision');
+      showToast('Revision notes saved');
+    } else {
+      entry.reason = notes;
+      saveDecision(entry);
+      setStatus('status-sent', 'Sent back');
+      showToast('Article sent back');
+    }
+
+    cancelNotes();
+  };
+
+  /* ────────────────────────────────────────────────
+     LOCALSTORAGE — append, never overwrite
+  ──────────────────────────────────────────────── */
+  function saveDecision(entry) {
+    var existing = [];
+    try {
+      var raw = localStorage.getItem(LS_KEY);
+      if (raw) existing = JSON.parse(raw);
+      if (!Array.isArray(existing)) existing = [];
+    } catch (e) { existing = []; }
+
+    existing.push(entry);
+
+    try {
+      localStorage.setItem(LS_KEY, JSON.stringify(existing));
+    } catch (e) {
+      /* quota exceeded — store without html */
+      if (entry.html) {
+        var slim = Object.assign({}, entry, { html: '[omitted — localStorage quota exceeded]' });
+        try {
+          existing[existing.length - 1] = slim;
+          localStorage.setItem(LS_KEY, JSON.stringify(existing));
+        } catch (e2) {}
+      }
+    }
+  }
+
+  /* ────────────────────────────────────────────────
+     STATUS BADGE
+  ──────────────────────────────────────────────── */
+  function setStatus(cls, label) {
+    var el = document.getElementById('erStatus');
+    el.className = 'ew-badge ' + cls;
+    document.getElementById('erStatusLabel').textContent = label;
+  }
+
+  /* ────────────────────────────────────────────────
+     TOAST
+  ──────────────────────────────────────────────── */
+  function showToast(msg) {
+    var t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(t._t);
+    t._t = setTimeout(function () { t.classList.remove('show'); }, 3000);
+  }
+
+}());
+</script>
+</body>
+</html>
