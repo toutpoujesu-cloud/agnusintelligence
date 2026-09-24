@@ -1,11 +1,4 @@
-﻿<!doctype html>
-<!--
-  This application and all the work related to Agnus and for Agnus is sanctified and covered
-  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
-  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
-  from The Throne of The Lamb of God, The Lord Jesus Christ.
-  This application is Holy.
--->
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -70,7 +63,7 @@ body{background:var(--bg);color:var(--ink);font-family:Manrope,sans-serif;-webki
   <span class="tr-title">Level Checkpoint</span>
   <div class="tr-right">
     <span class="qcount" id="qcount">Question 1 of 7</span>
-    <button class="tr-btn" onclick="location.href='AGNUS - Academy App.html'">← Dashboard</button>
+    <button class="tr-btn" onclick="alert('Dashboard link')">← Dashboard</button>
   </div>
 </header>
 
@@ -129,12 +122,12 @@ body{background:var(--bg);color:var(--ink);font-family:Manrope,sans-serif;-webki
     </div>
 
     <div class="qcard" data-q="4">
-      <div class="q-src">From M26 — Find the First Deviation</div>
-      <div class="q-text">In the research summary scenario, what was the actual deviation the agent made?</div>
+      <div class="q-src">From M26 — Escalation Design</div>
+      <div class="q-text">An agent encounters an action that is irreversible and outside its known scope. Which escalation level fits, and why?</div>
       <div class="opt-list">
-        <div class="opt" data-c="false" data-m="M26"><span class="text">It misspelled a source's name.</span></div>
-        <div class="opt" data-c="true" data-m="M26"><span class="text">It generated a specific statistic through inference rather than retrieving it from a cited source.</span></div>
-        <div class="opt" data-c="false" data-m="M26"><span class="text">It refused to complete the summary at all.</span></div>
+        <div class="opt" data-c="false" data-m="M26"><span class="text">Level 1 — Notify. Proceed and inform a human after the fact.</span></div>
+        <div class="opt" data-c="false" data-m="M26"><span class="text">Level 2 — Pause. Queue the action and wait for approval before proceeding.</span></div>
+        <div class="opt" data-c="true" data-m="M26"><span class="text">Level 3 — Stop. Halt the task entirely and report — the action's irreversibility and scope mean it should not be queued for later execution either.</span></div>
       </div>
       <div class="feedback"></div>
     </div>
@@ -172,7 +165,7 @@ body{background:var(--bg);color:var(--ink);font-family:Manrope,sans-serif;-webki
       <h4>Review these modules before trying again</h4>
       <div id="reviewItems"></div>
     </div>
-    <button class="btn" id="resultBtn" onclick="location.href='AGNUS - Academy M30 - Verifying Financial Claims.html'"></button>
+    <button class="btn" id="resultBtn" onclick="alert('Continue')"></button>
   </div>
 
 </div>
@@ -236,7 +229,7 @@ function showResult(){
       '<div class="review-item"><span>' + m + '</span><a href="#" data-module="' + m + '">Review →</a></div>'
     ).join('');
     document.querySelectorAll('#reviewItems a[data-module]').forEach(a => {
-      a.addEventListener('click', e => { e.preventDefault(); const f = MODULE_FILES[a.dataset.module]; if(f) location.href = f; });
+      a.addEventListener('click', e => { e.preventDefault(); alert('Open ' + a.dataset.module); });
     });
   }
 }
