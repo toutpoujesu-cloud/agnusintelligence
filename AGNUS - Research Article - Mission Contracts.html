@@ -1,96 +1,172 @@
 <!doctype html>
-<!--
-  This application and all the work related to Agnus and for Agnus is sanctified and covered
-  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
-  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
-  from The Throne of The Lamb of God, The Lord Jesus Christ.
-  This application is Holy.
--->
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Mission Contracts: How to Define What an AI Agent Is Allowed to Do — AGNUS Research</title>
-<meta name="description" content="A Mission Contract is the governance document that defines an AI agent's purpose, capability scope, prohibited actions, and human accountability before deployment. This article explains how to write one, what it must contain, and how it functions as the primary governance control for agentic systems." />
-<meta property="og:type" content="article" />
-<meta property="og:title" content="Mission Contracts: How to Define What an AI Agent Is Allowed to Do" />
-<meta property="article:published_time" content="2026-09-11" />
-<meta property="article:author" content="Jean-Daniel Alexis" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="agnus.css" />
-<link rel="stylesheet" href="agnus-research.css" />
+<meta name="description" content="A Mission Contract is the governance document that defines an AI agent's purpose, capability scope, prohibited actions, and human accountability before deployment."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="agnus.css"/>
+<link rel="stylesheet" href="agnus-research.css"/>
 <style>
+:root{
+  --gold:#C49A2C;--gold-deep:#8B6914;--gold-pale:#FEF9ED;--gold-line:#E8D9A0;
+  --ink:#1A1612;--ink-mute:#5A5550;--ink-ghost:#9A9490;
+  --paper:#F8F5EE;--surface:#FFFFFF;
+  --line:rgba(0,0,0,.08);--line-strong:rgba(0,0,0,.12);
+  --navy:#0F1E34;
+}
+*{box-sizing:border-box}
 a,a:visited{color:inherit}
-.prose h3{font-family:var(--font-sans);font-weight:700;font-size:20px;letter-spacing:-.02em;margin:44px 0 16px}
+body{background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased}
 
-/* Research subnav */
-.rsub{background:var(--paper-warm,#F7F5F0);border-bottom:1px solid var(--line);position:sticky;top:68px;z-index:59;overflow-x:auto}
-.rsub .rsub-inner{display:flex;align-items:center;gap:4px;padding:0 var(--pad-x,24px);height:44px;white-space:nowrap}
-.rsub a{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mute);padding:8px 12px;border-radius:6px;transition:.15s;text-decoration:none}
-.rsub a:hover{color:var(--ink);background:rgba(0,0,0,.04)}
-.rsub a.on{color:var(--gold-deep);font-weight:600}
+/* ── PROGRESS ── */
+.art-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:300;background:transparent}
+.art-progress i{display:block;height:100%;background:var(--gold);width:0;transition:width .1s}
 
-/* Pillar tag */
-.pillar-tag{display:inline-block;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:var(--gold-pale,#FEF9ED);color:var(--gold-deep,#8B6914);border:1px solid var(--gold-line,#E8D9A0);border-radius:4px;padding:3px 8px;margin-bottom:16px}
-.art-header{padding-bottom:32px}
+/* ── NAV ── */
+.nav{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:200;height:64px;display:flex;align-items:center}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 32px;display:flex;align-items:center;gap:0;width:100%}
+.wordmark{font-family:'Manrope',sans-serif;font-weight:800;font-size:16px;letter-spacing:-.02em;color:var(--ink);text-decoration:none;margin-right:36px}
+.nav-links{display:flex;gap:4px;flex:1}
+.nav-links a{font-size:13.5px;font-weight:500;color:var(--ink-mute);padding:7px 12px;border-radius:7px;text-decoration:none;transition:all .15s}
+.nav-links a:hover,.nav-links a.active{color:var(--ink);background:rgba(0,0,0,.04)}
+.nav-right{margin-left:auto}
+.btn-gold{background:var(--gold);color:#fff;font-family:'Manrope',sans-serif;font-weight:700;font-size:13px;padding:8px 18px;border-radius:8px;text-decoration:none;display:inline-block}
 
-/* ── 8 FIELDS GRID ── */
-.fields-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-strong,rgba(0,0,0,.12));border:1px solid var(--line-strong,rgba(0,0,0,.12));border-radius:14px;overflow:hidden;margin:28px 0}
+/* ── HERO ── */
+.hero{background:var(--navy);padding:72px 32px 68px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 80% 50%,rgba(196,154,44,.12),transparent);pointer-events:none}
+.hero-inner{max-width:820px;margin:0 auto;position:relative}
+.hero-kicker{display:flex;align-items:center;gap:10px;margin-bottom:20px}
+.hero-kicker a{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.45);text-decoration:none}
+.hero-kicker a:hover{color:rgba(255,255,255,.7)}
+.hero-kicker .sep{color:rgba(255,255,255,.2);font-size:14px}
+.hero-pill{background:rgba(196,154,44,.15);border:1px solid rgba(196,154,44,.3);border-radius:4px;padding:3px 9px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.hero h1{font-family:'Manrope',sans-serif;font-size:clamp(28px,4vw,46px);font-weight:800;letter-spacing:-.03em;color:#fff;line-height:1.12;margin-bottom:22px}
+.hero-lede{font-family:'Newsreader',Georgia,serif;font-style:italic;font-size:clamp(17px,2vw,21px);line-height:1.62;color:rgba(255,255,255,.65);max-width:660px;margin-bottom:28px}
+.hero-meta{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.hero-meta-item{font-family:'IBM Plex Mono',monospace;font-size:11px;color:rgba(255,255,255,.38);letter-spacing:.04em}
+.hero-meta-item strong{color:rgba(255,255,255,.65);font-weight:500}
+
+/* ── SUBNAV ── */
+.subnav{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:64px;z-index:100;overflow-x:auto}
+.subnav-inner{max-width:1200px;margin:0 auto;padding:0 32px;display:flex;align-items:center;gap:2px;height:46px;white-space:nowrap}
+.subnav a{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-ghost);padding:8px 12px;border-radius:6px;text-decoration:none;transition:all .15s;flex-shrink:0}
+.subnav a:hover{color:var(--ink);background:rgba(0,0,0,.04)}
+.subnav a.on{color:var(--gold-deep);font-weight:600;background:var(--gold-pale)}
+
+/* ── LAYOUT ── */
+.page{max-width:1200px;margin:0 auto;padding:56px 32px 120px;display:grid;grid-template-columns:1fr 300px;gap:56px;align-items:start}
+@media(max-width:900px){.page{grid-template-columns:1fr;gap:40px}}
+.prose{min-width:0}
+
+/* ── TYPOGRAPHY ── */
+.prose h2{font-family:'Manrope',sans-serif;font-size:clamp(22px,2.5vw,28px);font-weight:800;letter-spacing:-.025em;color:var(--ink);margin:52px 0 20px;padding-top:52px;border-top:1.5px solid var(--line)}
+.prose h2:first-child{margin-top:0;padding-top:0;border-top:none}
+.prose h3{font-family:'Manrope',sans-serif;font-size:19px;font-weight:700;color:var(--ink);margin:34px 0 12px}
+.prose p{font-family:'Newsreader',Georgia,serif;font-size:18px;line-height:1.75;color:var(--ink-mute);margin-bottom:20px}
+.prose p strong{color:var(--ink);font-weight:700}
+.prose ul{margin:0 0 20px 0;padding-left:0;list-style:none}
+.prose ul li{font-family:'Newsreader',Georgia,serif;font-size:18px;line-height:1.75;color:var(--ink-mute);padding:8px 0 8px 26px;position:relative;border-bottom:1px solid var(--line)}
+.prose ul li:last-child{border-bottom:none}
+.prose ul li::before{content:'→';position:absolute;left:0;color:var(--gold);font-family:'Manrope',sans-serif;font-weight:700}
+.prose ul li strong{color:var(--ink)}
+
+/* ── FINDING STRIP ── */
+.finding{border-left:3px solid var(--gold);background:var(--gold-pale);border-radius:0 12px 12px 0;padding:20px 24px;margin:32px 0}
+.finding-k{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:10px}
+.finding p{font-family:'Newsreader',Georgia,serif;font-size:17px;line-height:1.68;color:var(--ink);margin:0}
+
+/* ── 8 FIELDS ── */
+.fields-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-strong);border:1px solid var(--line-strong);border-radius:16px;overflow:hidden;margin:32px 0}
 @media(max-width:640px){.fields-grid{grid-template-columns:1fr}}
-.field-card{background:#fff;padding:24px 26px;transition:background .15s}
-.field-card:hover{background:var(--gold-pale,#FEF9ED)}
-.fc-num{font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-deep,#8B6914);margin-bottom:8px;font-weight:600}
-.fc-title{font-family:var(--font-sans);font-size:16px;font-weight:800;color:var(--ink);margin-bottom:8px;letter-spacing:-.01em}
-.fc-body{font-size:14px;line-height:1.65;color:var(--ink-mute)}
+.field-card{background:#fff;padding:26px 28px}
+.field-card:hover{background:var(--gold-pale)}
+.fc-num{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;font-weight:600}
+.fc-title{font-family:'Manrope',sans-serif;font-size:17px;font-weight:800;color:var(--ink);margin-bottom:8px;letter-spacing:-.01em}
+.fc-body{font-family:'Newsreader',Georgia,serif;font-size:15px;line-height:1.65;color:var(--ink-mute)}
 .fc-body strong{color:var(--ink)}
 
-/* ── CONTRACT TERMINAL ── */
-.contract{background:#0F1E34;border-radius:14px;overflow:hidden;margin:28px 0;box-shadow:0 8px 40px rgba(10,20,40,.18)}
-.contract-head{padding:13px 22px;border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:10px}
+/* ── CODE BLOCK ── */
+.contract{background:var(--navy);border-radius:16px;overflow:hidden;margin:32px 0;box-shadow:0 8px 40px rgba(10,20,40,.2)}
+.contract-head{padding:14px 24px;border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;gap:10px}
 .ch-dots{display:flex;gap:6px}
 .ch-dot{width:11px;height:11px;border-radius:50%}
 .ch-dot.r{background:#FF5F57}
 .ch-dot.y{background:#FEBC2E}
 .ch-dot.g{background:#28C840}
-.ch-label{font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,.28);margin-left:8px;letter-spacing:.06em;text-transform:uppercase}
-.contract-body{padding:22px 26px;font-family:var(--font-mono);font-size:13px;line-height:1.9}
+.ch-label{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:rgba(255,255,255,.3);margin-left:8px;letter-spacing:.06em}
+.contract-body{padding:24px 28px;font-family:'IBM Plex Mono',monospace;font-size:13px;line-height:1.9}
 .cl{display:block;margin-bottom:2px}
-.ck{color:rgba(255,255,255,.35)}
+.ck{color:rgba(255,255,255,.38)}
 .cv{color:rgba(255,255,255,.82)}
 .ca{color:#6EE7B7;font-weight:500}
 .cd{color:#FCA5A5;font-weight:500}
-.ci{color:rgba(255,255,255,.35);font-size:11px;margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.07);display:block}
+.ci{color:rgba(255,255,255,.4);font-size:11px;margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.08);display:block}
 
 /* ── LIFECYCLE ── */
-.lifecycle{margin:28px 0;display:flex;flex-direction:column;gap:0}
-.lc-step{display:grid;grid-template-columns:110px 1fr;gap:20px;padding:20px 0;border-bottom:1px solid var(--line);align-items:start}
+.lifecycle{margin:32px 0;display:flex;flex-direction:column;gap:0}
+.lc-step{display:grid;grid-template-columns:100px 1fr;gap:20px;padding:20px 0;border-bottom:1px solid var(--line);align-items:start}
 .lc-step:last-child{border-bottom:none}
-.lcs-num{font-family:var(--font-mono);font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-deep,#8B6914);padding-top:3px}
-.lcs-body h4{font-family:var(--font-sans);font-size:16px;font-weight:800;color:var(--ink);margin-bottom:6px;letter-spacing:-.01em}
-.lcs-body p{font-size:14.5px;line-height:1.65;color:var(--ink-mute);margin:0}
+.lc-step:hover{background:var(--gold-pale);margin:0 -20px;padding:20px;border-radius:10px}
+.lcs-num{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-deep);padding-top:3px}
+.lcs-body h4{font-family:'Manrope',sans-serif;font-size:17px;font-weight:800;color:var(--ink);margin-bottom:6px;letter-spacing:-.01em}
+.lcs-body p{font-family:'Newsreader',Georgia,serif;font-size:16px;line-height:1.65;color:var(--ink-mute);margin:0}
 
-/* ── BOTTOM NAV ── */
-.article-nav-foot{background:var(--navy,#0F1E34);padding:18px 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.article-nav-foot a{font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none;transition:color .15s}
-.article-nav-foot a:hover{color:#fff}
-
-/* ── ERROR CARDS ── */
-.errors{display:flex;flex-direction:column;gap:12px;margin:28px 0}
-.error-card{border:1px solid var(--line-strong,rgba(0,0,0,.12));border-radius:12px;padding:20px 22px;background:#fff;transition:all .15s}
-.error-card:hover{border-color:var(--gold-line,#E8D9A0);background:var(--gold-pale,#FEF9ED)}
-.ec-tag{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep,#8B6914);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+/* ── ERRORS ── */
+.errors{display:flex;flex-direction:column;gap:14px;margin:32px 0}
+.error-card{border:1px solid var(--line-strong);border-radius:12px;padding:22px 24px;background:#fff}
+.error-card:hover{border-color:var(--gold-line);background:var(--gold-pale)}
+.ec-tag{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:8px;display:flex;align-items:center;gap:8px}
 .ec-tag::before{content:'⚠';font-size:11px}
-.ec-h{font-family:var(--font-sans);font-size:15px;font-weight:800;color:var(--ink);margin-bottom:8px;letter-spacing:-.01em}
-.ec-body{font-size:14.5px;line-height:1.65;color:var(--ink-mute)}
+.ec-h{font-family:'Manrope',sans-serif;font-size:16px;font-weight:800;color:var(--ink);margin-bottom:8px}
+.ec-body{font-family:'Newsreader',Georgia,serif;font-size:15.5px;line-height:1.65;color:var(--ink-mute)}
 .ec-body strong{color:var(--ink)}
+
+/* ── SOURCES ── */
+.sources{margin-top:52px;padding-top:36px;border-top:2px solid var(--line-strong)}
+.sources h2{font-family:'Manrope',sans-serif;font-size:17px;font-weight:800;color:var(--ink);margin-bottom:20px;letter-spacing:-.015em}
+.src-item{padding:14px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:70px 1fr;gap:16px;align-items:baseline}
+.src-item:last-child{border-bottom:none}
+.src-id{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--ink-ghost);font-weight:600}
+.src-body{}
+.src-title{font-family:'Manrope',sans-serif;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:2px}
+.src-org{font-size:13px;color:var(--ink-ghost);margin-bottom:3px}
+.src-url a{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--gold-deep);text-decoration:underline}
+.src-note{font-size:13px;color:var(--ink-mute);margin-top:4px;line-height:1.55}
+.src-registry{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-ghost);margin-top:20px;padding:12px 16px;background:var(--gold-pale);border-radius:8px;letter-spacing:.03em}
+
+/* ── SIDEBAR ── */
+.sidebar{display:flex;flex-direction:column;gap:28px;position:sticky;top:120px}
+@media(max-width:900px){.sidebar{position:static}}
+.sb-block{background:#fff;border:1px solid var(--line-strong);border-radius:14px;padding:22px 24px}
+.sb-label{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-ghost);margin-bottom:12px}
+.sb-pill{display:inline-block;background:var(--gold-pale);color:var(--gold-deep);border:1px solid var(--gold-line);border-radius:6px;padding:6px 12px;font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;text-decoration:none;margin-bottom:4px}
+.sb-links{display:flex;flex-direction:column;gap:10px}
+.sb-links a{font-family:'Newsreader',Georgia,serif;font-size:15px;color:var(--ink-mute);text-decoration:none;line-height:1.45;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.sb-links a:last-child{border-bottom:none;padding-bottom:0}
+.sb-links a:hover{color:var(--gold-deep)}
+.sb-note{font-family:'Newsreader',Georgia,serif;font-style:italic;font-size:15px;color:var(--ink-mute);line-height:1.6;margin-bottom:14px}
+.sb-cta{display:block;background:var(--gold);color:#fff;font-family:'Manrope',sans-serif;font-weight:700;font-size:13px;padding:11px 16px;border-radius:9px;text-decoration:none;text-align:center}
+.sb-cta:hover{background:var(--gold-deep);color:#fff}
+
+/* ── FOOTER ── */
+.footer{background:var(--navy);padding:36px 32px;margin-top:80px}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-copy{font-family:'IBM Plex Mono',monospace;font-size:11px;color:rgba(255,255,255,.35)}
+.footer-links{display:flex;gap:20px}
+.footer-links a{font-size:13px;color:rgba(255,255,255,.5);text-decoration:none}
+.footer-links a:hover{color:#fff}
 </style>
 </head>
 <body>
 <div class="art-progress"><i id="progBar"></i></div>
+
 <nav class="nav">
-  <div class="container nav-inner">
+  <div class="nav-inner">
     <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
     <div class="nav-links">
       <a href="AGNUS - Explore.html">Explore</a>
@@ -100,266 +176,265 @@ a,a:visited{color:inherit}
       <a href="AGNUS - Agents.html">Agents</a>
       <a href="AGNUS - Academy.html">Academy</a>
     </div>
-    <div class="nav-right">
-      <a href="AGNUS - Home.html#premium" class="btn btn-gold">Join AGNUS</a>
-    </div>
+    <div class="nav-right"><a href="AGNUS - Home.html#premium" class="btn-gold">Join AGNUS</a></div>
   </div>
 </nav>
 
-<div class="rsub">
-  <div class="rsub-inner">
-    <a href="#what">What it is</a>
-    <a href="#required">8 required fields</a>
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-kicker">
+      <a href="AGNUS - Research.html">Research</a>
+      <span class="sep">·</span>
+      <span class="hero-pill">AI Agents</span>
+    </div>
+    <h1>Mission Contracts: How to Define What an AI Agent Is Allowed to Do</h1>
+    <p class="hero-lede">Before an AI agent takes its first action, someone must define what it is for, what it is allowed to do, what it is prohibited from doing, and who is accountable when something goes wrong. A Mission Contract is the document that records these decisions.</p>
+    <div class="hero-meta">
+      <span class="hero-meta-item"><strong>Jean-Daniel Alexis</strong></span>
+      <span class="hero-meta-item">11 September 2026</span>
+      <span class="hero-meta-item">AI Agents pillar</span>
+      <span class="hero-meta-item">AR-000530</span>
+      <span class="hero-meta-item">15 min read</span>
+    </div>
+  </div>
+</div>
+
+<nav class="subnav">
+  <div class="subnav-inner">
+    <a href="#what" class="on">What it is</a>
+    <a href="#fields">8 required fields</a>
     <a href="#example">Example contract</a>
     <a href="#lifecycle">Lifecycle</a>
     <a href="#errors">Common errors</a>
     <a href="#sources">Sources</a>
   </div>
-</div>
+</nav>
 
-<main class="art-layout">
-  <article class="art-main">
-    <header class="art-header">
-      <span class="pillar-tag">AI Agents</span>
-      <h1 class="art-h1">Mission Contracts: How to Define What an AI Agent Is Allowed to Do</h1>
-      <p class="art-lede">Before an AI agent takes its first action, someone must define what it is for, what it is allowed to do, what it is prohibited from doing, and who is accountable when something goes wrong. A Mission Contract is the document that records these decisions. It is the primary governance control for an agentic AI system.</p>
-      <div class="art-meta">
-        <span>Jean-Daniel Alexis</span>
-        <span class="meta-sep">·</span>
-        <span>11 September 2026</span>
-        <span class="meta-sep">·</span>
-        <span>AI Agents pillar</span>
-        <span class="meta-sep">·</span>
-        <span>AR-000530</span>
-        <span class="meta-sep">·</span>
-        <span>15 min read</span>
-      </div>
-    </header>
+<div class="page">
+  <main class="prose">
 
-    <div class="prose">
+    <h2 id="what">What a Mission Contract is — and why it matters</h2>
+    <p>A Mission Contract is a structured governance document that defines the authorised scope of an AI agent's operation. It is not a technical configuration file. It is a governance record that expresses human decisions about purpose, boundaries, and accountability in a form that can be evaluated, audited, and updated.</p>
+    <p>The Mission Contract matters for three reasons. First, it makes the governance design explicit: an agent that has no Mission Contract operates without a defined scope, which means no one has decided what it is not allowed to do. Second, it creates a baseline for policy evaluation: when the agent takes an action, that action can be checked against the contract. Third, it creates an accountability record: when something goes wrong, the Mission Contract shows what the agent was authorised to do and who authorised it.</p>
 
-      <h3 id="what">What a Mission Contract is — and why it matters</h3>
-      <p>A Mission Contract is a structured governance document that defines the authorised scope of an AI agent's operation. It is not a technical configuration file. It is a governance record that expresses human decisions about purpose, boundaries, and accountability in a form that can be evaluated, audited, and updated.</p>
-      <p>The Mission Contract matters for three reasons. First, it makes the governance design explicit: an agent that has no Mission Contract operates without a defined scope, which means no one has decided what it is not allowed to do. Second, it creates a baseline for policy evaluation: when the agent takes an action, that action can be checked against the contract. Third, it creates an accountability record: when something goes wrong, the Mission Contract shows what the agent was authorised to do and who authorised it.</p>
-
-      <div class="finding-strip" style="margin:28px 0">
-        <div style="font-family:var(--font-mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-deep,#8B6914);margin-bottom:10px">Regulatory basis · SRC-0062 / SRC-0067</div>
-        <p style="font-size:15.5px;line-height:1.68;color:var(--ink);margin:0">The concept draws on the EU AI Act's requirements for technical documentation (Article 11) and post-market monitoring (Article 72), as well as NIST AI RMF's GOVERN function. None of these frameworks use the phrase "Mission Contract" — this is a practitioner framework that synthesises their requirements into an operational document.</p>
-      </div>
-
-      <h3 id="required">The 8 required fields</h3>
-      <p>Every Mission Contract must contain these eight fields. A contract missing any of them is incomplete — the missing field represents a governance gap that cannot be compensated for by the other seven.</p>
-
-      <div class="fields-grid">
-        <div class="field-card">
-          <div class="fc-num">Field 01</div>
-          <div class="fc-title">Agent identity</div>
-          <div class="fc-body">The agent's name, version, provider, deployment environment, and a unique identifier. If the agent has multiple instances, each instance should have its own identity record to enable accurate incident attribution.</div>
-        </div>
-        <div class="field-card">
-          <div class="fc-num">Field 02</div>
-          <div class="fc-title">Purpose statement</div>
-          <div class="fc-body">A plain-language statement of what the agent is for. Must be specific enough that a policy engine can determine whether a given action is within it. <strong>"Process invoices under €5,000 for confirmed suppliers"</strong> is a purpose statement. "Help with finance tasks" is not.</div>
-        </div>
-        <div class="field-card">
-          <div class="fc-num">Field 03</div>
-          <div class="fc-title">Allowed capabilities</div>
-          <div class="fc-body">An exhaustive list of action types the agent is authorised to perform: read, write, execute, email, API calls, database queries. Each capability should name the specific scope — not "database access" but <strong>"read from invoices table, write to payments_draft table."</strong></div>
-        </div>
-        <div class="field-card">
-          <div class="fc-num">Field 04</div>
-          <div class="fc-title">Prohibited actions</div>
-          <div class="fc-body">An exhaustive list of actions the agent is explicitly prohibited from performing, regardless of instruction. Prohibitions should be stated in terms of specific action types and resources. <strong>"May not modify payments_final"</strong> is a prohibition. "Must act ethically" is not.</div>
-        </div>
-        <div class="field-card">
-          <div class="fc-num">Field 05</div>
-          <div class="fc-title">Autonomy level</div>
-          <div class="fc-body">The autonomy level (A1–A5) assigned to each action type, and the conditions under which the agent must escalate to a human. Where the EU AI Act or other regulation constrains the autonomy level, this must be noted in the contract.</div>
-        </div>
-        <div class="field-card">
-          <div class="fc-num">Field 06</div>
-          <div class="fc-title">Human sponsor</div>
-          <div class="fc-body">The name, role, and contact details of the named human who is accountable for the agent's operation. Not a team or a department — <strong>a specific person</strong> who can be reached when something goes wrong, including outside business hours.</div>
-        </div>
-        <div class="field-card">
-          <div class="fc-num">Field 07</div>
-          <div class="fc-title">Approval thresholds</div>
-          <div class="fc-body">The specific thresholds above which human approval is required before the agent can proceed. Financial thresholds, volume thresholds, risk thresholds. These must be testable — the policy engine must be able to evaluate a pending action against them at runtime.</div>
-        </div>
-        <div class="field-card">
-          <div class="fc-num">Field 08</div>
-          <div class="fc-title">Expiry and review date</div>
-          <div class="fc-body">Mission Contracts must be time-bounded. An agent whose contract has expired should not operate until it is renewed. A review date prompts the human sponsor to reconsider whether the scope remains appropriate as the deployment context changes.</div>
-        </div>
-      </div>
-
-      <h3 id="example">An example Mission Contract</h3>
-      <p>The following is a representative Mission Contract for an invoice processing agent deployed at a Nordic finance company. All names, thresholds, and identifiers are illustrative.</p>
-
-      <div class="contract">
-        <div class="contract-head">
-          <div class="ch-dots">
-            <div class="ch-dot r"></div>
-            <div class="ch-dot y"></div>
-            <div class="ch-dot g"></div>
-          </div>
-          <span class="ch-label">Mission Contract · Invoice Processor Agent · Nordic Finance AS</span>
-        </div>
-        <div class="contract-body">
-          <span class="cl"><span class="ck">Agent:           </span><span class="cv">invoice-processor-v2 · Claude Sonnet · Production</span></span>
-          <span class="cl"><span class="ck">Mission ID:      </span><span class="cv">MIS-2026-0041</span></span>
-          <span class="cl">&nbsp;</span>
-          <span class="cl"><span class="ck">Purpose:         </span><span class="cv">Review and approve invoices under €5,000 for suppliers on</span></span>
-          <span class="cl"><span class="ck">                 </span><span class="cv">the confirmed vendor list. Flag invoices above threshold or</span></span>
-          <span class="cl"><span class="ck">                 </span><span class="cv">from unrecognised suppliers for human review.</span></span>
-          <span class="cl">&nbsp;</span>
-          <span class="cl"><span class="ck">Allowed:         </span></span>
-          <span class="cl"><span class="ca">  → Read:        </span><span class="cv">invoices table, vendors table, payment_history table</span></span>
-          <span class="cl"><span class="ca">  → Write:       </span><span class="cv">invoices.status (approved_draft only)</span></span>
-          <span class="cl"><span class="ca">  → Email:       </span><span class="cv">internal finance team (approved@nordicfinance.no)</span></span>
-          <span class="cl">&nbsp;</span>
-          <span class="cl"><span class="ck">Prohibited:      </span></span>
-          <span class="cl"><span class="cd">  ✗ Write        </span><span class="cv">to payments_final (any)</span></span>
-          <span class="cl"><span class="cd">  ✗ Approve      </span><span class="cv">invoices above €5,000 autonomously</span></span>
-          <span class="cl"><span class="cd">  ✗ Contact      </span><span class="cv">external suppliers directly</span></span>
-          <span class="cl"><span class="cd">  ✗ Access       </span><span class="cv">payroll or personal data tables</span></span>
-          <span class="cl">&nbsp;</span>
-          <span class="cl"><span class="ck">Autonomy:        </span><span class="cv">A2 — autonomous within approved vendor list + €5,000</span></span>
-          <span class="cl"><span class="ck">                 </span><span class="cv">threshold; human confirmation for all exceptions</span></span>
-          <span class="cl">&nbsp;</span>
-          <span class="cl"><span class="ck">Human sponsor:   </span><span class="cv">Per Nansen · Finance Director · per.nansen@nordicfinance.no</span></span>
-          <span class="cl"><span class="ck">Expiry:          </span><span class="cv">2027-03-31 · Review: 2026-12-31</span></span>
-          <span class="ci">This is an example for illustrative purposes. The vendor list, threshold, and personnel details are fictional.</span>
-        </div>
-      </div>
-
-      <h3 id="lifecycle">The Mission Contract lifecycle</h3>
-      <p>A Mission Contract is not a one-time document. It has a lifecycle that matches the lifecycle of the agent it governs.</p>
-
-      <div class="lifecycle">
-        <div class="lc-step">
-          <div class="lcs-num">Creation</div>
-          <div class="lcs-body">
-            <h4>Written before deployment</h4>
-            <p>The Mission Contract is written before the agent is deployed. The human sponsor reviews and approves it. It is version-controlled from the first commit — the initial version is the governance baseline against which all future changes are measured.</p>
-          </div>
-        </div>
-        <div class="lc-step">
-          <div class="lcs-num">Registration</div>
-          <div class="lcs-body">
-            <h4>Associated with the governance infrastructure</h4>
-            <p>The contract is registered with the governance infrastructure. The agent's identity and contract are associated, so every action the agent takes can be checked against the current version of its contract in real time.</p>
-          </div>
-        </div>
-        <div class="lc-step">
-          <div class="lcs-num">Operation</div>
-          <div class="lcs-body">
-            <h4>Policy engine evaluates every action</h4>
-            <p>The policy engine evaluates agent actions against the contract in real time. Approved actions proceed. Actions outside scope are blocked or routed for human approval. Every evaluation is logged as an evidence record.</p>
-          </div>
-        </div>
-        <div class="lc-step">
-          <div class="lcs-num">Review</div>
-          <div class="lcs-body">
-            <h4>Human sponsor assesses continued appropriateness</h4>
-            <p>At the review date, the human sponsor assesses whether the scope remains appropriate. Usage data, incident records, and performance metrics inform the review. The sponsor may renew without change, amend, or terminate.</p>
-          </div>
-        </div>
-        <div class="lc-step">
-          <div class="lcs-num">Amendment</div>
-          <div class="lcs-body">
-            <h4>Version-controlled and re-approved</h4>
-            <p>Changes to scope, capabilities, or thresholds are documented as a new version. The previous version is retained in the audit trail. An amended contract must be re-approved by the human sponsor before the updated scope takes effect.</p>
-          </div>
-        </div>
-        <div class="lc-step">
-          <div class="lcs-num">Expiry</div>
-          <div class="lcs-body">
-            <h4>Agent stops — or contract is renewed</h4>
-            <p>At expiry, the agent stops operating until the contract is renewed. If the agent is decommissioned, the contract is marked inactive and retained for the audit period specified by applicable regulation.</p>
-          </div>
-        </div>
-      </div>
-
-      <h3 id="errors">Common errors in Mission Contract design</h3>
-
-      <div class="errors">
-        <div class="error-card">
-          <div class="ec-tag">Error 01</div>
-          <div class="ec-h">Vague purpose statements</div>
-          <div class="ec-body">"Help the finance team" describes a department, not a purpose. A purpose statement must be specific enough that a policy engine can determine whether a given action is within it. If the statement cannot be evaluated algorithmically against a proposed action, it is not a purpose statement — it is a label.</div>
-        </div>
-        <div class="error-card">
-          <div class="ec-tag">Error 02</div>
-          <div class="ec-h">Omitted prohibitions</div>
-          <div class="ec-body">Many contracts list what the agent is allowed to do but do not list what it is prohibited from doing. The implicit assumption is that anything not explicitly allowed is prohibited — but this assumption is not always enforced technically. <strong>Explicit prohibitions are more reliable than implicit ones.</strong> List them.</div>
-        </div>
-        <div class="error-card">
-          <div class="ec-tag">Error 03</div>
-          <div class="ec-h">No named human sponsor</div>
-          <div class="ec-body">A team email address is not a human sponsor. When an incident occurs at 3am, "contact the finance team" does not produce an accountable human. The sponsor must be a specific named person with a reachable contact method — name, role, and direct contact, not a group inbox.</div>
-        </div>
-        <div class="error-card">
-          <div class="ec-tag">Error 04</div>
-          <div class="ec-h">No expiry date</div>
-          <div class="ec-body">A contract with no expiry date can silently become outdated as the deployment context changes. Mandatory review dates force the human sponsor to reconsider whether the scope remains appropriate. Without them, contracts accumulate technical debt.</div>
-        </div>
-        <div class="error-card">
-          <div class="ec-tag">Error 05</div>
-          <div class="ec-h">Thresholds that cannot be evaluated at runtime</div>
-          <div class="ec-body">An approval threshold must be something the policy engine can evaluate against a pending action. <strong>"Significant financial impact"</strong> is not a threshold — it is a judgement. <strong>"€5,000 or above"</strong> is a threshold. If the policy engine cannot evaluate it in milliseconds without human input, it is not a threshold.</div>
-        </div>
-      </div>
-
+    <div class="finding">
+      <div class="finding-k">Regulatory basis · SRC-0062 / SRC-0067</div>
+      <p>The concept draws on the EU AI Act's requirements for technical documentation (Article 11) and post-market monitoring (Article 72), as well as NIST AI RMF's GOVERN function. None of these frameworks use the phrase "Mission Contract" — this is a practitioner framework that synthesises their requirements into an operational document.</p>
     </div>
 
-    <section class="art-sources" id="sources">
-      <h2 class="sources-h">Sources and verification</h2>
-      <div class="sources-grid">
-        <div class="source-card">
-          <div class="sc-id">SRC-0062</div>
-          <div class="sc-title">EU AI Act — Articles 11 and 72</div>
-          <div class="sc-org">European Parliament and Council</div>
-          <div class="sc-url"><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689" target="_blank" rel="noopener">eur-lex.europa.eu</a></div>
-          <div class="sc-note">Article 11 (technical documentation) and Article 72 (post-market monitoring) together define the documentary requirements that a Mission Contract satisfies.</div>
-        </div>
-        <div class="source-card">
-          <div class="sc-id">SRC-0067</div>
-          <div class="sc-title">NIST AI RMF 1.0 — GOVERN function</div>
-          <div class="sc-org">National Institute of Standards and Technology</div>
-          <div class="sc-url"><a href="https://airc.nist.gov/RMF" target="_blank" rel="noopener">airc.nist.gov</a></div>
-          <div class="sc-note">GOVERN 1.1 and 1.2: Establishing and documenting AI risk governance structures and accountability.</div>
-        </div>
-      </div>
-      <div class="src-registry-note">Article ID: AR-000530 · Sources: SRC-0062, SRC-0067 · Published: 2026-09-11 · Author: Jean-Daniel Alexis · AGNUS Research</div>
-    </section>
-  </article>
+    <h2 id="fields">The 8 required fields</h2>
+    <p>Every Mission Contract must contain these eight fields. A contract missing any of them is incomplete — the missing field represents a governance gap that cannot be compensated for by the other seven.</p>
 
-  <aside class="art-aside">
-    <div class="aside-block">
-      <div class="aside-label">Pillar</div>
-      <a href="AGNUS - Research Topic.html" class="aside-pill">AI Agents</a>
-    </div>
-    <div class="aside-block">
-      <div class="aside-label">Related articles</div>
-      <ul class="aside-links">
-        <li><a href="AGNUS - Research Article - Agent Governance.html">AI Agent Governance: Oversight, Accountability and Control</a></li>
-        <li><a href="AGNUS - Research Article - Autonomy Levels.html">Agentic AI and Autonomy Levels: What A1–A5 Mean for Governance</a></li>
-        <li><a href="AGNUS - Research Article - Multi-Agent Systems.html">Multi-Agent Systems: Coordination, Trust and Governance</a></li>
-        <li><a href="AGNUS - Research Article - Audit Trails.html">Audit Trails for AI Systems</a></li>
-      </ul>
-    </div>
-    <div class="aside-block">
-      <div class="aside-cta">
-        <div class="aside-cta-text">Write a Mission Contract with a real policy engine checking your work in the AGNUS Control Training Environment.</div>
-        <a href="AGNUS - Academy.html" class="btn btn-gold aside-cta-btn">Explore Academy</a>
+    <div class="fields-grid">
+      <div class="field-card">
+        <div class="fc-num">Field 01</div>
+        <div class="fc-title">Agent identity</div>
+        <div class="fc-body">The agent's name, version, provider, deployment environment, and a unique identifier. If the agent has multiple instances, each instance should have its own identity record to enable accurate incident attribution.</div>
       </div>
+      <div class="field-card">
+        <div class="fc-num">Field 02</div>
+        <div class="fc-title">Purpose statement</div>
+        <div class="fc-body">A plain-language statement of what the agent is for. Must be specific enough that a policy engine can determine whether a given action is within it. <strong>"Process invoices under €5,000 for confirmed suppliers"</strong> is a purpose statement. "Help with finance tasks" is not.</div>
+      </div>
+      <div class="field-card">
+        <div class="fc-num">Field 03</div>
+        <div class="fc-title">Allowed capabilities</div>
+        <div class="fc-body">An exhaustive list of action types the agent is authorised to perform: read, write, execute, email, API calls, database queries. Each capability should name the specific scope — not "database access" but <strong>"read from invoices table, write to payments_draft table."</strong></div>
+      </div>
+      <div class="field-card">
+        <div class="fc-num">Field 04</div>
+        <div class="fc-title">Prohibited actions</div>
+        <div class="fc-body">An exhaustive list of actions the agent is explicitly prohibited from performing, regardless of instruction. Prohibitions should be stated in terms of specific action types and resources — not general principles. <strong>"May not modify payments_final"</strong> is a prohibition. "Must act ethically" is not.</div>
+      </div>
+      <div class="field-card">
+        <div class="fc-num">Field 05</div>
+        <div class="fc-title">Autonomy level</div>
+        <div class="fc-body">The autonomy level (A1–A5) assigned to each action type, and the conditions under which the agent must escalate to a human. Where the EU AI Act or other regulation constrains the autonomy level, this must be noted in the contract.</div>
+      </div>
+      <div class="field-card">
+        <div class="fc-num">Field 06</div>
+        <div class="fc-title">Human sponsor</div>
+        <div class="fc-body">The name, role, and contact details of the named human who is accountable for the agent's operation. Not a team or a department — <strong>a specific person</strong> who can be reached when something goes wrong, including outside business hours.</div>
+      </div>
+      <div class="field-card">
+        <div class="fc-num">Field 07</div>
+        <div class="fc-title">Approval thresholds</div>
+        <div class="fc-body">The specific thresholds above which human approval is required before the agent can proceed. Financial thresholds, volume thresholds, risk thresholds. These must be testable — the policy engine must be able to evaluate a pending action against them at runtime.</div>
+      </div>
+      <div class="field-card">
+        <div class="fc-num">Field 08</div>
+        <div class="fc-title">Expiry and review date</div>
+        <div class="fc-body">Mission Contracts must be time-bounded. An agent whose contract has expired should not operate until it is renewed. A review date prompts the human sponsor to reconsider whether the scope remains appropriate as the deployment context changes.</div>
+      </div>
+    </div>
+
+    <h2 id="example">An example Mission Contract</h2>
+    <p>The following is a representative Mission Contract for an invoice processing agent deployed at a Nordic finance company. All names, thresholds, and identifiers are illustrative.</p>
+
+    <div class="contract">
+      <div class="contract-head">
+        <div class="ch-dots">
+          <div class="ch-dot r"></div>
+          <div class="ch-dot y"></div>
+          <div class="ch-dot g"></div>
+        </div>
+        <span class="ch-label">MISSION CONTRACT · INVOICE PROCESSOR AGENT · NORDIC FINANCE AS</span>
+      </div>
+      <div class="contract-body">
+        <span class="cl"><span class="ck">Agent:           </span><span class="cv">invoice-processor-v2 · Claude Sonnet · Production</span></span>
+        <span class="cl"><span class="ck">Mission ID:      </span><span class="cv">MIS-2026-0041</span></span>
+        <span class="cl">&nbsp;</span>
+        <span class="cl"><span class="ck">Purpose:         </span><span class="cv">Review and approve invoices under €5,000 for suppliers on</span></span>
+        <span class="cl"><span class="ck">                 </span><span class="cv">the confirmed vendor list. Flag invoices above threshold or</span></span>
+        <span class="cl"><span class="ck">                 </span><span class="cv">from unrecognised suppliers for human review.</span></span>
+        <span class="cl">&nbsp;</span>
+        <span class="cl"><span class="ck">Allowed:         </span></span>
+        <span class="cl"><span class="ca">  → Read:        </span><span class="cv">invoices table, vendors table, payment_history table</span></span>
+        <span class="cl"><span class="ca">  → Write:       </span><span class="cv">invoices.status (approved_draft only)</span></span>
+        <span class="cl"><span class="ca">  → Email:       </span><span class="cv">internal finance team (approved@nordicfinance.no)</span></span>
+        <span class="cl">&nbsp;</span>
+        <span class="cl"><span class="ck">Prohibited:      </span></span>
+        <span class="cl"><span class="cd">  ✗ Write        </span><span class="cv">to payments_final (any)</span></span>
+        <span class="cl"><span class="cd">  ✗ Approve      </span><span class="cv">invoices above €5,000 autonomously</span></span>
+        <span class="cl"><span class="cd">  ✗ Contact      </span><span class="cv">external suppliers directly</span></span>
+        <span class="cl"><span class="cd">  ✗ Access       </span><span class="cv">payroll or personal data tables</span></span>
+        <span class="cl">&nbsp;</span>
+        <span class="cl"><span class="ck">Autonomy:        </span><span class="cv">A2 — autonomous within approved vendor list + €5,000</span></span>
+        <span class="cl"><span class="ck">                 </span><span class="cv">threshold; human confirmation for all exceptions</span></span>
+        <span class="cl">&nbsp;</span>
+        <span class="cl"><span class="ck">Human sponsor:   </span><span class="cv">Per Nansen · Finance Director · per.nansen@nordicfinance.no</span></span>
+        <span class="cl"><span class="ck">Expiry:          </span><span class="cv">2027-03-31 · Review: 2026-12-31</span></span>
+        <span class="ci">This is an example for illustrative purposes. The vendor list, threshold, and personnel details are fictional.</span>
+      </div>
+    </div>
+
+    <h2 id="lifecycle">The Mission Contract lifecycle</h2>
+    <p>A Mission Contract is not a one-time document. It has a lifecycle that matches the lifecycle of the agent it governs.</p>
+
+    <div class="lifecycle">
+      <div class="lc-step">
+        <div class="lcs-num">Creation</div>
+        <div class="lcs-body">
+          <h4>Written before deployment</h4>
+          <p>The Mission Contract is written before the agent is deployed. The human sponsor reviews and approves it. It is version-controlled from the first commit — the initial version is the governance baseline against which all future changes are measured.</p>
+        </div>
+      </div>
+      <div class="lc-step">
+        <div class="lcs-num">Registration</div>
+        <div class="lcs-body">
+          <h4>Associated with the governance infrastructure</h4>
+          <p>The contract is registered with the governance infrastructure. The agent's identity and contract are associated, so every action the agent takes can be checked against the current version of its contract in real time.</p>
+        </div>
+      </div>
+      <div class="lc-step">
+        <div class="lcs-num">Operation</div>
+        <div class="lcs-body">
+          <h4>Policy engine evaluates every action</h4>
+          <p>The policy engine evaluates agent actions against the contract in real time. Approved actions proceed. Actions outside scope are blocked or routed for human approval. Every evaluation is logged as an evidence record.</p>
+        </div>
+      </div>
+      <div class="lc-step">
+        <div class="lcs-num">Review</div>
+        <div class="lcs-body">
+          <h4>Human sponsor assesses continued appropriateness</h4>
+          <p>At the review date, the human sponsor assesses whether the scope remains appropriate. Usage data, incident records, and performance metrics inform the review. The sponsor may renew without change, amend, or terminate.</p>
+        </div>
+      </div>
+      <div class="lc-step">
+        <div class="lcs-num">Amendment</div>
+        <div class="lcs-body">
+          <h4>Version-controlled and re-approved</h4>
+          <p>Changes to scope, capabilities, or thresholds are documented as a new version. The previous version is retained in the audit trail. An amended contract must be re-approved by the human sponsor before the updated scope takes effect.</p>
+        </div>
+      </div>
+      <div class="lc-step">
+        <div class="lcs-num">Expiry</div>
+        <div class="lcs-body">
+          <h4>Agent stops — or contract is renewed</h4>
+          <p>At expiry, the agent stops operating until the contract is renewed. If the agent is decommissioned, the contract is marked inactive and retained for the audit period specified by applicable regulation.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 id="errors">Common errors in Mission Contract design</h2>
+
+    <div class="errors">
+      <div class="error-card">
+        <div class="ec-tag">Error 01</div>
+        <div class="ec-h">Vague purpose statements</div>
+        <div class="ec-body">"Help the finance team" describes a department, not a purpose. A purpose statement must be specific enough that a policy engine can determine whether a given action is within it. If the statement cannot be evaluated algorithmically against a proposed action, it is not a purpose statement — it is a label.</div>
+      </div>
+      <div class="error-card">
+        <div class="ec-tag">Error 02</div>
+        <div class="ec-h">Omitted prohibitions</div>
+        <div class="ec-body">Many contracts list what the agent is allowed to do but do not list what it is prohibited from doing. The implicit assumption is that anything not explicitly allowed is prohibited — but this assumption is not always enforced technically. <strong>Explicit prohibitions are more reliable than implicit ones.</strong> List them.</div>
+      </div>
+      <div class="error-card">
+        <div class="ec-tag">Error 03</div>
+        <div class="ec-h">No named human sponsor</div>
+        <div class="ec-body">A team email address is not a human sponsor. When an incident occurs at 3am, "contact the finance team" does not produce an accountable human. The sponsor must be a specific named person with a reachable contact method — name, role, and direct contact, not a group inbox.</div>
+      </div>
+      <div class="error-card">
+        <div class="ec-tag">Error 04</div>
+        <div class="ec-h">No expiry date</div>
+        <div class="ec-body">A contract with no expiry date can silently become outdated as the deployment context changes. Mandatory review dates force the human sponsor to reconsider whether the scope remains appropriate. Without them, contracts accumulate technical debt.</div>
+      </div>
+      <div class="error-card">
+        <div class="ec-tag">Error 05</div>
+        <div class="ec-h">Thresholds that cannot be evaluated at runtime</div>
+        <div class="ec-body">An approval threshold must be something the policy engine can evaluate against a pending action. <strong>"Significant financial impact"</strong> is not a threshold — it is a judgement. <strong>"€5,000 or above"</strong> is a threshold. If the policy engine cannot evaluate it in milliseconds without human input, it is not a threshold.</div>
+      </div>
+    </div>
+
+    <div class="sources" id="sources">
+      <h2>Sources and verification</h2>
+      <div class="src-item">
+        <div class="src-id">SRC-0062</div>
+        <div class="src-body">
+          <div class="src-title">EU AI Act — Articles 11 and 72</div>
+          <div class="src-org">European Parliament and Council</div>
+          <div class="src-url"><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689" target="_blank" rel="noopener">eur-lex.europa.eu</a></div>
+          <div class="src-note">Article 11 (technical documentation) and Article 72 (post-market monitoring) together define the documentary requirements that a Mission Contract satisfies.</div>
+        </div>
+      </div>
+      <div class="src-item">
+        <div class="src-id">SRC-0067</div>
+        <div class="src-body">
+          <div class="src-title">NIST AI RMF 1.0 — GOVERN function</div>
+          <div class="src-org">National Institute of Standards and Technology</div>
+          <div class="src-url"><a href="https://airc.nist.gov/RMF" target="_blank" rel="noopener">airc.nist.gov</a></div>
+          <div class="src-note">GOVERN 1.1 and 1.2: Establishing and documenting AI risk governance structures and accountability.</div>
+        </div>
+      </div>
+      <div class="src-registry">Article ID: AR-000530 · Sources: SRC-0062, SRC-0067 · Published: 2026-09-11 · AGNUS Research</div>
+    </div>
+
+  </main>
+
+  <aside class="sidebar">
+    <div class="sb-block">
+      <div class="sb-label">Pillar</div>
+      <a href="AGNUS - Research.html" class="sb-pill">AI Agents</a>
+    </div>
+    <div class="sb-block">
+      <div class="sb-label">Related articles</div>
+      <div class="sb-links">
+        <a href="AGNUS - Research Article - Agent Governance.html">AI Agent Governance: Oversight, Accountability and Control</a>
+        <a href="AGNUS - Research Article - Autonomy Levels.html">Agentic AI and Autonomy Levels: What A1–A5 Mean for Governance</a>
+        <a href="AGNUS - Research Article - Multi-Agent Systems.html">Multi-Agent Systems: Coordination, Trust and Governance</a>
+        <a href="AGNUS - Research Article - Audit Trails.html">Audit Trails for AI Systems</a>
+      </div>
+    </div>
+    <div class="sb-block">
+      <div class="sb-label">Practice</div>
+      <p class="sb-note">Write a Mission Contract in Stage 2 of the AGNUS Control Training Environment — with a real policy engine checking your work.</p>
+      <a href="AGNUS - Academy.html" class="sb-cta">Control Training Environment →</a>
     </div>
   </aside>
-</main>
+</div>
 
 <footer class="footer">
-  <div class="container footer-inner">
+  <div class="footer-inner">
     <div class="footer-copy">© 2026 AGNUS. All rights reserved.</div>
     <div class="footer-links">
       <a href="AGNUS - Home.html">Home</a>
@@ -370,32 +445,23 @@ a,a:visited{color:inherit}
   </div>
 </footer>
 
-<nav class="article-nav-foot">
-  <a href="AGNUS - Intelligence.html">← Back to Intelligence</a>
-  <a href="AGNUS - Research Topic.html">AI Agents pillar →</a>
-  <a href="AGNUS - Research.html">View all research →</a>
-</nav>
-
-<script src="agnus-research-data.js"></script>
 <script>
-(function(){
-  var bar=document.getElementById('progBar');
-  if(!bar)return;
-  window.addEventListener('scroll',function(){
-    var h=document.documentElement;
-    var pct=(h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100;
-    bar.style.width=Math.min(100,pct)+'%';
+const bar=document.getElementById('progBar');
+window.addEventListener('scroll',function(){
+  var d=document.documentElement;
+  bar.style.width=(d.scrollTop/(d.scrollHeight-d.clientHeight)*100)+'%';
+});
+const obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      var id=e.target.id;
+      document.querySelectorAll('.subnav a').forEach(function(a){
+        a.classList.toggle('on',a.getAttribute('href')==='#'+id);
+      });
+    }
   });
-  var links=document.querySelectorAll('.rsub a[href^="#"]');
-  var obs=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){
-        links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id)});
-      }
-    });
-  },{threshold:.4,rootMargin:'-15% 0px -65% 0px'});
-  document.querySelectorAll('h3[id]').forEach(function(h){obs.observe(h)});
-})();
+},{threshold:.4,rootMargin:'-15% 0px -65% 0px'});
+document.querySelectorAll('h2[id]').forEach(function(h){obs.observe(h);});
 </script>
 </body>
 </html>

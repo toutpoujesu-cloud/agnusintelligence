@@ -1,0 +1,637 @@
+<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Editorial Writer — AGNUS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;1,6..72,300;1,6..72,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="agnus.css" />
+<style>
+/* ── Layout ── */
+body { min-height: 100vh; }
+
+.ew-shell {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  grid-template-rows: 1fr;
+  height: calc(100vh - 64px);
+  overflow: hidden;
+}
+
+/* ── Left panel ── */
+.ew-panel {
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background: var(--paper);
+}
+
+.ew-panel-inner {
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+}
+
+.ew-section-label {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.ew-field { display: flex; flex-direction: column; gap: 6px; }
+
+.ew-input, .ew-textarea, .ew-select {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink);
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px 12px;
+  outline: none;
+  transition: border-color .15s;
+  width: 100%;
+  box-sizing: border-box;
+}
+.ew-input:focus, .ew-textarea:focus, .ew-select:focus { border-color: var(--gold-deep); }
+.ew-textarea { resize: vertical; min-height: 180px; line-height: 1.5; }
+
+.ew-key-row { display: flex; gap: 8px; align-items: stretch; }
+.ew-key-row .ew-input { flex: 1; }
+.ew-key-save {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--gold-deep);
+  background: transparent;
+  border: 1px solid var(--gold-deep);
+  border-radius: 8px;
+  padding: 0 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background .15s, color .15s;
+}
+.ew-key-save:hover { background: var(--gold-deep); color: #fff; }
+
+.ew-divider { border: none; border-top: 1px solid var(--line); margin: 0; }
+
+.ew-generate {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: -.01em;
+  color: #fff;
+  background: var(--gold-deep, #8B6914);
+  border: none;
+  border-radius: 10px;
+  padding: 14px 20px;
+  cursor: pointer;
+  transition: opacity .15s, transform .1s;
+  text-align: center;
+}
+.ew-generate:hover { opacity: .9; }
+.ew-generate:active { transform: scale(.98); }
+.ew-generate:disabled { opacity: .4; cursor: not-allowed; }
+
+.ew-status {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-mute);
+  min-height: 18px;
+  line-height: 1.5;
+}
+.ew-status.error { color: #c0392b; }
+.ew-status.ok { color: #16a34a; }
+
+.ew-help {
+  font-size: 12px;
+  color: var(--ink-mute);
+  line-height: 1.5;
+}
+.ew-help a { color: var(--gold-deep); }
+
+/* ── Right panel (preview) ── */
+.ew-preview {
+  display: flex;
+  flex-direction: column;
+  background: var(--paper-2);
+  overflow: hidden;
+}
+
+.ew-preview-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  flex-shrink: 0;
+}
+
+.ew-preview-title {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  flex: 1;
+}
+
+.ew-action-btn {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 7px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: border-color .15s, color .15s, background .15s;
+}
+.ew-action-btn:hover { border-color: var(--ink-soft); color: var(--ink); }
+.ew-action-btn:disabled { opacity: .35; cursor: not-allowed; }
+
+.ew-action-btn.approve {
+  background: var(--gold-deep);
+  border-color: var(--gold-deep);
+  color: #fff;
+}
+.ew-action-btn.approve:hover { opacity: .9; }
+
+.ew-frame-wrap {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.ew-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #fff;
+}
+
+.ew-empty {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  pointer-events: none;
+}
+
+.ew-empty-icon {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 48px;
+  color: var(--line);
+}
+
+.ew-empty-text {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+/* ── Spinner ── */
+.ew-spinner {
+  display: none;
+  width: 18px; height: 18px;
+  border: 2px solid var(--line);
+  border-top-color: var(--gold-deep);
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
+  flex-shrink: 0;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.generating .ew-spinner { display: block; }
+
+/* ── JSON validator badge ── */
+.ew-json-badge {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-top: 4px;
+}
+.ew-json-badge.valid { background: #ECFDF5; color: #166534; border: 1px solid #A7F3D0; }
+.ew-json-badge.invalid { background: #FEF2F2; color: #991B1B; border: 1px solid #FECACA; }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .ew-shell { grid-template-columns: 1fr; grid-template-rows: auto 1fr; height: auto; }
+  .ew-panel { border-right: none; border-bottom: 1px solid var(--line); overflow-y: visible; }
+  .ew-preview { height: 70vh; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="AGNUS - Home.html" class="wordmark">AGNUS</a>
+    <div class="nav-links">
+      <a href="AGNUS - Explore.html">Explore</a>
+      <a href="AGNUS - Marketplace.html">Marketplace</a>
+      <a href="AGNUS - Intelligence.html">Intelligence</a>
+      <a href="AGNUS - Research.html" class="active">Research</a>
+      <a href="AGNUS - Review.html">Reviews</a>
+      <a href="AGNUS - Agents.html">Agents</a>
+      <a href="AGNUS - Academy.html">Academy</a>
+      <a href="AGNUS - Business.html">Business</a>
+    </div>
+    <div class="nav-right">
+      <a href="AGNUS - Editorial Pipeline.html" class="btn btn-gold">Pipeline</a>
+      <button class="hamburger" aria-label="Menu" onclick="document.body.classList.toggle('menu-open')"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<div class="ew-shell">
+
+  <!-- LEFT PANEL -->
+  <div class="ew-panel">
+    <div class="ew-panel-inner">
+
+      <!-- API key -->
+      <div class="ew-field">
+        <span class="ew-section-label">Claude API Key</span>
+        <div class="ew-key-row">
+          <input type="password" class="ew-input" id="apiKey" placeholder="sk-ant-…" autocomplete="off" />
+          <button class="ew-key-save" id="saveKey">Save</button>
+        </div>
+        <p class="ew-help">Stored in localStorage only — never sent anywhere except Anthropic. <a href="https://console.anthropic.com/" target="_blank">Get a key →</a></p>
+      </div>
+
+      <hr class="ew-divider" />
+
+      <!-- Handoff JSON -->
+      <div class="ew-field">
+        <span class="ew-section-label">Handoff JSON</span>
+        <textarea class="ew-textarea" id="handoffJson" placeholder='{
+  "handoff_type": "raw_intelligence_to_research",
+  "created_date": "2026-09-24",
+  "jurisdiction": "European Union",
+  "intelligence_record_id": "IR-000124",
+  "provisional_source": {
+    "url": "https://...",
+    "title": "…",
+    "organisation": "EU AI Office"
+  },
+  "research_question": "…",
+  "editorial_context": "…",
+  "verified_facts": ["…"],
+  "materiality": "high",
+  "article_recommendation": "…"
+}' rows="10" id="jsonInput"></textarea>
+        <span class="ew-json-badge" id="jsonBadge" style="display:none"></span>
+      </div>
+
+      <!-- Model -->
+      <div class="ew-field">
+        <span class="ew-section-label">Model</span>
+        <select class="ew-select" id="modelSelect">
+          <option value="claude-sonnet-5">claude-sonnet-5 (recommended)</option>
+          <option value="claude-opus-5">claude-opus-5 (deepest)</option>
+          <option value="claude-haiku-4-5-20251001">claude-haiku-4.5 (fastest)</option>
+        </select>
+      </div>
+
+      <!-- Article ID -->
+      <div class="ew-field">
+        <span class="ew-section-label">Article ID (next AR-XXXXXX)</span>
+        <input type="text" class="ew-input" id="articleId" placeholder="AR-000840" />
+      </div>
+
+      <!-- Generate -->
+      <button class="ew-generate" id="generateBtn">Generate Article</button>
+
+      <div style="display:flex;align-items:center;gap:10px">
+        <div class="ew-spinner" id="spinner"></div>
+        <div class="ew-status" id="statusMsg"></div>
+      </div>
+
+      <hr class="ew-divider" />
+
+      <p class="ew-help">
+        Paste a handoff JSON from the Intelligence Agent daily package. The writer builds a complete AGNUS research article in HTML — ready to preview, copy, or download. Save it to the project as <code style="font-family:var(--font-mono);font-size:11px">AGNUS - Research Article - [Title].html</code> and register it in <code style="font-family:var(--font-mono);font-size:11px">agnus-research-data.js</code>.
+      </p>
+
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="ew-preview" id="previewPanel">
+
+    <div class="ew-preview-bar">
+      <span class="ew-preview-title" id="previewLabel">Preview · Waiting for handoff</span>
+      <button class="ew-action-btn" id="copyBtn" disabled onclick="copyHtml()">Copy HTML</button>
+      <button class="ew-action-btn" id="downloadBtn" disabled onclick="downloadHtml()">Download .html</button>
+      <button class="ew-action-btn approve" id="approveBtn" disabled onclick="approveArticle()">Approve →</button>
+    </div>
+
+    <div class="ew-frame-wrap">
+      <div class="ew-empty" id="emptyState">
+        <div class="ew-empty-icon">✦</div>
+        <div class="ew-empty-text">Paste a handoff JSON and press Generate</div>
+      </div>
+      <iframe class="ew-frame" id="previewFrame" sandbox="allow-same-origin allow-scripts" style="display:none"></iframe>
+    </div>
+
+  </div>
+
+</div><!-- /ew-shell -->
+
+<script>
+(function () {
+
+  /* ── State ── */
+  var generatedHtml = '';
+  var generatedTitle = '';
+
+  /* ── DOM refs ── */
+  var apiKeyEl    = document.getElementById('apiKey');
+  var saveKeyBtn  = document.getElementById('saveKey');
+  var jsonInput   = document.getElementById('jsonInput');
+  var jsonBadge   = document.getElementById('jsonBadge');
+  var modelSel    = document.getElementById('modelSelect');
+  var articleIdEl = document.getElementById('articleId');
+  var generateBtn = document.getElementById('generateBtn');
+  var spinner     = document.getElementById('spinner');
+  var statusMsg   = document.getElementById('statusMsg');
+  var previewFrame= document.getElementById('previewFrame');
+  var emptyState  = document.getElementById('emptyState');
+  var previewLabel= document.getElementById('previewLabel');
+  var copyBtn     = document.getElementById('copyBtn');
+  var downloadBtn = document.getElementById('downloadBtn');
+  var approveBtn  = document.getElementById('approveBtn');
+
+  /* ── Restore saved key ── */
+  try {
+    var saved = localStorage.getItem('agnus_api_key');
+    if (saved) apiKeyEl.value = saved;
+  } catch(e) {}
+
+  saveKeyBtn.addEventListener('click', function () {
+    try {
+      localStorage.setItem('agnus_api_key', apiKeyEl.value.trim());
+      setStatus('Key saved.', 'ok');
+    } catch(e) { setStatus('Could not save key.', 'error'); }
+  });
+
+  /* ── JSON validation ── */
+  jsonInput.addEventListener('input', validateJson);
+  function validateJson() {
+    var raw = jsonInput.value.trim();
+    if (!raw) { jsonBadge.style.display = 'none'; return; }
+    jsonBadge.style.display = 'inline-block';
+    try {
+      JSON.parse(raw);
+      jsonBadge.textContent = 'Valid JSON';
+      jsonBadge.className = 'ew-json-badge valid';
+    } catch(e) {
+      jsonBadge.textContent = 'Invalid JSON';
+      jsonBadge.className = 'ew-json-badge invalid';
+    }
+  }
+
+  /* ── Generate ── */
+  generateBtn.addEventListener('click', generate);
+
+  async function generate() {
+    var key = apiKeyEl.value.trim();
+    if (!key) { setStatus('Enter your Anthropic API key first.', 'error'); return; }
+
+    var rawJson = jsonInput.value.trim();
+    if (!rawJson) { setStatus('Paste a handoff JSON first.', 'error'); return; }
+
+    var handoff;
+    try { handoff = JSON.parse(rawJson); }
+    catch(e) { setStatus('Invalid JSON — fix it before generating.', 'error'); return; }
+
+    var model = modelSel.value;
+    var arId  = articleIdEl.value.trim() || 'AR-000840';
+
+    setGenerating(true);
+    setStatus('Sending to Claude…', '');
+
+    var systemPrompt = buildSystemPrompt();
+    var userPrompt   = buildUserPrompt(handoff, arId);
+
+    try {
+      var res = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': key,
+          'anthropic-version': '2023-06-01',
+          'anthropic-dangerous-direct-browser-access': 'true'
+        },
+        body: JSON.stringify({
+          model: model,
+          max_tokens: 8192,
+          system: systemPrompt,
+          messages: [{ role: 'user', content: userPrompt }]
+        })
+      });
+
+      if (!res.ok) {
+        var errData = await res.json().catch(function(){ return {}; });
+        throw new Error(errData.error && errData.error.message ? errData.error.message : 'API error ' + res.status);
+      }
+
+      var data = await res.json();
+      var html = data.content && data.content[0] && data.content[0].text ? data.content[0].text : '';
+
+      /* extract HTML block if wrapped in markdown fences */
+      var fenceMatch = html.match(/```(?:html)?\n([\s\S]*?)```/);
+      if (fenceMatch) html = fenceMatch[1].trim();
+
+      if (!html || html.indexOf('<') === -1) {
+        throw new Error('No HTML returned — try again or switch model.');
+      }
+
+      generatedHtml = html;
+
+      /* derive title from <title> tag */
+      var titleMatch = html.match(/<title[^>]*>(.*?)<\/title>/i);
+      generatedTitle = titleMatch ? titleMatch[1].replace(' — AGNUS Research', '').trim() : arId;
+
+      showPreview(html);
+      setStatus('Article generated. Review in preview →', 'ok');
+      enableActions(true);
+
+    } catch(err) {
+      setStatus(err.message || 'Generation failed.', 'error');
+    } finally {
+      setGenerating(false);
+    }
+  }
+
+  /* ── System prompt ── */
+  function buildSystemPrompt() {
+    return [
+      'You are AGNUS, a professional AI regulation research publisher.',
+      'You write complete, publication-ready research articles in valid HTML.',
+      '',
+      'AGNUS article format rules (follow exactly):',
+      '1. Full HTML document with <!doctype html>, <html>, <head>, <body>.',
+      '2. Head: charset utf-8, viewport, <title>[Article Title] — AGNUS Research</title>, load fonts from Google Fonts (Manrope 400/500/600/700/800, IBM Plex Mono 400/500, Newsreader italic), link agnus.css and agnus-research.css (relative paths).',
+      '3. Opening comment block: sanctification text (copy from template).',
+      '4. Navigation: standard AGNUS nav with Research marked active. Wordmark links to AGNUS - Home.html.',
+      '5. Sticky subnav bar (.rsub): Research Home, Topics, Countries, Sources, Calendar, Methodology, Authors.',
+      '6. Article header (.art-head > .container): pillar tag (kicker), h1 (the article title), p.art-abstract (2-3 sentence lede), author/date/AR-ID meta line.',
+      '7. Article body (.art-shell > .art-toc + article.prose): table of contents (generated by JS), then prose sections with h2 anchors.',
+      '8. Prose must have: Executive summary, What this means, Who this applies to, Regulatory context (with h3 subsections), Practical implications, Related articles, Sources.',
+      '9. Sources section: one .src-card per source with SRC-ID, title, organisation, URL, document type, verification note.',
+      '10. Footer with standard AGNUS site links.',
+      '11. Write minimum 1200 words of substantive prose — professional, analytical, factual. No hedging. No marketing language.',
+      '12. Every factual claim must cite a source inline (SRC-XXXX notation in prose).',
+      '13. Use the established CSS classes from agnus-research.css (art-head, art-abstract, art-shell, art-toc, prose, src-card, etc.).',
+      '14. Output ONLY the complete HTML document. No markdown fences, no explanation text.'
+    ].join('\n');
+  }
+
+  /* ── User prompt ── */
+  function buildUserPrompt(handoff, arId) {
+    var lines = [
+      'Build a complete AGNUS research article for this intelligence handoff.',
+      '',
+      'Article ID: ' + arId,
+      'Author: Jean-Daniel Alexis',
+      'Published: ' + new Date().toISOString().slice(0, 10),
+      '',
+      '=== HANDOFF JSON ===',
+      JSON.stringify(handoff, null, 2),
+      '',
+      '=== INSTRUCTIONS ===',
+      'Jurisdiction: ' + (handoff.jurisdiction || 'Global'),
+      'Research question to answer: ' + (handoff.research_question || ''),
+      'Editorial context: ' + (handoff.editorial_context || ''),
+      'Materiality: ' + (handoff.materiality || 'medium'),
+      '',
+      'Verified facts to incorporate (cite each one):',
+    ];
+    (handoff.verified_facts || []).forEach(function(f, i) {
+      lines.push((i + 1) + '. ' + f);
+    });
+    lines.push('');
+    lines.push('Primary source: ' + JSON.stringify(handoff.provisional_source || {}));
+    lines.push('');
+    lines.push('Article recommendation: ' + (handoff.article_recommendation || ''));
+    lines.push('');
+    lines.push('Write the complete HTML article now. Remember: output ONLY the HTML document, no fences, no preamble.');
+    return lines.join('\n');
+  }
+
+  /* ── Preview ── */
+  function showPreview(html) {
+    emptyState.style.display = 'none';
+    previewFrame.style.display = 'block';
+    /* inject via srcdoc so relative assets (agnus.css etc.) don't load — use blob URL for full render */
+    var blob = new Blob([html], { type: 'text/html' });
+    var url  = URL.createObjectURL(blob);
+    previewFrame.src = url;
+    previewLabel.textContent = 'Preview · ' + generatedTitle;
+  }
+
+  /* ── Actions ── */
+  function copyHtml() {
+    if (!generatedHtml) return;
+    navigator.clipboard.writeText(generatedHtml).then(function() {
+      setStatus('HTML copied to clipboard.', 'ok');
+    }).catch(function() {
+      setStatus('Copy failed — use Download instead.', 'error');
+    });
+  }
+
+  function downloadHtml() {
+    if (!generatedHtml) return;
+    var slug = generatedTitle
+      .replace(/[^a-zA-Z0-9\s\-]/g, '')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .substring(0, 60);
+    var filename = 'AGNUS - Research Article - ' + slug + '.html';
+    var blob = new Blob([generatedHtml], { type: 'text/html' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = filename;
+    a.click();
+    setStatus('Downloaded: ' + filename, 'ok');
+  }
+
+  function approveArticle() {
+    if (!generatedHtml) return;
+    /* mark approved in localStorage for pipeline integration */
+    try {
+      var approved = JSON.parse(localStorage.getItem('agnus_approved_articles') || '[]');
+      approved.push({
+        arId: articleIdEl.value.trim() || 'AR-000840',
+        title: generatedTitle,
+        approvedAt: new Date().toISOString(),
+        html: generatedHtml
+      });
+      localStorage.setItem('agnus_approved_articles', JSON.stringify(approved));
+    } catch(e) {}
+    setStatus('Approved. Download the file and save it to the project.', 'ok');
+    downloadHtml();
+  }
+
+  function enableActions(on) {
+    copyBtn.disabled     = !on;
+    downloadBtn.disabled = !on;
+    approveBtn.disabled  = !on;
+  }
+
+  /* ── Helpers ── */
+  function setGenerating(on) {
+    generateBtn.disabled = on;
+    document.getElementById('previewPanel').classList.toggle('generating', on);
+  }
+
+  function setStatus(msg, type) {
+    statusMsg.textContent = msg;
+    statusMsg.className   = 'ew-status' + (type ? ' ' + type : '');
+  }
+
+  /* expose for onclick attrs */
+  window.copyHtml       = copyHtml;
+  window.downloadHtml   = downloadHtml;
+  window.approveArticle = approveArticle;
+
+})();
+</script>
+</body>
+</html>

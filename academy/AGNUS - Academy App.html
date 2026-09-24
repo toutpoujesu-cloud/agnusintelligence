@@ -1,11 +1,4 @@
-﻿<!doctype html>
-<!--
-  This application and all the work related to Agnus and for Agnus is sanctified and covered
-  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
-  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
-  from The Throne of The Lamb of God, The Lord Jesus Christ.
-  This application is Holy.
--->
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8" />
@@ -213,18 +206,8 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; colo
 .district.lock .card-mini:hover { transform:none; box-shadow:none; }
 .card-mini .st { font-family:var(--font-mono); font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ink-mute); margin-bottom:7px; display:flex; align-items:center; gap:7px; }
 .district.done .card-mini .st { color:var(--gold-deep); }
-.card-mini h4 { font-family:var(--font-sans); font-weight:700; font-size:17px; letter-spacing:-0.018em; margin:0 0 4px; }
-.stage-spine { font-family:var(--font-mono); font-size:9.5px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--gold-deep); opacity:.9; margin:0 0 7px; }
-.district.lock .stage-spine { opacity:.4; color:var(--ink-mute); }
+.card-mini h4 { font-family:var(--font-sans); font-weight:700; font-size:17px; letter-spacing:-0.018em; margin:0 0 6px; }
 .card-mini p { font-size:12.5px; line-height:1.45; color:var(--ink-soft); margin:0 0 12px; }
-.role-pill { display:inline-flex; align-items:center; font-family:var(--font-mono); font-size:10px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--gold-deep); background:var(--gold-soft); border:1px solid var(--gold-light); border-radius:99px; padding:3px 11px; margin-bottom:14px; }
-.spine-overview { background:#fff; border:1px solid var(--line); border-radius:14px; padding:16px 18px; margin-bottom:28px; }
-.spine-overview-head { font-family:var(--font-mono); font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-mute); margin-bottom:12px; }
-.spine-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:6px; }
-.spine-col { text-align:center; }
-.spine-lv { font-family:var(--font-mono); font-size:10px; font-weight:700; color:var(--char); background:var(--paper-2); border-radius:6px; padding:3px 0; margin-bottom:4px; }
-.spine-st { font-family:var(--font-mono); font-size:8.5px; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-mute); line-height:1.3; }
-.spine-arr { font-size:10px; color:var(--gold-deep); margin:3px 0 2px; }
 .card-mini .lessons { display:flex; gap:5px; }
 .card-mini .lessons i { height:4px; flex:1; border-radius:99px; background:var(--line); }
 .card-mini .lessons i.done { background:var(--gold); }
@@ -438,7 +421,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; colo
 
           <!-- Q1 -->
           <div class="ob-step" id="ob-q1">
-            <div class="ob-dots"><i class="on"></i><i></i><i></i><i></i></div>
+            <div class="ob-dots"><i class="on"></i><i></i><i></i></div>
             <h2 class="ob-q">How do you like to learn?</h2>
             <p class="ob-sub">So we lead with the format that actually lands for you.</p>
             <div class="opt-list">
@@ -451,7 +434,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; colo
 
           <!-- Q2 -->
           <div class="ob-step" id="ob-q2">
-            <div class="ob-dots"><i class="on"></i><i class="on"></i><i></i><i></i></div>
+            <div class="ob-dots"><i class="on"></i><i class="on"></i><i></i></div>
             <h2 class="ob-q">Where are you starting from?</h2>
             <p class="ob-sub">No judgement — it just sets your first mission.</p>
             <div class="opt-list">
@@ -464,27 +447,13 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; colo
 
           <!-- Q3 -->
           <div class="ob-step" id="ob-q3">
-            <div class="ob-dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div>
+            <div class="ob-dots"><i class="on"></i><i class="on"></i><i class="on"></i></div>
             <h2 class="ob-q">How much time, most days?</h2>
             <p class="ob-sub">We size every mission to fit your real life.</p>
             <div class="opt-list">
               <button class="opt" onclick="pick(this,'q3')"><span class="ic">▴</span><span><span class="ot">10 minutes</span><span class="od">Small and steady</span></span><span class="chk">✓</span></button>
               <button class="opt" onclick="pick(this,'q3')"><span class="ic">▰</span><span><span class="ot">25 minutes</span><span class="od">A focused session</span></span><span class="chk">✓</span></button>
               <button class="opt" onclick="pick(this,'q3')"><span class="ic">▮</span><span><span class="ot">An hour</span><span class="od">I'm all in</span></span><span class="chk">✓</span></button>
-            </div>
-            <button class="btn btn-gold btn-block btn-lg" onclick="obNext('ob-q3','ob-q4',3)">Continue <span class="arr">→</span></button>
-          </div>
-
-          <!-- Q4 — Role at Nordic Finance AS -->
-          <div class="ob-step" id="ob-q4">
-            <div class="ob-dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
-            <h2 class="ob-q">Your role at Nordic Finance?</h2>
-            <p class="ob-sub">The Control Training Environment puts you in the seat. Pick your assignment.</p>
-            <div class="opt-list">
-              <button class="opt" onclick="pick(this,'q4')"><span class="ic">G</span><span><span class="ot">AI Governance Manager</span><span class="od">Policy design, oversight architecture, audit readiness</span></span><span class="chk">✓</span></button>
-              <button class="opt" onclick="pick(this,'q4')"><span class="ic">R</span><span><span class="ot">Chief Risk Officer</span><span class="od">Enterprise risk, regulatory exposure, board reporting</span></span><span class="chk">✓</span></button>
-              <button class="opt" onclick="pick(this,'q4')"><span class="ic">L</span><span><span class="ot">Head of Legal</span><span class="od">GDPR compliance, DORA obligations, vendor contracts</span></span><span class="chk">✓</span></button>
-              <button class="opt" onclick="pick(this,'q4')"><span class="ic">F</span><span><span class="ot">CFO</span><span class="od">Financial exposure, agent cost controls, audit sign-off</span></span><span class="chk">✓</span></button>
             </div>
             <button class="btn btn-gold btn-block btn-lg" onclick="finishOnboard()">Build my journey <span class="arr">→</span></button>
           </div>
@@ -507,8 +476,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; colo
       <div class="scroll pad">
         <div class="welcome">
           <div>
-            <div class="kicker" style="margin-bottom:8px;"><span class="ix">◆</span> <span id="jrny-path">Professional path</span></div>
-            <div><span class="role-pill" id="role-pill">Governance Officer</span></div>
+            <div class="kicker" style="margin-bottom:14px;"><span class="ix">◆</span> <span id="jrny-path">Professional path</span></div>
             <h1 class="display t-lg">Welcome back, Yara.</h1>
             <div class="sub">You're closer than you think. One mission today keeps the momentum.</div>
           </div>
@@ -536,20 +504,6 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; colo
             <i><span class="d lock"></span> Ahead</i>
           </div>
         </div>
-
-        <!-- Programme spine — 7-stage overview -->
-        <div class="spine-overview">
-          <div class="spine-overview-head">7-Stage Governance Programme — Track A builds the CTE capstone</div>
-          <div class="spine-grid">
-            <div class="spine-col"><div class="spine-lv">L1</div><div class="spine-arr">↓</div><div class="spine-st">Stage 1<br>Discover &amp;<br>Register</div></div>
-            <div class="spine-col"><div class="spine-lv">L2</div><div class="spine-arr">↓</div><div class="spine-st">Stage 2<br>Mission &amp;<br>Accountability</div></div>
-            <div class="spine-col"><div class="spine-lv">L3</div><div class="spine-arr">↓</div><div class="spine-st">Stage 3<br>Permissions &amp;<br>Boundaries</div></div>
-            <div class="spine-col"><div class="spine-lv">L4</div><div class="spine-arr">↓</div><div class="spine-st">Stage 4<br>Human<br>Oversight</div></div>
-            <div class="spine-col"><div class="spine-lv">L5</div><div class="spine-arr">↓</div><div class="spine-st">Stage 5<br>Test &amp;<br>Assure</div></div>
-            <div class="spine-col"><div class="spine-lv">L6</div><div class="spine-arr">↓</div><div class="spine-st">Stage 6<br>Operate &amp;<br>Defend</div></div>
-            <div class="spine-col"><div class="spine-lv">L7</div><div class="spine-arr">↓</div><div class="spine-st">Stage 7<br>Audit &amp;<br>Evidence</div></div>
-          </div>
-        </div>
         <div class="map">
           <div class="map-track">
 
@@ -560,7 +514,6 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; colo
               <div class="card-mini" onclick="openLevel(1)">
                 <div class="st">● Current level</div>
                 <h4>Understand</h4>
-                <div class="stage-spine">→ Builds Stage 1 · Discover &amp; Register</div>
                 <p>What AI agents are, how they work, how they fail, and why certainty is not accuracy.</p>
                 <div class="lessons"><i class="now"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
               </div>
@@ -573,7 +526,6 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; colo
               <div class="card-mini" onclick="openLevel(2)">
                 <div class="st">◌ Unlocks after L1</div>
                 <h4>Operate</h4>
-                <div class="stage-spine">→ Builds Stage 2 · Mission &amp; Accountability</div>
                 <p>Run agents, read their output, diagnose brief failures, hand off work between tools.</p>
                 <div class="lessons"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
               </div>
@@ -586,7 +538,6 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; colo
               <div class="card-mini" onclick="openLevel(3)">
                 <div class="st">◌ Unlocks after L2</div>
                 <h4>Direct</h4>
-                <div class="stage-spine">→ Builds Stage 3 · Permissions &amp; Boundaries</div>
                 <p>Write instructions that hold. Scope constraints, approval gates, multi-agent coordination.</p>
                 <div class="lessons"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
               </div>
@@ -599,7 +550,6 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; colo
               <div class="card-mini" onclick="openLevel(4)">
                 <div class="st">◌ Unlocks after L3</div>
                 <h4>Govern</h4>
-                <div class="stage-spine">→ Builds Stage 4 · Human Oversight</div>
                 <p>Authority chains, scope drift, intervention controls, policy architecture. AI that stays in bounds.</p>
                 <div class="lessons"><i></i><i></i><i></i><i></i><i></i><i></i></div>
               </div>
@@ -612,7 +562,6 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; colo
               <div class="card-mini" onclick="openLevel(5)">
                 <div class="st">◌ Unlocks after L4</div>
                 <h4>Verify</h4>
-                <div class="stage-spine">→ Builds Stage 5 · Test &amp; Assure</div>
                 <p>Claim verification, source checking, output validation. Finance, legal, marketing, data analysis.</p>
                 <div class="lessons"><i></i><i></i><i></i><i></i><i></i><i></i></div>
               </div>
@@ -625,7 +574,6 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; colo
               <div class="card-mini" onclick="openLevel(6)">
                 <div class="st">◌ Unlocks after L5</div>
                 <h4>Build</h4>
-                <div class="stage-spine">→ Builds Stage 6 · Operate &amp; Defend</div>
                 <p>Construct working agent workflows, guardrails, and handoffs. Architecture, scaffolding, testing.</p>
                 <div class="lessons"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
               </div>
@@ -638,7 +586,6 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; colo
               <div class="card-mini" onclick="openLevel(7)">
                 <div class="st">◌ Unlocks after L6</div>
                 <h4>Certify</h4>
-                <div class="stage-spine">→ Builds Stage 7 · Audit &amp; Evidence</div>
                 <p>Governance policy design, vendor auditing, org-wide verification, capstone framework.</p>
                 <div class="lessons"><i></i><i></i><i></i><i></i><i></i><i></i></div>
               </div>
@@ -658,6 +605,12 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; colo
 
             <!-- CTE CAPSTONE -->
             <div class="district lock">
+              <div class="conn"></div>
+              <div class="node-head"><div class="node" style="font-size:11px">TL</div></div>
+              <div class="card-mini" onclick="openPracticalTools()">
+                <div class="st">◌ Requires L1–L7</div>
+                <h4>Practical Tools</h4>
+              </div>
               <div class="conn"></div>
               <div class="node-head"><div class="node" style="font-family:var(--font-serif);">★</div></div>
               <div class="card-mini" onclick="openCTE()">
@@ -858,6 +811,7 @@ var LEVELS = {
   1: {
     title:'Level 1 — Understand',
     desc:'What AI agents are, how they work, and why their certainty is not accuracy.',
+    checkpoint:'AGNUS - Academy Level 1 Checkpoint.html',
     modules:[
       {num:'M01',title:'What is an AI Agent',file:'AGNUS - Academy M01 - What is an AI Agent.html'},
       {num:'M02',title:'The Difference Between a Model and an Agent',file:'AGNUS - Academy M02 - The Difference Between a Model and an Agent.html'},
@@ -884,6 +838,7 @@ var LEVELS = {
   3: {
     title:'Level 3 — Direct',
     desc:'Write instructions that hold. Scope constraints, approval gates, multi-agent coordination.',
+    checkpoint:'AGNUS - Academy Level 2-3 Checkpoint.html',
     modules:[
       {num:'M15',title:'Instruction Design 101',file:'AGNUS - Academy M15 - Instruction Design 101.html'},
       {num:'M16',title:'Write the Prompt That Gets the Right Image',file:'AGNUS - Academy M16 - Write the Prompt That Gets the Right Image.html'},
@@ -897,11 +852,13 @@ var LEVELS = {
   4: {
     title:'Level 4 — Govern',
     desc:'Authority chains, scope drift, intervention controls, policy architecture.',
+    checkpoint:'AGNUS - Academy Level 4 Checkpoint.html',
     modules:[
       {num:'M22',title:'Reading Execution Logs',file:'AGNUS - Academy M22 - Reading Execution Logs.html'},
       {num:'M23',title:'Spotting Scope Drift',file:'AGNUS - Academy M23 - Spotting Scope Drift.html'},
       {num:'M24',title:'Authority Chain Analysis',file:'AGNUS - Academy M24 - Authority Chain Analysis.html'},
       {num:'M25',title:'Intervention Controls',file:'AGNUS - Academy M25 - Intervention Controls.html'},
+      {num:'M26',title:'Escalation Design',file:'AGNUS - Academy M26 - Escalation Design.html'},
       {num:'M27',title:'Policy Architecture',file:'AGNUS - Academy M27 - Policy Architecture.html'},
       {num:'M28',title:'Instruction Workspace',file:'AGNUS - Academy M28 - Instruction Workspace.html'},
       {num:'M29',title:'Agent Won\'t Budge',file:'AGNUS - Academy M29 - Agent Wont Budge.html'},
@@ -910,6 +867,7 @@ var LEVELS = {
   5: {
     title:'Level 5 — Verify',
     desc:'Claim verification, source checking, output validation across domains.',
+    checkpoint:'AGNUS - Academy Level 5 Checkpoint.html',
     modules:[
       {num:'M30',title:'Verifying Financial Claims',file:'AGNUS - Academy M30 - Verifying Financial Claims.html'},
       {num:'M31',title:'The Marketing Claim That Wasn\'t True',file:'AGNUS - Academy M31 - The Marketing Claim That Wasnt True.html'},
@@ -922,6 +880,7 @@ var LEVELS = {
   6: {
     title:'Level 6 — Build',
     desc:'Construct working agent workflows, guardrails, and handoffs.',
+    checkpoint:'AGNUS - Academy Level 6 Checkpoint.html',
     modules:[
       {num:'M36a',title:'How an Application Is Actually Structured',file:'AGNUS - Academy M36a - How an Application Is Actually Structured.html'},
       {num:'M36b',title:'Choosing the Right Architecture',file:'AGNUS - Academy M36b - Choosing the Right Architecture.html'},
@@ -941,6 +900,7 @@ var LEVELS = {
   7: {
     title:'Level 7 — Certify',
     desc:'Governance policy design, vendor auditing, org-wide verification, capstone.',
+    checkpoint:'AGNUS - Academy Level 7 Checkpoint.html',
     modules:[
       {num:'M43',title:'The Quarterly Agent Audit',file:'AGNUS - Academy M43 - The Quarterly Agent Audit.html'},
       {num:'M44',title:'Governing Agent-to-Agent Handoffs',file:'AGNUS - Academy M44 - Governing Agent-to-Agent Handoffs.html'},
@@ -952,6 +912,14 @@ var LEVELS = {
     ]
   }
 };
+
+var PRACTICAL_TOOLS = [
+  {code:'TOOL',title:'Mission Contract Builder',file:'AGNUS - Mission Contract Builder.html',sub:'Define what an AI agent is allowed to do, step by step'},
+  {code:'TOOL',title:'Permission Matrix',file:'AGNUS - Permission Matrix.html',sub:'Map roles, resources and approval requirements'},
+  {code:'TOOL',title:'Incident Response Simulation',file:'AGNUS - Incident Response Simulation.html',sub:'Practice the incident timeline under pressure'},
+  {code:'TOOL',title:'Evidence Package Builder',file:'AGNUS - Evidence Package Builder.html',sub:'Assemble the audit trail a regulator would ask for'},
+  {code:'TOOL',title:'Final Assessment',file:'AGNUS - Final Assessment.html',sub:'The certification assessment for AI Governance Professional'},
+];
 
 var TRACK_B = [
   {code:'B01',title:'Finance Agent Deployment',file:'AGNUS - Academy B01 - Finance Agent Deployment.html',sub:'Invoice approval authority, €5k threshold, duplicate detection'},
@@ -986,9 +954,49 @@ function openLevel(n){
     row.onclick = function(){location.href=m.file;};
     list.appendChild(row);
   });
+  if(lvl.checkpoint){
+    var cpRow = document.createElement('div');
+    cpRow.style.cssText = 'display:flex;align-items:center;gap:14px;padding:16px 32px;border-bottom:1px solid var(--line);cursor:pointer;background:var(--gold-soft)';
+    cpRow.innerHTML = '<div style="font-family:var(--font-mono);font-size:10px;color:var(--gold-deep);min-width:36px">\u2713</div>'
+      +'<div style="flex:1"><div style="font-size:14px;font-weight:700;color:var(--ink)">Level Checkpoint</div><div style="font-size:12px;color:var(--ink-mute)">Pass this to unlock the next level</div></div>'
+      +'<div style="color:var(--gold-deep);font-size:14px">\u2192</div>';
+    cpRow.onclick = function(){location.href=lvl.checkpoint;};
+    list.appendChild(cpRow);
+  }
   var foot = document.createElement('div');
   foot.style.cssText = 'padding:18px 32px;background:var(--line-soft);display:flex;justify-content:space-between;align-items:center';
   foot.innerHTML = '<span style="font-size:13px;color:var(--ink-mute)">'+lvl.modules.length+' modules</span>'
+    +'<button onclick="this.closest(\'[style*=fixed]\').remove()" style="font-family:var(--font-sans);font-size:13px;font-weight:600;padding:8px 18px;border-radius:9px;border:1px solid var(--line);background:transparent;cursor:pointer;color:var(--ink-soft)">Close</button>';
+  panel.appendChild(head);panel.appendChild(list);panel.appendChild(foot);
+  overlay.appendChild(panel);document.body.appendChild(overlay);
+}
+
+function openPracticalTools(){
+  var overlay = document.createElement('div');
+  overlay.style.cssText = 'position:fixed;inset:0;z-index:600;background:rgba(28,27,25,.75);backdrop-filter:blur(6px);overflow-y:auto;padding:32px 20px;display:flex;align-items:flex-start;justify-content:center';
+  overlay.addEventListener('click',function(e){if(e.target===overlay)overlay.remove();});
+  var panel = document.createElement('div');
+  panel.style.cssText = 'background:var(--paper-warm);border-radius:22px;max-width:640px;width:100%;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.5)';
+  var head = document.createElement('div');
+  head.style.cssText = 'background:var(--char);padding:28px 32px';
+  head.innerHTML = '<div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,244,241,.4);margin-bottom:8px">Practical Tools</div>'
+    +'<div style="font-size:22px;font-weight:800;letter-spacing:-.03em;color:#fff;margin-bottom:5px">Governance Toolkit</div>'
+    +'<div style="font-family:var(--font-serif);font-style:italic;font-size:14px;color:rgba(245,244,241,.55)">Five hands-on tools you\'ll use on the job \u2014 not just in the lesson.</div>';
+  var list = document.createElement('div');
+  list.style.cssText = 'padding:8px 0';
+  PRACTICAL_TOOLS.forEach(function(p){
+    var row = document.createElement('div');
+    row.style.cssText = 'display:flex;align-items:center;gap:14px;padding:14px 32px;border-bottom:1px solid var(--line);cursor:pointer;transition:background .12s';
+    row.addEventListener('mouseenter',function(){row.style.background='var(--paper-warm)';});
+    row.addEventListener('mouseleave',function(){row.style.background='transparent';});
+    row.innerHTML = '<div style="flex:1"><div style="font-size:14px;font-weight:600;color:var(--ink)">'+p.title+'</div><div style="font-size:12px;color:var(--ink-mute);margin-top:2px">'+p.sub+'</div></div>'
+      +'<div style="color:var(--gold-deep);font-size:14px">\u2192</div>';
+    row.onclick = function(){location.href=p.file;};
+    list.appendChild(row);
+  });
+  var foot = document.createElement('div');
+  foot.style.cssText = 'padding:18px 32px;background:var(--line-soft);display:flex;justify-content:space-between;align-items:center';
+  foot.innerHTML = '<span style="font-size:13px;color:var(--ink-mute)">5 tools</span>'
     +'<button onclick="this.closest(\'[style*=fixed]\').remove()" style="font-family:var(--font-sans);font-size:13px;font-weight:600;padding:8px 18px;border-radius:9px;border:1px solid var(--line);background:transparent;cursor:pointer;color:var(--ink-soft)">Close</button>';
   panel.appendChild(head);panel.appendChild(list);panel.appendChild(foot);
   overlay.appendChild(panel);document.body.appendChild(overlay);
@@ -1034,9 +1042,9 @@ function openCTE(){
 let chosenGoal = 'Professional';
 function goOnboard(goal){
   chosenGoal = goal;
-  localStorage.setItem('agnus_goal', goal);
   document.getElementById('ob-goal-tag').textContent = goal + ' path';
   document.getElementById('jrny-path').textContent = goal + ' path';
+  // set onboarding to first question (sign-in optional via link)
   showStep('ob-q1');
   show('s-onboard');
 }
@@ -1052,22 +1060,11 @@ function pick(el, group){
 }
 function obNext(from,to){ showStep(to); }
 function finishOnboard(){
-  const selRole = document.querySelector('#ob-q4 .opt.sel .ot');
-  if(selRole) localStorage.setItem('agnus_role', selRole.textContent);
-  updateRoleDisplay();
+  // tailor mission to goal
   show('s-journey');
+  // animate the mission mini progress
   setTimeout(()=>{ const i=document.querySelector('.mission .pbar2 i'); if(i){ i.style.width='40%'; } },300);
 }
-function updateRoleDisplay(){
-  const role = localStorage.getItem('agnus_role') || 'Governance Officer';
-  const goal = localStorage.getItem('agnus_goal') || chosenGoal;
-  const pill = document.getElementById('role-pill');
-  if(pill) pill.textContent = role;
-  const pathEl = document.getElementById('jrny-path');
-  if(pathEl) pathEl.textContent = goal + ' path';
-}
-// restore saved state on load
-updateRoleDisplay();
 
 /* ---------- lesson player ---------- */
 let part = 0;
