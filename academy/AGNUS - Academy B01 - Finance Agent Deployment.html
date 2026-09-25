@@ -1,11 +1,4 @@
 ﻿<!doctype html>
-<!--
-  This application and all the work related to Agnus and for Agnus is sanctified and covered
-  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
-  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
-  from The Throne of The Lamb of God, The Lord Jesus Christ.
-  This application is Holy.
--->
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -267,7 +260,7 @@ html,body{min-height:100%;font-family:var(--sans);background:var(--bg);color:var
   <span class="rail-title">Finance Agent Deployment</span>
   <div class="rail-right">
     <div class="phase-dots" id="phaseDots"></div>
-    <button class="rail-btn" onclick="location.href='AGNUS - Academy App.html'">← Dashboard</button>
+    <button class="rail-btn" onclick="alert('Return to dashboard')">← Dashboard</button>
   </div>
 </header>
 
@@ -1083,6 +1076,18 @@ function buildScore(){
 function buildCert(){
   const d = new Date();
   document.getElementById('cert-date').textContent = d.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+/* ── Save competency record ── */
+(function(){
+  try {
+    var name = document.getElementById('cert-name') ? document.getElementById('cert-name').textContent : 'AGNUS Learner';
+    var score = document.getElementById('cert-score') ? document.getElementById('cert-score').textContent : '100%';
+    var records = JSON.parse(localStorage.getItem('agnus_competency_records') || '[]');
+    if (!records.find(function(r){ return r.code === 'B01'; })) {
+      records.push({ code:'B01', competency:'Finance Agent Deployment — Configured & Verified', date: new Date().toISOString(), score: score, name: name });
+      localStorage.setItem('agnus_competency_records', JSON.stringify(records));
+    }
+  } catch(e) {}
+})();
   document.getElementById('cert-score').textContent = state.score + '% — all five scenarios passed';
   document.getElementById('cert-id').textContent = 'Credential ID: AGNUS-B01-' + Date.now().toString(36).toUpperCase();
 }

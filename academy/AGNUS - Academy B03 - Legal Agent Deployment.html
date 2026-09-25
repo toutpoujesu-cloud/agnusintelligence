@@ -1,11 +1,4 @@
 ﻿<!doctype html>
-<!--
-  This application and all the work related to Agnus and for Agnus is sanctified and covered
-  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
-  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
-  from The Throne of The Lamb of God, The Lord Jesus Christ.
-  This application is Holy.
--->
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -201,7 +194,7 @@ html,body{min-height:100%;font-family:var(--sans);background:var(--bg);color:var
   <span class="rail-title">Legal Agent Deployment</span>
   <div class="rail-right">
     <div class="phase-dots" id="phaseDots"></div>
-    <button class="rail-btn" onclick="location.href='AGNUS - Academy App.html'">← Dashboard</button>
+    <button class="rail-btn" onclick="alert('Return to dashboard')">← Dashboard</button>
   </div>
 </header>
 
@@ -803,7 +796,6 @@ function buildScore(){
   const results=state.results;
   const passing=results.filter(r=>r.outcome==='pass').length;
   const score=Math.round(passing/results.length*100);
-  state.score=score;
   const perfect=score===100;const good=score>=60;
   document.getElementById('score-hero-block').innerHTML=`<div class="score-hero"><div class="sh-number ${perfect?'perfect':good?'good':'fail'}">${score}%</div><div class="sh-label">${passing} of ${results.length} contracts handled correctly</div><div class="sh-verdict">${perfect?'Perfect configuration — all five contracts handled correctly':good?'Partial pass — review the routing hierarchy and privilege settings':'Critical misconfiguration — privilege or routing failures detected'}</div></div>`;
   document.getElementById('score-breakdown').innerHTML=results.map((r,i)=>`<div class="sb-card ${r.outcome}-card"><div class="sbc-label">Event ${i+1} · ${r.outcome.toUpperCase()}</div><div class="sbc-event">${r.ev.desc}</div><div class="sbc-verdict">${r.verdict}</div><div class="sbc-explain">${r.explanation}</div></div>`).join('');
@@ -828,6 +820,18 @@ function buildScore(){
 function buildCert(){
   const d=new Date();
   document.getElementById('cert-date').textContent=d.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+/* ── Save competency record ── */
+(function(){
+  try {
+    var name = document.getElementById('cert-name') ? document.getElementById('cert-name').textContent : 'AGNUS Learner';
+    var score = document.getElementById('cert-score') ? document.getElementById('cert-score').textContent : '100%';
+    var records = JSON.parse(localStorage.getItem('agnus_competency_records') || '[]');
+    if (!records.find(function(r){ return r.code === 'B03'; })) {
+      records.push({ code:'B03', competency:'Legal Agent Deployment — Configured & Verified', date: new Date().toISOString(), score: score, name: name });
+      localStorage.setItem('agnus_competency_records', JSON.stringify(records));
+    }
+  } catch(e) {}
+})();
   document.getElementById('cert-score').textContent=state.score+'% — all five scenarios passed';
   document.getElementById('cert-id').textContent='AGNUS-B03-'+Date.now().toString(36).toUpperCase();
 }
