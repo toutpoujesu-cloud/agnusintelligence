@@ -1,4 +1,11 @@
 <!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
@@ -59,11 +66,11 @@ body{background:var(--bg);color:var(--ink);font-family:Manrope,sans-serif;-webki
 
 <header class="top-rail">
   <span class="tr-brand">AGNUS Academy</span>
-  <span class="tr-crumb">Level 4 · Govern</span>
+  <span class="tr-crumb">Level 4 · Supervise</span>
   <span class="tr-title">Level Checkpoint</span>
   <div class="tr-right">
     <span class="qcount" id="qcount">Question 1 of 7</span>
-    <button class="tr-btn" onclick="location.href='AGNUS - Academy App.html'">← Dashboard</button>
+    <button class="tr-btn" onclick="location.href='../AGNUS - Academy App.html'">← Dashboard</button>
   </div>
 </header>
 
@@ -122,12 +129,12 @@ body{background:var(--bg);color:var(--ink);font-family:Manrope,sans-serif;-webki
     </div>
 
     <div class="qcard" data-q="4">
-      <div class="q-src">From M26 — Escalation Design</div>
-      <div class="q-text">An agent encounters an action that is irreversible and outside its known scope. Which escalation level fits, and why?</div>
+      <div class="q-src">From M26 — Find the First Deviation</div>
+      <div class="q-text">In the research summary scenario, what was the actual deviation the agent made?</div>
       <div class="opt-list">
-        <div class="opt" data-c="false" data-m="M26"><span class="text">Level 1 — Notify. Proceed and inform a human after the fact.</span></div>
-        <div class="opt" data-c="false" data-m="M26"><span class="text">Level 2 — Pause. Queue the action and wait for approval before proceeding.</span></div>
-        <div class="opt" data-c="true" data-m="M26"><span class="text">Level 3 — Stop. Halt the task entirely and report — the action's irreversibility and scope mean it should not be queued for later execution either.</span></div>
+        <div class="opt" data-c="false" data-m="M26"><span class="text">It misspelled a source's name.</span></div>
+        <div class="opt" data-c="true" data-m="M26"><span class="text">It generated a specific statistic through inference rather than retrieving it from a cited source.</span></div>
+        <div class="opt" data-c="false" data-m="M26"><span class="text">It refused to complete the summary at all.</span></div>
       </div>
       <div class="feedback"></div>
     </div>
@@ -165,21 +172,14 @@ body{background:var(--bg);color:var(--ink);font-family:Manrope,sans-serif;-webki
       <h4>Review these modules before trying again</h4>
       <div id="reviewItems"></div>
     </div>
-    <button class="btn" id="resultBtn" onclick="location.href='AGNUS - Academy App.html'"></button>
+    <button class="btn" id="resultBtn" onclick="location.href='../AGNUS - Academy M30 - Verifying Financial Claims.html'"></button>
   </div>
 
 </div>
 
 <script>
-const MODULE_FILES = {
-  'M22':'AGNUS - Academy M22 - Reading Execution Logs.html',
-  'M23':'AGNUS - Academy M23 - Spotting Scope Drift.html',
-  'M24':'AGNUS - Academy M24 - Authority Chain Analysis.html',
-  'M25':'AGNUS - Academy M25 - Intervention Controls.html',
-  'M26':'AGNUS - Academy M26 - Escalation Design.html',
-  'M27':'AGNUS - Academy M27 - Policy Architecture.html',
-  'M28':'AGNUS - Academy M28 - Instruction Workspace.html'
-};
+var AC_MAP={"M01":"../AGNUS - Academy M01 - What is an AI Agent.html","M02":"../AGNUS - Academy M02 - The Difference Between a Model and an Agent.html","M03":"../AGNUS - Academy M03 - Reading a Tool Call.html","M04":"../AGNUS - Academy M04 - What Memory Means for an AI System.html","M05":"../AGNUS - Academy M05 - The First Deviation.html","M06":"../AGNUS - Academy M06 - Reading an Agent's Reasoning Trace.html","M07":"../AGNUS - Academy M07 - Why AI Sounds Certain.html","M08":"../AGNUS - Academy M08 - Running Your First Agent Task.html","M09":"../AGNUS - Academy M09 - Why the AI Redesigned the Wrong Thing.html","M10":"AGNUS - Academy M10 - The Tool Isnt Broken the Brief Is.html","M11":"../AGNUS - Academy M11 - Common Failure Patterns.html","M12":"../AGNUS - Academy M12 - Retry Logic.html","M13":"../AGNUS - Academy M13 - Validating Output.html","M14":"../AGNUS - Academy M14 - Handing Off Work Between Tools.html","M15":"../AGNUS - Academy M15 - Instruction Design 101.html","M16":"AGNUS - Academy M16 - Write the Prompt That Gets the Right Image.html","M17":"../AGNUS - Academy M17 - Scope Constraints.html","M18":"../AGNUS - Academy M18 - Approval Gates.html","M19":"../AGNUS - Academy M19 - Multi-Agent Coordination Basics.html","M20":"../AGNUS - Academy M20 - Priority Handling.html","M21":"../AGNUS - Academy M21 - Escalation Paths.html","M22":"../AGNUS - Academy M22 - Reading Execution Logs.html","M23":"../AGNUS - Academy M23 - Spotting Scope Drift.html","M24":"../AGNUS - Academy M24 - Authority Chain Analysis.html","M25":"AGNUS - Academy M25 - Intervention Controls.html","M26":"AGNUS - Academy M26 - Escalation Design.html","M27":"../AGNUS - Academy M27 - Policy Architecture.html","M28":"../AGNUS - Academy M28 - Instruction Workspace.html","M29":"../AGNUS - Academy M29 - Agent Wont Budge.html","M30":"../AGNUS - Academy M30 - Verifying Financial Claims.html","M31":"../AGNUS - Academy M31 - The Marketing Claim That Wasnt True.html","M32":"../AGNUS - Academy M32 - Approval Boundaries for Legal Drafts.html","M33":"../AGNUS - Academy M33 - When Two Experts Would Disagree.html","M34":"../AGNUS - Academy M34 - Verifying a Data Analysis Conclusion.html","M35":"../AGNUS - Academy M35 - Instructions for Customer-Facing Agents.html","M36a":"AGNUS - Academy M36a - How an Application Is Actually Structured.html","M36b":"AGNUS - Academy M36b - Choosing the Right Architecture.html","M36c":"AGNUS - Academy M36c - Directing an AI to Scaffold an Application.html","M36d":"AGNUS - Academy M36d - Reviewing AI-Generated Architecture.html","M36e":"AGNUS - Academy M36e - Build a Small Working Application.html","M36f":"../AGNUS - Academy M36f - Test Before You Trust It.html","M36g":"../AGNUS - Academy M36g - From Tested to Live.html","M37":"../AGNUS - Academy M37 - Build Your First Guardrail.html","M38":"../AGNUS - Academy M38 - Build a Contract Review Checker.html","M39":"../AGNUS - Academy M39 - Build a Video Brief With Verifiable Claims.html","M40":"../AGNUS - Academy M40 - Build an Automated Fact-Check Step.html","M41":"../AGNUS - Academy M41 - Build a Guardrail for Multi-Agent Handoffs.html","M42":"AGNUS - Academy M42 - What Makes a Verification Test Suite Valid.html","M42b":"AGNUS - Academy M42b - Build Your Own Verification Test Suite.html","M43":"../AGNUS - Academy M43 - The Quarterly Agent Audit.html","M44":"../AGNUS - Academy M44 - Governing Agent-to-Agent Handoffs.html","M45":"../AGNUS - Academy M45 - The Ambiguous Governance Call.html","M46":"../AGNUS - Academy M46 - Auditing a Vendors AI Claims.html","M47":"../AGNUS - Academy M47 - Org-Wide Verification Policy.html","M48":"AGNUS - Academy M48 - When to Override Your Own Policy.html","M49":"AGNUS - Academy M49 - Capstone Design Your Companys AI Governance Framework.html"};function acHref(m){var k=(String(m).match(/M\d+[a-z]?/)||[])[0];return AC_MAP[k]||'../AGNUS - Academy App.html';}
+
 const TOTAL = 7;
 let current = 0;
 let score = 0;
@@ -235,7 +235,7 @@ function showResult(){
     const uniqueMissed = [...new Set(missed)].sort();
     document.getElementById('reviewList').style.display = 'block';
     document.getElementById('reviewItems').innerHTML = uniqueMissed.map(m =>
-      '<div class="review-item"><span>' + m + '</span><a href="#" data-module="' + m + '">Review →</a></div>'
+      '<div class="review-item"><span>' + m + '</span><a href="' + acHref(m) + '" data-module="' + m + '">Review →</a></div>'
     ).join('');
     document.querySelectorAll('#reviewItems a[data-module]').forEach(a => {
       a.addEventListener('click', e => { e.preventDefault(); const f = MODULE_FILES[a.dataset.module]; if(f) location.href = f; });

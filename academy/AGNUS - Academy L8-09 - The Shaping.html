@@ -1,0 +1,330 @@
+<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Academy — L8-09 The Shaping</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#F8F6F2;--panel:#FFFFFF;--panel-2:#F2F0EB;--line:#E5E2D9;--line-2:#D1CEC4;--ink:#18202A;--ink-2:#4A5261;--ink-3:#8E96A2;--navy:#17263C;--navy-2:#0F1A28;--gold:#9A7633;--gold-light:#B59048;--pass:#1A7E4A;--pass-dim:rgba(26,126,74,.1);--danger:#B4432E;--danger-dim:#FEF0ED;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:Manrope,sans-serif;-webkit-font-smoothing:antialiased}
+.top-rail{background:var(--navy-2);color:#fff;display:flex;align-items:center;height:48px;padding:0 20px;gap:18px}
+.tr-brand{font-weight:800;font-size:13.5px}
+.tr-crumb{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.tr-title{font-size:13px;font-weight:700}
+.tr-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.prog-dots{display:flex;gap:5px}
+.prog-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.2)}
+.prog-dot.done{background:var(--gold-light)}
+.prog-dot.active{background:#fff}
+.tr-btn{font-family:Manrope,sans-serif;font-size:12px;font-weight:700;padding:7px 14px;border-radius:7px;border:1px solid rgba(255,255,255,.18);color:#fff;background:rgba(255,255,255,.07);cursor:pointer}
+.wrap{max-width:880px;margin:0 auto;padding:44px 24px 100px}
+.step-banner{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:28px}
+.sb-step{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.sb-count{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-3)}
+.hero{background:var(--navy);border-radius:16px;padding:32px 34px;display:grid;gap:16px;margin-bottom:24px}
+.hero h1{font-weight:800;font-size:26px;letter-spacing:-.026em;color:#fff;line-height:1.15}
+.hero p{font-family:Newsreader,serif;font-style:italic;font-size:16px;line-height:1.7;color:rgba(245,244,241,.78)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px 26px;margin-bottom:20px}
+.card h3{font-size:15px;font-weight:700;margin-bottom:10px}
+.card h4{font-size:13px;font-weight:700;margin:18px 0 10px;color:var(--navy)}
+.card p{font-size:14.5px;line-height:1.68;color:var(--ink-2)}
+.quote-block{border-left:3px solid var(--gold);background:var(--panel-2);border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0;font-family:Newsreader,serif;font-style:italic;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.data-table{width:100%;border-collapse:collapse;margin:12px 0 18px;font-size:12.5px}
+.data-table th{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);text-align:left;padding:9px 10px;border-bottom:1.5px solid var(--line-2)}
+.data-table td{padding:10px 10px;border-bottom:1px solid var(--panel-2);color:var(--ink-2);vertical-align:top}
+.data-table td:first-child{font-weight:700;color:var(--ink);white-space:nowrap}
+.prompt-box{background:#0D1420;border-radius:10px;padding:18px 20px;margin:14px 0;font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.75;color:#E8ECF1;white-space:pre-wrap}
+.track-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
+.track-card{border:1.5px solid var(--line-2);border-radius:10px;padding:16px 18px}
+.track-card .tc-label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:8px}
+.track-card p{font-size:12.5px;color:var(--ink-2);margin:0}
+.trap-box{background:#0D1420;border-radius:10px;padding:18px 20px;margin:16px 0}
+.trap-compare{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.trap-side{padding:12px 14px;border-radius:8px}
+.trap-side.claude{background:rgba(154,118,51,.15)}
+.trap-side.real{background:rgba(26,126,74,.15)}
+.trap-side .ts-label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+.trap-side.claude .ts-label{color:var(--gold-light)}
+.trap-side.real .ts-label{color:#5FD9A0}
+.trap-side ul{padding-left:16px;font-size:11.5px;color:#E8ECF1;line-height:1.7}
+.opt-list{display:grid;gap:10px;margin:16px 0}
+.opt{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border:1.5px solid var(--line-2);border-radius:10px;cursor:pointer}
+.opt:hover{border-color:var(--navy);background:#F9F8F5}
+.opt.correct{border-color:var(--pass);background:var(--pass-dim)}
+.opt.wrong{border-color:var(--danger);background:var(--danger-dim)}
+.opt .letter{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;color:var(--ink-3);flex:none;width:20px}
+.opt .text{font-size:14px;line-height:1.5}
+.feedback{display:none;margin-top:14px;padding:16px 18px;border-radius:10px;font-size:13.5px;line-height:1.6}
+.feedback.pass{display:block;background:var(--pass-dim);border-left:3px solid var(--pass);color:var(--ink)}
+.feedback.fail{display:block;background:var(--danger-dim);border-left:3px solid var(--danger);color:var(--ink)}
+.cta-row{display:flex;justify-content:flex-end;margin-top:24px}
+.btn{font-family:Manrope,sans-serif;font-weight:700;font-size:14px;padding:13px 26px;border-radius:10px;border:none;background:var(--navy);color:#fff;cursor:pointer}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn-back{background:none;color:var(--navy);border:1.5px solid var(--line-2);margin-right:auto}
+.pass-screen{display:none;text-align:center;padding:44px 30px;background:var(--navy);border-radius:16px;color:#fff}
+.pass-screen h2{font-size:22px;font-weight:800;margin-bottom:10px}
+.pass-screen p{font-size:13.5px;color:rgba(255,255,255,.7);margin-bottom:20px}
+.step{display:none}
+.step.active{display:block}
+</style>
+</head>
+<body>
+
+<header class="top-rail">
+  <span class="tr-brand">AGNUS Academy</span>
+  <span class="tr-crumb">Level 8 · Build an Application</span>
+  <span class="tr-title">L8-09 — The Shaping</span>
+  <div class="tr-right">
+    <div class="prog-dots" id="progDots"></div>
+    <button class="tr-btn" onclick="location.href='../AGNUS - Academy App.html'">← Dashboard</button>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- STEP 0 -->
+  <section class="step active" data-step="0">
+    <div class="step-banner"><span class="sb-step">Step 1 of 6 — Understand</span><span class="sb-count">4 min</span></div>
+    <div class="hero">
+      <h1>The Blueprint said what the app does. The Shaping decides how it behaves, feels, and appeals to its actual audience.</h1>
+      <p>Claude here is a research partner and design collaborator — not just a code generator. Design starts with understanding the audience, not with an aesthetic.</p>
+    </div>
+    <div class="card">
+      <h3>Why this matters</h3>
+      <div class="quote-block">"Design is a sort of problem solving that starts with an understanding of the audience. It means finding elegant solutions to complex (and often conflicting) user needs, mental states, and abilities."</div>
+      <h4>Two parallel tracks</h4>
+      <div class="track-grid">
+        <div class="track-card"><div class="tc-label">Track 1 — Behavior &amp; Workflow</div><p>What the application does, how it flows, how it responds. Claude defines the user journey, system behavior, edge cases.</p></div>
+        <div class="track-card"><div class="tc-label">Track 2 — UX &amp; Aesthetics</div><p>How it looks, feels, and appeals to its audience. Claude researches the audience, suggests aesthetics, refines interactions.</p></div>
+      </div>
+    </div>
+    <div class="cta-row"><button class="btn" onclick="goStep(1)">See Track 1 — Behavior →</button></div>
+  </section>
+
+  <!-- STEP 1: Track 1 -->
+  <section class="step" data-step="1">
+    <div class="step-banner"><span class="sb-step">Step 2 of 6 — Track 1: Behavior</span><span class="sb-count">6 min</span></div>
+    <div class="card">
+      <h3>Research before behavior — understand the user first</h3>
+      <p>Before Claude can suggest how the application should behave, it needs to understand the user:</p>
+      <div class="prompt-box">Before we design the behavior of this application, I need you to research the target audience. Who are they? What are their goals with this interface? What are they familiar with? In what context is this design appearing? What are their pain points and mental models?</div>
+      <table class="data-table">
+        <thead><tr><th>Research method</th><th>What Claude can do</th><th>Why it matters</th></tr></thead>
+        <tbody>
+          <tr><td>Synthetic Persona Generation</td><td>Generates fictitious users with goals, frustrations, behavioral patterns</td><td>In B2B settings, recruiting real users is often infeasible</td></tr>
+          <tr><td>User Journey Mapping</td><td>Maps the user's journey from first contact through task completion</td><td>Reveals friction points and opportunities</td></tr>
+          <tr><td>Competitive Analysis</td><td>Researches existing solutions, what works and what doesn't</td><td>Prevents reinventing the wheel</td></tr>
+        </tbody>
+      </table>
+      <h4>Then Claude defines the actual behavior</h4>
+      <div class="prompt-box">Based on the research you've conducted, define how this application should behave. Describe:
+
+The complete user workflow from start to finish
+How the application responds to different user inputs
+The system's behavior in edge cases and error states
+How the application communicates feedback to the user
+The interaction patterns that will make the application intuitive for this audience</div>
+      <table class="data-table">
+        <thead><tr><th>Output</th><th>What it contains</th></tr></thead>
+        <tbody>
+          <tr><td>User Workflow Definition</td><td>Step-by-step user journey with decision points</td></tr>
+          <tr><td>Behavior Specifications</td><td>How the system responds to each user action</td></tr>
+          <tr><td>Edge Case Handling</td><td>What happens when things go wrong</td></tr>
+          <tr><td>Feedback Patterns</td><td>How the system communicates with the user</td></tr>
+          <tr><td>Interaction Design Principles</td><td>Guidelines for how the application should feel to use</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="cta-row"><button class="btn btn-back" onclick="goStep(0)">← Back</button><button class="btn" onclick="goStep(2)">See Track 2 — Aesthetics →</button></div>
+  </section>
+
+  <!-- STEP 2: Track 2 -->
+  <section class="step" data-step="2">
+    <div class="step-banner"><span class="sb-step">Step 3 of 6 — Track 2: Aesthetics</span><span class="sb-count">6 min</span></div>
+    <div class="card">
+      <h3>The aesthetic must be audience-driven, not arbitrary</h3>
+      <div class="quote-block">"AI design tools can be aesthetically pleasing, but often they're not actually 'design'. ...Without any background, these tools are happy to output something with many of the common signals of 'good' design, but beneath the surface they are very limited."</div>
+      <div class="prompt-box">Based on the research you conducted, recommend an aesthetic direction for this application. Consider:
+
+The audience's age, cultural background, and technological familiarity
+The context in which they'll use the application (office, mobile, on-the-go)
+Their goals and emotional state when using the application
+The industry and competitive landscape
+Brand personality and values
+
+Explain your reasoning and provide specific recommendations for: color palette, typography, layout density, visual hierarchy, and emotional tone.</div>
+      <div class="quote-block">"If you don't need to cater your product to human factors, technical constraints, or other limitations, then what you needed wasn't really 'design' in the first place." — aesthetics are in service of user needs, not decoration.</div>
+      <h4>Claude's design knowledge spans real UX domains</h4>
+      <table class="data-table">
+        <thead><tr><th>Domain</th><th>What Claude can reference</th></tr></thead>
+        <tbody>
+          <tr><td>Mobile UX</td><td>iOS Liquid Glass, Material 3 Expressive, touch and gesture patterns</td></tr>
+          <tr><td>Desktop App Design</td><td>Enterprise dashboards, data-dense interfaces, keyboard-first design</td></tr>
+          <tr><td>Interaction &amp; Motion</td><td>Animation timing curves, micro-interactions, haptic feedback</td></tr>
+          <tr><td>Accessibility</td><td>WCAG 2.2 and 3.0, cognitive accessibility, neurodiversity accommodations</td></tr>
+          <tr><td>UX Psychology</td><td>Norman's 3 levels of processing, Kahneman's System 1/2, cognitive load theory</td></tr>
+          <tr><td>Cultural Design</td><td>RTL layout, CJK typography, Hofstede's cultural dimensions</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="cta-row"><button class="btn btn-back" onclick="goStep(1)">← Back</button><button class="btn" onclick="goStep(3)">See the trap and the counter-strategy →</button></div>
+  </section>
+
+  <!-- STEP 3: The trap -->
+  <section class="step" data-step="3">
+    <div class="step-banner"><span class="sb-step">Step 4 of 6 — The Claude Aesthetic Trap</span><span class="sb-count">6 min</span></div>
+    <div class="card">
+      <h3>Homogenization is a named, real problem</h3>
+      <div class="quote-block">"The classic AI-summarized document, complete with bullet points, sub-points and that ubiquitous colored vertical line... They all look exactly the same. The fonts are microscopic. The writing is flavorless... I'm calling this the 'Claude Aesthetic'."</div>
+      <div class="quote-block">"The output is often visually polished, but it remains structurally shallow... It enables teams to generate a high volume of visually consistent but structurally similar layouts."</div>
+      <p>You must learn to recognize when you're accepting a "Claude default" rather than making an intentional design decision. The aesthetic must serve the audience, not the AI's default patterns.</p>
+      <h4>The counter-strategy</h4>
+      <table class="data-table">
+        <thead><tr><th>Problem</th><th>Solution</th></tr></thead>
+        <tbody>
+          <tr><td>Visual Homogeneity</td><td>Deliberately prompt for audience-specific aesthetics: "What would a [specific cultural group/age group/industry] find appealing and trustworthy?"</td></tr>
+          <tr><td>Structural Shallowness</td><td>Push for depth: "What happens in edge cases?" "How does this scale?" "What would a power user want that a novice wouldn't?"</td></tr>
+          <tr><td>Default Typography</td><td>Specify: "For a professional audience, recommend a typography system that conveys authority and precision."</td></tr>
+        </tbody>
+      </table>
+      <div class="trap-box">
+        <div class="trap-compare">
+          <div class="trap-side claude">
+            <div class="ts-label">Unshaped default</div>
+            <ul><li>Generic rounded cards, uniform spacing</li><li>No research into who will actually use it</li><li>Copied from the most common pattern for "this kind of app"</li></ul>
+          </div>
+          <div class="trap-side real">
+            <div class="ts-label">Actually shaped</div>
+            <ul><li>Layout decisions justified by a stated audience need</li><li>Workflow matches how this specific user actually works</li><li>Deliberately un-generic where the product calls for it</li></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cta-row"><button class="btn btn-back" onclick="goStep(2)">← Back</button><button class="btn" onclick="goStep(4)">See the Designer-in-Chief role →</button></div>
+  </section>
+
+  <!-- STEP 4: Designer-in-Chief -->
+  <section class="step" data-step="4">
+    <div class="step-banner"><span class="sb-step">Step 5 of 6 — Designer-in-Chief</span><span class="sb-count">5 min</span></div>
+    <div class="card">
+      <h3>You remain the Designer-in-Chief</h3>
+      <div class="quote-block">"The future of design is here. And it's Claude Code. I'm a product designer and I use Claude Code daily. My Figma usage has dropped significantly. Claude Code lets me describe the intended user experience — the use cases, expected behavior, how a feature might evolve — and it figures out how to build it."</div>
+      <table class="data-table">
+        <thead><tr><th>Responsibility</th><th>What it means</th></tr></thead>
+        <tbody>
+          <tr><td>Define the Audience</td><td>Before aesthetics, know the user</td></tr>
+          <tr><td>Make Intentional Choices</td><td>Every design decision should have a rationale</td></tr>
+          <tr><td>Resist the Default</td><td>Push Claude to explain and justify, not just generate</td></tr>
+          <tr><td>Iterate with Purpose</td><td>Use Claude to explore variations, not just accept the first output</td></tr>
+          <tr><td>Maintain Design Integrity</td><td>Ensure the aesthetic serves the user experience, not just visual polish</td></tr>
+        </tbody>
+      </table>
+      <h4>The Phase 2 deliverable — a Complete Application Experience Document</h4>
+      <table class="data-table">
+        <thead><tr><th>Section</th><th>What it contains</th></tr></thead>
+        <tbody>
+          <tr><td>User Research Summary</td><td>Who the users are, their goals, context, and mental models</td></tr>
+          <tr><td>Behavioral Specifications</td><td>How the application behaves, responds, and handles edge cases</td></tr>
+          <tr><td>User Workflow</td><td>Step-by-step user journey with decision points</td></tr>
+          <tr><td>Interaction Patterns</td><td>How the user interacts with the application</td></tr>
+          <tr><td>Aesthetic Direction</td><td>Color palette, typography, layout, emotional tone with rationale</td></tr>
+          <tr><td>Accessibility Strategy</td><td>WCAG compliance approach, cognitive accessibility considerations</td></tr>
+          <tr><td>Design System Principles</td><td>Guidelines for consistency across the application</td></tr>
+        </tbody>
+      </table>
+      <div class="quote-block">"We can't prompt our way to accessible, human-centered design." Claude is a research partner and collaborator — not a replacement for design thinking.</div>
+    </div>
+    <div class="cta-row"><button class="btn btn-back" onclick="goStep(3)">← Back</button><button class="btn" onclick="goStep(5)">Try it yourself →</button></div>
+  </section>
+
+  <!-- STEP 5: Practice + Pass -->
+  <section class="step" data-step="5">
+    <div class="step-banner"><span class="sb-step">Step 6 of 6 — Practice &amp; Pass</span><span class="sb-count">5 min</span></div>
+    <div class="card">
+      <h3>A builder asks Claude Code to "make it look nice" with no further detail, for an app used by elderly patients managing medication reminders. What's the risk?</h3>
+      <div class="opt-list" id="practiceOpts">
+        <div class="opt" data-correct="true" onclick="pickPractice(this)"><span class="letter">A</span><span class="text">The default aesthetic may not suit an elderly, possibly low-vision audience at all — no research into the actual audience ever happened, so the mismatch was never caught.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPractice(this)"><span class="letter">B</span><span class="text">There is no risk — a well-trained assistant always produces the ideal design regardless of context.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPractice(this)"><span class="letter">C</span><span class="text">The only risk is a slightly longer build time.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPractice(this)"><span class="letter">D</span><span class="text">"Make it look nice" is already specific enough instruction for any audience.</span></div>
+      </div>
+      <div class="feedback" id="practiceFeedback"></div>
+    </div>
+    <div class="card" id="passCard" style="display:none">
+      <h3>New scenario — no hints</h3>
+      <p style="margin-bottom:14px">A team building an internal tool for warehouse staff, who wear gloves and check the app on shared tablets, tells Claude Code: "Large touch targets, high contrast, minimal typing — most actions should be single-tap." What did they just do correctly, per the two-track model and the counter-strategy?</p>
+      <div class="opt-list" id="passOpts">
+        <div class="opt" data-correct="true" onclick="pickPass(this)"><span class="letter">A</span><span class="text">They named a specific, real audience constraint (gloves, shared tablets) and translated it into concrete behavior and aesthetic decisions — exactly the counter-strategy to the Claude Aesthetic trap.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">B</span><span class="text">Nothing meaningful — any UI instruction is equally generic.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">C</span><span class="text">They wrote a Blueprint, not a Shaping instruction.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">D</span><span class="text">This instruction only affects Track 2 aesthetics, not Track 1 behavior.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">E</span><span class="text">Large touch targets are always the wrong choice for internal tools.</span></div>
+      </div>
+      <div class="feedback" id="passFeedback"></div>
+    </div>
+    <div class="cta-row" id="ctaPractice"><button class="btn btn-back" onclick="goStep(4)">← Back</button><button class="btn" id="practiceNext" onclick="showPassCard()" disabled>Continue →</button></div>
+    <div class="pass-screen" id="passScreen">
+      <h2>Module L8-09 complete</h2>
+      <p>Shaping discipline confirmed.</p>
+      <button class="tr-btn" onclick="location.href='AGNUS - Academy L8-10 - The Structuring.html'">Next module →</button>
+    </div>
+  </section>
+
+</div>
+
+<script>
+const TOTAL_STEPS = 6;
+function renderDots(active){
+  document.getElementById('progDots').innerHTML = Array.from({length:TOTAL_STEPS}).map((_,i)=>
+    '<div class="prog-dot '+(i<active?'done':i===active?'active':'')+'"></div>').join('');
+}
+function goStep(i){
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  document.querySelector('.step[data-step="'+i+'"]').classList.add('active');
+  renderDots(i);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+renderDots(0);
+
+function showPassCard(){
+  document.getElementById('passCard').style.display = 'block';
+  document.getElementById('ctaPractice').style.display = 'none';
+  window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
+}
+
+function pickPractice(el){
+  document.querySelectorAll('#practiceOpts .opt').forEach(o=>{o.onclick=null;});
+  const correct = el.dataset.correct === 'true';
+  el.classList.add(correct?'correct':'wrong');
+  const fb = document.getElementById('practiceFeedback');
+  fb.className = 'feedback ' + (correct?'pass':'fail');
+  fb.textContent = correct
+    ? "Correct. Skipping the audience-research step is exactly what the trap warns against — a vague instruction like 'make it look nice' lets the default aesthetic apply blindly, whether or not it actually suits this audience."
+    : "Not quite. The real risk is that the default aesthetic was never checked against this specific audience — vague instructions never surface that mismatch.";
+  document.getElementById('practiceNext').disabled = false;
+}
+function pickPass(el){
+  document.querySelectorAll('#passOpts .opt').forEach(o=>{o.onclick=null;});
+  const correct = el.dataset.correct === 'true';
+  el.classList.add(correct?'correct':'wrong');
+  const fb = document.getElementById('passFeedback');
+  fb.className = 'feedback ' + (correct?'pass':'fail');
+  fb.textContent = correct
+    ? "Correct — L8-09 complete. Naming a real, specific constraint of the actual users and translating it into concrete decisions is exactly what breaks the Claude Aesthetic trap, and it touches both tracks — behavior (single-tap actions) and aesthetics (high contrast) together. Ready for L8-10: The Structuring."
+    : "Not quite. This instruction is a strong example of the counter-strategy in action — it names a specific, true fact about the actual users and turns it into concrete decisions spanning both behavior and aesthetics.";
+  if(correct){ setTimeout(()=>{ document.getElementById('passScreen').style.display='block'; renderDots(6); }, 600); }
+}
+</script>
+</body>
+</html>

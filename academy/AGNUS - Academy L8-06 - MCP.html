@@ -1,0 +1,209 @@
+<!doctype html>
+<!--
+  This application and all the work related to Agnus and for Agnus is sanctified and covered
+  by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
+  The entire application is saturated by the Blood of Jesus Christ, and by the 888 Hz frequency
+  from The Throne of The Lamb of God, The Lord Jesus Christ.
+  This application is Holy.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS Academy — L8-06 MCP: The Client-Server Model</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#F8F6F2;--panel:#FFFFFF;--panel-2:#F2F0EB;--line:#E5E2D9;--line-2:#D1CEC4;--ink:#18202A;--ink-2:#4A5261;--ink-3:#8E96A2;--navy:#17263C;--navy-2:#0F1A28;--gold:#9A7633;--gold-light:#B59048;--pass:#1A7E4A;--pass-dim:rgba(26,126,74,.1);--danger:#B4432E;--danger-dim:#FEF0ED;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:Manrope,sans-serif;-webkit-font-smoothing:antialiased}
+.top-rail{background:var(--navy-2);color:#fff;display:flex;align-items:center;height:48px;padding:0 20px;gap:18px}
+.tr-brand{font-weight:800;font-size:13.5px}
+.tr-crumb{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.tr-title{font-size:13px;font-weight:700}
+.tr-right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.prog-dots{display:flex;gap:5px}
+.prog-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.2)}
+.prog-dot.done{background:var(--gold-light)}
+.prog-dot.active{background:#fff}
+.tr-btn{font-family:Manrope,sans-serif;font-size:12px;font-weight:700;padding:7px 14px;border-radius:7px;border:1px solid rgba(255,255,255,.18);color:#fff;background:rgba(255,255,255,.07);cursor:pointer}
+.wrap{max-width:800px;margin:0 auto;padding:44px 24px 100px}
+.step-banner{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:28px}
+.sb-step{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.sb-count{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-3)}
+.hero{background:var(--navy);border-radius:16px;padding:32px 34px;display:grid;gap:16px;margin-bottom:24px}
+.hero h1{font-weight:800;font-size:26px;letter-spacing:-.026em;color:#fff;line-height:1.15}
+.hero p{font-family:Newsreader,serif;font-style:italic;font-size:16px;line-height:1.7;color:rgba(245,244,241,.78)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px 26px;margin-bottom:20px}
+.card h3{font-size:15px;font-weight:700;margin-bottom:10px}
+.card h4{font-size:13px;font-weight:700;margin:16px 0 8px;color:var(--navy)}
+.card p{font-size:14.5px;line-height:1.68;color:var(--ink-2)}
+.mcp-diagram{display:flex;align-items:center;gap:0;margin:16px 0;flex-wrap:wrap}
+.mcp-box{background:var(--panel-2);border:1.5px solid var(--line-2);border-radius:10px;padding:16px 18px;flex:1;min-width:150px;text-align:center}
+.mcp-box.client{background:var(--navy);color:#fff}
+.mcp-box .mb-label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+.mcp-box.client .mb-label{color:var(--gold-light)}
+.mcp-box:not(.client) .mb-label{color:var(--gold)}
+.mcp-box p{font-size:12px;margin:0}
+.mcp-box.client p{color:rgba(255,255,255,.75)}
+.mcp-box:not(.client) p{color:var(--ink-3)}
+.mcp-arrow{padding:0 12px;color:var(--ink-3);font-size:16px;text-align:center}
+.primitive-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:16px 0}
+.prim-card{border:1.5px solid var(--line-2);border-radius:10px;padding:14px 16px;cursor:pointer}
+.prim-card:hover{border-color:var(--navy)}
+.prim-card.open{background:var(--panel-2)}
+.prim-card .p-label{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:6px}
+.prim-card .p-body{display:none;font-size:12px;color:var(--ink-2);line-height:1.55;margin-top:6px}
+.prim-card.open .p-body{display:block}
+.opt-list{display:grid;gap:10px;margin:16px 0}
+.opt{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border:1.5px solid var(--line-2);border-radius:10px;cursor:pointer}
+.opt:hover{border-color:var(--navy);background:#F9F8F5}
+.opt.correct{border-color:var(--pass);background:var(--pass-dim)}
+.opt.wrong{border-color:var(--danger);background:var(--danger-dim)}
+.opt .letter{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;color:var(--ink-3);flex:none;width:20px}
+.opt .text{font-size:14px;line-height:1.5}
+.feedback{display:none;margin-top:14px;padding:16px 18px;border-radius:10px;font-size:13.5px;line-height:1.6}
+.feedback.pass{display:block;background:var(--pass-dim);border-left:3px solid var(--pass);color:var(--ink)}
+.feedback.fail{display:block;background:var(--danger-dim);border-left:3px solid var(--danger);color:var(--ink)}
+.cta-row{display:flex;justify-content:flex-end;margin-top:24px}
+.btn{font-family:Manrope,sans-serif;font-weight:700;font-size:14px;padding:13px 26px;border-radius:10px;border:none;background:var(--navy);color:#fff;cursor:pointer}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.pass-screen{display:none;text-align:center;padding:44px 30px;background:var(--navy);border-radius:16px;color:#fff}
+.pass-screen h2{font-size:22px;font-weight:800;margin-bottom:10px}
+.pass-screen p{font-size:13.5px;color:rgba(255,255,255,.7);margin-bottom:20px}
+.step{display:none}
+.step.active{display:block}
+</style>
+</head>
+<body>
+
+<header class="top-rail">
+  <span class="tr-brand">AGNUS Academy</span>
+  <span class="tr-crumb">Level 8 · Foundation</span>
+  <span class="tr-title">L8-06 — MCP: The Client-Server Model</span>
+  <div class="tr-right">
+    <div class="prog-dots" id="progDots"></div>
+    <button class="tr-btn" onclick="location.href='../AGNUS - Academy App.html'">← Dashboard</button>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="step active" data-step="0">
+    <div class="step-banner"><span class="sb-step">Step 1 of 4 — Understand</span><span class="sb-count">4 min</span></div>
+    <div class="hero">
+      <h1>MCP is a standard plug, not a proprietary cable, for connecting an agent to outside tools and data.</h1>
+      <p>Before a standard existed, every agent framework needed its own custom code to connect to every tool. The Model Context Protocol (MCP) defines one shared way for an agent (the client) to talk to any tool or data source (a server) that speaks the same protocol.</p>
+    </div>
+    <div class="card">
+      <h3>Why this matters</h3>
+      <p>Without a shared standard, connecting an agent to ten different tools means writing ten different custom integrations, and every tool update risks breaking one of them. MCP exists specifically to remove that duplicated, fragile integration work.</p>
+    </div>
+    <div class="cta-row"><button class="btn" onclick="goStep(1)">See the client-server model →</button></div>
+  </section>
+
+  <section class="step" data-step="1">
+    <div class="step-banner"><span class="sb-step">Step 2 of 4 — See</span><span class="sb-count">5 min</span></div>
+    <div class="card">
+      <h3>Client and server, and what flows between them</h3>
+      <div class="mcp-diagram">
+        <div class="mcp-box client"><div class="mb-label">MCP Client</div><p>The agent (or the framework running it). Requests data or asks a tool to be run.</p></div>
+        <div class="mcp-arrow">⇄</div>
+        <div class="mcp-box"><div class="mb-label">MCP Server</div><p>A tool, database, or service exposing its capabilities in the shared MCP format.</p></div>
+      </div>
+      <p>Any MCP-compliant client can talk to any MCP-compliant server, regardless of who built either one — the same way any web browser (client) can talk to any website (server) because both speak HTTP.</p>
+      <h4>The three primitives MCP defines — click each</h4>
+      <div class="primitive-cards" id="primCards">
+        <div class="prim-card open" data-p="resources" onclick="togglePrim(this)"><div class="p-label">Resources</div><div class="p-body">Read-only data the client can pull in — a file, a database record, a document. The agent reads it, but doesn't act through it.</div></div>
+        <div class="prim-card" data-p="tools" onclick="togglePrim(this)"><div class="p-label">Tools</div><div class="p-body">Actions the client can invoke — this is the M03 "tool call" concept, standardized so any MCP client can call any MCP server's tools the same way.</div></div>
+        <div class="prim-card" data-p="prompts" onclick="togglePrim(this)"><div class="p-label">Prompts</div><div class="p-body">Reusable, pre-written prompt templates a server can offer — a standardized way to share a well-tested instruction pattern, rather than every client reinventing it.</div></div>
+      </div>
+    </div>
+    <div class="cta-row"><button class="btn" style="background:none;color:var(--navy);border:1.5px solid var(--line-2);margin-right:auto" onclick="goStep(0)">← Back</button><button class="btn" onclick="goStep(2)">Try it yourself →</button></div>
+  </section>
+
+  <section class="step" data-step="2">
+    <div class="step-banner"><span class="sb-step">Step 3 of 4 — Practice</span><span class="sb-count">3 min</span></div>
+    <div class="card">
+      <h3>An MCP server exposes a company's customer database as read-only records the agent can pull in, but has no actions the agent can trigger. Which primitive is this?</h3>
+      <div class="opt-list" id="practiceOpts">
+        <div class="opt" data-correct="false" onclick="pickPractice(this)"><span class="letter">A</span><span class="text">Tools — because a database is a kind of tool.</span></div>
+        <div class="opt" data-correct="true" onclick="pickPractice(this)"><span class="letter">B</span><span class="text">Resources — read-only data the client pulls in, with no action being triggered.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPractice(this)"><span class="letter">C</span><span class="text">Prompts — because reading records requires a query.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPractice(this)"><span class="letter">D</span><span class="text">This can't be an MCP server since it doesn't expose any tools.</span></div>
+      </div>
+      <div class="feedback" id="practiceFeedback"></div>
+    </div>
+    <div class="cta-row"><button class="btn" style="background:none;color:var(--navy);border:1.5px solid var(--line-2);margin-right:auto" onclick="goStep(1)">← Back</button><button class="btn" id="practiceNext" onclick="goStep(3)" disabled>Continue →</button></div>
+  </section>
+
+  <section class="step" data-step="3">
+    <div class="step-banner"><span class="sb-step">Step 4 of 4 — Pass</span><span class="sb-count">Hidden test</span></div>
+    <div class="card">
+      <h3>New scenario — no hints</h3>
+      <p style="margin-bottom:14px">A company builds one MCP server exposing their internal ticketing system. Three different teams, using three different agent frameworks, are all able to connect their agents to it without any framework-specific integration code. What does this demonstrate about MCP?</p>
+      <div class="opt-list" id="passOpts">
+        <div class="opt" data-correct="true" onclick="pickPass(this)"><span class="letter">A</span><span class="text">A single MCP-compliant server can be used by any MCP-compliant client, regardless of framework — exactly the shared-standard benefit MCP is designed to provide.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">B</span><span class="text">This is a coincidence, and normally each framework would still need its own custom integration.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">C</span><span class="text">This only works because all three frameworks happen to use the same underlying model.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">D</span><span class="text">This proves the ticketing system is a Resource, not a Tool.</span></div>
+        <div class="opt" data-correct="false" onclick="pickPass(this)"><span class="letter">E</span><span class="text">This has nothing to do with MCP and would happen with any tool integration.</span></div>
+      </div>
+      <div class="feedback" id="passFeedback"></div>
+    </div>
+    <div class="cta-row"><button class="btn" style="background:none;color:var(--navy);border:1.5px solid var(--line-2)" onclick="goStep(2)">← Back</button></div>
+    <div class="pass-screen" id="passScreen">
+      <h2>Module L8-06 complete — Sub-arc A finished</h2>
+      <p>You're ready for L8-07: The Execution Layer.</p>
+      <button class="tr-btn" onclick="location.href='AGNUS - Academy L8-06b - The Wider Model Landscape.html'">Next module →</button>
+    </div>
+  </section>
+
+</div>
+
+<script>
+const TOTAL_STEPS = 4;
+function renderDots(active){
+  document.getElementById('progDots').innerHTML = Array.from({length:TOTAL_STEPS}).map((_,i)=>
+    '<div class="prog-dot '+(i<active?'done':i===active?'active':'')+'"></div>').join('');
+}
+function goStep(i){
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  document.querySelector('.step[data-step="'+i+'"]').classList.add('active');
+  renderDots(i);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+renderDots(0);
+
+function togglePrim(el){
+  const wasOpen = el.classList.contains('open');
+  document.querySelectorAll('#primCards .prim-card').forEach(c=>c.classList.remove('open'));
+  if(!wasOpen) el.classList.add('open');
+}
+
+function pickPractice(el){
+  document.querySelectorAll('#practiceOpts .opt').forEach(o=>{o.onclick=null;});
+  const correct = el.dataset.correct === 'true';
+  el.classList.add(correct?'correct':'wrong');
+  const fb = document.getElementById('practiceFeedback');
+  fb.className = 'feedback ' + (correct?'pass':'fail');
+  fb.textContent = correct
+    ? "Correct. Read-only data with no triggerable action is exactly what the Resources primitive covers — distinct from Tools, which are for actions the client can invoke."
+    : "Not quite. The defining detail is that nothing is being triggered or acted through — this is read-only data being pulled in, which is the Resources primitive, not Tools or Prompts.";
+  document.getElementById('practiceNext').disabled = false;
+}
+function pickPass(el){
+  document.querySelectorAll('#passOpts .opt').forEach(o=>{o.onclick=null;});
+  const correct = el.dataset.correct === 'true';
+  el.classList.add(correct?'correct':'wrong');
+  const fb = document.getElementById('passFeedback');
+  fb.className = 'feedback ' + (correct?'pass':'fail');
+  fb.textContent = correct
+    ? "Correct — L8-06 complete, and Sub-arc A finished. One server working with three different frameworks with zero custom integration is precisely MCP's value: a shared protocol any compliant client and server can use together. Ready for L8-07: The Execution Layer."
+    : "Not quite. The scenario is a direct demonstration of MCP's core purpose — a shared standard letting any compliant client work with any compliant server, with no framework-specific glue code required.";
+  if(correct){ setTimeout(()=>{ document.getElementById('passScreen').style.display='block'; renderDots(4); }, 600); }
+}
+</script>
+</body>
+</html>
