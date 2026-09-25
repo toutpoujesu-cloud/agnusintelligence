@@ -257,7 +257,24 @@
     if (nb) nb.onclick = function () { if (!done) complete(it.id); n ? go(n) : (location.href = DASHBOARD); };
   }
 
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', render); else render();
+  /* ── hook module "← Dashboard" buttons so they record completion first ── */
+  function hookDashboardButtons() {
+    var it = current();
+    if (!it || it.type === 'checkpoint') return;
+    var n = next(it);
+    document.querySelectorAll('button.tr-btn').forEach(function (btn) {
+      if (/App\.html/.test(btn.getAttribute('onclick') || '') && !btn.closest('header')) {
+        btn.textContent = n ? ('Next: ' + n.id + ' →') : '← Dashboard';
+        btn.onclick = function () { complete(it.id); n ? go(n) : (location.href = DASHBOARD); };
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () { render(); hookDashboardButtons(); });
+  } else {
+    render(); hookDashboardButtons();
+  }
 
   window.AcademyCurriculum = {
     LEVELS: LEVELS, ITEMS: ITEMS, DASHBOARD: DASHBOARD,
