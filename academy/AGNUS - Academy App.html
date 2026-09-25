@@ -960,7 +960,7 @@ function openLevel(n){
       row.onclick = function(){location.href=m.file;};
     }
     var _sm = window.AcademyCurriculum ? AcademyCurriculum.summary(m.file) : null;
-    var _steps = _sm && _sm.steps && _sm.steps.length ? _sm.steps.join(' · ') : '';
+    var _steps = _sm && _sm.steps && _sm.steps.length ? (_sm.steps.some(function(s){return s.length>24;}) ? _sm.steps.length+' steps' : _sm.steps.join(' · ')) : '';
     var _mins = _sm && _sm.minutes ? '~' + _sm.minutes + ' min' : '';
     row.innerHTML = '<div style="font-family:var(--font-mono);font-size:10px;color:var(--ink-mute);min-width:36px">'+m.num+'</div>'
       +'<div style="flex:1">'
