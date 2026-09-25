@@ -939,9 +939,13 @@ function openLevel(n){
   panel.style.cssText = 'background:var(--paper-warm);border-radius:22px;max-width:640px;width:100%;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.5)';
   var head = document.createElement('div');
   head.style.cssText = 'background:var(--char);padding:28px 32px;';
+  var _lvlId = 'L' + n;
+  var _lvlMins = window.AcademyCurriculum ? AcademyCurriculum.levelMinutes(_lvlId) : 0;
+  function _fmtTime(m){ m=Math.round(m/5)*5; if(m<60) return 'About '+m+' min'; var h=Math.floor(m/60),r=m%60; return 'About '+h+' h'+(r?' '+r+' min':''); }
   head.innerHTML = '<div style="font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(245,244,241,.4);margin-bottom:8px">Track A</div>'
     +'<div style="font-size:22px;font-weight:800;letter-spacing:-.03em;color:#fff;margin-bottom:5px">'+lvl.title+'</div>'
-    +'<div style="font-family:var(--font-serif);font-style:italic;font-size:14px;color:rgba(245,244,241,.55)">'+lvl.desc+'</div>';
+    +'<div style="font-family:var(--font-serif);font-style:italic;font-size:14px;color:rgba(245,244,241,.55)">'+lvl.desc+'</div>'
+    +(_lvlMins > 0 ? '<div style="font-family:var(--font-mono);font-size:11px;color:rgba(245,244,241,.4);margin-top:8px;letter-spacing:.04em">'+_fmtTime(_lvlMins)+'</div>' : '');
   var list = document.createElement('div');
   list.style.cssText = 'padding:8px 0';
   lvl.modules.forEach(function(m,i){
@@ -955,9 +959,18 @@ function openLevel(n){
       row.addEventListener('mouseleave',function(){row.style.background='transparent';});
       row.onclick = function(){location.href=m.file;};
     }
+    var _sm = window.AcademyCurriculum ? AcademyCurriculum.summary(m.file) : null;
+    var _steps = _sm && _sm.steps && _sm.steps.length ? _sm.steps.join(' · ') : '';
+    var _mins = _sm && _sm.minutes ? '~' + _sm.minutes + ' min' : '';
     row.innerHTML = '<div style="font-family:var(--font-mono);font-size:10px;color:var(--ink-mute);min-width:36px">'+m.num+'</div>'
-      +'<div style="flex:1"><div style="font-size:14px;font-weight:600;color:var(--ink)">'+m.title+'</div></div>'
-      +'<div style="color:'+iconClr+';font-size:14px">'+icon+'</div>';
+      +'<div style="flex:1">'
+      + '<div style="font-size:14px;font-weight:600;color:var(--ink)">'+m.title+'</div>'
+      + (_steps ? '<div style="font-size:11px;color:var(--ink-mute);margin-top:2px">'+_steps+'</div>' : '')
+      +'</div>'
+      +'<div style="text-align:right;flex-shrink:0">'
+      + (_mins ? '<div style="font-size:11px;color:var(--ink-mute);margin-bottom:2px">'+_mins+'</div>' : '')
+      + '<div style="color:'+iconClr+';font-size:14px">'+icon+'</div>'
+      +'</div>';
     list.appendChild(row);
   });
   if(lvl.checkpoint){

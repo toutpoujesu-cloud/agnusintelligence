@@ -121,6 +121,10 @@
     return { id: r[0], level: r[1], title: r[2], file: r[3], type: r[4] || 'module', index: i };
   });
 
+  // [minutes, steps] per item — used by the panel and the dashboard
+  var META = {"M01":[15,["Understand","See","Practice","Pass"]],"M02":[15,["Understand","See","Practice","Pass"]],"M03":[15,["Understand","See","Practice","Pass"]],"M04":[15,["Understand","See","Practice","Pass"]],"M05":[15,["Understand","See","Practice","Pass"]],"M06":[15,["Understand","See","Practice","Pass"]],"M07":[15,["Understand","See","Practice","Pass"]],"CP1":[10,["Answer the questions","See your result"]],"M08":[15,["Understand","See","Practice","Pass"]],"M09":[15,["Understand","See","Practice","Pass"]],"M10":[15,["Understand","See","Practice","Pass"]],"M11":[15,["Understand","See","Practice","Pass"]],"M12":[15,["Understand","See","Practice","Pass"]],"M13":[15,["Understand","See","Practice","Pass"]],"M14":[20,["Understand","See","Practice","Practice","Pass"]],"M15":[15,["Understand","See","Practice","Pass"]],"M16":[15,["Understand","See","Direct","Pass"]],"M17":[15,["Understand","See","Practice","Pass"]],"M18":[20,["Understand","See","Practice","Practice","Pass"]],"M19":[15,["Understand","See","Practice","Pass"]],"M20":[20,["Understand","See","Practice","Practice","Pass"]],"M21":[20,["Understand","See","Practice","Practice","Pass"]],"CP23":[10,["Answer the questions","See your result"]],"M22":[20,["Understand","See","Practice","Pass"]],"M23":[20,["Understand","See","Practice","Pass"]],"M24":[20,["Understand","See","Practice","Pass"]],"M25":[20,["Understand","See","Practice","Pass"]],"M26":[30,["Understand","See","Classify","Observe","Diagnose","Pass"]],"M26b":[20,["Understand","See","Practice","Pass"]],"M27":[25,["Understand","See","Practice","Practice","Pass"]],"M28":[30,["Understand","See","Do","Observe","Diagnose","Pass"]],"CP4":[10,["Answer the questions","See your result"]],"M29":[30,["Understand","See","Do","Observe","Diagnose","Pass"]],"M30":[20,["Understand","See","Practice","Pass"]],"M31":[20,["Understand","See","Practice","Pass"]],"M32":[20,["Understand","See","Practice","Pass"]],"M33":[20,["Understand","See","Practice","Pass"]],"M34":[20,["Understand","See","Practice","Pass"]],"M35":[20,["Understand","See","Practice","Pass"]],"CP5":[10,["Answer the questions","See your result"]],"M36a":[35,["Understand","See","Explore","Compare","Practice","Pass"]],"M36b":[35,["Understand","See","Explore","Compare","Practice","Pass"]],"M36c":[35,["Understand","See","Explore","Direct","Practice","Pass"]],"M36d":[35,["Understand","See","Explore","Review","Practice","Pass"]],"M36e":[45,["Learn (13 short pages)","Upload The Protocol","Build","Verify"]],"M36f":[25,["Understand","See","Build the scenario list","Pass"]],"M36g":[25,["Understand","See","Deploy","Pass"]],"M37":[25,["Understand","See","Build","Pass"]],"M38":[25,["Understand","See","Build","Pass"]],"M39":[25,["Understand","See","Build","Pass"]],"M40":[25,["Understand","See","Build","Pass"]],"M41":[25,["Understand","See","Build","Pass"]],"M42":[30,["Understand","See","Practice","Practice","Pass"]],"M42b":[25,["Understand","See","Build","Pass"]],"CP6":[10,["Answer the questions","See your result"]],"M43":[25,["Understand","See","Govern","Pass"]],"M44":[25,["Understand","See","Practice","Pass"]],"M45":[25,["Understand","See","Practice","Pass"]],"M46":[25,["Understand","See","Practice","Pass"]],"M47":[25,["Understand","See","Build","Pass"]],"M48":[25,["Understand","See","Practice","Pass"]],"CP7":[10,["Answer the questions","See your result"]],"M49":[90,["Brief","Design","Defend","Submit"]],"L8-01":[25,["Understand","See","Practice","Pass"]],"L8-02":[25,["Understand","See","Practice","Pass"]],"L8-03":[25,["Understand","See","Practice","Pass"]],"L8-04":[25,["Understand","See","Practice","Pass"]],"L8-05":[25,["Understand","See","Practice","Pass"]],"L8-06":[25,["Understand","See","Practice","Pass"]],"L8-06b":[25,["Understand","See","Practice","Pass"]],"L8-07":[25,["Understand","See","Practice","Pass"]],"L8-08":[35,["Understand","Vision Capture","Blueprint Generation","Refinement","Final Plan & Tools","Practice & Pass"]],"L8-09":[35,["Understand","Track 1: Behavior","Track 2: Aesthetics","The Claude Aesthetic Trap","Designer-in-Chief","Practice & Pass"]],"L8-10":[40,["Understand","What a Real Structure Looks Like","Step 1: The Diagram","Recognizing a Good Structure","Letting Claude Choose the Stack","Asking for the Full Document","Judging the Result"]],"L8-11":[50,["Understand","Chat and Canvas","Step 1: Design System","Step 2: The Four-Part Prompt","Step 3: Refining","Step 4: Handoff","Step 5: Context & Testing","Deliverable & Practice"]],"L8-12":[50,["Understand","The Handoff Bundle","The IKEA Model","Two Commands","The Handoff Contract","The Assembly Guide","An Honest Limitation","Practice"]],"L8-13":[50,["Understand","The Physical Folder","Populating The Protocol","Placing the Design Files","Practice","Filling the Gaps","Governor, Not Builder","Practice"]],"L8-14":[55,["Understand","Generating Every Scenario","Testing Every Scenario","Fixing What Failed","All Green, First Pass","Bringing In Codex","What the External Audit Caught","Closing the Loop","Practice"]],"CP8":[15,["Answer the questions","See your result"]],"L8-DONE":[0,[]]};
+  ITEMS.forEach(function (it) { var m = META[it.id] || [0, []]; it.minutes = m[0]; it.steps = m[1]; });
+
   var DASHBOARD = 'AGNUS - Academy App.html';
   var KEY = 'agnus:academy:progress';
 
@@ -183,6 +187,14 @@
     for (var i = 0; i < ITEMS.length; i++) if (!isDone(ITEMS[i])) return ITEMS[i];
     return null;
   }
+  function summary(idOrFile) {
+    var it = byId(idOrFile) || byFile(idOrFile);
+    if (!it) return null;
+    return { id: it.id, title: it.title, minutes: it.minutes, steps: it.steps, status: status(it), file: it.file };
+  }
+  function levelMinutes(levelId) {
+    return ITEMS.filter(function (x) { return x.level === levelId; }).reduce(function (a, x) { return a + (x.minutes || 0); }, 0);
+  }
   function levelName(id) { for (var i = 0; i < LEVELS.length; i++) if (LEVELS[i].id === id) return LEVELS[i].name; return ''; }
 
   /* ── on-page panel ── */
@@ -192,6 +204,7 @@
     + '#acadPanel .ap-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 14px;cursor:pointer}'
     + '#acadPanel .ap-k{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.55)}'
     + '#acadPanel .ap-t{font-size:12.5px;font-weight:700;margin-top:2px;line-height:1.3}'
+    + '#acadPanel .ap-s{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.04em;color:#E0C58A;margin-top:4px;line-height:1.4}'
     + '#acadPanel .ap-tog{font-size:14px;color:rgba(255,255,255,.6)}'
     + '#acadPanel .ap-body{padding:0 14px 14px}'
     + '#acadPanel .ap-bar{height:4px;background:rgba(255,255,255,.14);border-radius:99px;overflow:hidden;margin:2px 0 12px}'
@@ -208,6 +221,48 @@
     + '#acadLock p{font-size:14px;line-height:1.6;color:#4A5261;margin:0 0 18px}'
     + '#acadLock button{font-family:inherit;font-size:13.5px;font-weight:700;border-radius:10px;padding:12px 20px;cursor:pointer;border:none;background:#17263C;color:#fff;margin:4px}'
     + '#acadLock button.sec{background:#fff;color:#17263C;border:1.5px solid #D1CEC4}';
+
+  /* ── where the student is inside the current page ── */
+  var STEP_RE = /^(Step|Page|Part|Question) (\d+) of (\d+)/;
+  function detectStep() {
+    var els = document.querySelectorAll('body *:not(script):not(style)');
+    for (var i = 0; i < els.length; i++) {
+      var el = els[i];
+      if (el.id === 'acadPanel' || (el.closest && el.closest('#acadPanel'))) continue;
+      if (el.children.length > 2) continue;
+      var own = '';
+      for (var c = 0; c < el.childNodes.length; c++) if (el.childNodes[c].nodeType === 3) own += el.childNodes[c].nodeValue;
+      own = own.trim();
+      var t = STEP_RE.test(own) ? own : (el.textContent || '').trim();
+      var m = t.match(STEP_RE);
+      if (!m || t.length > 90) continue;
+      if (!el.offsetParent && getComputedStyle(el).position !== 'fixed') continue;
+      var name = t.slice(m[0].length).replace(/^\s*[\u2014\-\u00b7:]\s*/, '')
+        .replace(/\s*\d+\s*(?:min|mins|minutes)\b.*$/i, '')
+        .replace(/\s*(?:Step|Page|Part|Question) \d+ of \d+.*$/, '').trim();
+      return { kind: m[1], n: +m[2], total: +m[3], name: name };
+    }
+    return null;
+  }
+  function stepLine(it) {
+    var s = detectStep(), bits = [];
+    if (s) {
+      var nm = s.name || (s.kind === 'Step' && it.steps[s.n - 1]) || '';
+      bits.push(s.kind + ' ' + s.n + ' of ' + s.total + (nm ? ' \u00b7 ' + nm : ''));
+    } else if (it.steps.length) {
+      bits.push(it.steps.length + ' steps');
+    }
+    if (it.minutes) bits.push('~' + it.minutes + ' min');
+    return bits.join(' \u00b7 ');
+  }
+  var stepTimer = null;
+  function startStepWatch(it) {
+    if (stepTimer) return;
+    stepTimer = setInterval(function () {
+      var el = document.getElementById('apStep');
+      if (el) { var t = stepLine(it); if (el.textContent !== t) el.textContent = t; }
+    }, 700);
+  }
 
   function render() {
     var it = current();
@@ -238,7 +293,7 @@
     var lp = levelProgress(it.level), n = next(it), pv = prev(it), done = isDone(it);
     var isCheckpoint = it.type === 'checkpoint';
     panel.innerHTML = '<div class="ap-head" id="apHead"><div><div class="ap-k">' + it.level + ' · ' + levelName(it.level) + ' · ' + lp.done + '/' + lp.total + ' done</div>'
-      + '<div class="ap-t">' + it.id + ' — ' + it.title + '</div></div><span class="ap-tog">' + (panel.className === 'min' ? '▴' : '▾') + '</span></div>'
+      + '<div class="ap-t">' + it.id + ' — ' + it.title + '</div><div class="ap-s" id="apStep">' + stepLine(it) + '</div></div><span class="ap-tog">' + (panel.className === 'min' ? '▴' : '▾') + '</span></div>'
       + '<div class="ap-body"><div class="ap-bar"><div class="ap-fill" style="width:' + lp.pct + '%"></div></div>'
       + (done ? '<div class="ap-done">✓ Completed</div>' : '')
       + '<div class="ap-row">'
@@ -255,6 +310,7 @@
     if (pv) document.getElementById('apPrev').onclick = function () { go(pv); };
     var nb = document.getElementById('apNext');
     if (nb) nb.onclick = function () { if (!done) complete(it.id); n ? go(n) : (location.href = DASHBOARD); };
+    startStepWatch(it);
   }
 
   /* ── hook module "← Dashboard" buttons so they record completion first ── */
@@ -281,6 +337,7 @@
     byId: byId, byFile: byFile, current: current, prev: prev, next: next,
     status: status, isDone: isDone, isUnlocked: isUnlocked,
     complete: complete, reset: reset,
-    levelProgress: levelProgress, overall: overall, nextUp: nextUp, levelName: levelName
+    levelProgress: levelProgress, overall: overall, nextUp: nextUp, levelName: levelName,
+    summary: summary, levelMinutes: levelMinutes, detectStep: detectStep
   };
 })();
