@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS — Knowledge Database</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#F4F2EE;--surface:#FFF;--surface-2:#EDEAE4;--border:#DDD9D0;--ink:#18202A;--ink-2:#4A5261;--ink-3:#8E96A2;--navy:#17263C;--navy-2:#0F1A28;--gold:#9A7633;--gold-bg:rgba(154,118,51,.09);--gold-border:rgba(154,118,51,.25);--blue:#1A56A0;--mono:'IBM Plex Mono',monospace;--sans:Manrope,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+.rail{background:var(--navy-2);height:52px;display:flex;align-items:center;padding:0 24px;gap:16px;position:sticky;top:0;z-index:100}
+.rail-brand{font-weight:800;font-size:14px;color:#fff}
+.rail-sep{width:1px;height:20px;background:rgba(255,255,255,.12)}
+.rail-crumb{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38)}
+.rail-right{margin-left:auto;display:flex;gap:8px}
+.rb{font-family:var(--sans);font-size:12px;font-weight:600;padding:6px 14px;border-radius:8px;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.8);background:transparent;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;transition:background .15s}
+.rb:hover{background:rgba(255,255,255,.08)}
+.rb.gold{border-color:rgba(154,118,51,.4);color:var(--gold);background:rgba(154,118,51,.08)}
+.toolbar{background:var(--surface);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.search-box{flex:1;min-width:200px;display:flex;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--border);border-radius:9px;padding:9px 14px}
+.search-box input{border:none;background:transparent;font-family:var(--sans);font-size:13.5px;color:var(--ink);outline:none;flex:1}
+.search-box input::placeholder{color:var(--ink-3)}
+.filter-wrap{display:flex;gap:8px;flex-wrap:wrap}
+.filter-chip{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:7px 12px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--ink-3);cursor:pointer;transition:all .12s}
+.filter-chip.active{background:var(--navy-2);color:#fff;border-color:var(--navy-2)}
+.stat-strip{background:var(--surface);border-bottom:1px solid var(--border);padding:10px 24px;display:flex;gap:28px}
+.ss-item{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:10px;color:var(--ink-3)}
+.ss-n{font-size:16px;font-weight:700;color:var(--ink);font-family:var(--sans);margin-right:2px}
+.body{max-width:1200px;margin:0 auto;padding:28px 24px 80px;display:grid;grid-template-columns:1fr 340px;gap:24px}
+@media(max-width:900px){.body{grid-template-columns:1fr}}
+.source-list{display:grid;gap:10px}
+.src-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px 20px;cursor:pointer;transition:box-shadow .12s,transform .12s}
+.src-card:hover{box-shadow:0 4px 16px rgba(23,38,60,.08);transform:translateY(-1px)}
+.src-card.selected{border-color:var(--navy-2);box-shadow:0 0 0 2px var(--navy-2)}
+.sc-top{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px}
+.sc-id{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.08em;color:var(--gold);min-width:70px;padding-top:2px}
+.sc-info{flex:1}
+.sc-title{font-size:14px;font-weight:700;color:var(--ink);line-height:1.3;margin-bottom:4px}
+.sc-org{font-size:12.5px;color:var(--ink-3)}
+.sc-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.sc-tag{font-family:var(--mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:5px;background:var(--surface-2);color:var(--ink-3);border:1px solid var(--border)}
+.sc-tag.jur{background:var(--gold-bg);color:var(--gold);border-color:var(--gold-border)}
+.sc-url{font-family:var(--mono);font-size:10px;color:var(--blue);word-break:break-all;margin-top:8px;text-decoration:none;display:block}
+.sc-url:hover{text-decoration:underline}
+.detail-panel{background:var(--surface);border:1px solid var(--border);border-radius:16px;height:fit-content;position:sticky;top:72px;overflow:hidden}
+.dp-empty{padding:48px 24px;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.dp-head{background:linear-gradient(135deg,var(--navy),#1E3560);padding:22px 24px}
+.dp-id{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(154,118,51,.85);margin-bottom:8px}
+.dp-title{font-size:17px;font-weight:800;letter-spacing:-.02em;color:#fff;line-height:1.3;margin-bottom:5px}
+.dp-org{font-size:12.5px;color:rgba(255,255,255,.5)}
+.dp-body{padding:18px 24px;display:grid;gap:14px}
+.dp-row{display:flex;flex-direction:column;gap:4px}
+.dp-label{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.dp-value{font-size:13.5px;color:var(--ink-2);line-height:1.5}
+.dp-link{font-family:var(--mono);font-size:11px;color:var(--blue);word-break:break-all;text-decoration:none}
+.dp-link:hover{text-decoration:underline}
+.dp-articles{padding:0 24px 18px}
+.dpa-head{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px}
+.dpa-item{padding:9px 12px;background:var(--bg);border-radius:8px;margin-bottom:6px;font-size:12.5px;color:var(--ink-2);cursor:pointer;border:1px solid var(--border)}
+.dpa-item:hover{background:var(--surface-2)}
+.no-results{padding:40px;text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+</style>
+</head>
+<body>
+<header class="rail">
+  <span class="rail-brand">AGNUS Editorial</span>
+  <span class="rail-sep"></span>
+  <span class="rail-crumb">E10 · Knowledge Database</span>
+  <div class="rail-right">
+    <a href="AGNUS - Editorial Platform.html" class="rb">← Hub</a>
+    <a href="AGNUS - Research.html" class="rb gold">Research →</a>
+  </div>
+</header>
+
+<div class="toolbar">
+  <div class="search-box">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="var(--ink-3)" stroke-width="1.5" stroke-linecap="round"><circle cx="6" cy="6" r="4.5"/><path d="M10 10l2.5 2.5"/></svg>
+    <input type="text" id="searchInput" placeholder="Search sources — title, organisation, jurisdiction…" oninput="render()"/>
+  </div>
+  <div class="filter-wrap" id="filterWrap"></div>
+</div>
+
+<div class="stat-strip">
+  <div class="ss-item"><span class="ss-n" id="ssTotal">—</span> sources total</div>
+  <div class="ss-item"><span class="ss-n" id="ssFiltered">—</span> shown</div>
+  <div class="ss-item"><span class="ss-n" id="ssJur">—</span> jurisdictions</div>
+  <div class="ss-item"><span class="ss-n" id="ssLinked">—</span> linked to articles</div>
+</div>
+
+<div class="body">
+  <div>
+    <div class="source-list" id="sourceList"></div>
+  </div>
+  <div class="detail-panel" id="detailPanel">
+    <div class="dp-empty">Select a source to see details</div>
+  </div>
+</div>
+
+<script src="agnus-research-data.js"></script>
+<script>
+var SOURCES = window.SOURCES || [];
+var ARTICLES = window.ARTICLES || [];
+var activeFilter = 'all';
+var selectedId = null;
+
+var JURISDICTIONS = [...new Set(SOURCES.map(function(s){ return s.jurisdiction||'Other'; }))].sort();
+
+// Build filter chips
+var fw = document.getElementById('filterWrap');
+var allChip = document.createElement('button');
+allChip.className = 'filter-chip active';
+allChip.textContent = 'All';
+allChip.onclick = function(){ activeFilter='all'; document.querySelectorAll('.filter-chip').forEach(function(c){c.classList.remove('active');}); allChip.classList.add('active'); render(); };
+fw.appendChild(allChip);
+JURISDICTIONS.slice(0,10).forEach(function(j){
+  var c = document.createElement('button');
+  c.className = 'filter-chip';
+  c.textContent = j;
+  c.onclick = function(){ activeFilter=j; document.querySelectorAll('.filter-chip').forEach(function(x){x.classList.remove('active');}); c.classList.add('active'); render(); };
+  fw.appendChild(c);
+});
+
+function getArticlesForSource(sid){
+  return ARTICLES.filter(function(a){ return a.source_id===sid; });
+}
+
+function render(){
+  var q = (document.getElementById('searchInput').value||'').toLowerCase();
+  var filtered = SOURCES.filter(function(s){
+    if(activeFilter!=='all' && (s.jurisdiction||'Other')!==activeFilter) return false;
+    if(!q) return true;
+    return (s.title||'').toLowerCase().includes(q)||(s.issuing_organization||'').toLowerCase().includes(q)||(s.jurisdiction||'').toLowerCase().includes(q)||(s.source_id||'').toLowerCase().includes(q);
+  });
+  var jurs = new Set(SOURCES.map(function(s){ return s.jurisdiction; }));
+  var linked = SOURCES.filter(function(s){ return getArticlesForSource(s.source_id).length>0; }).length;
+  document.getElementById('ssTotal').textContent = SOURCES.length;
+  document.getElementById('ssFiltered').textContent = filtered.length;
+  document.getElementById('ssJur').textContent = jurs.size;
+  document.getElementById('ssLinked').textContent = linked;
+
+  var list = document.getElementById('sourceList');
+  if(!filtered.length){ list.innerHTML='<div class="no-results">No sources match — try a different search or filter</div>'; return; }
+  list.innerHTML = filtered.map(function(s){
+    var arts = getArticlesForSource(s.source_id);
+    return '<div class="src-card'+(selectedId===s.source_id?' selected':'')+'" onclick="selectSource(\''+s.source_id+'\')">' +
+      '<div class="sc-top">'+
+        '<span class="sc-id">'+s.source_id+'</span>'+
+        '<div class="sc-info"><div class="sc-title">'+s.title+'</div><div class="sc-org">'+(s.issuing_organization||'')+'</div></div>'+
+      '</div>'+
+      '<div class="sc-tags">'+
+        (s.jurisdiction?'<span class="sc-tag jur">'+s.jurisdiction+'</span>':'')+
+        (s.document_type?'<span class="sc-tag">'+s.document_type+'</span>':'')+
+        (arts.length?'<span class="sc-tag">'+arts.length+' article'+( arts.length>1?'s':'')+'</span>':'')+
+      '</div>'+
+      (s.url?'<a class="sc-url" href="'+s.url+'" target="_blank">'+s.url.slice(0,60)+'…</a>':'')+
+    '</div>';
+  }).join('');
+}
+
+window.selectSource = function(id){
+  selectedId = id;
+  var s = SOURCES.find(function(x){ return x.source_id===id; });
+  var arts = getArticlesForSource(id);
+  render();
+  var dp = document.getElementById('detailPanel');
+  dp.innerHTML =
+    '<div class="dp-head"><div class="dp-id">'+s.source_id+'</div><div class="dp-title">'+s.title+'</div><div class="dp-org">'+(s.issuing_organization||'')+'</div></div>'+
+    '<div class="dp-body">'+
+      '<div class="dp-row"><div class="dp-label">Jurisdiction</div><div class="dp-value">'+(s.jurisdiction||'—')+'</div></div>'+
+      '<div class="dp-row"><div class="dp-label">Document type</div><div class="dp-value">'+(s.document_type||'—')+'</div></div>'+
+      '<div class="dp-row"><div class="dp-label">Access date</div><div class="dp-value">'+(s.access_date||'—')+'</div></div>'+
+      (s.url?'<div class="dp-row"><div class="dp-label">URL</div><a class="dp-link" href="'+s.url+'" target="_blank">'+s.url+'</a></div>':'')+
+    '</div>'+
+    (arts.length?
+      '<div class="dp-articles"><div class="dpa-head">Used in '+arts.length+' article'+( arts.length>1?'s':'')+'</div>'+
+      arts.map(function(a){ return '<div class="dpa-item" onclick="window.open(\''+a.url+'\')"><strong>'+a.article_id+'</strong> — '+a.title+'</div>'; }).join('')+
+      '</div>'
+    : '<div class="dp-articles"><div class="dpa-head">No articles linked yet</div></div>');
+};
+
+render();
+</script>
+</body>
+</html>

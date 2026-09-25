@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS — Story Builder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#F4F2EE;--surface:#FFF;--surface-2:#EDEAE4;--border:#DDD9D0;--ink:#18202A;--ink-2:#4A5261;--ink-3:#8E96A2;--navy:#17263C;--navy-2:#0F1A28;--gold:#9A7633;--gold-bg:rgba(154,118,51,.09);--gold-border:rgba(154,118,51,.25);--pass:#0F6E3A;--pass-bg:rgba(15,110,58,.09);--mono:'IBM Plex Mono',monospace;--sans:Manrope,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+.rail{background:var(--navy-2);height:52px;display:flex;align-items:center;padding:0 24px;gap:16px;position:sticky;top:0;z-index:100}
+.rail-brand{font-weight:800;font-size:14px;color:#fff}
+.rail-sep{width:1px;height:20px;background:rgba(255,255,255,.12)}
+.rail-crumb{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38)}
+.rail-right{margin-left:auto;display:flex;gap:8px}
+.rb{font-family:var(--sans);font-size:12px;font-weight:600;padding:6px 14px;border-radius:8px;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.8);background:transparent;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;transition:background .15s}
+.rb:hover{background:rgba(255,255,255,.08)}
+.wrap{max-width:1100px;margin:0 auto;padding:32px 24px 80px;display:grid;grid-template-columns:320px 1fr;gap:24px}
+@media(max-width:860px){.wrap{grid-template-columns:1fr}}
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.panel-head{padding:18px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.ph-title{font-size:14px;font-weight:800;letter-spacing:-.015em;color:var(--ink)}
+.ph-sub{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-top:2px}
+.btn{font-family:var(--sans);font-size:12px;font-weight:700;padding:7px 14px;border-radius:8px;cursor:pointer;border:none;display:inline-flex;align-items:center;gap:5px;transition:background .15s}
+.btn-navy{background:var(--navy);color:#fff}.btn-navy:hover{background:var(--navy-2)}
+.btn-ghost{background:var(--surface-2);color:var(--ink-2);border:1px solid var(--border)}.btn-ghost:hover{background:var(--border)}
+.brief-list{padding:12px}
+.brief-item{padding:12px 14px;border:1px solid var(--border);border-radius:10px;margin-bottom:8px;cursor:pointer;transition:box-shadow .12s}
+.brief-item:hover{box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.brief-item.active{border-color:var(--navy-2);background:#f8f9fc}
+.bi-title{font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:3px}
+.bi-meta{font-family:var(--mono);font-size:9.5px;color:var(--ink-3)}
+.bi-status{display:inline-block;font-family:var(--mono);font-size:8.5px;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:5px;margin-top:6px}
+.s-draft{background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold-border)}
+.s-ready{background:var(--pass-bg);color:var(--pass)}
+.new-brief-form{padding:16px;border-top:1px solid var(--border)}
+.nbf-input{width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-family:var(--sans);font-size:13.5px;outline:none;margin-bottom:8px}
+.nbf-input:focus{border-color:var(--navy-2)}
+.workspace{padding:24px}
+.ws-empty{padding:60px;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.field{margin-bottom:22px}
+.field label{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-bottom:7px}
+.field textarea,.field input,.field select{width:100%;padding:10px 13px;border:1px solid var(--border);border-radius:9px;font-family:var(--sans);font-size:13.5px;outline:none;background:var(--bg);color:var(--ink);resize:vertical}
+.field textarea:focus,.field input:focus,.field select:focus{border-color:var(--navy-2);background:#fff}
+.section-row{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:9px;margin-bottom:8px}
+.sr-num{font-family:var(--mono);font-size:10px;color:var(--ink-3);min-width:20px}
+.sr-input{flex:1;border:none;background:transparent;font-family:var(--sans);font-size:13.5px;outline:none;color:var(--ink)}
+.sr-remove{background:none;border:none;color:var(--ink-3);cursor:pointer;font-size:16px;line-height:1}
+.add-section-btn{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);cursor:pointer;background:none;border:none;padding:4px 0;display:flex;align-items:center;gap:6px}
+.source-link{display:flex;gap:8px;margin-bottom:8px}
+.sl-input{flex:1;padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-family:var(--mono);font-size:11.5px;outline:none;background:var(--bg)}
+.sl-input:focus{border-color:var(--navy-2)}
+.ws-actions{display:flex;gap:10px;padding-top:8px;border-top:1px solid var(--border)}
+.export-preview{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;font-family:var(--mono);font-size:11px;color:var(--ink-2);white-space:pre-wrap;word-break:break-all;max-height:300px;overflow-y:auto;margin-top:16px}
+</style>
+</head>
+<body>
+<header class="rail">
+  <span class="rail-brand">AGNUS Editorial</span>
+  <span class="rail-sep"></span>
+  <span class="rail-crumb">E12 · Story Builder</span>
+  <div class="rail-right">
+    <a href="AGNUS - Editorial Platform.html" class="rb">← Hub</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <!-- Brief list -->
+  <div>
+    <div class="panel">
+      <div class="panel-head">
+        <div><div class="ph-title">Article briefs</div><div class="ph-sub" id="briefCount">0 briefs</div></div>
+        <button class="btn btn-navy" onclick="toggleNewForm()">+ New</button>
+      </div>
+      <div class="brief-list" id="briefList"><div style="padding:24px;text-align:center;font-family:var(--mono);font-size:10px;color:var(--ink-3);letter-spacing:.08em;text-transform:uppercase">No briefs yet</div></div>
+      <div class="new-brief-form" id="newBriefForm" style="display:none">
+        <input class="nbf-input" type="text" id="newBriefTitle" placeholder="Article working title…"/>
+        <button class="btn btn-navy" style="width:100%" onclick="createBrief()">Create brief</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Workspace -->
+  <div class="panel">
+    <div class="panel-head">
+      <div><div class="ph-title" id="wsTitle">Select a brief</div><div class="ph-sub" id="wsId">—</div></div>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-ghost" onclick="exportBrief()">Export JSON</button>
+        <button class="btn btn-navy" onclick="saveBrief()">Save</button>
+      </div>
+    </div>
+    <div id="workspace">
+      <div class="ws-empty">Create or select a brief to start planning your article</div>
+    </div>
+  </div>
+</div>
+
+<script>
+var briefs = [];
+var activeBrief = null;
+try{ briefs = JSON.parse(localStorage.getItem('agnus_story_briefs')||'[]'); }catch(e){}
+
+function save(){ localStorage.setItem('agnus_story_briefs', JSON.stringify(briefs)); }
+
+function toggleNewForm(){
+  var f = document.getElementById('newBriefForm');
+  f.style.display = f.style.display==='none'?'block':'none';
+  if(f.style.display==='block') document.getElementById('newBriefTitle').focus();
+}
+
+window.createBrief = function(){
+  var t = document.getElementById('newBriefTitle').value.trim();
+  if(!t) return;
+  var id = 'BRF-'+Date.now();
+  var brief = {id:id,title:t,status:'draft',created:new Date().toISOString(),jurisdiction:'',pillar:'',researchQuestion:'',angle:'',sections:['Introduction','Context','Key provisions','Implications','Conclusion'],sources:[''],crossLinks:[''],notes:''};
+  briefs.unshift(brief);
+  save();
+  document.getElementById('newBriefTitle').value='';
+  document.getElementById('newBriefForm').style.display='none';
+  renderList();
+  openBrief(id);
+};
+
+function renderList(){
+  var list = document.getElementById('briefList');
+  document.getElementById('briefCount').textContent = briefs.length+' brief'+(briefs.length!==1?'s':'');
+  if(!briefs.length){ list.innerHTML='<div style="padding:24px;text-align:center;font-family:var(--mono);font-size:10px;color:var(--ink-3);letter-spacing:.08em;text-transform:uppercase">No briefs yet</div>'; return; }
+  list.innerHTML = briefs.map(function(b){
+    return '<div class="brief-item'+(activeBrief&&activeBrief.id===b.id?' active':'')+'" onclick="openBrief(\''+b.id+'\')">'+
+      '<div class="bi-title">'+b.title+'</div>'+
+      '<div class="bi-meta">'+(b.jurisdiction||'No jurisdiction') + ' · ' + (b.pillar||'No pillar')+'</div>'+
+      '<span class="bi-status s-'+b.status+'">'+b.status+'</span>'+
+    '</div>';
+  }).join('');
+}
+
+window.openBrief = function(id){
+  activeBrief = briefs.find(function(b){ return b.id===id; });
+  if(!activeBrief) return;
+  renderList();
+  document.getElementById('wsTitle').textContent = activeBrief.title;
+  document.getElementById('wsId').textContent = activeBrief.id + ' · ' + new Date(activeBrief.created).toLocaleDateString('en-GB');
+
+  var ws = document.getElementById('workspace');
+  ws.innerHTML =
+    '<div class="workspace">'+
+    '<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:22px">'+
+      field('Jurisdiction',    '<input id="f-jur" placeholder="EU, UK, South Korea…" value="'+(activeBrief.jurisdiction||'')+'"/>','')+
+      field('Pillar',          '<select id="f-pillar"><option>EU AI Act</option><option>Country</option><option>Standards</option><option>Data</option><option>Security</option><option>Academy</option></select>','')+
+    '</div>'+
+    field('Research question', '<textarea id="f-rq" rows="2" placeholder="What specific legal or technical question does this article answer?">'+(activeBrief.researchQuestion||'')+'</textarea>','')+
+    field('Angle / unique value', '<textarea id="f-angle" rows="2" placeholder="What perspective or evidence makes this article worth publishing?">'+(activeBrief.angle||'')+'</textarea>','')+
+    '<div class="field"><label>Sections</label><div id="sections-list">'+renderSections()+'</div>'+
+      '<button class="add-section-btn" onclick="addSection()">+ Add section</button></div>'+
+    '<div class="field"><label>Source IDs to cite</label><div id="sources-list">'+renderSourceLinks()+'</div>'+
+      '<button class="add-section-btn" onclick="addSource()">+ Add source</button></div>'+
+    '<div class="field"><label>Cross-links (existing article IDs)</label><div id="crosslinks-list">'+renderCrossLinks()+'</div>'+
+      '<button class="add-section-btn" onclick="addCrossLink()">+ Add cross-link</button></div>'+
+    field('Internal notes', '<textarea id="f-notes" rows="3" placeholder="Caveats, gaps, things to check…">'+(activeBrief.notes||'')+'</textarea>','')+
+    '<div class="ws-actions">'+
+      '<button class="btn btn-navy" onclick="saveBrief()">Save brief</button>'+
+      '<button class="btn btn-ghost" onclick="markReady()">Mark ready to build</button>'+
+      '<button class="btn btn-ghost" style="margin-left:auto;color:#B03020;border-color:#B03020" onclick="deleteBrief()">Delete</button>'+
+    '</div>'+
+    '<div id="exportBox"></div>'+
+    '</div>';
+
+  // Set select value
+  var ps = document.getElementById('f-pillar');
+  for(var i=0;i<ps.options.length;i++){ if(ps.options[i].value===activeBrief.pillar){ ps.selectedIndex=i; break; } }
+};
+
+function field(label, control){ return '<div class="field"><label>'+label+'</label>'+control+'</div>'; }
+
+function renderSections(){
+  return (activeBrief.sections||[]).map(function(s,i){
+    return '<div class="section-row"><span class="sr-num">'+(i+1)+'</span><input class="sr-input" value="'+s+'" onchange="activeBrief.sections['+i+']=this.value"/><button class="sr-remove" onclick="removeSection('+i+')">×</button></div>';
+  }).join('');
+}
+
+function renderSourceLinks(){
+  return (activeBrief.sources||[]).map(function(s,i){
+    return '<div class="source-link"><input class="sl-input" placeholder="SRC-XXXX" value="'+s+'" onchange="activeBrief.sources['+i+']=this.value"/><button class="sr-remove" onclick="removeSourceLink('+i+')">×</button></div>';
+  }).join('');
+}
+
+function renderCrossLinks(){
+  return (activeBrief.crossLinks||[]).map(function(s,i){
+    return '<div class="source-link"><input class="sl-input" placeholder="AR-XXXXXX" value="'+s+'" onchange="activeBrief.crossLinks['+i+']=this.value"/><button class="sr-remove" onclick="removeCrossLink('+i+')">×</button></div>';
+  }).join('');
+}
+
+window.addSection = function(){ activeBrief.sections.push('New section'); openBrief(activeBrief.id); };
+window.removeSection = function(i){ activeBrief.sections.splice(i,1); openBrief(activeBrief.id); };
+window.addSource = function(){ activeBrief.sources.push(''); openBrief(activeBrief.id); };
+window.removeSourceLink = function(i){ activeBrief.sources.splice(i,1); openBrief(activeBrief.id); };
+window.addCrossLink = function(){ activeBrief.crossLinks.push(''); openBrief(activeBrief.id); };
+window.removeCrossLink = function(i){ activeBrief.crossLinks.splice(i,1); openBrief(activeBrief.id); };
+
+window.saveBrief = function(){
+  if(!activeBrief) return;
+  activeBrief.jurisdiction = (document.getElementById('f-jur')||{}).value||activeBrief.jurisdiction;
+  activeBrief.pillar = (document.getElementById('f-pillar')||{}).value||activeBrief.pillar;
+  activeBrief.researchQuestion = (document.getElementById('f-rq')||{}).value||'';
+  activeBrief.angle = (document.getElementById('f-angle')||{}).value||'';
+  activeBrief.notes = (document.getElementById('f-notes')||{}).value||'';
+  save();
+  renderList();
+};
+
+window.markReady = function(){ if(!activeBrief) return; saveBrief(); activeBrief.status='ready'; save(); renderList(); };
+window.deleteBrief = function(){ if(!activeBrief||!confirm('Delete this brief?')) return; briefs=briefs.filter(function(b){return b.id!==activeBrief.id;}); activeBrief=null; save(); renderList(); document.getElementById('workspace').innerHTML='<div class="ws-empty">Create or select a brief to start planning your article</div>'; document.getElementById('wsTitle').textContent='Select a brief'; document.getElementById('wsId').textContent='—'; };
+
+window.exportBrief = function(){
+  if(!activeBrief) return;
+  saveBrief();
+  var json = JSON.stringify(activeBrief,null,2);
+  var box = document.getElementById('exportBox');
+  box.innerHTML = '<div class="export-preview">'+json+'</div>';
+  navigator.clipboard.writeText(json).catch(function(){});
+};
+
+renderList();
+</script>
+</body>
+</html>

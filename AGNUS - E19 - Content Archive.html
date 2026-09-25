@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS — Content Archive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#F4F2EE;--surface:#FFF;--surface-2:#EDEAE4;--border:#DDD9D0;--ink:#18202A;--ink-2:#4A5261;--ink-3:#8E96A2;--navy:#17263C;--navy-2:#0F1A28;--gold:#9A7633;--gold-bg:rgba(154,118,51,.09);--gold-border:rgba(154,118,51,.25);--mono:'IBM Plex Mono',monospace;--sans:Manrope,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+.rail{background:var(--navy-2);height:52px;display:flex;align-items:center;padding:0 24px;gap:16px;position:sticky;top:0;z-index:100}
+.rail-brand{font-weight:800;font-size:14px;color:#fff}
+.rail-sep{width:1px;height:20px;background:rgba(255,255,255,.12)}
+.rail-crumb{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38)}
+.rail-right{margin-left:auto;display:flex;gap:8px}
+.rb{font-family:var(--sans);font-size:12px;font-weight:600;padding:6px 14px;border-radius:8px;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.8);background:transparent;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;transition:background .15s}
+.rb:hover{background:rgba(255,255,255,.08)}
+.toolbar{background:var(--surface);border-bottom:1px solid var(--border);padding:14px 24px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.search-box{flex:1;min-width:220px;display:flex;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--border);border-radius:9px;padding:9px 14px}
+.search-box input{border:none;background:transparent;font-family:var(--sans);font-size:13.5px;color:var(--ink);outline:none;flex:1}
+.search-box input::placeholder{color:var(--ink-3)}
+.select-filter{padding:9px 12px;border:1px solid var(--border);border-radius:9px;font-family:var(--sans);font-size:13px;background:var(--surface);outline:none;color:var(--ink);cursor:pointer}
+.stat-strip{background:var(--surface);border-bottom:1px solid var(--border);padding:10px 24px;display:flex;gap:28px}
+.ss-n{font-size:16px;font-weight:700;color:var(--ink);margin-right:4px}
+.ss-l{font-family:var(--mono);font-size:10px;color:var(--ink-3)}
+.body{max-width:1100px;margin:0 auto;padding:28px 24px 80px}
+.archive-table{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.at-head{display:grid;grid-template-columns:90px 1fr 140px 140px 90px 100px;border-bottom:2px solid var(--border)}
+.at-head-cell{padding:11px 16px;font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.at-row{display:grid;grid-template-columns:90px 1fr 140px 140px 90px 100px;border-bottom:1px solid var(--border);transition:background .1s;cursor:pointer}
+.at-row:last-child{border-bottom:none}
+.at-row:hover{background:var(--surface-2)}
+.at-cell{padding:12px 16px;font-size:13px;color:var(--ink-2);display:flex;align-items:center;overflow:hidden}
+.at-id{font-family:var(--mono);font-size:10px;color:var(--gold);font-weight:600}
+.at-title{font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.at-tag{font-family:var(--mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:5px;background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold-border)}
+.at-date{font-family:var(--mono);font-size:10px;color:var(--ink-3)}
+.at-link{font-family:var(--mono);font-size:10px;color:var(--navy-2);text-decoration:none}
+.at-link:hover{text-decoration:underline}
+.no-results{padding:56px;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+@media(max-width:800px){.at-head{grid-template-columns:80px 1fr 80px 60px}.at-head-cell:nth-child(3),.at-head-cell:nth-child(4){display:none}.at-row{grid-template-columns:80px 1fr 80px 60px}.at-cell:nth-child(3),.at-cell:nth-child(4){display:none}}
+</style>
+</head>
+<body>
+<header class="rail">
+  <span class="rail-brand">AGNUS Editorial</span>
+  <span class="rail-sep"></span>
+  <span class="rail-crumb">E19 · Content Archive</span>
+  <div class="rail-right">
+    <a href="AGNUS - Research.html" class="rb">Research →</a>
+    <a href="AGNUS - Editorial Platform.html" class="rb">← Hub</a>
+  </div>
+</header>
+
+<div class="toolbar">
+  <div class="search-box">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="var(--ink-3)" stroke-width="1.5" stroke-linecap="round"><circle cx="6" cy="6" r="4.5"/><path d="M10 10l2.5 2.5"/></svg>
+    <input type="text" id="searchInput" placeholder="Search by title, AR-ID, author…" oninput="render()"/>
+  </div>
+  <select class="select-filter" id="pillarFilter" onchange="render()"><option value="">All pillars</option></select>
+  <select class="select-filter" id="sortFilter" onchange="render()">
+    <option value="date-desc">Newest first</option>
+    <option value="date-asc">Oldest first</option>
+    <option value="title">A–Z</option>
+    <option value="pillar">By pillar</option>
+  </select>
+</div>
+
+<div class="stat-strip">
+  <div><span class="ss-n" id="ssTotal">—</span><span class="ss-l">articles total</span></div>
+  <div><span class="ss-n" id="ssShown">—</span><span class="ss-l">shown</span></div>
+  <div><span class="ss-n" id="ssPillars">—</span><span class="ss-l">pillars covered</span></div>
+  <div><span class="ss-n" id="ssAuthors">—</span><span class="ss-l">authors</span></div>
+</div>
+
+<div class="body">
+  <div class="archive-table">
+    <div class="at-head">
+      <div class="at-head-cell">ID</div>
+      <div class="at-head-cell">Title</div>
+      <div class="at-head-cell">Pillar</div>
+      <div class="at-head-cell">Author</div>
+      <div class="at-head-cell">Published</div>
+      <div class="at-head-cell">Open</div>
+    </div>
+    <div id="tableBody"></div>
+  </div>
+</div>
+
+<script src="agnus-research-data.js"></script>
+<script>
+var ARTICLES = window.ARTICLES || [];
+var pillars = [...new Set(ARTICLES.map(function(a){ return a.pillar||'Other'; }))].sort();
+
+// Populate pillar filter
+var pf = document.getElementById('pillarFilter');
+pillars.forEach(function(p){ var o=document.createElement('option'); o.value=p; o.textContent=p; pf.appendChild(o); });
+
+function fmtDate(d){ if(!d) return '—'; try{ return new Date(d).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}); }catch(e){ return d; } }
+
+function render(){
+  var q = (document.getElementById('searchInput').value||'').toLowerCase();
+  var pf = document.getElementById('pillarFilter').value;
+  var sort = document.getElementById('sortFilter').value;
+
+  var filtered = ARTICLES.filter(function(a){
+    if(pf && a.pillar!==pf) return false;
+    if(!q) return true;
+    return (a.title||'').toLowerCase().includes(q)||(a.article_id||'').toLowerCase().includes(q)||(a.author||'').toLowerCase().includes(q)||(a.pillar||'').toLowerCase().includes(q);
+  });
+
+  filtered.sort(function(a,b){
+    if(sort==='date-desc') return (b.published||'').localeCompare(a.published||'');
+    if(sort==='date-asc') return (a.published||'').localeCompare(b.published||'');
+    if(sort==='title') return (a.title||'').localeCompare(b.title||'');
+    if(sort==='pillar') return (a.pillar||'').localeCompare(b.pillar||'');
+    return 0;
+  });
+
+  var authors = new Set(ARTICLES.map(function(a){ return a.author; }).filter(Boolean));
+  document.getElementById('ssTotal').textContent = ARTICLES.length;
+  document.getElementById('ssShown').textContent = filtered.length;
+  document.getElementById('ssPillars').textContent = new Set(ARTICLES.map(function(a){return a.pillar;})).size;
+  document.getElementById('ssAuthors').textContent = authors.size;
+
+  var body = document.getElementById('tableBody');
+  if(!filtered.length){ body.innerHTML='<div class="no-results">No articles match — adjust your search or filter</div>'; return; }
+  body.innerHTML = filtered.map(function(a){
+    return '<div class="at-row" onclick="window.open(\''+a.url+'\')">'+
+      '<div class="at-cell"><span class="at-id">'+(a.article_id||'—')+'</span></div>'+
+      '<div class="at-cell"><span class="at-title">'+(a.title||'Untitled')+'</span></div>'+
+      '<div class="at-cell">'+(a.pillar?'<span class="at-tag">'+a.pillar+'</span>':'')+'</div>'+
+      '<div class="at-cell"><span class="at-date">'+(a.author||'—')+'</span></div>'+
+      '<div class="at-cell"><span class="at-date">'+fmtDate(a.published)+'</span></div>'+
+      '<div class="at-cell"><a class="at-link" href="'+a.url+'" target="_blank">Open →</a></div>'+
+    '</div>';
+  }).join('');
+}
+
+render();
+</script>
+</body>
+</html>

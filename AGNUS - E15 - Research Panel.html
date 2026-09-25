@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS — Research Panel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#F4F2EE;--surface:#FFF;--surface-2:#EDEAE4;--border:#DDD9D0;--ink:#18202A;--ink-2:#4A5261;--ink-3:#8E96A2;--navy:#17263C;--navy-2:#0F1A28;--gold:#9A7633;--gold-bg:rgba(154,118,51,.09);--gold-border:rgba(154,118,51,.25);--pass:#0F6E3A;--pass-bg:rgba(15,110,58,.09);--pass-border:rgba(15,110,58,.22);--blue:#1A56A0;--mono:'IBM Plex Mono',monospace;--sans:Manrope,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;height:100vh;display:flex;flex-direction:column;overflow:hidden}
+.rail{background:var(--navy-2);height:52px;display:flex;align-items:center;padding:0 24px;gap:16px;flex-shrink:0}
+.rail-brand{font-weight:800;font-size:14px;color:#fff}
+.rail-sep{width:1px;height:20px;background:rgba(255,255,255,.12)}
+.rail-crumb{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38)}
+.rail-right{margin-left:auto;display:flex;gap:8px;align-items:center}
+.rb{font-family:var(--sans);font-size:12px;font-weight:600;padding:6px 14px;border-radius:8px;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.8);background:transparent;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;transition:background .15s}
+.rb:hover{background:rgba(255,255,255,.08)}
+.btn{font-family:var(--sans);font-size:12px;font-weight:700;padding:7px 14px;border-radius:8px;cursor:pointer;border:none;display:inline-flex;align-items:center;gap:5px}
+.btn-navy{background:var(--navy);color:#fff}.btn-navy:hover{background:var(--navy-2)}
+.btn-ghost{background:var(--surface-2);color:var(--ink-2);border:1px solid var(--border)}.btn-ghost:hover{background:var(--border)}
+.workspace{flex:1;display:grid;grid-template-columns:300px 1fr 300px;overflow:hidden}
+.pane{display:flex;flex-direction:column;border-right:1px solid var(--border);overflow:hidden}
+.pane:last-child{border-right:none}
+.pane-head{padding:14px 16px;border-bottom:1px solid var(--border);background:var(--surface);flex-shrink:0;display:flex;align-items:center;justify-content:space-between}
+.ph-label{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.ph-title{font-size:13px;font-weight:700;color:var(--ink);margin-top:2px}
+.pane-body{flex:1;overflow-y:auto;padding:12px}
+.src-item{padding:10px 12px;border:1px solid var(--border);border-radius:9px;margin-bottom:7px;cursor:pointer;transition:all .12s}
+.src-item:hover{border-color:var(--gold)}
+.src-item.selected{border-color:var(--navy-2);background:#f8f9fc}
+.si-id{font-family:var(--mono);font-size:9px;letter-spacing:.08em;color:var(--gold);margin-bottom:3px}
+.si-title{font-size:12.5px;font-weight:700;color:var(--ink);line-height:1.35;margin-bottom:2px}
+.si-org{font-size:11.5px;color:var(--ink-3)}
+.claim-item{padding:12px 14px;border:1px solid var(--border);border-radius:9px;margin-bottom:8px;background:var(--surface)}
+.ci-text{font-size:13px;color:var(--ink);line-height:1.5;margin-bottom:8px}
+.ci-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.ci-src{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;padding:3px 8px;border-radius:5px;background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold-border)}
+.ci-status{font-family:var(--mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:5px}
+.cs-verified{background:var(--pass-bg);color:var(--pass);border:1px solid var(--pass-border)}
+.cs-pending{background:var(--surface-2);color:var(--ink-3);border:1px solid var(--border)}
+.ci-actions{display:flex;gap:6px;margin-top:8px}
+.ci-btn{font-family:var(--mono);font-size:9px;letter-spacing:.06em;text-transform:uppercase;padding:4px 9px;border-radius:6px;cursor:pointer;border:1px solid var(--border);background:var(--surface-2);color:var(--ink-3);transition:all .12s}
+.ci-btn:hover{border-color:var(--navy-2);color:var(--navy-2)}
+.ci-btn.verify{border-color:var(--pass-border);color:var(--pass);background:var(--pass-bg)}
+.add-claim{border-top:1px solid var(--border);padding:12px;flex-shrink:0;background:var(--surface)}
+.ac-textarea{width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-family:var(--sans);font-size:13px;outline:none;resize:none;background:var(--bg);margin-bottom:8px}
+.ac-textarea:focus{border-color:var(--navy-2)}
+.evidence-item{padding:10px 12px;border:1px solid var(--border);border-radius:9px;margin-bottom:7px;background:var(--surface)}
+.ei-quote{font-size:12.5px;color:var(--ink-2);font-style:italic;line-height:1.55;margin-bottom:6px}
+.ei-ref{font-family:var(--mono);font-size:9.5px;color:var(--gold)}
+.add-evidence{padding:12px;border-top:1px solid var(--border);flex-shrink:0;background:var(--surface)}
+.ae-input{width:100%;padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-family:var(--sans);font-size:13px;outline:none;background:var(--bg);margin-bottom:6px}
+.ae-input:focus{border-color:var(--navy-2)}
+.export-strip{background:linear-gradient(135deg,var(--navy),#1E3560);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.es-count{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.es-btn{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:7px;background:rgba(154,118,51,.2);border:1px solid rgba(154,118,51,.4);color:var(--gold);cursor:pointer}
+</style>
+</head>
+<body>
+<header class="rail">
+  <span class="rail-brand">AGNUS Editorial</span>
+  <span class="rail-sep"></span>
+  <span class="rail-crumb">E15 · Research Panel</span>
+  <div class="rail-right">
+    <a href="AGNUS - E10 - Knowledge Database.html" class="rb">Sources</a>
+    <a href="AGNUS - Editorial Platform.html" class="rb">← Hub</a>
+  </div>
+</header>
+
+<div class="workspace">
+  <!-- Left: Sources -->
+  <div class="pane">
+    <div class="pane-head">
+      <div><div class="ph-label">Sources</div><div class="ph-title">Evidence base</div></div>
+    </div>
+    <div class="pane-body" id="sourcePane">
+      <div style="padding:8px 4px;margin-bottom:8px"><input style="width:100%;padding:8px 11px;border:1px solid var(--border);border-radius:8px;font-family:var(--sans);font-size:12.5px;outline:none;background:var(--bg)" placeholder="Search SRC-ID, title…" id="srcSearch" oninput="renderSources()"/></div>
+      <div id="srcList"></div>
+    </div>
+  </div>
+
+  <!-- Centre: Claims -->
+  <div class="pane" style="border-right:1px solid var(--border)">
+    <div class="pane-head">
+      <div><div class="ph-label">Claims</div><div class="ph-title">Assertions to verify</div></div>
+      <span id="claimCount" style="font-family:var(--mono);font-size:10px;color:var(--ink-3)">0</span>
+    </div>
+    <div class="pane-body" id="claimPane">
+      <div style="padding:40px;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)">Add claims below</div>
+    </div>
+    <div class="add-claim">
+      <textarea class="ac-textarea" id="claimInput" rows="2" placeholder="Enter a claim this article makes…"></textarea>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-navy" style="flex:1" onclick="addClaim()">Add claim</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: Evidence -->
+  <div class="pane">
+    <div class="pane-head">
+      <div><div class="ph-label">Evidence</div><div class="ph-title" id="evidenceTitle">Select a claim</div></div>
+    </div>
+    <div class="pane-body" id="evidencePane">
+      <div style="padding:40px;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)">Select a claim to link evidence</div>
+    </div>
+    <div class="add-evidence" id="evidenceAdd" style="display:none">
+      <input class="ae-input" id="evidenceQuote" placeholder="Quote or paraphrase from source…"/>
+      <input class="ae-input" id="evidenceSrc" placeholder="SRC-ID (e.g. SRC-0001)"/>
+      <button class="btn btn-navy" style="width:100%" onclick="addEvidence()">Link evidence</button>
+    </div>
+    <div class="export-strip">
+      <span class="es-count" id="esCount">0 verified · 0 pending</span>
+      <button class="es-btn" onclick="exportPanel()">Export JSON</button>
+    </div>
+  </div>
+</div>
+
+<script src="agnus-research-data.js"></script>
+<script>
+var SOURCES = window.SOURCES || [];
+var claims = [];
+var selectedClaim = null;
+var selectedSrc = null;
+try{ claims = JSON.parse(localStorage.getItem('agnus_research_panel')||'[]'); }catch(e){}
+
+function save(){ localStorage.setItem('agnus_research_panel', JSON.stringify(claims)); }
+
+function renderSources(){
+  var q = (document.getElementById('srcSearch').value||'').toLowerCase();
+  var filtered = SOURCES.filter(function(s){ return !q||(s.source_id+' '+s.title+' '+(s.issuing_organization||'')).toLowerCase().includes(q); });
+  document.getElementById('srcList').innerHTML = filtered.slice(0,40).map(function(s){
+    return '<div class="src-item'+(selectedSrc===s.source_id?' selected':'')+'" onclick="selectSrc(\''+s.source_id+'\')">'+
+      '<div class="si-id">'+s.source_id+'</div>'+
+      '<div class="si-title">'+s.title+'</div>'+
+      '<div class="si-org">'+(s.issuing_organization||'')+'</div>'+
+    '</div>';
+  }).join('');
+}
+
+window.selectSrc = function(id){ selectedSrc=id; renderSources(); };
+
+window.addClaim = function(){
+  var t = document.getElementById('claimInput').value.trim();
+  if(!t) return;
+  claims.push({id:'CLM-'+Date.now(),text:t,status:'pending',evidence:[]});
+  document.getElementById('claimInput').value='';
+  save(); renderClaims();
+};
+
+function renderClaims(){
+  var pane = document.getElementById('claimPane');
+  document.getElementById('claimCount').textContent = claims.length;
+  var v = claims.filter(function(c){ return c.status==='verified'; }).length;
+  document.getElementById('esCount').textContent = v+' verified · '+(claims.length-v)+' pending';
+  if(!claims.length){ pane.innerHTML='<div style="padding:40px;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)">Add claims below</div>'; return; }
+  pane.innerHTML = claims.map(function(c){
+    return '<div class="claim-item">'+
+      '<div class="ci-text">'+c.text+'</div>'+
+      '<div class="ci-meta">'+
+        (c.evidence.length?c.evidence.map(function(e){ return '<span class="ci-src">'+e.src+'</span>'; }).join(''):'<span style="font-family:var(--mono);font-size:10px;color:var(--ink-3)">No evidence linked</span>')+
+        '<span class="ci-status '+(c.status==='verified'?'cs-verified':'cs-pending')+'">'+c.status+'</span>'+
+      '</div>'+
+      '<div class="ci-actions">'+
+        '<button class="ci-btn" onclick="openEvidence(\''+c.id+'\')">Link evidence</button>'+
+        (c.evidence.length?'<button class="ci-btn verify" onclick="verifyClaim(\''+c.id+'\')">Mark verified</button>':'')+
+        '<button class="ci-btn" style="margin-left:auto" onclick="removeClaim(\''+c.id+'\')">Remove</button>'+
+      '</div>'+
+    '</div>';
+  }).join('');
+}
+
+window.openEvidence = function(id){
+  selectedClaim = claims.find(function(c){ return c.id===id; });
+  document.getElementById('evidenceTitle').textContent = selectedClaim.text.slice(0,40)+'…';
+  document.getElementById('evidenceAdd').style.display='block';
+  document.getElementById('evidencePane').innerHTML = selectedClaim.evidence.map(function(e){
+    return '<div class="evidence-item"><div class="ei-quote">"'+e.quote+'"</div><div class="ei-ref">'+e.src+'</div></div>';
+  }).join('') || '<div style="padding:20px;text-align:center;font-family:var(--mono);font-size:10px;color:var(--ink-3);letter-spacing:.08em;text-transform:uppercase">No evidence yet</div>';
+  if(selectedSrc) document.getElementById('evidenceSrc').value = selectedSrc;
+};
+
+window.addEvidence = function(){
+  if(!selectedClaim) return;
+  var q = document.getElementById('evidenceQuote').value.trim();
+  var s = document.getElementById('evidenceSrc').value.trim();
+  if(!q||!s) return;
+  selectedClaim.evidence.push({quote:q,src:s});
+  document.getElementById('evidenceQuote').value='';
+  save(); openEvidence(selectedClaim.id); renderClaims();
+};
+
+window.verifyClaim = function(id){ var c=claims.find(function(x){return x.id===id;}); if(c){c.status='verified';save();renderClaims();} };
+window.removeClaim = function(id){ claims=claims.filter(function(c){return c.id!==id;}); save(); renderClaims(); };
+
+window.exportPanel = function(){
+  var json = JSON.stringify({claims:claims,exported:new Date().toISOString()},null,2);
+  navigator.clipboard.writeText(json).catch(function(){});
+  var btn = document.querySelector('[onclick="exportPanel()"]');
+  if(btn){ var t=btn.textContent; btn.textContent='Copied ✓'; setTimeout(function(){ btn.textContent=t; },1500); }
+};
+
+renderSources(); renderClaims();
+</script>
+</body>
+</html>

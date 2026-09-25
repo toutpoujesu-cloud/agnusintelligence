@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS — Source Scoring</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#F4F2EE;--surface:#FFF;--surface-2:#EDEAE4;--border:#DDD9D0;--ink:#18202A;--ink-2:#4A5261;--ink-3:#8E96A2;--navy:#17263C;--navy-2:#0F1A28;--gold:#9A7633;--gold-bg:rgba(154,118,51,.09);--gold-border:rgba(154,118,51,.25);--pass:#0F6E3A;--pass-bg:rgba(15,110,58,.09);--mono:'IBM Plex Mono',monospace;--sans:Manrope,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+.rail{background:var(--navy-2);height:52px;display:flex;align-items:center;padding:0 24px;gap:16px;position:sticky;top:0;z-index:100}
+.rail-brand{font-weight:800;font-size:14px;color:#fff}
+.rail-sep{width:1px;height:20px;background:rgba(255,255,255,.12)}
+.rail-crumb{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38)}
+.rail-right{margin-left:auto;display:flex;gap:8px}
+.rb{font-family:var(--sans);font-size:12px;font-weight:600;padding:6px 14px;border-radius:8px;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.8);background:transparent;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;transition:background .15s}
+.rb:hover{background:rgba(255,255,255,.08)}
+.wrap{max-width:1100px;margin:0 auto;padding:32px 24px 80px}
+.hero-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:36px}
+@media(max-width:720px){.hero-row{grid-template-columns:1fr 1fr}}
+.hero-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px 22px}
+.hc-n{font-size:32px;font-weight:800;letter-spacing:-.04em;color:var(--ink);margin-bottom:4px}
+.hc-n.gold{color:var(--gold)}.hc-n.pass{color:var(--pass)}.hc-n.blue{color:#1A56A0}
+.hc-l{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.section-head{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin:0 0 16px;display:flex;align-items:center;gap:12px}
+.section-head::after{content:'';flex:1;height:1px;background:var(--border)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:40px}
+@media(max-width:720px){.grid{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px 24px}
+.card-title{font-size:14.5px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.card-sub{font-size:12px;color:var(--ink-3);margin-bottom:18px}
+.score-table{width:100%;border-collapse:collapse}
+.score-table th{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);padding:7px 10px;text-align:left;border-bottom:1px solid var(--border)}
+.score-table td{padding:10px 10px;border-bottom:1px solid var(--border);font-size:13px;color:var(--ink-2);vertical-align:middle}
+.score-table tr:last-child td{border-bottom:none}
+.score-table tr:hover td{background:var(--surface-2)}
+.score-table td:first-child{font-family:var(--mono);font-size:10px;color:var(--gold);font-weight:600}
+.score-table td:nth-child(2){font-weight:600;color:var(--ink);max-width:200px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.count-bar-wrap{display:flex;align-items:center;gap:10px}
+.count-bar{height:6px;border-radius:99px;background:var(--surface-2);flex:1;overflow:hidden}
+.count-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--gold),#C49A2C)}
+.count-n{font-family:var(--mono);font-size:10px;color:var(--ink-3);min-width:16px}
+.orgs-list{display:grid;gap:10px}
+.org-row{display:flex;align-items:center;gap:12px}
+.org-name{flex:1;font-size:13px;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.org-bar{flex:2;height:7px;background:var(--surface-2);border-radius:99px;overflow:hidden}
+.org-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--navy),#1E3560)}
+.org-n{font-family:var(--mono);font-size:10px;color:var(--ink-3);min-width:20px;text-align:right}
+.type-grid{display:grid;gap:8px}
+.type-row{display:flex;align-items:center;gap:12px}
+.type-label{font-size:12.5px;color:var(--ink-2);min-width:160px}
+.type-bar{flex:1;height:6px;background:var(--surface-2);border-radius:99px;overflow:hidden}
+.type-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--pass),#1A7E4A)}
+.type-n{font-family:var(--mono);font-size:10px;color:var(--ink-3);min-width:20px;text-align:right}
+</style>
+</head>
+<body>
+<header class="rail">
+  <span class="rail-brand">AGNUS Editorial</span>
+  <span class="rail-sep"></span>
+  <span class="rail-crumb">E20 · Source Scoring</span>
+  <div class="rail-right">
+    <a href="AGNUS - E10 - Knowledge Database.html" class="rb">Source DB</a>
+    <a href="AGNUS - Editorial Platform.html" class="rb">← Hub</a>
+  </div>
+</header>
+
+<div class="wrap" id="main">
+  <div style="padding:60px;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)">Loading source analytics…</div>
+</div>
+
+<script src="agnus-research-data.js"></script>
+<script>
+(function(){
+  var SOURCES = window.SOURCES || [];
+  var ARTICLES = window.ARTICLES || [];
+
+  // Citation counts per source
+  var citeCounts = {};
+  ARTICLES.forEach(function(a){ var id=a.source_id; if(id){ citeCounts[id]=(citeCounts[id]||0)+1; } });
+
+  // Top cited
+  var ranked = SOURCES.map(function(s){ return {s:s,count:citeCounts[s.source_id]||0}; }).sort(function(a,b){ return b.count-a.count; });
+  var maxCount = ranked[0]?ranked[0].count:1;
+
+  // By org
+  var orgCounts = {};
+  SOURCES.forEach(function(s){ var o=s.issuing_organization||'Unknown'; orgCounts[o]=(orgCounts[o]||0)+1; });
+  var orgRanked = Object.entries(orgCounts).sort(function(a,b){ return b[1]-a[1]; }).slice(0,10);
+  var maxOrg = orgRanked[0]?orgRanked[0][1]:1;
+
+  // By type
+  var typeCounts = {};
+  SOURCES.forEach(function(s){ var t=s.document_type||'Unknown'; typeCounts[t]=(typeCounts[t]||0)+1; });
+  var typeRanked = Object.entries(typeCounts).sort(function(a,b){ return b[1]-a[1]; });
+  var maxType = typeRanked[0]?typeRanked[0][1]:1;
+
+  // By jurisdiction
+  var jurCounts = {};
+  SOURCES.forEach(function(s){ var j=s.jurisdiction||'Unknown'; jurCounts[j]=(jurCounts[j]||0)+1; });
+  var jurRanked = Object.entries(jurCounts).sort(function(a,b){ return b[1]-a[1]; }).slice(0,8);
+
+  var cited = Object.keys(citeCounts).length;
+  var uncited = SOURCES.length - cited;
+
+  document.getElementById('main').innerHTML =
+    '<div class="hero-row">'+
+      '<div class="hero-card"><div class="hc-n">'+SOURCES.length+'</div><div class="hc-l">Total sources</div></div>'+
+      '<div class="hero-card"><div class="hc-n gold">'+cited+'</div><div class="hc-l">Linked to articles</div></div>'+
+      '<div class="hero-card"><div class="hc-n pass">'+Math.round(cited/Math.max(SOURCES.length,1)*100)+'%</div><div class="hc-l">Source utilisation</div></div>'+
+      '<div class="hero-card"><div class="hc-n blue">'+uncited+'</div><div class="hc-l">Uncited sources</div></div>'+
+    '</div>'+
+
+    '<div class="section-head">Most cited sources</div>'+
+    '<div class="card" style="margin-bottom:32px">'+
+      '<table class="score-table"><thead><tr><th>SRC-ID</th><th>Title</th><th>Organisation</th><th>Jurisdiction</th><th style="min-width:140px">Citations</th></tr></thead><tbody>'+
+      ranked.slice(0,15).map(function(r){
+        return '<tr><td>'+r.s.source_id+'</td><td>'+r.s.title.slice(0,50)+(r.s.title.length>50?'…':'')+'</td><td>'+(r.s.issuing_organization||'—').slice(0,30)+'</td><td>'+(r.s.jurisdiction||'—')+'</td>'+
+          '<td><div class="count-bar-wrap"><div class="count-bar"><div class="count-fill" style="width:'+Math.round(r.count/maxCount*100)+'%"></div></div><span class="count-n">'+r.count+'</span></div></td></tr>';
+      }).join('')+
+      '</tbody></table>'+
+    '</div>'+
+
+    '<div class="grid">'+
+      '<div class="card"><div class="card-title">Sources by issuing organisation</div><div class="card-sub">Which bodies contribute most to the AGNUS knowledge base</div>'+
+        '<div class="orgs-list">'+orgRanked.map(function(r){ return '<div class="org-row"><div class="org-name">'+r[0]+'</div><div class="org-bar"><div class="org-fill" style="width:'+Math.round(r[1]/maxOrg*100)+'%"></div></div><span class="org-n">'+r[1]+'</span></div>'; }).join('')+'</div>'+
+      '</div>'+
+      '<div>'+
+        '<div class="card" style="margin-bottom:18px"><div class="card-title">Document types</div><div class="card-sub">Breakdown of source document categories</div>'+
+          '<div class="type-grid">'+typeRanked.slice(0,8).map(function(r){ return '<div class="type-row"><div class="type-label">'+r[0]+'</div><div class="type-bar"><div class="type-fill" style="width:'+Math.round(r[1]/maxType*100)+'%"></div></div><span class="type-n">'+r[1]+'</span></div>'; }).join('')+'</div>'+
+        '</div>'+
+        '<div class="card"><div class="card-title">Sources by jurisdiction</div><div class="card-sub">Geographic distribution</div>'+
+          '<div class="type-grid">'+jurRanked.map(function(r){ return '<div class="type-row"><div class="type-label">'+r[0]+'</div><div class="type-bar"><div class="type-fill" style="width:'+Math.round(r[1]/jurRanked[0][1]*100)+'%;background:linear-gradient(90deg,var(--gold),#C49A2C)"></div></div><span class="type-n">'+r[1]+'</span></div>'; }).join('')+'</div>'+
+        '</div>'+
+      '</div>'+
+    '</div>';
+})();
+</script>
+</body>
+</html>

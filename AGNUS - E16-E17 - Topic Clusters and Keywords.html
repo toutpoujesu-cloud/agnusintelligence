@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AGNUS — Topic Clusters & Keyword Discovery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#F4F2EE;--surface:#FFF;--surface-2:#EDEAE4;--border:#DDD9D0;--ink:#18202A;--ink-2:#4A5261;--ink-3:#8E96A2;--navy:#17263C;--navy-2:#0F1A28;--gold:#9A7633;--gold-bg:rgba(154,118,51,.09);--gold-border:rgba(154,118,51,.25);--pass:#0F6E3A;--pass-bg:rgba(15,110,58,.09);--warn-bg:rgba(176,67,32,.07);--warn:#B04320;--mono:'IBM Plex Mono',monospace;--sans:Manrope,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+.rail{background:var(--navy-2);height:52px;display:flex;align-items:center;padding:0 24px;gap:16px;position:sticky;top:0;z-index:100}
+.rail-brand{font-weight:800;font-size:14px;color:#fff}
+.rail-sep{width:1px;height:20px;background:rgba(255,255,255,.12)}
+.rail-crumb{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.38)}
+.rail-right{margin-left:auto;display:flex;gap:8px}
+.rb{font-family:var(--sans);font-size:12px;font-weight:600;padding:6px 14px;border-radius:8px;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.8);background:transparent;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;transition:background .15s}
+.rb:hover{background:rgba(255,255,255,.08)}
+.tab-bar{background:var(--surface);border-bottom:1px solid var(--border);padding:0 24px;display:flex;gap:0}
+.tab{font-size:13px;font-weight:600;padding:14px 20px;cursor:pointer;border-bottom:2px solid transparent;color:var(--ink-3);transition:all .12s}
+.tab.active{color:var(--navy);border-bottom-color:var(--navy)}
+.view{display:none}
+.view.active{display:block}
+.wrap{max-width:1100px;margin:0 auto;padding:32px 24px 80px}
+.section-head{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin:0 0 16px;display:flex;align-items:center;gap:12px}
+.section-head::after{content:'';flex:1;height:1px;background:var(--border)}
+.cluster-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-bottom:40px}
+.cluster-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:20px 22px;cursor:pointer;transition:box-shadow .12s}
+.cluster-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.07)}
+.cc-pillar{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.cc-count{font-size:28px;font-weight:800;letter-spacing:-.03em;color:var(--ink);margin-bottom:2px}
+.cc-label{font-size:13.5px;font-weight:600;color:var(--ink-2);margin-bottom:10px}
+.cc-bar{height:5px;background:var(--surface-2);border-radius:99px;overflow:hidden}
+.cc-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--gold),#C49A2C)}
+.cc-subtopics{margin-top:12px;display:flex;flex-wrap:wrap;gap:5px}
+.cc-st{font-family:var(--mono);font-size:8.5px;letter-spacing:.05em;text-transform:uppercase;padding:2px 7px;border-radius:5px;background:var(--surface-2);color:var(--ink-3);border:1px solid var(--border)}
+.gap-grid{display:grid;gap:12px;margin-bottom:40px}
+.gap-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px 20px;display:flex;align-items:center;gap:16px}
+.gap-card.miss{border-color:rgba(176,67,32,.25);background:var(--warn-bg)}
+.gap-card.thin{border-color:rgba(154,118,51,.25);background:var(--gold-bg)}
+.gap-icon{width:36px;height:36px;border-radius:9px;display:grid;place-items:center;font-size:18px;flex-shrink:0}
+.gap-icon.miss{background:rgba(176,67,32,.12)}
+.gap-icon.thin{background:rgba(154,118,51,.12)}
+.gap-info{flex:1}
+.gap-topic{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:3px}
+.gap-desc{font-size:12.5px;color:var(--ink-3);line-height:1.5}
+.gap-count{font-family:var(--mono);font-size:10px;font-weight:600;padding:4px 10px;border-radius:7px}
+.gc-miss{background:rgba(176,67,32,.12);color:var(--warn)}
+.gc-thin{background:rgba(154,118,51,.12);color:var(--gold)}
+</style>
+</head>
+<body>
+<header class="rail">
+  <span class="rail-brand">AGNUS Editorial</span>
+  <span class="rail-sep"></span>
+  <span class="rail-crumb">E16/E17 · Topic Clusters & Keyword Discovery</span>
+  <div class="rail-right">
+    <a href="AGNUS - E19 - Content Archive.html" class="rb">Archive</a>
+    <a href="AGNUS - Editorial Platform.html" class="rb">← Hub</a>
+  </div>
+</header>
+
+<div class="tab-bar">
+  <div class="tab active" onclick="switchTab('clusters')">Topic Clusters (E16)</div>
+  <div class="tab" onclick="switchTab('gaps')">Keyword / Gap Discovery (E17)</div>
+</div>
+
+<div class="view active" id="view-clusters">
+  <div class="wrap" id="clustersWrap">Loading…</div>
+</div>
+<div class="view" id="view-gaps">
+  <div class="wrap" id="gapsWrap">Loading…</div>
+</div>
+
+<script src="agnus-research-data.js"></script>
+<script>
+function switchTab(id){
+  document.querySelectorAll('.tab').forEach(function(t,i){ t.classList.toggle('active',i===(id==='clusters'?0:1)); });
+  document.querySelectorAll('.view').forEach(function(v,i){ v.classList.toggle('active',i===(id==='clusters'?0:1)); });
+}
+
+(function(){
+  var ARTICLES = window.ARTICLES || [];
+  // Cluster by pillar
+  var clusters = {};
+  ARTICLES.forEach(function(a){
+    var p = a.pillar||'Other';
+    if(!clusters[p]) clusters[p]={count:0,subtopics:new Set()};
+    clusters[p].count++;
+    (a.subtopics||[]).forEach(function(st){ clusters[p].subtopics.add(st); });
+  });
+  var maxCount = Math.max.apply(null, Object.values(clusters).map(function(c){return c.count;}));
+
+  document.getElementById('clustersWrap').innerHTML =
+    '<div class="section-head">Content clusters by pillar</div>'+
+    '<div class="cluster-grid">'+
+    Object.entries(clusters).sort(function(a,b){return b[1].count-a[1].count;}).map(function(e){
+      var sts = [...e[1].subtopics].slice(0,6);
+      return '<div class="cluster-card">'+
+        '<div class="cc-pillar">'+e[0]+'</div>'+
+        '<div class="cc-count">'+e[1].count+'</div>'+
+        '<div class="cc-label">article'+(e[1].count!==1?'s':'')+' published</div>'+
+        '<div class="cc-bar"><div class="cc-fill" style="width:'+Math.round(e[1].count/maxCount*100)+'%"></div></div>'+
+        (sts.length?'<div class="cc-subtopics">'+sts.map(function(s){return '<span class="cc-st">'+s+'</span>';}).join('')+'</div>':'')+
+      '</div>';
+    }).join('')+
+    '</div>';
+
+  // Gap discovery: topics we should cover but don't
+  var COVERAGE_TARGETS = [
+    {topic:'AI Liability Directive',desc:'EU draft directive on civil liability for AI — not yet covered',type:'miss'},
+    {topic:'AI in Financial Services (MiCA)',desc:'Markets in Crypto Assets — AI governance implications — thin',type:'thin'},
+    {topic:'Singapore AI Governance Framework',desc:'Voluntary framework from IMDA — no dedicated article yet',type:'miss'},
+    {topic:'Canada Bill C-27 (AIDA)',desc:'Artificial Intelligence and Data Act — proposed, no article',type:'miss'},
+    {topic:'AI Act Delegated Acts timeline',desc:'Commission delegated acts for Annexes — only one article',type:'thin'},
+    {topic:'ISO/IEC 23894 (AI risk)',desc:'ISO risk management for AI — not covered, only 42001',type:'miss'},
+    {topic:'US Executive Order on AI (2024)',desc:'Biden EO on Safe AI — referenced but no dedicated article',type:'thin'},
+    {topic:'AI in Healthcare (FDA)',desc:'US FDA AI/ML Action Plan — not covered',type:'miss'},
+    {topic:'AI Procurement policies',desc:'Government AI procurement — thin coverage across all jurisdictions',type:'thin'},
+    {topic:'AI and Employment law',desc:'AI in hiring/HR — legal obligations across EU and UK — not covered',type:'miss'},
+  ];
+
+  document.getElementById('gapsWrap').innerHTML =
+    '<div class="section-head">Coverage gaps & thin topics</div>'+
+    '<p style="font-size:13.5px;color:var(--ink-3);margin-bottom:24px;line-height:1.6">Topics identified as missing or under-served in the current AGNUS Research library. These are candidates for commissioning new articles.</p>'+
+    '<div class="gap-grid">'+
+    COVERAGE_TARGETS.map(function(g){
+      var isMiss = g.type==='miss';
+      return '<div class="gap-card '+g.type+'">'+
+        '<div class="gap-icon '+g.type+'">'+(isMiss?'○':'◔')+'</div>'+
+        '<div class="gap-info"><div class="gap-topic">'+g.topic+'</div><div class="gap-desc">'+g.desc+'</div></div>'+
+        '<span class="gap-count gc-'+g.type+'">'+(isMiss?'Missing':'Thin')+'</span>'+
+      '</div>';
+    }).join('')+
+    '</div>';
+})();
+</script>
+</body>
+</html>
