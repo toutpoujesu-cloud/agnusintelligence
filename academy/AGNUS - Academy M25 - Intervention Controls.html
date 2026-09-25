@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <!--
   This application and all the work related to Agnus and for Agnus is sanctified and covered
   by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
@@ -165,5 +165,6 @@ renderDots(0);
 function pickPractice(el){document.querySelectorAll('#practiceOpts .opt').forEach(o=>{o.onclick=null;});const c=el.dataset.correct==='true';el.classList.add(c?'correct':'wrong');const fb=document.getElementById('practiceFeedback');fb.className='feedback '+(c?'pass':'fail');fb.textContent=c?'Correct. The problem is active and time-sensitive — every email the agent sends from this point is incorrect. An interrupt signal halts it immediately. A pause gate only triggers at a pre-set checkpoint, which may be far away. An override works if the agent accepts mid-task updates, but the priority here is to stop the damage first.':'Not quite. A pause gate relies on a pre-set checkpoint that may be many emails away. An override instruction is the right long-term answer if the agent supports it — but it assumes the agent keeps running correctly with the new parameter while you verify. When the damage is live and ongoing, stopping it first is the right call.';document.getElementById('practiceNext').disabled=false;}
 function pickPass(el){document.querySelectorAll('#passOpts .opt').forEach(o=>{o.onclick=null;});const c=el.dataset.correct==='true';el.classList.add(c?'correct':'wrong');const fb=document.getElementById('passFeedback');fb.className='feedback '+(c?'pass':'fail');fb.textContent=c?'Correct — M25 complete. An override instruction lets the agent continue from its current position using new parameters. The critical condition: the agent must have been designed to accept mid-task instruction updates. If it wasn\'t, an interrupt + re-run is the only option. This is why intervention control design matters before the agent runs, not after.':'Not quite. You don\'t need to restart — the first 20 reviews are correct and don\'t need redoing. An interrupt + full re-run wastes completed work. A pause gate only triggers at a pre-set point. When you need the agent to continue with updated parameters and not restart, the override instruction is the right control — if the agent supports it.';if(c){setTimeout(()=>{document.getElementById('passScreen').style.display='block';renderDots(4);},600);}}
 </script>
+<script src="agnus-academy-curriculum.js"></script>
 </body>
 </html>

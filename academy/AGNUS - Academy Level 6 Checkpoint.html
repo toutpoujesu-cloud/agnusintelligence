@@ -229,6 +229,7 @@ function showResult(){
   document.getElementById('resultTitle').textContent = passed ? 'Level 6 Checkpoint passed' : 'Not quite there yet';
   document.getElementById('resultScore').textContent = score + ' of ' + TOTAL + ' correct (' + pct + '%)';
   if (passed) {
+    if (window.AcademyCurriculum) AcademyCurriculum.complete();
     document.getElementById('resultBtn').textContent = 'Unlock Level 7 → Govern';
   } else {
     document.getElementById('resultBtn').textContent = 'Review modules, then retry';
@@ -243,5 +244,6 @@ function showResult(){
   }
 }
 </script>
+<script src="agnus-academy-curriculum.js"></script>
 </body>
 </html>

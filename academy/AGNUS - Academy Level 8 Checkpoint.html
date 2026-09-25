@@ -276,6 +276,7 @@ function showResult(){
   document.getElementById('resultScore').textContent = score + ' of ' + TOTAL + ' correct (' + pct + '%)';
   const btn = document.getElementById('resultBtn');
   if (passed) {
+    if (window.AcademyCurriculum) AcademyCurriculum.complete();
     btn.textContent = 'Complete Level 8 →';
     btn.onclick = () => location.href = DONE;
   } else {
@@ -290,5 +291,6 @@ function showResult(){
   }
 }
 </script>
+<script src="agnus-academy-curriculum.js"></script>
 </body>
 </html>

@@ -485,12 +485,12 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; colo
 
         <!-- current mission -->
         <div class="mission">
-          <div class="mk"><span class="pulse"></span> Start here</div>
-          <h2>What is an AI Agent?</h2>
-          <p>The foundation of everything. Understand what AI agents actually are, how they work, and why they're different from a chatbot.</p>
-          <div class="mini-prog"><div class="pbar2"><i style="width:0%"></i></div><span>Level 1 · M01 · 7 modules</span></div>
+          <div class="mk" id="mission-label"><span class="pulse"></span> Start here</div>
+          <h2 id="mission-title">What is an AI Agent?</h2>
+          <p id="mission-desc">The foundation of everything. Understand what AI agents actually are, how they work, and why they're different from a chatbot.</p>
+          <div class="mini-prog"><div class="pbar2"><i style="width:0%"></i></div><span id="mission-prog-label">Level 1 · M01 · 7 modules</span></div>
           <div class="mfoot">
-            <button class="btn btn-gold btn-lg" onclick="location.href='AGNUS - Academy M01 - What is an AI Agent.html'">Begin Level 1 <span class="arr">→</span></button>
+            <button id="mission-btn" class="btn btn-gold btn-lg" onclick="location.href='AGNUS - Academy M01 - What is an AI Agent.html'">Begin Level 1 <span class="arr">→</span></button>
             <span class="est">◷ About 15 minutes</span>
           </div>
         </div>
@@ -637,15 +637,15 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; colo
             <div class="dk">Your destination</div>
             <h3>AI Governance Professional</h3>
             <p>Understand, operate, govern, and certify AI agents at work. 7 levels + 5 industry simulations + live governance environment.</p>
-            <button class="btn btn-dark mt-m" onclick="openLevel(1)">Start Level 1 <span class="arr">→</span></button>
+            <button id="dest-btn" class="btn btn-dark mt-m" onclick="openLevel(1)">Start Level 1 <span class="arr">→</span></button>
           </div>
           <div class="ring">
             <svg width="108" height="108" viewBox="0 0 108 108">
               <circle cx="54" cy="54" r="48" fill="none" stroke="#E7E4DA" stroke-width="8"/>
-              <circle cx="54" cy="54" r="48" fill="none" stroke="url(#g)" stroke-width="8" stroke-linecap="round" stroke-dasharray="301.6" stroke-dashoffset="301"/>
+              <circle id="overall-ring-fill" cx="54" cy="54" r="48" fill="none" stroke="url(#g)" stroke-width="8" stroke-linecap="round" stroke-dasharray="301.6" stroke-dashoffset="301"/>
               <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#97763A"/><stop offset="1" stop-color="#E4CD99"/></linearGradient></defs>
             </svg>
-            <div class="pct">0<small>%</small></div>
+            <div class="pct" id="overall-pct">0<small>%</small></div>
           </div>
         </div>
       </div>
@@ -798,6 +798,7 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; colo
 <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="#1A1A17"/><text x="50" y="44" font-family="Manrope,sans-serif" font-size="13" font-weight="800" letter-spacing="3" fill="#DCC089" text-anchor="middle">AGNUS</text><text x="50" y="62" font-family="monospace" font-size="6.5" letter-spacing="2" fill="#FAF9F5" text-anchor="middle">ACADEMY</text></svg>
 </template>
 
+<script src="agnus-academy-curriculum.js"></script>
 <script>
 /* ---------- screen router ---------- */
 function show(id){
@@ -945,13 +946,18 @@ function openLevel(n){
   list.style.cssText = 'padding:8px 0';
   lvl.modules.forEach(function(m,i){
     var row = document.createElement('div');
-    row.style.cssText = 'display:flex;align-items:center;gap:14px;padding:14px 32px;border-bottom:1px solid var(--line);cursor:pointer;transition:background .12s';
-    row.addEventListener('mouseenter',function(){row.style.background='var(--paper-warm)';});
-    row.addEventListener('mouseleave',function(){row.style.background='transparent';});
+    var mst = window.AcademyCurriculum ? AcademyCurriculum.status(m.file) : 'available';
+    var icon = mst === 'done' ? '✓' : mst === 'locked' ? '🔒' : '→';
+    var iconClr = mst === 'done' ? 'var(--gold-deep)' : mst === 'locked' ? 'var(--ink-mute)' : 'var(--gold-deep)';
+    row.style.cssText = 'display:flex;align-items:center;gap:14px;padding:14px 32px;border-bottom:1px solid var(--line);'+(mst==='locked'?'opacity:.45':'cursor:pointer;transition:background .12s');
+    if(mst !== 'locked'){
+      row.addEventListener('mouseenter',function(){row.style.background='var(--paper-warm)';});
+      row.addEventListener('mouseleave',function(){row.style.background='transparent';});
+      row.onclick = function(){location.href=m.file;};
+    }
     row.innerHTML = '<div style="font-family:var(--font-mono);font-size:10px;color:var(--ink-mute);min-width:36px">'+m.num+'</div>'
       +'<div style="flex:1"><div style="font-size:14px;font-weight:600;color:var(--ink)">'+m.title+'</div></div>'
-      +'<div style="color:var(--gold-deep);font-size:14px">→</div>';
-    row.onclick = function(){location.href=m.file;};
+      +'<div style="color:'+iconClr+';font-size:14px">'+icon+'</div>';
     list.appendChild(row);
   });
   if(lvl.checkpoint){
@@ -1120,6 +1126,84 @@ function comparePrompt(){
   out.classList.add('show');
   out.innerHTML = '<div class="ok"><span class="d"></span> Expert version</div><span style="color:#EFE9D8;font-family:var(--font-mono);font-size:12.5px;">"Act as a senior copywriter for a premium running brand. Write a 55–60 word product blurb for the Glide X, a lightweight performance running shoe. Audience: design-conscious runners. Tone: confident, warm, no clichés. Structure: hook → 2 benefits → CTA."</span><br><br>Notice it pins down <b>word count, audience, tone, and structure</b> — yours is close. That precision is the whole skill.';
 }
+
+/* ── curriculum dashboard init ── */
+function initDashboard(){
+  if(!window.AcademyCurriculum) return;
+  var nu = AcademyCurriculum.nextUp();
+  var ov = AcademyCurriculum.overall();
+
+  // Mission block
+  if(nu){
+    var lp = AcademyCurriculum.levelProgress(nu.level);
+    var mLabel = document.getElementById('mission-label');
+    if(mLabel) mLabel.innerHTML = '<span class="pulse"></span> ' + (ov.done > 0 ? 'Continue here' : 'Start here');
+    var mTitle = document.getElementById('mission-title');
+    if(mTitle) mTitle.textContent = nu.title;
+    var mProg = document.getElementById('mission-prog-label');
+    if(mProg) mProg.textContent = nu.level + ' · ' + nu.id + ' · ' + lp.done + '/' + lp.total + ' done';
+    var pbar = document.querySelector('.mission .pbar2 i');
+    if(pbar) pbar.style.width = lp.pct + '%';
+    var mBtn = document.getElementById('mission-btn');
+    if(mBtn){
+      mBtn.innerHTML = (lp.done === 0 ? 'Begin ' + nu.level : 'Continue') + ' <span class="arr">→</span>';
+      mBtn.onclick = function(){ location.href = nu.file; };
+    }
+  }
+
+  // Ring + destination button
+  var ringFill = document.getElementById('overall-ring-fill');
+  var pctEl = document.getElementById('overall-pct');
+  if(ringFill && pctEl){
+    var circ = 301.6;
+    ringFill.setAttribute('stroke-dashoffset', (circ - ov.pct / 100 * circ).toFixed(1));
+    pctEl.innerHTML = ov.pct + '<small>%</small>';
+  }
+  var destBtn = document.getElementById('dest-btn');
+  if(destBtn && nu){
+    destBtn.innerHTML = (ov.done > 0 ? 'Continue' : 'Start Level 1') + ' <span class="arr">→</span>';
+    destBtn.onclick = function(){ location.href = nu.file; };
+  }
+
+  // District cards
+  document.querySelectorAll('.district').forEach(function(d){
+    var nodeEl = d.querySelector('.node');
+    if(!nodeEl) return;
+    var lid = nodeEl.textContent.trim();
+    if(!/^L\d/.test(lid)) return;
+    var lp = AcademyCurriculum.levelProgress(lid);
+    var firstItem = AcademyCurriculum.ITEMS.filter(function(x){ return x.level === lid; })[0];
+    var unlocked = firstItem ? AcademyCurriculum.isUnlocked(firstItem) : false;
+    var stEl = d.querySelector('.st');
+    d.classList.remove('now','done','lock');
+    if(lp.done === lp.total && lp.total > 0){
+      d.classList.add('done');
+      if(stEl) stEl.textContent = '✓ Level complete';
+    } else if(lp.done > 0){
+      d.classList.add('now');
+      if(stEl) stEl.textContent = '● In progress · ' + lp.done + '/' + lp.total + ' done';
+    } else if(unlocked){
+      d.classList.add('now');
+      if(stEl) stEl.textContent = '● Start here';
+    } else {
+      d.classList.add('lock');
+      var prevNum = parseInt(lid.slice(1)) - 1;
+      if(stEl) stEl.textContent = '◌ Unlocks after L' + prevNum;
+    }
+    // Update lesson dots
+    var dots = d.querySelectorAll('.lessons i');
+    var items = AcademyCurriculum.ITEMS.filter(function(x){ return x.level === lid && x.type !== 'complete'; });
+    dots.forEach(function(dot, i){
+      dot.className = '';
+      if(i < items.length){
+        var s = AcademyCurriculum.status(items[i].file);
+        if(s === 'done') dot.className = 'done';
+        else if(s === 'available') dot.className = 'now';
+      }
+    });
+  });
+}
+if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initDashboard); else initDashboard();
 </script>
 </body>
 </html>
