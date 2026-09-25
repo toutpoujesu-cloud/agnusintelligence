@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <!--
   This application and all the work related to Agnus and for Agnus is sanctified and covered
   by The Blood of Jesus Christ. No work of darkness nor any dark code is allowed.
@@ -10,7 +10,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>AGNUS Academy — M26 Escalation Design</title>
+<title>AGNUS Academy — M26b Escalation Design</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@1,6..72,300;1,6..72,400&display=swap" rel="stylesheet"/>
@@ -102,7 +102,7 @@ html,body{min-height:100%;font-family:var(--sans);background:var(--bg);color:var
   <span class="rail-brand">AGNUS Academy</span>
   <span class="rail-sep"></span>
   <span class="rail-crumb">Level 4 · Govern</span>
-  <span class="rail-title">M26 — Escalation Design</span>
+  <span class="rail-title">M26b — Escalation Design</span>
   <div class="rail-right">
     <div class="phase-track" id="phaseTrack"></div>
     <button class="rail-btn" onclick="location.href='AGNUS - Academy App.html'">← Dashboard</button>
@@ -123,7 +123,7 @@ html,body{min-height:100%;font-family:var(--sans);background:var(--bg);color:var
     <div class="section">
       <div class="section-head"><span class="sh-badge">Step 1 of 6</span><span class="sh-title">Why agents need escalation paths</span></div>
       <div class="card">
-        <p>In M25 you learned what intervention controls are — the tools that allow humans to pause, override, or stop agents. In M26 you learn the design question that comes before intervention: how does the agent know it has reached a point where human input is needed?</p>
+        <p>In M25 you learned what intervention controls are — the tools that allow humans to pause, override, or stop agents. In M26b you learn the design question that comes before intervention: how does the agent know it has reached a point where human input is needed?</p>
         <p>A well-designed agent does not wait to be stopped. It knows — based on defined rules built into its governance architecture — when it has encountered a situation outside its scope, above its authority threshold, or ambiguous enough to require human review. Escalation design is the work of defining those rules before the agent is deployed.</p>
         <p>The failure mode is common: agents that are given goals without escalation rules optimise toward the goal until something goes wrong. By then, the harm may already have occurred. Escalation design moves the judgment from runtime to design time — which is the only moment it can be made carefully.</p>
       </div>
@@ -263,7 +263,7 @@ function pickQ(which,el){
     fb.innerHTML=correct?'<strong>Correct.</strong> The escalation specification is incomplete — no fallback recipient and no timeout default. The invoice should be held (Level 2), not approved or rejected. The design gap is the missing fallback specification, not a failure of the agent\'s logic.':'<strong>Not quite.</strong> The PO match does not override the value-based escalation rule — the two rules operate independently. And rejection (Level 3) is not appropriate here: the invoice is legitimate, it just needs a recipient for the notification. The problem is the design gap: no fallback was specified.';
     document.getElementById('practiceNext').disabled=false;
   } else {
-    fb.innerHTML=correct?'<strong>Correct — M26 complete.</strong> Uncertainty about the agent\'s own interpretation is a trigger for escalation, not for confident output. A complete escalation design includes rules for what the agent does when it is unsure — not just rules for known violation scenarios. Confident incorrect outputs cause more harm than paused uncertain ones.':'<strong>Not quite.</strong> Neither over-flagging nor proceeding confidently is correct when the agent is genuinely uncertain about its own interpretation. The correct action is to pause and escalate — and the correct governance lesson is that the escalation design is missing a rule for this scenario.';
+    fb.innerHTML=correct?'<strong>Correct — M26b complete.</strong> Uncertainty about the agent\'s own interpretation is a trigger for escalation, not for confident output. A complete escalation design includes rules for what the agent does when it is unsure — not just rules for known violation scenarios. Confident incorrect outputs cause more harm than paused uncertain ones.':'<strong>Not quite.</strong> Neither over-flagging nor proceeding confidently is correct when the agent is genuinely uncertain about its own interpretation. The correct action is to pause and escalate — and the correct governance lesson is that the escalation design is missing a rule for this scenario.';
     if(correct){setTimeout(()=>{document.getElementById('completeCard').style.display='block';renderTrack(TOTAL);},600);}
   }
 }

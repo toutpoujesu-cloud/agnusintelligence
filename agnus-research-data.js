@@ -4113,7 +4113,7 @@ const COURSES = [
 
   /* ─── Track L8 — Technical Track: Build with AI ─── */
   { id:'L8-01', track:'L8', level:null, title:'What Is an AI Agent (Technical)',
-    file:'academy/AGNUS - Academy L8-01 - What Is an AI Agent.html',
+    file:'academy/AGNUS - Academy L8-01 - Anatomy of an AI Agent.html',
     related_articles:['AR-000200','AR-000270'], related_obligations:[] },
   { id:'L8-02', track:'L8', level:null, title:'Agent Architecture Patterns',
     file:'academy/AGNUS - Academy L8-02 - Agent Architecture Patterns.html',
