@@ -59,11 +59,11 @@ body{background:var(--bg);color:var(--ink);font-family:Manrope,sans-serif;-webki
 
 <header class="top-rail">
   <span class="tr-brand">AGNUS Academy</span>
-  <span class="tr-crumb">Level 4 · Supervise</span>
+  <span class="tr-crumb">Level 4 · Govern</span>
   <span class="tr-title">Level Checkpoint</span>
   <div class="tr-right">
     <span class="qcount" id="qcount">Question 1 of 7</span>
-    <button class="tr-btn" onclick="alert('Dashboard link')">← Dashboard</button>
+    <button class="tr-btn" onclick="location.href='AGNUS - Academy App.html'">← Dashboard</button>
   </div>
 </header>
 
@@ -165,12 +165,21 @@ body{background:var(--bg);color:var(--ink);font-family:Manrope,sans-serif;-webki
       <h4>Review these modules before trying again</h4>
       <div id="reviewItems"></div>
     </div>
-    <button class="btn" id="resultBtn" onclick="alert('Continue')"></button>
+    <button class="btn" id="resultBtn" onclick="location.href='AGNUS - Academy App.html'"></button>
   </div>
 
 </div>
 
 <script>
+const MODULE_FILES = {
+  'M22':'AGNUS - Academy M22 - Reading Execution Logs.html',
+  'M23':'AGNUS - Academy M23 - Spotting Scope Drift.html',
+  'M24':'AGNUS - Academy M24 - Authority Chain Analysis.html',
+  'M25':'AGNUS - Academy M25 - Intervention Controls.html',
+  'M26':'AGNUS - Academy M26 - Escalation Design.html',
+  'M27':'AGNUS - Academy M27 - Policy Architecture.html',
+  'M28':'AGNUS - Academy M28 - Instruction Workspace.html'
+};
 const TOTAL = 7;
 let current = 0;
 let score = 0;
@@ -229,7 +238,7 @@ function showResult(){
       '<div class="review-item"><span>' + m + '</span><a href="#" data-module="' + m + '">Review →</a></div>'
     ).join('');
     document.querySelectorAll('#reviewItems a[data-module]').forEach(a => {
-      a.addEventListener('click', e => { e.preventDefault(); alert('Open ' + a.dataset.module); });
+      a.addEventListener('click', e => { e.preventDefault(); const f = MODULE_FILES[a.dataset.module]; if(f) location.href = f; });
     });
   }
 }
