@@ -551,6 +551,40 @@ Colour lives in **gutter badge + line background tint** only — never in the co
 
 ---
 
+---
+
+## PHASE AK — ACADEMY BACKEND (Accounts · Payment · Progress · Certificates)
+
+**Spec:** AGNUS-Academy-Backend-Spec.md (uploaded 2026-09-26)
+**Stack:** Supabase (EU Frankfurt — project jndoxwgnsuvmznfpgoks), Cloudflare Pages, Stripe
+
+### Phase A — Accounts (COMPLETE 2026-09-26)
+
+| ID | Task | Status | Notes |
+|---|---|---|---|
+| AK-A01 | Supabase project — EU region (Frankfurt) | ✓ | jndoxwgnsuvmznfpgoks · eu-central-1 |
+| AK-A02 | SQL migration — 5 tables + RLS + auto-profile trigger | ✓ | 20260926_phase_a.sql · ran via SQL Editor 2026-09-26 |
+| AK-A03 | Sign Up page | ✓ | academy/AGNUS - Academy Sign Up.html |
+| AK-A04 | Log In page (+ forgot password) | ✓ | academy/AGNUS - Academy Log In.html |
+| AK-A05 | Account page (profile, membership status, sign out) | ✓ | academy/AGNUS - Academy Account.html |
+| AK-A06 | `me` Edge Function — caller JWT, RLS isolation | ✓ | Deployed · JWT verify OFF · ACADEMY_ADMINS secret set |
+| AK-A07 | `agnus-config.js` — public config (anon key only) | ✓ | academy/agnus-config.js |
+
+### Phase B — Payment (next — requires go-ahead)
+
+| ID | Task | Status | Notes |
+|---|---|---|---|
+| AK-B01 | `create-checkout` Edge Function | — | Stripe Checkout session |
+| AK-B02 | `stripe-webhook` Edge Function | — | Fulfils entitlement on payment |
+| AK-B03 | `request-refund` Edge Function | — | Sets entitlement status to refund_pending |
+| AK-B04 | Enrol page | — | Redirects to Stripe Checkout |
+| AK-B05 | Welcome page (post-payment redirect) | — | Confirms enrolment |
+
+### Phase C — Progress (after Phase B)
+### Phase D — Certificates (after Phase C)
+
+---
+
 ## SUMMARY TABLE (updated)
 
 | Area | Total tasks | Green | Remaining |

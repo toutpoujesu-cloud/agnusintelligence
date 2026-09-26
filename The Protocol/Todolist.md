@@ -103,6 +103,24 @@ Read every file before claiming it is complete.
 
 ---
 
+## PHASE AK — Academy Backend
+
+### Phase A — Accounts (COMPLETE 2026-09-26)
+- [x] Supabase project created — EU Frankfurt (jndoxwgnsuvmznfpgoks)
+- [x] SQL migration ran: `profiles`, `entitlements`, `progress`, `certificates`, `stripe_events` tables, RLS policies, auto-profile trigger (on_auth_user_created)
+- [x] `academy/AGNUS - Academy Sign Up.html` — email/name/password → Supabase signUp()
+- [x] `academy/AGNUS - Academy Log In.html` — signInWithPassword() + forgot-password flow
+- [x] `academy/AGNUS - Academy Account.html` — profile edit, membership badge, sign out
+- [x] `supabase/functions/me/index.ts` — deployed, JWT verify OFF, ACADEMY_ADMINS=agnusresearch@gmail.com secret set
+- [x] `academy/agnus-config.js` — anon key (no service_role key in any file)
+
+### Phase B — Payment (PENDING — awaiting go-ahead)
+- [ ] `create-checkout` Edge Function + Enrol page + Welcome page
+- [ ] `stripe-webhook` Edge Function (fulfils entitlement)
+- [ ] `request-refund` Edge Function
+
+---
+
 ## Completed (verified)
 
 - `2026-09-02` ED01–ED08 briefing panels added to Control Training Environment. All 7 stage briefings with full education (what, why, law, failure modes, prior modules, correct answer). "?" revisit button. Confirmed working in browser.
