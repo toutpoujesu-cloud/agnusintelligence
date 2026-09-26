@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AGNUS Academy — Sign Up</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;1,6..72,300&display=swap" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="agnus-config.js"></script>
+<style>
+:root {
+  --char:#1C1B19; --char-2:#272522; --char-3:#2A2825;
+  --bg:#F8F7F4; --paper:#FCFBF8; --paper-warm:#F3F1EC; --paper-2:#ECE9E1;
+  --ink:#1D1D1F; --ink-soft:#6E6B66; --ink-mute:#908D86; --ink-faint:#B8B4AB;
+  --on-dark:#F5F4F1; --on-dark-soft:rgba(245,244,241,0.64); --on-dark-mute:rgba(245,244,241,0.42); --on-dark-faint:rgba(245,244,241,0.16);
+  --gold:#B28A42; --gold-deep:#8F6E32; --gold-mid:#C9A96A; --gold-light:#E7D6AE; --gold-soft:#FFF8EA;
+  --gold-grad:linear-gradient(100deg,#8F6E32 0%,#E7D6AE 42%,#B28A42 70%,#E7D6AE 100%);
+  --line:#E7E2D8; --line-soft:#F0ECE3; --line-dark:#393530;
+  --font-sans:"Manrope",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --font-serif:"Newsreader",Georgia,serif;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{font-family:var(--font-sans);color:var(--ink);background:var(--char);-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.5;min-height:100vh;display:flex;flex-direction:column;}
+a{text-decoration:none;color:inherit;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+
+.stage{flex:1;display:flex;align-items:center;justify-content:center;padding:32px 16px;background:radial-gradient(110% 80% at 80% -5%,rgba(176,140,74,0.10),transparent 55%),var(--char);}
+.card{background:var(--paper-warm);border-radius:24px;padding:clamp(32px,5vw,52px);width:100%;max-width:460px;box-shadow:0 50px 120px -40px rgba(0,0,0,0.7),0 0 0 1px rgba(255,255,255,0.04);}
+.mk{width:54px;height:54px;border-radius:16px;background:var(--char);color:var(--gold-light);display:grid;place-items:center;font-family:var(--font-serif);font-style:italic;font-size:24px;margin:0 auto 24px;}
+h1{font-family:var(--font-sans);font-weight:700;font-size:26px;letter-spacing:-0.025em;margin:0 0 6px;text-align:center;}
+.sub{color:var(--ink-soft);font-size:14.5px;text-align:center;margin:0 0 28px;}
+.field{margin-bottom:13px;}
+label{display:block;font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:6px;font-family:var(--font-mono);}
+input{width:100%;padding:14px 16px;border:1.5px solid var(--line);border-radius:12px;font-family:var(--font-sans);font-size:15px;color:var(--ink);background:#fff;outline:none;transition:border-color .2s ease;}
+input:focus{border-color:var(--char);}
+input::placeholder{color:var(--ink-faint);}
+.btn-submit{width:100%;padding:15px 28px;border-radius:999px;font-family:var(--font-sans);font-size:15px;font-weight:700;background:var(--gold-grad);color:#241B07;border:none;cursor:pointer;margin-top:6px;box-shadow:0 14px 34px -16px rgba(176,140,74,0.7);transition:box-shadow .2s ease,transform .2s ease,opacity .2s ease;letter-spacing:-0.01em;}
+.btn-submit:hover{box-shadow:0 18px 40px -16px rgba(176,140,74,0.9);}
+.btn-submit:active{transform:scale(0.98);}
+.btn-submit:disabled{opacity:0.55;cursor:not-allowed;transform:none;}
+.msg{margin-top:14px;padding:13px 16px;border-radius:12px;font-size:13.5px;line-height:1.5;display:none;}
+.msg.err{background:#FFF0F0;color:#C0392B;border:1px solid #F5C6CB;display:block;}
+.msg.ok{background:#F0FFF4;color:#1A7A3F;border:1px solid #B7E2C8;display:block;}
+.fine{font-size:12.5px;color:var(--ink-mute);text-align:center;margin-top:20px;line-height:1.6;}
+.fine a{color:var(--gold-deep);border-bottom:1px solid var(--gold-soft);padding-bottom:1px;}
+.fine a:hover{color:var(--gold);}
+.divider{display:flex;align-items:center;gap:12px;color:var(--ink-faint);font-size:11px;font-family:var(--font-mono);letter-spacing:0.08em;margin:6px 0 18px;}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line);}
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="card">
+    <div class="mk">A</div>
+    <h1>Create your account</h1>
+    <p class="sub">Join AGNUS Academy and start learning.</p>
+
+    <form id="form" novalidate>
+      <div class="field">
+        <label for="name">Full name</label>
+        <input id="name" type="text" placeholder="Jean Daniel" autocomplete="name" required />
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="you@example.com" autocomplete="email" required />
+      </div>
+      <div class="field">
+        <label for="pw">Password</label>
+        <input id="pw" type="password" placeholder="At least 8 characters" autocomplete="new-password" required minlength="8" />
+      </div>
+      <button class="btn-submit" type="submit" id="btn">Create account</button>
+    </form>
+
+    <div class="msg" id="msg"></div>
+
+    <p class="fine">
+      Already have an account? <a href="AGNUS - Academy Log In.html">Log in</a>
+    </p>
+  </div>
+</div>
+
+<script>
+(function () {
+  var cfg = window.AGNUS_CONFIG;
+  var sb = supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_ANON_KEY);
+
+  var form = document.getElementById('form');
+  var btn  = document.getElementById('btn');
+  var msg  = document.getElementById('msg');
+
+  function showMsg(text, type) {
+    msg.className = 'msg ' + type;
+    msg.textContent = text;
+  }
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var name  = document.getElementById('name').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var pw    = document.getElementById('pw').value;
+
+    if (!name || !email || pw.length < 8) {
+      showMsg('Please fill in all fields. Password must be at least 8 characters.', 'err');
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Creating account…';
+    msg.className = 'msg';
+
+    var result = await sb.auth.signUp({
+      email: email,
+      password: pw,
+      options: { data: { full_name: name } },
+    });
+
+    if (result.error) {
+      showMsg(result.error.message, 'err');
+      btn.disabled = false;
+      btn.textContent = 'Create account';
+      return;
+    }
+
+    showMsg('Account created! Check your email for a confirmation link, then log in.', 'ok');
+    btn.textContent = 'Check your email';
+  });
+})();
+</script>
+</body>
+</html>

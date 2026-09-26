@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AGNUS Academy — Account</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;1,6..72,300&display=swap" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="agnus-config.js"></script>
+<style>
+:root {
+  --char:#1C1B19; --char-2:#272522; --char-3:#2A2825;
+  --bg:#F8F7F4; --paper:#FCFBF8; --paper-warm:#F3F1EC; --paper-2:#ECE9E1;
+  --ink:#1D1D1F; --ink-soft:#6E6B66; --ink-mute:#908D86; --ink-faint:#B8B4AB;
+  --on-dark:#F5F4F1; --on-dark-soft:rgba(245,244,241,0.64); --on-dark-mute:rgba(245,244,241,0.42); --on-dark-faint:rgba(245,244,241,0.16);
+  --gold:#B28A42; --gold-deep:#8F6E32; --gold-mid:#C9A96A; --gold-light:#E7D6AE; --gold-soft:#FFF8EA;
+  --gold-grad:linear-gradient(100deg,#8F6E32 0%,#E7D6AE 42%,#B28A42 70%,#E7D6AE 100%);
+  --line:#E7E2D8; --line-soft:#F0ECE3; --line-dark:#393530;
+  --font-sans:"Manrope",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --font-serif:"Newsreader",Georgia,serif;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{font-family:var(--font-sans);color:var(--ink);background:var(--char);-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.5;min-height:100vh;display:flex;flex-direction:column;}
+a{text-decoration:none;color:inherit;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+
+/* Top bar */
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:18px clamp(20px,4vw,48px);background:rgba(26,26,23,0.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--line-dark);}
+.wordmark{font-family:var(--font-sans);font-weight:800;font-size:18px;letter-spacing:0.34em;padding-left:0.34em;color:#fff;}
+.topbar a{font-size:13.5px;font-weight:600;color:var(--on-dark-soft);}
+.topbar a:hover{color:var(--gold-light);}
+
+.stage{flex:1;padding:clamp(28px,5vw,60px) clamp(16px,4vw,48px);max-width:640px;margin:0 auto;width:100%;}
+
+/* Page title */
+.page-kicker{font-family:var(--font-mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold-mid);margin-bottom:10px;}
+.page-title{font-family:var(--font-sans);font-weight:700;font-size:clamp(28px,4vw,38px);letter-spacing:-0.03em;color:#fff;margin:0 0 40px;}
+
+/* Section card */
+.section{background:var(--paper-warm);border-radius:20px;padding:clamp(22px,3.5vw,32px);margin-bottom:16px;}
+.section-label{font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:18px;}
+.row{display:flex;align-items:center;gap:16px;margin-bottom:14px;}
+.row:last-child{margin-bottom:0;}
+.row-label{font-size:13px;color:var(--ink-mute);min-width:100px;flex:none;}
+.row-value{font-size:14.5px;font-weight:600;color:var(--ink);flex:1;}
+
+/* Editable name */
+.name-wrap{display:flex;align-items:center;gap:10px;flex:1;}
+.name-wrap input{flex:1;padding:8px 12px;border:1.5px solid var(--line);border-radius:10px;font-family:var(--font-sans);font-size:14.5px;font-weight:600;color:var(--ink);background:#fff;outline:none;transition:border-color .2s ease;}
+.name-wrap input:focus{border-color:var(--char);}
+.name-wrap .save-btn{padding:7px 14px;border-radius:8px;background:var(--char);color:#fff;font-size:13px;font-weight:600;transition:background .2s ease;}
+.name-wrap .save-btn:hover{background:var(--char-3);}
+
+/* Status badge */
+.badge{display:inline-flex;align-items:center;gap:7px;padding:4px 11px;border-radius:999px;font-family:var(--font-mono);font-size:11px;font-weight:500;}
+.badge.active{background:#EDFAF3;color:#1A7A3F;border:1px solid #B7E2C8;}
+.badge.none{background:var(--paper-2);color:var(--ink-mute);border:1px solid var(--line);}
+.badge .dot{width:7px;height:7px;border-radius:50%;}
+.badge.active .dot{background:#2ECC71;}
+.badge.none .dot{background:var(--ink-faint);}
+
+/* Buttons */
+.btn-outline{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 22px;border-radius:999px;font-size:13.5px;font-weight:600;border:1.5px solid var(--line);color:var(--ink);background:#fff;transition:border-color .2s ease,background .2s ease;cursor:pointer;}
+.btn-outline:hover{border-color:var(--char);}
+.btn-danger{border-color:#F5C6CB;color:#C0392B;background:#FFF0F0;}
+.btn-danger:hover{border-color:#C0392B;background:#FFE5E5;}
+.btn-gold{background:var(--gold-grad);color:#241B07;border-color:transparent;box-shadow:0 8px 24px -12px rgba(176,140,74,0.6);}
+.btn-gold:hover{box-shadow:0 12px 30px -12px rgba(176,140,74,0.8);}
+
+.btn-signout{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--on-dark-soft);padding:13px 0;margin-top:8px;}
+.btn-signout:hover{color:#fff;}
+
+.msg{margin-top:12px;padding:12px 15px;border-radius:10px;font-size:13px;line-height:1.5;display:none;}
+.msg.err{background:#FFF0F0;color:#C0392B;border:1px solid #F5C6CB;display:block;}
+.msg.ok{background:#F0FFF4;color:#1A7A3F;border:1px solid #B7E2C8;display:block;}
+
+.loading{color:var(--on-dark-mute);font-size:14px;text-align:center;padding:60px 0;}
+.redir{color:var(--on-dark-mute);font-size:14px;text-align:center;padding:60px 0;}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wordmark">AGNUS</div>
+  <a href="AGNUS - Academy App.html">← Dashboard</a>
+</div>
+
+<div class="stage">
+  <div id="loading" class="loading">Loading…</div>
+  <div id="content" style="display:none">
+
+    <p class="page-kicker">Your Account</p>
+    <h1 class="page-title">Settings &amp; membership</h1>
+
+    <!-- Profile -->
+    <div class="section">
+      <div class="section-label">Profile</div>
+      <div class="row">
+        <span class="row-label">Name</span>
+        <div class="name-wrap">
+          <input id="name-input" type="text" placeholder="Your name" />
+          <button class="save-btn" id="save-name">Save</button>
+        </div>
+      </div>
+      <div class="row">
+        <span class="row-label">Email</span>
+        <span class="row-value" id="email-val">—</span>
+      </div>
+      <div class="msg" id="profile-msg"></div>
+    </div>
+
+    <!-- Membership -->
+    <div class="section">
+      <div class="section-label">Membership</div>
+      <div class="row">
+        <span class="row-label">Status</span>
+        <span id="status-badge">—</span>
+      </div>
+      <div class="row" id="purchase-row" style="display:none">
+        <span class="row-label">Purchased</span>
+        <span class="row-value" id="purchase-date">—</span>
+      </div>
+      <div class="row" id="refund-row" style="display:none">
+        <span class="row-label">Refund window</span>
+        <span class="row-value" id="refund-deadline">—</span>
+      </div>
+      <div style="margin-top:18px;" id="enrol-cta" style="display:none">
+        <a class="btn-outline btn-gold" href="AGNUS - Academy Enrol.html">Enrol — $1,500</a>
+      </div>
+      <div style="margin-top:18px;display:none" id="refund-cta">
+        <button class="btn-outline btn-danger" id="refund-btn">Request refund</button>
+        <div class="msg" id="refund-msg"></div>
+      </div>
+    </div>
+
+    <!-- Certificate (shown once earned) -->
+    <div class="section" id="cert-section" style="display:none">
+      <div class="section-label">Certificate</div>
+      <div class="row">
+        <span class="row-label">Status</span>
+        <span class="badge active"><span class="dot"></span> Issued</span>
+      </div>
+      <div style="margin-top:16px;">
+        <a class="btn-outline" id="cert-link" href="#">Download certificate</a>
+      </div>
+    </div>
+
+    <!-- Sign out -->
+    <button class="btn-signout" id="signout-btn">← Sign out</button>
+
+  </div>
+  <div id="redir" class="redir" style="display:none">Redirecting to log in…</div>
+</div>
+
+<script>
+(function () {
+  var cfg = window.AGNUS_CONFIG;
+  var sb  = supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_ANON_KEY);
+
+  var loadingEl   = document.getElementById('loading');
+  var contentEl   = document.getElementById('content');
+  var redirEl     = document.getElementById('redir');
+
+  function fmt(iso) {
+    if (!iso) return '—';
+    return new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+  }
+
+  async function init() {
+    var { data: { session } } = await sb.auth.getSession();
+    if (!session) {
+      loadingEl.style.display = 'none';
+      redirEl.style.display = 'block';
+      setTimeout(function () { location.href = 'AGNUS - Academy Log In.html?next=' + encodeURIComponent('AGNUS - Academy Account.html'); }, 1200);
+      return;
+    }
+
+    var user = session.user;
+    document.getElementById('email-val').textContent = user.email;
+
+    // Load profile
+    var { data: profile } = await sb.from('profiles').select('*').eq('id', user.id).maybeSingle();
+    if (profile) document.getElementById('name-input').value = profile.full_name || '';
+
+    // Load entitlement
+    var { data: ent } = await sb.from('entitlements').select('*').eq('user_id', user.id).eq('status', 'active').maybeSingle();
+
+    var badge = document.getElementById('status-badge');
+    if (ent) {
+      badge.outerHTML = '<span id="status-badge"><span class="badge active"><span class="dot"></span> Active</span></span>';
+
+      document.getElementById('purchase-row').style.display = 'flex';
+      document.getElementById('purchase-date').textContent = fmt(ent.purchased_at);
+
+      var deadline = new Date(ent.refund_deadline);
+      var now = new Date();
+      if (now < deadline) {
+        document.getElementById('refund-row').style.display = 'flex';
+        document.getElementById('refund-deadline').textContent = fmt(ent.refund_deadline);
+        document.getElementById('refund-cta').style.display = 'block';
+      }
+    } else {
+      document.getElementById('status-badge').outerHTML = '<span id="status-badge"><span class="badge none"><span class="dot"></span> Not enrolled</span></span>';
+      document.getElementById('enrol-cta').style.display = 'block';
+    }
+
+    // Load certificate
+    var { data: cert } = await sb.from('certificates').select('*').eq('user_id', user.id).maybeSingle();
+    if (cert && !cert.revoked) {
+      var certSection = document.getElementById('cert-section');
+      certSection.style.display = 'block';
+      document.getElementById('cert-link').href = cfg.FUNCTIONS_URL + '/certificate-pdf?code=' + cert.code;
+    }
+
+    loadingEl.style.display = 'none';
+    contentEl.style.display = 'block';
+  }
+
+  // Save name
+  document.getElementById('save-name').addEventListener('click', async function () {
+    var profileMsg = document.getElementById('profile-msg');
+    var name = document.getElementById('name-input').value.trim();
+    if (!name) { profileMsg.className = 'msg err'; profileMsg.textContent = 'Name cannot be empty.'; return; }
+
+    var { data: { session } } = await sb.auth.getSession();
+    if (!session) return;
+
+    var { error } = await sb.from('profiles').update({ full_name: name }).eq('id', session.user.id);
+    if (error) {
+      profileMsg.className = 'msg err';
+      profileMsg.textContent = error.message;
+    } else {
+      profileMsg.className = 'msg ok';
+      profileMsg.textContent = 'Name updated.';
+      setTimeout(function () { profileMsg.className = 'msg'; }, 3000);
+    }
+  });
+
+  // Refund
+  document.getElementById('refund-btn').addEventListener('click', async function () {
+    var refundMsg = document.getElementById('refund-msg');
+    var btn = this;
+    if (!confirm('Request a refund? This will remove your access to the Academy.')) return;
+
+    btn.disabled = true;
+    btn.textContent = 'Requesting…';
+    refundMsg.className = 'msg';
+
+    var { data: { session } } = await sb.auth.getSession();
+    var res = await fetch(cfg.FUNCTIONS_URL + '/request-refund', {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + session.access_token, 'Content-Type': 'application/json' },
+    });
+    var data = await res.json();
+    if (res.ok) {
+      refundMsg.className = 'msg ok';
+      refundMsg.textContent = 'Refund requested. It will appear in 5–10 business days.';
+      document.getElementById('refund-cta').style.display = 'none';
+    } else {
+      refundMsg.className = 'msg err';
+      refundMsg.textContent = data.error || 'Refund failed. Please contact support.';
+      btn.disabled = false;
+      btn.textContent = 'Request refund';
+    }
+  });
+
+  // Sign out
+  document.getElementById('signout-btn').addEventListener('click', async function () {
+    await sb.auth.signOut();
+    location.href = 'AGNUS - Academy Log In.html';
+  });
+
+  init();
+})();
+</script>
+</body>
+</html>
