@@ -114,10 +114,20 @@ Read every file before claiming it is complete.
 - [x] `supabase/functions/me/index.ts` — deployed, JWT verify OFF, ACADEMY_ADMINS=agnusresearch@gmail.com secret set
 - [x] `academy/agnus-config.js` — anon key (no service_role key in any file)
 
-### Phase B — Payment (PENDING — awaiting go-ahead)
-- [ ] `create-checkout` Edge Function + Enrol page + Welcome page
-- [ ] `stripe-webhook` Edge Function (fulfils entitlement)
-- [ ] `request-refund` Edge Function
+### Phase B — Payment (COMPLETE 2026-09-26)
+- [x] Stripe product "AGNUS Academy" created — €1,500 one-time (prod_VKaaF8UHFuZi6a, price_1UJvPd64JSHZyrDFtTJ75kgz)
+- [x] Stripe webhook created → stripe-webhook function (we_1UJvVF64JSHZyrDFtzHR7WDu), event: checkout.session.completed
+- [x] `create-checkout` Edge Function — creates Stripe Checkout session with user_id metadata
+- [x] `stripe-webhook` Edge Function — verifies signature, inserts entitlement (14-day refund window)
+- [x] `request-refund` Edge Function — validates window, Stripe refund, marks entitlement refunded
+- [x] `academy/AGNUS - Academy Enrol.html` — payment landing, redirects to Stripe Checkout
+- [x] `academy/AGNUS - Academy Welcome.html` — post-payment, polls entitlement, shows name + dates
+- [x] `academy/agnus-config.js` — STRIPE_PK and STRIPE_PRICE_ID added
+
+MANUAL STEP REQUIRED (user):
+- Add STRIPE_SECRET_KEY to Supabase Edge Function secrets (sk_test_... from Stripe API keys page)
+- Add STRIPE_WEBHOOK_SECRET to Supabase Edge Function secrets (whsec_... from Stripe webhook page)
+- Deploy create-checkout, stripe-webhook, request-refund functions via Supabase dashboard
 
 ---
 
