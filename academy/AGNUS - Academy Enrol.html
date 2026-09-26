@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AGNUS Academy — Enrol</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;1,6..72,300&display=swap" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="agnus-config.js"></script>
+<style>
+:root {
+  --char:#1C1B19; --char-2:#272522;
+  --bg:#F8F7F4; --paper:#FCFBF8; --paper-warm:#F3F1EC; --paper-2:#ECE9E1;
+  --ink:#1D1D1F; --ink-soft:#6E6B66; --ink-mute:#908D86; --ink-faint:#B8B4AB;
+  --on-dark:#F5F4F1; --on-dark-soft:rgba(245,244,241,0.64); --on-dark-mute:rgba(245,244,241,0.42); --on-dark-faint:rgba(245,244,241,0.16);
+  --gold:#B28A42; --gold-deep:#8F6E32; --gold-mid:#C9A96A; --gold-light:#E7D6AE; --gold-soft:#FFF8EA;
+  --gold-grad:linear-gradient(100deg,#8F6E32 0%,#E7D6AE 42%,#B28A42 70%,#E7D6AE 100%);
+  --line:#E7E2D8; --line-soft:#F0ECE3; --line-dark:#393530;
+  --font-sans:"Manrope",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --font-serif:"Newsreader",Georgia,serif;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{font-family:var(--font-sans);color:var(--ink);background:var(--char);-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.5;min-height:100vh;display:flex;flex-direction:column;}
+a{text-decoration:none;color:inherit;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:18px clamp(20px,4vw,48px);background:rgba(26,26,23,0.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--line-dark);}
+.wordmark{font-family:var(--font-sans);font-weight:800;font-size:18px;letter-spacing:0.34em;padding-left:0.34em;color:#fff;}
+.topbar a{font-size:13.5px;font-weight:600;color:var(--on-dark-soft);}
+.topbar a:hover{color:var(--gold-light);}
+
+.stage{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 16px;}
+
+.card{background:var(--paper-warm);border-radius:24px;padding:clamp(32px,5vw,56px);width:100%;max-width:520px;box-shadow:0 50px 120px -40px rgba(0,0,0,0.7),0 0 0 1px rgba(255,255,255,0.04);}
+
+.kicker{font-family:var(--font-mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold-mid);margin-bottom:10px;}
+h1{font-family:var(--font-sans);font-weight:700;font-size:clamp(26px,3.5vw,34px);letter-spacing:-0.03em;margin:0 0 8px;color:var(--ink);}
+.sub{color:var(--ink-soft);font-size:14.5px;margin:0 0 28px;line-height:1.6;}
+
+.price-block{background:var(--char);border-radius:16px;padding:22px 24px;margin-bottom:24px;}
+.price-label{font-family:var(--font-mono);font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--on-dark-mute);margin-bottom:8px;}
+.price-val{font-family:var(--font-sans);font-weight:800;font-size:clamp(34px,5vw,46px);letter-spacing:-0.04em;color:var(--gold-light);}
+.price-sub{font-size:13px;color:var(--on-dark-mute);margin-top:4px;}
+
+.feature-list{list-style:none;padding:0;margin:0 0 28px;}
+.feature-list li{display:flex;gap:12px;font-size:14px;color:var(--ink-soft);padding:9px 0;border-bottom:1px solid var(--line-soft);}
+.feature-list li:last-child{border-bottom:none;}
+.feature-list .check{color:var(--gold);font-size:15px;flex:none;margin-top:1px;}
+
+.btn-enrol{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:17px 28px;border-radius:999px;font-family:var(--font-sans);font-size:15px;font-weight:700;background:var(--gold-grad);color:#241B07;border:none;cursor:pointer;box-shadow:0 14px 34px -16px rgba(176,140,74,0.7);transition:box-shadow .2s ease,transform .2s ease,opacity .2s ease;letter-spacing:-0.01em;}
+.btn-enrol:hover{box-shadow:0 18px 40px -16px rgba(176,140,74,0.9);}
+.btn-enrol:active{transform:scale(0.98);}
+.btn-enrol:disabled{opacity:0.55;cursor:not-allowed;transform:none;}
+
+.fine{font-size:12px;color:var(--ink-mute);text-align:center;margin-top:16px;line-height:1.6;}
+
+.msg{margin-top:14px;padding:13px 16px;border-radius:12px;font-size:13.5px;line-height:1.5;display:none;}
+.msg.err{background:#FFF0F0;color:#C0392B;border:1px solid #F5C6CB;display:block;}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wordmark">AGNUS</div>
+  <a href="AGNUS - Academy App.html">← Back to Academy</a>
+</div>
+
+<div class="stage">
+  <div class="card">
+    <p class="kicker">Enrolment</p>
+    <h1>Join AGNUS Academy</h1>
+    <p class="sub">One payment. Lifetime access to 80 structured modules on AI governance, auditing, and deployment in regulated environments.</p>
+
+    <div class="price-block">
+      <div class="price-label">One-time payment</div>
+      <div class="price-val">€1,500</div>
+      <div class="price-sub">Secure payment via Stripe · 14-day refund window</div>
+    </div>
+
+    <ul class="feature-list">
+      <li><span class="check">✓</span> 80 AI governance modules across 7 levels</li>
+      <li><span class="check">✓</span> 5 Track B simulation programmes</li>
+      <li><span class="check">✓</span> Control Training Environment (live CTE)</li>
+      <li><span class="check">✓</span> Completion certificate on finish</li>
+      <li><span class="check">✓</span> Lifetime access — no subscription</li>
+    </ul>
+
+    <button class="btn-enrol" id="enrol-btn">
+      <span id="btn-text">Proceed to payment</span>
+    </button>
+    <div class="msg" id="msg"></div>
+    <p class="fine">You will be redirected to Stripe's secure checkout page. Your card details are never stored by AGNUS.</p>
+  </div>
+</div>
+
+<script>
+(function () {
+  var cfg = window.AGNUS_CONFIG;
+  var sb  = supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_ANON_KEY);
+  var btn = document.getElementById('enrol-btn');
+  var msg = document.getElementById('msg');
+  var btnText = document.getElementById('btn-text');
+
+  btn.addEventListener('click', async function () {
+    btn.disabled = true;
+    btnText.textContent = 'Creating session…';
+    msg.className = 'msg';
+
+    var { data: { session } } = await sb.auth.getSession();
+    if (!session) {
+      location.href = 'AGNUS - Academy Log In.html?next=' + encodeURIComponent('AGNUS - Academy Enrol.html');
+      return;
+    }
+
+    var res = await fetch(cfg.FUNCTIONS_URL + '/create-checkout', {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer ' + session.access_token,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        success_url: location.origin + '/academy/AGNUS%20-%20Academy%20Welcome.html?session_id={CHECKOUT_SESSION_ID}',
+        cancel_url:  location.href,
+      }),
+    });
+
+    var data = await res.json();
+    if (res.ok && data.url) {
+      location.href = data.url;
+    } else {
+      msg.className = 'msg err';
+      msg.textContent = data.error || 'Something went wrong. Please try again.';
+      btn.disabled = false;
+      btnText.textContent = 'Proceed to payment';
+    }
+  });
+
+  // Check if already logged in; if not, show a note
+  (async function () {
+    var { data: { session } } = await sb.auth.getSession();
+    if (!session) {
+      msg.className = 'msg err';
+      msg.style.display = 'block';
+      msg.textContent = 'Please log in to enrol.';
+      btnText.textContent = 'Log in to continue';
+      btn.onclick = function () { location.href = 'AGNUS - Academy Log In.html?next=' + encodeURIComponent('AGNUS - Academy Enrol.html'); };
+    }
+  })();
+})();
+</script>
+</body>
+</html>

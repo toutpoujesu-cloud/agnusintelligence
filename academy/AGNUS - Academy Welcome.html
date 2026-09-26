@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AGNUS Academy — Welcome</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;1,6..72,300&display=swap" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="agnus-config.js"></script>
+<style>
+:root {
+  --char:#1C1B19; --char-2:#272522;
+  --bg:#F8F7F4; --paper:#FCFBF8; --paper-warm:#F3F1EC; --paper-2:#ECE9E1;
+  --ink:#1D1D1F; --ink-soft:#6E6B66; --ink-mute:#908D86; --ink-faint:#B8B4AB;
+  --on-dark:#F5F4F1; --on-dark-soft:rgba(245,244,241,0.64); --on-dark-mute:rgba(245,244,241,0.42); --on-dark-faint:rgba(245,244,241,0.16);
+  --gold:#B28A42; --gold-deep:#8F6E32; --gold-mid:#C9A96A; --gold-light:#E7D6AE; --gold-soft:#FFF8EA;
+  --gold-grad:linear-gradient(100deg,#8F6E32 0%,#E7D6AE 42%,#B28A42 70%,#E7D6AE 100%);
+  --line:#E7E2D8; --line-soft:#F0ECE3; --line-dark:#393530;
+  --font-sans:"Manrope",-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --font-serif:"Newsreader",Georgia,serif;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{font-family:var(--font-sans);color:var(--ink);background:var(--char);-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.5;min-height:100vh;display:flex;flex-direction:column;}
+a{text-decoration:none;color:inherit;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:18px clamp(20px,4vw,48px);background:rgba(26,26,23,0.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--line-dark);}
+.wordmark{font-family:var(--font-sans);font-weight:800;font-size:18px;letter-spacing:0.34em;padding-left:0.34em;color:#fff;}
+
+.stage{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 16px;background:radial-gradient(110% 80% at 50% -5%,rgba(176,140,74,0.12),transparent 55%),var(--char);}
+
+.card{background:var(--paper-warm);border-radius:24px;padding:clamp(40px,6vw,64px);width:100%;max-width:540px;text-align:center;box-shadow:0 50px 120px -40px rgba(0,0,0,0.7),0 0 0 1px rgba(255,255,255,0.04);}
+
+.icon{width:72px;height:72px;border-radius:50%;background:var(--gold-grad);display:inline-flex;align-items:center;justify-content:center;font-size:30px;margin-bottom:28px;box-shadow:0 12px 32px -10px rgba(176,140,74,0.5);}
+
+.kicker{font-family:var(--font-mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold-mid);margin-bottom:10px;}
+h1{font-family:var(--font-sans);font-weight:700;font-size:clamp(28px,4vw,38px);letter-spacing:-0.03em;margin:0 0 14px;color:var(--ink);}
+.sub{color:var(--ink-soft);font-size:15px;margin:0 0 36px;line-height:1.7;}
+
+.detail-row{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid var(--line-soft);font-size:14px;}
+.detail-row:last-of-type{border-bottom:none;}
+.detail-label{color:var(--ink-mute);}
+.detail-val{font-weight:600;color:var(--ink);}
+
+.actions{display:flex;flex-direction:column;gap:12px;margin-top:32px;}
+
+.btn-primary{display:flex;align-items:center;justify-content:center;gap:8px;padding:16px 28px;border-radius:999px;font-size:15px;font-weight:700;background:var(--gold-grad);color:#241B07;border:none;cursor:pointer;box-shadow:0 12px 30px -12px rgba(176,140,74,0.6);transition:box-shadow .2s ease;}
+.btn-primary:hover{box-shadow:0 16px 36px -12px rgba(176,140,74,0.8);}
+
+.btn-outline{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 24px;border-radius:999px;font-size:14px;font-weight:600;border:1.5px solid var(--line);color:var(--ink-soft);background:#fff;transition:border-color .2s ease;}
+.btn-outline:hover{border-color:var(--char);color:var(--ink);}
+
+.pending{color:var(--ink-mute);font-size:14px;padding:40px 0;}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wordmark">AGNUS</div>
+</div>
+
+<div class="stage">
+  <div class="card" id="content" style="display:none">
+    <div class="icon">✓</div>
+    <p class="kicker">Payment confirmed</p>
+    <h1 id="greeting">Welcome to AGNUS Academy</h1>
+    <p class="sub">Your enrolment is active. You now have full access to all 80 modules, Track B simulations, and the Control Training Environment.</p>
+
+    <div id="details"></div>
+
+    <div class="actions">
+      <a class="btn-primary" href="AGNUS - Academy App.html">Start learning →</a>
+      <a class="btn-outline" href="AGNUS - Academy Account.html">View account</a>
+    </div>
+  </div>
+
+  <div id="pending" class="pending">
+    <p>Confirming your payment…</p>
+    <p style="font-size:13px;margin-top:8px;color:rgba(245,244,241,0.3)">This usually takes a few seconds.</p>
+  </div>
+</div>
+
+<script>
+(function () {
+  var cfg = window.AGNUS_CONFIG;
+  var sb  = supabase.createClient(cfg.SUPABASE_URL, cfg.SUPABASE_ANON_KEY);
+
+  function fmt(iso) {
+    if (!iso) return '—';
+    return new Date(iso).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+  }
+
+  async function init() {
+    var { data: { session } } = await sb.auth.getSession();
+    if (!session) {
+      location.href = 'AGNUS - Academy Log In.html';
+      return;
+    }
+
+    // Poll for entitlement — webhook may take a second or two
+    var ent = null;
+    for (var i = 0; i < 10; i++) {
+      var { data } = await sb.from('entitlements').select('*').eq('user_id', session.user.id).eq('status', 'active').maybeSingle();
+      if (data) { ent = data; break; }
+      await new Promise(function (r) { setTimeout(r, 1500); });
+    }
+
+    var pendingEl  = document.getElementById('pending');
+    var contentEl  = document.getElementById('content');
+
+    if (ent) {
+      var { data: profile } = await sb.from('profiles').select('full_name').eq('id', session.user.id).maybeSingle();
+      var name = (profile && profile.full_name) ? profile.full_name.split(' ')[0] : 'there';
+      document.getElementById('greeting').textContent = 'Welcome, ' + name + '.';
+
+      var details = document.getElementById('details');
+      details.innerHTML = [
+        row('Status',      '<span style="color:#1A7A3F;font-weight:700">Active</span>'),
+        row('Enrolled on', fmt(ent.purchased_at)),
+        row('Refund window', fmt(ent.refund_deadline)),
+      ].join('');
+
+      pendingEl.style.display = 'none';
+      contentEl.style.display = 'block';
+    } else {
+      // Entitlement didn't arrive — show support message
+      pendingEl.innerHTML = '<p style="color:var(--on-dark-soft)">Payment received — access is being activated.</p><p style="font-size:13px;margin-top:10px;color:rgba(245,244,241,0.35)">If this persists beyond 5 minutes, email <a href="mailto:info@agnusintelligence.com" style="color:var(--gold-mid);border-bottom:1px solid rgba(180,140,66,0.3)">info@agnusintelligence.com</a> with your order details.</p><div style="margin-top:20px"><a href="AGNUS - Academy Account.html" style="font-size:13px;color:rgba(245,244,241,0.5);border-bottom:1px solid rgba(245,244,241,0.15)">Go to account</a></div>';
+    }
+  }
+
+  function row(label, val) {
+    return '<div class="detail-row"><span class="detail-label">' + label + '</span><span class="detail-val">' + val + '</span></div>';
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>
